@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "wis",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "dev": "wis dev",
+    "build": "wis build"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "prettier --write",
+      "eslint"
+    ],
+    "**/*.json": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/runtime": "7.16.7",
+    "@babel/runtime-corejs3": "7.16.7",
+    "@wisdesign/cli": "0.0.2",
+    "@wisdesign/eslint-config": "0.0.1",
+    "@wisdesign/prettier-config": "0.0.1",
+    "@wisdesign/plugin-less": "0.0.1",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.7"
+  }
+}

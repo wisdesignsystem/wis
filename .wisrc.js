@@ -1,0 +1,19 @@
+export default {
+  // 项目类型
+  mode: 'library',
+
+  // 库名称，只有项目类型为library时有效
+  libraryName: 'wis',
+
+  // 设置别名
+  alias: {},
+
+  // wis默认会排除所有node_modules编译
+  // 如果需要编译部分包，请在这里添加额外的需要编译的包名
+  extraBabelCompileNodeModules: [],
+
+  // 项目导出的共享资源
+  exposes: {},
+
+  plugins: ['@wisdesign/plugin-less'],
+}

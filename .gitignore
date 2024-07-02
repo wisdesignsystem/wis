@@ -1,0 +1,11 @@
+# 本地环境变量仅对当前用户生效，忽略提交本地环境变量
+*.local
+.history
+
+node_modules
+.DS_Store
+
+# 应用编译时自动生成的目录
+dist
+.wis
+.wis.prod
