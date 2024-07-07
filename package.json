@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky",
     "dev": "wis dev",
     "build": "wis build"
@@ -21,7 +22,7 @@
   "devDependencies": {
     "@babel/runtime": "7.16.7",
     "@babel/runtime-corejs3": "7.16.7",
-    "@wisdesign/cli": "0.0.2",
+    "@wisdesign/cli": "0.0.3",
     "@wisdesign/eslint-config": "0.0.1",
     "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/plugin-less": "0.0.1",
