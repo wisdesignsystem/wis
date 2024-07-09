@@ -5,8 +5,5 @@
  * @return <Object> 应用的远程地址注册表
  */
 export function remotes() {
-  return {
-    wis: 'http://localhost:3000',
-    demo: 'http://localhost:3001',
-  }
+  return {}
 }

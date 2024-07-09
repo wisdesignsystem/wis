@@ -4,7 +4,8 @@ import Button from 'remote:self/Button'
 function Example() {
   return (
     <>
-      <Button>2211</Button>
+      22222332342323243243223423343
+      <Button>221122222111333</Button>
     </>
   )
 }

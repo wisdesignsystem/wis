@@ -2,9 +2,6 @@ export default {
   // 项目类型
   mode: 'library',
 
-  // 库名称，只有项目类型为library时有效
-  libraryName: 'wis',
-
   // 设置别名
   alias: {
     '@': 'src',
@@ -17,7 +14,6 @@ export default {
   // 项目导出的共享资源
   exposes: {
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
-    // './Button': '@/packages/button/pc/Button',
   },
 
   plugins: ['@wisdesign/plugin-less'],
