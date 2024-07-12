@@ -22,6 +22,8 @@
   "devDependencies": {
     "@babel/runtime": "7.16.7",
     "@babel/runtime-corejs3": "7.16.7",
+    "@commitlint/cli": "18.6.1",
+    "@commitlint/config-conventional": "18.6.3",
     "@wisdesign/cli": "0.0.4",
     "@wisdesign/eslint-config": "0.0.1",
     "@wisdesign/prettier-config": "0.0.1",
