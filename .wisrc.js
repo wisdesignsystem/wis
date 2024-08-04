@@ -13,6 +13,7 @@ export default {
 
   // 项目导出的共享资源
   exposes: {
+    './Icon': '@/packages/icon/index.js',
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
   },
 
