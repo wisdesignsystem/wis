@@ -7,7 +7,8 @@
     "preinstall": "npx only-allow npm",
     "prepare": "husky",
     "dev": "wis dev",
-    "build": "wis build"
+    "build": "wis build",
+    "token": "token -n w -l ./src/assets/light.json -d ./src/assets/dark.json -o ./src/packages/style/tokens"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
@@ -24,10 +25,11 @@
     "@babel/runtime-corejs3": "7.16.7",
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
-    "@wisdesign/cli": "0.0.6",
+    "@wisdesign/cli": "0.0.8",
     "@wisdesign/eslint-config": "0.0.1",
     "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/plugin-less": "0.0.1",
+    "@wisdesign/token": "0.0.4",
     "husky": "9.0.11",
     "lint-staged": "15.2.7"
   }

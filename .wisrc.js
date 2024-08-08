@@ -1,3 +1,7 @@
+import { createRequire } from 'node:module'
+
+const require = createRequire(import.meta.url)
+
 export default {
   // 项目类型
   mode: 'library',
@@ -13,9 +17,12 @@ export default {
 
   // 项目导出的共享资源
   exposes: {
+    './style': '@/packages/style/index.js',
     './Icon': '@/packages/icon/index.js',
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
   },
 
-  plugins: ['@wisdesign/plugin-less'],
+  plugins: [require.resolve('@wisdesign/plugin-less')],
+
+  remoteEntry: './style',
 }
