@@ -3,19 +3,19 @@ import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 
 export default {
-  // 项目类型
+  // project type
   mode: 'library',
 
-  // 设置别名
+  // set alias
   alias: {
     '@': 'src',
   },
 
-  // wis默认会排除所有node_modules编译
-  // 如果需要编译部分包，请在这里添加额外的需要编译的包名
+  // wis will default to exclude the compilation of all node_modules
+  // If some packages need to be compiled, please add the additional package names that need to be compiled here
   extraBabelCompileNodeModules: [],
 
-  // 项目导出的共享资源
+  // export remote modules
   exposes: {
     './style': '@/packages/style/index.js',
     './Icon': '@/packages/icon/index.js',
@@ -24,5 +24,6 @@ export default {
 
   plugins: [require.resolve('@wisdesign/plugin-less')],
 
+  // register remote entry file
   remoteEntry: './style',
 }
