@@ -17,13 +17,12 @@ export default {
 
   // export remote modules
   exposes: {
-    './style': '@/packages/style/index.js',
-    './Icon': '@/packages/icon/index.js',
+    './core': '@/packages/core/index',
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-less')],
 
   // register remote entry file
-  remoteEntry: './style',
+  remoteEntry: './core',
 }

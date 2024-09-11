@@ -1,0 +1,9 @@
+html[data-theme='blue'] {
+  --w-common-shadow-state-focus-default: var(--w-palette-blue-40);
+  --w-common-shadow-state-focus-inner: var(--w-palette-blue-40);
+  --w-common-shadow-state-focus-danger: var(--w-palette-red-40);
+  --w-common-shadow-color-01: #0000000d;
+  --w-common-shadow-color-02: #0000001a;
+  --w-common-shadow-color-03: #0000001a;
+  --w-common-shadow-color-04: #0000001a;
+}

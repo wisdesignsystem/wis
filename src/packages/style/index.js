@@ -1,1 +1,0 @@
-import './wis.css'

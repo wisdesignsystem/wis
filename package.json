@@ -8,7 +8,7 @@
     "prepare": "husky",
     "dev": "wis dev",
     "build": "wis build",
-    "token": "token -n w -l ./src/assets/light.json -d ./src/assets/dark.json -o ./src/packages/style/tokens"
+    "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,highContrast:./src/assets/wis.highContrast.tokens.json -o ./src/packages/theme"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
@@ -29,7 +29,7 @@
     "@wisdesign/eslint-config": "0.0.1",
     "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/plugin-less": "0.0.1",
-    "@wisdesign/token": "0.0.4",
+    "@wisdesign/toolkit": "0.0.3",
     "husky": "9.0.11",
     "lint-staged": "15.2.7"
   }
