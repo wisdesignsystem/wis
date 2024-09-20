@@ -1,5 +1,5 @@
+import 'remote:self/themes'
+
 import wis from './wis'
 
-import './wis.css'
-
-export default wis
+export { wis }

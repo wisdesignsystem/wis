@@ -19,16 +19,20 @@
       "prettier --write"
     ]
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@babel/runtime": "7.16.7",
     "@babel/runtime-corejs3": "7.16.7",
+    "i18next": "23.15.1",
+    "i18next-browser-languagedetector": "8.0.0",
+    "nanoid": "5.0.7"
+  },
+  "devDependencies": {
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
-    "@wisdesign/cli": "0.0.8",
+    "@wisdesign/cli": "0.0.11",
     "@wisdesign/eslint-config": "0.0.1",
-    "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/plugin-less": "0.0.1",
+    "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/toolkit": "0.0.3",
     "husky": "9.0.11",
     "lint-staged": "15.2.7"

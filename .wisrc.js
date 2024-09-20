@@ -19,6 +19,10 @@ export default {
   exposes: {
     './core': '@/packages/core/index',
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
+    './ToggleButton': {
+      pc: '@/packages/toggleButton/pc/ToggleButton',
+      mobile: '@/packages/toggleButton/mobile/ToggleButton',
+    },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-less')],
