@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import translate from 'remote:self/locales'
 
 import styles from './Button.module.less'
 
@@ -13,7 +14,7 @@ function Button() {
         setCount(count + 1)
       }}
     >
-      PC Button {count}
+      {translate.t('button.text')} {count}
     </button>
   )
 }
