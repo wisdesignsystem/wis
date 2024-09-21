@@ -1,22 +1,63 @@
-import { useState } from 'react'
-import translate from 'remote:self/locales'
+import Shortcut from 'remote:self/Shortcut'
+import { attrs } from '@/utils/attrs'
+import { useRef } from 'react'
+import classNames from 'classnames'
+
+import propTypes from '../propType'
 
 import styles from './Button.module.less'
 
-function Button() {
-  const [count, setCount] = useState(0)
+function Button({
+  className,
+  variant = 'secondary',
+  status = 'normal',
+  disabled,
+  loading,
+  text,
+  icon,
+  iconControl = 'prefix',
+  tooltip,
+  size = 'md',
+  shortcutKey,
+  ...rest
+}) {
+  const button = useRef(null)
+
+  const isIconButton = !text
 
   return (
     <button
-      className={styles.button}
-      onClick={() => {
-        window.alert('pc button click')
-        setCount(count + 1)
-      }}
+      {...rest}
+      ref={button}
+      className={classNames(styles.button, {
+        [className]: !!className,
+      })}
+      data-size={size}
+      data-variant={variant}
+      data-status={status}
+      aria-disabled={disabled}
+      disabled={disabled}
+      {...attrs({
+        'data-icon': isIconButton,
+      })}
     >
-      {translate.t('button.text')} {count}
+      {iconControl === 'prefix' && icon}
+      {!isIconButton && <span>{text}</span>}
+      {iconControl === 'suffix' && icon}
+      <Shortcut
+        shortcutKey={shortcutKey}
+        disabled={disabled}
+        size={size}
+        variant={['primary', 'classic', 'tertiary'].includes(variant) ? 'light' : 'dark'}
+        onTrigger={() => {
+          button.current.focus()
+          button.current.click()
+        }}
+      />
     </button>
   )
 }
+
+Button.propTypes = propTypes
 
 export default Button
