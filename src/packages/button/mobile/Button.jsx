@@ -1,16 +1,51 @@
+import { attrs } from '@/utils/attrs'
+import { useRef } from 'react'
+import classNames from 'classnames'
+
+import propTypes from '../propType'
+
 import styles from './Button.module.less'
 
-function Button() {
+function Button({
+  className,
+  variant = 'secondary',
+  status = 'normal',
+  disabled,
+  loading,
+  text,
+  icon,
+  iconControl = 'prefix',
+  tooltip,
+  size = 'md',
+  ...rest
+}) {
+  const button = useRef(null)
+
+  const isIconButton = !text
+
   return (
     <button
-      className={styles.button}
-      onClick={() => {
-        window.alert('mobile button click')
-      }}
+      {...rest}
+      ref={button}
+      className={classNames(styles.button, {
+        [className]: !!className,
+      })}
+      data-size={size}
+      data-variant={variant}
+      data-status={status}
+      aria-disabled={disabled}
+      disabled={disabled}
+      {...attrs({
+        'data-icon': isIconButton,
+      })}
     >
-      Mobile Button
+      {iconControl === 'prefix' && icon}
+      {!isIconButton && <span>{text}</span>}
+      {iconControl === 'suffix' && icon}
     </button>
   )
 }
+
+Button.propTypes = propTypes
 
 export default Button
