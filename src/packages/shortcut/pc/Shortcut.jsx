@@ -1,14 +1,17 @@
+import { useGlobalShortcut } from 'remote:self/core'
 import { attrs } from '@/utils/attrs'
 
-import useShortcut from '../useShortcut'
 import propTypes from '../propType'
 
 import styles from './Shortcut.module.less'
 
 function Shortcut({ shortcutKey, disabled, variant = 'light', size = 'md', onTrigger = () => {}, ...rest }) {
-  const [shortcut, onShortcut] = useShortcut({ shortcutKey, disabled })
-  onShortcut((currentShortcut) => {
-    onTrigger(currentShortcut)
+  const onGlobalShortcut = useGlobalShortcut(shortcutKey)
+  const shortcut = onGlobalShortcut((shortcut) => {
+    if (disabled) {
+      return
+    }
+    onTrigger(shortcut)
   })
 
   if (!shortcut) {
@@ -27,7 +30,7 @@ function Shortcut({ shortcutKey, disabled, variant = 'light', size = 'md', onTri
       {shortcut.shift && <span className={styles.command}>⇧</span>}
       {shortcut.alt && <span className={styles.command}>⌥</span>}
       {shortcut.meta && <span className={styles.command}>⌘</span>}
-      <span className={styles.key}>{shortcut.key.toUpperCase()}</span>
+      <span className={styles.key}>{shortcut.key}</span>
     </div>
   )
 }
