@@ -1,28 +1,28 @@
 .variant(@variant) {
-  color: var(~'--w-component-toggle-button-@{variant}-default-font');
-  background: var(~'--w-component-toggle-button-@{variant}-default-background');
-  border: 1px solid var(~'--w-component-toggle-button-@{variant}-default-border');
+  color: var(~'--w-component-toggle-@{variant}-default-font');
+  background: var(~'--w-component-toggle-@{variant}-default-background');
+  border: 1px solid var(~'--w-component-toggle-@{variant}-default-border');
 
   &:hover {
-    background: var(~'--w-component-toggle-button-@{variant}-hover-background');
+    background: var(~'--w-component-toggle-@{variant}-hover-background');
   }
 
   &:focus {
-    background: var(~'--w-component-toggle-button-@{variant}-focus-background');
+    background: var(~'--w-component-toggle-@{variant}-focus-background');
     box-shadow: 0 0 0 2px var(--w-common-shadow-state-focus-inner), 0 0 0 4px var(--w-common-shadow-state-focus-default);
   }
 
   &[disabled] {
     cursor: not-allowed;
-    color: var(~'--w-component-toggle-button-@{variant}-disabled-font');
-    border-color: var(~'--w-component-toggle-button-@{variant}-disabled-border');
-    background: var(~'--w-component-toggle-button-@{variant}-disabled-background');
+    color: var(~'--w-component-toggle-@{variant}-disabled-font');
+    border-color: var(~'--w-component-toggle-@{variant}-disabled-border');
+    background: var(~'--w-component-toggle-@{variant}-disabled-background');
   }
 
   &[data-state="on"] {
-    color: var(~'--w-component-toggle-button-@{variant}-checked-default-font');
-    background: var(~'--w-component-toggle-button-@{variant}-checked-default-background');
-    border-color: var(~'--w-component-toggle-button-@{variant}-checked-default-border');
+    color: var(~'--w-component-toggle-@{variant}-checked-default-font');
+    background: var(~'--w-component-toggle-@{variant}-checked-default-background');
+    border-color: var(~'--w-component-toggle-@{variant}-checked-default-border');
   }
 }
 

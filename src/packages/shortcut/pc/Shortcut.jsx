@@ -36,5 +36,6 @@ function Shortcut({ shortcutKey, disabled, variant = 'light', size = 'md', onTri
 }
 
 Shortcut.propTypes = propTypes
+Shortcut.displayName = 'Shortcut'
 
 export default Shortcut

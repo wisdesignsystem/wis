@@ -34,7 +34,7 @@ html[data-theme='highContrast'] {
   --w-common-font-weight-light: 300;
   --w-common-font-weight-regular: 400;
   --w-common-font-weight-medium: 500;
-  --w-common-font-weight-semibold: 0;
+  --w-common-font-weight-semibold: 600;
   --w-common-font-weight-bold: 700;
   --w-common-font-weight-black: 900;
 }

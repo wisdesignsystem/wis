@@ -1,4 +1,424 @@
 {
+  "palette": {
+    "gray": {
+      "10": {
+        "$type": "color",
+        "$value": "#eff1f6"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#e2e5eb"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#ced3db"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#9ca3af"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#808899"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#86909c"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#4e5969"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#343d54"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#0f172a"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#f6f8fb"
+      }
+    },
+    "green": {
+      "10": {
+        "$type": "color",
+        "$value": "#dcfce7"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#bbf7d0"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#86efac"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#4ade80"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#22c55e"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#16a34a"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#15803d"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#166534"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#14532d"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#f0fdf4"
+      }
+    },
+    "blue": {
+      "10": {
+        "$type": "color",
+        "$value": "#c3deff"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#8cc6ff"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#59acff"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#0c99ff"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#0f62fe"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#0043e7"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#0033cc"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#001ba6"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#001580"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#f0f5ff"
+      }
+    },
+    "teal": {
+      "10": {
+        "$type": "color",
+        "$value": "#cffafe"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#a5f3fc"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#67e8f9"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#22d3ee"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#06b6d4"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#0891b2"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#0e7490"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#155e75"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#162833"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#ecfeff"
+      }
+    },
+    "indigo": {
+      "10": {
+        "$type": "color",
+        "$value": "#e0e7ff"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#c7d2fe"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#a5b4fc"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#818cf8"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#6366f1"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#4f46e5"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#4338ca"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#3730a3"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#312e81"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#eef2ff"
+      }
+    },
+    "purple": {
+      "10": {
+        "$type": "color",
+        "$value": "#f3e8ff"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#e9d5ff"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#d8b4fe"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#c084fc"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#a855f7"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#9333ea"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#7e22ce"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#6b21a8"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#581c87"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#faf5ff"
+      }
+    },
+    "yellow": {
+      "10": {
+        "$type": "color",
+        "$value": "#fef08a"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fef08a"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#fde047"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#facc15"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#eab308"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#ca8a04"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#a16207"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#854d0e"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#713f12"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#fefce8"
+      }
+    },
+    "orange": {
+      "10": {
+        "$type": "color",
+        "$value": "#ffedd5"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fed7aa"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#fdba74"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#fb923c"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#f97316"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#ea580c"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#c2410c"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#9a3412"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#7c2d12"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#fff7ed"
+      }
+    },
+    "red": {
+      "10": {
+        "$type": "color",
+        "$value": "#fee2e2"
+      },
+      "20": {
+        "$type": "color",
+        "$value": "#fecaca"
+      },
+      "30": {
+        "$type": "color",
+        "$value": "#fca5a5"
+      },
+      "40": {
+        "$type": "color",
+        "$value": "#f87171"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#ef4444"
+      },
+      "60": {
+        "$type": "color",
+        "$value": "#dc2626"
+      },
+      "70": {
+        "$type": "color",
+        "$value": "#b91c1c"
+      },
+      "80": {
+        "$type": "color",
+        "$value": "#991b1b"
+      },
+      "90": {
+        "$type": "color",
+        "$value": "#7f1d1d"
+      },
+      "00": {
+        "$type": "color",
+        "$value": "#fef2f2"
+      }
+    },
+    "core": {
+      "white": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "black": {
+        "$type": "color",
+        "$value": "#000000"
+      }
+    },
+    "transparent": {
+      "transparent": {
+        "$type": "color",
+        "$value": "#ffffff00"
+      },
+      "white-transparent-10": {
+        "$type": "color",
+        "$value": "#ffffff1a"
+      },
+      "black-transparent-10": {
+        "$type": "color",
+        "$value": "#0000001a"
+      },
+      "white-transparent-05": {
+        "$type": "color",
+        "$value": "#ffffff0d"
+      },
+      "black-transparent-05": {
+        "$type": "color",
+        "$value": "#0000000d"
+      },
+      "mask-black": {
+        "$type": "color",
+        "$value": "#00000080"
+      },
+      "mask-white": {
+        "$type": "color",
+        "$value": "#ffffff80"
+      }
+    }
+  },
   "common": {
     "background": {
       "common": {
@@ -586,426 +1006,6 @@
       }
     }
   },
-  "palette": {
-    "gray": {
-      "10": {
-        "$type": "color",
-        "$value": "#eff1f6"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#e2e5eb"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#ced3db"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#9ca3af"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#808899"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#86909c"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#4e5969"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#343d54"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#0f172a"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#f6f8fb"
-      }
-    },
-    "green": {
-      "10": {
-        "$type": "color",
-        "$value": "#dcfce7"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#bbf7d0"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#86efac"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#4ade80"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#22c55e"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#16a34a"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#15803d"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#166534"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#14532d"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#f0fdf4"
-      }
-    },
-    "blue": {
-      "10": {
-        "$type": "color",
-        "$value": "#c3deff"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#8cc6ff"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#59acff"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#0c99ff"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#0f62fe"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#0043e7"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#0033cc"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#001ba6"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#001580"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#f0f5ff"
-      }
-    },
-    "teal": {
-      "10": {
-        "$type": "color",
-        "$value": "#cffafe"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#a5f3fc"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#67e8f9"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#22d3ee"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#06b6d4"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#0891b2"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#0e7490"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#155e75"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#162833"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#ecfeff"
-      }
-    },
-    "indigo": {
-      "10": {
-        "$type": "color",
-        "$value": "#e0e7ff"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#c7d2fe"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#a5b4fc"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#818cf8"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#6366f1"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#4f46e5"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#4338ca"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#3730a3"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#312e81"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#eef2ff"
-      }
-    },
-    "purple": {
-      "10": {
-        "$type": "color",
-        "$value": "#f3e8ff"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#e9d5ff"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#d8b4fe"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#c084fc"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#a855f7"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#9333ea"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#7e22ce"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#6b21a8"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#581c87"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#faf5ff"
-      }
-    },
-    "yellow": {
-      "10": {
-        "$type": "color",
-        "$value": "#fef08a"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#fef08a"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#fde047"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#facc15"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#eab308"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#ca8a04"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#a16207"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#854d0e"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#713f12"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#fefce8"
-      }
-    },
-    "orange": {
-      "10": {
-        "$type": "color",
-        "$value": "#ffedd5"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#fed7aa"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#fdba74"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#fb923c"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#f97316"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#ea580c"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#c2410c"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#9a3412"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#7c2d12"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#fff7ed"
-      }
-    },
-    "red": {
-      "10": {
-        "$type": "color",
-        "$value": "#fee2e2"
-      },
-      "20": {
-        "$type": "color",
-        "$value": "#fecaca"
-      },
-      "30": {
-        "$type": "color",
-        "$value": "#fca5a5"
-      },
-      "40": {
-        "$type": "color",
-        "$value": "#f87171"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "#ef4444"
-      },
-      "60": {
-        "$type": "color",
-        "$value": "#dc2626"
-      },
-      "70": {
-        "$type": "color",
-        "$value": "#b91c1c"
-      },
-      "80": {
-        "$type": "color",
-        "$value": "#991b1b"
-      },
-      "90": {
-        "$type": "color",
-        "$value": "#7f1d1d"
-      },
-      "00": {
-        "$type": "color",
-        "$value": "#fef2f2"
-      }
-    },
-    "core": {
-      "white": {
-        "$type": "color",
-        "$value": "#ffffff"
-      },
-      "black": {
-        "$type": "color",
-        "$value": "#000000"
-      }
-    },
-    "transparent": {
-      "transparent": {
-        "$type": "color",
-        "$value": "#ffffff00"
-      },
-      "white-transparent-10": {
-        "$type": "color",
-        "$value": "#ffffff1a"
-      },
-      "black-transparent-10": {
-        "$type": "color",
-        "$value": "#0000001a"
-      },
-      "white-transparent-05": {
-        "$type": "color",
-        "$value": "#ffffff0d"
-      },
-      "black-transparent-05": {
-        "$type": "color",
-        "$value": "#0000000d"
-      },
-      "mask-black": {
-        "$type": "color",
-        "$value": "#00000080"
-      },
-      "mask-white": {
-        "$type": "color",
-        "$value": "#ffffff80"
-      }
-    }
-  },
   "component": {
     "button": {
       "primary": {
@@ -1559,7 +1559,7 @@
         }
       }
     },
-    "toggle-button": {
+    "toggle": {
       "default": {
         "default-border": {
           "$type": "color",
@@ -1759,6 +1759,228 @@
             "$value": "{common.border.color.transparent}"
           }
         }
+      },
+      "group": {
+        "default": {
+          "default-border": {
+            "$type": "color",
+            "$value": "{common.border.color.semantics.highlight-light}"
+          },
+          "default-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.highlight}"
+          },
+          "default-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.highlight-light}"
+          },
+          "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.semantics.highlight-light}"
+          },
+          "hover-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.highlight}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.highlight-light-hover}"
+          },
+          "disabled-border": {
+            "$type": "color",
+            "$value": "{common.border.color.state.disabled}"
+          },
+          "disabled-background": {
+            "$type": "color",
+            "$value": "{common.background.state.disabled}"
+          },
+          "disabled-font": {
+            "$type": "color",
+            "$value": "{common.font.color.state.disabled}"
+          },
+          "focus-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.highlight}"
+          },
+          "focus-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.highlight-light}"
+          },
+          "focus-border": {
+            "$type": "color",
+            "$value": "{common.border.color.semantics.highlight-light}"
+          },
+          "checked": {
+            "default-border": {
+              "$type": "color",
+              "$value": "{common.border.color.semantics.highlight-light}"
+            },
+            "default-font": {
+              "$type": "color",
+              "$value": "{common.font.color.semantics.highlight}"
+            },
+            "default-background": {
+              "$type": "color",
+              "$value": "{common.background.semantics.highlight-light-hover}"
+            },
+            "hover-border": {
+              "$type": "color",
+              "$value": "{common.border.color.semantics.highlight-light}"
+            },
+            "hover-font": {
+              "$type": "color",
+              "$value": "{common.font.color.semantics.highlight}"
+            },
+            "hover-background": {
+              "$type": "color",
+              "$value": "{common.background.semantics.highlight-light-hover}"
+            },
+            "focus-border": {
+              "$type": "color",
+              "$value": "{common.border.color.semantics.highlight-light}"
+            },
+            "focus-font": {
+              "$type": "color",
+              "$value": "{common.font.color.semantics.highlight}"
+            },
+            "focus-background": {
+              "$type": "color",
+              "$value": "{common.background.semantics.highlight-light-hover}"
+            },
+            "disabled-border": {
+              "$type": "color",
+              "$value": "{common.border.color.semantics.highlight-light}"
+            },
+            "disabled-font": {
+              "$type": "color",
+              "$value": "{common.font.color.semantics.highlight}"
+            },
+            "disabled-background": {
+              "$type": "color",
+              "$value": "{common.background.semantics.highlight-light-hover}"
+            }
+          }
+        },
+        "ghost": {
+          "default-font": {
+            "$type": "color",
+            "$value": "{common.font.color.base}"
+          },
+          "default-background": {
+            "$type": "color",
+            "$value": "{common.background.transparent.fully}"
+          },
+          "default-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "hover-font": {
+            "$type": "color",
+            "$value": "{common.font.color.secondary}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{common.background.state.hover}"
+          },
+          "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "disabled-font": {
+            "$type": "color",
+            "$value": "{common.font.color.state.disabled}"
+          },
+          "disabled-background": {
+            "$type": "color",
+            "$value": "{common.background.transparent.fully}"
+          },
+          "disabled-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "focus-font": {
+            "$type": "color",
+            "$value": "{common.font.color.secondary}"
+          },
+          "focus-background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "focus-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "checked": {
+            "default-font": {
+              "$type": "color",
+              "$value": "{common.font.color.primary}"
+            },
+            "default-background": {
+              "$type": "color",
+              "$value": "{common.background.common.02}"
+            },
+            "default-border": {
+              "$type": "color",
+              "$value": "{common.border.color.transparent}"
+            },
+            "hover-font": {
+              "$type": "color",
+              "$value": "{common.font.color.primary}"
+            },
+            "hover-background": {
+              "$type": "color",
+              "$value": "{common.background.common.03}"
+            },
+            "hover-border": {
+              "$type": "color",
+              "$value": "{common.border.color.transparent}"
+            },
+            "focus-font": {
+              "$type": "color",
+              "$value": "{common.font.color.primary}"
+            },
+            "focus-background": {
+              "$type": "color",
+              "$value": "{common.background.common.02}"
+            },
+            "focus-border": {
+              "$type": "color",
+              "$value": "{common.border.color.transparent}"
+            },
+            "disabled-font": {
+              "$type": "color",
+              "$value": "{common.font.color.state.disabled}"
+            },
+            "disabled-background": {
+              "$type": "color",
+              "$value": "{common.background.common.02}"
+            },
+            "disabled-border": {
+              "$type": "color",
+              "$value": "{common.border.color.transparent}"
+            }
+          }
+        }
+      },
+      "normal": {
+        "default-border": {
+          "$type": "color",
+          "$value": "{common.border.color.semantics.highlight-light}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-light-hover}"
+        }
+      },
+      "compact": {
+        "default-border": {
+          "$type": "color",
+          "$value": "{common.border.color.semantics.highlight-light}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-light-hover}"
+        }
       }
     },
     "shortcut": {
@@ -1931,6 +2153,152 @@
         }
       }
     },
+    "input": {
+      "default-font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "default-icon": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "hover-icon": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "disabled-icon": {
+        "$type": "color",
+        "$value": "{common.font.color.state.disabled}"
+      },
+      "default-background": {
+        "$type": "color",
+        "$value": "{common.background.common.02}"
+      },
+      "default-border": {
+        "$type": "color",
+        "$value": "{common.border.color.transparent}"
+      },
+      "placeholder-font": {
+        "$type": "color",
+        "$value": "{common.font.color.state.placeholder}"
+      },
+      "hover-font": {
+        "$type": "color",
+        "$value": "{common.font.color.tertiary}"
+      },
+      "hover-background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "hover-border": {
+        "$type": "color",
+        "$value": "{common.border.color.semantics.highlight}"
+      },
+      "disabled-font": {
+        "$type": "color",
+        "$value": "{common.font.color.state.disabled}"
+      },
+      "disabled-background": {
+        "$type": "color",
+        "$value": "{common.background.state.disabled}"
+      },
+      "disabled-border": {
+        "$type": "color",
+        "$value": "{common.border.color.transparent}"
+      },
+      "error-background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "error-border": {
+        "$type": "color",
+        "$value": "{common.border.color.semantics.error}"
+      },
+      "error-font": {
+        "$type": "color",
+        "$value": "{common.font.color.base}"
+      },
+      "focus-font": {
+        "$type": "color",
+        "$value": "{common.font.color.tertiary}"
+      },
+      "focus-background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "focus-border": {
+        "$type": "color",
+        "$value": "{common.border.color.state.focus}"
+      },
+      "placeholder-disabled-font": {
+        "$type": "color",
+        "$value": "{common.font.color.state.disabled}"
+      },
+      "pend": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{common.font.color.helper}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{common.background.common.02}"
+        },
+        "default-border": {
+          "$type": "color",
+          "$value": "{common.border.color.02}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.state.disabled}"
+        },
+        "disabled-border": {
+          "$type": "color",
+          "$value": "{common.border.color.state.disabled}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.font.color.state.disabled}"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "{common.font.color.helper}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.common.03}"
+        },
+        "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.02}"
+        }
+      },
+      "tag": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{common.font.color.tertiary}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "default-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.font.color.state.disabled}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.transparent.fully}"
+        },
+        "disabled-border": {
+          "$type": "color",
+          "$value": "{common.border.color.02}"
+        }
+      }
+    },
     "_search": {
       "background": {
         "$type": "color",
@@ -2051,140 +2419,6 @@
       "Border": {
         "$type": "color",
         "$value": "{common.border.color.base}"
-      }
-    },
-    "_input": {
-      "default-font": {
-        "$type": "color",
-        "$value": "{common.font.color.primary}"
-      },
-      "default-background": {
-        "$type": "color",
-        "$value": "{common.background.common.02}"
-      },
-      "default-border": {
-        "$type": "color",
-        "$value": "{common.border.color.transparent}"
-      },
-      "placeholder-font": {
-        "$type": "color",
-        "$value": "{common.font.color.state.placeholder}"
-      },
-      "hover-font": {
-        "$type": "color",
-        "$value": "{common.font.color.tertiary}"
-      },
-      "hover-background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "hover-border": {
-        "$type": "color",
-        "$value": "{common.border.color.semantics.highlight}"
-      },
-      "disabled-font": {
-        "$type": "color",
-        "$value": "{common.font.color.state.disabled}"
-      },
-      "disabled-background": {
-        "$type": "color",
-        "$value": "{common.background.state.disabled}"
-      },
-      "disabled-border": {
-        "$type": "color",
-        "$value": "{common.border.color.transparent}"
-      },
-      "error-background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "error-border": {
-        "$type": "color",
-        "$value": "{common.border.color.semantics.error}"
-      },
-      "error-font": {
-        "$type": "color",
-        "$value": "{common.font.color.base}"
-      },
-      "pend": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{common.font.color.helper}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{common.background.common.02}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{common.border.color.02}"
-        },
-        "disabled-background": {
-          "$type": "color",
-          "$value": "{common.background.state.disabled}"
-        },
-        "disabled-border": {
-          "$type": "color",
-          "$value": "{common.border.color.state.disabled}"
-        },
-        "disabled-font": {
-          "$type": "color",
-          "$value": "{common.font.color.state.disabled}"
-        },
-        "hover-font": {
-          "$type": "color",
-          "$value": "{common.font.color.helper}"
-        },
-        "hover-background": {
-          "$type": "color",
-          "$value": "{common.background.common.03}"
-        },
-        "hover-border": {
-          "$type": "color",
-          "$value": "{common.border.color.02}"
-        }
-      },
-      "focus-font": {
-        "$type": "color",
-        "$value": "{common.font.color.tertiary}"
-      },
-      "focus-background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "focus-border": {
-        "$type": "color",
-        "$value": "{common.border.color.state.focus}"
-      },
-      "tag": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{common.font.color.tertiary}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{common.background.common.base}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{common.border.color.transparent}"
-        },
-        "disabled-font": {
-          "$type": "color",
-          "$value": "{common.font.color.state.disabled}"
-        },
-        "disabled-background": {
-          "$type": "color",
-          "$value": "{common.background.transparent.fully}"
-        },
-        "disabled-border": {
-          "$type": "color",
-          "$value": "{common.border.color.02}"
-        }
-      },
-      "placeholder-disabled-font": {
-        "$type": "color",
-        "$value": "{common.font.color.state.disabled}"
       }
     },
     "_select": {
