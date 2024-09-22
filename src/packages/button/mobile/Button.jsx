@@ -17,6 +17,7 @@ function Button({
   iconControl = 'prefix',
   tooltip,
   size = 'md',
+  shortcutKey,
   ...rest
 }) {
   const button = useRef(null)

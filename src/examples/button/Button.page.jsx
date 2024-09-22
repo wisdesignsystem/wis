@@ -1,5 +1,4 @@
 import Button from 'remote:self/Button'
-import { useState } from 'react'
 
 import styles from './Button.module.less'
 
@@ -27,62 +26,322 @@ function Icon() {
 }
 
 function Example() {
-  const [shortcut, setShortcut] = useState('ctrl+h')
-
   return (
-    <div className={styles.buttons}>
-      <Button
-        variant="primary"
-        text="Button"
-        icon={<Icon />}
-        shortcutKey={shortcut}
-        onClick={() => {
-          console.info('Button clicked')
-          setShortcut('ctrl+shift+h')
-        }}
-      />
-      <Button variant="primary" icon={<Icon />} />
-      <Button variant="primary" size="sm" text="Button" icon={<Icon />} />
-      <Button variant="primary" size="xs" text="Button" icon={<Icon />} iconControl="suffix" />
-      <Button variant="primary" disabled size="xs" text="Button" icon={<Icon />} iconControl="suffix" />
-      <Button
-        variant="primary"
-        status="danger"
-        shortcutKey="meta+y"
-        disabled
-        size="xs"
-        text="Button"
-        icon={<Icon />}
-        iconControl="suffix"
-      />
+    <div className={styles.row}>
+      <div className={styles.col}>
+        <Button text="Button" variant="primary" />
+        <Button text="Button" variant="primary" icon={<Icon />} />
+        <Button text="Button" variant="primary" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="primary" />
+        <Button text="Button" variant="primary" status="danger" />
+        <Button text="Button" variant="primary" status="danger" icon={<Icon />} />
+        <Button text="Button" variant="primary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="primary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button text="Button" variant="primary" disabled />
+        <Button text="Button" variant="primary" disabled icon={<Icon />} />
+        <Button text="Button" variant="primary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="primary" disabled />
+        <Button text="Button" variant="primary" disabled status="danger" />
+        <Button text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button icon={<Icon />} variant="primary" disabled status="danger" />
+      </div>
 
-      <Button text="Button" icon={<Icon />} iconControl="suffix" />
-      <Button size="sm" icon={<Icon />} shortcutKey="ctrl+/" />
-      <Button size="sm" shortcutKey="shift+y" text="Button" icon={<Icon />} />
-      <Button size="sm" disabled text="Button" icon={<Icon />} />
-      <Button size="xs" text="Button" icon={<Icon />} />
-      <Button size="xs" status="danger" text="Button" icon={<Icon />} />
+      <div className={styles.col}>
+        <Button text="Button" variant="classic" />
+        <Button text="Button" variant="classic" icon={<Icon />} />
+        <Button text="Button" variant="classic" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="classic" />
+        <Button text="Button" variant="classic" status="danger" />
+        <Button text="Button" variant="classic" status="danger" icon={<Icon />} />
+        <Button text="Button" variant="classic" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="classic" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button text="Button" variant="classic" disabled />
+        <Button text="Button" variant="classic" disabled icon={<Icon />} />
+        <Button text="Button" variant="classic" disabled icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="classic" disabled />
+        <Button text="Button" variant="classic" disabled status="danger" />
+        <Button text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button icon={<Icon />} variant="classic" disabled status="danger" />
+      </div>
 
-      <Button variant="classic" text="Button" icon={<Icon />} />
-      <Button variant="classic" size="xs" icon={<Icon />} />
-      <Button variant="classic" disabled icon={<Icon />} />
-      <Button variant="classic" size="sm" text="Button" icon={<Icon />} iconControl="suffix" />
-      <Button variant="classic" size="xs" text="Button" icon={<Icon />} />
-      <Button variant="classic" status="danger" size="xs" text="Button" icon={<Icon />} />
+      <div className={styles.col}>
+        <Button text="Button" />
+        <Button text="Button" icon={<Icon />} />
+        <Button text="Button" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} />
+        <Button text="Button" status="danger" />
+        <Button text="Button" status="danger" icon={<Icon />} />
+        <Button text="Button" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button text="Button" disabled />
+        <Button text="Button" disabled icon={<Icon />} />
+        <Button text="Button" disabled icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} disabled />
+        <Button text="Button" disabled status="danger" />
+        <Button text="Button" disabled status="danger" icon={<Icon />} />
+        <Button text="Button" disabled status="danger" icon={<Icon />} />
+        <Button icon={<Icon />} disabled status="danger" />
+      </div>
 
-      <Button variant="tertiary" text="Button" icon={<Icon />} />
-      <Button variant="tertiary" disabled text="Button" icon={<Icon />} />
-      <Button variant="tertiary" icon={<Icon />} />
-      <Button variant="tertiary" size="sm" text="Button" icon={<Icon />} />
-      <Button variant="tertiary" size="xs" text="Button" icon={<Icon />} />
-      <Button variant="tertiary" status="danger" size="xs" text="Button" icon={<Icon />} />
+      <div className={styles.col}>
+        <Button text="Button" variant="tertiary" />
+        <Button text="Button" variant="tertiary" icon={<Icon />} />
+        <Button text="Button" variant="tertiary" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="tertiary" />
+        <Button text="Button" variant="tertiary" status="danger" />
+        <Button text="Button" variant="tertiary" status="danger" icon={<Icon />} />
+        <Button text="Button" variant="tertiary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="tertiary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button text="Button" variant="tertiary" disabled />
+        <Button text="Button" variant="tertiary" disabled icon={<Icon />} />
+        <Button text="Button" variant="tertiary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="tertiary" disabled />
+        <Button text="Button" variant="tertiary" disabled status="danger" />
+        <Button text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button icon={<Icon />} variant="tertiary" disabled status="danger" />
+      </div>
 
-      <Button variant="ghost" shortcutKey="shift+t" text="Button" icon={<Icon />} />
-      <Button variant="ghost" shortcutKey="shift+i" disabled text="Button" icon={<Icon />} />
-      <Button variant="ghost" icon={<Icon />} />
-      <Button variant="ghost" size="sm" text="Button" icon={<Icon />} />
-      <Button variant="ghost" size="xs" text="Button" icon={<Icon />} />
-      <Button variant="ghost" status="danger" size="xs" text="Button" icon={<Icon />} />
+      <div className={styles.col}>
+        <Button text="Button" variant="ghost" />
+        <Button text="Button" variant="ghost" icon={<Icon />} />
+        <Button text="Button" variant="ghost" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="ghost" />
+        <Button text="Button" variant="ghost" status="danger" />
+        <Button text="Button" variant="ghost" status="danger" icon={<Icon />} />
+        <Button text="Button" variant="ghost" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="ghost" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button text="Button" variant="ghost" disabled />
+        <Button text="Button" variant="ghost" disabled icon={<Icon />} />
+        <Button text="Button" variant="ghost" disabled icon={<Icon />} iconControl="suffix" />
+        <Button icon={<Icon />} variant="ghost" disabled />
+        <Button text="Button" variant="ghost" disabled status="danger" />
+        <Button text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button icon={<Icon />} variant="ghost" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="primary" />
+        <Button size="sm" text="Button" variant="primary" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="primary" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="primary" />
+        <Button size="sm" text="Button" variant="primary" status="danger" />
+        <Button size="sm" text="Button" variant="primary" status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="primary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="primary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="primary" disabled />
+        <Button size="sm" text="Button" variant="primary" disabled icon={<Icon />} />
+        <Button size="sm" text="Button" variant="primary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="primary" disabled />
+        <Button size="sm" text="Button" variant="primary" disabled status="danger" />
+        <Button size="sm" text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" icon={<Icon />} variant="primary" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="classic" />
+        <Button size="sm" text="Button" variant="classic" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="classic" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="classic" />
+        <Button size="sm" text="Button" variant="classic" status="danger" />
+        <Button size="sm" text="Button" variant="classic" status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="classic" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="classic" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="classic" disabled />
+        <Button size="sm" text="Button" variant="classic" disabled icon={<Icon />} />
+        <Button size="sm" text="Button" variant="classic" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="classic" disabled />
+        <Button size="sm" text="Button" variant="classic" disabled status="danger" />
+        <Button size="sm" text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" icon={<Icon />} variant="classic" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="sm" text="Button" />
+        <Button size="sm" text="Button" icon={<Icon />} />
+        <Button size="sm" text="Button" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} />
+        <Button size="sm" text="Button" status="danger" />
+        <Button size="sm" text="Button" status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="sm" text="Button" disabled />
+        <Button size="sm" text="Button" disabled icon={<Icon />} />
+        <Button size="sm" text="Button" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} disabled />
+        <Button size="sm" text="Button" disabled status="danger" />
+        <Button size="sm" text="Button" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" icon={<Icon />} disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="tertiary" />
+        <Button size="sm" text="Button" variant="tertiary" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="tertiary" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="tertiary" />
+        <Button size="sm" text="Button" variant="tertiary" status="danger" />
+        <Button size="sm" text="Button" variant="tertiary" status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="tertiary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="tertiary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="tertiary" disabled />
+        <Button size="sm" text="Button" variant="tertiary" disabled icon={<Icon />} />
+        <Button size="sm" text="Button" variant="tertiary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="tertiary" disabled />
+        <Button size="sm" text="Button" variant="tertiary" disabled status="danger" />
+        <Button size="sm" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" icon={<Icon />} variant="tertiary" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="ghost" />
+        <Button size="sm" text="Button" variant="ghost" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="ghost" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="ghost" />
+        <Button size="sm" text="Button" variant="ghost" status="danger" />
+        <Button size="sm" text="Button" variant="ghost" status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="ghost" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="ghost" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="sm" text="Button" variant="ghost" disabled />
+        <Button size="sm" text="Button" variant="ghost" disabled icon={<Icon />} />
+        <Button size="sm" text="Button" variant="ghost" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="sm" icon={<Icon />} variant="ghost" disabled />
+        <Button size="sm" text="Button" variant="ghost" disabled status="danger" />
+        <Button size="sm" text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button size="sm" icon={<Icon />} variant="ghost" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="primary" />
+        <Button size="xs" text="Button" variant="primary" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="primary" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="primary" />
+        <Button size="xs" text="Button" variant="primary" status="danger" />
+        <Button size="xs" text="Button" variant="primary" status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="primary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="primary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="primary" disabled />
+        <Button size="xs" text="Button" variant="primary" disabled icon={<Icon />} />
+        <Button size="xs" text="Button" variant="primary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="primary" disabled />
+        <Button size="xs" text="Button" variant="primary" disabled status="danger" />
+        <Button size="xs" text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="primary" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" icon={<Icon />} variant="primary" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="classic" />
+        <Button size="xs" text="Button" variant="classic" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="classic" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="classic" />
+        <Button size="xs" text="Button" variant="classic" status="danger" />
+        <Button size="xs" text="Button" variant="classic" status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="classic" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="classic" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="classic" disabled />
+        <Button size="xs" text="Button" variant="classic" disabled icon={<Icon />} />
+        <Button size="xs" text="Button" variant="classic" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="classic" disabled />
+        <Button size="xs" text="Button" variant="classic" disabled status="danger" />
+        <Button size="xs" text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="classic" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" icon={<Icon />} variant="classic" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="xs" text="Button" />
+        <Button size="xs" text="Button" icon={<Icon />} />
+        <Button size="xs" text="Button" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} />
+        <Button size="xs" text="Button" status="danger" />
+        <Button size="xs" text="Button" status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="xs" text="Button" disabled />
+        <Button size="xs" text="Button" disabled icon={<Icon />} />
+        <Button size="xs" text="Button" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} disabled />
+        <Button size="xs" text="Button" disabled status="danger" />
+        <Button size="xs" text="Button" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" icon={<Icon />} disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="tertiary" />
+        <Button size="xs" text="Button" variant="tertiary" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="tertiary" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="tertiary" />
+        <Button size="xs" text="Button" variant="tertiary" status="danger" />
+        <Button size="xs" text="Button" variant="tertiary" status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="tertiary" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="tertiary" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="tertiary" disabled />
+        <Button size="xs" text="Button" variant="tertiary" disabled icon={<Icon />} />
+        <Button size="xs" text="Button" variant="tertiary" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="tertiary" disabled />
+        <Button size="xs" text="Button" variant="tertiary" disabled status="danger" />
+        <Button size="xs" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" icon={<Icon />} variant="tertiary" disabled status="danger" />
+      </div>
+
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="ghost" />
+        <Button size="xs" text="Button" variant="ghost" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="ghost" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="ghost" />
+        <Button size="xs" text="Button" variant="ghost" status="danger" />
+        <Button size="xs" text="Button" variant="ghost" status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="ghost" status="danger" icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="ghost" status="danger" />
+      </div>
+      <div className={styles.col}>
+        <Button size="xs" text="Button" variant="ghost" disabled />
+        <Button size="xs" text="Button" variant="ghost" disabled icon={<Icon />} />
+        <Button size="xs" text="Button" variant="ghost" disabled icon={<Icon />} iconControl="suffix" />
+        <Button size="xs" icon={<Icon />} variant="ghost" disabled />
+        <Button size="xs" text="Button" variant="ghost" disabled status="danger" />
+        <Button size="xs" text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" text="Button" variant="ghost" disabled status="danger" icon={<Icon />} />
+        <Button size="xs" icon={<Icon />} variant="ghost" disabled status="danger" />
+      </div>
     </div>
   )
 }

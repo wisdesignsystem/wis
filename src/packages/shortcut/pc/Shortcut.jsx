@@ -5,10 +5,10 @@ import propTypes from '../propType'
 
 import styles from './Shortcut.module.less'
 
-function Shortcut({ shortcutKey, disabled, variant = 'light', size, onTrigger = () => {} }) {
+function Shortcut({ shortcutKey, disabled, variant = 'light', size = 'md', onTrigger = () => {}, ...rest }) {
   const [shortcut, onShortcut] = useShortcut({ shortcutKey, disabled })
-  onShortcut(() => {
-    onTrigger()
+  onShortcut((currentShortcut) => {
+    onTrigger(currentShortcut)
   })
 
   if (!shortcut) {
@@ -16,7 +16,13 @@ function Shortcut({ shortcutKey, disabled, variant = 'light', size, onTrigger = 
   }
 
   return (
-    <div className={styles.shortcut} data-variant={variant} data-size={size} {...attrs({ 'data-disabled': disabled })}>
+    <div
+      {...rest}
+      className={styles.shortcut}
+      data-variant={variant}
+      data-size={size}
+      {...attrs({ 'data-disabled': disabled })}
+    >
       {shortcut.ctrl && <span className={styles.command}>⌃</span>}
       {shortcut.shift && <span className={styles.command}>⇧</span>}
       {shortcut.alt && <span className={styles.command}>⌥</span>}

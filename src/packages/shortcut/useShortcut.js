@@ -87,7 +87,7 @@ function on(shortcutKey, task) {
   function run(event) {
     const shortcut = matchShortcut(event)
     if (shortcut) {
-      shortcut.task()
+      shortcut.task(shortcut)
     }
   }
 
@@ -95,12 +95,13 @@ function on(shortcutKey, task) {
     document.addEventListener('keydown', run)
   }
 
-  const shortcut = getShortcut(shortcutKey, task)
+  let shortcut = getShortcut(shortcutKey, task)
   if (shortcut) {
     if (shortcutMap[shortcut.shortcutKey]) {
       console.warn(
         `Shortcut key: ${shortcut.shortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
       )
+      shortcut = undefined
     } else {
       shortcutMap[shortcut.shortcutKey] = shortcut
     }
@@ -151,11 +152,11 @@ export default function useShortcut({ shortcutKey, disabled }) {
       return
     }
 
-    const [currentShortcut, off] = on(shortcutKey, () => {
+    const [currentShortcut, off] = on(shortcutKey, (shortcut) => {
       if (!isFunction(task.current) || disabled) {
         return
       }
-      task.current()
+      task.current(shortcut)
     })
 
     if (currentShortcut) {
