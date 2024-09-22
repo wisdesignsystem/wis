@@ -1,0 +1,89 @@
+.variant(@variant) {
+  color: var(~'--w-component-toggle-button-@{variant}-default-font');
+  background: var(~'--w-component-toggle-button-@{variant}-default-background');
+  border: 1px solid var(~'--w-component-toggle-button-@{variant}-default-border');
+
+  &:hover {
+    background: var(~'--w-component-toggle-button-@{variant}-hover-background');
+  }
+
+  &:focus {
+    background: var(~'--w-component-toggle-button-@{variant}-focus-background');
+    box-shadow: 0 0 0 2px var(--w-common-shadow-state-focus-inner), 0 0 0 4px var(--w-common-shadow-state-focus-default);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: var(~'--w-component-toggle-button-@{variant}-disabled-font');
+    border-color: var(~'--w-component-toggle-button-@{variant}-disabled-border');
+    background: var(~'--w-component-toggle-button-@{variant}-disabled-background');
+  }
+
+  &[data-state="on"] {
+    color: var(~'--w-component-toggle-button-@{variant}-checked-default-font');
+    background: var(~'--w-component-toggle-button-@{variant}-checked-default-background');
+    border-color: var(~'--w-component-toggle-button-@{variant}-checked-default-border');
+  }
+}
+
+.icon(@size) {
+  &[data-icon] {
+    padding: 0 var(--w-common-spacing-common-none);
+    min-width: @size;
+  }
+}
+
+@md: 40px;
+@sm: 32px;
+@xs: 24px;
+
+.toggle {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--w-common-font-size-text-base);
+  font-weight: var(--w-common-font-weight-medium);
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  outline: none;
+
+  > svg {
+    stroke-width: 2;
+  }
+
+  &[data-size='md'] {
+    gap: 0 var(--w-common-spacing-gap-sm);
+    height: @md;
+    padding: 0 var(--w-common-spacing-common-lg);
+    border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@md);
+  }
+
+  &[data-size='sm'] {
+    gap: 0 var(--w-common-spacing-gap-sm);
+    height: @sm;
+    padding: 0 var(--w-common-spacing-common-md);
+    border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@sm);
+  }
+
+  &[data-size='xs'] {
+    gap: 0 var(--w-common-spacing-gap-sm);
+    height: @xs;
+    padding: 0 var(--w-common-spacing-common-md);
+    border-radius: var(--w-common-border-radius-md);
+
+    .icon(@xs);
+  }
+
+  &[data-variant='default'] {
+    .variant(default);
+  }
+
+  &[data-variant='ghost'] {
+    .variant(ghost);
+  }
+}
