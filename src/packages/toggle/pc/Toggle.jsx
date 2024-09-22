@@ -1,14 +1,16 @@
 import Shortcut from 'remote:self/Shortcut'
-import * as Toggle from '@radix-ui/react-toggle'
+import * as RDXToggle from '@radix-ui/react-toggle'
 import { attrs } from '@/utils/attrs'
 import { useRef } from 'react'
 import classNames from 'classnames'
 
-import { toggleButtonPropTypes } from '../propType'
+import ToggleGroup from './ToggleGroup'
+import ToggleItem from './ToggleItem'
+import { togglePropTypes } from '../propType'
 
-import styles from './ToggleButton.module.less'
+import styles from './Toggle.module.less'
 
-function ToggleButton({
+function Toggle({
   className,
   variant = 'default',
   disabled,
@@ -24,14 +26,14 @@ function ToggleButton({
   onChange = () => {},
   ...rest
 }) {
-  const toggleButton = useRef(null)
+  const toggle = useRef(null)
 
   const isIconButton = !text
 
   return (
-    <Toggle.Root
+    <RDXToggle.Root
       {...rest}
-      ref={toggleButton}
+      ref={toggle}
       className={classNames(styles.toggle, {
         [className]: !!className,
       })}
@@ -54,14 +56,17 @@ function ToggleButton({
         size={size}
         variant="dark"
         onTrigger={() => {
-          toggleButton.current.focus()
-          toggleButton.current.click()
+          toggle.current.focus()
+          toggle.current.click()
         }}
       />
-    </Toggle.Root>
+    </RDXToggle.Root>
   )
 }
 
-ToggleButton.propTypes = toggleButtonPropTypes
+Toggle.propTypes = togglePropTypes
+Toggle.displayName = 'Toggle'
+Toggle.Group = ToggleGroup
+Toggle.Item = ToggleItem
 
-export default ToggleButton
+export default Toggle

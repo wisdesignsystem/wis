@@ -9,5 +9,6 @@ function Shortcut() {
 }
 
 Shortcut.propTypes = propTypes
+Shortcut.displayName = 'Shortcut'
 
 export default Shortcut

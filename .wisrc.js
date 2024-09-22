@@ -20,9 +20,9 @@ export default {
     './core': '@/packages/core/index',
     './Shortcut': { pc: '@/packages/shortcut/pc/Shortcut', mobile: '@/packages/shortcut/mobile/Shortcut' },
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
-    './ToggleButton': {
-      pc: '@/packages/toggleButton/pc/ToggleButton',
-      mobile: '@/packages/toggleButton/mobile/ToggleButton',
+    './Toggle': {
+      pc: '@/packages/toggle/pc/Toggle',
+      mobile: '@/packages/toggle/mobile/Toggle',
     },
   },
 

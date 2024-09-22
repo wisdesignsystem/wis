@@ -59,5 +59,6 @@ function Button({
 }
 
 Button.propTypes = propTypes
+Button.displayName = 'Button'
 
 export default Button
