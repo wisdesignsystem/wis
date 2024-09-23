@@ -1,12 +1,17 @@
+.style(@variant:''; @state:'') {
+  @variant-pattern: if(@variant='', '',  ~'@{variant}-');
+  @state-pattern: if(@state='', '',  ~'@{state}-');
+
+  color: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}font');
+  border-color: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}border');
+  background: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}background');
+}
+
 .variant(@variant) {
-  color: var(~'--w-component-shortcut-@{variant}-font');
-  border: var(--w-common-spacing-gap-none) solid var(~'--w-component-shortcut-@{variant}-border');
-  background: var(~'--w-component-shortcut-@{variant}-background');
+  .style(@variant: @variant);
 
   &[data-disabled] {
-    color: var(~'--w-component-shortcut-@{variant}-disabled-font');
-    border-color: var(~'--w-component-shortcut-@{variant}-disabled-border');
-    background: var(~'--w-component-shortcut-@{variant}-disabled-background');
+    .style(@variant: @variant; @state: disabled);
   }
 }
 
@@ -17,6 +22,7 @@
   justify-content: center;
   font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
+  border: var(--w-common-spacing-gap-none) solid transparent;
 
   &[data-size='md'] {
     gap: 0 var(--w-common-spacing-gap-none);
