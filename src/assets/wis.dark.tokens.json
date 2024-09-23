@@ -1759,8 +1759,10 @@
             "$value": "{common.border.color.transparent}"
           }
         }
-      },
-      "group": {
+      }
+    },
+    "toggle-group": {
+      "item": {
         "default": {
           "default-border": {
             "$type": "color",

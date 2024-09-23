@@ -1620,7 +1620,7 @@
           },
           "default-background": {
             "$type": "color",
-            "$value": "{common.background.common.01}"
+            "$value": "{common.background.common.03}"
           },
           "hover-border": {
             "$type": "color",
@@ -1644,7 +1644,7 @@
           },
           "focus-background": {
             "$type": "color",
-            "$value": "{common.background.common.01}"
+            "$value": "{common.background.common.03}"
           },
           "disabled-border": {
             "$type": "color",
@@ -1716,7 +1716,7 @@
           },
           "default-background": {
             "$type": "color",
-            "$value": "{common.background.common.02}"
+            "$value": "{common.background.common.03}"
           },
           "default-border": {
             "$type": "color",
@@ -1728,7 +1728,7 @@
           },
           "hover-background": {
             "$type": "color",
-            "$value": "{common.background.common.03}"
+            "$value": "{common.background.state.hover}"
           },
           "hover-border": {
             "$type": "color",
@@ -1740,7 +1740,7 @@
           },
           "focus-background": {
             "$type": "color",
-            "$value": "{common.background.common.02}"
+            "$value": "{common.background.common.03}"
           },
           "focus-border": {
             "$type": "color",
@@ -1759,8 +1759,10 @@
             "$value": "{common.border.color.transparent}"
           }
         }
-      },
-      "group": {
+      }
+    },
+    "toggle-group": {
+      "item": {
         "default": {
           "default-border": {
             "$type": "color",
@@ -1868,7 +1870,7 @@
           },
           "default-background": {
             "$type": "color",
-            "$value": "{common.background.transparent.fully}"
+            "$value": "{common.background.common.base}"
           },
           "default-border": {
             "$type": "color",
@@ -1917,7 +1919,7 @@
             },
             "default-background": {
               "$type": "color",
-              "$value": "{common.background.common.02}"
+              "$value": "{common.background.common.03}"
             },
             "default-border": {
               "$type": "color",
@@ -1929,7 +1931,7 @@
             },
             "hover-background": {
               "$type": "color",
-              "$value": "{common.background.common.03}"
+              "$value": "{common.background.state.hover}"
             },
             "hover-border": {
               "$type": "color",
@@ -1941,7 +1943,7 @@
             },
             "focus-background": {
               "$type": "color",
-              "$value": "{common.background.common.02}"
+              "$value": "{common.background.common.03}"
             },
             "focus-border": {
               "$type": "color",
@@ -1979,7 +1981,7 @@
         },
         "default-background": {
           "$type": "color",
-          "$value": "{common.background.common.base}"
+          "$value": "{common.background.common.02}"
         }
       }
     },

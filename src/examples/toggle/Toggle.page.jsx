@@ -35,7 +35,7 @@ function Example() {
         <Toggle icon={<Icon />} />
       </div>
       <div className={styles.col}>
-        <Toggle disabled text="Toggle Button" />
+        <Toggle disabled text="Toggle Button" value />
         <Toggle disabled text="Toggle Button" icon={<Icon />} />
         <Toggle disabled text="Toggle Button" icon={<Icon />} iconControl="suffix" />
         <Toggle disabled icon={<Icon />} />
