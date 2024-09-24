@@ -38,9 +38,9 @@ function Example() {
         </Toggle.Group>
       </div>
       <div className={styles.col}>
-        <Toggle.Group disabled>
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
+        <Toggle.Group>
+          <Toggle.Item disabled value="a" text="Toggle Button A" />
+          <Toggle.Item disabled value="b" text="Toggle Button B" icon={<Icon />} />
           <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
           <Toggle.Item value="d" icon={<Icon />} />
         </Toggle.Group>

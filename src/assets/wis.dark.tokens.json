@@ -1763,7 +1763,7 @@
     },
     "toggle-group": {
       "item": {
-        "default": {
+        "normal": {
           "default-border": {
             "$type": "color",
             "$value": "{common.border.color.semantics.highlight-light}"
@@ -1863,7 +1863,7 @@
             }
           }
         },
-        "ghost": {
+        "compact": {
           "default-font": {
             "$type": "color",
             "$value": "{common.font.color.base}"

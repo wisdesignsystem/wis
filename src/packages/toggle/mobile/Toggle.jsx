@@ -3,6 +3,8 @@ import { attrs } from '@/utils/attrs'
 import { useRef } from 'react'
 import classNames from 'classnames'
 
+import ToggleGroup from './ToggleGroup'
+import ToggleItem from './ToggleItem'
 import { togglePropTypes } from '../propType'
 
 import styles from './Toggle.module.less'
@@ -25,7 +27,7 @@ function Toggle({
 }) {
   const toggle = useRef(null)
 
-  const isIconButton = !text
+  const isIconButton = !text && !shortcutKey
 
   return (
     <RDXToggle.Root
@@ -53,5 +55,7 @@ function Toggle({
 
 Toggle.propTypes = togglePropTypes
 Toggle.displayName = 'Toggle'
+Toggle.Group = ToggleGroup
+Toggle.Item = ToggleItem
 
 export default Toggle
