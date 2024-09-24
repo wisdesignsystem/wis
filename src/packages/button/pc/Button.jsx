@@ -23,7 +23,7 @@ function Button({
 }) {
   const button = useRef(null)
 
-  const isIconButton = !text
+  const isIconButton = !text && !shortcutKey
 
   return (
     <button
@@ -48,7 +48,7 @@ function Button({
         shortcutKey={shortcutKey}
         disabled={disabled}
         size={size}
-        variant={['primary', 'classic', 'tertiary'].includes(variant) ? 'light' : 'dark'}
+        variant={['primary', 'classic'].includes(variant) ? 'light' : 'dark'}
         onTrigger={() => {
           button.current.focus()
           button.current.click()

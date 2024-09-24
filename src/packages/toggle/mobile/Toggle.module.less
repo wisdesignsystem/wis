@@ -45,6 +45,13 @@
 @sm: 32px;
 @xs: 24px;
 
+.icon(@size) {
+  &[data-icon] {
+    padding: 0 var(--w-common-spacing-common-none);
+    width: @size;
+  }
+}
+
 .toggle {
   display: inline-flex;
   flex-direction: row;
@@ -70,6 +77,8 @@
     height: @md;
     padding: 0 var(--w-common-spacing-common-lg);
     border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@md);
   }
 
   &[data-size='sm'] {
@@ -77,6 +86,8 @@
     height: @sm;
     padding: 0 var(--w-common-spacing-common-md);
     border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@sm);
   }
 
   &[data-size='xs'] {
@@ -84,6 +95,8 @@
     height: @xs;
     padding: 0 var(--w-common-spacing-common-md);
     border-radius: var(--w-common-border-radius-md);
+
+    .icon(@xs);
   }
 
   &[data-variant='default'] {

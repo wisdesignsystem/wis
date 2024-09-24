@@ -28,7 +28,7 @@ function Toggle({
 }) {
   const toggle = useRef(null)
 
-  const isIconButton = !text
+  const isIconButton = !text && !shortcutKey
 
   return (
     <RDXToggle.Root

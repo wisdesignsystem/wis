@@ -1,4 +1,3 @@
-import Shortcut from 'remote:self/Shortcut'
 import * as RDXToggleGroup from '@radix-ui/react-toggle-group'
 import { attrs } from '@/utils/attrs'
 import { useRef } from 'react'
@@ -44,16 +43,6 @@ function ToggleItem({
       {iconControl === 'prefix' && icon}
       {!isIconButton && <span>{text}</span>}
       {iconControl === 'suffix' && icon}
-      <Shortcut
-        shortcutKey={shortcutKey}
-        disabled={disabled}
-        size={size}
-        variant="dark"
-        onTrigger={() => {
-          item.current.focus()
-          item.current.click()
-        }}
-      />
     </RDXToggleGroup.Item>
   )
 }

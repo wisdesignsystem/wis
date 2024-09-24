@@ -46,6 +46,13 @@
 @sm: 32px;
 @xs: 24px;
 
+.icon(@size) {
+  &[data-icon] {
+    padding: 0 var(--w-common-spacing-common-none);
+    width: @size;
+  }
+}
+
 .button {
   display: inline-flex;
   flex-direction: row;
@@ -59,7 +66,8 @@
   border: 1px solid transparent;
 
   > svg {
-    stroke-width: 2;
+    stroke-width: 1.5;
+    font-size: var(--w-common-font-size-text-md);
   }
 
   &[data-size='md'] {
@@ -67,6 +75,8 @@
     height: @md;
     padding: 0 var(--w-common-spacing-common-lg);
     border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@md);
   }
 
   &[data-size='sm'] {
@@ -74,6 +84,8 @@
     height: @sm;
     padding: 0 var(--w-common-spacing-common-md);
     border-radius: var(--w-common-border-radius-lg);
+
+    .icon(@sm);
   }
 
   &[data-size='xs'] {
@@ -81,6 +93,8 @@
     height: @xs;
     padding: 0 var(--w-common-spacing-common-md);
     border-radius: var(--w-common-border-radius-md);
+
+    .icon(@xs);
   }
 
   &[disabled] {

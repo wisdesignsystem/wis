@@ -92,7 +92,7 @@ function Example() {
       </div>
 
       <div className={styles.col}>
-        <Button text="Button" variant="tertiary" />
+        <Button text="Button" variant="tertiary" shortcutKey="Shift+F" />
         <Button text="Button" variant="tertiary" icon={<Icon />} />
         <Button text="Button" variant="tertiary" icon={<Icon />} iconControl="suffix" />
         <Button icon={<Icon />} variant="tertiary" />
@@ -319,7 +319,7 @@ function Example() {
         <Button size="xs" text="Button" variant="tertiary" disabled status="danger" />
         <Button size="xs" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
         <Button size="xs" text="Button" variant="tertiary" disabled status="danger" icon={<Icon />} />
-        <Button size="xs" icon={<Icon />} variant="tertiary" disabled status="danger" />
+        <Button size="xs" icon={<Icon />} variant="tertiary" disabled status="danger" shortcutKey="Shift+K" />
       </div>
 
       <div className={styles.col}>
