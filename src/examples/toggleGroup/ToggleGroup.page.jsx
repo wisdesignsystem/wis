@@ -47,7 +47,7 @@ function Example() {
       </div>
 
       <div className={styles.col}>
-        <Toggle.Group variant="compact">
+        <Toggle.Group variant="compact" multiple>
           <Toggle.Item value="a" text="Toggle Button A" />
           <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
           <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
