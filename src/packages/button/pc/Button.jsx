@@ -36,6 +36,7 @@ function Button({
       data-variant={variant}
       data-status={status}
       aria-disabled={disabled}
+      aria-keyshortcuts={shortcutKey}
       disabled={disabled}
       {...attrs({
         'data-icon': isIconButton,

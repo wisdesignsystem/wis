@@ -13,21 +13,23 @@ import { createShortcut, createShortcutKeyByEvent } from './shortcut'
  * const [onKeydown, onShortcut] = useShortcut();
  *
  * // Register a shortcut
- * onShortcut('Ctrl+S', () => {
- *   console.log('Shortcut Ctrl+S triggered');
+ * onShortcut('Control+S', () => {
+ *   console.log('Shortcut Control+S triggered');
  * });
  */
 export default function useShortcut() {
   const shortcutMap = useRef({})
 
   useEffect(() => {
-    return () => {
-      shortcutMap.current = {}
-    }
-  })
+    shortcutMap.current = {}
+  }, [])
 
   function onKeydown(event) {
     const shortcutKey = createShortcutKeyByEvent(event)
+    if (!shortcutKey) {
+      return
+    }
+
     const shortcut = shortcutMap.current[shortcutKey]
     if (shortcut) {
       event.preventDefault()
@@ -37,6 +39,10 @@ export default function useShortcut() {
 
   function onShortcut(shortcutKey, task) {
     const shortcut = createShortcut(shortcutKey, task)
+    if (!shortcut) {
+      return
+    }
+
     shortcutMap.current[shortcut.shortcutKey] = shortcut
     return shortcut
   }

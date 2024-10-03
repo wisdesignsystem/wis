@@ -24,7 +24,7 @@ function on(shortcutKey, task) {
   }
 
   let shortcut = createShortcut(shortcutKey, task)
-  if (isCombineShortcut(shortcut)) {
+  if (shortcut && isCombineShortcut(shortcut)) {
     if (shortcutMap[shortcut.shortcutKey]) {
       console.warn(
         `Shortcut key: ${shortcut.shortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
@@ -55,7 +55,7 @@ function on(shortcutKey, task) {
  *
  * @typedef {Object} Shortcut
  * @property {string} shortcutKey - The key combination for the shortcut.
- * @property {boolean} ctrl - Indicates if the Ctrl key is part of the shortcut.
+ * @property {boolean} ctrl - Indicates if the Control key is part of the shortcut.
  * @property {boolean} shift - Indicates if the Shift key is part of the shortcut.
  * @property {boolean} alt - Indicates if the Alt key is part of the shortcut.
  * @property {boolean} meta - Indicates if the Meta key (Command on Mac, Windows key on Windows) is part of the shortcut.
@@ -65,9 +65,9 @@ function on(shortcutKey, task) {
  *
  * @example
  *
- * const onGlobalShortcut = useGlobalShortcut('ctrl+t')
+ * const onGlobalShortcut = useGlobalShortcut('Control+T')
  * const shortcut = onGlobalShortcut((shortcut) => {
- *  console.log('trigger ctrl+t shortcut', shortcut)
+ *  console.log('trigger Control+T shortcut', shortcut)
  * })
  */
 export default function useGlobalShortcut(shortcutKey) {

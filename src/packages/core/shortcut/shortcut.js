@@ -1,6 +1,6 @@
 import { isNumber, isUndefined } from '@/utils/is'
 
-import { keyCodeMapper, keyMap } from './keycode'
+import { keyCodeMapper, keyMap, isCommandKey } from './keycode'
 
 const commands = ['ctrl', 'shift', 'alt', 'meta']
 
@@ -8,8 +8,9 @@ const commands = ['ctrl', 'shift', 'alt', 'meta']
  * Shortcut object definition.
  *
  * @typedef {Object} Shortcut
- * @property {boolean} shortcutKey - The key for the shortcut object.
- * @property {boolean} ctrl - Indicates if the Ctrl key is pressed.
+ * @property {string} shortcutKey - The key for the shortcut object.
+ * @property {string} showShortcutKey - The show key for the shortcut object
+ * @property {boolean} ctrl - Indicates if the Control key is pressed.
  * @property {boolean} shift - Indicates if the Shift key is pressed.
  * @property {boolean} alt - Indicates if the Alt key is pressed.
  * @property {boolean} meta - Indicates if the Meta key is pressed.
@@ -20,7 +21,7 @@ const commands = ['ctrl', 'shift', 'alt', 'meta']
 
 /**
  * Checks if the given shortcut is a global shortcut.
- * A global shortcut is defined as having one of the modifier keys (ctrl, shift, alt, meta)
+ * A global shortcut is defined as having one of the modifier keys (Control, Shift, Alt, Meta)
  * and a valid keyCode.
  *
  * @param {Shortcut} shortcut - The shortcut object to check.
@@ -37,10 +38,36 @@ export function isCombineShortcut(shortcut = {}) {
  * @returns {string} The shortcut key string.
  */
 export function createShortcutKey(shortcut) {
-  const data = commands.filter((key) => shortcut[key])
+  const data = commands
+    .filter((key) => shortcut[key])
+    .map((key) => {
+      if (key === 'ctrl') {
+        return 'control'
+      }
+
+      return key
+    })
 
   if (isNumber(shortcut.keyCode)) {
     data.push(shortcut.keyCode)
+  }
+
+  return data.join('+')
+}
+
+function createShowShortcutKey(shortcut) {
+  const data = commands
+    .filter((key) => shortcut[key])
+    .map((key) => {
+      if (key === 'ctrl') {
+        return 'control'
+      }
+
+      return key
+    })
+
+  if (isNumber(shortcut.keyCode)) {
+    data.push(shortcut.key)
   }
 
   return data.join('+')
@@ -55,7 +82,7 @@ export function createShortcutKey(shortcut) {
  * '+' separator to form the final shortcut key string.
  *
  * @param {Object} event - The event object containing key information.
- * @param {boolean} event.ctrlKey - Indicates if the Ctrl key is pressed.
+ * @param {boolean} event.ctrlKey - Indicates if the Control key is pressed.
  * @param {boolean} event.shiftKey - Indicates if the Shift key is pressed.
  * @param {boolean} event.altKey - Indicates if the Alt key is pressed.
  * @param {boolean} event.metaKey - Indicates if the Meta key is pressed.
@@ -63,7 +90,20 @@ export function createShortcutKey(shortcut) {
  * @returns {string} The shortcut key string.
  */
 export function createShortcutKeyByEvent(event) {
-  const data = commands.filter((key) => event[`${key}Key`])
+  if (isCommandKey(keyCodeMapper(event.keyCode))) {
+    return
+  }
+
+  const data = commands
+    .filter((key) => event[`${key}Key`])
+
+    .map((key) => {
+      if (key === 'ctrl') {
+        return 'control'
+      }
+
+      return key
+    })
 
   if (!isUndefined(event.keyCode)) {
     data.push(keyCodeMapper(event.keyCode))
@@ -75,13 +115,14 @@ export function createShortcutKeyByEvent(event) {
 /**
  * Creates a shortcut object based on the provided shortcut key and task.
  *
- * @param {string} shortcutKey - The shortcut key combination (e.g., 'Ctrl+Shift+A').
+ * @param {string} shortcutKey - The shortcut key combination (e.g., 'Control+Shift+A').
  * @param {Function} task - The task to be executed when the shortcut is triggered.
  * @returns {Shortcut} The shortcut object containing the parsed shortcut key and task.
  */
 export function createShortcut(shortcutKey, task) {
   const shortcut = {
     shortcutKey: undefined,
+    showShortcutKey: undefined,
     ctrl: false,
     shift: false,
     alt: false,
@@ -92,26 +133,32 @@ export function createShortcut(shortcutKey, task) {
   }
 
   shortcutKey.split('+').forEach((key) => {
-    switch (key) {
-      case 'Control':
-      case 'Ctrl':
+    const upperKey = key.trim().toUpperCase()
+
+    switch (upperKey) {
+      case 'CONTROL':
         shortcut.ctrl = true
         break
-      case 'Shift':
+      case 'SHIFT':
         shortcut.shift = true
         break
-      case 'Alt':
+      case 'ALT':
         shortcut.alt = true
         break
-      case 'Meta':
+      case 'META':
         shortcut.meta = true
         break
       default:
         shortcut.key = key
-        shortcut.keyCode = keyMap[key]
+        shortcut.keyCode = keyMap[upperKey]
     }
   })
 
+  if (!shortcut.keyCode) {
+    return
+  }
+
   shortcut.shortcutKey = createShortcutKey(shortcut)
+  shortcut.showShortcutKey = createShowShortcutKey(shortcut)
   return shortcut
 }

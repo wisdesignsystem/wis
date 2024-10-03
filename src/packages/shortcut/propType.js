@@ -11,7 +11,7 @@ export default {
    * @type {string}
    *
    * @example
-   * ctrl + s
+   * Control+S
    */
   shortcutKey: PropTypes.string,
 

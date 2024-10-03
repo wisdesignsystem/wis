@@ -74,7 +74,7 @@ export const togglePropTypes = {
    * @type {string}
    *
    * @example
-   * ctrl + s
+   * Control+S
    */
   shortcutKey: PropTypes.string,
 
@@ -222,7 +222,7 @@ export const toggleItemPropTypes = {
    * @type {string}
    *
    * @example
-   * ctrl + s
+   * Control+S
    */
   shortcutKey: PropTypes.string,
 

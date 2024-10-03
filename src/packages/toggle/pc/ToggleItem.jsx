@@ -34,6 +34,7 @@ function ToggleItem({
       })}
       value={value}
       role="button"
+      aria-keyshortcuts={shortcutKey}
       disabled={disabled}
       data-size={size}
       data-variant={variant}

@@ -11,4 +11,10 @@ html[data-theme='highContrast'] {
   --w-component-shortcut-dark-disabled-background: var(--w-common-background-transparent-overlay-black-05);
   --w-component-shortcut-dark-disabled-font: var(--w-common-font-color-state-disabled);
   --w-component-shortcut-dark-disabled-border: var(--w-common-border-color-transparent);
+  --w-component-shortcut-gray-background: var(--w-common-background-transparent-overlay-black-10);
+  --w-component-shortcut-gray-font: var(--w-common-font-color-helper);
+  --w-component-shortcut-gray-border: var(--w-common-border-color-transparent);
+  --w-component-shortcut-gray-disabled-background: var(--w-common-background-transparent-overlay-black-05);
+  --w-component-shortcut-gray-disabled-font: var(--w-common-font-color-state-disabled);
+  --w-component-shortcut-gray-disabled-border: var(--w-common-border-color-transparent);
 }

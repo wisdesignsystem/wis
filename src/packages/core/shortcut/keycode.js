@@ -138,7 +138,7 @@ const KEY_ALT = 'Alt'
 const KEY_PAUSE = 'Pause'
 const KEY_CAPS_LOCK = 'CapsLock'
 const KEY_ESCAPE = 'Escape'
-const KEY_SPACE = ' '
+const KEY_SPACE = 'Space'
 const KEY_PAGE_UP = 'PageUp'
 const KEY_PAGE_DOWN = 'PageDown'
 const KEY_END = 'End'
@@ -191,8 +191,10 @@ const KEY_META = 'Meta'
 const KEY_CONTEXT_MENU = 'ContextMenu'
 const KEY_MULTIPLY = '*'
 const KEY_ADD = '+'
+// eslint-disable-next-line no-unused-vars
 const KEY_SUBTRACT = '-'
 const KEY_DECIMAL = '.'
+// eslint-disable-next-line no-unused-vars
 const KEY_DIVIDE = '/'
 const KEY_F1 = 'F1'
 const KEY_F2 = 'F2'
@@ -224,6 +226,7 @@ const KEY_SEMICOLON = ';'
 const KEY_EQUALS = '='
 const KEY_COMMA = ','
 const KEY_DASH = '-'
+// eslint-disable-next-line no-unused-vars
 const KEY_PERIOD = '.'
 const KEY_SLASH = '/'
 const KEY_BACK_QUOTE = '`'
@@ -259,6 +262,18 @@ export function keyCodeMapper(keyCode) {
     return KEY_CODE_SEPARATOR
   }
 
+  if (KEY_CODE_DIVIDE === keyCode) {
+    return KEY_CODE_SLASH
+  }
+
+  if (KEY_CODE_PERIOD === keyCode) {
+    return KEY_CODE_DECIMAL
+  }
+
+  if (KEY_CODE_SUBTRACT === keyCode) {
+    return KEY_CODE_DASH
+  }
+
   const numpadMap = {
     [KEY_CODE_NUMPAD0]: KEY_CODE_0,
     [KEY_CODE_NUMPAD1]: KEY_CODE_1,
@@ -282,7 +297,7 @@ export function isCommandKey(keyCode) {
   return [KEY_CODE_CONTROL, KEY_CODE_SHIFT, KEY_CODE_ALT, KEY_CODE_META].includes(keyCodeMapper(keyCode))
 }
 
-export const keyMap = {
+const localKeyMap = {
   [KEY_CANCEL]: KEY_CODE_CANCEL,
   [KEY_HELP]: KEY_CODE_HELP,
   [KEY_BACK_SPACE]: KEY_CODE_BACK_SPACE,
@@ -343,9 +358,7 @@ export const keyMap = {
   [KEY_CONTEXT_MENU]: KEY_CODE_CONTEXT_MENU,
   [KEY_MULTIPLY]: KEY_CODE_MULTIPLY,
   [KEY_ADD]: KEY_CODE_ADD,
-  [KEY_SUBTRACT]: KEY_CODE_SUBTRACT,
   [KEY_DECIMAL]: KEY_CODE_DECIMAL,
-  [KEY_DIVIDE]: KEY_CODE_DIVIDE,
   [KEY_F1]: KEY_CODE_F1,
   [KEY_F2]: KEY_CODE_F2,
   [KEY_F3]: KEY_CODE_F3,
@@ -376,7 +389,6 @@ export const keyMap = {
   [KEY_EQUALS]: KEY_CODE_EQUALS,
   [KEY_COMMA]: KEY_CODE_COMMA,
   [KEY_DASH]: KEY_CODE_DASH,
-  [KEY_PERIOD]: KEY_CODE_PERIOD,
   [KEY_SLASH]: KEY_CODE_SLASH,
   [KEY_BACK_QUOTE]: KEY_CODE_BACK_QUOTE,
   [KEY_OPEN_BRACKET]: KEY_CODE_OPEN_BRACKET,
@@ -384,3 +396,8 @@ export const keyMap = {
   [KEY_CLOSE_BRACKET]: KEY_CODE_CLOSE_BRACKET,
   [KEY_QUOTE]: KEY_CODE_QUOTE,
 }
+
+export const keyMap = Object.keys(localKeyMap).reduce((result, key) => {
+  result[key.toUpperCase()] = localKeyMap[key]
+  return result
+}, {})

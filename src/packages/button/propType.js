@@ -87,7 +87,7 @@ export default {
    * @type {string}
    *
    * @example
-   * ctrl + s
+   * control + s
    */
   shortcutKey: PropTypes.string,
 }

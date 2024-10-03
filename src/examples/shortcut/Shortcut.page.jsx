@@ -5,16 +5,16 @@ import styles from './Shortcut.module.less'
 
 function Example() {
   const [onKeyDown, onShortcut] = useShortcut()
-  onShortcut('Ctrl+;', (shortcut) => {
+  onShortcut('Control+;', (shortcut) => {
     handleTrigger(shortcut)
   })
-  onShortcut('Ctrl+6', (shortcut) => {
+  onShortcut('Control+6', (shortcut) => {
     handleTrigger(shortcut)
   })
 
   function handleTrigger(shortcut) {
     window.alert(
-      `${shortcut.ctrl ? 'Control + ' : ''}${shortcut.shift ? 'Shift + ' : ''}${shortcut.alt ? 'Alt + ' : ''}${shortcut.meta ? 'Meta + ' : ''}${shortcut.key}`,
+      `${shortcut.ctrl ? 'Control+' : ''}${shortcut.shift ? 'Shift+' : ''}${shortcut.alt ? 'Alt+' : ''}${shortcut.meta ? 'Meta+' : ''}${shortcut.key}`,
     )
   }
 
@@ -98,7 +98,7 @@ function Example() {
         <Shortcut onTrigger={handleTrigger} size="xs" variant="dark" disabled shortcutKey="Control+Shift+Alt+Meta+X" />
       </div>
 
-      <button onKeyDown={onKeyDown}>Component Level Shortcut Register, Focus Me And Try Ctrl + 6</button>
+      <button onKeyDown={onKeyDown}>Component Level Shortcut Register, Focus Me And Try Control + 6</button>
     </div>
   )
 }

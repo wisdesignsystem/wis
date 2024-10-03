@@ -42,6 +42,7 @@ function Toggle({
       disabled={disabled}
       pressed={value}
       defaultPressed={defaultValue}
+      aria-keyshortcuts={shortcutKey}
       {...attrs({
         'data-icon': isIconButton,
       })}

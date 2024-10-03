@@ -1,6 +1,6 @@
 :root {
   --w-component-toggle-group-item-normal-default-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-group-item-normal-default-font: var(--w-common-font-color-base);
+  --w-component-toggle-group-item-normal-default-font: var(--w-common-font-color-helper);
   --w-component-toggle-group-item-normal-default-background: var(--w-common-background-transparent-fully);
   --w-component-toggle-group-item-normal-hover-border: var(--w-common-border-color-03);
   --w-component-toggle-group-item-normal-hover-font: var(--w-common-font-color-base);
@@ -23,7 +23,7 @@
   --w-component-toggle-group-item-normal-checked-disabled-border: var(--w-common-border-color-03);
   --w-component-toggle-group-item-normal-checked-disabled-font: var(--w-common-font-color-state-disabled);
   --w-component-toggle-group-item-normal-checked-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-toggle-group-item-compact-default-font: var(--w-common-font-color-base);
+  --w-component-toggle-group-item-compact-default-font: var(--w-common-font-color-helper);
   --w-component-toggle-group-item-compact-default-background: var(--w-common-background-common-base);
   --w-component-toggle-group-item-compact-default-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-item-compact-hover-font: var(--w-common-font-color-secondary);
