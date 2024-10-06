@@ -9,18 +9,18 @@ function hasGlobalShortcut() {
   return !!Object.keys(shortcutMap).length
 }
 
-function on(shortcutKey, task) {
-  function run(event) {
-    const currentShortcutKey = createShortcutKeyByEvent(event)
-    const currentShortcut = shortcutMap[currentShortcutKey]
-    if (currentShortcut) {
-      event.preventDefault()
-      currentShortcut.task(currentShortcut)
-    }
+function runShortcut(event) {
+  const currentShortcutKey = createShortcutKeyByEvent(event)
+  const currentShortcut = shortcutMap[currentShortcutKey]
+  if (currentShortcut) {
+    event.preventDefault()
+    currentShortcut.task(currentShortcut)
   }
+}
 
+function on(shortcutKey, task) {
   if (!hasGlobalShortcut()) {
-    document.addEventListener('keydown', run)
+    document.addEventListener('keydown', runShortcut)
   }
 
   let shortcut = createShortcut(shortcutKey, task)
@@ -41,7 +41,7 @@ function on(shortcutKey, task) {
     }
 
     if (!hasGlobalShortcut()) {
-      document.removeEventListener('keydown', run)
+      document.removeEventListener('keydown', runShortcut)
     }
   }
 
