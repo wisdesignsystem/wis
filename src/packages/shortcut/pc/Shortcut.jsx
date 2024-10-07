@@ -5,9 +5,17 @@ import propTypes from '../propType'
 
 import styles from './Shortcut.module.less'
 
-function Shortcut({ shortcutKey, disabled, variant = 'light', size = 'md', onTrigger = () => {}, ...rest }) {
-  const onGlobalShortcut = useGlobalShortcut(shortcutKey)
-  const shortcut = onGlobalShortcut((shortcut) => {
+function Shortcut({
+  shortcutKey,
+  unregister,
+  disabled,
+  variant = 'light',
+  size = 'md',
+  onTrigger = () => {},
+  ...rest
+}) {
+  const [shortcut, onGlobalShortcut] = useGlobalShortcut(shortcutKey, unregister)
+  onGlobalShortcut((shortcut) => {
     if (disabled) {
       return
     }

@@ -1,6 +1,6 @@
 import { Children } from 'react'
 
-function isNode(node, type) {
+export function isNode(node, type) {
   if (!node.type || !node.type.displayName) {
     return false
   }
@@ -64,4 +64,17 @@ export function matchNode(children, types = []) {
     },
     { default: [] },
   )
+}
+
+/**
+ * Filters the given children nodes based on the specified types.
+ *
+ * @param {React.ReactNode} children - The children nodes to filter.
+ * @param {Array} [types=[]] - The types to filter the nodes by.
+ * @returns {Array} - The filtered nodes.
+ */
+export function filterNodes(children, types = []) {
+  return Children.toArray(children).filter((node) => {
+    return types.some((type) => isNode(node, type))
+  })
 }

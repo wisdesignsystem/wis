@@ -24,6 +24,10 @@ export default {
       pc: '@/packages/toggle/pc/Toggle',
       mobile: '@/packages/toggle/mobile/Toggle',
     },
+    './Dropdown': {
+      pc: '@/packages/dropdown/pc/Dropdown',
+      mobile: '@/packages/dropdown/mobile/Dropdown',
+    },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-less')],
