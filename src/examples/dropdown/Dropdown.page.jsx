@@ -23,6 +23,330 @@ function Example() {
   return (
     <div className={styles.row}>
       <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary" disabled>
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic" disabled>
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" disabled>
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary" size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic" size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary" disabled size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic" disabled size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" disabled size="sm">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary" size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic" size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
+        <Dropdown.Button text="Button" variant="primary" disabled size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+R"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" variant="classic" disabled size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+T"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+        <Dropdown.Button text="Button" disabled size="xs">
+          <Dropdown.Item value="value1" label="Item"></Dropdown.Item>
+          <Dropdown.Item value="value1" label="Disabled Item" disabled></Dropdown.Item>
+          <Dropdown.Group label="Group Title">
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />}></Dropdown.Item>
+            <Dropdown.Item value="value2" label="Item" icon={<SaveIcon />} tip="xxx"></Dropdown.Item>
+          </Dropdown.Group>
+          <Dropdown.Group>
+            <Dropdown.Item
+              value="value2"
+              label="Item"
+              icon={<SaveIcon />}
+              tip="xxx"
+              shortcutKey="Alt+Y"
+            ></Dropdown.Item>
+          </Dropdown.Group>
+        </Dropdown.Button>
+      </div>
+
+      <div className={styles.col}>
         <Dropdown icon={<StarIcon />} text="Dropdown Menu" description="dropdown menu description">
           <Dropdown.Group label="Group" onSelect={handleSelect}>
             <Dropdown.Item

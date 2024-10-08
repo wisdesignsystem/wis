@@ -236,4 +236,82 @@ export const dropdownCheckboxGroupPropTypes = {
  * PropTypes for the Dropdown.Button component.
  */
 
-export const dropdownButtonPropTypes = {}
+export const dropdownButtonPropTypes = {
+  /**
+   * Custom class name for the Dropdown.Button.
+   *
+   * @type {string}
+   */
+  className: PropTypes.string,
+
+  /**
+   * Variant of the Dropdown.Button.
+   *
+   * @type {primary|classic|secondary}
+   * @default secondary
+   */
+  variant: PropTypes.oneOf(['primary', 'classic', 'secondary']),
+
+  /**
+   * Indicates if the Dropdown.Button is disabled.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Indicates if the Dropdown.Button is in a loading state.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  loading: PropTypes.bool,
+
+  /**
+   * Text to be displayed on the Dropdown.Button.
+   *
+   * @type {string}
+   */
+  text: PropTypes.string,
+
+  /**
+   * Icon element to be displayed on the Dropdown.Button.
+   *
+   * @type {React.Element}
+   */
+  icon: PropTypes.element,
+
+  /**
+   * Position of the icon relative to the text.
+   *
+   * @type {prefix|suffix}
+   * @default prefix
+   */
+  iconControl: PropTypes.oneOf(['prefix', 'suffix']),
+
+  /**
+   * Tooltip text for the Dropdown.Button.
+   *
+   * @type {string}
+   */
+  tooltip: PropTypes.string,
+
+  /**
+   * Size of the Dropdown.Button.
+   *
+   * @type {sm|xs|md}
+   * @default md
+   */
+  size: PropTypes.oneOf(['sm', 'xs', 'md']),
+
+  /**
+   * Shortcut key for the Dropdown.Button.
+   *
+   * @type {string}
+   *
+   * @example
+   * control + s
+   */
+  shortcutKey: PropTypes.string,
+}

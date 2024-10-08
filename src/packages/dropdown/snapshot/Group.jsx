@@ -9,7 +9,7 @@ const snapshotMap = {
   DropdownItem,
 }
 
-function Group({ onSelect, children }) {
+function Group({ onSelect = () => {}, children }) {
   return Children.map(children, (child) => {
     const Component = snapshotMap[child.type.displayName]
     if (!Component) {

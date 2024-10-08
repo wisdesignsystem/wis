@@ -9,7 +9,19 @@ import { dropdownItemPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
 
-function Item({ role, disabled, label, icon, tip, value, shortcutKey, checked, onSelect, onCheckedChange, children }) {
+function Item({
+  role,
+  disabled,
+  label,
+  icon,
+  tip,
+  value,
+  shortcutKey,
+  checked,
+  onSelect = () => {},
+  onCheckedChange = () => {},
+  children,
+}) {
   const item = useRef(null)
   const nodes = filterNodes(children, ['DropdownItem', 'DropdownGroup', 'DropdownCheckboxGroup', 'DropdownRadioGroup'])
 

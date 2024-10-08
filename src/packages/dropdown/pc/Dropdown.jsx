@@ -8,6 +8,7 @@ import Item from './Item'
 import Group from './Group'
 import CheckboxGroup from './CheckboxGroup'
 import RadioGroup from './RadioGroup'
+import Button from './Button'
 import ShortcutSnapshot from '../ShortcutSnapshot'
 
 import ValueContext from '../ValueContext'
@@ -57,5 +58,6 @@ Dropdown.Item = Item
 Dropdown.Group = Group
 Dropdown.CheckboxGroup = CheckboxGroup
 Dropdown.RadioGroup = RadioGroup
+Dropdown.Button = Button
 
 export default Dropdown

@@ -27,7 +27,7 @@ function on(shortcutKey, unregister, task) {
   if (shortcut && isCombineShortcut(shortcut)) {
     if (!unregister && shortcutMap[shortcut.shortcutKey]) {
       console.warn(
-        `Shortcut key: ${shortcut.shortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
+        `Shortcut key: ${shortcut.showShortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
       )
       shortcut = undefined
     } else if (!unregister) {

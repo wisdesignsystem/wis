@@ -1,27 +1,32 @@
 import Shortcut from 'remote:self/Shortcut'
 import { attrs } from '@/utils/attrs'
-import { useRef } from 'react'
+import { useRef, forwardRef, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 
 import propTypes from '../propType'
 
 import styles from './Button.module.less'
 
-function Button({
-  className,
-  variant = 'secondary',
-  status = 'normal',
-  disabled,
-  loading,
-  text,
-  icon,
-  iconControl = 'prefix',
-  tooltip,
-  size = 'md',
-  shortcutKey,
-  ...rest
-}) {
+const Button = forwardRef(function Button(
+  {
+    className,
+    variant = 'secondary',
+    status = 'normal',
+    disabled,
+    loading,
+    text,
+    icon,
+    iconControl = 'prefix',
+    tooltip,
+    size = 'md',
+    shortcutKey,
+    ...rest
+  },
+  ref,
+) {
   const button = useRef(null)
+
+  useImperativeHandle(ref, () => button.current)
 
   const isIconButton = !text && !shortcutKey
 
@@ -57,7 +62,7 @@ function Button({
       />
     </button>
   )
-}
+})
 
 Button.propTypes = propTypes
 Button.displayName = 'Button'
