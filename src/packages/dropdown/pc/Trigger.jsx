@@ -1,28 +1,31 @@
 import { forwardRef } from 'react'
 import classNames from 'classnames'
 import { DownIcon, RightIcon } from '@wisdesign/lsicon'
+import { isNode } from '@/utils/node'
+import { attrs } from '@/utils/attrs'
 
 import { dropdownPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
 
 const Trigger = forwardRef(function (
-  { avatar, variant = 'normal', disabled, icon, arrowDirection = 'down', text, description, className, ...rest },
+  { avatar, disabled, icon, arrowDirection = 'down', text, description, className, ...rest },
   ref,
 ) {
-  const isShowAvatar = variant === 'avatar' && avatar
-  const isShowIcon = ['normal', 'menu'].includes(variant) && icon
-  const isShowArrow = ['normal', 'avatar'].includes(variant)
-  const isShowContent = ['normal', 'avatar'].includes(variant)
+  const isShowAvatar = isNode(avatar, 'Avatar')
+  const isShowIcon = !!icon
+  const isShowContent = !!text
 
   return (
     <button
       className={classNames(styles.trigger, { [className]: !!className })}
-      data-variant={variant}
       aria-disabled={disabled}
       disabled={disabled}
       {...rest}
       ref={ref}
+      {...attrs({
+        'data-menu': !isShowContent,
+      })}
     >
       {(isShowAvatar || isShowIcon) && (
         <div className={styles.prefix}>
@@ -36,7 +39,7 @@ const Trigger = forwardRef(function (
           {description && <span className={styles.description}>{description}</span>}
         </div>
       )}
-      {isShowArrow && (
+      {isShowContent && (
         <div className={styles.suffix}>
           {arrowDirection === 'down' && <DownIcon />}
           {arrowDirection === 'right' && <RightIcon />}

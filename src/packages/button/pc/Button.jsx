@@ -7,7 +7,7 @@ import propTypes from '../propType'
 
 import styles from './Button.module.less'
 
-const Button = forwardRef(function Button(
+const Button = forwardRef(function (
   {
     className,
     variant = 'secondary',
@@ -26,9 +26,11 @@ const Button = forwardRef(function Button(
 ) {
   const button = useRef(null)
 
-  useImperativeHandle(ref, () => button.current)
-
   const isIconButton = !text && !shortcutKey
+
+  useImperativeHandle(ref, () => {
+    return button.current
+  }, [])
 
   return (
     <button

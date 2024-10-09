@@ -11,7 +11,7 @@ import RadioGroup from './RadioGroup'
 import Button from './Button'
 import ShortcutSnapshot from '../ShortcutSnapshot'
 
-import ValueContext from '../ValueContext'
+import Context from '../Context'
 import { dropdownPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
@@ -24,7 +24,7 @@ function Dropdown({ children, ...rest }) {
   })
 
   return (
-    <ValueContext.Provider value={{ contextValue, setContextValue }}>
+    <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXDropdownMenu.Root>
         <ShortcutSnapshot>{nodes}</ShortcutSnapshot>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
@@ -47,7 +47,7 @@ function Dropdown({ children, ...rest }) {
           </RDXDropdownMenu.Content>
         </RDXDropdownMenu.Portal>
       </RDXDropdownMenu.Root>
-    </ValueContext.Provider>
+    </Context.Provider>
   )
 }
 

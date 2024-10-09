@@ -1,10 +1,11 @@
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
 import { filterNodes, isNode } from '@/utils/node'
 
+import Context from '../Context'
 import { dropdownItemPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
@@ -22,10 +23,11 @@ function Item({
   onCheckedChange = () => {},
   children,
 }) {
+  const { contextType } = useContext(Context)
   const item = useRef(null)
   const nodes = filterNodes(children, ['DropdownItem', 'DropdownGroup', 'DropdownCheckboxGroup', 'DropdownRadioGroup'])
 
-  const hasSubmenu = nodes.length > 0
+  const isSupportSubmenu = nodes.length > 0 && contextType !== 'DropdownButton'
 
   function renderItem() {
     return (
@@ -36,7 +38,7 @@ function Item({
           {tip && <CircleHelpIcon />}
         </div>
         <div className={styles.right}>
-          {hasSubmenu ? (
+          {isSupportSubmenu ? (
             <RightIcon />
           ) : (
             <Shortcut
@@ -92,7 +94,7 @@ function Item({
     )
   }
 
-  if (hasSubmenu) {
+  if (isSupportSubmenu) {
     const hasCheckedItem = nodes.some(
       (node) => isNode(node, 'DropdownCheckboxGroup') || isNode(node, 'DropdownRadioGroup'),
     )

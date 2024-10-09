@@ -1,7 +1,15 @@
 import { Children } from 'react'
 
+function withoutFragment(children) {
+  if (children?.type?.toString() === 'Symbol(react.fragment)') {
+    return children.props.children
+  }
+
+  return children
+}
+
 export function isNode(node, type) {
-  if (!node.type || !node.type.displayName) {
+  if (!node?.type || !node?.type?.displayName) {
     return false
   }
 
@@ -20,7 +28,7 @@ export function isNode(node, type) {
  * const { ToggleButtonItem: itemNodes, default } = matchNodes(children, ['ToggleButtonItem'])
  */
 export function matchNodes(children, types = []) {
-  return Children.toArray(children).reduce(
+  return Children.toArray(withoutFragment(children)).reduce(
     (result, node) => {
       const type = types.find((type) => isNode(node, type))
       if (!type) {
@@ -51,7 +59,7 @@ export function matchNodes(children, types = []) {
  * const { ToggleButtonItem: itemNode, default } = matchNode(children, ['ToggleButtonItem'])
  */
 export function matchNode(children, types = []) {
-  return Children.toArray(children).reduce(
+  return Children.toArray(withoutFragment(children)).reduce(
     (result, node) => {
       const type = types.find((type) => isNode(node, type))
       if (!type) {
@@ -74,7 +82,7 @@ export function matchNode(children, types = []) {
  * @returns {Array} - The filtered nodes.
  */
 export function filterNodes(children, types = []) {
-  return Children.toArray(children).filter((node) => {
+  return Children.toArray(withoutFragment(children)).filter((node) => {
     return types.some((type) => isNode(node, type))
   })
 }

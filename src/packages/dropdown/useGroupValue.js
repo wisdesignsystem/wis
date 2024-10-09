@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react'
 
-import ValueContext from './ValueContext'
+import Context from './Context'
 
 export default function useGroupValue({ key, value, defaultValue }) {
-  const { contextValue, setContextValue } = useContext(ValueContext)
+  const { contextValue, setContextValue } = useContext(Context)
 
   useEffect(() => {
     if (!contextValue[key]) {

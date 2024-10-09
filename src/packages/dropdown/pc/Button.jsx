@@ -4,7 +4,7 @@ import { filterNodes } from '@/utils/node'
 import ShortcutSnapshot from '../ShortcutSnapshot'
 import ButtonTrigger from './ButtonTrigger'
 
-import ValueContext from '../ValueContext'
+import Context from '../Context'
 import { dropdownButtonPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
@@ -14,7 +14,7 @@ function Button({ children, ...rest }) {
   const nodes = filterNodes(children, ['DropdownItem', 'DropdownGroup'])
 
   return (
-    <ValueContext.Provider value={{ contextValue, setContextValue }}>
+    <Context.Provider value={{ contextValue, setContextValue, contextType: 'DropdownButton' }}>
       <RDXDropdownMenu.Root>
         <ShortcutSnapshot>{nodes}</ShortcutSnapshot>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
@@ -30,7 +30,7 @@ function Button({ children, ...rest }) {
           </RDXDropdownMenu.Content>
         </RDXDropdownMenu.Portal>
       </RDXDropdownMenu.Root>
-    </ValueContext.Provider>
+    </Context.Provider>
   )
 }
 

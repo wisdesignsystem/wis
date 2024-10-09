@@ -8,14 +8,6 @@ export const dropdownPropTypes = {
   className: PropTypes.string,
 
   /**
-   * Variant of the Dropdown.
-   *
-   * @type {normal|avatar|menu}
-   * @default default
-   */
-  variant: PropTypes.oneOf(['normal', 'avatar', 'menu']),
-
-  /**
    * Indicates if the Dropdown is disabled.
    *
    * @type {boolean}
