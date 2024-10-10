@@ -32,10 +32,7 @@ function Example() {
         <Dropdown.Group label="Device">
           <Dropdown.Item label="Desktop" value="desktop" icon={<ComputerIcon />}></Dropdown.Item>
           <Dropdown.Item label="Tablet" value="tablet" icon={<PadIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Mobile" value="mobile" icon={<MobileIcon />}>
-            <Dropdown.Item label="Music" value="music" icon={<MusicIcon />}></Dropdown.Item>
-            <Dropdown.Item label="Camera" value="camera" icon={<CameraIcon />}></Dropdown.Item>
-          </Dropdown.Item>
+          <Dropdown.Item label="Mobile" value="mobile" icon={<MobileIcon />}></Dropdown.Item>
         </Dropdown.Group>
       </>
     )

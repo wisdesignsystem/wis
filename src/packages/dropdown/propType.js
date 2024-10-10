@@ -69,6 +69,14 @@ export const dropdownItemPropTypes = {
   className: PropTypes.string,
 
   /**
+   * Status of the Dropdown.
+   *
+   * @type {danger}
+   * @default normal
+   */
+  status: PropTypes.oneOf(['danger']),
+
+  /**
    * Indicates if the Dropdown.Item is disabled.
    *
    * @type {boolean}

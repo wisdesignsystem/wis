@@ -27,12 +27,7 @@ const Trigger = forwardRef(function (
         'data-menu': !isShowContent,
       })}
     >
-      {(isShowAvatar || isShowIcon) && (
-        <div className={styles.prefix}>
-          {isShowAvatar && avatar}
-          {isShowIcon && icon}
-        </div>
-      )}
+      {(isShowAvatar || isShowIcon) && <div className={styles.prefix}>{isShowAvatar ? avatar : icon}</div>}
       {isShowContent && (
         <div className={styles.content}>
           <span className={styles.text}>{text}</span>
