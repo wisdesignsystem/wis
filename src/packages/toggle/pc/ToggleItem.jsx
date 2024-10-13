@@ -39,6 +39,7 @@ function ToggleItem({
       data-size={size}
       data-variant={variant}
       {...attrs({
+        'data-disabled': disabled,
         'data-icon': isIconButton,
       })}
     >

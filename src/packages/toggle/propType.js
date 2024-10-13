@@ -10,10 +10,10 @@ export const togglePropTypes = {
   /**
    * Variant of the Toggle.
    *
-   * @type {default|ghost}
-   * @default default
+   * @type {basic|ghost}
+   * @default basic
    */
-  variant: PropTypes.oneOf(['default', 'ghost']),
+  variant: PropTypes.oneOf(['basic', 'ghost']),
 
   /**
    * Indicates if the Toggle is disabled.

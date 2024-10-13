@@ -64,7 +64,7 @@ function Example() {
           </Dropdown.Item>
         </Dropdown.Group>
         <Dropdown.Item label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></Dropdown.Item>
-        <Dropdown.Item label="Delete" value="delete" icon={<DeleteIcon />}></Dropdown.Item>
+        <Dropdown.Item label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></Dropdown.Item>
       </>
     )
   }
@@ -87,12 +87,14 @@ function Example() {
             shortcutKey={`Control+${key}`}
           ></Dropdown.Item>
         </Dropdown.RadioGroup>
-        <Dropdown.CheckboxGroup label="Checkbox Group">
+        <Dropdown.CheckboxGroup label="Checkbox Group" defaultValue={['duplicate3']}>
           <Dropdown.Item label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></Dropdown.Item>
           <Dropdown.Item label="Duplicate2" value="duplicate2" icon={<CopyOneIcon />}></Dropdown.Item>
+          <Dropdown.Item label="Duplicate3" disabled value="duplicate3" icon={<CopyOneIcon />}></Dropdown.Item>
+          <Dropdown.Item label="Duplicate4" disabled value="duplicate4" icon={<CopyOneIcon />}></Dropdown.Item>
         </Dropdown.CheckboxGroup>
         <Dropdown.Item label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></Dropdown.Item>
-        <Dropdown.Item label="Delete" value="delete" icon={<DeleteIcon />}></Dropdown.Item>
+        <Dropdown.Item label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></Dropdown.Item>
       </>
     )
   }

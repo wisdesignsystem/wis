@@ -1,6 +1,5 @@
 import { Children, cloneElement, useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import classNames from 'classnames'
 import { filterNodes, isNode } from '@/utils/node'
 
 import Trigger from './Trigger'
@@ -32,9 +31,8 @@ function Dropdown({ children, ...rest }) {
         </RDXDropdownMenu.Trigger>
         <RDXDropdownMenu.Portal>
           <RDXDropdownMenu.Content
-            className={classNames(styles.popper, {
-              [styles['with-checked']]: hasCheckedItem,
-            })}
+            className={styles.popper}
+            data-variant={hasCheckedItem ? 'checkbox' : 'normal'}
             loop
             align="start"
             sideOffset={8}

@@ -12,7 +12,7 @@ import styles from './Toggle.module.less'
 
 function Toggle({
   className,
-  variant = 'default',
+  variant = 'basic',
   disabled,
   loading,
   text,
@@ -44,6 +44,7 @@ function Toggle({
       defaultPressed={defaultValue}
       aria-keyshortcuts={shortcutKey}
       {...attrs({
+        'data-disabled': disabled,
         'data-icon': isIconButton,
       })}
       onPressedChange={onChange}

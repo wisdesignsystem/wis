@@ -32,6 +32,7 @@ function Shortcut({
       className={styles.shortcut}
       data-variant={variant}
       data-size={size}
+      disabled={disabled}
       {...attrs({ 'data-disabled': disabled })}
     >
       {shortcut.ctrl && <span className={styles.command}>⌃</span>}

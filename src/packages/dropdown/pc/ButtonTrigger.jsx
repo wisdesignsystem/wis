@@ -12,7 +12,7 @@ const ButtonTrigger = forwardRef(function (
   ref,
 ) {
   return (
-    <div className={classNames(styles['button-trigger'], { [className]: !!className })}>
+    <div className={classNames(styles.button, { [className]: !!className })}>
       <Button
         variant={variant}
         disabled={disabled}

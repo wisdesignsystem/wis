@@ -6,8 +6,8 @@
 @import './spacing.css';
 @import './dropdown.css';
 @import './button.css';
+@import './tooltip.css';
 @import './toggle.css';
 @import './toggleGroup.css';
 @import './shortcut.css';
 @import './badge.css';
-@import './input.css';

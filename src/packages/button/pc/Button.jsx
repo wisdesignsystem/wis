@@ -11,7 +11,7 @@ const Button = forwardRef(function (
   {
     className,
     variant = 'secondary',
-    status = 'normal',
+    status,
     disabled,
     loading,
     text,
@@ -41,11 +41,12 @@ const Button = forwardRef(function (
       })}
       data-size={size}
       data-variant={variant}
-      data-status={status}
       aria-disabled={disabled}
       aria-keyshortcuts={shortcutKey}
       disabled={disabled}
       {...attrs({
+        'data-status': status,
+        'data-disabled': disabled,
         'data-icon': isIconButton,
       })}
     >

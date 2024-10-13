@@ -1,11 +1,27 @@
-.style(@component:'dropdown';@variant:''; @status:''; @state:'') {
-  @variant-pattern: if(@variant='', '',  ~'@{variant}-');
-  @status-pattern: if(@status='', '',  ~'@{status}-');
-  @state-pattern: if(@state='', '',  ~'@{state}-');
+@import '@/themes/style.less';
 
-  color: var(~'--w-component-@{component}-@{variant-pattern}@{status-pattern}@{state-pattern}font');
-  background: var(~'--w-component-@{component}-@{variant-pattern}@{status-pattern}@{state-pattern}background');
-  border-color: var(~'--w-component-@{component}-@{variant-pattern}@{status-pattern}@{state-pattern}border');
+.dropdown-state-style(@state:'';) {
+  .component-style(@component: dropdown, @state: @state);
+  .component-hover-style(@component: dropdown, @state: @state);
+  .component-focus-style(@component: dropdown, @state: @state);
+  .component-active-style(@component: dropdown, @state: @state);
+  .component-disabled-style(@component: dropdown, @state: @state);
+}
+
+.dropdown-popper-state-style() {
+  .component-style(@component: dropdown, @widget: popper);
+}
+
+.dropdown-item-state-style(@status:'';@state:'';) {
+  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
+  .component-hover-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
+  .component-active-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
+  .component-disabled-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
+}
+
+.dropdown-checked-state-style(@status:'';) {
+  .component-style(@component: dropdown, @widget: 'checked', @status: @status);
+  .component-disabled-style(@component: dropdown, @widget: 'checked', @status: @status);
 }
 
 .trigger {
@@ -18,9 +34,9 @@
   font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s;
+  transition: all 0.2s;
   outline: none;
-  border: 1px solid transparent;
+  border: var(--w-common-spacing-scale-1) solid transparent;
   border-radius: var(--w-common-border-radius-lg);
   min-height: 40px;
 
@@ -28,33 +44,91 @@
     width: 40px;
     height: 40px;
     border-radius: var(--w-common-border-radius-circular);
-    padding: 0;
+    padding: var(--w-common-spacing-common-none);
     overflow: hidden;
   }
 
-  .style();
-
-  &[disabled] {
-    .style(@state: disabled);
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    .style(@state: hover);
-  }
-
-  &:focus {
-    .style(@state: focus);
-    box-shadow: 0 0 0 2px var(--w-common-shadow-state-focus-inner), 0 0 0 4px var(--w-common-shadow-state-focus-default);
-  }
-
-  &:active {
-    .style(@state: active);
-  }
+  .dropdown-state-style();
 
   &[data-state="open"] {
-    .style(@state: selected)
+    .dropdown-state-style(@state: selected);
   }
+}
+
+.popper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--w-common-spacing-common-md) var(--w-common-spacing-common-none);
+  box-shadow: 0 10px 15px -3px var(--w-common-shadow-color-02), 0 4px 6px -2px var(--w-common-shadow-color-01);
+  border-radius: var(--w-common-border-radius-xlg);
+  border: var(--w-common-spacing-scale-1) solid var(--w-component-dropdown-popper-border);
+  background: var(--w-component-dropdown-popper-background);
+  min-width: var(--radix-dropdown-menu-trigger-width);
+
+  .dropdown-popper-state-style();
+
+  > .separator:first-child {
+    border-top: none;
+  }
+
+  &[data-variant="checkbox"] {
+    .item {
+      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-md) var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
+    }
+
+    .label {
+      padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xlg);
+    }
+
+    .item[role="menuitem"],
+    .item[role="menuitemcheckbox"][data-state="unchecked"],
+    .item[role="menuitemradio"][data-state="unchecked"] {
+      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-md) var(--w-common-spacing-common-none) var(--w-common-spacing-common-xlg);
+    }
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 32px;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
+  gap: var(--w-common-spacing-gap-sm);
+  outline: none;
+  border: var(--w-common-spacing-scale-1) solid transparent;
+  cursor: pointer;
+  font-size: var(--w-common-font-size-text-base);
+  font-weight: var(--w-common-font-weight-regular);
+
+  .dropdown-item-state-style();
+
+  &[data-state="open"] {
+    .dropdown-item-state-style(@state: selected);
+  }
+
+  &[data-status="danger"] {
+    .dropdown-item-state-style(@status: danger);
+
+    &[data-state="open"] {
+      .dropdown-item-state-style(@status: danger, @state: selected);
+    }
+
+    .checked {
+      .dropdown-checked-state-style(@status: danger);
+    }
+  }
+}
+
+.checked {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  stroke-width: 1.2;
+  font-size: var(--w-common-font-size-text-md);
+
+  .dropdown-checked-state-style();
 }
 
 .prefix {
@@ -97,73 +171,6 @@
   text-overflow: ellipsis;
 }
 
-.popper {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: var(--w-common-spacing-common-md) var(--w-common-spacing-common-none);
-  box-shadow: 0 10px 15px -3px var(--w-common-shadow-color-02), 0 4px 6px -2px var(--w-common-shadow-color-01);
-  border-radius: var(--w-common-border-radius-xlg);
-  border: 1px solid var(--w-component-dropdown-popper-border);
-  background: var(--w-component-dropdown-popper-background);
-  min-width: var(--radix-dropdown-menu-trigger-width);
-
-  > .separator:first-child {
-    border-top: none;
-  }
-
-
-  &.with-checked {
-    .item {
-      padding: 0 var(--w-common-spacing-common-md) 0 var(--w-common-spacing-common-sm);
-    }
-
-    .label {
-      padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xlg);
-    }
-
-    .item[role="menuitem"],
-    .item[role="menuitemcheckbox"][data-state="unchecked"],
-    .item[role="menuitemradio"][data-state="unchecked"] {
-      padding: 0 var(--w-common-spacing-common-md) 0 var(--w-common-spacing-common-xlg);
-    }
-  }
-}
-
-.item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 32px;
-  padding: 0 var(--w-common-spacing-common-lg);
-  gap: var(--w-common-spacing-gap-sm);
-  outline: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  font-size: var(--w-common-font-size-text-base);
-  font-weight: var(--w-common-font-weight-regular);
-
-  .style(@component: dropdown-item; @status: default);
-
-  &[data-highlighted],
-  &:hover {
-    .style(@component: dropdown-item; @status: default; @state: hover);
-  }
-
-  &:active {
-    .style(@component: dropdown-item; @status: default; @state: active);
-  }
-
-  &[data-state="open"] {
-    .style(@component: dropdown-item; @status: default; @state: selected)
-  }
-
-  &[disabled] {
-    .style(@component: dropdown-item; @status: default; @state: disabled);
-    cursor: not-allowed;
-  }
-}
-
 .title {
   display: inline-flex;
   flex-direction: row;
@@ -199,7 +206,7 @@
 }
 
 .separator {
-  border-top: 1px solid var(--w-component-dropdown-popper-border);
+  border-top: var(--w-common-spacing-scale-1) solid var(--w-component-dropdown-popper-border);
 }
 
 .label {
@@ -210,16 +217,7 @@
   margin: 0 0 var(--w-common-spacing-gap-sm);
 }
 
-.indicator {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  stroke-width: 1.2;
-  font-size: var(--w-common-font-size-text-md);
-  color: var(--w-common-font-color-semantics-highlight);
-}
-
-.button-trigger {
+.button {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -231,19 +229,19 @@
   }
 
   > button:first-child {
-    border-radius: var(--w-common-border-radius-lg) 0 0 var(--w-common-border-radius-lg);
-    border-right: 1px solid var(--w-component-button-secondary-default-border);
+    border-radius: var(--w-common-border-radius-lg) var(--w-common-border-radius-none) var(--w-common-border-radius-none) var(--w-common-border-radius-lg);
+    border-right: var(--w-common-spacing-scale-1) solid var(--w-component-button-secondary-border);
 
     &[disabled],
     &:active,
     &:focus,
     &:hover {
-      border-right: 1px solid var(--w-component-button-secondary-default-border);
+      border-right: var(--w-common-spacing-scale-1) solid var(--w-component-button-secondary-border);
     }
   }
 
   > button:last-child {
-    border-radius: 0 var(--w-common-border-radius-lg) var(--w-common-border-radius-lg) 0;
+    border-radius: var(--w-common-border-radius-none) var(--w-common-border-radius-lg) var(--w-common-border-radius-lg) var(--w-common-border-radius-none);
     border-left: none;
 
     &[disabled],

@@ -70,6 +70,7 @@ export const dropdownItemPropTypes = {
 
   /**
    * Status of the Dropdown.
+   * This attribute takes effect only when item is normal menu item.
    *
    * @type {danger}
    * @default normal

@@ -1,5 +1,6 @@
 import { useRef, useContext } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
+import { attrs } from '@/utils/attrs'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
@@ -18,6 +19,7 @@ function Item({
   tip,
   value,
   shortcutKey,
+  status,
   checked,
   onSelect = () => {},
   onCheckedChange = () => {},
@@ -68,7 +70,7 @@ function Item({
         aria-keyshortcuts={shortcutKey}
         onCheckedChange={onCheckedChange}
       >
-        <RDXDropdownMenu.ItemIndicator className={styles.indicator}>
+        <RDXDropdownMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
           <CheckIcon />
         </RDXDropdownMenu.ItemIndicator>
         {renderItem()}
@@ -86,7 +88,7 @@ function Item({
         value={value}
         textValue={label}
       >
-        <RDXDropdownMenu.ItemIndicator className={styles.indicator}>
+        <RDXDropdownMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
           <CheckIcon />
         </RDXDropdownMenu.ItemIndicator>
         {renderItem()}
@@ -127,6 +129,9 @@ function Item({
       textValue={label}
       aria-keyshortcuts={shortcutKey}
       onSelect={() => onSelect()}
+      {...attrs({
+        'data-status': status,
+      })}
     >
       {renderItem()}
     </RDXDropdownMenu.Item>

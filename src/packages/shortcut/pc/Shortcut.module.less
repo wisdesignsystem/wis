@@ -1,18 +1,8 @@
-.style(@variant:''; @state:'') {
-  @variant-pattern: if(@variant='', '',  ~'@{variant}-');
-  @state-pattern: if(@state='', '',  ~'@{state}-');
+@import '@/themes/style.less';
 
-  color: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}font');
-  border-color: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}border');
-  background: var(~'--w-component-shortcut-@{variant-pattern}@{state-pattern}background');
-}
-
-.variant(@variant) {
-  .style(@variant: @variant);
-
-  &[data-disabled] {
-    .style(@variant: @variant; @state: disabled);
-  }
+.shortcut-state-style(@variant:'';) {
+  .component-style(@component: shortcut, @variant: @variant);
+  .component-disabled-style(@component: shortcut, @variant: @variant);
 }
 
 .shortcut {
@@ -24,41 +14,37 @@
   font-weight: var(--w-common-font-weight-medium);
   border: var(--w-common-spacing-gap-none) solid transparent;
 
-  &[data-size='md'] {
-    gap: 0 var(--w-common-spacing-gap-none);
+  &[data-variant="light"] {
+    .shortcut-state-style(@variant: light);
+  }
+
+  &[data-variant="dark"] {
+    .shortcut-state-style(@variant: dark);
+  }
+
+  &[data-variant="ghost"] {
+    .shortcut-state-style(@variant: gray);
+  }
+
+  &[data-size="md"] {
+    gap: var(--w-common-spacing-gap-none);
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
     border-radius: var(--w-common-border-radius-md);
     height: 24px;
   }
 
-  &[data-size='sm'] {
-    gap: 0 var(--w-common-spacing-gap-none);
+  &[data-size="sm"] {
+    gap: var(--w-common-spacing-gap-none);
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
     border-radius: var(--w-common-border-radius-md);
     height: 20px;
   }
 
-  &[data-size='xs'] {
+  &[data-size="xs"] {
     font-size: var(--w-common-font-size-text-sm);
-    gap: 0 var(--w-common-spacing-gap-none);
+    gap: var(--w-common-spacing-gap-none);
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
     border-radius: var(--w-common-border-radius-md);
     height: 14px;
-  }
-
-  &[data-disabled] {
-    cursor: not-allowed;
-  }
-
-  &[data-variant='light'] {
-    .variant(light);
-  }
-
-  &[data-variant='dark'] {
-    .variant(dark);
-  }
-
-  &[data-variant='ghost'] {
-    .variant(gray);
   }
 }
