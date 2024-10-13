@@ -8,7 +8,7 @@ import { dropdownButtonPropTypes } from '../propType'
 import styles from './Dropdown.module.less'
 
 const ButtonTrigger = forwardRef(function (
-  { className, variant, disabled, loading, text, icon, iconControl, tooltip, size, shortcutKey, ...rest },
+  { className, variant, status, disabled, loading, text, icon, iconControl, tooltip, size, shortcutKey, ...rest },
   ref,
 ) {
   return (
@@ -17,13 +17,22 @@ const ButtonTrigger = forwardRef(function (
         variant={variant}
         disabled={disabled}
         text={text}
+        status={status}
         icon={icon}
         iconControl={iconControl}
         tooltip={tooltip}
         size={size}
         shortcutKey={shortcutKey}
       />
-      <Button ref={ref} variant={variant} disabled={disabled} size={size} icon={<DownIcon />} {...rest} />
+      <Button
+        ref={ref}
+        variant={variant}
+        status={status}
+        disabled={disabled}
+        size={size}
+        icon={<DownIcon />}
+        {...rest}
+      />
     </div>
   )
 })

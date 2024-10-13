@@ -9,9 +9,9 @@ const snapshotMap = {
   DropdownItem,
 }
 
-function RadioGroup({ $$key, value, defaultValue, onChange = () => {}, children }) {
+function RadioGroup({ name, value, defaultValue, onChange = () => {}, children }) {
   // eslint-disable-next-line no-unused-vars
-  const [_, onValueChange] = useGroupValue({ key: $$key, value, defaultValue })
+  const [_, onValueChange] = useGroupValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
     const Component = snapshotMap[child.type.displayName]

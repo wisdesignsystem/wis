@@ -9,9 +9,9 @@ const snapshotMap = {
   DropdownItem,
 }
 
-function CheckboxGroup({ $$key, value, defaultValue, onChange = () => {}, children }) {
+function CheckboxGroup({ name, value, defaultValue, onChange = () => {}, children }) {
   // eslint-disable-next-line no-unused-vars
-  const [currentValue, onValueChange] = useGroupValue({ key: $$key, value, defaultValue })
+  const [currentValue, onValueChange] = useGroupValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
     const isChecked = currentValue?.includes(child.props.value)

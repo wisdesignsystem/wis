@@ -1,26 +1,37 @@
 import { useContext, useEffect } from 'react'
+import { isUndefined } from '@/utils/is'
 
 import Context from './Context'
 
-export default function useGroupValue({ key, value, defaultValue }) {
+export default function useGroupValue({ name, value, defaultValue }) {
   const { contextValue, setContextValue } = useContext(Context)
 
   useEffect(() => {
-    if (!contextValue[key]) {
+    if (isUndefined(name)) {
+      return
+    }
+
+    if (!contextValue[name]) {
       setContextValue({
         ...contextValue,
-        [key]: defaultValue,
+        [name]: defaultValue,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultValue])
+  }, [name, defaultValue])
 
   function onValueChange(value) {
+    if (isUndefined(name)) {
+      return
+    }
+
     setContextValue({
       ...contextValue,
-      [key]: value,
+      [name]: value,
     })
   }
 
-  return [value || contextValue[key], onValueChange]
+  const currentValue = isUndefined(name) ? undefined : contextValue[name]
+
+  return [value || currentValue, onValueChange]
 }

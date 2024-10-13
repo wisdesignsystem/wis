@@ -72,7 +72,7 @@ function Example() {
   function renderComplexDropdown(key) {
     return (
       <>
-        <Dropdown.RadioGroup label="Radio Group">
+        <Dropdown.RadioGroup name="radioGroup" label="Radio Group">
           <Dropdown.Item label="Edit" value="edit" icon={<EditIcon />} shortcutKey={`Meta+${key}`}></Dropdown.Item>
           <Dropdown.Item
             label="Preview"
@@ -87,7 +87,7 @@ function Example() {
             shortcutKey={`Control+${key}`}
           ></Dropdown.Item>
         </Dropdown.RadioGroup>
-        <Dropdown.CheckboxGroup label="Checkbox Group" defaultValue={['duplicate3']}>
+        <Dropdown.CheckboxGroup name="checkboxGroup" label="Checkbox Group" defaultValue={['duplicate3']}>
           <Dropdown.Item label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></Dropdown.Item>
           <Dropdown.Item label="Duplicate2" value="duplicate2" icon={<CopyOneIcon />}></Dropdown.Item>
           <Dropdown.Item label="Duplicate3" disabled value="duplicate3" icon={<CopyOneIcon />}></Dropdown.Item>

@@ -167,7 +167,14 @@ export const dropdownGroupPropTypes = {
 
 export const dropdownRadioGroupPropTypes = {
   /**
-   * The label for the checkbox group.
+   * The name for the Dropdown.RadioGroup.
+   *
+   * @type {string}
+   */
+  name: PropTypes.string.isRequired,
+
+  /**
+   * The label for the Dropdown.RadioGroup.
    *
    * @type {string}
    */
@@ -178,7 +185,7 @@ export const dropdownRadioGroupPropTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   /**
-   * Callback function to handle changes in the checkbox group.
+   * Callback function to handle changes in the Dropdown.RadioGroup.
    *
    * @type {function}
    *
@@ -202,6 +209,13 @@ export const dropdownRadioGroupPropTypes = {
  */
 
 export const dropdownCheckboxGroupPropTypes = {
+  /**
+   * The name for the Dropdown.CheckboxGroup.
+   *
+   * @type {string}
+   */
+  name: PropTypes.string.isRequired,
+
   /**
    * The label for the checkbox group.
    *

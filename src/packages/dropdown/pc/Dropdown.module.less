@@ -1,6 +1,6 @@
 @import '@/themes/style.less';
 
-.dropdown-state-style(@state:'';) {
+.dropdown-style(@state:'';) {
   .component-style(@component: dropdown, @state: @state);
   .component-hover-style(@component: dropdown, @state: @state);
   .component-focus-style(@component: dropdown, @state: @state);
@@ -8,18 +8,22 @@
   .component-disabled-style(@component: dropdown, @state: @state);
 }
 
-.dropdown-popper-state-style() {
+.dropdown-popper-style() {
   .component-style(@component: dropdown, @widget: popper);
 }
 
-.dropdown-item-state-style(@status:'';@state:'';) {
+.dropdown-item-style(@status:'';@state:'';) {
   .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
   .component-hover-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
   .component-active-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
   .component-disabled-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
 }
 
-.dropdown-checked-state-style(@status:'';) {
+.dropdown-item-highlighted-style(@status: '';) {
+  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: hover);
+}
+
+.dropdown-checked-style(@status:'';) {
   .component-style(@component: dropdown, @widget: 'checked', @status: @status);
   .component-disabled-style(@component: dropdown, @widget: 'checked', @status: @status);
 }
@@ -48,10 +52,10 @@
     overflow: hidden;
   }
 
-  .dropdown-state-style();
+  .dropdown-style();
 
   &[data-state="open"] {
-    .dropdown-state-style(@state: selected);
+    .dropdown-style(@state: selected);
   }
 }
 
@@ -66,10 +70,11 @@
   background: var(--w-component-dropdown-popper-background);
   min-width: var(--radix-dropdown-menu-trigger-width);
 
-  .dropdown-popper-state-style();
+  .dropdown-popper-style();
 
   > .separator:first-child {
     border-top: none;
+    margin: var(--w-common-spacing-common-none);
   }
 
   &[data-variant="checkbox"] {
@@ -102,21 +107,29 @@
   font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-regular);
 
-  .dropdown-item-state-style();
+  .dropdown-item-style();
 
   &[data-state="open"] {
-    .dropdown-item-state-style(@state: selected);
+    .dropdown-item-style(@state: selected);
+  }
+
+  &[data-highlighted] {
+    .dropdown-item-highlighted-style();
   }
 
   &[data-status="danger"] {
-    .dropdown-item-state-style(@status: danger);
+    .dropdown-item-style(@status: danger);
 
     &[data-state="open"] {
-      .dropdown-item-state-style(@status: danger, @state: selected);
+      .dropdown-item-style(@status: danger, @state: selected);
+    }
+
+    &[data-highlighted] {
+      .dropdown-item-highlighted-style(@status: danger);
     }
 
     .checked {
-      .dropdown-checked-state-style(@status: danger);
+      .dropdown-checked-style(@status: danger);
     }
   }
 }
@@ -128,7 +141,7 @@
   stroke-width: 1.2;
   font-size: var(--w-common-font-size-text-md);
 
-  .dropdown-checked-state-style();
+  .dropdown-checked-style();
 }
 
 .prefix {
@@ -207,6 +220,7 @@
 
 .separator {
   border-top: var(--w-common-spacing-scale-1) solid var(--w-component-dropdown-popper-border);
+  margin: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none);
 }
 
 .label {
@@ -238,6 +252,17 @@
     &:hover {
       border-right: var(--w-common-spacing-scale-1) solid var(--w-component-button-secondary-border);
     }
+
+    &[data-status="danger"] {
+      border-right: var(--w-common-spacing-scale-1) solid var(--w-component-button-secondary-border);
+
+      &[disabled],
+      &:active,
+      &:focus,
+      &:hover {
+        border-right: var(--w-common-spacing-scale-1) solid var(--w-component-button-secondary-border);
+      }
+    }
   }
 
   > button:last-child {
@@ -249,6 +274,17 @@
     &:focus,
     &:hover {
       border-left: none;
+    }
+
+    &[data-status="danger"] {
+      border-left: none;
+
+      &[disabled],
+      &:active,
+      &:focus,
+      &:hover {
+        border-left: none;
+      }
     }
   }
 }

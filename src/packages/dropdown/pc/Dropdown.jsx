@@ -1,4 +1,4 @@
-import { Children, cloneElement, useState } from 'react'
+import { useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
 import { filterNodes, isNode } from '@/utils/node'
 
@@ -37,11 +37,7 @@ function Dropdown({ children, ...rest }) {
             align="start"
             sideOffset={8}
           >
-            {Children.map(nodes, (child) => {
-              return cloneElement(child, {
-                $$key: child.key,
-              })
-            })}
+            {nodes}
           </RDXDropdownMenu.Content>
         </RDXDropdownMenu.Portal>
       </RDXDropdownMenu.Root>

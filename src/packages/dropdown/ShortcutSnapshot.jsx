@@ -22,7 +22,7 @@ function ShortcutSnapshot({ children }) {
           return null
         }
 
-        return <Component $$key={child.key} {...child.props} />
+        return <Component {...child.props} />
       })}
     </>
   )

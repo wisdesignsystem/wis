@@ -1,4 +1,4 @@
-import { Children, cloneElement, useState } from 'react'
+import { useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
 import { filterNodes } from '@/utils/node'
 import ShortcutSnapshot from '../ShortcutSnapshot'
@@ -22,11 +22,7 @@ function Button({ children, ...rest }) {
         </RDXDropdownMenu.Trigger>
         <RDXDropdownMenu.Portal>
           <RDXDropdownMenu.Content className={styles.popper} loop align="end" sideOffset={8}>
-            {Children.map(nodes, (child) => {
-              return cloneElement(child, {
-                $$key: child.key,
-              })
-            })}
+            {nodes}
           </RDXDropdownMenu.Content>
         </RDXDropdownMenu.Portal>
       </RDXDropdownMenu.Root>

@@ -7,9 +7,9 @@ import { dropdownRadioGroupPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
 
-function RadioGroup({ $$key, label, value, defaultValue, onChange = () => {}, children }) {
+function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const nodes = filterNodes(children, ['DropdownItem'])
-  const [currentValue, onValueChange] = useGroupValue({ key: $$key, value, defaultValue })
+  const [currentValue, onValueChange] = useGroupValue({ name, value, defaultValue })
 
   return (
     <>
