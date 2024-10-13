@@ -16,6 +16,7 @@ export function attrs(data) {
 
     if (!isBoolean(value)) {
       result[key] = value
+      return result
     }
 
     if (value) {

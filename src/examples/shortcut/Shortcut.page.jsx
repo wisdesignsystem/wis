@@ -47,6 +47,19 @@ function Example() {
       </div>
 
       <div className={styles.col}>
+        <Shortcut onTrigger={handleTrigger} variant="ghost" shortcutKey="Control+J" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" shortcutKey="Shift+J" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" shortcutKey="Alt+J" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" shortcutKey="Meta+J" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" shortcutKey="Control+Shift+Alt+Meta+J" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" disabled shortcutKey="Control+P" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" disabled shortcutKey="Shift+P" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" disabled shortcutKey="Alt+P" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" disabled shortcutKey="Meta+P" />
+        <Shortcut onTrigger={handleTrigger} variant="ghost" disabled shortcutKey="Control+Shift+Alt+Meta+P" />
+      </div>
+
+      <div className={styles.col}>
         <Shortcut onTrigger={handleTrigger} size="sm" shortcutKey="Control+Q" />
         <Shortcut onTrigger={handleTrigger} size="sm" shortcutKey="Shift+Q" />
         <Shortcut onTrigger={handleTrigger} size="sm" shortcutKey="Alt+Q" />
@@ -73,6 +86,19 @@ function Example() {
       </div>
 
       <div className={styles.col}>
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" shortcutKey="Control+N" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" shortcutKey="Shift+N" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" shortcutKey="Alt+N" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" shortcutKey="Meta+N" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" shortcutKey="Control+Shift+Alt+Meta+N" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" disabled shortcutKey="Control+M" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" disabled shortcutKey="Shift+M" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" disabled shortcutKey="Alt+M" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" disabled shortcutKey="Meta+M" />
+        <Shortcut onTrigger={handleTrigger} size="sm" variant="ghost" disabled shortcutKey="Control+Shift+Alt+Meta+M" />
+      </div>
+
+      <div className={styles.col}>
         <Shortcut onTrigger={handleTrigger} size="xs" shortcutKey="Control+A" />
         <Shortcut onTrigger={handleTrigger} size="xs" shortcutKey="Shift+A" />
         <Shortcut onTrigger={handleTrigger} size="xs" shortcutKey="Alt+A" />
@@ -96,6 +122,19 @@ function Example() {
         <Shortcut onTrigger={handleTrigger} size="xs" variant="dark" disabled shortcutKey="Alt+X" />
         <Shortcut onTrigger={handleTrigger} size="xs" variant="dark" disabled shortcutKey="Meta+X" />
         <Shortcut onTrigger={handleTrigger} size="xs" variant="dark" disabled shortcutKey="Control+Shift+Alt+Meta+X" />
+      </div>
+
+      <div className={styles.col}>
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" shortcutKey="Control+F" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" shortcutKey="Shift+F" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" shortcutKey="Alt+F" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" shortcutKey="Meta+F" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" shortcutKey="Control+Shift+Alt+Meta+F" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" disabled shortcutKey="Control+L" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" disabled shortcutKey="Shift+L" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" disabled shortcutKey="Alt+L" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" disabled shortcutKey="Meta+L" />
+        <Shortcut onTrigger={handleTrigger} size="xs" variant="ghost" disabled shortcutKey="Control+Shift+Alt+Meta+L" />
       </div>
 
       <button onKeyDown={onKeyDown}>Component Level Shortcut Register, Focus Me And Try Control + 6</button>

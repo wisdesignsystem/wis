@@ -18,10 +18,10 @@ export default {
   /**
    * Variant of the shortcut.
    *
-   * @type {light|dark}
+   * @type {light|dark|ghost}
    * @default light
    */
-  variant: PropTypes.oneOf(['light', 'dark']),
+  variant: PropTypes.oneOf(['light', 'dark', 'ghost']),
 
   /**
    * Indicates if the shortcut is disabled.

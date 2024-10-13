@@ -1,0 +1,8 @@
+html[data-theme='dark'] {
+  --w-component-tooltip-light-font: var(--w-common-font-color-inverse);
+  --w-component-tooltip-light-background: var(--w-common-background-semantics-highlight);
+  --w-component-tooltip-light-border: var(--w-common-border-color-transparent);
+  --w-component-tooltip-dark-font: var(--w-common-font-color-inverse);
+  --w-component-tooltip-dark-background: var(--w-common-background-semantics-highlight);
+  --w-component-tooltip-dark-border: var(--w-common-border-color-transparent);
+}

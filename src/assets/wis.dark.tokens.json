@@ -401,6 +401,14 @@
         "$type": "color",
         "$value": "#0000001a"
       },
+      "white-transparent-70": {
+        "$type": "color",
+        "$value": "#ffffff1a"
+      },
+      "black-transparent-70": {
+        "$type": "color",
+        "$value": "#0000001a"
+      },
       "white-transparent-05": {
         "$type": "color",
         "$value": "#ffffff0d"
@@ -470,6 +478,14 @@
         }
       },
       "semantics": {
+        "black": {
+          "$type": "color",
+          "$value": "{palette.blue.00}"
+        },
+        "light": {
+          "$type": "color",
+          "$value": "{palette.blue.00}"
+        },
         "highlight": {
           "$type": "color",
           "$value": "{palette.blue.60}"
@@ -482,13 +498,13 @@
           "$type": "color",
           "$value": "{palette.blue.00}"
         },
-        "highlight-active": {
-          "$type": "color",
-          "$value": "{palette.blue.00}"
-        },
         "highlight-light-hover": {
           "$type": "color",
           "$value": "{palette.blue.10}"
+        },
+        "highlight-dark": {
+          "$type": "color",
+          "$value": "{palette.blue.00}"
         },
         "success": {
           "$type": "color",
@@ -522,7 +538,7 @@
           "$type": "color",
           "$value": "{palette.red.00}"
         },
-        "error-active": {
+        "error-dark": {
           "$type": "color",
           "$value": "{palette.red.00}"
         },
@@ -557,29 +573,29 @@
       },
       "transparent": {
         "overlay": {
-          "black": {
-            "$type": "color",
-            "$value": "{palette.transparent.mask-black}"
-          },
-          "black-10": {
-            "$type": "color",
-            "$value": "{palette.transparent.black-transparent-10}"
-          },
           "white": {
             "$type": "color",
             "$value": "{palette.transparent.mask-white}"
+          },
+          "white-05": {
+            "$type": "color",
+            "$value": "{palette.transparent.white-transparent-05}"
           },
           "white-10": {
             "$type": "color",
             "$value": "{palette.transparent.white-transparent-10}"
           },
+          "black": {
+            "$type": "color",
+            "$value": "{palette.transparent.mask-black}"
+          },
           "black-05": {
             "$type": "color",
             "$value": "{palette.transparent.black-transparent-05}"
           },
-          "white-05": {
+          "black-10": {
             "$type": "color",
-            "$value": "{palette.transparent.white-transparent-05}"
+            "$value": "{palette.transparent.black-transparent-10}"
           }
         },
         "fully": {
@@ -1008,80 +1024,118 @@
   },
   "component": {
     "dropdown": {
+      "font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "hover-font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "hover-background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "hover-border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "focus-background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "focus-border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "focus-font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "active-font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "active-background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "active-border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "selected-font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "selected-background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "selected-border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "disabled-font": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "disabled-background": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "disabled-border": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
       "item": {
-        "default": {
-          "font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "hover-font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "hover-background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "hover-border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "active-font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "active-background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "active-border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "focus-font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "focus-background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "focus-border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "selected-font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "selected-background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "selected-border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "disabled-font": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "disabled-background": {
-            "$type": "color",
-            "$value": "#ffffff"
-          },
-          "disabled-border": {
-            "$type": "color",
-            "$value": "#ffffff"
-          }
+        "font": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "hover-border": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "active-border": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "focus-font": {
+          "$type": "color",
+          "$value": "#ffffff"
         },
         "checked": {
           "font": {
@@ -1156,6 +1210,38 @@
             "$type": "color",
             "$value": "#ffffff"
           }
+        },
+        "focus-background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "focus-border": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "selected-font": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "selected-background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "selected-border": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "disabled-border": {
+          "$type": "color",
+          "$value": "#ffffff"
         },
         "danger": {
           "font": {
@@ -1306,6 +1392,50 @@
           }
         }
       },
+      "button": {
+        "primary": {
+          "selected-font": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-background": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-border": {
+            "$type": "color",
+            "$value": "#ffffff"
+          }
+        },
+        "classic": {
+          "selected-font": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-border": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-background": {
+            "$type": "color",
+            "$value": "#ffffff"
+          }
+        },
+        "secondary": {
+          "selected-font": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-border": {
+            "$type": "color",
+            "$value": "#ffffff"
+          },
+          "selected-background": {
+            "$type": "color",
+            "$value": "#ffffff"
+          }
+        }
+      },
       "popper": {
         "background": {
           "$type": "color",
@@ -1319,15 +1449,15 @@
     },
     "button": {
       "primary": {
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.inverse}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.semantics.highlight}"
         },
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1340,6 +1470,18 @@
           "$value": "{common.background.semantics.highlight-hover}"
         },
         "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "active-border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1368,15 +1510,15 @@
           "$value": "{common.border.color.transparent}"
         },
         "danger": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.inverse}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.semantics.error}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1389,6 +1531,18 @@
             "$value": "{common.font.color.inverse}"
           },
           "hover-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-hover}"
+          },
+          "active-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.font.color.inverse}"
+          },
+          "active-background": {
             "$type": "color",
             "$value": "{common.background.semantics.error-hover}"
           },
@@ -1419,15 +1573,15 @@
         }
       },
       "secondary": {
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.semantics.highlight-light}"
         },
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.semantics.highlight}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.semantics.highlight-light}"
         },
@@ -1440,6 +1594,18 @@
           "$value": "{common.font.color.semantics.highlight}"
         },
         "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-light-hover}"
+        },
+        "active-border": {
+          "$type": "color",
+          "$value": "{common.border.color.semantics.highlight-light}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.semantics.highlight}"
+        },
+        "active-background": {
           "$type": "color",
           "$value": "{common.background.semantics.highlight-light-hover}"
         },
@@ -1468,15 +1634,15 @@
           "$value": "{common.border.color.semantics.highlight-light}"
         },
         "danger": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.semantics.error}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.semantics.error-light}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1489,6 +1655,18 @@
             "$value": "{common.background.semantics.error-light-hover}"
           },
           "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.error}"
+          },
+          "active-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light-hover}"
+          },
+          "active-border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1519,15 +1697,15 @@
         }
       },
       "tertiary": {
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.03}"
         },
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.secondary}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.common.base}"
         },
@@ -1540,6 +1718,18 @@
           "$value": "{common.background.state.hover}"
         },
         "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.03}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.secondary}"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "{common.background.state.hover}"
+        },
+        "active-border": {
           "$type": "color",
           "$value": "{common.border.color.03}"
         },
@@ -1568,15 +1758,15 @@
           "$value": "{common.border.color.03}"
         },
         "danger": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.semantics.error}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.transparent.fully}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.semantics.error-light}"
           },
@@ -1589,6 +1779,18 @@
             "$value": "{common.background.semantics.error-light-hover}"
           },
           "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.semantics.error-light}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.error}"
+          },
+          "active-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light-hover}"
+          },
+          "active-border": {
             "$type": "color",
             "$value": "{common.border.color.semantics.error-light}"
           },
@@ -1619,15 +1821,15 @@
         }
       },
       "ghost": {
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.base}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.transparent.fully}"
         },
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1640,6 +1842,18 @@
           "$value": "{common.background.state.hover}"
         },
         "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.secondary}"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "{common.background.state.hover}"
+        },
+        "active-border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1668,15 +1882,15 @@
           "$value": "{common.border.color.transparent}"
         },
         "danger": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.semantics.error}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.transparent.fully}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1689,6 +1903,18 @@
             "$value": "{common.background.semantics.error-light-hover}"
           },
           "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.error}"
+          },
+          "active-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light-hover}"
+          },
+          "active-border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1719,15 +1945,15 @@
         }
       },
       "classic": {
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.inverse}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.semantics.highlight}"
         },
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1740,6 +1966,18 @@
           "$value": "{common.background.semantics.highlight-hover}"
         },
         "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "active-border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1768,15 +2006,15 @@
           "$value": "{common.border.color.transparent}"
         },
         "danger": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.inverse}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.semantics.error}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -1789,6 +2027,18 @@
             "$value": "{common.font.color.inverse}"
           },
           "hover-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-hover}"
+          },
+          "active-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.font.color.inverse}"
+          },
+          "active-background": {
             "$type": "color",
             "$value": "{common.background.semantics.error-hover}"
           },
@@ -1819,17 +2069,47 @@
         }
       }
     },
+    "tooltip": {
+      "light": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        }
+      },
+      "dark": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        }
+      }
+    },
     "toggle": {
-      "default": {
-        "default-border": {
+      "basic": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.semantics.highlight-light}"
         },
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.semantics.highlight}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.semantics.highlight-light}"
         },
@@ -1869,16 +2149,16 @@
           "$type": "color",
           "$value": "{common.border.color.semantics.highlight-light}"
         },
-        "checked": {
-          "default-border": {
+        "selected": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.semantics.highlight-light}"
           },
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.semantics.highlight}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.semantics.highlight-light-hover}"
           },
@@ -1921,15 +2201,15 @@
         }
       },
       "ghost": {
-        "default-font": {
+        "font": {
           "$type": "color",
           "$value": "{common.font.color.base}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.transparent.fully}"
         },
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
@@ -1969,16 +2249,16 @@
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
-        "checked": {
-          "default-font": {
+        "selected": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.primary}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.common.02}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -2072,7 +2352,7 @@
             "$type": "color",
             "$value": "{common.border.color.semantics.highlight-light}"
           },
-          "checked": {
+          "selected": {
             "default-border": {
               "$type": "color",
               "$value": "{common.border.color.semantics.highlight-light}"
@@ -2172,7 +2452,7 @@
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
-          "checked": {
+          "selected": {
             "default-font": {
               "$type": "color",
               "$value": "{common.font.color.primary}"
@@ -2441,7 +2721,7 @@
         }
       }
     },
-    "input": {
+    "_input": {
       "default-font": {
         "$type": "color",
         "$value": "{common.font.color.primary}"
@@ -3092,7 +3372,7 @@
       },
       "item-active-background": {
         "$type": "color",
-        "$value": "{common.background.semantics.highlight-active}"
+        "$value": "{common.background.semantics.highlight-dark}"
       },
       "item-disabled-font": {
         "$type": "color",

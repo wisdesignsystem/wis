@@ -18,29 +18,29 @@ function runShortcut(event) {
   }
 }
 
-function on(shortcutKey, task) {
-  if (!hasGlobalShortcut()) {
+function on(shortcutKey, unregister, task) {
+  if (!unregister && !hasGlobalShortcut()) {
     document.addEventListener('keydown', runShortcut)
   }
 
   let shortcut = createShortcut(shortcutKey, task)
   if (shortcut && isCombineShortcut(shortcut)) {
-    if (shortcutMap[shortcut.shortcutKey]) {
+    if (!unregister && shortcutMap[shortcut.shortcutKey]) {
       console.warn(
-        `Shortcut key: ${shortcut.shortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
+        `Shortcut key: ${shortcut.showShortcutKey} has a shortcut key conflict. Please switch to other shortcut keys.`,
       )
       shortcut = undefined
-    } else {
+    } else if (!unregister) {
       shortcutMap[shortcut.shortcutKey] = shortcut
     }
   }
 
   function off() {
-    if (shortcut) {
+    if (!unregister && shortcut) {
       delete shortcutMap[shortcut.shortcutKey]
     }
 
-    if (!hasGlobalShortcut()) {
+    if (!unregister && !hasGlobalShortcut()) {
       document.removeEventListener('keydown', runShortcut)
     }
   }
@@ -52,6 +52,7 @@ function on(shortcutKey, task) {
  * Register global shortcut function
  *
  * @param {string} shortcutKey
+ * @param {boolean} unregister - Indicates if the shortcut key should be unregistered
  *
  * @typedef {Object} Shortcut
  * @property {string} shortcutKey - The key combination for the shortcut.
@@ -70,7 +71,7 @@ function on(shortcutKey, task) {
  *  console.log('trigger Control+T shortcut', shortcut)
  * })
  */
-export default function useGlobalShortcut(shortcutKey) {
+export default function useGlobalShortcut(shortcutKey, unregister) {
   const task = useRef()
   const [shortcut, setShortcut] = useState()
 
@@ -80,7 +81,7 @@ export default function useGlobalShortcut(shortcutKey) {
       return
     }
 
-    const [currentShortcut, off] = on(shortcutKey, (shortcut) => {
+    const [currentShortcut, off] = on(shortcutKey, unregister, (shortcut) => {
       if (!isFunction(task.current)) {
         return
       }
@@ -94,12 +95,12 @@ export default function useGlobalShortcut(shortcutKey) {
     return () => {
       off()
     }
-  }, [shortcutKey])
+  }, [shortcutKey, unregister])
 
   function onShortcut(callback) {
     task.current = callback
     return shortcut
   }
 
-  return onShortcut
+  return [shortcut, onShortcut]
 }

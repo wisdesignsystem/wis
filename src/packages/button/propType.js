@@ -26,7 +26,7 @@ export default {
    * @type {normal|danger}
    * @default normal
    */
-  status: PropTypes.oneOf(['normal', 'danger']),
+  status: PropTypes.oneOf(['danger']),
 
   /**
    * Indicates if the button is disabled.
