@@ -7,6 +7,9 @@
   .component-active-style(@component: dropdown, @state: @state);
   .component-disabled-style(@component: dropdown, @state: @state);
 }
+.dropdown-selected-style() {
+  .component-style(@component: dropdown, @state: selected);
+}
 
 .dropdown-popper-style() {
   .component-style(@component: dropdown, @widget: popper);
@@ -18,14 +21,16 @@
   .component-active-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
   .component-disabled-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
 }
-
+.dropdown-item-selected-style(@status:'') {
+  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: selected);
+}
 .dropdown-item-highlighted-style(@status: '';) {
-  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: hover);
+  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state2: hover);
 }
 
 .dropdown-checked-style(@status:'';) {
-  .component-style(@component: dropdown, @widget: 'checked', @status: @status);
-  .component-disabled-style(@component: dropdown, @widget: 'checked', @status: @status);
+  .component-style(@component: dropdown, @widget: 'item-checked', @status: @status);
+  .component-disabled-style(@component: dropdown, @widget: 'item-checked', @status: @status);
 }
 
 .trigger {
@@ -53,9 +58,8 @@
   }
 
   .dropdown-style();
-
   &[data-state="open"] {
-    .dropdown-style(@state: selected);
+    .dropdown-selected-style();
   }
 }
 
@@ -110,7 +114,7 @@
   .dropdown-item-style();
 
   &[data-state="open"] {
-    .dropdown-item-style(@state: selected);
+    .dropdown-item-selected-style();
   }
 
   &[data-highlighted] {
@@ -121,7 +125,7 @@
     .dropdown-item-style(@status: danger);
 
     &[data-state="open"] {
-      .dropdown-item-style(@status: danger, @state: selected);
+      .dropdown-item-selected-style(@status: danger);
     }
 
     &[data-highlighted] {

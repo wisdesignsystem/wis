@@ -1,7 +1,7 @@
 :root {
-  --w-component-toggle-group-item-normal-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-item-normal-font: var(--w-common-font-color-helper);
   --w-component-toggle-group-item-normal-background: var(--w-common-background-transparent-fully);
+  --w-component-toggle-group-item-normal-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-item-normal-hover-border: var(--w-common-border-color-03);
   --w-component-toggle-group-item-normal-hover-font: var(--w-common-font-color-base);
   --w-component-toggle-group-item-normal-hover-background: var(--w-common-background-common-base);

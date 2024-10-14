@@ -1,7 +1,7 @@
 html[data-theme='highContrast'] {
-  --w-component-toggle-group-item-normal-default-border: var(--w-common-border-color-base);
-  --w-component-toggle-group-item-normal-default-font: var(--w-common-font-color-semantics-highlight);
-  --w-component-toggle-group-item-normal-default-background: var(--w-common-background-common-base);
+  --w-component-toggle-group-item-normal-font: var(--w-common-font-color-semantics-highlight);
+  --w-component-toggle-group-item-normal-background: var(--w-common-background-common-base);
+  --w-component-toggle-group-item-normal-border: var(--w-common-border-color-base);
   --w-component-toggle-group-item-normal-hover-border: var(--w-common-border-color-base);
   --w-component-toggle-group-item-normal-hover-font: var(--w-common-font-color-semantics-highlight);
   --w-component-toggle-group-item-normal-hover-background: var(--w-common-background-state-hover);
@@ -11,9 +11,9 @@ html[data-theme='highContrast'] {
   --w-component-toggle-group-item-normal-focus-font: var(--w-common-font-color-semantics-highlight);
   --w-component-toggle-group-item-normal-focus-background: var(--w-common-background-common-base);
   --w-component-toggle-group-item-normal-focus-border: var(--w-common-border-color-base);
-  --w-component-toggle-group-item-normal-selected-default-border: var(--w-common-border-color-base);
-  --w-component-toggle-group-item-normal-selected-default-font: var(--w-common-font-color-semantics-highlight);
-  --w-component-toggle-group-item-normal-selected-default-background: var(--w-common-background-state-hover);
+  --w-component-toggle-group-item-normal-selected-border: var(--w-common-border-color-base);
+  --w-component-toggle-group-item-normal-selected-font: var(--w-common-font-color-semantics-highlight);
+  --w-component-toggle-group-item-normal-selected-background: var(--w-common-background-state-hover);
   --w-component-toggle-group-item-normal-selected-hover-border: var(--w-common-border-color-base);
   --w-component-toggle-group-item-normal-selected-hover-font: var(--w-common-font-color-semantics-highlight);
   --w-component-toggle-group-item-normal-selected-hover-background: var(--w-common-background-state-hover);
@@ -23,9 +23,9 @@ html[data-theme='highContrast'] {
   --w-component-toggle-group-item-normal-selected-disabled-border: var(--w-common-border-color-base);
   --w-component-toggle-group-item-normal-selected-disabled-font: var(--w-common-font-color-semantics-highlight);
   --w-component-toggle-group-item-normal-selected-disabled-background: var(--w-common-background-state-hover);
-  --w-component-toggle-group-item-compact-default-font: var(--w-common-font-color-base);
-  --w-component-toggle-group-item-compact-default-background: var(--w-common-background-transparent-fully);
-  --w-component-toggle-group-item-compact-default-border: var(--w-common-border-color-transparent);
+  --w-component-toggle-group-item-compact-font: var(--w-common-font-color-base);
+  --w-component-toggle-group-item-compact-background: var(--w-common-background-transparent-fully);
+  --w-component-toggle-group-item-compact-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-item-compact-hover-font: var(--w-common-font-color-secondary);
   --w-component-toggle-group-item-compact-hover-background: var(--w-common-background-state-hover);
   --w-component-toggle-group-item-compact-hover-border: var(--w-common-border-color-transparent);
@@ -35,9 +35,9 @@ html[data-theme='highContrast'] {
   --w-component-toggle-group-item-compact-focus-font: var(--w-common-font-color-secondary);
   --w-component-toggle-group-item-compact-focus-background: var(--w-common-background-common-base);
   --w-component-toggle-group-item-compact-focus-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-group-item-compact-selected-default-font: var(--w-common-font-color-primary);
-  --w-component-toggle-group-item-compact-selected-default-background: var(--w-common-background-common-02);
-  --w-component-toggle-group-item-compact-selected-default-border: var(--w-common-border-color-transparent);
+  --w-component-toggle-group-item-compact-selected-font: var(--w-common-font-color-primary);
+  --w-component-toggle-group-item-compact-selected-background: var(--w-common-background-common-02);
+  --w-component-toggle-group-item-compact-selected-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-item-compact-selected-hover-font: var(--w-common-font-color-primary);
   --w-component-toggle-group-item-compact-selected-hover-background: var(--w-common-background-common-03);
   --w-component-toggle-group-item-compact-selected-hover-border: var(--w-common-border-color-transparent);
@@ -47,8 +47,8 @@ html[data-theme='highContrast'] {
   --w-component-toggle-group-item-compact-selected-disabled-font: var(--w-common-font-color-state-disabled);
   --w-component-toggle-group-item-compact-selected-disabled-background: var(--w-common-background-common-02);
   --w-component-toggle-group-item-compact-selected-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-group-normal-default-border: var(--w-common-border-color-base);
-  --w-component-toggle-group-normal-default-background: var(--w-common-background-state-hover);
-  --w-component-toggle-group-compact-default-border: var(--w-common-border-color-base);
+  --w-component-toggle-group-normal-border: var(--w-common-border-color-base);
+  --w-component-toggle-group-normal-background: var(--w-common-background-state-hover);
+  --w-component-toggle-group-compact-border: var(--w-common-border-color-base);
   --w-component-toggle-group-compact-default-background: var(--w-common-background-state-hover);
 }

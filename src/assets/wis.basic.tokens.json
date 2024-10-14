@@ -1133,103 +1133,19 @@
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
-        "focus-font": {
-          "$type": "color",
-          "$value": "{common.font.color.base}"
-        },
-        "checked": {
+        "selected": {
           "font": {
             "$type": "color",
             "$value": "{common.font.color.base}"
           },
           "background": {
             "$type": "color",
-            "$value": "{common.background.common.base}"
+            "$value": "{common.background.state.selected}"
           },
           "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
-          },
-          "hover-background": {
-            "$type": "color",
-            "$value": "{common.background.state.hover}"
-          },
-          "hover-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "hover-font": {
-            "$type": "color",
-            "$value": "{common.font.color.base}"
-          },
-          "focus-font": {
-            "$type": "color",
-            "$value": "{common.font.color.base}"
-          },
-          "focus-background": {
-            "$type": "color",
-            "$value": "{common.background.state.hover}"
-          },
-          "focus-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "active-font": {
-            "$type": "color",
-            "$value": "{common.font.color.base}"
-          },
-          "active-background": {
-            "$type": "color",
-            "$value": "{common.background.state.hover}"
-          },
-          "active-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "selected-font": {
-            "$type": "color",
-            "$value": "{common.font.color.base}"
-          },
-          "selected-background": {
-            "$type": "color",
-            "$value": "{common.background.state.selected}"
-          },
-          "selected-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "disabled-font": {
-            "$type": "color",
-            "$value": "{common.font.color.state.disabled}"
-          },
-          "disabled-background": {
-            "$type": "color",
-            "$value": "{common.background.common.base}"
-          },
-          "disabled-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
           }
-        },
-        "focus-background": {
-          "$type": "color",
-          "$value": "{common.background.state.hover}"
-        },
-        "focus-border": {
-          "$type": "color",
-          "$value": "{common.border.color.transparent}"
-        },
-        "selected-font": {
-          "$type": "color",
-          "$value": "{common.font.color.base}"
-        },
-        "selected-background": {
-          "$type": "color",
-          "$value": "{common.background.state.selected}"
-        },
-        "selected-border": {
-          "$type": "color",
-          "$value": "{common.border.color.transparent}"
         },
         "disabled-font": {
           "$type": "color",
@@ -1247,6 +1163,74 @@
           "font": {
             "$type": "color",
             "$value": "{common.font.color.semantics.error}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "hover-font": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-hover}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light}"
+          },
+          "hover-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "focus-font": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-hover}"
+          },
+          "focus-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light}"
+          },
+          "focus-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "active-font": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-hover}"
+          },
+          "active-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light}"
+          },
+          "active-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "selected-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.error}"
+          },
+          "selected-background": {
+            "$type": "color",
+            "$value": "{common.background.semantics.error-light}"
+          },
+          "selected-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          },
+          "disabled-font": {
+            "$type": "color",
+            "$value": "{common.font.color.semantics.error-disabled}"
+          },
+          "disabled-background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "disabled-border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
           },
           "checked": {
             "font": {
@@ -1321,75 +1305,69 @@
               "$type": "color",
               "$value": "{common.border.color.transparent}"
             }
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{common.background.common.base}"
-          },
-          "border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "hover-font": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-hover}"
-          },
-          "hover-background": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-light}"
-          },
-          "hover-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "focus-font": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-hover}"
-          },
-          "focus-background": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-light}"
-          },
-          "focus-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "active-font": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-hover}"
-          },
-          "active-background": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-light}"
-          },
-          "active-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "selected-font": {
-            "$type": "color",
-            "$value": "{common.font.color.semantics.error}"
-          },
-          "selected-background": {
-            "$type": "color",
-            "$value": "{common.background.semantics.error-light}"
-          },
-          "selected-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "disabled-font": {
-            "$type": "color",
-            "$value": "{common.font.color.semantics.error-disabled}"
-          },
-          "disabled-background": {
-            "$type": "color",
-            "$value": "{common.background.common.base}"
-          },
-          "disabled-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
           }
+        }
+      },
+      "item-checked": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.base}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.state.hover}"
+        },
+        "hover-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "{common.font.color.base}"
+        },
+        "active-font": {
+          "$type": "color",
+          "$value": "{common.font.color.base}"
+        },
+        "active-background": {
+          "$type": "color",
+          "$value": "{common.background.state.hover}"
+        },
+        "active-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "selected-font": {
+          "$type": "color",
+          "$value": "{common.font.color.base}"
+        },
+        "selected-background": {
+          "$type": "color",
+          "$value": "{common.background.state.selected}"
+        },
+        "selected-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.font.color.state.disabled}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "disabled-border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
         }
       },
       "button": {
@@ -2304,17 +2282,17 @@
     "toggle-group": {
       "item": {
         "normal": {
-          "default-border": {
-            "$type": "color",
-            "$value": "{common.border.color.transparent}"
-          },
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.helper}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
           },
           "hover-border": {
             "$type": "color",
@@ -2353,15 +2331,15 @@
             "$value": "{common.border.color.base}"
           },
           "selected": {
-            "default-border": {
+            "border": {
               "$type": "color",
               "$value": "{common.border.color.03}"
             },
-            "default-font": {
+            "font": {
               "$type": "color",
               "$value": "{common.font.color.primary}"
             },
-            "default-background": {
+            "background": {
               "$type": "color",
               "$value": "{common.background.common.base}"
             },
@@ -2404,15 +2382,15 @@
           }
         },
         "compact": {
-          "default-font": {
+          "font": {
             "$type": "color",
             "$value": "{common.font.color.helper}"
           },
-          "default-background": {
+          "background": {
             "$type": "color",
             "$value": "{common.background.common.base}"
           },
-          "default-border": {
+          "border": {
             "$type": "color",
             "$value": "{common.border.color.transparent}"
           },
@@ -2453,15 +2431,15 @@
             "$value": "{common.border.color.transparent}"
           },
           "selected": {
-            "default-font": {
+            "font": {
               "$type": "color",
               "$value": "{common.font.color.primary}"
             },
-            "default-background": {
+            "background": {
               "$type": "color",
               "$value": "{common.background.common.03}"
             },
-            "default-border": {
+            "border": {
               "$type": "color",
               "$value": "{common.border.color.base}"
             },
@@ -2505,17 +2483,17 @@
         }
       },
       "normal": {
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.transparent}"
         },
-        "default-background": {
+        "background": {
           "$type": "color",
           "$value": "{common.background.common.02}"
         }
       },
       "compact": {
-        "default-border": {
+        "border": {
           "$type": "color",
           "$value": "{common.border.color.base}"
         },
