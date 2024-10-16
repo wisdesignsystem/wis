@@ -1,19 +1,20 @@
 import { Children, cloneElement } from 'react'
-import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchChildren } from '@/utils/node'
 import { isFunction } from '@/utils/is'
-import { contextMenuGroupPropTypes } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import { contextMenuGroupPropTypes } from '../propType'
+
+import styles from './ContextMenu.module.less'
 
 function Group({ label, onSelect = () => {}, children }) {
   const { matched } = matchChildren(children, ['ContextMenuItem'])
 
   return (
     <>
-      <RDXDropdownMenu.Separator className={styles.separator} />
-      {label && <RDXDropdownMenu.Label className={styles.label}>{label}</RDXDropdownMenu.Label>}
-      <RDXDropdownMenu.Group>
+      <RDXContextMenu.Separator className={styles.separator} />
+      {label && <RDXContextMenu.Label className={styles.label}>{label}</RDXContextMenu.Label>}
+      <RDXContextMenu.Group>
         {Children.map(matched, (child) => {
           return cloneElement(child, {
             role: 'menuitem',
@@ -26,7 +27,7 @@ function Group({ label, onSelect = () => {}, children }) {
             },
           })
         })}
-      </RDXDropdownMenu.Group>
+      </RDXContextMenu.Group>
     </>
   )
 }

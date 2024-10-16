@@ -1,9 +1,11 @@
 import { Children, cloneElement } from 'react'
-import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchChildren } from '@/utils/node'
-import { contextMenuRadioGroupPropTypes, useContextMenuValue } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import { contextMenuRadioGroupPropTypes } from '../propType'
+import useContextMenuValue from '../useContextMenuValue'
+
+import styles from './ContextMenu.module.less'
 
 function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const { matched } = matchChildren(children, ['ContextMenuItem'])
@@ -11,9 +13,9 @@ function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, chi
 
   return (
     <>
-      <RDXDropdownMenu.Separator className={styles.separator} />
-      {label && <RDXDropdownMenu.Label className={styles.label}>{label}</RDXDropdownMenu.Label>}
-      <RDXDropdownMenu.RadioGroup
+      <RDXContextMenu.Separator className={styles.separator} />
+      {label && <RDXContextMenu.Label className={styles.label}>{label}</RDXContextMenu.Label>}
+      <RDXContextMenu.RadioGroup
         value={currentValue}
         onValueChange={(value) => {
           onValueChange(value)
@@ -23,7 +25,7 @@ function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, chi
         {Children.map(matched, (child) => {
           return cloneElement(child, { role: 'menuitemradio' })
         })}
-      </RDXDropdownMenu.RadioGroup>
+      </RDXContextMenu.RadioGroup>
     </>
   )
 }

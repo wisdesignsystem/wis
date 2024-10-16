@@ -1,17 +1,12 @@
 import { Children } from 'react'
 import { isFunction } from '@/utils/is'
 
-import DropdownItem from './Item'
-
-import { dropdownGroupPropTypes } from '../propType'
-
-const snapshotMap = {
-  DropdownItem,
-}
+import { contextMenuGroupPropTypes } from './propType'
+import components from './component'
 
 function Group({ onSelect = () => {}, children }) {
   return Children.map(children, (child) => {
-    const Component = snapshotMap[child.type.displayName]
+    const Component = components[child.type.displayName]
     if (!Component) {
       return null
     }
@@ -32,6 +27,6 @@ function Group({ onSelect = () => {}, children }) {
   })
 }
 
-Group.propTypes = dropdownGroupPropTypes
+Group.propTypes = contextMenuGroupPropTypes
 
 export default Group

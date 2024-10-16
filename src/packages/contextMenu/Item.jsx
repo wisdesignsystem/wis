@@ -1,12 +1,17 @@
 import { useGlobalShortcut } from 'remote:self/core'
-import { filterNodes } from '@/utils/node'
+import { matchChildren } from '@/utils/node'
 
-import ShortcutSnapshot from '../ShortcutSnapshot'
-import { dropdownItemPropTypes } from '../propType'
+import Shortcut from './Shortcut'
+import { contextMenuItemPropTypes } from './propType'
 
 function Item({ disabled, role, value, checked, shortcutKey, onSelect = () => {}, onCheck = () => {}, children }) {
-  const nodes = filterNodes(children, ['DropdownItem', 'DropdownGroup', 'DropdownCheckboxGroup', 'DropdownRadioGroup'])
-  const hasSubmenu = nodes.length > 0
+  const { matched } = matchChildren(children, [
+    'ContextMenuItem',
+    'ContextMenuGroup',
+    'ContextMenuCheckboxGroup',
+    'ContextMenuRadioGroup',
+  ])
+  const hasSubmenu = matched.length > 0
   // eslint-disable-next-line no-unused-vars
   const [_, onGlobalShortcut] = useGlobalShortcut(hasSubmenu ? undefined : shortcutKey)
   onGlobalShortcut(() => {
@@ -28,12 +33,12 @@ function Item({ disabled, role, value, checked, shortcutKey, onSelect = () => {}
   })
 
   if (hasSubmenu) {
-    return <ShortcutSnapshot>{nodes}</ShortcutSnapshot>
+    return <Shortcut>{matched}</Shortcut>
   }
 
   return null
 }
 
-Item.propTypes = dropdownItemPropTypes
+Item.propTypes = contextMenuItemPropTypes
 
 export default Item

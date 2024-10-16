@@ -1,20 +1,15 @@
 import { Children } from 'react'
 
-import DropdownItem from './Item'
-
-import useGroupValue from '../useGroupValue'
-import { dropdownRadioGroupPropTypes } from '../propType'
-
-const snapshotMap = {
-  DropdownItem,
-}
+import useContextMenuValue from './useContextMenuValue'
+import { contextMenuRadioGroupPropTypes } from './propType'
+import components from './component'
 
 function RadioGroup({ name, value, defaultValue, onChange = () => {}, children }) {
   // eslint-disable-next-line no-unused-vars
-  const [_, onValueChange] = useGroupValue({ name, value, defaultValue })
+  const [_, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
-    const Component = snapshotMap[child.type.displayName]
+    const Component = components[child.type.displayName]
     if (!Component) {
       return null
     }
@@ -32,6 +27,6 @@ function RadioGroup({ name, value, defaultValue, onChange = () => {}, children }
   })
 }
 
-RadioGroup.propTypes = dropdownRadioGroupPropTypes
+RadioGroup.propTypes = contextMenuRadioGroupPropTypes
 
 export default RadioGroup

@@ -1,22 +1,16 @@
 import { Children } from 'react'
 
-import DropdownItem from './Item'
-
-import useGroupValue from '../useGroupValue'
-import { dropdownCheckboxGroupPropTypes } from '../propType'
-
-const snapshotMap = {
-  DropdownItem,
-}
+import useContextMenuValue from './useContextMenuValue'
+import { contextMenuCheckboxGroupPropTypes } from './propType'
+import components from './component'
 
 function CheckboxGroup({ name, value, defaultValue, onChange = () => {}, children }) {
-  // eslint-disable-next-line no-unused-vars
-  const [currentValue, onValueChange] = useGroupValue({ name, value, defaultValue })
+  const [currentValue, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
     const isChecked = currentValue?.includes(child.props.value)
 
-    const Component = snapshotMap[child.type.displayName]
+    const Component = components[child.type.displayName]
     if (!Component) {
       return null
     }
@@ -42,6 +36,6 @@ function CheckboxGroup({ name, value, defaultValue, onChange = () => {}, childre
   })
 }
 
-CheckboxGroup.propTypes = dropdownCheckboxGroupPropTypes
+CheckboxGroup.propTypes = contextMenuCheckboxGroupPropTypes
 
 export default CheckboxGroup
