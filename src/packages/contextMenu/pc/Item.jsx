@@ -1,13 +1,14 @@
-import { useRef, useContext } from 'react'
-import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
+import { useRef } from 'react'
+import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { attrs } from '@/utils/attrs'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
 import { matchChildren } from '@/utils/node'
-import { contextMenuItemPropTypes, Context } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import { contextMenuItemPropTypes } from '../propType'
+
+import styles from './ContextMenu.module.less'
 
 function Item({
   role,
@@ -23,7 +24,6 @@ function Item({
   onCheckedChange = () => {},
   children,
 }) {
-  const { contextType } = useContext(Context)
   const item = useRef(null)
   const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
     'ContextMenuItem',
@@ -32,7 +32,7 @@ function Item({
     'ContextMenuRadioGroup',
   ])
 
-  const isSupportSubmenu = !!matched.length && contextType !== 'DropdownButton'
+  const isSupportSubmenu = matched.length > 0
 
   function renderItem() {
     return (
@@ -64,7 +64,7 @@ function Item({
 
   if (role === 'menuitemcheckbox') {
     return (
-      <RDXDropdownMenu.CheckboxItem
+      <RDXContextMenu.CheckboxItem
         ref={item}
         className={styles.item}
         checked={checked}
@@ -73,17 +73,17 @@ function Item({
         aria-keyshortcuts={shortcutKey}
         onCheckedChange={onCheckedChange}
       >
-        <RDXDropdownMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
+        <RDXContextMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
           <CheckIcon />
-        </RDXDropdownMenu.ItemIndicator>
+        </RDXContextMenu.ItemIndicator>
         {renderItem()}
-      </RDXDropdownMenu.CheckboxItem>
+      </RDXContextMenu.CheckboxItem>
     )
   }
 
   if (role === 'menuitemradio') {
     return (
-      <RDXDropdownMenu.RadioItem
+      <RDXContextMenu.RadioItem
         ref={item}
         className={styles.item}
         aria-keyshortcuts={shortcutKey}
@@ -91,11 +91,11 @@ function Item({
         value={value}
         textValue={label}
       >
-        <RDXDropdownMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
+        <RDXContextMenu.ItemIndicator className={styles.checked} {...attrs({ 'data-disabled': disabled })}>
           <CheckIcon />
-        </RDXDropdownMenu.ItemIndicator>
+        </RDXContextMenu.ItemIndicator>
         {renderItem()}
-      </RDXDropdownMenu.RadioItem>
+      </RDXContextMenu.RadioItem>
     )
   }
 
@@ -103,26 +103,26 @@ function Item({
     const hasCheckedItem = !!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length
 
     return (
-      <RDXDropdownMenu.Sub>
-        <RDXDropdownMenu.SubTrigger className={styles.item} disabled={disabled}>
+      <RDXContextMenu.Sub>
+        <RDXContextMenu.SubTrigger className={styles.item} disabled={disabled}>
           {renderItem()}
-        </RDXDropdownMenu.SubTrigger>
-        <RDXDropdownMenu.Portal>
-          <RDXDropdownMenu.SubContent
+        </RDXContextMenu.SubTrigger>
+        <RDXContextMenu.Portal>
+          <RDXContextMenu.SubContent
             className={classNames(styles.popper, {
               [styles['with-checked']]: hasCheckedItem,
             })}
             loop
           >
             {matched}
-          </RDXDropdownMenu.SubContent>
-        </RDXDropdownMenu.Portal>
-      </RDXDropdownMenu.Sub>
+          </RDXContextMenu.SubContent>
+        </RDXContextMenu.Portal>
+      </RDXContextMenu.Sub>
     )
   }
 
   return (
-    <RDXDropdownMenu.Item
+    <RDXContextMenu.Item
       ref={item}
       className={styles.item}
       value={value}
@@ -135,7 +135,7 @@ function Item({
       })}
     >
       {renderItem()}
-    </RDXDropdownMenu.Item>
+    </RDXContextMenu.Item>
   )
 }
 

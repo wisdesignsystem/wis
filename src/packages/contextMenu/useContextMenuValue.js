@@ -3,7 +3,7 @@ import { isUndefined } from '@/utils/is'
 
 import Context from './Context'
 
-export default function useGroupValue({ name, value, defaultValue }) {
+export default function useContextMenuValue({ name, value, defaultValue }) {
   const { contextValue, setContextValue } = useContext(Context)
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { filterNodes, isNode } from '@/utils/node'
+import { matchChildren } from '@/utils/node'
+import { Context, Shortcut } from '@/packages/contextMenu'
 
 import Trigger from './Trigger'
 import Item from './Item'
@@ -8,24 +9,25 @@ import Group from './Group'
 import CheckboxGroup from './CheckboxGroup'
 import RadioGroup from './RadioGroup'
 import Button from './Button'
-import ShortcutSnapshot from '../ShortcutSnapshot'
 
-import Context from '../Context'
 import { dropdownPropTypes } from '../propType'
 
 import styles from './Dropdown.module.less'
 
 function Dropdown({ children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const nodes = filterNodes(children, ['DropdownItem', 'DropdownGroup', 'DropdownCheckboxGroup', 'DropdownRadioGroup'])
-  const hasCheckedItem = nodes.some((node) => {
-    return isNode(node, 'DropdownCheckboxGroup') || isNode(node, 'DropdownRadioGroup')
-  })
+  const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
+    'ContextMenuItem',
+    'ContextMenuGroup',
+    'ContextMenuCheckboxGroup',
+    'ContextMenuRadioGroup',
+  ])
+  const hasCheckedItem = !!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length
 
   return (
     <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXDropdownMenu.Root>
-        <ShortcutSnapshot>{nodes}</ShortcutSnapshot>
+        <Shortcut>{matched}</Shortcut>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
           <Trigger {...rest} />
         </RDXDropdownMenu.Trigger>
@@ -37,7 +39,7 @@ function Dropdown({ children, ...rest }) {
             align="start"
             sideOffset={8}
           >
-            {nodes}
+            {matched}
           </RDXDropdownMenu.Content>
         </RDXDropdownMenu.Portal>
       </RDXDropdownMenu.Root>

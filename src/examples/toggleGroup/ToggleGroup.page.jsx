@@ -34,7 +34,6 @@ function Example() {
           <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
           <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
           <Toggle.Item value="d" icon={<Icon />} />
-          <button>aaa</button>
         </Toggle.Group>
       </div>
       <div className={styles.col}>

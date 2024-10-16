@@ -28,6 +28,10 @@ export default {
       pc: '@/packages/dropdown/pc/Dropdown',
       mobile: '@/packages/dropdown/mobile/Dropdown',
     },
+    './ContextMenu': {
+      pc: '@/packages/contextMenu/pc/ContextMenu',
+      mobile: '@/packages/contextMenu/mobile/ContextMenu',
+    },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-less')],

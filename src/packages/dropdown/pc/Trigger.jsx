@@ -19,10 +19,10 @@ const Trigger = forwardRef(function (
   return (
     <button
       className={classNames(styles.trigger, { [className]: !!className })}
+      ref={ref}
       aria-disabled={disabled}
       disabled={disabled}
       {...rest}
-      ref={ref}
       {...attrs({
         'data-menu': !isShowContent,
       })}

@@ -22,10 +22,11 @@
   "dependencies": {
     "@babel/runtime": "7.16.7",
     "@babel/runtime-corejs3": "7.16.7",
-    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-context-menu": "2.2.2",
+    "@radix-ui/react-dropdown-menu": "2.1.2",
     "@radix-ui/react-toggle": "1.1.0",
     "@radix-ui/react-toggle-group": "1.1.0",
-    "@wisdesign/lsicon": "^0.0.1",
+    "@wisdesign/lsicon": "0.0.1",
     "classnames": "2.5.1",
     "i18next": "23.15.1",
     "i18next-browser-languagedetector": "8.0.0",

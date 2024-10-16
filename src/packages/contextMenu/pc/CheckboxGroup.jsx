@@ -1,9 +1,11 @@
 import { Children, cloneElement } from 'react'
-import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchChildren } from '@/utils/node'
-import { contextMenuCheckboxGroupPropTypes, useContextMenuValue } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import { contextMenuCheckboxGroupPropTypes } from '../propType'
+import useContextMenuValue from '../useContextMenuValue'
+
+import styles from './ContextMenu.module.less'
 
 function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const { matched } = matchChildren(children, ['ContextMenuItem'])
@@ -11,8 +13,8 @@ function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, 
 
   return (
     <>
-      <RDXDropdownMenu.Separator className={styles.separator} />
-      {label && <RDXDropdownMenu.Label className={styles.label}>{label}</RDXDropdownMenu.Label>}
+      <RDXContextMenu.Separator className={styles.separator} />
+      {label && <RDXContextMenu.Label className={styles.label}>{label}</RDXContextMenu.Label>}
       {Children.map(matched, (child) => {
         const isChecked = currentValue?.includes(child.props.value)
 

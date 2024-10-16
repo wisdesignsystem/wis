@@ -1,4 +1,5 @@
 import { Children } from 'react'
+import { isFunction } from '@/utils/is'
 
 function withoutFragment(children) {
   if (children?.type?.toString() === 'Symbol(react.fragment)') {
@@ -8,31 +9,44 @@ function withoutFragment(children) {
   return children
 }
 
+/**
+ * Checks if the given node matches the specified type.
+ *
+ * @param {Object} node - The node to check.
+ * @param {string} type - The type to compare against.
+ * @returns {boolean} - Returns true if the node matches the specified type, otherwise false.
+ */
 export function isNode(node, type) {
   if (!node?.type || !node?.type?.displayName) {
     return false
   }
 
-  return node.type.displayName === type
+  if (node.type.displayName === type) {
+    return true
+  }
+
+  if (!isFunction(node.type.getSymbiote)) {
+    return false
+  }
+
+  return node.type.getSymbiote(node.props.children)?.type?.displayName === type
 }
 
 /**
- * Matches nodes against specified types and categorizes them.
+ * Matches children nodes against specified types and categorizes them.
  *
- * @param {React.ReactNode[]} children - The children nodes to be matched.
- * @param {Array} [types=[]] - An array of types to match against.
- * @returns {Object} An object categorizing nodes by their matched type, with unmatched nodes under the 'default' key.
- *
- * @example
- *
- * const { ToggleButtonItem: itemNodes, default } = matchNodes(children, ['ToggleButtonItem'])
+ * @param {React.ReactNode[]} children - The children nodes to match.
+ * @param {Array} [types=[]] - The types to match the children against.
+ * @returns {Object} An object containing matched and unmatched nodes, as well as nodes categorized by type.
+ * @property {React.ReactNode[]} unmatched - Nodes that did not match any type.
+ * @property {React.ReactNode[]} matched - Nodes that matched any type.
  */
-export function matchNodes(children, types = []) {
+export function matchChildren(children, types = []) {
   return Children.toArray(withoutFragment(children)).reduce(
     (result, node) => {
       const type = types.find((type) => isNode(node, type))
       if (!type) {
-        result.default.push(node)
+        result.unmatched.push(node)
         return result
       }
 
@@ -40,49 +54,11 @@ export function matchNodes(children, types = []) {
         result[type] = []
       }
 
+      result.matched.push(node)
       result[type].push(node)
+
       return result
     },
-    { default: [] },
+    { unmatched: [], matched: [] },
   )
-}
-
-/**
- * Matches nodes from the given children against specified types.
- *
- * @param {React.ReactNode} children - The children nodes to be matched.
- * @param {Array} [types=[]] - An array of types to match against the children nodes.
- * @returns {Object} An object with matched nodes categorized by type and unmatched nodes in the default array.
- *
- * @example
- *
- * const { ToggleButtonItem: itemNode, default } = matchNode(children, ['ToggleButtonItem'])
- */
-export function matchNode(children, types = []) {
-  return Children.toArray(withoutFragment(children)).reduce(
-    (result, node) => {
-      const type = types.find((type) => isNode(node, type))
-      if (!type) {
-        result.default.push(node)
-        return result
-      }
-
-      result[type] = node
-      return result
-    },
-    { default: [] },
-  )
-}
-
-/**
- * Filters the given children nodes based on the specified types.
- *
- * @param {React.ReactNode} children - The children nodes to filter.
- * @param {Array} [types=[]] - The types to filter the nodes by.
- * @returns {Array} - The filtered nodes.
- */
-export function filterNodes(children, types = []) {
-  return Children.toArray(withoutFragment(children)).filter((node) => {
-    return types.some((type) => isNode(node, type))
-  })
 }
