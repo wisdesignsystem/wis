@@ -28,7 +28,7 @@ function ContextMenu({ children, disabled, ...rest }) {
       <RDXContextMenu.Root>
         <Shortcut>{matched}</Shortcut>
         <RDXContextMenu.Trigger disabled={rest.disabled}>
-          {unmatched.length > 1 ? Children.only(unmatched) : cloneElement(unmatched[0], rest)}
+          {unmatched.length && (unmatched.length > 1 ? Children.only(unmatched) : cloneElement(unmatched[0], rest))}
         </RDXContextMenu.Trigger>
         <RDXContextMenu.Portal>
           <RDXContextMenu.Content

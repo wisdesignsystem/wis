@@ -4,7 +4,17 @@ import { matchChildren } from '@/utils/node'
 import Shortcut from './Shortcut'
 import { contextMenuItemPropTypes } from './propType'
 
-function Item({ disabled, role, value, checked, shortcutKey, onSelect = () => {}, onCheck = () => {}, children }) {
+function Item({
+  mapper,
+  disabled,
+  role,
+  value,
+  checked,
+  shortcutKey,
+  onSelect = () => {},
+  onCheck = () => {},
+  children,
+}) {
   const { matched } = matchChildren(children, [
     'ContextMenuItem',
     'ContextMenuGroup',
@@ -33,7 +43,7 @@ function Item({ disabled, role, value, checked, shortcutKey, onSelect = () => {}
   })
 
   if (hasSubmenu) {
-    return <Shortcut>{matched}</Shortcut>
+    return <Shortcut mapper={mapper}>{matched}</Shortcut>
   }
 
   return null

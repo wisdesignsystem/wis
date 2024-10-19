@@ -11,23 +11,24 @@ import RadioGroup from './RadioGroup'
 import Button from './Button'
 
 import { dropdownPropTypes } from '../propType'
+import mapper from '../mapper'
 
 import styles from './Dropdown.module.less'
 
 function Dropdown({ children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup',
+  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchChildren(children, [
+    'DropdownItem',
+    'DropdownGroup',
+    'DropdownCheckboxGroup',
+    'DropdownRadioGroup',
   ])
-  const hasCheckedItem = !!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length
+  const hasCheckedItem = !!DropdownCheckboxGroup?.length || !!DropdownRadioGroup?.length
 
   return (
     <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXDropdownMenu.Root>
-        <Shortcut>{matched}</Shortcut>
+        <Shortcut mapper={mapper}>{matched}</Shortcut>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
           <Trigger {...rest} />
         </RDXDropdownMenu.Trigger>

@@ -4,13 +4,13 @@ import useContextMenuValue from './useContextMenuValue'
 import { contextMenuCheckboxGroupPropTypes } from './propType'
 import components from './component'
 
-function CheckboxGroup({ name, value, defaultValue, onChange = () => {}, children }) {
+function CheckboxGroup({ mapper, name, value, defaultValue, onChange = () => {}, children }) {
   const [currentValue, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
     const isChecked = currentValue?.includes(child.props.value)
 
-    const Component = components[child.type.displayName]
+    const Component = components[mapper(child.type.displayName)]
     if (!Component) {
       return null
     }
@@ -18,6 +18,7 @@ function CheckboxGroup({ name, value, defaultValue, onChange = () => {}, childre
     return (
       <Component
         {...child.props}
+        mapper={mapper}
         role="menuitemcheckbox"
         checked={isChecked}
         onCheck={(checked) => {

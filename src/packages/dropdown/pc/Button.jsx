@@ -5,17 +5,18 @@ import { Context, Shortcut } from '@/packages/contextMenu'
 
 import ButtonTrigger from './ButtonTrigger'
 import { dropdownButtonPropTypes } from '../propType'
+import mapper from '../mapper'
 
 import styles from './Dropdown.module.less'
 
 function Button({ children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const { matched } = matchChildren(children, ['ContextMenuItem', 'ContextMenuGroup'])
+  const { matched } = matchChildren(children, ['DropdownItem', 'DropdownGroup'])
 
   return (
     <Context.Provider value={{ contextValue, setContextValue, contextType: 'DropdownButton' }}>
       <RDXDropdownMenu.Root>
-        <Shortcut>{matched}</Shortcut>
+        <Shortcut mapper={mapper}>{matched}</Shortcut>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
           <ButtonTrigger {...rest} />
         </RDXDropdownMenu.Trigger>

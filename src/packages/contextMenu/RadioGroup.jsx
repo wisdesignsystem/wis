@@ -4,12 +4,12 @@ import useContextMenuValue from './useContextMenuValue'
 import { contextMenuRadioGroupPropTypes } from './propType'
 import components from './component'
 
-function RadioGroup({ name, value, defaultValue, onChange = () => {}, children }) {
+function RadioGroup({ mapper, name, value, defaultValue, onChange = () => {}, children }) {
   // eslint-disable-next-line no-unused-vars
   const [_, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return Children.map(children, (child) => {
-    const Component = components[child.type.displayName]
+    const Component = components[mapper(child.type.displayName)]
     if (!Component) {
       return null
     }
@@ -17,6 +17,7 @@ function RadioGroup({ name, value, defaultValue, onChange = () => {}, children }
     return (
       <Component
         {...child.props}
+        mapper={mapper}
         role="menuitemradio"
         onCheck={() => {
           onChange(child.props.value)

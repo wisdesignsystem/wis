@@ -4,9 +4,9 @@ import { isFunction } from '@/utils/is'
 import { contextMenuGroupPropTypes } from './propType'
 import components from './component'
 
-function Group({ onSelect = () => {}, children }) {
+function Group({ mapper, onSelect = () => {}, children }) {
   return Children.map(children, (child) => {
-    const Component = components[child.type.displayName]
+    const Component = components[mapper(child.type.displayName)]
     if (!Component) {
       return null
     }
@@ -14,6 +14,7 @@ function Group({ onSelect = () => {}, children }) {
     return (
       <Component
         {...child.props}
+        mapper={mapper}
         role="menuitem"
         onSelect={() => {
           if (isFunction(child.props.onSelect)) {

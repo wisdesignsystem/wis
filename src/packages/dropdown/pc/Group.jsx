@@ -7,7 +7,7 @@ import { contextMenuGroupPropTypes } from '@/packages/contextMenu'
 import styles from './Dropdown.module.less'
 
 function Group({ label, onSelect = () => {}, children }) {
-  const { matched } = matchChildren(children, ['ContextMenuItem'])
+  const { matched } = matchChildren(children, ['DropdownItem'])
 
   return (
     <>
@@ -32,6 +32,6 @@ function Group({ label, onSelect = () => {}, children }) {
 }
 
 Group.propTypes = contextMenuGroupPropTypes
-Group.displayName = 'ContextMenuGroup'
+Group.displayName = 'DropdownGroup'
 
 export default Group

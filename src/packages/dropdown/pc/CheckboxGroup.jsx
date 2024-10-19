@@ -6,7 +6,7 @@ import { contextMenuCheckboxGroupPropTypes, useContextMenuValue } from '@/packag
 import styles from './Dropdown.module.less'
 
 function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
-  const { matched } = matchChildren(children, ['ContextMenuItem'])
+  const { matched } = matchChildren(children, ['DropdownItem'])
   const [currentValue, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return (
@@ -37,6 +37,6 @@ function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, 
 }
 
 CheckboxGroup.propTypes = contextMenuCheckboxGroupPropTypes
-CheckboxGroup.displayName = 'ContextMenuCheckboxGroup'
+CheckboxGroup.displayName = 'DropdownCheckboxGroup'
 
 export default CheckboxGroup

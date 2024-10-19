@@ -25,11 +25,11 @@ function Item({
 }) {
   const { contextType } = useContext(Context)
   const item = useRef(null)
-  const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup',
+  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchChildren(children, [
+    'DropdownItem',
+    'DropdownGroup',
+    'DropdownCheckboxGroup',
+    'DropdownRadioGroup',
   ])
 
   const isSupportSubmenu = !!matched.length && contextType !== 'DropdownButton'
@@ -100,7 +100,7 @@ function Item({
   }
 
   if (isSupportSubmenu) {
-    const hasCheckedItem = !!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length
+    const hasCheckedItem = !!DropdownCheckboxGroup?.length || !!DropdownRadioGroup?.length
 
     return (
       <RDXDropdownMenu.Sub>
@@ -140,6 +140,6 @@ function Item({
 }
 
 Item.propTypes = contextMenuItemPropTypes
-Item.displayName = 'ContextMenuItem'
+Item.displayName = 'DropdownItem'
 
 export default Item

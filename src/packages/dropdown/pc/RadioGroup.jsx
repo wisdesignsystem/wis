@@ -6,7 +6,7 @@ import { contextMenuRadioGroupPropTypes, useContextMenuValue } from '@/packages/
 import styles from './Dropdown.module.less'
 
 function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
-  const { matched } = matchChildren(children, ['ContextMenuItem'])
+  const { matched } = matchChildren(children, ['DropdownItem'])
   const [currentValue, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return (
@@ -29,6 +29,6 @@ function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, chi
 }
 
 RadioGroup.propTypes = contextMenuRadioGroupPropTypes
-RadioGroup.displayName = 'ContextMenuRadioGroup'
+RadioGroup.displayName = 'DropdownRadioGroup'
 
 export default RadioGroup
