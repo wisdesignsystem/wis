@@ -15,7 +15,7 @@ import mapper from '../mapper'
 
 import styles from './Dropdown.module.less'
 
-function Dropdown({ children, ...rest }) {
+function Dropdown({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
   const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchChildren(children, [
     'DropdownItem',
@@ -27,7 +27,7 @@ function Dropdown({ children, ...rest }) {
 
   return (
     <Context.Provider value={{ contextValue, setContextValue }}>
-      <RDXDropdownMenu.Root>
+      <RDXDropdownMenu.Root defaultOpen={defaultOpen} open={open} onOpenChange={onOpen}>
         <Shortcut mapper={mapper}>{matched}</Shortcut>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
           <Trigger {...rest} />

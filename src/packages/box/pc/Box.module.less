@@ -1,0 +1,45 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  &[data-collapsible] {
+    .header {
+      cursor: pointer;
+    }
+  }
+}
+
+.header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 24px;
+}
+
+.content {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 24px;
+}
+
+.trigger {
+  cursor: pointer;
+}
+
+.space {
+  cursor: default;
+}

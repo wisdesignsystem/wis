@@ -10,7 +10,7 @@ import { isBoolean } from './is'
  * @param {Object} data - The input object to process.
  * @returns {Object} The processed object with specific attributes.
  */
-export function attrs(data) {
+export default function attrs(data) {
   return Object.keys(data).reduce((result, key) => {
     const value = data[key]
 

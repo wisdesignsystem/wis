@@ -18,6 +18,7 @@ export default {
   // export remote modules
   exposes: {
     './core': '@/packages/core/index',
+    './Actions': { pc: '@/packages/actions/pc/Actions', mobile: '@/packages/actions/mobile/Actions' },
     './Shortcut': { pc: '@/packages/shortcut/pc/Shortcut', mobile: '@/packages/shortcut/mobile/Shortcut' },
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
     './Toggle': {

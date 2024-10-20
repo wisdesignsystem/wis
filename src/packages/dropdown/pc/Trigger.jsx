@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import classNames from 'classnames'
 import { DownIcon, RightIcon } from '@wisdesign/lsicon'
 import { isNode } from '@/utils/node'
-import { attrs } from '@/utils/attrs'
+import attrs from '@/utils/attrs'
 
 import { dropdownPropTypes } from '../propType'
 
