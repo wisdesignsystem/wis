@@ -50,13 +50,14 @@ class I18n {
    * Translates the given resource for the specified language.
    *
    * @param {Object} resource - The resource to be translated.
+   * @param {string} namespace - Optional, The namespace for the resource. default is a random uid.
    * @param {string} language - Optional, The language code for translation. default is the current language.
    *
    * @returns {Translate} - The translated resource.
    */
-  resource(resource, language) {
-    const translate = new Translate(i18next)
-    translate.setResource(resource, language || i18next.language)
+  resource(resource, namespace, language) {
+    const translate = new Translate(i18next, namespace)
+    translate.setResource(resource, language)
 
     return translate
   }

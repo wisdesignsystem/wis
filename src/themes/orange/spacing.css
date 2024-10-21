@@ -1,4 +1,4 @@
-:root {
+html[data-theme='orange'] {
   --w-common-spacing-common-none: 0px;
   --w-common-spacing-common-xxs: 2px;
   --w-common-spacing-common-xs: 4px;

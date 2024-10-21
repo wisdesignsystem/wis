@@ -1,4 +1,4 @@
-html[data-theme='blue'] {
+html[data-theme='orange'] {
   --w-component-tooltip-light-font: var(--w-common-font-color-base);
   --w-component-tooltip-light-background: var(--w-common-background-common-base);
   --w-component-tooltip-light-border: var(--w-common-border-color-transparent);

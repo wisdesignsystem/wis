@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid'
 
 class Translate {
-  constructor(i18next) {
+  constructor(i18next, namespace) {
     this.i18next = i18next
-    this.namespace = nanoid()
+    this.namespace = namespace || nanoid()
   }
 
   /**
@@ -28,12 +28,12 @@ class Translate {
    * Sets the resource bundle for a specific language.
    *
    * @param {Object} resource - The resource bundle to be added.
-   * @param {string} language - The language code for the resource bundle.
+   * @param {string} language - Optional, The language code for the resource bundle.
    *
    * @returns {void}
    */
   setResource(resource, language) {
-    this.i18next.addResourceBundle(language, this.namespace, resource, true, true)
+    this.i18next.addResourceBundle(language || this.language, this.namespace, resource, true, true)
   }
 
   /**

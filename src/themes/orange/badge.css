@@ -1,4 +1,4 @@
-html[data-theme='dark'] {
+html[data-theme='orange'] {
   --w-component-badge-background-gray: var(--w-palette-gray-10);
   --w-component-badge-background-blue: var(--w-palette-blue-10);
   --w-component-badge-background-indigo: var(--w-palette-indigo-10);

@@ -29,6 +29,6 @@ html[data-theme='blue'] {
   --w-common-border-radius-sm: 2px;
   --w-common-border-radius-md: 4px;
   --w-common-border-radius-lg: 8px;
-  --w-common-border-radius-xlg: 8px;
+  --w-common-border-radius-xlg: 16px;
   --w-common-border-radius-circular: 99999px;
 }

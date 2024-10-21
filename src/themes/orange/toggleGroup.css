@@ -1,4 +1,4 @@
-html[data-theme='blue'] {
+html[data-theme='orange'] {
   --w-component-toggle-group-item-normal-font: var(--w-common-font-color-helper);
   --w-component-toggle-group-item-normal-background: var(--w-common-background-transparent-fully);
   --w-component-toggle-group-item-normal-border: var(--w-common-border-color-transparent);

@@ -1,5 +1,5 @@
-html[data-theme='blue'] {
-  --w-common-shadow-state-focus-default: var(--w-palette-blue-30);
+html[data-theme='orange'] {
+  --w-common-shadow-state-focus-default: var(--w-palette-orange-30);
   --w-common-shadow-state-focus-inner: var(--w-palette-core-white);
   --w-common-shadow-state-focus-danger: var(--w-palette-red-40);
   --w-common-shadow-color-01: #0000000d;

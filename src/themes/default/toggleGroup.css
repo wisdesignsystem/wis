@@ -50,5 +50,5 @@
   --w-component-toggle-group-normal-border: var(--w-common-border-color-transparent);
   --w-component-toggle-group-normal-background: var(--w-common-background-common-02);
   --w-component-toggle-group-compact-border: var(--w-common-border-color-base);
-  --w-component-toggle-group-compact-background: var(--w-common-background-common-02);
+  --w-component-toggle-group-compact-default-background: var(--w-common-background-common-02);
 }
