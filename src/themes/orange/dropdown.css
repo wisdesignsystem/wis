@@ -1,4 +1,4 @@
-html[data-theme='blue'] {
+html[data-theme='orange'] {
   --w-component-dropdown-font: var(--w-common-font-color-primary);
   --w-component-dropdown-background: var(--w-common-background-common-base);
   --w-component-dropdown-border: var(--w-common-border-color-transparent);

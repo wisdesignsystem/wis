@@ -1,18 +1,19 @@
 html[data-theme='dark'] {
   --w-common-spacing-common-none: 0px;
-  --w-common-spacing-common-xs: 2px;
-  --w-common-spacing-common-sm: 4px;
-  --w-common-spacing-common-md: 8px;
+  --w-common-spacing-common-xxs: 2px;
+  --w-common-spacing-common-xs: 4px;
+  --w-common-spacing-common-sm: 8px;
+  --w-common-spacing-common-md: 12px;
   --w-common-spacing-common-lg: 16px;
-  --w-common-spacing-common-xlg: 24px;
-  --w-common-spacing-common-xxlg: 32px;
-  --w-common-spacing-common-xxxlg: 48px;
-  --w-common-spacing-gap-none: 0px;
-  --w-common-spacing-gap-xm: 2px;
-  --w-common-spacing-gap-sm: 4px;
-  --w-common-spacing-gap-md: 8px;
-  --w-common-spacing-gap-lg: 16px;
-  --w-common-spacing-scale-1: 0px;
-  --w-common-spacing-scale-2: 0px;
-  --w-common-spacing-scale-3: 0px;
+  --w-common-spacing-common-xl: 24px;
+  --w-common-spacing-common-xxl: 32px;
+  --w-common-spacing-common-xxxl: 48px;
+  --w-common-spacing-gap-none: var(--w-common-spacing-common-none);
+  --w-common-spacing-gap-xm: var(--w-common-spacing-common-xxs);
+  --w-common-spacing-gap-sm: var(--w-common-spacing-common-xs);
+  --w-common-spacing-gap-md: var(--w-common-spacing-common-sm);
+  --w-common-spacing-gap-lg: var(--w-common-spacing-common-lg);
+  --w-common-spacing-scale-1: 1px;
+  --w-common-spacing-scale-2: 1.5px;
+  --w-common-spacing-scale-3: 2px;
 }

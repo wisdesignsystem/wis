@@ -8,7 +8,7 @@
     "prepare": "husky",
     "dev": "wis dev",
     "build": "wis build",
-    "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,highContrast:./src/assets/wis.highContrast.tokens.json -o ./src/themes"
+    "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,orange:./src/assets/wis.orange.tokens.json -o ./src/themes"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [

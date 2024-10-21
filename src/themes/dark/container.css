@@ -1,0 +1,29 @@
+html[data-theme='dark'] {
+  --w-container-layout-header-font: var(--w-common-font-color-primary);
+  --w-container-layout-header-background: var(--w-common-background-common-base);
+  --w-container-layout-header-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-background: var(--w-common-background-common-base);
+  --w-container-layout-collapse-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-hover-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-hover-background: var(--w-common-background-common-base);
+  --w-container-layout-collapse-hover-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-active-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-active-background: var(--w-common-background-common-base);
+  --w-container-layout-collapse-active-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-focus-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-focus-background: var(--w-common-background-common-base);
+  --w-container-layout-collapse-focus-border: var(--w-common-border-color-base);
+  --w-container-page-font: var(--w-common-font-color-primary);
+  --w-container-page-background: var(--w-common-background-common-base);
+  --w-container-page-border: var(--w-common-border-color-base);
+  --w-container-pop-font: var(--w-common-font-color-primary);
+  --w-container-pop-background: var(--w-common-background-common-base);
+  --w-container-pop-border: var(--w-common-border-color-base);
+  --w-container-module-font: var(--w-common-font-color-primary);
+  --w-container-module-background: var(--w-common-background-common-base);
+  --w-container-module-border: var(--w-common-border-color-base);
+  --w-container-drawer-font: var(--w-common-font-color-primary);
+  --w-container-drawer-background: var(--w-common-background-common-base);
+  --w-container-drawer-border: var(--w-common-border-color-base);
+}

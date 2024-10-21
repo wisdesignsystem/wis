@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--w-common-spacing-gap-md);
-  padding: var(--w-common-spacing-common-md);
+  padding: var(--w-common-spacing-common-sm);
   font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
@@ -67,7 +67,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: var(--w-common-spacing-common-md) var(--w-common-spacing-common-none);
+  padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none);
   box-shadow: 0 10px 15px -3px var(--w-common-shadow-color-02), 0 4px 6px -2px var(--w-common-shadow-color-01);
   border-radius: var(--w-common-border-radius-xlg);
   border: var(--w-common-spacing-scale-1) solid var(--w-component-dropdown-popper-border);
@@ -83,17 +83,17 @@
 
   &[data-variant="checkbox"] {
     .item {
-      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-md) var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
+      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none) var(--w-common-spacing-common-xs);
     }
 
     .label {
-      padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xlg);
+      padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xs) var(--w-common-spacing-common-xl);
     }
 
     .item[role="menuitem"],
     .item[role="menuitemcheckbox"][data-state="unchecked"],
     .item[role="menuitemradio"][data-state="unchecked"] {
-      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-md) var(--w-common-spacing-common-none) var(--w-common-spacing-common-xlg);
+      padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none) var(--w-common-spacing-common-xl);
     }
   }
 }
@@ -224,13 +224,13 @@
 
 .separator {
   border-top: var(--w-common-spacing-scale-1) solid var(--w-component-dropdown-popper-border);
-  margin: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none);
+  margin: var(--w-common-spacing-common-xs) var(--w-common-spacing-common-none);
 }
 
 .label {
   font-size: var(--w-common-font-size-text-sm);
   font-weight: var(--w-common-font-weight-bold);
-  padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-sm);
+  padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xs);
   color: var(--w-common-font-color-helper);
   margin: 0 0 var(--w-common-spacing-gap-sm);
 }

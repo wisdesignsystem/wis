@@ -4,9 +4,9 @@ html[data-theme='dark'] {
   --w-common-border-color-02: var(--w-palette-gray-20);
   --w-common-border-color-03: var(--w-palette-gray-30);
   --w-common-border-color-state-disabled: var(--w-palette-gray-20);
-  --w-common-border-color-state-focus: var(--w-palette-blue-30);
-  --w-common-border-color-semantics-highlight: var(--w-palette-blue-60);
-  --w-common-border-color-semantics-highlight-hover: var(--w-palette-blue-70);
+  --w-common-border-color-state-focus: var(--w-palette-indigo-30);
+  --w-common-border-color-semantics-highlight: var(--w-palette-indigo-60);
+  --w-common-border-color-semantics-highlight-hover: var(--w-palette-indigo-70);
   --w-common-border-color-semantics-success: var(--w-palette-green-60);
   --w-common-border-color-semantics-success-hover: var(--w-palette-green-70);
   --w-common-border-color-semantics-error: var(--w-palette-red-60);
@@ -14,7 +14,7 @@ html[data-theme='dark'] {
   --w-common-border-color-semantics-warning: var(--w-palette-orange-60);
   --w-common-border-color-semantics-warning-hover: var(--w-palette-orange-70);
   --w-common-border-color-semantics-error-disabled: var(--w-palette-red-30);
-  --w-common-border-color-semantics-highlight-light: var(--w-palette-blue-10);
+  --w-common-border-color-semantics-highlight-light: var(--w-palette-indigo-10);
   --w-common-border-color-semantics-error-light: var(--w-palette-red-20);
   --w-common-border-color-semantics-error-light-disabled: var(--w-palette-red-10);
   --w-common-border-color-inverse: var(--w-palette-core-white);
@@ -29,6 +29,6 @@ html[data-theme='dark'] {
   --w-common-border-radius-sm: 2px;
   --w-common-border-radius-md: 4px;
   --w-common-border-radius-lg: 8px;
-  --w-common-border-radius-xlg: 8px;
+  --w-common-border-radius-xlg: 16px;
   --w-common-border-radius-circular: 99999px;
 }
