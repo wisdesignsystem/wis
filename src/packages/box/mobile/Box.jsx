@@ -1,10 +1,10 @@
-import propTypes from '../propType'
+import { boxPropTypes } from '../propType'
 
 function Box() {
   return null
 }
 
-Box.propTypes = propTypes
+Box.propTypes = boxPropTypes
 Box.displayName = 'Box'
 
 export default Box

@@ -1,82 +1,32 @@
-import { useRef } from 'react'
-import { matchChildren, isNode } from '@/utils/node'
-import attrs from '@/utils/attrs'
-import { CloseSmallIcon, CircleHelpIcon } from '@wisdesign/lsicon'
+import { matchChildren } from '@/utils/node'
 import * as Collapsible from '@radix-ui/react-collapsible'
-import Button from 'remote:self/Button'
+import attrs from '@/utils/attrs'
+import classNames from 'classnames'
 
-import Trigger from './Trigger'
-import propTypes from '../propType'
-import mergeActions from '../action'
+import Header from './Header'
+import Footer from './Footer'
+import Content from './Content'
+import Action from './Action'
+import Collapse from './Collapse'
+
+import { boxPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Box({
-  title,
-  description,
-  tag,
-  status,
-  tip,
-  icon,
-  closeable,
-  collapsible,
-  defaultCollapsed = true,
-  collapsed,
-  onCollapsed = () => {},
-  onClose = () => {},
-  children,
-}) {
-  const infoRef = useRef(null)
+function Box({ className, defaultCollapsed = true, collapsed, children, onCollapsed }) {
+  const {
+    BoxHeader: header,
+    BoxContent: content,
+    BoxFooter: footer,
+  } = matchChildren(children, ['BoxHeader', 'BoxContent', 'BoxFooter'])
 
-  function renderClose() {
-    if (!closeable) {
-      return null
-    }
+  const { BoxCollapse: collapse } = matchChildren(header[0]?.props?.children, ['BoxCollapse'])
 
-    return <Button size="xs" variant="ghost" icon={<CloseSmallIcon />} onClick={onClose} />
-  }
-
-  function renderInfo() {
-    const isShowTag = isNode(tag, 'Tag')
-    const isShowStatus = isNode(status, 'Status')
-
-    return (
-      <div ref={infoRef} className={styles.info}>
-        <div className={styles.top}>
-          {collapsible && (
-            <Collapsible.Trigger asChild>
-              <Trigger />
-            </Collapsible.Trigger>
-          )}
-          {icon}
-          <span className={styles.title}>{title}</span>
-          {tip && <CircleHelpIcon />}
-          {isShowTag && tag}
-          {isShowStatus && status}
-        </div>
-        {description && <div className={styles.description}>{description}</div>}
-      </div>
-    )
-  }
-
-  function handleStopPropagation(event) {
-    event.stopPropagation()
-  }
-
-  function handleTrigger() {
-    if (!collapsible) {
-      return
-    }
-
-    infoRef.current.querySelector('[data-trigger]').click()
-  }
-
-  const { matched, unmatched } = matchChildren(children, ['Actions'])
-  const actionsNode = mergeActions(matched)
+  const collapsible = !!collapse
 
   return (
     <Collapsible.Root
-      className={styles.box}
+      className={classNames(styles.box, { [className]: !!className })}
       defaultOpen={defaultCollapsed}
       open={collapsible ? collapsed : true}
       disabled={!collapsible}
@@ -85,27 +35,19 @@ function Box({
       })}
       onOpenChange={onCollapsed}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div className={styles.header} onClick={handleTrigger}>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-        <div className={styles.space} onClick={handleStopPropagation}>
-          {renderInfo()}
-        </div>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-        <div className={styles.space} onClick={handleStopPropagation}>
-          {renderClose()}
-        </div>
-      </div>
-      <Collapsible.Content className={styles.content}>{unmatched}</Collapsible.Content>
-      <div className={styles.footer}>
-        <div className={styles.space}></div>
-        <div className={styles.space}>{actionsNode}</div>
-      </div>
+      {header}
+      {content}
+      {footer}
     </Collapsible.Root>
   )
 }
 
-Box.propTypes = propTypes
+Box.propTypes = boxPropTypes
 Box.displayName = 'Box'
+Box.Header = Header
+Box.Footer = Footer
+Box.Content = Content
+Box.Action = Action
+Box.Collapse = Collapse
 
 export default Box
