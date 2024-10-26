@@ -1,6 +1,6 @@
 import Shortcut from 'remote:self/Shortcut'
 import * as RDXToggleGroup from '@radix-ui/react-toggle-group'
-import { attrs } from '@/utils/attrs'
+import attrs from '@/utils/attrs'
 import { useRef } from 'react'
 import classNames from 'classnames'
 

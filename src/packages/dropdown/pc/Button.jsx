@@ -9,13 +9,13 @@ import mapper from '../mapper'
 
 import styles from './Dropdown.module.less'
 
-function Button({ children, ...rest }) {
+function Button({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
   const { matched } = matchChildren(children, ['DropdownItem', 'DropdownGroup'])
 
   return (
     <Context.Provider value={{ contextValue, setContextValue, contextType: 'DropdownButton' }}>
-      <RDXDropdownMenu.Root>
+      <RDXDropdownMenu.Root defaultOpen={defaultOpen} open={open} onOpenChange={onOpen}>
         <Shortcut mapper={mapper}>{matched}</Shortcut>
         <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
           <ButtonTrigger {...rest} />

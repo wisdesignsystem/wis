@@ -1,5 +1,5 @@
 import Shortcut from 'remote:self/Shortcut'
-import { attrs } from '@/utils/attrs'
+import attrs from '@/utils/attrs'
 import { useRef, forwardRef, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 

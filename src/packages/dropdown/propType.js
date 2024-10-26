@@ -8,6 +8,20 @@ export const dropdownPropTypes = {
   className: PropTypes.string,
 
   /**
+   * set the Dropdown open\close
+   *
+   * @type {boolean}
+   */
+  open: PropTypes.bool,
+
+  /**
+   * set the Dropdown default open\close
+   *
+   * @type {boolean}
+   */
+  defaultOpen: PropTypes.bool,
+
+  /**
    * Indicates if the Dropdown is disabled.
    *
    * @type {boolean}
@@ -59,6 +73,21 @@ export const dropdownPropTypes = {
    * @default down
    */
   arrowDirection: PropTypes.oneOf(['down', 'right']),
+
+  /**
+   * Callback function when the Dropdown open state change.
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleOpen(open) {
+   *  console.log('Dropdown open', open)
+   * }
+   *
+   * <Dropdown onOpen={handleOpen}></Dropdown>
+   */
+  onOpen: PropTypes.func,
 }
 
 /**
@@ -72,6 +101,20 @@ export const dropdownButtonPropTypes = {
    * @type {string}
    */
   className: PropTypes.string,
+
+  /**
+   * set the Dropdown open\close
+   *
+   * @type {boolean}
+   */
+  open: PropTypes.bool,
+
+  /**
+   * set the Dropdown default open\close
+   *
+   * @type {boolean}
+   */
+  defaultOpen: PropTypes.bool,
 
   /**
    * Variant of the Dropdown.Button.
@@ -143,4 +186,19 @@ export const dropdownButtonPropTypes = {
    * control + s
    */
   shortcutKey: PropTypes.string,
+
+  /**
+   * Callback function when the Dropdown open state change.
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleOpen(open) {
+   *  console.log('Dropdown open', open)
+   * }
+   *
+   * <Dropdown onOpen={handleOpen}></Dropdown>
+   */
+  onOpen: PropTypes.func,
 }

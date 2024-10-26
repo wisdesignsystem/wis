@@ -775,7 +775,7 @@
       "family": {
         "base": {
           "$type": "string",
-          "$value": "DM Sans"
+          "$value": "Manrope"
         },
         "code": {
           "$type": "string",
@@ -3272,10 +3272,6 @@
       }
     },
     "_table": {
-      "td-height": {
-        "$type": "dimension",
-        "$value": "48px"
-      },
       "trend": {
         "red": {
           "$type": "color",
@@ -3295,6 +3291,10 @@
           "$type": "color",
           "$value": "{palette.yellow.40}"
         }
+      },
+      "td-height": {
+        "$type": "dimension",
+        "$value": "48px"
       },
       "status": {
         "focus-default-background": {
@@ -3593,6 +3593,20 @@
           "$type": "color",
           "$value": "{common.border.color.base}"
         }
+      },
+      "footer": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
       }
     },
     "page": {
@@ -3621,20 +3635,148 @@
       "border": {
         "$type": "color",
         "$value": "{common.border.color.base}"
+      },
+      "footer": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
+      },
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
       }
     },
     "module": {
-      "font": {
-        "$type": "color",
-        "$value": "{common.font.color.primary}"
+      "basic": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        },
+        "header": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.base}"
+          }
+        },
+        "sub-header": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.base}"
+          }
+        },
+        "content": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          }
+        }
       },
-      "background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "border": {
-        "$type": "color",
-        "$value": "{common.border.color.base}"
+      "ghost": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "header": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          }
+        },
+        "sub-header": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.transparent}"
+          }
+        },
+        "content": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.base}"
+          }
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.transparent.fully}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        }
       }
     },
     "drawer": {
@@ -3649,6 +3791,34 @@
       "border": {
         "$type": "color",
         "$value": "{common.border.color.base}"
+      },
+      "footer": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
+      },
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
       }
     }
   },

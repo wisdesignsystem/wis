@@ -1,5 +1,5 @@
 import { useGlobalShortcut } from 'remote:self/core'
-import { attrs } from '@/utils/attrs'
+import attrs from '@/utils/attrs'
 
 import propTypes from '../propType'
 

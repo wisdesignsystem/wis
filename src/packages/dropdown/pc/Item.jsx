@@ -1,6 +1,6 @@
 import { useRef, useContext } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { attrs } from '@/utils/attrs'
+import attrs from '@/utils/attrs'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
