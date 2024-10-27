@@ -1,6 +1,6 @@
 import { useState, Children, cloneElement } from 'react'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 
 import Item from './Item'
 import Group from './Group'
@@ -15,12 +15,11 @@ import styles from './ContextMenu.module.less'
 
 function ContextMenu({ children, disabled, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const { matched, unmatched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup',
-  ])
+  const { matched, unmatched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchElement(
+    children,
+    ['ContextMenuItem', 'ContextMenuGroup', 'ContextMenuCheckboxGroup', 'ContextMenuRadioGroup'],
+    false,
+  )
   const hasCheckedItem = !!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length
 
   return (
@@ -49,12 +48,11 @@ function ContextMenu({ children, disabled, ...rest }) {
 ContextMenu.propTypes = contextMenuPropTypes
 ContextMenu.displayName = 'ContextMenu'
 ContextMenu.getSymbiote = function (children) {
-  const { unmatched } = matchChildren(children, [
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup',
-  ])
+  const { unmatched } = matchElement(
+    children,
+    ['ContextMenuItem', 'ContextMenuGroup', 'ContextMenuCheckboxGroup', 'ContextMenuRadioGroup'],
+    false,
+  )
 
   return unmatched[0]
 }

@@ -4,7 +4,7 @@ import attrs from '@/utils/attrs'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { contextMenuItemPropTypes, Context } from '@/packages/contextMenu'
 
 import styles from './Dropdown.module.less'
@@ -25,7 +25,7 @@ function Item({
 }) {
   const { contextType } = useContext(Context)
   const item = useRef(null)
-  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchChildren(children, [
+  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchElement(children, [
     'DropdownItem',
     'DropdownGroup',
     'DropdownCheckboxGroup',

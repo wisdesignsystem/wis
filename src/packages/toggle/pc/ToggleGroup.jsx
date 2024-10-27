@@ -1,5 +1,5 @@
 import * as RDXToggleGroup from '@radix-ui/react-toggle-group'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { Children, cloneElement } from 'react'
 import classNames from 'classnames'
 
@@ -20,7 +20,7 @@ function ToggleGroup({
   onChange = () => {},
   ...rest
 }) {
-  const { matched } = matchChildren(children, ['ToggleItem'])
+  const { matched } = matchElement(children, ['ToggleItem'])
 
   return (
     <RDXToggleGroup.Root

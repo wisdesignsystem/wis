@@ -1,5 +1,5 @@
+import { Children } from 'react'
 import { useGlobalShortcut } from 'remote:self/core'
-import { matchChildren } from '@/utils/node'
 
 import Shortcut from './Shortcut'
 import { contextMenuItemPropTypes } from './propType'
@@ -15,12 +15,23 @@ function Item({
   onCheck = () => {},
   children,
 }) {
-  const { matched } = matchChildren(children, [
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup',
-  ])
+  const matched = []
+  Children.toArray(children).some((element) => {
+    const type = mapper(element?.type?.displayName)
+    const isMatched = [
+      'ContextMenuItem',
+      'ContextMenuGroup',
+      'ContextMenuCheckboxGroup',
+      'ContextMenuRadioGroup',
+    ].includes(type)
+
+    if (isMatched) {
+      matched.push(element)
+    }
+
+    return isMatched
+  })
+
   const hasSubmenu = matched.length > 0
   // eslint-disable-next-line no-unused-vars
   const [_, onGlobalShortcut] = useGlobalShortcut(hasSubmenu ? undefined : shortcutKey)

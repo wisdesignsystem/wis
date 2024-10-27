@@ -1,12 +1,12 @@
 import { Children, cloneElement } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { contextMenuRadioGroupPropTypes, useContextMenuValue } from '@/packages/contextMenu'
 
 import styles from './Dropdown.module.less'
 
 function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
-  const { matched } = matchChildren(children, ['DropdownItem'])
+  const { matched } = matchElement(children, ['DropdownItem'])
   const [currentValue, onValueChange] = useContextMenuValue({ name, value, defaultValue })
 
   return (
