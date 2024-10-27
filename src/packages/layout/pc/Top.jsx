@@ -6,10 +6,14 @@ import { topPropTypes } from '../propType'
 
 import styles from './Layout.module.less'
 
-function Top({ className, children }) {
+function Top({ className, children, ...rest }) {
   const { unmatched } = matchElement(children, [{ type: 'Actions', maxCount: 0 }], false)
 
-  return <Layout className={classNames(styles.top, { [className]: !!className })}>{unmatched}</Layout>
+  return (
+    <Layout {...rest} className={classNames(styles.top, { [className]: !!className })}>
+      {unmatched}
+    </Layout>
+  )
 }
 
 Top.displayName = 'Top'

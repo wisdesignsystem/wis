@@ -6,11 +6,11 @@ import { boxHeaderPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Header({ className, title, description, tip, children }) {
+function Header({ className, title, description, tip, children, ...rest }) {
   const { BoxCollapse: collapse, BoxAction: action } = matchElement(children, ['BoxCollapse', 'BoxAction'])
 
   return (
-    <div className={classNames(styles.header, { [className]: !!className })}>
+    <div {...rest} className={classNames(styles.header, { [className]: !!className })}>
       <div className={styles.top}>
         <div className={styles.info}>
           {collapse}
@@ -19,7 +19,11 @@ function Header({ className, title, description, tip, children }) {
               <span className={styles.label}>{title}</span>
               {tip && <CircleHelpIcon className={styles.tip} />}
             </div>
-            {description && <div className={styles.description}>{description}</div>}
+            {description && (
+              <div className={styles.description} data-description>
+                {description}
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.actions}>{action}</div>

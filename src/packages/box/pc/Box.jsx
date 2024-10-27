@@ -1,11 +1,11 @@
 import { matchElement } from 'remote:self/core'
-import * as Collapsible from '@radix-ui/react-collapsible'
-import attrs from '@/utils/attrs'
 import classNames from 'classnames'
 
+import Collapsible from './Collapsible'
 import Header from './Header'
-import Footer from './Footer'
 import Content from './Content'
+import Panel from './Panel'
+import Footer from './Footer'
 import Action from './Action'
 import Collapse from './Collapse'
 
@@ -13,40 +13,30 @@ import { boxPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Box({ className, defaultCollapsed = true, collapsed, children, onCollapsed }) {
+function Box({ className, defaultCollapsed = true, collapsed, children, onCollapsed, ...rest }) {
   const {
     BoxHeader: header,
     BoxContent: content,
     BoxFooter: footer,
   } = matchElement(children, ['BoxHeader', 'BoxContent', 'BoxFooter'])
 
-  const { BoxCollapse: collapse } = matchElement(header?.[0]?.props?.children, ['BoxCollapse'], false)
-
-  const collapsible = !!collapse
-
   return (
-    <Collapsible.Root
-      className={classNames(styles.box, { [className]: !!className })}
-      defaultOpen={defaultCollapsed}
-      open={collapsible ? collapsed : true}
-      disabled={!collapsible}
-      {...attrs({
-        'data-collapsible': collapsible,
-      })}
-      onOpenChange={onCollapsed}
-    >
+    <div {...rest} className={classNames(styles.box, { [className]: !!className })}>
       {header}
       {content}
       {footer}
-    </Collapsible.Root>
+    </div>
   )
 }
 
 Box.propTypes = boxPropTypes
 Box.displayName = 'Box'
+
+Box.Collapsible = Collapsible
 Box.Header = Header
-Box.Footer = Footer
 Box.Content = Content
+Box.Panel = Panel
+Box.Footer = Footer
 Box.Action = Action
 Box.Collapse = Collapse
 

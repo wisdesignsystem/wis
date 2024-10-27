@@ -1,15 +1,14 @@
-import * as Collapsible from '@radix-ui/react-collapsible'
 import classNames from 'classnames'
 
 import { boxContentPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Content({ className, children }) {
+function Content({ className, children, ...rest }) {
   return (
-    <Collapsible.Content className={classNames(styles.content, { [className]: !!className })}>
+    <div {...rest} className={classNames(styles.content, { [className]: !!className })}>
       {children}
-    </Collapsible.Content>
+    </div>
   )
 }
 

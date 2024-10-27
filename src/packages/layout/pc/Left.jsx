@@ -5,9 +5,10 @@ import { leftPropTypes } from '../propType'
 
 import styles from './Layout.module.less'
 
-function Left({ className, title, description, tip, children }) {
+function Left({ className, title, description, tip, children, ...rest }) {
   return (
     <Layout
+      {...rest}
       className={classNames(styles.left, { [className]: !!className })}
       title={title}
       description={description}

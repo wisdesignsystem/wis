@@ -5,9 +5,10 @@ import { rightPropTypes } from '../propType'
 
 import styles from './Layout.module.less'
 
-function Right({ className, title, description, tip, children }) {
+function Right({ className, title, description, tip, children, ...rest }) {
   return (
     <Layout
+      {...rest}
       className={classNames(styles.right, { [className]: !!className })}
       title={title}
       description={description}
