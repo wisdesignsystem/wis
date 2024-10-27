@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import classNames from 'classnames'
 import { DownIcon, RightIcon } from '@wisdesign/lsicon'
-import { isNode } from '@/utils/node'
+import { isElement } from 'remote:self/core'
 import attrs from '@/utils/attrs'
 
 import { dropdownPropTypes } from '../propType'
@@ -12,7 +12,7 @@ const Trigger = forwardRef(function (
   { avatar, disabled, icon, arrowDirection = 'down', text, description, className, ...rest },
   ref,
 ) {
-  const isShowAvatar = isNode(avatar, 'Avatar')
+  const isShowAvatar = isElement(avatar, 'Avatar')
   const isShowIcon = !!icon
   const isShowContent = !!text
 

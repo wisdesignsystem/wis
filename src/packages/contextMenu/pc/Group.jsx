@@ -1,6 +1,6 @@
 import { Children, cloneElement } from 'react'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { isFunction } from '@/utils/is'
 
 import { contextMenuGroupPropTypes } from '../propType'
@@ -8,7 +8,7 @@ import { contextMenuGroupPropTypes } from '../propType'
 import styles from './ContextMenu.module.less'
 
 function Group({ label, onSelect = () => {}, children }) {
-  const { matched } = matchChildren(children, ['ContextMenuItem'])
+  const { matched } = matchElement(children, ['ContextMenuItem'])
 
   return (
     <>

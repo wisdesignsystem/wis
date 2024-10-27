@@ -4,7 +4,7 @@ import attrs from '@/utils/attrs'
 import classNames from 'classnames'
 import Shortcut from 'remote:self/Shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 
 import { contextMenuItemPropTypes } from '../propType'
 
@@ -25,7 +25,7 @@ function Item({
   children,
 }) {
   const item = useRef(null)
-  const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchChildren(children, [
+  const { matched, ContextMenuCheckboxGroup, ContextMenuRadioGroup } = matchElement(children, [
     'ContextMenuItem',
     'ContextMenuGroup',
     'ContextMenuCheckboxGroup',

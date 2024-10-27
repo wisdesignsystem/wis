@@ -1,4 +1,4 @@
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import * as Collapsible from '@radix-ui/react-collapsible'
 import attrs from '@/utils/attrs'
 import classNames from 'classnames'
@@ -18,9 +18,9 @@ function Box({ className, defaultCollapsed = true, collapsed, children, onCollap
     BoxHeader: header,
     BoxContent: content,
     BoxFooter: footer,
-  } = matchChildren(children, ['BoxHeader', 'BoxContent', 'BoxFooter'])
+  } = matchElement(children, ['BoxHeader', 'BoxContent', 'BoxFooter'])
 
-  const { BoxCollapse: collapse } = matchChildren(header[0]?.props?.children, ['BoxCollapse'])
+  const { BoxCollapse: collapse } = matchElement(header?.[0]?.props?.children, ['BoxCollapse'], false)
 
   const collapsible = !!collapse
 

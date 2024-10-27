@@ -1,4 +1,18 @@
-.component-style(@component; @widget:''; @variant:''; @status:''; @state:''; @state2:'') {
+/**
+ * Generates styles for a given component based on various parameters.
+ *
+ * @param {String} @type - The type of the component (e.g., 'container', 'component').
+ * @param {String} @component - The name of the component (e.g., 'button', 'card').
+ * @param {String} [@widget=''] - Optional widget modifier.
+ * @param {String} [@variant=''] - Optional variant modifier.
+ * @param {String} [@status=''] - Optional status modifier.
+ * @param {String} [@state=''] - Optional state modifier.
+ * @param {String} [@state2=''] - Optional secondary state modifier.
+ *
+ * The function constructs CSS variable names dynamically based on the provided parameters
+ * and applies the corresponding color, background-color, and border-color styles.
+ */
+.style(@type; @component; @widget:''; @variant:''; @status:''; @state:''; @state2:'') {
   @widget-pattern: if(@widget= '', '', ~'@{widget}-');
   @variant-pattern: if(@variant= '', '', ~'@{variant}-');
   @status-pattern: if(@status= '', '', ~'@{status}-');
@@ -6,31 +20,20 @@
   @state2-pattern: if(@state2= '', '', ~'@{state2}-');
 
   color: var(
-    ~'--w-component-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}font'
+    ~'--w-@{type}-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}font'
   );
   background-color: var(
-    ~'--w-component-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}background'
+    ~'--w-@{type}-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}background'
   );
   border-color: var(
-    ~'--w-component-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}border'
+    ~'--w-@{type}-@{component}-@{variant-pattern}@{widget-pattern}@{status-pattern}@{state-pattern}@{state2-pattern}border'
   );
 }
 
-/**
- * Applies hover and disabled styles to a component.
- *
- * @param {String} @component - The name of the component.
- * @param {String} @widget - The widget type (optional).
- * @param {String} @variant - The variant of the component (optional).
- * @param {String} @status - The status of the component (optional).
- * @param {String} @state - The state of the component (optional).
- *
- * This mixin applies the appropriate styles when the component is hovered over or disabled.
- * - On hover, it applies the hover styles using the .component-style mixin.
- * - When the component is disabled (either via the disabled attribute or data-disabled attribute),
- *   it applies the disabled styles and sets the cursor to not-allowed.
- * - Additionally, it ensures that the hover styles are not applied when the component is disabled.
- */
+.component-style(@component; @widget:''; @variant:''; @status:''; @state:''; @state2:'') {
+  .style(@type: 'component'; @component: @component; @widget: @widget; @variant: @variant; @status: @status; @state: @state; @state2: @state2);
+}
+
 .component-hover-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
   &:hover {
     .component-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: hover);
@@ -44,20 +47,6 @@
   }
 }
 
-/**
- * Applies focus styles to a component.
- *
- * @param {String} @component - The name of the component.
- * @param {String} @widget - The widget type (optional).
- * @param {String} @variant - The variant of the component (optional).
- * @param {String} @status - The status of the component (optional).
- * @param {String} @state - The state of the component (optional).
- *
- * This mixin applies focus styles to the specified component. It includes a conditional
- * check for the status to determine the focus status pattern. When the component is focused,
- * it applies the focus styles and a box-shadow. If the component is disabled, it applies
- * the disabled styles and removes the box-shadow on focus.
- */
 .component-focus-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
   @focus-status-pattern: if(@status= '', 'default', @status);
 
@@ -77,19 +66,6 @@
   }
 }
 
-/**
- * Applies active and disabled styles to a component.
- *
- * @param {String} @component - The name of the component.
- * @param {String} @widget - The widget associated with the component (optional).
- * @param {String} @variant - The variant of the component (optional).
- * @param {String} @status - The status of the component (optional).
- * @param {String} @state - The state of the component (optional).
- *
- * The mixin applies styles for the active state of the component.
- * If the component has a `data-disabled` attribute, it applies disabled styles.
- * Additionally, it ensures that the active state is styled correctly even when the component is disabled.
- */
 .component-active-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
   &:active {
     .component-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: active);
@@ -103,22 +79,67 @@
   }
 }
 
-/**
- * Applies a disabled style to a component.
- *
- * @param {String} @component - The name of the component.
- * @param {String} @widget - The widget associated with the component (optional).
- * @param {String} @variant - The variant of the component (optional).
- * @param {String} @status - The status of the component (optional).
- * @param {String} @state - The state of the component (optional).
- *
- * When the component has the attribute `data-disabled`, it applies the disabled styles
- * and sets the cursor to 'not-allowed'.
- */
 .component-disabled-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
   &[disabled],
   &[data-disabled] {
     .component-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: disabled);
+    cursor: not-allowed;
+  }
+}
+
+.container-style(@component; @widget:''; @variant:''; @status:''; @state:''; @state2:'') {
+  .style(@type: 'container'; @component: @component; @widget: @widget; @variant: @variant; @status: @status; @state: @state; @state2: @state2);
+}
+
+.container-hover-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
+  &:hover {
+    .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: hover);
+  }
+
+  &[disabled],
+  &[data-disabled] {
+    &:hover {
+      .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: disabled);
+    }
+  }
+}
+
+.container-focus-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
+  @focus-status-pattern: if(@status= '', 'default', @status);
+
+  &:focus {
+    .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: focus);
+    box-shadow:
+      0 0 0 2px var(--w-common-shadow-state-focus-inner),
+      0 0 0 4px var(~'--w-common-shadow-state-focus-@{focus-status-pattern}');
+  }
+
+  &[disabled],
+  &[data-disabled] {
+    &:focus {
+      .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: disabled);
+      box-shadow: none;
+    }
+  }
+}
+
+.container-active-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
+  &:active {
+    .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: active);
+  }
+
+  &[disabled],
+  &[data-disabled] {
+    &:active {
+      .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: disabled);
+    }
+  }
+}
+
+.container-disabled-style(@component; @widget:''; @variant:''; @status:''; @state:'';) {
+  &[disabled],
+  &[data-disabled] {
+    .container-style(@component: @component, @widget: @widget, @variant: @variant, @status: @status, @state: @state, @state2: disabled);
     cursor: not-allowed;
   }
 }

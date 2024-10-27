@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { Context, Shortcut } from '@/packages/contextMenu'
 
 import Trigger from './Trigger'
@@ -17,7 +17,7 @@ import styles from './Dropdown.module.less'
 
 function Dropdown({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchChildren(children, [
+  const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchElement(children, [
     'DropdownItem',
     'DropdownGroup',
     'DropdownCheckboxGroup',

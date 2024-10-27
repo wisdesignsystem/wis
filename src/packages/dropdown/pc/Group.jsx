@@ -1,13 +1,13 @@
 import { Children, cloneElement } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { isFunction } from '@/utils/is'
 import { contextMenuGroupPropTypes } from '@/packages/contextMenu'
 
 import styles from './Dropdown.module.less'
 
 function Group({ label, onSelect = () => {}, children }) {
-  const { matched } = matchChildren(children, ['DropdownItem'])
+  const { matched } = matchElement(children, ['DropdownItem'])
 
   return (
     <>

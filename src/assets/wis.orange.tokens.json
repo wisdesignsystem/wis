@@ -3087,6 +3087,38 @@
         "$value": "{palette.gray.80}"
       }
     },
+    "_checkbox": {
+      "item": {
+        "basic": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.base}"
+          }
+        },
+        "card": {
+          "font": {
+            "$type": "color",
+            "$value": "{common.font.color.primary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{common.background.common.base}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{common.border.color.base}"
+          }
+        }
+      }
+    },
     "_upload": {
       "background": {
         "$type": "color",
@@ -3272,16 +3304,6 @@
       }
     },
     "_table": {
-      "trend": {
-        "red": {
-          "$type": "color",
-          "$value": "{common.background.semantics.error}"
-        },
-        "green": {
-          "$type": "color",
-          "$value": "{common.background.semantics.success}"
-        }
-      },
       "star": {
         "font": {
           "$type": "color",
@@ -3290,6 +3312,16 @@
         "yellow": {
           "$type": "color",
           "$value": "{palette.yellow.40}"
+        }
+      },
+      "trend": {
+        "red": {
+          "$type": "color",
+          "$value": "{common.background.semantics.error}"
+        },
+        "green": {
+          "$type": "color",
+          "$value": "{common.background.semantics.success}"
         }
       },
       "td-height": {
@@ -3530,19 +3562,17 @@
   },
   "container": {
     "layout": {
-      "header": {
-        "font": {
-          "$type": "color",
-          "$value": "{common.font.color.primary}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{common.background.common.base}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{common.border.color.base}"
-        }
+      "font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
       },
       "collapse": {
         "font": {
@@ -3594,6 +3624,20 @@
           "$value": "{common.border.color.base}"
         }
       },
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
+      },
       "footer": {
         "font": {
           "$type": "color",
@@ -3621,48 +3665,6 @@
       "border": {
         "$type": "color",
         "$value": "{common.border.color.base}"
-      }
-    },
-    "pop": {
-      "font": {
-        "$type": "color",
-        "$value": "{common.font.color.primary}"
-      },
-      "background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "border": {
-        "$type": "color",
-        "$value": "{common.border.color.base}"
-      },
-      "footer": {
-        "font": {
-          "$type": "color",
-          "$value": "{common.font.color.primary}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{common.background.common.base}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{common.border.color.base}"
-        }
-      },
-      "header": {
-        "font": {
-          "$type": "color",
-          "$value": "{common.font.color.primary}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{common.background.common.base}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{common.border.color.base}"
-        }
       }
     },
     "module": {
@@ -3727,6 +3729,14 @@
           "$type": "color",
           "$value": "{common.font.color.primary}"
         },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.transparent.fully}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.transparent}"
+        },
         "header": {
           "font": {
             "$type": "color",
@@ -3768,14 +3778,48 @@
             "$type": "color",
             "$value": "{common.border.color.base}"
           }
+        }
+      }
+    },
+    "modal": {
+      "font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
+      },
+      "footer": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
         },
         "background": {
           "$type": "color",
-          "$value": "{common.background.transparent.fully}"
+          "$value": "{common.background.common.base}"
         },
         "border": {
           "$type": "color",
-          "$value": "{common.border.color.transparent}"
+          "$value": "{common.border.color.base}"
+        }
+      },
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
         }
       }
     },

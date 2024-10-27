@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { CircleHelpIcon } from '@wisdesign/lsicon'
 
 import { boxHeaderPropTypes } from '../propType'
@@ -7,7 +7,7 @@ import { boxHeaderPropTypes } from '../propType'
 import styles from './Box.module.less'
 
 function Header({ className, title, description, tip, children }) {
-  const { BoxCollapse: collapse, BoxAction: action } = matchChildren(children, ['BoxCollapse', 'BoxAction'])
+  const { BoxCollapse: collapse, BoxAction: action } = matchElement(children, ['BoxCollapse', 'BoxAction'])
 
   return (
     <div className={classNames(styles.header, { [className]: !!className })}>

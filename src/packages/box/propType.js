@@ -4,13 +4,6 @@ export const boxPropTypes = {
   className: PropTypes.string,
 
   /**
-   * Determines if the box is collapsible.
-   *
-   * @type {boolean}
-   */
-  collapsible: PropTypes.bool,
-
-  /**
    * Default collapsed state of the box.
    *
    * @type {boolean}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import { Context, Shortcut } from '@/packages/contextMenu'
 
 import ButtonTrigger from './ButtonTrigger'
@@ -11,7 +11,7 @@ import styles from './Dropdown.module.less'
 
 function Button({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
-  const { matched } = matchChildren(children, ['DropdownItem', 'DropdownGroup'])
+  const { matched } = matchElement(children, ['DropdownItem', 'DropdownGroup'])
 
   return (
     <Context.Provider value={{ contextValue, setContextValue, contextType: 'DropdownButton' }}>

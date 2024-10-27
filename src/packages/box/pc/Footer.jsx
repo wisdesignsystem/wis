@@ -1,4 +1,4 @@
-import { matchChildren } from '@/utils/node'
+import { matchElement } from 'remote:self/core'
 import classNames from 'classnames'
 
 import { boxFooterPropTypes } from '../propType'
@@ -6,7 +6,7 @@ import { boxFooterPropTypes } from '../propType'
 import styles from './Box.module.less'
 
 function Footer({ className, children }) {
-  const { BoxAction: action } = matchChildren(children, ['BoxAction'])
+  const { BoxAction: action } = matchElement(children, ['BoxAction'])
 
   return (
     <div className={classNames(styles.footer, { [className]: !!className })}>
