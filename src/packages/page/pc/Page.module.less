@@ -1,0 +1,28 @@
+@import '@/themes/style.less';
+
+.page-style() {
+  .container-style(@component: page);
+}
+
+.page-header-style() {
+  .container-style(@component: page, @widget: header);
+}
+
+.page {
+  .page-style();
+}
+
+.header {
+  box-sizing: border-box;
+  padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xl);
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  font-size: var(--w-common-font-size-text-xlg);
+  font-weight: var(--w-common-font-weight-bold);
+
+  [data-description] {
+    font-size: var(--w-common-font-size-text-base);
+    margin: var(--w-common-spacing-common-xs) var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-none);
+  }
+
+  .page-header-style();
+}

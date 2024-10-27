@@ -19,6 +19,7 @@ export default {
   exposes: {
     './core': '@/packages/core/index',
     './Actions': { pc: '@/packages/actions/pc/Actions', mobile: '@/packages/actions/mobile/Actions' },
+    './Page': { pc: '@/packages/page/pc/Page', mobile: '@/packages/page/mobile/Page' },
     './Layout': { pc: '@/packages/layout/pc/index', mobile: '@/packages/layout/mobile/index' },
     './Shortcut': { pc: '@/packages/shortcut/pc/Shortcut', mobile: '@/packages/shortcut/mobile/Shortcut' },
     './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },

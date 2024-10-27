@@ -6,7 +6,7 @@ import { layoutPropTypes } from '../propType'
 
 import styles from './Layout.module.less'
 
-function Layout({ className, title, description, tip, children }) {
+function Layout({ className, title, description, tip, children, ...rest }) {
   const {
     Actions: actions,
     Left: left,
@@ -29,7 +29,7 @@ function Layout({ className, title, description, tip, children }) {
   const isShowHeader = !!title || !!description || !!tip || !!actions
 
   return (
-    <Box className={classNames(styles.layout, { [className]: !!className })}>
+    <Box {...rest} className={classNames(styles.layout, { [className]: !!className })}>
       {isShowHeader && (
         <Box.Header className={styles.header} title={title} description={description} tip={tip}>
           <Box.Action>{actions}</Box.Action>

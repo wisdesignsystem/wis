@@ -2,6 +2,12 @@ import PropTypes from 'prop-types'
 
 export const boxPropTypes = {
   className: PropTypes.string,
+}
+
+export const boxCollapsiblePropTypes = {
+  className: PropTypes.string,
+
+  collapsible: PropTypes.bool,
 
   /**
    * Default collapsed state of the box.

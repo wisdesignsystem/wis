@@ -5,11 +5,11 @@ import { boxFooterPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Footer({ className, children }) {
+function Footer({ className, children, ...rest }) {
   const { BoxAction: action } = matchElement(children, ['BoxAction'])
 
   return (
-    <div className={classNames(styles.footer, { [className]: !!className })}>
+    <div {...rest} className={classNames(styles.footer, { [className]: !!className })}>
       <span />
       {action}
     </div>

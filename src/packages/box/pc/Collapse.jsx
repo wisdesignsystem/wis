@@ -6,9 +6,9 @@ import { boxCollapsePropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Collapse({ className }) {
+function Collapse({ className, ...rest }) {
   return (
-    <Collapsible.Trigger className={classNames(styles.collapse, { [className]: !!className })}>
+    <Collapsible.Trigger {...rest} className={classNames(styles.collapse, { [className]: !!className })}>
       <DownIcon />
     </Collapsible.Trigger>
   )
