@@ -10,7 +10,6 @@ function Example() {
         description="This is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long description"
         tip="xxx"
       >
-        <Box.Collapse></Box.Collapse>
         <Box.Action>
           <Actions>
             <Button text="Cancel" size="sm"></Button>
