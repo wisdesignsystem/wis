@@ -21,7 +21,11 @@ function Collapsible({
     BoxHeader: header,
     BoxContent: content,
     BoxFooter: footer,
-  } = matchElement(children, ['BoxHeader', 'BoxContent', 'BoxFooter'])
+  } = matchElement(children, [
+    { type: 'BoxHeader', maxCount: 1 },
+    { type: 'BoxContent', maxCount: 1 },
+    { type: 'BoxFooter', maxCount: 1 },
+  ])
 
   return (
     <RDXCollapsible.Root
@@ -36,7 +40,7 @@ function Collapsible({
       onOpenChange={onCollapsed}
     >
       {header}
-      {cloneElement(content, { collapsible })}
+      {cloneElement(content[0], { collapsible })}
       {footer}
     </RDXCollapsible.Root>
   )

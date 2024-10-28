@@ -3088,6 +3088,12 @@
       }
     },
     "_checkbox": {
+      "checkbok": {
+        "Color": {
+          "$type": "color",
+          "$value": "#ffffff"
+        }
+      },
       "item": {
         "basic": {
           "font": {
@@ -3304,16 +3310,6 @@
       }
     },
     "_table": {
-      "star": {
-        "font": {
-          "$type": "color",
-          "$value": "{common.font.color.icon}"
-        },
-        "yellow": {
-          "$type": "color",
-          "$value": "{palette.yellow.40}"
-        }
-      },
       "trend": {
         "red": {
           "$type": "color",
@@ -3327,6 +3323,16 @@
       "td-height": {
         "$type": "dimension",
         "$value": "48px"
+      },
+      "star": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.icon}"
+        },
+        "yellow": {
+          "$type": "color",
+          "$value": "{palette.yellow.40}"
+        }
       },
       "status": {
         "focus-default-background": {
@@ -3654,17 +3660,19 @@
       }
     },
     "page": {
-      "font": {
-        "$type": "color",
-        "$value": "{common.font.color.primary}"
-      },
-      "background": {
-        "$type": "color",
-        "$value": "{common.background.common.base}"
-      },
-      "border": {
-        "$type": "color",
-        "$value": "{common.border.color.base}"
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.primary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.base}"
+        }
       }
     },
     "module": {

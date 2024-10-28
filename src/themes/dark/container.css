@@ -20,9 +20,9 @@ html[data-theme='dark'] {
   --w-container-layout-footer-font: var(--w-common-font-color-primary);
   --w-container-layout-footer-background: var(--w-common-background-common-base);
   --w-container-layout-footer-border: var(--w-common-border-color-base);
-  --w-container-page-font: var(--w-common-font-color-primary);
-  --w-container-page-background: var(--w-common-background-common-base);
-  --w-container-page-border: var(--w-common-border-color-base);
+  --w-container-page-header-font: var(--w-common-font-color-primary);
+  --w-container-page-header-background: var(--w-common-background-common-base);
+  --w-container-page-header-border: var(--w-common-border-color-base);
   --w-container-module-basic-font: var(--w-common-font-color-primary);
   --w-container-module-basic-background: var(--w-common-background-common-base);
   --w-container-module-basic-border: var(--w-common-border-color-base);

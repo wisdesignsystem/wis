@@ -37,6 +37,18 @@ class Translate {
   }
 
   /**
+   * Updates the resource bundle for a given language.
+   *
+   * @param {Object} resource - The resource object to be added to the resource bundle.
+   * @param {string} language - Optional, The language for which the resource bundle should be updated. If not provided, the default language will be used.
+   *
+   * @returns {void}
+   */
+  updateResource(resource, language) {
+    this.i18next.addResourceBundle(language || this.language, this.namespace, resource, true, false)
+  }
+
+  /**
    * Translates the given key using the specified parameters.
    *
    * @param {string} key - The translation key.
