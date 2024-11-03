@@ -83,15 +83,15 @@
   --w-component-dropdown-item-checked-disabled-font: var(--w-common-font-color-state-disabled);
   --w-component-dropdown-item-checked-disabled-background: var(--w-common-background-common-base);
   --w-component-dropdown-item-checked-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-primary-button-selected-font: var(--w-common-font-color-inverse);
-  --w-component-dropdown-primary-button-selected-background: var(--w-common-background-semantics-highlight-hover);
-  --w-component-dropdown-primary-button-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-classic-button-selected-font: var(--w-common-font-color-inverse);
-  --w-component-dropdown-classic-button-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-classic-button-selected-background: var(--w-common-background-common-gray);
-  --w-component-dropdown-secondary-button-selected-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-secondary-button-selected-border: var(--w-common-border-color-base);
-  --w-component-dropdown-secondary-button-selected-background: var(--w-common-background-common-01);
+  --w-component-dropdown-button-primary-selected-font: var(--w-common-font-color-inverse);
+  --w-component-dropdown-button-primary-selected-background: var(--w-common-background-semantics-highlight-hover);
+  --w-component-dropdown-button-primary-selected-border: var(--w-common-border-color-transparent);
+  --w-component-dropdown-button-classic-selected-font: var(--w-common-font-color-inverse);
+  --w-component-dropdown-button-classic-selected-border: var(--w-common-border-color-transparent);
+  --w-component-dropdown-button-classic-selected-background: var(--w-common-background-common-gray);
+  --w-component-dropdown-button-secondary-selected-font: var(--w-common-font-color-primary);
+  --w-component-dropdown-button-secondary-selected-border: var(--w-common-border-color-base);
+  --w-component-dropdown-button-secondary-selected-background: var(--w-common-background-common-01);
   --w-component-dropdown-popper-background: var(--w-common-background-common-base);
   --w-component-dropdown-popper-border: var(--w-common-border-color-base);
 }
