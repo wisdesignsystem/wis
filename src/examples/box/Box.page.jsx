@@ -10,21 +10,21 @@ function Example() {
         description="This is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long description"
         tip="xxx"
       >
-        <Box.Action>
+        <Box.Actions>
           <Actions>
             <Button text="Cancel" size="sm"></Button>
             <Button text="Confirm" size="sm" variant="primary"></Button>
           </Actions>
-        </Box.Action>
+        </Box.Actions>
       </Box.Header>
       <Box.Content>xxx</Box.Content>
       <Box.Footer>
-        <Box.Action>
+        <Box.Actions>
           <Actions>
             <Button text="Cancel" size="sm"></Button>
             <Button text="Confirm" size="sm" variant="primary"></Button>
           </Actions>
-        </Box.Action>
+        </Box.Actions>
       </Box.Footer>
     </Box>
   )

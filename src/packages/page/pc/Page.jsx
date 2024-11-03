@@ -13,7 +13,7 @@ function Page({ className, title, description, tip, children, ...rest }) {
   return (
     <Box {...rest} className={classNames(styles.page, { [className]: !!className })}>
       <Box.Header className={styles.header} title={title} description={description} tip={tip}>
-        <Box.Action>{actions}</Box.Action>
+        {!!actions && <Box.Actions>{actions}</Box.Actions>}
       </Box.Header>
       <Box.Content>
         <Main>{unmatched}</Main>

@@ -32,7 +32,7 @@ function Layout({ className, title, description, tip, children, ...rest }) {
     <Box {...rest} className={classNames(styles.layout, { [className]: !!className })}>
       {isShowHeader && (
         <Box.Header className={styles.header} title={title} description={description} tip={tip}>
-          <Box.Action>{actions}</Box.Action>
+          {!!actions && <Box.Actions>{actions}</Box.Actions>}
         </Box.Header>
       )}
       <Box.Content className={styles.vertical}>

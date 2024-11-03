@@ -70,7 +70,7 @@ export const boxFooterPropTypes = {
   className: PropTypes.string,
 }
 
-export const boxActionPropTypes = {
+export const boxActionsPropTypes = {
   className: PropTypes.string,
 }
 

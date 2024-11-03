@@ -6,7 +6,7 @@ import Header from './Header'
 import Content from './Content'
 import Panel from './Panel'
 import Footer from './Footer'
-import Action from './Action'
+import Actions from './Actions'
 import Collapse from './Collapse'
 
 import { boxPropTypes } from '../propType'
@@ -37,7 +37,7 @@ Box.Header = Header
 Box.Content = Content
 Box.Panel = Panel
 Box.Footer = Footer
-Box.Action = Action
+Box.Actions = Actions
 Box.Collapse = Collapse
 
 export default Box
