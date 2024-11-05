@@ -1,0 +1,27 @@
+.flex {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--w-common-spacing-common-lg);
+}
+
+.item {
+  background: blanchedalmond;
+  min-height: 20px;
+  flex-basis: auto;
+  min-width: 0;
+
+  .loop(@i) when (@i < 13){
+    &[data-size="@{i}"] {
+      width: calc(100% * @i / 12 - (12 - @i)*(var(--w-common-spacing-common-lg) / 12));
+    }
+
+    &[data-offset="@{i}"] {
+      margin-left: calc(100% * @i / 12 + var(--w-common-spacing-common-lg) * @i / 12);
+    }
+
+    .loop(@i+1);
+  }
+  .loop(1);
+}
