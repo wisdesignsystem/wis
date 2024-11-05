@@ -7,7 +7,7 @@ import { boxHeaderPropTypes } from '../propType'
 import styles from './Box.module.less'
 
 function Header({ className, title, description, tip, children, ...rest }) {
-  const { BoxCollapse: collapse, BoxAction: action } = matchElement(children, ['BoxCollapse', 'BoxAction'])
+  const { BoxCollapse: collapse, BoxActions: actions } = matchElement(children, ['BoxCollapse', 'BoxActions'])
 
   return (
     <div {...rest} className={classNames(styles.header, { [className]: !!className })}>
@@ -26,7 +26,7 @@ function Header({ className, title, description, tip, children, ...rest }) {
             )}
           </div>
         </div>
-        <div className={styles.actions}>{action}</div>
+        <div className={styles.actions}>{actions}</div>
       </div>
     </div>
   )
