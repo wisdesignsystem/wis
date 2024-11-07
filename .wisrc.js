@@ -18,6 +18,7 @@ export default {
   // export remote modules
   exposes: {
     './core': '@/packages/core/index',
+    './Grid': '@/packages/grid/index',
     './Actions': { pc: '@/packages/actions/pc/Actions', mobile: '@/packages/actions/mobile/Actions' },
     './Page': { pc: '@/packages/page/pc/Page', mobile: '@/packages/page/mobile/Page' },
     './Layout': { pc: '@/packages/layout/pc/index', mobile: '@/packages/layout/mobile/index' },
