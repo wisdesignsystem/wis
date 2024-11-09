@@ -4,7 +4,7 @@ import styles from './Grid.module.less'
 
 function Example() {
   return (
-    <Row>
+    <Row responsive>
       <Col size={8}>
         <div className={styles.grid}></div>
       </Col>

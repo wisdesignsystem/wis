@@ -1050,6 +1050,10 @@
         "lg": {
           "$type": "dimension",
           "$value": "{common.spacing.common.lg}"
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{common.spacing.common.xl}"
         }
       },
       "scale": {
@@ -1468,6 +1472,176 @@
         "border": {
           "$type": "color",
           "$value": "{common.border.color.base}"
+        }
+      }
+    },
+    "checkbox-card": {
+      "font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
+      },
+      "selected-font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "selected-background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "selected-border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
+      },
+      "hover-font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "hover-background": {
+        "$type": "color",
+        "$value": "{common.background.state.hover}"
+      },
+      "hover-border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
+      },
+      "focus-font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "focus-background": {
+        "$type": "color",
+        "$value": "{common.background.common.base}"
+      },
+      "focus-border": {
+        "$type": "color",
+        "$value": "{common.border.color.base}"
+      },
+      "disabled-font": {
+        "$type": "color",
+        "$value": "{common.font.color.state.disabled}"
+      },
+      "disabled-background": {
+        "$type": "color",
+        "$value": "{common.background.state.disabled}"
+      },
+      "disabled-border": {
+        "$type": "color",
+        "$value": "{common.border.color.state.disabled}"
+      }
+    },
+    "checkbox": {
+      "font": {
+        "$type": "color",
+        "$value": "{common.font.color.primary}"
+      },
+      "item": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.common.03}"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.state.hover}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.background.common.01}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.state.disabled}"
+        },
+        "focus-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "focus-background": {
+          "$type": "color",
+          "$value": "{common.background.common.03}"
+        }
+      },
+      "checked": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight}"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "focus-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "focus-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.font.color.state.disabled}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.state.disabled}"
+        }
+      },
+      "Indeterminate": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight}"
+        },
+        "hover-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "focus-font": {
+          "$type": "color",
+          "$value": "{common.font.color.inverse}"
+        },
+        "focus-background": {
+          "$type": "color",
+          "$value": "{common.background.semantics.highlight-hover}"
+        },
+        "disabled-font": {
+          "$type": "color",
+          "$value": "{common.font.color.state.disabled}"
+        },
+        "disabled-background": {
+          "$type": "color",
+          "$value": "{common.background.common.base}"
         }
       }
     },
@@ -3087,44 +3261,6 @@
         "$value": "{palette.gray.80}"
       }
     },
-    "_checkbox": {
-      "checkbok": {
-        "Color": {
-          "$type": "color",
-          "$value": "#ffffff"
-        }
-      },
-      "item": {
-        "basic": {
-          "font": {
-            "$type": "color",
-            "$value": "{common.font.color.primary}"
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{common.background.common.base}"
-          },
-          "border": {
-            "$type": "color",
-            "$value": "{common.border.color.base}"
-          }
-        },
-        "card": {
-          "font": {
-            "$type": "color",
-            "$value": "{common.font.color.primary}"
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{common.background.common.base}"
-          },
-          "border": {
-            "$type": "color",
-            "$value": "{common.border.color.base}"
-          }
-        }
-      }
-    },
     "_upload": {
       "background": {
         "$type": "color",
@@ -3310,6 +3446,16 @@
       }
     },
     "_table": {
+      "star": {
+        "font": {
+          "$type": "color",
+          "$value": "{common.font.color.icon}"
+        },
+        "yellow": {
+          "$type": "color",
+          "$value": "{palette.yellow.40}"
+        }
+      },
       "trend": {
         "red": {
           "$type": "color",
@@ -3323,16 +3469,6 @@
       "td-height": {
         "$type": "dimension",
         "$value": "48px"
-      },
-      "star": {
-        "font": {
-          "$type": "color",
-          "$value": "{common.font.color.icon}"
-        },
-        "yellow": {
-          "$type": "color",
-          "$value": "{palette.yellow.40}"
-        }
       },
       "status": {
         "focus-default-background": {
@@ -3703,7 +3839,7 @@
             "$value": "{common.border.color.base}"
           }
         },
-        "sub-header": {
+        "nested-header": {
           "font": {
             "$type": "color",
             "$value": "{common.font.color.primary}"

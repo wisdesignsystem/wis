@@ -1,12 +1,14 @@
+import { Children } from 'react'
 import classNames from 'classnames'
 import Box from 'remote:self/packages/Box'
-import { matchElement } from 'remote:self/core'
+import { matchElement, isElement } from 'remote:self/core'
+import { Row, Col } from 'remote:self/Grid'
 
 import { layoutPropTypes } from '../propType'
 
 import styles from './Layout.module.less'
 
-function Layout({ className, title, description, tip, children, ...rest }) {
+function Layout({ className, title, description, tip, responsive, gutter, children, ...rest }) {
   const {
     Actions: actions,
     Left: left,
@@ -26,6 +28,7 @@ function Layout({ className, title, description, tip, children, ...rest }) {
     false,
   )
 
+  const hasModule = unmatched.some((child) => isElement(child, 'Module'))
   const isShowHeader = !!title || !!description || !!tip || !!actions
 
   return (
@@ -39,7 +42,17 @@ function Layout({ className, title, description, tip, children, ...rest }) {
         {!!top && <div className={styles.prefix}>{top[0]}</div>}
         <div className={styles.horizontal}>
           {!!left && <div className={styles.prefix}>{left[0]}</div>}
-          <div className={styles.content}>{unmatched}</div>
+          <div className={styles.content}>
+            {hasModule ? (
+              <Row responsive={responsive} gutter={gutter}>
+                {Children.map(unmatched, (child) => {
+                  return <Col size={child.props.size}>{child}</Col>
+                })}
+              </Row>
+            ) : (
+              unmatched
+            )}
+          </div>
           {!!right && <div className={styles.suffix}>{right[0]}</div>}
         </div>
         {!!bottom && <div className={styles.suffix}>{bottom[0]}</div>}

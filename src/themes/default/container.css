@@ -29,9 +29,9 @@
   --w-container-module-basic-header-font: var(--w-common-font-color-primary);
   --w-container-module-basic-header-background: var(--w-common-background-common-base);
   --w-container-module-basic-header-border: var(--w-common-border-color-base);
-  --w-container-module-basic-sub-header-font: var(--w-common-font-color-helper);
-  --w-container-module-basic-sub-header-background: var(--w-common-background-common-base);
-  --w-container-module-basic-sub-header-border: var(--w-common-border-color-base);
+  --w-container-module-basic-nested-header-font: var(--w-common-font-color-helper);
+  --w-container-module-basic-nested-header-background: var(--w-common-background-common-base);
+  --w-container-module-basic-nested-header-border: var(--w-common-border-color-base);
   --w-container-module-basic-content-font: var(--w-common-font-color-primary);
   --w-container-module-basic-content-background: var(--w-common-background-transparent-fully);
   --w-container-module-basic-content-border: var(--w-common-border-color-transparent);
@@ -41,9 +41,9 @@
   --w-container-module-ghost-header-font: var(--w-common-font-color-primary);
   --w-container-module-ghost-header-background: var(--w-common-background-transparent-fully);
   --w-container-module-ghost-header-border: var(--w-common-border-color-transparent);
-  --w-container-module-ghost-sub-header-font: var(--w-common-font-color-helper);
-  --w-container-module-ghost-sub-header-background: var(--w-common-background-transparent-fully);
-  --w-container-module-ghost-sub-header-border: var(--w-common-border-color-transparent);
+  --w-container-module-ghost-nested-header-font: var(--w-common-font-color-helper);
+  --w-container-module-ghost-nested-header-background: var(--w-common-background-transparent-fully);
+  --w-container-module-ghost-nested-header-border: var(--w-common-border-color-transparent);
   --w-container-module-ghost-content-font: var(--w-common-font-color-primary);
   --w-container-module-ghost-content-background: var(--w-common-background-common-base);
   --w-container-module-ghost-content-border: var(--w-common-border-color-base);
