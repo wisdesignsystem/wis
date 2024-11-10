@@ -41,11 +41,6 @@ const ResponsiveSize = PropTypes.oneOfType([
 
 export const rowPropTypes = {
   /**
-   * enable responsive for Row component
-   */
-  responsive: PropTypes.bool,
-
-  /**
    * enable gutter for Row component
    * @default true
    */

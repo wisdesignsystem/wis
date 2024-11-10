@@ -22,15 +22,11 @@ export const layoutPropTypes = {
    */
   tip: PropTypes.string,
 
-  responsive: PropTypes.bool,
-
   gutter: PropTypes.bool,
 }
 
 export const mainPropTypes = {
   className: PropTypes.string,
-
-  responsive: PropTypes.bool,
 
   gutter: PropTypes.bool,
 }

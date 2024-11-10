@@ -6,7 +6,7 @@ import { colPropTypes } from './propType'
 import styles from './Row.module.less'
 
 function resolveResponsiveSize(size = {}, defaultSize) {
-  if (isNumber(size)) {
+  if (isNumber(parseInt(size))) {
     return { base: size }
   }
 

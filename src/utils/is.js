@@ -23,7 +23,7 @@ export function isObject(data) {
 }
 
 export function isNumber(data) {
-  return check(data, 'Number')
+  return check(data, 'Number') && !Number.isNaN(data)
 }
 
 export function isRegExp(data) {

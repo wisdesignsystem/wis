@@ -4,9 +4,9 @@ import { rowPropTypes } from './propType'
 
 import styles from './Row.module.less'
 
-function Row({ responsive = false, gutter = true, children }) {
+function Row({ gutter = true, children }) {
   return (
-    <div className={styles.row} {...attrs({ 'data-responsive': responsive, 'data-gutter': gutter })}>
+    <div className={styles.row} {...attrs({ 'data-gutter': gutter })}>
       {children}
     </div>
   )
