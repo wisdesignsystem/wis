@@ -25,7 +25,7 @@ function Example() {
           <p>xxxxx</p>
         </Module>
       </Module>
-      <Module title="Module Title" description="description" size={8} variant="ghost" collapsible>
+      <Module title="Module Title" description="description" size={8} variant="ghost" collapsible tip="xxx">
         <Module title="Module Title" description="description" size={6}>
           <p>xxxxx</p>
           <p>xxxxx</p>
