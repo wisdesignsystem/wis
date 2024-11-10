@@ -1,16 +1,16 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.toggle-state-style(@variant:''; @status:''; @state:'';) {
-  .component-style(@component: toggle, @variant: @variant, @status: @status, @state: @state);
-  .component-hover-style(@component: toggle, @variant: @variant, @status: @status, @state: @state);
-  .component-focus-style(@component: toggle, @variant: @variant, @status: @status, @state: @state);
-  .component-disabled-style(@component: toggle, @variant: @variant, @status: @status, @state: @state);
+@mixin toggle-state-style($variant:'', $state:'') {
+  @include component-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include component-hover-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include component-focus-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include component-disabled-style($component: 'toggle', $variant: $variant, $state: $state);
 }
 
-.icon(@size) {
+@mixin icon($size) {
   &[data-icon] {
     padding: var(--w-common-spacing-common-none);
-    width: @size;
+    width: $size;
   }
 }
 
@@ -31,18 +31,18 @@
   }
 
   &[data-variant="basic"] {
-    .toggle-state-style(@variant: basic);
+    @include toggle-state-style($variant: 'basic');
 
     &[data-state="on"] {
-      .toggle-state-style(@variant: basic, @state: selected);
+      @include toggle-state-style($variant: 'basic', $state: 'selected');
     }
   }
 
   &[data-variant="ghost"] {
-    .toggle-state-style(@variant: ghost);
+    @include toggle-state-style($variant: 'ghost');
 
     &[data-state="on"] {
-      .toggle-state-style(@variant: ghost, @state: selected);
+      @include toggle-state-style($variant: 'ghost', $state: 'selected');
     }
   }
 
@@ -52,7 +52,7 @@
     padding: 0 var(--w-common-spacing-common-lg);
     border-radius: var(--w-common-border-radius-lg);
 
-    .icon(40px);
+    @include icon(40px);
   }
 
   &[data-size="sm"] {
@@ -61,7 +61,7 @@
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-md);
     border-radius: var(--w-common-border-radius-lg);
 
-    .icon(32px);
+    @include icon(32px);
   }
 
   &[data-size="xs"] {
@@ -70,6 +70,6 @@
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-sm);
     border-radius: var(--w-common-border-radius-md);
 
-    .icon(24px);
+    @include icon(24px);
   }
 }

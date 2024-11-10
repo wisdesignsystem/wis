@@ -2,7 +2,7 @@ import attrs from '@/utils/attrs'
 
 import { rowPropTypes } from './propType'
 
-import styles from './Row.module.less'
+import styles from './Row.module.scss'
 
 function Row({ gutter = true, children }) {
   return (

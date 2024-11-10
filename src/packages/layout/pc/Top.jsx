@@ -4,7 +4,7 @@ import { matchElement } from 'remote:self/core'
 import Layout from './Layout'
 import { topPropTypes } from '../propType'
 
-import styles from './Layout.module.less'
+import styles from './Layout.module.scss'
 
 function Top({ className, children, ...rest }) {
   const { unmatched } = matchElement(children, [{ type: 'Actions', maxCount: 0 }], false)

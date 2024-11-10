@@ -6,7 +6,7 @@ import classNames from 'classnames'
 
 import { toggleItemPropTypes } from '../propType'
 
-import styles from './ToggleGroup.module.less'
+import styles from './ToggleGroup.module.scss'
 
 function ToggleItem({
   className,

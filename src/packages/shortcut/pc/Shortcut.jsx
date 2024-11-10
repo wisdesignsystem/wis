@@ -3,7 +3,7 @@ import attrs from '@/utils/attrs'
 
 import propTypes from '../propType'
 
-import styles from './Shortcut.module.less'
+import styles from './Shortcut.module.scss'
 
 function Shortcut({
   shortcutKey,

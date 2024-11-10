@@ -1,25 +1,25 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.context-menu-popper-style() {
-  .component-style(@component: dropdown, @widget: popper);
-}
-
-.context-menu-item-style(@status:'';@state:'';) {
-  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
-  .component-hover-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
-  .component-active-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
-  .component-disabled-style(@component: dropdown, @widget: 'item', @status: @status, @state: @state);
-}
-.context-menu-item-selected-style(@status:'') {
-  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state: selected);
-}
-.context-menu-item-highlighted-style(@status: '';) {
-  .component-style(@component: dropdown, @widget: 'item', @status: @status, @state2: hover);
+@mixin context-menu-popper-style() {
+  @include component-style($component: 'dropdown', $widget: 'popper');
 }
 
-.context-menu-checked-style(@status:'';) {
-  .component-style(@component: dropdown, @widget: 'item-checked', @status: @status);
-  .component-disabled-style(@component: dropdown, @widget: 'item-checked', @status: @status);
+@mixin context-menu-item-style($status:'', $state:'') {
+  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include component-hover-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include component-active-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include component-disabled-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+}
+@mixin context-menu-item-selected-style($status:'') {
+  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: 'selected');
+}
+@mixin context-menu-item-highlighted-style($status: '') {
+  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state2: 'hover');
+}
+
+@mixin context-menu-checked-style($status:'') {
+  @include component-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
+  @include component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
 }
 
 .popper {
@@ -33,7 +33,7 @@
   background: var(--w-component-dropdown-popper-background);
   min-width: var(--radix-dropdown-menu-trigger-width);
 
-  .context-menu-popper-style();
+  @include context-menu-popper-style();
 
   > .separator:first-child {
     border-top: none;
@@ -70,29 +70,29 @@
   font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-regular);
 
-  .context-menu-item-style();
+  @include context-menu-item-style();
 
   &[data-state="open"] {
-    .context-menu-item-selected-style();
+    @include context-menu-item-selected-style();
   }
 
   &[data-highlighted] {
-    .context-menu-item-highlighted-style();
+    @include context-menu-item-highlighted-style();
   }
 
   &[data-status="danger"] {
-    .context-menu-item-style(@status: danger);
+    @include context-menu-item-style($status: 'danger');
 
     &[data-state="open"] {
-      .context-menu-item-selected-style(@status: danger);
+      @include context-menu-item-selected-style($status: 'danger');
     }
 
     &[data-highlighted] {
-      .context-menu-item-highlighted-style(@status: danger);
+      @include context-menu-item-highlighted-style($status: 'danger');
     }
 
     .checked {
-      .context-menu-checked-style(@status: danger);
+      @include context-menu-checked-style($status: 'danger');
     }
   }
 }
@@ -104,7 +104,7 @@
   stroke-width: 1.2;
   font-size: var(--w-common-font-size-text-md);
 
-  .context-menu-checked-style();
+  @include context-menu-checked-style();
 }
 
 .title {

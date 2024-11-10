@@ -1,8 +1,8 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.shortcut-state-style(@variant:'';) {
-  .component-style(@component: shortcut, @variant: @variant);
-  .component-disabled-style(@component: shortcut, @variant: @variant);
+@mixin shortcut-state-style($variant:'') {
+  @include component-style($component: 'shortcut', $variant: $variant);
+  @include component-disabled-style($component: 'shortcut', $variant: $variant);
 }
 
 .shortcut {
@@ -15,15 +15,15 @@
   border: var(--w-common-spacing-gap-none) solid transparent;
 
   &[data-variant="light"] {
-    .shortcut-state-style(@variant: light);
+    @include shortcut-state-style($variant: 'light');
   }
 
   &[data-variant="dark"] {
-    .shortcut-state-style(@variant: dark);
+    @include shortcut-state-style($variant: 'dark');
   }
 
   &[data-variant="ghost"] {
-    .shortcut-state-style(@variant: gray);
+    @include shortcut-state-style($variant: 'gray');
   }
 
   &[data-size="md"] {

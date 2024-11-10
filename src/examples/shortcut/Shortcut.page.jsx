@@ -1,7 +1,7 @@
 import Shortcut from 'remote:self/Shortcut'
 import { useShortcut } from 'remote:self/core'
 
-import styles from './Shortcut.module.less'
+import styles from './Shortcut.module.scss'
 
 function Example() {
   const [onKeyDown, onShortcut] = useShortcut()

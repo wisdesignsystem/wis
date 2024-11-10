@@ -5,7 +5,7 @@ import { isFunction } from '@/utils/is'
 
 import { contextMenuGroupPropTypes } from '../propType'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function Group({ label, onSelect = () => {}, children }) {
   const { matched } = matchElement(children, ['ContextMenuItem'])

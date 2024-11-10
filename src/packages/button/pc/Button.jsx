@@ -5,7 +5,7 @@ import classNames from 'classnames'
 
 import propTypes from '../propType'
 
-import styles from './Button.module.less'
+import styles from './Button.module.scss'
 
 const Button = forwardRef(function (
   {

@@ -4,7 +4,7 @@ import { matchElement } from 'remote:self/core'
 import { isFunction } from '@/utils/is'
 import { contextMenuGroupPropTypes } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function Group({ label, onSelect = () => {}, children }) {
   const { matched } = matchElement(children, ['DropdownItem'])

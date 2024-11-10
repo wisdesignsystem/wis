@@ -6,7 +6,7 @@ import attrs from '@/utils/attrs'
 
 import { dropdownPropTypes } from '../propType'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 const Trigger = forwardRef(function (
   { avatar, disabled, icon, arrowDirection = 'down', text, description, className, ...rest },

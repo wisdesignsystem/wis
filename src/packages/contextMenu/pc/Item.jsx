@@ -8,7 +8,7 @@ import { matchElement } from 'remote:self/core'
 
 import { contextMenuItemPropTypes } from '../propType'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function Item({
   role,

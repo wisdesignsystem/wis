@@ -37,9 +37,8 @@
   "devDependencies": {
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
-    "@wisdesign/cli": "0.0.14",
+    "@wisdesign/cli": "0.0.16",
     "@wisdesign/eslint-config": "0.0.1",
-    "@wisdesign/plugin-less": "0.0.1",
     "@wisdesign/prettier-config": "0.0.1",
     "@wisdesign/toolkit": "0.0.3",
     "husky": "9.0.11",

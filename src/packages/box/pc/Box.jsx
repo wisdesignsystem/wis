@@ -11,7 +11,7 @@ import Collapse from './Collapse'
 
 import { boxPropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Box({ className, children, ...rest }) {
   const {

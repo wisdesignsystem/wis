@@ -3,7 +3,7 @@ import * as RDXDropdownMenu from '@radix-ui/react-dropdown-menu'
 import { matchElement } from 'remote:self/core'
 import { contextMenuCheckboxGroupPropTypes, useContextMenuValue } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const { matched } = matchElement(children, ['DropdownItem'])

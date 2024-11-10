@@ -1,11 +1,10 @@
-import { cloneElement } from 'react'
 import { matchElement } from 'remote:self/core'
 import * as RDXCollapsible from '@radix-ui/react-collapsible'
 import classNames from 'classnames'
 
 import { boxCollapsiblePropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Collapsible({ className, defaultCollapsed = true, collapsed, children, onCollapsed, ...rest }) {
   const {
@@ -27,7 +26,7 @@ function Collapsible({ className, defaultCollapsed = true, collapsed, children, 
       onOpenChange={onCollapsed}
     >
       {header}
-      {cloneElement(panel[0], { collapsible: true })}
+      {panel}
       {footer}
     </RDXCollapsible.Root>
   )

@@ -1,6 +1,6 @@
 import Button from 'remote:self/Button'
 
-import styles from './Button.module.less'
+import styles from './Button.module.scss'
 
 function Icon() {
   return (

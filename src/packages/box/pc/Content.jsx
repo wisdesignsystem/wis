@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import { boxContentPropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Content({ className, children, ...rest }) {
   return (

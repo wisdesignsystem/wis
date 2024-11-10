@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import ContextMenu from 'remote:self/ContextMenu'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function Example() {
   const triggerRef = useRef(null)

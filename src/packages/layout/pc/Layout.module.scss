@@ -1,17 +1,17 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.layout-style() {
-  .container-style(@component: layout);
+@mixin layout-style() {
+  @include container-style($component: 'layout');
 }
 
-.layout-header-style() {
-  .container-style(@component: layout, @widget: header);
+@mixin layout-header-style() {
+  @include container-style($component: 'layout', $widget: 'header');
 }
 
 .layout {
   height: 100%;
 
-  .layout-style();
+  @include layout-style();
 
   > .vertical {
     display: flex;
@@ -82,7 +82,7 @@
   font-size: var(--w-common-font-size-text-lg);
   font-weight: var(--w-common-font-weight-bold);
 
-  .layout-header-style();
+  @include layout-header-style();
 }
 
 .content {

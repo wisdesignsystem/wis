@@ -1,6 +1,6 @@
 import Toggle from 'remote:self/Toggle'
 
-import styles from './Toggle.module.less'
+import styles from './Toggle.module.scss'
 
 function Icon() {
   return (

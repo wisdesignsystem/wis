@@ -8,7 +8,7 @@ import ToggleGroup from './ToggleGroup'
 import ToggleItem from './ToggleItem'
 import { togglePropTypes } from '../propType'
 
-import styles from './Toggle.module.less'
+import styles from './Toggle.module.scss'
 
 function Toggle({
   className,

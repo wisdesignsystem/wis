@@ -1,6 +1,6 @@
 import { Row, Col } from 'remote:self/Grid'
 
-import styles from './Grid.module.less'
+import styles from './Grid.module.scss'
 
 function Example() {
   return (

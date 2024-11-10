@@ -1,9 +1,9 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.layout-collapse-style() {
-  .container-style(@component: layout, @widget: collapse);
-  .container-hover-style(@component: layout, @widget: collapse);
-  .container-focus-style(@component: layout, @widget: collapse);
+@mixin layout-collapse-style() {
+  @include container-style($component: 'layout', $widget: 'collapse');
+  @include container-hover-style($component: 'layout', $widget: 'collapse');
+  @include container-focus-style($component: 'layout', $widget: 'collapse');
 }
 
 .box {
@@ -44,6 +44,10 @@
   align-items: flex-start;
   flex: 1 1 auto;
   min-width: 0;
+}
+
+.container {
+  width: 100%;
 }
 
 .actions {
@@ -116,5 +120,5 @@
     }
   }
 
-  .layout-collapse-style();
+  @include layout-collapse-style();
 }

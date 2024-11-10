@@ -5,7 +5,7 @@ import Box from 'remote:self/packages/Box'
 
 import pagePropTypes from '../propType'
 
-import styles from './Page.module.less'
+import styles from './Page.module.scss'
 
 function Page({ className, title, description, tip, children, ...rest }) {
   const { Actions: actions, unmatched } = matchElement(children, [{ type: 'Actions', maxCount: 1 }], false)

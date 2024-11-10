@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import Layout from './Layout'
 import { leftPropTypes } from '../propType'
 
-import styles from './Layout.module.less'
+import styles from './Layout.module.scss'
 
 function Left({ className, title, description, tip, children, ...rest }) {
   return (

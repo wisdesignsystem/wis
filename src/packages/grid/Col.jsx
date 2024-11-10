@@ -3,7 +3,7 @@ import { isNumber } from '@/utils/is'
 
 import { colPropTypes } from './propType'
 
-import styles from './Row.module.less'
+import styles from './Row.module.scss'
 
 function resolveResponsiveSize(size = {}, defaultSize) {
   if (isNumber(parseInt(size))) {

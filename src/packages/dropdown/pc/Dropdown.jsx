@@ -13,7 +13,7 @@ import Button from './Button'
 import { dropdownPropTypes } from '../propType'
 import mapper from '../mapper'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function Dropdown({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})

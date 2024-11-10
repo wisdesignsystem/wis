@@ -5,7 +5,7 @@ import { matchElement } from 'remote:self/core'
 import { contextMenuRadioGroupPropTypes } from '../propType'
 import useContextMenuValue from '../useContextMenuValue'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function RadioGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const { matched } = matchElement(children, ['ContextMenuItem'])

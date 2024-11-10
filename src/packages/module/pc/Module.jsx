@@ -8,7 +8,7 @@ import { matchElement, isElement } from 'remote:self/core'
 import modulePropTypes from '../propType'
 import Context from '../Context'
 
-import styles from './Module.module.less'
+import styles from './Module.module.scss'
 
 function Module({
   className,

@@ -6,7 +6,7 @@ import { Row, Col } from 'remote:self/Grid'
 
 import { layoutPropTypes } from '../propType'
 
-import styles from './Layout.module.less'
+import styles from './Layout.module.scss'
 
 function Layout({ className, title, description, tip, responsive, gutter, children, ...rest }) {
   const {

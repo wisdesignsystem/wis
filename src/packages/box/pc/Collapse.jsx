@@ -4,7 +4,7 @@ import * as Collapsible from '@radix-ui/react-collapsible'
 
 import { boxCollapsePropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Collapse({ className, ...rest }) {
   return (

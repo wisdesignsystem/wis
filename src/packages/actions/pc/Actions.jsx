@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import styles from './Actions.module.less'
+import styles from './Actions.module.scss'
 
 function Actions({ children }) {
   return <div className={styles.actions}>{children}</div>

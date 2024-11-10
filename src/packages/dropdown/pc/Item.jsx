@@ -7,7 +7,7 @@ import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
 import { matchElement } from 'remote:self/core'
 import { contextMenuItemPropTypes, Context } from '@/packages/contextMenu'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function Item({
   role,

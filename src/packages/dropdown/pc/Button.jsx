@@ -7,7 +7,7 @@ import ButtonTrigger from './ButtonTrigger'
 import { dropdownButtonPropTypes } from '../propType'
 import mapper from '../mapper'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function Button({ defaultOpen, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})

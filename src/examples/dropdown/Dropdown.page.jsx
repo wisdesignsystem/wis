@@ -14,7 +14,7 @@ import {
   DeleteIcon,
 } from '@wisdesign/lsicon'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 function Avatar() {
   return (

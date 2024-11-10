@@ -5,11 +5,7 @@ import Button from 'remote:self/Button'
 function Example() {
   return (
     <Box>
-      <Box.Header
-        title="This is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long description"
-        description="This is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long descriptionThis is long description"
-        tip="xxx"
-      >
+      <Box.Header title="Title" description="description" tip="xxx">
         <Box.Actions>
           <Actions>
             <Button text="Cancel" size="sm"></Button>

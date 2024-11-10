@@ -5,7 +5,7 @@ import { DownIcon } from '@wisdesign/lsicon'
 
 import { dropdownButtonPropTypes } from '../propType'
 
-import styles from './Dropdown.module.less'
+import styles from './Dropdown.module.scss'
 
 const ButtonTrigger = forwardRef(function (
   { className, variant, status, disabled, loading, text, icon, iconControl, tooltip, size, shortcutKey, ...rest },

@@ -3,15 +3,15 @@ import classNames from 'classnames'
 
 import { boxFooterPropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Footer({ className, children, ...rest }) {
-  const { BoxAction: action } = matchElement(children, ['BoxAction'])
+  const { BoxActions: actions } = matchElement(children, ['BoxActions'])
 
   return (
     <div {...rest} className={classNames(styles.footer, { [className]: !!className })}>
       <span />
-      {action}
+      {actions}
     </div>
   )
 }

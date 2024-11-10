@@ -1,15 +1,15 @@
-@import '@/themes/style.less';
+@import '@/themes/style.scss';
 
-.module-style(@variant;) {
-  .container-style(@component: module; @variant: @variant;);
+@mixin module-style($variant) {
+  @include container-style($component: 'module', $variant: $variant);
 }
 
-.module-header-style(@variant;) {
-  .container-style(@component: module; @variant: @variant; @widget: header);
+@mixin module-header-style($variant) {
+  @include container-style($component: 'module', $variant: $variant, $widget: 'header');
 }
 
-.module-content-style(@variant;) {
-  .container-style(@component: module; @variant: @variant; @widget: content);
+@mixin module-content-style($variant) {
+  @include container-style($component: 'module', $variant: $variant, $widget: content);
 }
 
 .module {
@@ -19,32 +19,32 @@
 
   &[data-variant="basic"] {
     border: 1px solid transparent;
-    .module-style(@variant: basic);
+    @include module-style($variant: 'basic');
 
     .header {
       padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xl);
 
-      .module-header-style(@variant: basic);
+      @include module-header-style($variant: 'basic');
     }
 
     .content {
-      .module-content-style(@variant: basic);
+      @include module-content-style($variant: 'basic');
     }
   }
 
   &[data-variant="ghost"] {
-    .module-style(@variant: ghost);
+    @include module-style($variant: 'ghost');
 
     .header {
       padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none);
-      .module-header-style(@variant: ghost);
+      @include module-header-style($variant: 'ghost');
     }
 
     .content {
       border-radius: var(--w-common-border-radius-lg);
       border: 1px solid transparent;
 
-      .module-content-style(@variant: ghost);
+      @include module-content-style($variant: 'ghost');
     }
   }
 
@@ -53,14 +53,14 @@
     .header {
       padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none);
       margin: var(--w-common-spacing-common-none) var(--w-common-spacing-common-xl);
-      .module-header-style(@variant: basic-nested);
+      @include module-header-style($variant: 'basic-nested');
     }
   }
 
   &[data-variant="ghost-nested"] {
     min-height: unset;
     .header {
-      .module-header-style(@variant: ghost-nested);
+      @include module-header-style($variant: 'ghost-nested');
     }
   }
 

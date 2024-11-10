@@ -39,7 +39,7 @@ export default {
     },
   },
 
-  plugins: [require.resolve('@wisdesign/plugin-less')],
+  plugins: [],
 
   // register remote entry file
   remoteEntry: './core',

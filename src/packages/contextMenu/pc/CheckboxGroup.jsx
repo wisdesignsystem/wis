@@ -5,7 +5,7 @@ import { matchElement } from 'remote:self/core'
 import { contextMenuCheckboxGroupPropTypes } from '../propType'
 import useContextMenuValue from '../useContextMenuValue'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, children }) {
   const { matched } = matchElement(children, ['ContextMenuItem'])

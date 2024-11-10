@@ -4,7 +4,7 @@ import { CircleHelpIcon } from '@wisdesign/lsicon'
 
 import { boxHeaderPropTypes } from '../propType'
 
-import styles from './Box.module.less'
+import styles from './Box.module.scss'
 
 function Header({ className, title, description, tip, children, ...rest }) {
   const { BoxCollapse: collapse, BoxActions: actions } = matchElement(children, ['BoxCollapse', 'BoxActions'])
@@ -15,7 +15,7 @@ function Header({ className, title, description, tip, children, ...rest }) {
         <div className={styles.info}>
           <div className={styles.wrapper}>
             {collapse}
-            <div>
+            <div className={styles.container}>
               <div className={styles.title}>
                 <span className={styles.label}>{title}</span>
                 {tip && <CircleHelpIcon className={styles.tip} />}

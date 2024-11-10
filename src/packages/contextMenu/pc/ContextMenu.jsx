@@ -11,7 +11,7 @@ import Context from '../Context'
 
 import { contextMenuPropTypes } from '../propType'
 
-import styles from './ContextMenu.module.less'
+import styles from './ContextMenu.module.scss'
 
 function ContextMenu({ children, disabled, ...rest }) {
   const [contextValue, setContextValue] = useState({})
