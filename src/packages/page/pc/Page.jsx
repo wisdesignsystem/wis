@@ -16,7 +16,9 @@ function Page({ className, title, description, tip, children, ...rest }) {
         {!!actions && <Box.Actions>{actions}</Box.Actions>}
       </Box.Header>
       <Box.Content>
-        <Main>{unmatched}</Main>
+        <Main responsive gutter>
+          {unmatched}
+        </Main>
       </Box.Content>
     </Box>
   )

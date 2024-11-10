@@ -21,10 +21,18 @@ export const layoutPropTypes = {
    * tip text of Layout component
    */
   tip: PropTypes.string,
+
+  responsive: PropTypes.bool,
+
+  gutter: PropTypes.bool,
 }
 
 export const mainPropTypes = {
   className: PropTypes.string,
+
+  responsive: PropTypes.bool,
+
+  gutter: PropTypes.bool,
 }
 
 export const leftPropTypes = {

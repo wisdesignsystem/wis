@@ -7,8 +7,6 @@ export const boxPropTypes = {
 export const boxCollapsiblePropTypes = {
   className: PropTypes.string,
 
-  collapsible: PropTypes.bool,
-
   /**
    * Default collapsed state of the box.
    *

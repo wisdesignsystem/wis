@@ -1,29 +1,20 @@
 import { cloneElement } from 'react'
 import { matchElement } from 'remote:self/core'
 import * as RDXCollapsible from '@radix-ui/react-collapsible'
-import attrs from '@/utils/attrs'
 import classNames from 'classnames'
 
 import { boxCollapsiblePropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Collapsible({
-  className,
-  collapsible = true,
-  defaultCollapsed = true,
-  collapsed,
-  children,
-  onCollapsed,
-  ...rest
-}) {
+function Collapsible({ className, defaultCollapsed = true, collapsed, children, onCollapsed, ...rest }) {
   const {
     BoxHeader: header,
-    BoxContent: content,
+    BoxPanel: panel,
     BoxFooter: footer,
   } = matchElement(children, [
     { type: 'BoxHeader', maxCount: 1 },
-    { type: 'BoxContent', maxCount: 1 },
+    { type: 'BoxPanel', maxCount: 1 },
     { type: 'BoxFooter', maxCount: 1 },
   ])
 
@@ -32,15 +23,11 @@ function Collapsible({
       {...rest}
       className={classNames(styles.box, { [className]: !!className })}
       defaultOpen={defaultCollapsed}
-      open={collapsible ? collapsed : true}
-      disabled={!collapsible}
-      {...attrs({
-        'data-collapsible': collapsible,
-      })}
+      open={collapsed}
       onOpenChange={onCollapsed}
     >
       {header}
-      {cloneElement(content[0], { collapsible })}
+      {cloneElement(panel[0], { collapsible: true })}
       {footer}
     </RDXCollapsible.Root>
   )

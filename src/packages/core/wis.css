@@ -41,6 +41,7 @@ html {
   font-family: var(--w-common-font-family-base),ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-size: var(--w-common-font-size-text-base);
   font-style: normal;
+  line-height: 150%;
 }
 
 body > div[data-root] {

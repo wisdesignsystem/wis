@@ -29,9 +29,9 @@ html[data-theme='blue'] {
   --w-container-module-basic-header-font: var(--w-common-font-color-primary);
   --w-container-module-basic-header-background: var(--w-common-background-common-base);
   --w-container-module-basic-header-border: var(--w-common-border-color-base);
-  --w-container-module-basic-sub-header-font: var(--w-common-font-color-primary);
-  --w-container-module-basic-sub-header-background: var(--w-common-background-common-base);
-  --w-container-module-basic-sub-header-border: var(--w-common-border-color-base);
+  --w-container-module-basic-nested-header-font: var(--w-common-font-color-primary);
+  --w-container-module-basic-nested-header-background: var(--w-common-background-common-base);
+  --w-container-module-basic-nested-header-border: var(--w-common-border-color-base);
   --w-container-module-basic-content-font: var(--w-common-font-color-primary);
   --w-container-module-basic-content-background: var(--w-common-background-transparent-fully);
   --w-container-module-basic-content-border: var(--w-common-border-color-transparent);

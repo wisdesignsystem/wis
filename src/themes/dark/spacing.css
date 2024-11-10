@@ -13,6 +13,7 @@ html[data-theme='dark'] {
   --w-common-spacing-gap-sm: var(--w-common-spacing-common-xs);
   --w-common-spacing-gap-md: var(--w-common-spacing-common-sm);
   --w-common-spacing-gap-lg: var(--w-common-spacing-common-lg);
+  --w-common-spacing-gap-xl: var(--w-common-spacing-common-xl);
   --w-common-spacing-scale-1: 1px;
   --w-common-spacing-scale-2: 1.5px;
   --w-common-spacing-scale-3: 2px;

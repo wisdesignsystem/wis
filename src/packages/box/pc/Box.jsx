@@ -13,7 +13,7 @@ import { boxPropTypes } from '../propType'
 
 import styles from './Box.module.less'
 
-function Box({ className, defaultCollapsed = true, collapsed, children, onCollapsed, ...rest }) {
+function Box({ className, children, ...rest }) {
   const {
     BoxHeader: header,
     BoxContent: content,
