@@ -1,9 +1,10 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin layout-collapse-style() {
-  @include container-style($component: 'layout', $widget: 'collapse');
-  @include container-hover-style($component: 'layout', $widget: 'collapse');
-  @include container-focus-style($component: 'layout', $widget: 'collapse');
+  @include style.container-style($component: 'layout', $widget: 'collapse');
+  @include style.container-hover-style($component: 'layout', $widget: 'collapse');
+  @include style.container-focus-style($component: 'layout', $widget: 'collapse');
 }
 
 .box {
@@ -77,10 +78,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   color: var(--w-common-font-color-helper);
-  font-size: var(--w-common-font-size-text-sm);
   font-weight: var(--w-common-font-weight-regular);
+
+  @include tool.font-size(var(--w-common-font-size-text-sm));
 }
 
 .content {

@@ -1,15 +1,16 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin module-style($variant) {
-  @include container-style($component: 'module', $variant: $variant);
+  @include style.container-style($component: 'module', $variant: $variant);
 }
 
 @mixin module-header-style($variant) {
-  @include container-style($component: 'module', $variant: $variant, $widget: 'header');
+  @include style.container-style($component: 'module', $variant: $variant, $widget: 'header');
 }
 
 @mixin module-content-style($variant) {
-  @include container-style($component: 'module', $variant: $variant, $widget: content);
+  @include style.container-style($component: 'module', $variant: $variant, $widget: content);
 }
 
 .module {
@@ -74,8 +75,9 @@
 .header {
   box-sizing: border-box;
   border-bottom: var(--w-common-spacing-scale-1) solid transparent;
-  font-size: var(--w-common-font-size-text-lg);
   font-weight: var(--w-common-font-weight-bold);
+
+  @include tool.font-size(var(--w-common-font-size-text-lg));
 }
 
 .content {

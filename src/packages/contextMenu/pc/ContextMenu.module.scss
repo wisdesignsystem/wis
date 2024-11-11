@@ -1,25 +1,26 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin context-menu-popper-style() {
-  @include component-style($component: 'dropdown', $widget: 'popper');
+  @include style.component-style($component: 'dropdown', $widget: 'popper');
 }
 
 @mixin context-menu-item-style($status:'', $state:'') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-hover-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-active-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-disabled-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-hover-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-active-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-disabled-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
 }
 @mixin context-menu-item-selected-style($status:'') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: 'selected');
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: 'selected');
 }
 @mixin context-menu-item-highlighted-style($status: '') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state2: 'hover');
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state2: 'hover');
 }
 
 @mixin context-menu-checked-style($status:'') {
-  @include component-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
-  @include component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
+  @include style.component-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
+  @include style.component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
 }
 
 .popper {
@@ -67,8 +68,9 @@
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
   cursor: pointer;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-regular);
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   @include context-menu-item-style();
 
@@ -102,7 +104,8 @@
   flex-direction: row;
   align-items: center;
   stroke-width: 1.2;
-  font-size: var(--w-common-font-size-text-md);
+
+  @include tool.font-size(var(--w-common-font-size-text-md));
 
   @include context-menu-checked-style();
 }
@@ -147,9 +150,10 @@
 }
 
 .label {
-  font-size: var(--w-common-font-size-text-sm);
   font-weight: var(--w-common-font-weight-bold);
   padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xs);
   color: var(--w-common-font-color-helper);
   margin: 0 0 var(--w-common-spacing-gap-sm);
+
+  @include tool.font-size(var(--w-common-font-size-text-sm));
 }

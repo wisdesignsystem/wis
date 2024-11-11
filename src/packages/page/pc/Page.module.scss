@@ -1,11 +1,12 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin page-style() {
-  @include container-style($component: 'page');
+  @include style.container-style($component: 'page');
 }
 
 @mixin page-header-style() {
-  @include container-style($component: 'page', $widget: 'header');
+  @include style.container-style($component: 'page', $widget: 'header');
 }
 
 .page {
@@ -18,12 +19,14 @@
   box-sizing: border-box;
   padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xl);
   border-bottom: var(--w-common-spacing-scale-1) solid transparent;
-  font-size: var(--w-common-font-size-text-xlg);
   font-weight: var(--w-common-font-weight-bold);
 
+  @include tool.font-size(var(--w-common-font-size-text-xlg));
+
   [data-description] {
-    font-size: var(--w-common-font-size-text-base);
     margin: var(--w-common-spacing-common-xs) var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-none);
+    
+    @include tool.font-size(var(--w-common-font-size-text-base));
   }
 
   @include page-header-style();

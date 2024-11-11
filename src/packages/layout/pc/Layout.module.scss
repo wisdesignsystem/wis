@@ -1,11 +1,12 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin layout-style() {
-  @include container-style($component: 'layout');
+  @include style.container-style($component: 'layout');
 }
 
 @mixin layout-header-style() {
-  @include container-style($component: 'layout', $widget: 'header');
+  @include style.container-style($component: 'layout', $widget: 'header');
 }
 
 .layout {
@@ -79,8 +80,9 @@
   box-sizing: border-box;
   padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xl);
   border-bottom: var(--w-common-spacing-scale-1) solid transparent;
-  font-size: var(--w-common-font-size-text-lg);
   font-weight: var(--w-common-font-weight-bold);
+
+  @include tool.font-size(var(--w-common-font-size-text-lg));
 
   @include layout-header-style();
 }

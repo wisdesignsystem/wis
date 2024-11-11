@@ -1,13 +1,14 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin toggle-group-state-style($variant:'') {
-  @include component-style($component: 'toggle-group', $variant: $variant);
+  @include style.component-style($component: 'toggle-group', $variant: $variant);
 }
 @mixin toggle-group-item-state-style($variant:'', $state: '') {
-  @include component-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include component-hover-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include component-focus-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include component-disabled-style($component:'toggle-group-item', $variant: $variant, $state: $state);
+  @include style.component-style($component:'toggle-group-item', $variant: $variant, $state: $state);
+  @include style.component-hover-style($component:'toggle-group-item', $variant: $variant, $state: $state);
+  @include style.component-focus-style($component:'toggle-group-item', $variant: $variant, $state: $state);
+  @include style.component-disabled-style($component:'toggle-group-item', $variant: $variant, $state: $state);
 }
 
 .group {
@@ -84,12 +85,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
   transition: all 0.2s;
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   &:focus {
     z-index: 1;

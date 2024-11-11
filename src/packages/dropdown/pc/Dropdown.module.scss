@@ -1,40 +1,41 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin dropdown-style($state:'') {
-  @include component-style($component: 'dropdown', $state: $state);
-  @include component-hover-style($component: 'dropdown', $state: $state);
-  @include component-focus-style($component: 'dropdown', $state: $state);
-  @include component-active-style($component: 'dropdown', $state: $state);
-  @include component-disabled-style($component: 'dropdown', $state: $state);
+  @include style.component-style($component: 'dropdown', $state: $state);
+  @include style.component-hover-style($component: 'dropdown', $state: $state);
+  @include style.component-focus-style($component: 'dropdown', $state: $state);
+  @include style.component-active-style($component: 'dropdown', $state: $state);
+  @include style.component-disabled-style($component: 'dropdown', $state: $state);
 }
 @mixin dropdown-selected-style() {
-  @include component-style($component: 'dropdown', $state: 'selected');
+  @include style.component-style($component: 'dropdown', $state: 'selected');
 }
 
 @mixin dropdown-popper-style() {
-  @include component-style($component: 'dropdown', $widget: 'popper');
+  @include style.component-style($component: 'dropdown', $widget: 'popper');
 }
 
 @mixin dropdown-item-style($status:'', $state:'') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-hover-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-active-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
-  @include component-disabled-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-hover-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-active-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
+  @include style.component-disabled-style($component: 'dropdown', $widget: 'item', $status: $status, $state: $state);
 }
 @mixin dropdown-item-selected-style($status:'') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: 'selected');
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state: 'selected');
 }
 @mixin dropdown-item-highlighted-style($status: '') {
-  @include component-style($component: 'dropdown', $widget: 'item', $status: $status, $state2: 'hover');
+  @include style.component-style($component: 'dropdown', $widget: 'item', $status: $status, $state2: 'hover');
 }
 
 @mixin dropdown-checked-style($status:'') {
-  @include component-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
-  @include component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
+  @include style.component-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
+  @include style.component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
 }
 
 @mixin dropdown-button-selected-style($variant: '') {
-  @include component-style($component: 'dropdown-button', $variant: $variant, $state: selected);
+  @include style.component-style($component: 'dropdown-button', $variant: $variant, $state: selected);
 }
 
 .trigger {
@@ -44,7 +45,6 @@
   justify-content: center;
   gap: var(--w-common-spacing-gap-md);
   padding: var(--w-common-spacing-common-sm);
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
   transition: all 0.2s;
@@ -52,6 +52,8 @@
   border: var(--w-common-spacing-scale-1) solid transparent;
   border-radius: var(--w-common-border-radius-lg);
   min-height: 40px;
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   &[data-menu] {
     width: 40px;
@@ -112,8 +114,9 @@
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
   cursor: pointer;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-regular);
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   @include dropdown-item-style();
 
@@ -147,7 +150,8 @@
   flex-direction: row;
   align-items: center;
   stroke-width: 1.2;
-  font-size: var(--w-common-font-size-text-md);
+
+  @include tool.font-size(var(--w-common-font-size-text-md));
 
   @include dropdown-checked-style();
 }
@@ -184,12 +188,13 @@
 }
 
 .description {
-  font-size: var(--w-common-font-size-text-sm);
   font-weight: var(--w-common-font-weight-regular);
   color: var(--w-common-font-color-helper);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @include tool.font-size(var(--w-common-font-size-text-sm));
 }
 
 .title {
@@ -232,11 +237,12 @@
 }
 
 .label {
-  font-size: var(--w-common-font-size-text-sm);
   font-weight: var(--w-common-font-weight-bold);
   padding: var(--w-common-spacing-common-lg) var(--w-common-spacing-common-lg) var(--w-common-spacing-common-xs);
   color: var(--w-common-font-color-helper);
   margin: 0 0 var(--w-common-spacing-gap-sm);
+
+  @include tool.font-size(var(--w-common-font-size-text-sm));
 }
 
 .button {

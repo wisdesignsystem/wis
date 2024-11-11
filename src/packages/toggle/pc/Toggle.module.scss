@@ -1,10 +1,11 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin toggle-state-style($variant:'', $state:'') {
-  @include component-style($component: 'toggle', $variant: $variant, $state: $state);
-  @include component-hover-style($component: 'toggle', $variant: $variant, $state: $state);
-  @include component-focus-style($component: 'toggle', $variant: $variant, $state: $state);
-  @include component-disabled-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include style.component-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include style.component-hover-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include style.component-focus-style($component: 'toggle', $variant: $variant, $state: $state);
+  @include style.component-disabled-style($component: 'toggle', $variant: $variant, $state: $state);
 }
 
 @mixin icon($size) {
@@ -19,12 +20,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
   transition: all 0.2s;
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   > svg {
     stroke-width: 2;

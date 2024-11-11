@@ -1,8 +1,9 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin shortcut-state-style($variant:'') {
-  @include component-style($component: 'shortcut', $variant: $variant);
-  @include component-disabled-style($component: 'shortcut', $variant: $variant);
+  @include style.component-style($component: 'shortcut', $variant: $variant);
+  @include style.component-disabled-style($component: 'shortcut', $variant: $variant);
 }
 
 .shortcut {
@@ -10,9 +11,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   border: var(--w-common-spacing-gap-none) solid transparent;
+
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   &[data-variant="light"] {
     @include shortcut-state-style($variant: 'light');
@@ -41,10 +43,11 @@
   }
 
   &[data-size="xs"] {
-    font-size: var(--w-common-font-size-text-sm);
     gap: var(--w-common-spacing-gap-none);
     padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-xs);
     border-radius: var(--w-common-border-radius-md);
     height: 14px;
+
+    @include tool.font-size(var(--w-common-font-size-text-sm));
   }
 }

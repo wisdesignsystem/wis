@@ -1,11 +1,12 @@
-@import '@/themes/style.scss';
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
 
 @mixin button-style($variant, $status: '', $state: '') {
-  @include component-style($component: button, $variant: $variant, $status: $status, $state: $state);
-  @include component-hover-style($component: button, $variant: $variant, $status: $status, $state: $state);
-  @include component-focus-style($component: button, $variant: $variant, $status: $status, $state: $state);
-  @include component-active-style($component: button, $variant: $variant, $status: $status, $state: $state);
-  @include component-disabled-style($component: button, $variant: $variant, $status: $status, $state: $state);
+  @include style.component-style($component: button, $variant: $variant, $status: $status, $state: $state);
+  @include style.component-hover-style($component: button, $variant: $variant, $status: $status, $state: $state);
+  @include style.component-focus-style($component: button, $variant: $variant, $status: $status, $state: $state);
+  @include style.component-active-style($component: button, $variant: $variant, $status: $status, $state: $state);
+  @include style.component-disabled-style($component: button, $variant: $variant, $status: $status, $state: $state);
 }
 
 @mixin icon($size) {
@@ -20,12 +21,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: var(--w-common-font-size-text-base);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
   transition: all 0.2s;
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
+  
+  @include tool.font-size(var(--w-common-font-size-text-base));
 
   > svg {
     stroke-width: 1.5;
