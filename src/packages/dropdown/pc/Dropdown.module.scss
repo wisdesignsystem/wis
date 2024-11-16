@@ -47,7 +47,7 @@
   padding: var(--w-common-spacing-common-sm);
   font-weight: var(--w-common-font-weight-medium);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: box-shadow 0.2s, background 0.2s, border 0.2s;
   outline: none;
   border: var(--w-common-spacing-scale-1) solid transparent;
   border-radius: var(--w-common-border-radius-lg);
