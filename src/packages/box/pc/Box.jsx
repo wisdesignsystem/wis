@@ -1,15 +1,6 @@
+import PropTypes from 'prop-types'
 import { matchElement } from 'remote:self/core'
 import classNames from 'classnames'
-
-import Collapsible from './Collapsible'
-import Header from './Header'
-import Content from './Content'
-import Panel from './Panel'
-import Footer from './Footer'
-import Actions from './Actions'
-import Collapse from './Collapse'
-
-import { boxPropTypes } from '../propType'
 
 import styles from './Box.module.scss'
 
@@ -29,15 +20,17 @@ function Box({ className, children, ...rest }) {
   )
 }
 
-Box.propTypes = boxPropTypes
 Box.displayName = 'Box'
+Box.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
 
-Box.Collapsible = Collapsible
-Box.Header = Header
-Box.Content = Content
-Box.Panel = Panel
-Box.Footer = Footer
-Box.Actions = Actions
-Box.Collapse = Collapse
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Box

@@ -1,9 +1,8 @@
 import { Children, cloneElement } from 'react'
+import PropTypes from 'prop-types'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchElement } from 'remote:self/core'
 import { isFunction } from '@/utils/is'
-
-import { contextMenuGroupPropTypes } from '../propType'
 
 import styles from './ContextMenu.module.scss'
 
@@ -32,7 +31,37 @@ function Group({ label, onSelect = () => {}, children }) {
   )
 }
 
-Group.propTypes = contextMenuGroupPropTypes
 Group.displayName = 'ContextMenuGroup'
+Group.propTypes = {
+  /**
+   * The label for the ContextMenu.Group.
+   * @type {string}
+   */
+  label: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+
+  /**
+   * Callback function to handle click events, when the Dropdown.Item wrapped by ContextMenu.Group is clicked, it triggers.
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleClick(value) {
+   *
+   * }
+   *
+   * <ContextMenu>
+   *  <ContextMenu.Group label="Group Title" onClick={handleClick}>
+   *    <ContextMenu.Item value="a"></ContextMenu.Item>
+   *  </ContextMenu.Group>
+   * </ContextMenu>
+   */
+  onSelect: PropTypes.func,
+}
 
 export default Group

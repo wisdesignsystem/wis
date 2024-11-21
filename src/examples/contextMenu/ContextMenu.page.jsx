@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import ContextMenu from 'remote:self/ContextMenu'
+import { ContextMenu, ContextMenuItem } from 'remote:self/contextMenu'
 
 import styles from './ContextMenu.module.scss'
 
@@ -13,9 +13,9 @@ function Example() {
           <div className={styles.content} ref={triggerRef}>
             Right Click me
           </div>
-          <ContextMenu.Item label="Desktop" value="desktop"></ContextMenu.Item>
-          <ContextMenu.Item label="Tablet" value="tablet"></ContextMenu.Item>
-          <ContextMenu.Item label="Mobile" value="mobile"></ContextMenu.Item>
+          <ContextMenuItem label="Desktop" value="desktop"></ContextMenuItem>
+          <ContextMenuItem label="Tablet" value="tablet"></ContextMenuItem>
+          <ContextMenuItem label="Mobile" value="mobile"></ContextMenuItem>
         </ContextMenu>
       </div>
     </div>

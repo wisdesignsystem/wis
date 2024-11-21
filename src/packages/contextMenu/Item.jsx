@@ -1,18 +1,17 @@
 import { Children } from 'react'
+import PropTypes from 'prop-types'
 import { useGlobalShortcut } from 'remote:self/core'
 
 import Shortcut from './Shortcut'
-import { contextMenuItemPropTypes } from './propType'
 
 function Item({
   mapper,
   disabled,
   role,
-  value,
   checked,
   shortcutKey,
   onSelect = () => {},
-  onCheck = () => {},
+  onCheckedChange = () => {},
   children,
 }) {
   const matched = []
@@ -41,12 +40,12 @@ function Item({
     }
 
     if (role === 'menuitemcheckbox') {
-      onCheck(!checked)
+      onCheckedChange(!checked)
       return
     }
 
     if (role === 'menuitemradio') {
-      onCheck()
+      onCheckedChange()
       return
     }
 
@@ -60,6 +59,22 @@ function Item({
   return null
 }
 
-Item.propTypes = contextMenuItemPropTypes
+Item.propTypes = {
+  mapper: PropTypes.func,
+
+  role: PropTypes.oneOf(['menuitem', 'menuitemcheckbox', 'menuitemradio']),
+
+  checked: PropTypes.bool,
+
+  disabled: PropTypes.bool,
+
+  shortcutKey: PropTypes.string,
+
+  children: PropTypes.node,
+
+  onSelect: PropTypes.func,
+
+  onCheckedChange: PropTypes.func,
+}
 
 export default Item

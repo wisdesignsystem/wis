@@ -1,4 +1,4 @@
-import Button from 'remote:self/Button'
+import { Button } from 'remote:self/button'
 
 import styles from './Button.module.scss'
 

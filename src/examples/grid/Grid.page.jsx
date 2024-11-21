@@ -1,4 +1,4 @@
-import { Row, Col } from 'remote:self/Grid'
+import { Row, Col } from 'remote:self/grid'
 
 import styles from './Grid.module.scss'
 

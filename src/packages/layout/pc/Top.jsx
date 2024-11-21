@@ -1,8 +1,8 @@
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import { matchElement } from 'remote:self/core'
 
 import Layout from './Layout'
-import { topPropTypes } from '../propType'
 
 import styles from './Layout.module.scss'
 
@@ -17,6 +17,16 @@ function Top({ className, children, ...rest }) {
 }
 
 Top.displayName = 'Top'
-Top.propTypes = topPropTypes
+Top.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Top

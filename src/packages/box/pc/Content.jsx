@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-
-import { boxContentPropTypes } from '../propType'
+import PropTypes from 'prop-types'
 
 import styles from './Box.module.scss'
 
@@ -13,6 +12,16 @@ function Content({ className, children, ...rest }) {
 }
 
 Content.displayName = 'BoxContent'
-Content.propTypes = boxContentPropTypes
+Content.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Content

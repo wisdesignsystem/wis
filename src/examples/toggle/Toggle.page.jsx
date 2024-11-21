@@ -1,4 +1,4 @@
-import Toggle from 'remote:self/Toggle'
+import { Toggle } from 'remote:self/toggle'
 
 import styles from './Toggle.module.scss'
 

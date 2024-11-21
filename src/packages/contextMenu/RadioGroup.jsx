@@ -1,7 +1,7 @@
 import { Children } from 'react'
+import PropTypes from 'prop-types'
 
 import useContextMenuValue from './useContextMenuValue'
-import { contextMenuRadioGroupPropTypes } from './propType'
 import components from './component'
 
 function RadioGroup({ mapper, name, value, defaultValue, onChange = () => {}, children }) {
@@ -28,6 +28,18 @@ function RadioGroup({ mapper, name, value, defaultValue, onChange = () => {}, ch
   })
 }
 
-RadioGroup.propTypes = contextMenuRadioGroupPropTypes
+RadioGroup.propTypes = {
+  mapper: PropTypes.func,
+
+  name: PropTypes.string.isRequired,
+
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  children: PropTypes.node,
+
+  onChange: PropTypes.func,
+}
 
 export default RadioGroup

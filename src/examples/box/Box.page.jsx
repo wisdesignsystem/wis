@@ -1,27 +1,27 @@
-import Box from 'remote:self/packages/Box'
-import Actions from 'remote:self/Actions'
-import Button from 'remote:self/Button'
+import { Box, BoxActions, BoxHeader, BoxContent, BoxFooter } from 'remote:self/box'
+import { Actions } from 'remote:self/actions'
+import { Button } from 'remote:self/button'
 
 function Example() {
   return (
     <Box>
-      <Box.Header title="Title" description="description" tip="xxx">
-        <Box.Actions>
+      <BoxHeader title="Title" description="description" tip="xxx">
+        <BoxActions>
           <Actions>
             <Button text="Cancel" size="sm"></Button>
             <Button text="Confirm" size="sm" variant="primary"></Button>
           </Actions>
-        </Box.Actions>
-      </Box.Header>
-      <Box.Content>xxx</Box.Content>
-      <Box.Footer>
-        <Box.Actions>
+        </BoxActions>
+      </BoxHeader>
+      <BoxContent>xxx</BoxContent>
+      <BoxFooter>
+        <BoxActions>
           <Actions>
             <Button text="Cancel" size="sm"></Button>
             <Button text="Confirm" size="sm" variant="primary"></Button>
           </Actions>
-        </Box.Actions>
-      </Box.Footer>
+        </BoxActions>
+      </BoxFooter>
     </Box>
   )
 }

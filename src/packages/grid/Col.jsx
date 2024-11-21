@@ -1,7 +1,6 @@
+import PropTypes from 'prop-types'
 import attrs from '@/utils/attrs'
 import { isNumber } from '@/utils/is'
-
-import { colPropTypes } from './propType'
 
 import styles from './Row.module.scss'
 
@@ -49,7 +48,62 @@ function Col({ children, size, offset }) {
   )
 }
 
-Col.propTypes = colPropTypes
 Col.displayName = 'Col'
+
+const Size = PropTypes.oneOf([
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+])
+const ResponsiveSize = PropTypes.oneOfType([
+  Size,
+  PropTypes.shape({
+    base: Size,
+    sm: Size,
+    md: Size,
+    lg: Size,
+    xl: Size,
+    xxl: Size,
+  }),
+])
+Col.propTypes = {
+  /**
+   * Size for Col component, support responsive size
+   *
+   * @default 12
+   */
+  size: ResponsiveSize,
+
+  /**
+   * Offset for Col component, support responsive size
+   */
+  offset: ResponsiveSize,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Col

@@ -1,12 +1,11 @@
 import { useRef } from 'react'
+import PropTypes from 'prop-types'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import attrs from '@/utils/attrs'
 import classNames from 'classnames'
-import Shortcut from 'remote:self/Shortcut'
+import { Shortcut } from 'remote:self/shortcut'
 import { CheckIcon, CircleHelpIcon, RightIcon } from '@wisdesign/lsicon'
 import { matchElement } from 'remote:self/core'
-
-import { contextMenuItemPropTypes } from '../propType'
 
 import styles from './ContextMenu.module.scss'
 
@@ -139,7 +138,90 @@ function Item({
   )
 }
 
-Item.propTypes = contextMenuItemPropTypes
 Item.displayName = 'ContextMenuItem'
+Item.propTypes = {
+  className: PropTypes.string,
+
+  /**
+   * @private
+   */
+  role: PropTypes.oneOf(['menuitem', 'menuitemcheckbox', 'menuitemradio']),
+
+  /**
+   * @private
+   */
+  checked: PropTypes.bool,
+
+  /**
+   * Status of the ContextMenu.Item.
+   * This attribute takes effect only when item is normal menu item.
+   *
+   * @type {danger}
+   * @default normal
+   */
+  status: PropTypes.oneOf(['danger']),
+
+  /**
+   * Indicates if the ContextMenu.Item is disabled.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Label text for the ContextMenu.Item.
+   */
+  label: PropTypes.string,
+
+  /**
+   * Icon element to be displayed on the ContextMenu.Item.
+   *
+   * @type {React.Element}
+   */
+  icon: PropTypes.element,
+
+  /**
+   * Tip text for the ContextMenu.Item.
+   */
+  tip: PropTypes.string,
+
+  /**
+   * Value associated with the ContextMenu.Item.
+   */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+  /**
+   * Global shortcut key for the ContextMenu.Item.
+   */
+  shortcutKey: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+
+  /**
+   * Callback function to handle select, it will trigger when the ContextMenu.Item is normal menu button
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleSelect() {
+   *
+   * }
+   *
+   * <ContextMenu>
+   *  <ContextMenu.Item value="a" onSelect={handleSelect}></Toggle.Item>
+   * </ContextMenu>
+   */
+  onSelect: PropTypes.func,
+
+  /**
+   * @private
+   */
+  onCheckedChange: PropTypes.func,
+}
 
 export default Item

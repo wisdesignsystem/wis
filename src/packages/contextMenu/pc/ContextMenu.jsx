@@ -1,15 +1,10 @@
 import { useState, Children, cloneElement } from 'react'
+import PropTypes from 'prop-types'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchElement } from 'remote:self/core'
 
-import Item from './Item'
-import Group from './Group'
-import CheckboxGroup from './CheckboxGroup'
-import RadioGroup from './RadioGroup'
 import Shortcut from '../Shortcut'
 import Context from '../Context'
-
-import { contextMenuPropTypes } from '../propType'
 
 import styles from './ContextMenu.module.scss'
 
@@ -26,7 +21,7 @@ function ContextMenu({ children, disabled, ...rest }) {
     <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXContextMenu.Root>
         <Shortcut>{matched}</Shortcut>
-        <RDXContextMenu.Trigger disabled={rest.disabled}>
+        <RDXContextMenu.Trigger disabled={disabled}>
           {unmatched.length && (unmatched.length > 1 ? Children.only(unmatched) : cloneElement(unmatched[0], rest))}
         </RDXContextMenu.Trigger>
         <RDXContextMenu.Portal>
@@ -45,7 +40,6 @@ function ContextMenu({ children, disabled, ...rest }) {
   )
 }
 
-ContextMenu.propTypes = contextMenuPropTypes
 ContextMenu.displayName = 'ContextMenu'
 ContextMenu.getSymbiote = function (children) {
   const { unmatched } = matchElement(
@@ -56,10 +50,19 @@ ContextMenu.getSymbiote = function (children) {
 
   return unmatched[0]
 }
+ContextMenu.propTypes = {
+  /**
+   * Indicates if the ContextMenu is disabled.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  disabled: PropTypes.bool,
 
-ContextMenu.Item = Item
-ContextMenu.Group = Group
-ContextMenu.CheckboxGroup = CheckboxGroup
-ContextMenu.RadioGroup = RadioGroup
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default ContextMenu

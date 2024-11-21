@@ -1,8 +1,7 @@
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import { DownIcon } from '@wisdesign/lsicon'
 import * as Collapsible from '@radix-ui/react-collapsible'
-
-import { boxCollapsePropTypes } from '../propType'
 
 import styles from './Box.module.scss'
 
@@ -15,6 +14,11 @@ function Collapse({ className, ...rest }) {
 }
 
 Collapse.displayName = 'BoxCollapse'
-Collapse.propTypes = boxCollapsePropTypes
+Collapse.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+}
 
 export default Collapse

@@ -2,8 +2,7 @@ import * as RDXToggleGroup from '@radix-ui/react-toggle-group'
 import { matchElement } from 'remote:self/core'
 import { Children, cloneElement } from 'react'
 import classNames from 'classnames'
-
-import { toggleGroupPropTypes } from '../propType'
+import PropTypes from 'prop-types'
 
 import styles from './ToggleGroup.module.scss'
 
@@ -43,7 +42,81 @@ function ToggleGroup({
   )
 }
 
-ToggleGroup.propTypes = toggleGroupPropTypes
 ToggleGroup.displayName = 'ToggleGroup'
+ToggleGroup.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * Size of the Toggle.Group.
+   *
+   * @type {sm|md}
+   * @default md
+   */
+  size: PropTypes.oneOf(['md', 'sm']),
+
+  /**
+   * Variant of the Toggle.Group.
+   *
+   * @type {normal|compact}
+   * @default normal
+   */
+  variant: PropTypes.oneOf(['normal', 'compact']),
+
+  /**
+   * Indicates if the Toggle.Group is disabled, this will make all Toggle.Item disabled.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  disabled: PropTypes.bool,
+
+  /**
+   * Indicates if the Toggle.Group is in a loading state.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  loading: PropTypes.bool,
+
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ]),
+
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  ]),
+
+  multiple: PropTypes.bool,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+
+  /**
+   * Toggle.Group value change handler
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleChange(value) {
+   * console.log('Toggle Button Group value is', value)
+   * }
+   *
+   * <Toggle.Group onChange={handleChange}>
+   *  <Toggle.Item value="a"></Toggle.Item>
+   *  <Toggle.Item value="b"></Toggle.Item>
+   * </Toggle.Group>
+   */
+  onChange: PropTypes.func,
+}
 
 export default ToggleGroup

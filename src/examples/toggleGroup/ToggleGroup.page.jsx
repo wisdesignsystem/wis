@@ -1,4 +1,4 @@
-import Toggle from 'remote:self/Toggle'
+import { ToggleGroup, ToggleItem } from 'remote:self/toggle'
 
 import styles from './ToggleGroup.module.scss'
 
@@ -29,71 +29,71 @@ function Example() {
   return (
     <div className={styles.row}>
       <div className={styles.col}>
-        <Toggle.Group>
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup>
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
       <div className={styles.col}>
-        <Toggle.Group>
-          <Toggle.Item disabled value="a" text="Toggle Button A" />
-          <Toggle.Item disabled value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
-      </div>
-
-      <div className={styles.col}>
-        <Toggle.Group variant="compact" multiple>
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
-      </div>
-      <div className={styles.col}>
-        <Toggle.Group disabled variant="compact">
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup>
+          <ToggleItem disabled value="a" text="Toggle Button A" />
+          <ToggleItem disabled value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
 
       <div className={styles.col}>
-        <Toggle.Group size="sm">
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup variant="compact" multiple>
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
       <div className={styles.col}>
-        <Toggle.Group disabled size="sm">
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup disabled variant="compact">
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
 
       <div className={styles.col}>
-        <Toggle.Group variant="compact" size="sm">
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup size="sm">
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
       <div className={styles.col}>
-        <Toggle.Group disabled variant="compact" size="sm">
-          <Toggle.Item value="a" text="Toggle Button A" />
-          <Toggle.Item value="b" text="Toggle Button B" icon={<Icon />} />
-          <Toggle.Item value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
-          <Toggle.Item value="d" icon={<Icon />} />
-        </Toggle.Group>
+        <ToggleGroup disabled size="sm">
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
+      </div>
+
+      <div className={styles.col}>
+        <ToggleGroup variant="compact" size="sm">
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
+      </div>
+      <div className={styles.col}>
+        <ToggleGroup disabled variant="compact" size="sm">
+          <ToggleItem value="a" text="Toggle Button A" />
+          <ToggleItem value="b" text="Toggle Button B" icon={<Icon />} />
+          <ToggleItem value="c" text="Toggle Button C" icon={<Icon />} iconControl="suffix" />
+          <ToggleItem value="d" icon={<Icon />} />
+        </ToggleGroup>
       </div>
     </div>
   )

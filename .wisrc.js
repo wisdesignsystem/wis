@@ -18,28 +18,32 @@ export default {
   // export remote modules
   exposes: {
     './core': '@/packages/core/index',
-    './Grid': '@/packages/grid/index',
-    './Actions': { pc: '@/packages/actions/pc/Actions', mobile: '@/packages/actions/mobile/Actions' },
-    './Page': { pc: '@/packages/page/pc/Page', mobile: '@/packages/page/mobile/Page' },
-    './Layout': { pc: '@/packages/layout/pc/index', mobile: '@/packages/layout/mobile/index' },
-    './Module': { pc: '@/packages/module/pc/Module', mobile: '@/packages/module/mobile/Module' },
-    './Shortcut': { pc: '@/packages/shortcut/pc/Shortcut', mobile: '@/packages/shortcut/mobile/Shortcut' },
-    './Button': { pc: '@/packages/button/pc/Button', mobile: '@/packages/button/mobile/Button' },
-    './Toggle': {
-      pc: '@/packages/toggle/pc/Toggle',
-      mobile: '@/packages/toggle/mobile/Toggle',
+    './blank': '@/packages/blank/index',
+    './grid': '@/packages/grid/index',
+    './locales': { 'en-US': '@/locales/en-US/index', 'zh-CN': '@/locales/zh-CN/index' },
+    './themes': { default: '@/themes/default/index.css', blue: '@/themes/blue/index.css' },
+    './box': { pc: '@/packages/box/pc/index', mobile: '@/packages/box/mobile/index' },
+    './actions': { pc: '@/packages/actions/pc/index', mobile: '@/packages/actions/mobile/index' },
+    './page': { pc: '@/packages/page/pc/index', mobile: '@/packages/page/mobile/index' },
+    './layout': { pc: '@/packages/layout/pc/index', mobile: '@/packages/layout/mobile/index' },
+    './module': { pc: '@/packages/module/pc/index', mobile: '@/packages/module/mobile/index' },
+    './shortcut': { pc: '@/packages/shortcut/pc/index', mobile: '@/packages/shortcut/mobile/index' },
+    './button': { pc: '@/packages/button/pc/index', mobile: '@/packages/button/mobile/index' },
+    './toggle': {
+      pc: '@/packages/toggle/pc/index',
+      mobile: '@/packages/toggle/mobile/index',
     },
-    './Dropdown': {
-      pc: '@/packages/dropdown/pc/Dropdown',
-      mobile: '@/packages/dropdown/mobile/Dropdown',
+    './dropdown': {
+      pc: '@/packages/dropdown/pc/index',
+      mobile: '@/packages/dropdown/mobile/index',
     },
-    './ContextMenu': {
-      pc: '@/packages/contextMenu/pc/ContextMenu',
-      mobile: '@/packages/contextMenu/mobile/ContextMenu',
+    './contextMenu': {
+      pc: '@/packages/contextMenu/pc/index',
+      mobile: '@/packages/contextMenu/mobile/index',
     },
   },
 
-  plugins: [],
+  plugins: [require.resolve('@wisdesign/plugin-javascript-docgen')],
 
   // register remote entry file
   remoteEntry: './core',

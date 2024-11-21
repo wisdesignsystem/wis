@@ -1,4 +1,4 @@
-import { boxActionsPropTypes } from '../propType'
+import PropTypes from 'prop-types'
 
 function Actions({ className, children, ...rest }) {
   return (
@@ -9,6 +9,16 @@ function Actions({ className, children, ...rest }) {
 }
 
 Actions.displayName = 'BoxActions'
-Actions.propTypes = boxActionsPropTypes
+Actions.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Actions

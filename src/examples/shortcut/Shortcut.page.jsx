@@ -1,4 +1,4 @@
-import Shortcut from 'remote:self/Shortcut'
+import { Shortcut } from 'remote:self/shortcut'
 import { useShortcut } from 'remote:self/core'
 
 import styles from './Shortcut.module.scss'

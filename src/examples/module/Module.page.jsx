@@ -1,6 +1,6 @@
-import Page from 'remote:self/Page'
-import Module from 'remote:self/Module'
-import { Left, Right } from 'remote:self/Layout'
+import { Page } from 'remote:self/page'
+import { Module } from 'remote:self/module'
+import { Left, Right } from 'remote:self/layout'
 
 function Example() {
   return (

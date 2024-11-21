@@ -1,7 +1,6 @@
 import { Children } from 'react'
-
+import PropTypes from 'prop-types'
 import useContextMenuValue from './useContextMenuValue'
-import { contextMenuCheckboxGroupPropTypes } from './propType'
 import components from './component'
 
 function CheckboxGroup({ mapper, name, value, defaultValue, onChange = () => {}, children }) {
@@ -21,7 +20,7 @@ function CheckboxGroup({ mapper, name, value, defaultValue, onChange = () => {},
         mapper={mapper}
         role="menuitemcheckbox"
         checked={isChecked}
-        onCheck={(checked) => {
+        onCheckedChange={(checked) => {
           let nextValue = currentValue?.slice() || []
           if (checked) {
             nextValue.push(child.props.value)
@@ -37,6 +36,18 @@ function CheckboxGroup({ mapper, name, value, defaultValue, onChange = () => {},
   })
 }
 
-CheckboxGroup.propTypes = contextMenuCheckboxGroupPropTypes
+CheckboxGroup.propTypes = {
+  mapper: PropTypes.func,
+
+  name: PropTypes.string.isRequired,
+
+  value: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+
+  defaultValue: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+
+  children: PropTypes.node,
+
+  onChange: PropTypes.func,
+}
 
 export default CheckboxGroup

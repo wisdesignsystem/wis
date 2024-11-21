@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import attrs from '@/utils/attrs'
-import Box from 'remote:self/packages/Box'
-import { Main } from 'remote:self/Layout'
+import { Box, BoxCollapsible, BoxHeader, BoxCollapse, BoxActions, BoxPanel, BoxContent } from 'remote:self/box'
+import { Main } from 'remote:self/layout'
 import { matchElement, isElement } from 'remote:self/core'
 
-import modulePropTypes from '../propType'
 import Context from '../Context'
 
 import styles from './Module.module.scss'
@@ -42,7 +42,7 @@ function Module({
 
   if (collapsible) {
     return (
-      <Box.Collapsible
+      <BoxCollapsible
         {...rest}
         className={classNames(styles.module, { [className]: !!className })}
         defaultCollapsed={defaultCollapsed}
@@ -53,12 +53,12 @@ function Module({
           'data-with-nested': hasModule,
         })}
       >
-        <Box.Header className={styles.header} title={title} description={description} tip={tip}>
-          <Box.Collapse />
-          {!!actions && <Box.Actions>{actions}</Box.Actions>}
-        </Box.Header>
-        <Box.Panel className={styles.content}>{renderContent()}</Box.Panel>
-      </Box.Collapsible>
+        <BoxHeader className={styles.header} title={title} description={description} tip={tip}>
+          <BoxCollapse />
+          {!!actions && <BoxActions>{actions}</BoxActions>}
+        </BoxHeader>
+        <BoxPanel className={styles.content}>{renderContent()}</BoxPanel>
+      </BoxCollapsible>
     )
   }
 
@@ -71,15 +71,127 @@ function Module({
         'data-with-nested': hasModule,
       })}
     >
-      <Box.Header className={styles.header} title={title} description={description} tip={tip}>
-        {!!actions && <Box.Actions>{actions}</Box.Actions>}
-      </Box.Header>
-      <Box.Content className={styles.content}>{renderContent()}</Box.Content>
+      <BoxHeader className={styles.header} title={title} description={description} tip={tip}>
+        {!!actions && <BoxActions>{actions}</BoxActions>}
+      </BoxHeader>
+      <BoxContent className={styles.content}>{renderContent()}</BoxContent>
     </Box>
   )
 }
 
 Module.displayName = 'Module'
-Module.propTypes = modulePropTypes
+
+const Size = PropTypes.oneOf([
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+])
+
+const ResponsiveSize = PropTypes.oneOfType([
+  Size,
+  PropTypes.shape({
+    base: Size,
+    sm: Size,
+    md: Size,
+    lg: Size,
+    xl: Size,
+    xxl: Size,
+  }),
+])
+Module.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * title of Module component
+   *
+   * @type {string}
+   */
+  title: PropTypes.string.isRequired,
+
+  /**
+   * description of Module component
+   *
+   * @type {string}
+   */
+  description: PropTypes.string,
+
+  /**
+   * tip text of Module component
+   */
+  tip: PropTypes.string,
+
+  /**
+   * Variant of the Module component.
+   *
+   * @type {basic|ghost}
+   * @default basic
+   */
+  variant: PropTypes.oneOf(['basic', 'ghost']),
+
+  /**
+   * Grid responsive size of Module component
+   */
+  size: ResponsiveSize,
+
+  collapsible: PropTypes.bool,
+
+  /**
+   * Default collapsed state of the box.
+   *
+   * @type {boolean}
+   *
+   * @default true
+   */
+  defaultCollapsed: PropTypes.bool,
+
+  /**
+   * Current collapsed state of the box.
+   *
+   * @type {boolean}
+   */
+  collapsed: PropTypes.bool,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+
+  /**
+   * Callback function when the box is collapsed
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleCollapsed(collapsed) {}
+   *
+   * <Module onCollapsed={handleCollapsed}></Module>
+   */
+  onCollapsed: PropTypes.func,
+}
 
 export default Module

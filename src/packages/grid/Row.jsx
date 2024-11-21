@@ -1,6 +1,5 @@
+import PropTypes from 'prop-types'
 import attrs from '@/utils/attrs'
-
-import { rowPropTypes } from './propType'
 
 import styles from './Row.module.scss'
 
@@ -12,7 +11,19 @@ function Row({ gutter = true, children }) {
   )
 }
 
-Row.propTypes = rowPropTypes
 Row.displayName = 'Row'
+Row.propTypes = {
+  /**
+   * enable gutter for Row component
+   *
+   * @default true
+   */
+  gutter: PropTypes.bool,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Row

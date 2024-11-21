@@ -1,8 +1,8 @@
 import { Children, cloneElement } from 'react'
+import PropTypes from 'prop-types'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchElement } from 'remote:self/core'
 
-import { contextMenuCheckboxGroupPropTypes } from '../propType'
 import useContextMenuValue from '../useContextMenuValue'
 
 import styles from './ContextMenu.module.scss'
@@ -38,7 +38,49 @@ function CheckboxGroup({ name, label, value, defaultValue, onChange = () => {}, 
   )
 }
 
-CheckboxGroup.propTypes = contextMenuCheckboxGroupPropTypes
 CheckboxGroup.displayName = 'ContextMenuCheckboxGroup'
+CheckboxGroup.propTypes = {
+  /**
+   * The name for the ContextMenu.CheckboxGroup.
+   *
+   * @type {string}
+   */
+  name: PropTypes.string.isRequired,
+
+  /**
+   * The label for the ContextMenu.CheckboxGroup.
+   *
+   * @type {string}
+   */
+  label: PropTypes.string,
+
+  value: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+
+  defaultValue: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+
+  /**
+   * Callback function to handle changes in the ContextMenu.CheckboxGroup.
+   *
+   * @type {function}
+   *
+   * @example
+   *
+   * function handleChange(value) {
+   *
+   * }
+   *
+   * <ContextMenu>
+   *  <ContextMenu.CheckboxGroup name="group" label="Group Title" onChange={handleChange}>
+   *    <ContextMenu.Item value="a"></ContextMenu.Item>
+   *  </ContextMenu.CheckboxGroup>
+   * </ContextMenu>
+   */
+  onChange: PropTypes.func,
+}
 
 export default CheckboxGroup

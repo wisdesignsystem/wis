@@ -1,7 +1,7 @@
-import Page from 'remote:self/Page'
-import { Main, Left, Right, Top, Bottom } from 'remote:self/Layout'
-import Actions from 'remote:self/Actions'
-import Button from 'remote:self/Button'
+import { Page } from 'remote:self/page'
+import { Main, Left, Right, Top, Bottom } from 'remote:self/layout'
+import { Actions } from 'remote:self/actions'
+import { Button } from 'remote:self/button'
 
 function Example() {
   return (

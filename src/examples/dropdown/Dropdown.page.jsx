@@ -1,4 +1,11 @@
-import Dropdown from 'remote:self/Dropdown'
+import {
+  Dropdown,
+  DropdownButton,
+  DropdownGroup,
+  DropdownItem,
+  DropdownCheckboxGroup,
+  DropdownRadioGroup,
+} from 'remote:self/dropdown'
 import {
   UserIcon,
   StarIcon,
@@ -29,11 +36,11 @@ function Example() {
   function renderDropdownButton() {
     return (
       <>
-        <Dropdown.Group label="Device">
-          <Dropdown.Item label="Desktop" value="desktop" icon={<ComputerIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Tablet" value="tablet" icon={<PadIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Mobile" value="mobile" icon={<MobileIcon />}></Dropdown.Item>
-        </Dropdown.Group>
+        <DropdownGroup label="Device">
+          <DropdownItem label="Desktop" value="desktop" icon={<ComputerIcon />}></DropdownItem>
+          <DropdownItem label="Tablet" value="tablet" icon={<PadIcon />}></DropdownItem>
+          <DropdownItem label="Mobile" value="mobile" icon={<MobileIcon />}></DropdownItem>
+        </DropdownGroup>
       </>
     )
   }
@@ -41,30 +48,25 @@ function Example() {
   function renderSingleDropdown(key) {
     return (
       <>
-        <Dropdown.Group label="Basics">
-          <Dropdown.Item label="Edit" value="edit" icon={<EditIcon />} shortcutKey={`Meta+${key}`}></Dropdown.Item>
-          <Dropdown.Item
+        <DropdownGroup label="Basics">
+          <DropdownItem label="Edit" value="edit" icon={<EditIcon />} shortcutKey={`Meta+${key}`}></DropdownItem>
+          <DropdownItem
             label="Preview"
             value="preview"
             icon={<ComputerIcon />}
             shortcutKey={`Shift+${key}`}
-          ></Dropdown.Item>
-          <Dropdown.Item
-            label="Share"
-            value="share"
-            icon={<ShareIcon />}
-            shortcutKey={`Control+${key}`}
-          ></Dropdown.Item>
-        </Dropdown.Group>
-        <Dropdown.Group label="Files">
-          <Dropdown.Item label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Move To" value="move" icon={<FolderIcon />}>
-            <Dropdown.Item label="Music" value="music" icon={<MusicIcon />}></Dropdown.Item>
-            <Dropdown.Item label="Camera" value="camera" icon={<CameraIcon />}></Dropdown.Item>
-          </Dropdown.Item>
-        </Dropdown.Group>
-        <Dropdown.Item label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></Dropdown.Item>
-        <Dropdown.Item label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></Dropdown.Item>
+          ></DropdownItem>
+          <DropdownItem label="Share" value="share" icon={<ShareIcon />} shortcutKey={`Control+${key}`}></DropdownItem>
+        </DropdownGroup>
+        <DropdownGroup label="Files">
+          <DropdownItem label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></DropdownItem>
+          <DropdownItem label="Move To" value="move" icon={<FolderIcon />}>
+            <DropdownItem label="Music" value="music" icon={<MusicIcon />}></DropdownItem>
+            <DropdownItem label="Camera" value="camera" icon={<CameraIcon />}></DropdownItem>
+          </DropdownItem>
+        </DropdownGroup>
+        <DropdownItem label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></DropdownItem>
+        <DropdownItem label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></DropdownItem>
       </>
     )
   }
@@ -72,29 +74,24 @@ function Example() {
   function renderComplexDropdown(key) {
     return (
       <>
-        <Dropdown.RadioGroup name="radioGroup" label="Radio Group">
-          <Dropdown.Item label="Edit" value="edit" icon={<EditIcon />} shortcutKey={`Meta+${key}`}></Dropdown.Item>
-          <Dropdown.Item
+        <DropdownRadioGroup name="radioGroup" label="Radio Group">
+          <DropdownItem label="Edit" value="edit" icon={<EditIcon />} shortcutKey={`Meta+${key}`}></DropdownItem>
+          <DropdownItem
             label="Preview"
             value="preview"
             icon={<ComputerIcon />}
             shortcutKey={`Shift+${key}`}
-          ></Dropdown.Item>
-          <Dropdown.Item
-            label="Share"
-            value="share"
-            icon={<ShareIcon />}
-            shortcutKey={`Control+${key}`}
-          ></Dropdown.Item>
-        </Dropdown.RadioGroup>
-        <Dropdown.CheckboxGroup name="checkboxGroup" label="Checkbox Group" defaultValue={['duplicate3']}>
-          <Dropdown.Item label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Duplicate2" value="duplicate2" icon={<CopyOneIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Duplicate3" disabled value="duplicate3" icon={<CopyOneIcon />}></Dropdown.Item>
-          <Dropdown.Item label="Duplicate4" disabled value="duplicate4" icon={<CopyOneIcon />}></Dropdown.Item>
-        </Dropdown.CheckboxGroup>
-        <Dropdown.Item label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></Dropdown.Item>
-        <Dropdown.Item label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></Dropdown.Item>
+          ></DropdownItem>
+          <DropdownItem label="Share" value="share" icon={<ShareIcon />} shortcutKey={`Control+${key}`}></DropdownItem>
+        </DropdownRadioGroup>
+        <DropdownCheckboxGroup name="checkboxGroup" label="Checkbox Group" defaultValue={['duplicate3']}>
+          <DropdownItem label="Duplicate" value="duplicate" icon={<CopyOneIcon />}></DropdownItem>
+          <DropdownItem label="Duplicate2" value="duplicate2" icon={<CopyOneIcon />}></DropdownItem>
+          <DropdownItem label="Duplicate3" disabled value="duplicate3" icon={<CopyOneIcon />}></DropdownItem>
+          <DropdownItem label="Duplicate4" disabled value="duplicate4" icon={<CopyOneIcon />}></DropdownItem>
+        </DropdownCheckboxGroup>
+        <DropdownItem label="Disabled" value="disabled" disabled icon={<DeleteIcon />}></DropdownItem>
+        <DropdownItem label="Delete" value="delete" status="danger" icon={<DeleteIcon />}></DropdownItem>
       </>
     )
   }
@@ -102,73 +99,73 @@ function Example() {
   return (
     <div className={styles.row}>
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary">
+        <DropdownButton text="Button" variant="primary">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic">
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button">{renderDropdownButton()}</Dropdown.Button>
+        </DropdownButton>
+        <DropdownButton text="Button">{renderDropdownButton()}</DropdownButton>
       </div>
 
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary" disabled>
+        <DropdownButton text="Button" variant="primary" disabled>
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic" disabled>
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic" disabled>
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" disabled>
+        </DropdownButton>
+        <DropdownButton text="Button" disabled>
           {renderDropdownButton()}
-        </Dropdown.Button>
+        </DropdownButton>
       </div>
 
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary" size="sm">
+        <DropdownButton text="Button" variant="primary" size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic" size="sm">
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic" size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" size="sm">
+        </DropdownButton>
+        <DropdownButton text="Button" size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
+        </DropdownButton>
       </div>
 
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary" disabled size="sm">
+        <DropdownButton text="Button" variant="primary" disabled size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic" disabled size="sm">
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic" disabled size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" disabled size="sm">
+        </DropdownButton>
+        <DropdownButton text="Button" disabled size="sm">
           {renderDropdownButton()}
-        </Dropdown.Button>
+        </DropdownButton>
       </div>
 
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary" size="xs">
+        <DropdownButton text="Button" variant="primary" size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic" size="xs">
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic" size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" size="xs">
+        </DropdownButton>
+        <DropdownButton text="Button" size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
+        </DropdownButton>
       </div>
 
       <div className={styles.col}>
-        <Dropdown.Button text="Button" variant="primary" disabled size="xs">
+        <DropdownButton text="Button" variant="primary" disabled size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" variant="classic" disabled size="xs">
+        </DropdownButton>
+        <DropdownButton text="Button" variant="classic" disabled size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
-        <Dropdown.Button text="Button" disabled size="xs">
+        </DropdownButton>
+        <DropdownButton text="Button" disabled size="xs">
           {renderDropdownButton()}
-        </Dropdown.Button>
+        </DropdownButton>
       </div>
 
       <div className={styles.col}>

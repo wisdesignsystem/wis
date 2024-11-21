@@ -1,10 +1,9 @@
 import { Children } from 'react'
 import classNames from 'classnames'
-import Box from 'remote:self/packages/Box'
+import PropTypes from 'prop-types'
+import { Box, BoxHeader, BoxActions, BoxContent } from 'remote:self/box'
 import { matchElement, isElement } from 'remote:self/core'
-import { Row, Col } from 'remote:self/Grid'
-
-import { layoutPropTypes } from '../propType'
+import { Row, Col } from 'remote:self/grid'
 
 import styles from './Layout.module.scss'
 
@@ -34,11 +33,11 @@ function Layout({ className, title, description, tip, responsive, gutter, childr
   return (
     <Box {...rest} className={classNames(styles.layout, { [className]: !!className })}>
       {isShowHeader && (
-        <Box.Header className={styles.header} title={title} description={description} tip={tip}>
-          {!!actions && <Box.Actions>{actions}</Box.Actions>}
-        </Box.Header>
+        <BoxHeader className={styles.header} title={title} description={description} tip={tip}>
+          {!!actions && <BoxActions>{actions}</BoxActions>}
+        </BoxHeader>
       )}
-      <Box.Content className={styles.vertical}>
+      <BoxContent className={styles.vertical}>
         {!!top && <div className={styles.prefix}>{top[0]}</div>}
         <div className={styles.horizontal}>
           {!!left && <div className={styles.prefix}>{left[0]}</div>}
@@ -56,12 +55,48 @@ function Layout({ className, title, description, tip, responsive, gutter, childr
           {!!right && <div className={styles.suffix}>{right[0]}</div>}
         </div>
         {!!bottom && <div className={styles.suffix}>{bottom[0]}</div>}
-      </Box.Content>
+      </BoxContent>
     </Box>
   )
 }
 
 Layout.displayName = 'Layout'
-Layout.propTypes = layoutPropTypes
+Layout.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * title of Layout component
+   *
+   * @type {string}
+   */
+  title: PropTypes.string,
+
+  /**
+   * description of Layout component
+   *
+   * @type {string}
+   */
+  description: PropTypes.string,
+
+  /**
+   * tip text of Layout component
+   */
+  tip: PropTypes.string,
+
+  gutter: PropTypes.bool,
+
+  /**
+   * @private
+   */
+  responsive: PropTypes.bool,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Layout

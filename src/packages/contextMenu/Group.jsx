@@ -1,7 +1,7 @@
 import { Children } from 'react'
+import PropTypes from 'prop-types'
 import { isFunction } from '@/utils/is'
 
-import { contextMenuGroupPropTypes } from './propType'
 import components from './component'
 
 function Group({ mapper, onSelect = () => {}, children }) {
@@ -28,6 +28,12 @@ function Group({ mapper, onSelect = () => {}, children }) {
   })
 }
 
-Group.propTypes = contextMenuGroupPropTypes
+Group.propTypes = {
+  mapper: PropTypes.func,
+
+  children: PropTypes.node,
+
+  onSelect: PropTypes.func,
+}
 
 export default Group

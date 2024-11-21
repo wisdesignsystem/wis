@@ -6,9 +6,12 @@ function Actions({ children }) {
   return <div className={styles.actions}>{children}</div>
 }
 
+Actions.displayName = 'Actions'
 Actions.propTypes = {
+  /**
+   * @hidden
+   */
   children: PropTypes.node,
 }
-Actions.displayName = 'Actions'
 
 export default Actions

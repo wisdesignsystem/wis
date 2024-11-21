@@ -1,8 +1,7 @@
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import { matchElement } from 'remote:self/core'
 import { CircleHelpIcon } from '@wisdesign/lsicon'
-
-import { boxHeaderPropTypes } from '../propType'
 
 import styles from './Box.module.scss'
 
@@ -35,6 +34,35 @@ function Header({ className, title, description, tip, children, ...rest }) {
 }
 
 Header.displayName = 'BoxHeader'
-Header.propTypes = boxHeaderPropTypes
+Header.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * title of Box component
+   *
+   * @type {string}
+   */
+  title: PropTypes.string,
+
+  /**
+   * description of Box component
+   *
+   * @type {string}
+   */
+  description: PropTypes.string,
+
+  /**
+   * tip text of Box component
+   */
+  tip: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Header

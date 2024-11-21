@@ -1,7 +1,6 @@
 import { matchElement } from 'remote:self/core'
 import classNames from 'classnames'
-
-import { boxFooterPropTypes } from '../propType'
+import PropTypes from 'prop-types'
 
 import styles from './Box.module.scss'
 
@@ -17,6 +16,16 @@ function Footer({ className, children, ...rest }) {
 }
 
 Footer.displayName = 'BoxFooter'
-Footer.propTypes = boxFooterPropTypes
+Footer.propTypes = {
+  /**
+   * @hidden
+   */
+  className: PropTypes.string,
+
+  /**
+   * @hidden
+   */
+  children: PropTypes.node,
+}
 
 export default Footer
