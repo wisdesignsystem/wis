@@ -1,0 +1,14 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 120px;
+}
+
+.col {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 80px;
+  align-items: flex-start;
+}

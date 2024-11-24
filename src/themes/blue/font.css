@@ -7,6 +7,7 @@ html[data-theme='blue'] {
   --w-common-font-color-icon: var(--w-palette-gray-30);
   --w-common-font-color-state-placeholder: var(--w-palette-gray-40);
   --w-common-font-color-state-disabled: var(--w-palette-gray-40);
+  --w-common-font-color-state-visted: var(--w-palette-purple-50);
   --w-common-font-color-semantics-highlight-hover: var(--w-palette-blue-70);
   --w-common-font-color-semantics-highlight: var(--w-palette-blue-60);
   --w-common-font-color-semantics-error: var(--w-palette-red-60);
