@@ -45,6 +45,10 @@ export default {
       pc: '@/packages/tooltip/pc/index',
       mobile: '@/packages/tooltip/mobile/index',
     },
+    './avatar': {
+      pc: '@/packages/avatar/pc/index',
+      mobile: '@/packages/avatar/mobile/index',
+    },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-javascript-docgen')],

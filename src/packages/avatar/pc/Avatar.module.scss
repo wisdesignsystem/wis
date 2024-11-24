@@ -1,0 +1,115 @@
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
+
+@mixin avatar-style($variant, $color) {
+  @include style.component-style($component: 'avatar', $variant: #{$variant}-#{$color});
+}
+
+@mixin color($variant) {
+  @each $color in 'gray', 'blue', 'purple', 'orange', 'red', 'green' {
+    &[data-color="#{$color}"] {
+      @include avatar-style($variant, $color);
+    }
+  }
+}
+
+.avatar {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: var(--w-common-font-weight-semibold);
+
+  &[data-shape="circle"] {
+    border-radius: 50%;
+  }
+
+  &[data-shape="square"] {
+    border-radius: var(--w-common-border-radius-lg);
+  }
+
+  &[data-variant="light"] {
+    @include color($variant: light)
+  }
+
+  &[data-variant="solid"] {
+    @include color($variant: solid)
+  }
+
+  &[data-variant="outline"] {
+    @include color($variant: outline)
+  }
+
+  &[data-size="lg"] {
+    width: 56px;
+    height: 56px;
+
+    @include tool.font-size(var(--w-common-font-size-heading-md));
+  }
+
+  &[data-size="md"] {
+    width: 40px;
+    height: 40px;
+
+    @include tool.font-size(var(--w-common-font-size-heading-sm));
+  }
+
+  &[data-size="sm"] {
+    width: 32px;
+    height: 32px;
+
+    @include tool.font-size(var(--w-common-font-size-text-base));
+  }
+
+  &[data-size="xs"] {
+    width: 24px;
+    height: 24px;
+
+    @include tool.font-size(var(--w-common-font-size-text-sm));
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 100%;
+
+  &[data-hidden] {
+    visibility: hidden;
+  }
+}
+
+.item {
+  flex: 0 0 auto;
+
+  &[data-size="lg"] {
+    &:not(:first-child) {
+      margin-left: calc(var(--w-common-spacing-common-lg) * -1);
+    }
+  }
+  &[data-size="md"] {
+    &:not(:first-child) {
+      margin-left: calc(var(--w-common-spacing-common-md) * -1);
+    }
+  }
+  &[data-size="sm"] {
+    &:not(:first-child) {
+      margin-left: calc(var(--w-common-spacing-common-sm) * -1);
+    }
+  }
+  &[data-size="xs"] {
+    &:not(:first-child) {
+      margin-left: calc(var(--w-common-spacing-common-xs) * -1);
+    }
+  }
+}
