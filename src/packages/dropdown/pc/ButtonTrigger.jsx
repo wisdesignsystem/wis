@@ -11,8 +11,9 @@ const ButtonTrigger = forwardRef(function (
   ref,
 ) {
   return (
-    <div className={classNames(styles.button, { [className]: !!className })}>
+    <div className={classNames(styles['button-trigger'], { [className]: !!className })}>
       <Button
+        className={styles.button}
         variant={variant}
         disabled={disabled}
         text={text}
@@ -22,7 +23,16 @@ const ButtonTrigger = forwardRef(function (
         size={size}
         shortcutKey={shortcutKey}
       />
-      <Button ref={ref} variant={variant} disabled={disabled} size={size} icon={<DownIcon />} {...rest} />
+      <div className={styles.wrapper} ref={ref}>
+        <Button
+          className={styles.arrow}
+          variant={variant}
+          disabled={disabled}
+          size={size}
+          icon={<DownIcon />}
+          {...rest}
+        />
+      </div>
     </div>
   )
 })

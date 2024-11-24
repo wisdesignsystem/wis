@@ -21,7 +21,7 @@ function ContextMenu({ children, disabled, ...rest }) {
     <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXContextMenu.Root>
         <Shortcut>{matched}</Shortcut>
-        <RDXContextMenu.Trigger disabled={disabled} asChild>
+        <RDXContextMenu.Trigger disabled={disabled}>
           {!!unmatched.length && (unmatched.length > 1 ? Children.only(unmatched) : unmatched[0])}
         </RDXContextMenu.Trigger>
         <RDXContextMenu.Portal>

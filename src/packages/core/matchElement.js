@@ -1,5 +1,5 @@
 import { Children } from 'react'
-import { isString, isNumber } from '@/utils/is'
+import { isString, isNumber, isFunction } from '@/utils/is'
 
 /**
  * The matching type can be a simple string type or a complex object type.
@@ -53,7 +53,29 @@ function unwrapFragment(children) {
 }
 
 function getNodeType(node) {
-  return node?.type?.getSymbiote?.(node?.props?.children)?.type?.displayName || node?.type?.displayName
+  if (!isFunction(node?.type?.getSymbiote)) {
+    return node?.type?.displayName
+  }
+
+  let currentNode = node
+  while (isFunction(currentNode?.type?.getSymbiote)) {
+    currentNode = currentNode.type.getSymbiote(currentNode?.props?.children)
+  }
+
+  return currentNode?.type?.displayName
+}
+
+export function getSymbioteElement(node) {
+  if (!isFunction(node?.type?.getSymbiote)) {
+    return node
+  }
+
+  let currentNode = node
+  while (isFunction(currentNode?.type?.getSymbiote)) {
+    currentNode = currentNode.type.getSymbiote(currentNode?.props?.children)
+  }
+
+  return currentNode
 }
 
 /**

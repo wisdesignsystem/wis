@@ -8,7 +8,9 @@ function Tooltip({ className, side = 'top', align = 'center', text, open, defaul
   return (
     <RDXTooltip.Provider skipDelayDuration={300}>
       <RDXTooltip.Root open={open} defaultOpen={defaultOpen} delayDuration={500} onOpenChange={onOpen}>
-        <RDXTooltip.Trigger asChild>{Children.only(children)}</RDXTooltip.Trigger>
+        <RDXTooltip.Trigger asChild>
+          <span>{Children.only(children)}</span>
+        </RDXTooltip.Trigger>
         <RDXTooltip.Portal>
           <RDXTooltip.Content className={styles.popper} side={side} align={align}>
             {text}
@@ -21,6 +23,9 @@ function Tooltip({ className, side = 'top', align = 'center', text, open, defaul
 }
 
 Tooltip.displayName = 'Tooltip'
+Tooltip.getSymbiote = function (children) {
+  return Children.toArray(children)[0]
+}
 Tooltip.propTypes = {
   /**
    * @hidden

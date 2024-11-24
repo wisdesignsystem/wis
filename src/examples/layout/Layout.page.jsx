@@ -2,6 +2,8 @@ import { Page } from 'remote:self/page'
 import { Main, Left, Right, Top, Bottom } from 'remote:self/layout'
 import { Actions } from 'remote:self/actions'
 import { Button } from 'remote:self/button'
+import { Tooltip } from 'remote:self/tooltip'
+import { ContextMenu, ContextMenuItem } from 'remote:self/contextMenu'
 
 function Example() {
   return (
@@ -10,22 +12,35 @@ function Example() {
         <Button text="Edit"></Button>
         <Button text="Save" variant="primary"></Button>
       </Actions>
-
       <Top>Top Content</Top>
-      <Left title="Left Title">
-        Left Content
-        <Actions>
-          <Button text="Cancel" size="sm"></Button>
-          <Button text="Confirm" size="sm" variant="primary"></Button>
-        </Actions>
-      </Left>
-      <Main title="Main Title">
-        <Top>Inner Top Content</Top>
-        <Left>Inner Left Content</Left>
-        <div style={{ height: '2000px' }}>Main Content</div>
-        <Right>Inner Right Content</Right>
-        <Bottom>Inner Bottom Content</Bottom>
-      </Main>
+      <ContextMenu>
+        <Tooltip text="Tooltip">
+          <Left title="Left Title">
+            Left Content
+            <Actions>
+              <Button text="Cancel" size="sm"></Button>
+              <Button text="Confirm" size="sm" variant="primary"></Button>
+            </Actions>
+          </Left>
+        </Tooltip>
+
+        <ContextMenuItem label="Desktop" value="desktop"></ContextMenuItem>
+        <ContextMenuItem label="Tablet" value="tablet"></ContextMenuItem>
+        <ContextMenuItem label="Mobile" value="mobile"></ContextMenuItem>
+      </ContextMenu>
+      <ContextMenu>
+        <Main title="Main Title">
+          <Top>Inner Top Content</Top>
+          <Left>Inner Left Content</Left>
+          <div style={{ height: '2000px' }}>Main Content</div>
+          <Right>Inner Right Content</Right>
+          <Bottom>Inner Bottom Content</Bottom>
+        </Main>
+
+        <ContextMenuItem label="Desktop" value="desktop"></ContextMenuItem>
+        <ContextMenuItem label="Tablet" value="tablet"></ContextMenuItem>
+        <ContextMenuItem label="Mobile" value="mobile"></ContextMenuItem>
+      </ContextMenu>
       <Right title="Right Title" description="description of right content">
         <Top>Right Top Content</Top>
         Right Content
