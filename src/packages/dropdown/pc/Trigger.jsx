@@ -8,7 +8,7 @@ import attrs from '@/utils/attrs'
 import styles from './Dropdown.module.scss'
 
 const Trigger = forwardRef(function (
-  { avatar, disabled, icon, arrowDirection = 'down', text, description, className, ...rest },
+  { avatar, disabled, loading, icon, arrowDirection = 'down', text, description, className, ...rest },
   ref,
 ) {
   const isShowAvatar = isElement(avatar, 'Avatar')

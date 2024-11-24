@@ -10,7 +10,7 @@ import mapper from '../mapper'
 
 import styles from './Dropdown.module.scss'
 
-function Dropdown({ defaultOpen, open, onOpen, children, ...rest }) {
+function Dropdown({ defaultOpen = false, open, onOpen, children, ...rest }) {
   const [contextValue, setContextValue] = useState({})
   const { matched, DropdownCheckboxGroup, DropdownRadioGroup } = matchElement(children, [
     'DropdownItem',
@@ -53,14 +53,14 @@ Dropdown.propTypes = {
   /**
    * set the Dropdown open\close
    *
-   * @type {boolean}
+   * @hidden
    */
   open: PropTypes.bool,
 
   /**
    * set the Dropdown default open\close
    *
-   * @type {boolean}
+   * @hidden
    */
   defaultOpen: PropTypes.bool,
 

@@ -53,7 +53,7 @@ function unwrapFragment(children) {
 }
 
 function getNodeType(node) {
-  return node?.type?.displayName || node?.type?.getSymbiote?.(node?.props?.children)?.type?.displayName
+  return node?.type?.getSymbiote?.(node?.props?.children)?.type?.displayName || node?.type?.displayName
 }
 
 /**

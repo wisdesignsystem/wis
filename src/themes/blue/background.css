@@ -39,5 +39,7 @@ html[data-theme='blue'] {
   --w-common-background-transparent-overlay-black: var(--w-palette-transparent-mask-black);
   --w-common-background-transparent-overlay-black-05: var(--w-palette-transparent-black-transparent-05);
   --w-common-background-transparent-overlay-black-10: var(--w-palette-transparent-black-transparent-10);
+  --w-common-background-transparent-overlay-white-09: var(--w-palette-transparent-white-transparent-90);
+  --w-common-background-transparent-overlay-black-09: var(--w-palette-transparent-black-transparent-90);
   --w-common-background-transparent-fully: var(--w-palette-transparent-transparent);
 }

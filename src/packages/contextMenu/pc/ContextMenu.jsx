@@ -1,4 +1,4 @@
-import { useState, Children, cloneElement } from 'react'
+import { useState, Children } from 'react'
 import PropTypes from 'prop-types'
 import * as RDXContextMenu from '@radix-ui/react-context-menu'
 import { matchElement } from 'remote:self/core'
@@ -21,8 +21,8 @@ function ContextMenu({ children, disabled, ...rest }) {
     <Context.Provider value={{ contextValue, setContextValue }}>
       <RDXContextMenu.Root>
         <Shortcut>{matched}</Shortcut>
-        <RDXContextMenu.Trigger disabled={disabled}>
-          {unmatched.length && (unmatched.length > 1 ? Children.only(unmatched) : cloneElement(unmatched[0], rest))}
+        <RDXContextMenu.Trigger disabled={disabled} asChild>
+          {!!unmatched.length && (unmatched.length > 1 ? Children.only(unmatched) : unmatched[0])}
         </RDXContextMenu.Trigger>
         <RDXContextMenu.Portal>
           <RDXContextMenu.Content
@@ -31,6 +31,7 @@ function ContextMenu({ children, disabled, ...rest }) {
             loop
             align="start"
             sideOffset={8}
+            {...rest}
           >
             {matched}
           </RDXContextMenu.Content>

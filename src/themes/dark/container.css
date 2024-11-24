@@ -23,6 +23,9 @@ html[data-theme='dark'] {
   --w-container-page-header-font: var(--w-common-font-color-primary);
   --w-container-page-header-background: var(--w-common-background-common-base);
   --w-container-page-header-border: var(--w-common-border-color-base);
+  --w-container-page-info-font: var(--w-common-font-color-base);
+  --w-container-page-info-label-font: var(--w-common-font-color-helper);
+  --w-container-page-info-icon-font: var(--w-common-font-color-helper);
   --w-container-module-basic-font: var(--w-common-font-color-primary);
   --w-container-module-basic-background: var(--w-common-background-common-base);
   --w-container-module-basic-border: var(--w-common-border-color-base);
@@ -41,9 +44,9 @@ html[data-theme='dark'] {
   --w-container-module-ghost-header-font: var(--w-common-font-color-primary);
   --w-container-module-ghost-header-background: var(--w-common-background-transparent-fully);
   --w-container-module-ghost-header-border: var(--w-common-border-color-transparent);
-  --w-container-module-ghost-sub-header-font: var(--w-common-font-color-primary);
-  --w-container-module-ghost-sub-header-background: var(--w-common-background-transparent-fully);
-  --w-container-module-ghost-sub-header-border: var(--w-common-border-color-transparent);
+  --w-container-module-ghost-nested-header-font: var(--w-common-font-color-primary);
+  --w-container-module-ghost-nested-header-background: var(--w-common-background-transparent-fully);
+  --w-container-module-ghost-nested-header-border: var(--w-common-border-color-transparent);
   --w-container-module-ghost-content-font: var(--w-common-font-color-primary);
   --w-container-module-ghost-content-background: var(--w-common-background-common-base);
   --w-container-module-ghost-content-border: var(--w-common-border-color-base);

@@ -1,0 +1,48 @@
+@use '@/themes/tool.scss' as tool;
+@use '@/themes/style.scss' as style;
+
+@mixin tooltip-style() {
+  @include style.component-style($component: 'tooltip');
+}
+
+.popper {
+  display: inline-flex;
+  flex-direction: row;
+  padding: var(--w-common-spacing-common-xxs) var(--w-common-spacing-common-sm);
+  box-shadow: 0px 1px 3px 0px var(--w-common-shadow-color-02), 0px 1px 2px 0px var(--w-common-shadow-color-01);
+  border-radius: var(--w-common-border-radius-md);
+  max-width: 240px;
+  min-width: 64px;
+  box-sizing: border-box;
+
+  @include tooltip-style();
+
+  &[data-side="left"] {
+    &[data-align="start"] {
+      .arrow {
+        transform: translate(var(--w-common-border-radius-md));
+      }
+    }
+    &[data-align="end"] {
+      .arrow {
+        transform: translate(calc(var(--w-common-border-radius-md) * -1));
+      }
+    }
+  }
+  &[data-side="right"] {
+    &[data-align="start"] {
+      .arrow {
+        transform: translate(calc(var(--w-common-border-radius-md) * -1));
+      }
+    }
+    &[data-align="end"] {
+      .arrow {
+        transform: translate(var(--w-common-border-radius-md));
+      }
+    }
+  }
+}
+
+.arrow {
+  color: var(--w-component-tooltip-background);
+}

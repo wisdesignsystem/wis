@@ -41,6 +41,10 @@ export default {
       pc: '@/packages/contextMenu/pc/index',
       mobile: '@/packages/contextMenu/mobile/index',
     },
+    './tooltip': {
+      pc: '@/packages/tooltip/pc/index',
+      mobile: '@/packages/tooltip/mobile/index',
+    },
   },
 
   plugins: [require.resolve('@wisdesign/plugin-javascript-docgen')],
