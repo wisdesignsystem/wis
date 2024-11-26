@@ -6,20 +6,27 @@ import { matchElement } from 'remote:self/core'
 
 import Avatar from './Avatar'
 import useMaxCount from '../useMaxCount'
+import { useGroupColor } from '../useColor'
 
 import styles from './Avatar.module.scss'
 
-function Group({ className, size = 'md', variant = 'light', shape = 'circle', children }) {
+function Group({ className, color = 'auto', size = 'md', colorSchema = 'light', shape = 'circle', children }) {
   const { Avatar: avatar } = matchElement(children, ['Avatar'])
 
   const { ref, max } = useMaxCount()
+  const getColor = useGroupColor(color)
 
-  function renderAvatar(element) {
+  function renderAvatar(element, index) {
+    const groupColor = getColor(index)
+
+    const isElementAutoColor = !element.props.color || element.props.color === 'auto'
+
     return cloneElement(element, {
       className: classNames(styles.item, { [element.props.className]: !!element.props.className }),
-      variant,
+      colorSchema,
       shape,
       size,
+      color: isElementAutoColor ? groupColor : element.props.color,
     })
   }
 
@@ -35,7 +42,7 @@ function Group({ className, size = 'md', variant = 'light', shape = 'circle', ch
         {elements.slice(0, max - 1).map(renderAvatar)}
         <Avatar
           className={styles.item}
-          variant={variant}
+          colorSchema={colorSchema}
           size={size}
           shape={shape}
           color="gray"
@@ -70,9 +77,14 @@ Group.propTypes = {
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg']),
 
   /**
-   * Variant of the avatar
+   * Color of avatar
    */
-  variant: PropTypes.oneOf(['light', 'solid', 'outline']),
+  color: PropTypes.oneOf(['auto', 'gray', 'blue', 'purple', 'orange', 'red', 'green']),
+
+  /**
+   * Color schema of the avatar
+   */
+  colorSchema: PropTypes.oneOf(['light', 'dark', 'outline']),
 
   /**
    * The shape of the avatar

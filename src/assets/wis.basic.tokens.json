@@ -972,6 +972,24 @@
         "lg": {
           "$type": "dimension",
           "$value": "4px"
+        },
+        "icon": {
+          "none": {
+            "$type": "dimension",
+            "$value": "0px"
+          },
+          "sm": {
+            "$type": "dimension",
+            "$value": "1px"
+          },
+          "md": {
+            "$type": "dimension",
+            "$value": "1.5px"
+          },
+          "lg": {
+            "$type": "dimension",
+            "$value": "2px"
+          }
         }
       },
       "radius": {
@@ -1118,15 +1136,13 @@
   },
   "component": {
     "avatar": {
-      "background": {
-        "$type": "color",
-        "$value": "#ffffff"
+      "group": {
+        "border": {
+          "$type": "color",
+          "$value": "{common.border.color.inverse}"
+        }
       },
-      "font": {
-        "$type": "color",
-        "$value": "#ffffff"
-      },
-      "fill": {
+      "dark": {
         "purple": {
           "background": {
             "$type": "color",
@@ -1298,7 +1314,7 @@
           }
         }
       },
-      "white": {
+      "outline": {
         "purple": {
           "background": {
             "$type": "color",
@@ -3926,16 +3942,6 @@
       }
     },
     "_table": {
-      "trend": {
-        "red": {
-          "$type": "color",
-          "$value": "{common.background.semantics.error}"
-        },
-        "green": {
-          "$type": "color",
-          "$value": "{common.background.semantics.success}"
-        }
-      },
       "star": {
         "font": {
           "$type": "color",
@@ -3949,6 +3955,16 @@
       "td-height": {
         "$type": "dimension",
         "$value": "48px"
+      },
+      "trend": {
+        "red": {
+          "$type": "color",
+          "$value": "{common.background.semantics.error}"
+        },
+        "green": {
+          "$type": "color",
+          "$value": "{common.background.semantics.success}"
+        }
       },
       "status": {
         "focus-default-background": {

@@ -25,6 +25,10 @@ html[data-theme='dark'] {
   --w-common-border-width-sm: 1px;
   --w-common-border-width-md: 2px;
   --w-common-border-width-lg: 4px;
+  --w-common-border-width-icon-none: 0px;
+  --w-common-border-width-icon-sm: 1px;
+  --w-common-border-width-icon-md: 1.5px;
+  --w-common-border-width-icon-lg: 2px;
   --w-common-border-radius-none: 0px;
   --w-common-border-radius-sm: 2px;
   --w-common-border-radius-md: 4px;

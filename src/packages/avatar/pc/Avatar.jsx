@@ -4,6 +4,7 @@ import attrs from '@/utils/attrs'
 import * as RDXAvatar from '@radix-ui/react-avatar'
 
 import getInitials from '../initials'
+import { useColor } from '../useColor'
 
 import styles from './Avatar.module.scss'
 
@@ -12,8 +13,8 @@ function Avatar({
   icon,
   src,
   size = 'md',
-  color = 'gray',
-  variant = 'light',
+  color = 'auto',
+  colorSchema = 'light',
   shape = 'circle',
   name,
   initials,
@@ -24,16 +25,19 @@ function Avatar({
   const isShowImage = !!src
   const isShowIcon = !!icon
 
+  const currentColor = useColor(color)
+
   return (
     <RDXAvatar.Root asChild>
       <div
         {...rest}
         className={classNames(styles.avatar, { [className]: !!className })}
-        data-variant={variant}
         data-size={size}
-        data-color={color}
+        data-color={currentColor}
+        data-color-schema={colorSchema}
         data-shape={shape}
         {...attrs({
+          'data-image': !!src,
           'aria-label': isShowImage ? undefined : name,
         })}
       >
@@ -71,12 +75,12 @@ Avatar.propTypes = {
   /**
    * Color of the avatar
    */
-  color: PropTypes.oneOf(['gray', 'blue', 'purple', 'orange', 'red', 'green']),
+  color: PropTypes.oneOf(['auto', 'gray', 'blue', 'purple', 'orange', 'red', 'green']),
 
   /**
-   * Variant of the avatar
+   * Color schema of the avatar
    */
-  variant: PropTypes.oneOf(['light', 'solid', 'outline']),
+  colorSchema: PropTypes.oneOf(['dark', 'light', 'outline']),
 
   /**
    * The shape of the avatar

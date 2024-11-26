@@ -1,14 +1,18 @@
 @use '@/themes/tool.scss' as tool;
 @use '@/themes/style.scss' as style;
 
-@mixin avatar-style($variant, $color) {
-  @include style.component-style($component: 'avatar', $variant: #{$variant}-#{$color});
+@mixin avatar-style($style, $color) {
+  @include style.component-style($component: 'avatar', $style: #{$style}-#{$color});
 }
 
-@mixin color($variant) {
+@mixin avatar-item() {
+  @include style.component-style($component: 'avatar', $widget: 'group', $enable-background: false, $enable-font: false);
+}
+
+@mixin color($style) {
   @each $color in 'gray', 'blue', 'purple', 'orange', 'red', 'green' {
     &[data-color="#{$color}"] {
-      @include avatar-style($variant, $color);
+      @include avatar-style($style, $color);
     }
   }
 }
@@ -23,6 +27,10 @@
   white-space: nowrap;
   font-weight: var(--w-common-font-weight-semibold);
 
+  &:not([data-image]) {
+    border: var(--w-common-spacing-scale-1) solid transparent;
+  }
+
   &[data-shape="circle"] {
     border-radius: 50%;
   }
@@ -31,16 +39,16 @@
     border-radius: var(--w-common-border-radius-lg);
   }
 
-  &[data-variant="light"] {
-    @include color($variant: light)
+  &[data-color-schema="light"] {
+    @include color($style: 'light')
   }
 
-  &[data-variant="solid"] {
-    @include color($variant: solid)
+  &[data-color-schema="dark"] {
+    @include color($style: 'dark')
   }
 
-  &[data-variant="outline"] {
-    @include color($variant: outline)
+  &[data-color-schema="outline"] {
+    @include color($style: 'outline')
   }
 
   &[data-size="lg"] {
@@ -91,6 +99,11 @@
 
 .item {
   flex: 0 0 auto;
+
+  &[data-color-schema][data-color] {
+    border: var(--w-common-border-width-md) solid transparent; 
+    @include avatar-item();
+  }
 
   &[data-size="lg"] {
     &:not(:first-child) {

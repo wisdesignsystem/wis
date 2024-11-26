@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useLayoutEffect } from 'react'
 import useObserverResize from '@/hooks/useObserverResize'
 
 export default function useMaxCount() {
@@ -7,7 +7,7 @@ export default function useMaxCount() {
 
   const rect = useObserverResize(ref)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!rect) {
       return
     }
