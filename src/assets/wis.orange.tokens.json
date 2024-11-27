@@ -780,9 +780,13 @@
             "$type": "dimension",
             "$value": "18px"
           },
-          "xlg": {
+          "xl": {
             "$type": "dimension",
             "$value": "20px"
+          },
+          "xxl": {
+            "$type": "dimension",
+            "$value": "24px"
           }
         },
         "heading": {
@@ -3952,10 +3956,6 @@
           "$value": "{palette.yellow.40}"
         }
       },
-      "td-height": {
-        "$type": "dimension",
-        "$value": "48px"
-      },
       "trend": {
         "red": {
           "$type": "color",
@@ -3965,6 +3965,10 @@
           "$type": "color",
           "$value": "{common.background.semantics.success}"
         }
+      },
+      "td-height": {
+        "$type": "dimension",
+        "$value": "48px"
       },
       "status": {
         "focus-default-background": {

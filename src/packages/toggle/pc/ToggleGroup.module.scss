@@ -1,14 +1,14 @@
 @use '@/themes/tool.scss' as tool;
 @use '@/themes/style.scss' as style;
 
-@mixin toggle-group-state-style($variant:'') {
+@mixin toggle-group-state-style($variant) {
   @include style.component-style($component: 'toggle-group', $variant: $variant);
 }
-@mixin toggle-group-item-state-style($variant:'', $state: '') {
-  @include style.component-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include style.component-hover-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include style.component-focus-style($component:'toggle-group-item', $variant: $variant, $state: $state);
-  @include style.component-disabled-style($component:'toggle-group-item', $variant: $variant, $state: $state);
+@mixin toggle-group-item-state-style($variant, $state: '') {
+  @include style.component-style($component:'toggle-group', $widget: 'item', $variant: $variant, $state: $state);
+  @include style.component-hover-style($component:'toggle-group', $widget: 'item', $variant: $variant, $state: $state);
+  @include style.component-focus-style($component:'toggle-group', $widget: 'item', $variant: $variant, $state: $state);
+  @include style.component-disabled-style($component:'toggle-group', $widget: 'item', $variant: $variant, $state: $state);
 }
 
 .group {
@@ -18,7 +18,7 @@
   justify-content: center;
   border: var(--w-common-spacing-scale-1) solid transparent;
 
-  @include toggle-group-state-style($variant: 'normal');
+  @include toggle-group-state-style($variant: 'basic');
 
   &[data-variant="compact"] {
     @include toggle-group-state-style($variant: 'compact');
@@ -98,15 +98,15 @@
   }
 
   > svg {
-    stroke-width: 1.5;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
   }
 
-  &[data-variant="normal"] {
-    @include toggle-group-item-state-style($variant: 'normal');
+  &[data-variant="basic"] {
+    @include toggle-group-item-state-style($variant: 'basic');
 
     &[data-state="on"] {
-      @include toggle-group-item-state-style($variant: 'normal', $state: 'selected');
+      @include toggle-group-item-state-style($variant: 'basic', $state: 'selected');
     }
 
     &[data-size="md"] {

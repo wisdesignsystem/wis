@@ -104,13 +104,13 @@
   width: 16px;
   height: 16px;
   padding: 0;
-  margin: var(--w-common-spacing-scale-3) var(--w-common-spacing-common-xs) 0;
+  margin: var(--w-common-spacing-common-xs) var(--w-common-spacing-common-xs) 0;
   outline: none;
   border-radius: var(--w-common-border-radius-md);
   cursor: pointer;
 
   > svg {
-    stroke-width: 1.5;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
     transition: 0.2s transform;
   }

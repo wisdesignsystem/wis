@@ -8,7 +8,7 @@ import styles from './ToggleGroup.module.scss'
 
 function ToggleGroup({
   className,
-  variant = 'normal',
+  variant = 'basic',
   size = 'md',
   disabled,
   loading,
@@ -60,10 +60,10 @@ ToggleGroup.propTypes = {
   /**
    * Variant of the Toggle.Group.
    *
-   * @type {normal|compact}
-   * @default normal
+   * @type {basic|compact}
+   * @default basic
    */
-  variant: PropTypes.oneOf(['normal', 'compact']),
+  variant: PropTypes.oneOf(['basic', 'compact']),
 
   /**
    * Indicates if the Toggle.Group is disabled, this will make all Toggle.Item disabled.

@@ -103,7 +103,7 @@
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  stroke-width: 1.2;
+  stroke-width: var(--w-common-border-width-icon-sm);
 
   @include tool.font-size(var(--w-common-font-size-text-md));
 
@@ -126,7 +126,7 @@
   flex: 1 1 auto;
 
   > svg {
-    stroke-width: 1.2;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
   }
 }
@@ -138,7 +138,7 @@
   min-width: 16px;
 
   > svg {
-    stroke-width: 1.2;
+    stroke-width: var(--w-common-border-width-icon-sm);
     color: var(--w-common-font-color-helper);
     font-size: var(--w-common-font-size-text-md);
   }

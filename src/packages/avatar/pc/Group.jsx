@@ -26,6 +26,8 @@ function Group({ className, color = 'auto', size = 'md', colorSchema = 'light', 
       colorSchema,
       shape,
       size,
+      // When the sub avatar color is in the automatic mode
+      // The colors are uniformly allocated by the avatar group to ensure that adjacent ones do not repeat.
       color: isElementAutoColor ? groupColor : element.props.color,
     })
   }

@@ -21,7 +21,7 @@
   border-bottom: var(--w-common-spacing-scale-1) solid transparent;
   font-weight: var(--w-common-font-weight-bold);
 
-  @include tool.font-size(var(--w-common-font-size-text-xlg));
+  @include tool.font-size(var(--w-common-font-size-text-xl));
 
   [data-description] {
     margin: var(--w-common-spacing-common-xs) var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-none);

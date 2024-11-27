@@ -25,7 +25,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: var(--w-common-font-weight-semibold);
+  font-weight: var(--w-common-font-weight-bold);
 
   &:not([data-image]) {
     border: var(--w-common-spacing-scale-1) solid transparent;
@@ -55,14 +55,22 @@
     width: 56px;
     height: 56px;
 
-    @include tool.font-size(var(--w-common-font-size-heading-md));
+    @include tool.font-size(var(--w-common-font-size-text-xxl));
+
+    > svg {
+      stroke-width: var(--w-common-border-width-icon-md);
+    }
   }
 
   &[data-size="md"] {
     width: 40px;
     height: 40px;
 
-    @include tool.font-size(var(--w-common-font-size-heading-sm));
+    @include tool.font-size(var(--w-common-font-size-text-md));
+
+    > svg {
+      stroke-width: var(--w-common-border-width-icon-md);
+    }
   }
 
   &[data-size="sm"] {
@@ -70,6 +78,10 @@
     height: 32px;
 
     @include tool.font-size(var(--w-common-font-size-text-base));
+
+    > svg {
+      stroke-width: var(--w-common-border-width-icon-sm);
+    }
   }
 
   &[data-size="xs"] {
@@ -77,6 +89,10 @@
     height: 24px;
 
     @include tool.font-size(var(--w-common-font-size-text-sm));
+
+    > svg {
+      stroke-width: var(--w-common-border-width-icon-sm);
+    }
   }
 }
 

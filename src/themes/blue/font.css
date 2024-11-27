@@ -22,7 +22,8 @@ html[data-theme='blue'] {
   --w-common-font-size-text-base: 14px;
   --w-common-font-size-text-md: 16px;
   --w-common-font-size-text-lg: 18px;
-  --w-common-font-size-text-xlg: 20px;
+  --w-common-font-size-text-xl: 20px;
+  --w-common-font-size-text-xxl: 24px;
   --w-common-font-size-heading-sm: 16px;
   --w-common-font-size-heading-base: 20px;
   --w-common-font-size-heading-md: 24px;

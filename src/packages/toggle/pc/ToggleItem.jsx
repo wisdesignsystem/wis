@@ -124,11 +124,11 @@ ToggleItem.propTypes = {
   /**
    * Variant of the Toggle.Group.
    *
-   * @type {normal|compact}
-   * @default normal
+   * @type {basic|compact}
+   * @default basic
    * @private
    */
-  variant: PropTypes.oneOf(['normal', 'compact']),
+  variant: PropTypes.oneOf(['basic', 'compact']),
 }
 
 export default ToggleItem

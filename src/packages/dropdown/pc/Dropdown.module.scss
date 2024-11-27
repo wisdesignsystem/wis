@@ -34,7 +34,7 @@
   @include style.component-disabled-style($component: 'dropdown', $widget: 'item-checked', $status: $status);
 }
 
-@mixin dropdown-button-selected-style($variant: '') {
+@mixin dropdown-button-selected-style($variant) {
   @include style.component-style($component: 'dropdown-button', $variant: $variant, $state: selected);
 }
 
@@ -157,7 +157,7 @@
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  stroke-width: 1.2;
+  stroke-width: var(--w-common-border-width-icon-sm);
 
   @include tool.font-size(var(--w-common-font-size-text-md));
 
@@ -170,7 +170,7 @@
   align-items: center;
 
   > svg {
-    stroke-width: 1.5;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
   }
 }
@@ -189,7 +189,7 @@
   align-items: center;
 
   > svg {
-    stroke-width: 1.5;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
     color: var(--w-common-font-color-helper);
   }
@@ -221,7 +221,7 @@
   flex: 1 1 auto;
 
   > svg {
-    stroke-width: 1.2;
+    stroke-width: var(--w-common-border-width-icon-sm);
     font-size: var(--w-common-font-size-text-md);
   }
 }
@@ -233,7 +233,7 @@
   min-width: 16px;
 
   > svg {
-    stroke-width: 1.2;
+    stroke-width: var(--w-common-border-width-icon-sm);
     color: var(--w-common-font-color-helper);
     font-size: var(--w-common-font-size-text-md);
   }
