@@ -3,8 +3,9 @@
  *
  * @param {String} type - The type of the component (e.g., 'container', 'component').
  * @param {String} component - The name of the component (e.g., 'button', 'card').
- * @param {String} widget - Optional widget modifier.
  * @param {String} variant - Optional variant modifier.
+ * @param {String} widget - Optional widget modifier.
+ * @param {String} style - Optional style modifier.
  * @param {String} status - Optional status modifier.
  * @param {String} state - Optional state modifier.
  * @param {String} state2 - Optional secondary state modifier.
@@ -12,7 +13,19 @@
  * The function constructs CSS variable names dynamically based on the provided parameters
  * and applies the corresponding color, background-color, and border-color styles.
  */
-@mixin style($type, $component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $state2: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin style(
+  $type,
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $state2: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   $widget-pattern: if($widget != '', '#{$widget}-', '');
   $variant-pattern: if($variant != '', '#{$variant}-', '');
   $style-pattern: if($style != '', '#{$style}-', '');
@@ -21,40 +34,122 @@
   $state2-pattern: if($state2 != '', '#{$state2}-', '');
 
   @if $enable-font == true {
-    color: var(--w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}font);
+    color: var(
+      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}font
+    );
   }
 
   @if $enable-background == true {
-    background-color: var(--w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}background);
+    background-color: var(
+      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}background
+    );
   }
 
   @if $enable-border == true {
-    border-color: var(--w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}border);
+    border-color: var(
+      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}border
+    );
   }
 }
 
-@mixin component-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $state2: '', $enable-font: true, $enable-background: true, $enable-border: true) {
-  @include style($type: 'component', $component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: $state2, $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+@mixin component-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $state2: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
+  @include style(
+    $type: 'component',
+    $component: $component,
+    $widget: $widget,
+    $variant: $variant,
+    $style: $style,
+    $status: $status,
+    $state: $state,
+    $state2: $state2,
+    $enable-font: $enable-font,
+    $enable-background: $enable-background,
+    $enable-border: $enable-border
+  );
 }
 
-@mixin component-hover-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin component-hover-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &:hover {
-    @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'hover', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include component-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'hover',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
   }
 
   &[disabled],
   &[data-disabled] {
     &:hover {
-      @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include component-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
     }
   }
 }
 
-@mixin component-focus-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin component-focus-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   $focus-status-pattern: if($status != '', $status, 'default');
 
   &:focus {
-    @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'focus', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include component-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'focus',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
     box-shadow:
       0 0 0 2px var(--w-common-shadow-state-focus-inner),
       0 0 0 4px var(--w-common-shadow-state-focus-#{$focus-status-pattern});
@@ -63,55 +158,195 @@
   &[disabled],
   &[data-disabled] {
     &:focus {
-      @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include component-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
       box-shadow: none;
     }
   }
 }
 
-@mixin component-active-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin component-active-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &:active {
-    @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'active', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include component-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'active',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
   }
 
   &[disabled],
   &[data-disabled] {
     &:active {
-      @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include component-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
     }
   }
 }
 
-@mixin component-disabled-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin component-disabled-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &[disabled],
   &[data-disabled] {
-    @include component-style($component: $component, $widget: $widget, $variant: $variant, $style: '', $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include component-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: '',
+      $status: $status,
+      $state: $state,
+      $state2: 'disabled',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
     cursor: not-allowed;
   }
 }
 
-@mixin container-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $state2: '', $enable-font: true, $enable-background: true, $enable-border: true) {
-  @include style($type: 'container', $component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: $state2, $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+@mixin container-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $state2: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
+  @include style(
+    $type: 'container',
+    $component: $component,
+    $widget: $widget,
+    $variant: $variant,
+    $style: $style,
+    $status: $status,
+    $state: $state,
+    $state2: $state2,
+    $enable-font: $enable-font,
+    $enable-background: $enable-background,
+    $enable-border: $enable-border
+  );
 }
 
-@mixin container-hover-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin container-hover-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &:hover {
-    @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'hover', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include container-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'hover',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
   }
 
   &[disabled],
   &[data-disabled] {
     &:hover {
-      @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include container-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
     }
   }
 }
 
-@mixin container-focus-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin container-focus-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   $focus-status-pattern: if($status != '', $status, 'default');
 
   &:focus {
-    @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'focus', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include container-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'focus',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
     box-shadow:
       0 0 0 2px var(--w-common-shadow-state-focus-inner),
       0 0 0 4px var(--w-common-shadow-state-focus-#{$focus-status-pattern});
@@ -120,29 +355,93 @@
   &[disabled],
   &[data-disabled] {
     &:focus {
-      @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include container-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
       box-shadow: none;
     }
   }
 }
 
-@mixin container-active-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin container-active-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &:active {
-    @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'active', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include container-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'active',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
   }
 
   &[disabled],
   &[data-disabled] {
     &:active {
-      @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+      @include container-style(
+        $component: $component,
+        $widget: $widget,
+        $variant: $variant,
+        $style: $style,
+        $status: $status,
+        $state: $state,
+        $state2: 'disabled',
+        $enable-font: $enable-font,
+        $enable-background: $enable-background,
+        $enable-border: $enable-border
+      );
     }
   }
 }
 
-@mixin container-disabled-style($component, $variant: '', $widget: '', $style: '', $status: '', $state: '', $enable-font: true, $enable-background: true, $enable-border: true) {
+@mixin container-disabled-style(
+  $component,
+  $variant: '',
+  $widget: '',
+  $style: '',
+  $status: '',
+  $state: '',
+  $enable-font: true,
+  $enable-background: true,
+  $enable-border: true
+) {
   &[disabled],
   &[data-disabled] {
-    @include container-style($component: $component, $widget: $widget, $variant: $variant, $style: $style, $status: $status, $state: $state, $state2: 'disabled', $enable-font: $enable-font, $enable-background: $enable-background, $enable-border: $enable-border);
+    @include container-style(
+      $component: $component,
+      $widget: $widget,
+      $variant: $variant,
+      $style: $style,
+      $status: $status,
+      $state: $state,
+      $state2: 'disabled',
+      $enable-font: $enable-font,
+      $enable-background: $enable-background,
+      $enable-border: $enable-border
+    );
     cursor: not-allowed;
   }
 }
