@@ -1,97 +1,251 @@
-html[data-theme='dark'] {
-  --w-component-dropdown-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-background: var(--w-common-background-common-base);
-  --w-component-dropdown-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-hover-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-hover-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-hover-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-focus-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-focus-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-focus-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-active-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-active-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-active-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-selected-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-selected-background: var(--w-common-background-state-selected);
-  --w-component-dropdown-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-dropdown-disabled-background: var(--w-common-background-common-base);
-  --w-component-dropdown-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-hover-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-hover-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-item-hover-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-active-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-active-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-item-active-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-selected-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-selected-background: var(--w-common-background-state-selected);
-  --w-component-dropdown-item-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-dropdown-item-disabled-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-font: var(--w-common-font-color-semantics-error);
-  --w-component-dropdown-item-danger-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-danger-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-hover-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-hover-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-hover-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-focus-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-focus-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-focus-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-active-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-active-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-active-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-selected-font: var(--w-common-font-color-semantics-error);
-  --w-component-dropdown-item-danger-selected-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-disabled-font: var(--w-common-font-color-semantics-error-disabled);
-  --w-component-dropdown-item-danger-disabled-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-danger-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-font: var(--w-common-font-color-semantics-error);
-  --w-component-dropdown-item-danger-checked-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-danger-checked-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-hover-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-checked-hover-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-checked-hover-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-focus-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-checked-focus-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-checked-focus-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-active-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-checked-active-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-active-font: var(--w-common-background-semantics-error-hover);
-  --w-component-dropdown-item-danger-checked-selected-font: var(--w-common-font-color-semantics-error);
-  --w-component-dropdown-item-danger-checked-selected-background: var(--w-common-background-semantics-error-light);
-  --w-component-dropdown-item-danger-checked-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-danger-checked-disabled-font: var(--w-common-font-color-semantics-error-disabled);
-  --w-component-dropdown-item-danger-checked-disabled-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-danger-checked-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-checked-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-checked-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-checked-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-checked-hover-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-item-checked-hover-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-checked-hover-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-checked-active-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-checked-active-background: var(--w-common-background-state-hover);
-  --w-component-dropdown-item-checked-active-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-checked-selected-font: var(--w-common-font-color-base);
-  --w-component-dropdown-item-checked-selected-background: var(--w-common-background-state-selected);
-  --w-component-dropdown-item-checked-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-item-checked-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-dropdown-item-checked-disabled-background: var(--w-common-background-common-base);
-  --w-component-dropdown-item-checked-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-button-primary-selected-font: var(--w-common-font-color-inverse);
-  --w-component-dropdown-button-primary-selected-background: var(--w-common-background-semantics-highlight-hover);
-  --w-component-dropdown-button-primary-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-button-classic-selected-font: var(--w-common-font-color-inverse);
-  --w-component-dropdown-button-classic-selected-border: var(--w-common-border-color-transparent);
-  --w-component-dropdown-button-classic-selected-background: var(--w-common-background-common-gray);
-  --w-component-dropdown-button-secondary-selected-font: var(--w-common-font-color-primary);
-  --w-component-dropdown-button-secondary-selected-border: var(--w-common-border-color-base);
-  --w-component-dropdown-button-secondary-selected-background: var(--w-common-background-common-01);
-  --w-component-dropdown-popper-background: var(--w-common-background-common-base);
-  --w-component-dropdown-popper-border: var(--w-common-border-color-base);
+html[data-theme="dark"] {
+	--w-component-dropdown-font: var(--w-common-font-color-primary);
+	--w-component-dropdown-background: var(--w-common-background-common-base);
+	--w-component-dropdown-border: var(--w-common-border-color-transparent);
+	--w-component-dropdown-hover-font: var(--w-common-font-color-primary);
+	--w-component-dropdown-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-hover-border: var(--w-common-border-color-transparent);
+	--w-component-dropdown-focus-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-focus-border: var(--w-common-border-color-transparent);
+	--w-component-dropdown-focus-font: var(--w-common-font-color-primary);
+	--w-component-dropdown-active-font: var(--w-common-font-color-primary);
+	--w-component-dropdown-active-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-active-border: var(--w-common-border-color-transparent);
+	--w-component-dropdown-selected-font: var(--w-common-font-color-primary);
+	--w-component-dropdown-selected-background: var(
+		--w-common-background-state-selected
+	);
+	--w-component-dropdown-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-dropdown-disabled-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-font: var(--w-common-font-color-base);
+	--w-component-dropdown-item-background: var(--w-common-background-common-base);
+	--w-component-dropdown-item-border: var(--w-common-border-color-transparent);
+	--w-component-dropdown-item-hover-font: var(--w-common-font-color-base);
+	--w-component-dropdown-item-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-item-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-active-font: var(--w-common-font-color-base);
+	--w-component-dropdown-item-active-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-item-active-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-selected-font: var(--w-common-font-color-base);
+	--w-component-dropdown-item-selected-background: var(
+		--w-common-background-state-selected
+	);
+	--w-component-dropdown-item-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-dropdown-item-disabled-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-font: var(
+		--w-common-font-color-semantics-error
+	);
+	--w-component-dropdown-item-danger-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-danger-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-hover-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-hover-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-focus-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-focus-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-focus-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-active-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-active-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-active-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-selected-font: var(
+		--w-common-font-color-semantics-error
+	);
+	--w-component-dropdown-item-danger-selected-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-disabled-font: var(
+		--w-common-font-color-semantics-error-disabled
+	);
+	--w-component-dropdown-item-danger-disabled-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-danger-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-font: var(
+		--w-common-font-color-semantics-error
+	);
+	--w-component-dropdown-item-danger-checked-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-danger-checked-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-hover-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-checked-hover-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-checked-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-focus-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-checked-focus-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-checked-focus-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-active-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-checked-active-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-active-font: var(
+		--w-common-background-semantics-error-hover
+	);
+	--w-component-dropdown-item-danger-checked-selected-font: var(
+		--w-common-font-color-semantics-error
+	);
+	--w-component-dropdown-item-danger-checked-selected-background: var(
+		--w-common-background-semantics-error-light
+	);
+	--w-component-dropdown-item-danger-checked-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-danger-checked-disabled-font: var(
+		--w-common-font-color-semantics-error-disabled
+	);
+	--w-component-dropdown-item-danger-checked-disabled-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-danger-checked-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-checked-font: var(--w-common-font-color-base);
+	--w-component-dropdown-item-checked-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-checked-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-checked-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-item-checked-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-checked-hover-font: var(
+		--w-common-font-color-base
+	);
+	--w-component-dropdown-item-checked-active-font: var(
+		--w-common-font-color-base
+	);
+	--w-component-dropdown-item-checked-active-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-dropdown-item-checked-active-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-checked-selected-font: var(
+		--w-common-font-color-base
+	);
+	--w-component-dropdown-item-checked-selected-background: var(
+		--w-common-background-state-selected
+	);
+	--w-component-dropdown-item-checked-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-item-checked-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-dropdown-item-checked-disabled-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-item-checked-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-button-primary-selected-font: var(
+		--w-common-font-color-inverse
+	);
+	--w-component-dropdown-button-primary-selected-background: var(
+		--w-common-background-semantics-highlight-hover
+	);
+	--w-component-dropdown-button-primary-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-button-classic-selected-font: var(
+		--w-common-font-color-inverse
+	);
+	--w-component-dropdown-button-classic-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-dropdown-button-classic-selected-background: var(
+		--w-common-background-common-gray
+	);
+	--w-component-dropdown-button-secondary-selected-font: var(
+		--w-common-font-color-primary
+	);
+	--w-component-dropdown-button-secondary-selected-border: var(
+		--w-common-border-color-base
+	);
+	--w-component-dropdown-button-secondary-selected-background: var(
+		--w-common-background-common-01
+	);
+	--w-component-dropdown-popper-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-dropdown-popper-border: var(--w-common-border-color-base);
 }
