@@ -9,7 +9,7 @@ function Tooltip({ className, side = 'top', align = 'center', text, open, defaul
     <RDXTooltip.Provider skipDelayDuration={300}>
       <RDXTooltip.Root open={open} defaultOpen={defaultOpen} delayDuration={500} onOpenChange={onOpen}>
         <RDXTooltip.Trigger asChild>
-          <span>{Children.only(children)}</span>
+          <span>{children}</span>
         </RDXTooltip.Trigger>
         <RDXTooltip.Portal>
           <RDXTooltip.Content className={styles.popper} side={side} align={align}>
