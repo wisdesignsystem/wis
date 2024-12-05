@@ -1,8 +1,13 @@
-import { useGlobalShortcut } from "remote:self/core";
-import PropTypes from "prop-types";
-import { Children } from "react";
+import { useGlobalShortcut } from "remote:self/shortcut";
+import { Children, isValidElement } from "react";
+import type { ReactElement } from "react";
 
 import Shortcut from "./Shortcut";
+import type { ContextMenuItemProps } from "./contextMenu";
+
+interface ItemProps extends ContextMenuItemProps {
+	mapper: (displayName: string) => string | undefined;
+}
 
 function Item({
 	mapper,
@@ -10,19 +15,25 @@ function Item({
 	role,
 	checked,
 	shortcutKey,
-	onSelect = () => {},
-	onCheckedChange = () => {},
 	children,
-}) {
-	const matched = [];
+	onClick = () => {},
+	onCheckedChange = () => {},
+}: ItemProps) {
+	const matched: ReactElement[] = [];
 	Children.toArray(children).some((element) => {
-		const type = mapper(element?.type?.displayName);
-		const isMatched = [
-			"ContextMenuItem",
-			"ContextMenuGroup",
-			"ContextMenuCheckboxGroup",
-			"ContextMenuRadioGroup",
-		].includes(type);
+		if (!isValidElement(element)) {
+			return;
+		}
+
+		// @ts-ignore
+		const displayName = mapper(element.type.displayName);
+		if (!displayName) {
+			return;
+		}
+
+		const isMatched = ["Item", "Group", "CheckboxGroup", "RadioGroup"].includes(
+			displayName,
+		);
 
 		if (isMatched) {
 			matched.push(element);
@@ -32,7 +43,6 @@ function Item({
 	});
 
 	const hasSubmenu = matched.length > 0;
-	// eslint-disable-next-line no-unused-vars
 	const [_, onGlobalShortcut] = useGlobalShortcut(
 		hasSubmenu ? undefined : shortcutKey,
 	);
@@ -47,11 +57,9 @@ function Item({
 		}
 
 		if (role === "menuitemradio") {
-			onCheckedChange();
+			onCheckedChange(!checked);
 			return;
 		}
-
-		onSelect();
 	});
 
 	if (hasSubmenu) {
@@ -60,23 +68,5 @@ function Item({
 
 	return null;
 }
-
-Item.propTypes = {
-	mapper: PropTypes.func,
-
-	role: PropTypes.oneOf(["menuitem", "menuitemcheckbox", "menuitemradio"]),
-
-	checked: PropTypes.bool,
-
-	disabled: PropTypes.bool,
-
-	shortcutKey: PropTypes.string,
-
-	children: PropTypes.node,
-
-	onSelect: PropTypes.func,
-
-	onCheckedChange: PropTypes.func,
-};
 
 export default Item;

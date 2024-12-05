@@ -1,29 +1,27 @@
-import { useGlobalShortcut } from "remote:self/core";
 import attrs from "@/utils/attrs";
 import classNames from "classnames";
-import PropTypes from "prop-types";
+
+import type { ShortcutProps } from "../shortcut";
+import useGlobalShortcut from "../useGlobalShortcut";
 
 import styles from "./Shortcut.module.scss";
 
 function Shortcut({
 	className,
 	shortcutKey,
-	unregister,
+	readonly,
 	disabled,
 	variant = "light",
 	size = "md",
-	onTrigger = () => {},
+	onKeyPressed = () => {},
 	...rest
-}) {
-	const [shortcut, onGlobalShortcut] = useGlobalShortcut(
-		shortcutKey,
-		unregister,
-	);
-	onGlobalShortcut((shortcut) => {
+}: ShortcutProps) {
+	const [shortcut, onGlobalShortcut] = useGlobalShortcut(shortcutKey, readonly);
+	onGlobalShortcut((event, shortcut) => {
 		if (disabled) {
 			return;
 		}
-		onTrigger(shortcut);
+		onKeyPressed(event, shortcut);
 	});
 
 	if (!shortcut) {
@@ -33,10 +31,11 @@ function Shortcut({
 	return (
 		<div
 			{...rest}
-			className={classNames(styles.shortcut, { [className]: !!className })}
+			className={classNames(styles.shortcut, {
+				[className as string]: !!className,
+			})}
 			data-variant={variant}
 			data-size={size}
-			disabled={disabled}
 			{...attrs({ "data-disabled": disabled })}
 		>
 			{shortcut.ctrl && <span className={styles.command}>⌃</span>}
@@ -49,58 +48,5 @@ function Shortcut({
 }
 
 Shortcut.displayName = "Shortcut";
-Shortcut.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * Shortcut key for the button.
-	 *
-	 * @type {string}
-	 *
-	 * @example
-	 * Control+S
-	 */
-	shortcutKey: PropTypes.string,
-
-	/**
-	 * Variant of the shortcut.
-	 *
-	 * @type {light|dark|ghost}
-	 * @default light
-	 */
-	variant: PropTypes.oneOf(["light", "dark", "ghost"]),
-
-	/**
-	 * Indicates if the shortcut is disabled.
-	 *
-	 * @type {boolean}
-	 * @default false
-	 */
-	disabled: PropTypes.bool,
-
-	/**
-	 * Size of the button.
-	 *
-	 * @type {sm|xs|md}
-	 * @default md
-	 */
-	size: PropTypes.oneOf(["sm", "xs", "md"]),
-
-	/**
-	 * @private
-	 * @hidden
-	 */
-	unregister: PropTypes.bool,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-
-	onTrigger: PropTypes.func,
-};
 
 export default Shortcut;

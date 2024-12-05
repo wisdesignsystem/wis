@@ -1,4 +1,6 @@
-function Toggle() {
+import type { ToggleProps } from "../toggle";
+
+function Toggle(props: ToggleProps) {
 	return null;
 }
 

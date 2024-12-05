@@ -1,39 +1,44 @@
 import { isFunction } from "@/utils/is";
-import PropTypes from "prop-types";
-import { Children } from "react";
+import { Children, isValidElement } from "react";
 
-import components from "./component";
+import Item from "./Item";
+import type { ContextMenuGroupProps } from "./contextMenu";
 
-function Group({ mapper, onSelect = () => {}, children }) {
-	return Children.map(children, (child) => {
-		const Component = components[mapper(child.type.displayName)];
-		if (!Component) {
-			return null;
-		}
-
-		return (
-			<Component
-				{...child.props}
-				mapper={mapper}
-				role="menuitem"
-				onSelect={() => {
-					if (isFunction(child.props.onSelect)) {
-						child.props.onSelect();
-					}
-
-					onSelect(child.props.value);
-				}}
-			/>
-		);
-	});
+interface GroupProps extends ContextMenuGroupProps {
+	mapper: (displayName: string) => string | undefined;
 }
 
-Group.propTypes = {
-	mapper: PropTypes.func,
+function Group({ mapper, onSelect = () => {}, children }: GroupProps) {
+	return (
+		<>
+			{Children.map(children, (child) => {
+				if (!isValidElement(child)) {
+					return null;
+				}
 
-	children: PropTypes.node,
+				// @ts-ignore
+				const displayName = mapper(child.type.displayName);
+				if (displayName !== "Item") {
+					return null;
+				}
 
-	onSelect: PropTypes.func,
-};
+				return (
+					<Item
+						{...child.props}
+						mapper={mapper}
+						role="menuitem"
+						onClick={(event: Event) => {
+							if (isFunction(child.props.onClick)) {
+								child.props.onClick(event);
+							}
+
+							onSelect(child.props.value);
+						}}
+					/>
+				);
+			})}
+		</>
+	);
+}
 
 export default Group;

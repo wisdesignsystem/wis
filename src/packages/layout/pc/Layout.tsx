@@ -1,9 +1,11 @@
 import { Box, BoxActions, BoxContent, BoxHeader } from "remote:self/box";
 import { isElement, matchElement } from "remote:self/core";
 import { Col, Row } from "remote:self/grid";
+import { isUndefined } from "@/utils/is";
 import classNames from "classnames";
-import PropTypes from "prop-types";
-import { Children } from "react";
+import { Children, isValidElement } from "react";
+
+import type { LayoutProps } from "../layout";
 
 import styles from "./Layout.module.scss";
 
@@ -11,18 +13,19 @@ function Layout({
 	className,
 	title,
 	description,
-	tip,
 	responsive,
 	gutter,
 	children,
 	...rest
-}) {
+}: LayoutProps) {
 	const {
-		Actions: actions,
-		Left: left,
-		Right: right,
-		Top: top,
-		Bottom: bottom,
+		elements: {
+			Actions: actions,
+			Left: left,
+			Right: right,
+			Top: top,
+			Bottom: bottom,
+		},
 		unmatched,
 	} = matchElement(
 		children,
@@ -37,19 +40,21 @@ function Layout({
 	);
 
 	const hasModule = unmatched.some((child) => isElement(child, "Module"));
-	const isShowHeader = !!title || !!description || !!tip || !!actions;
+	const isShowHeader =
+		!isUndefined(title) || !isUndefined(description) || !!actions;
 
 	return (
 		<Box
 			{...rest}
-			className={classNames(styles.layout, { [className]: !!className })}
+			className={classNames(styles.layout, {
+				[className as string]: !!className,
+			})}
 		>
-			{isShowHeader && (
+			{isShowHeader && !!title && (
 				<BoxHeader
 					className={styles.header}
 					title={title}
 					description={description}
-					tip={tip}
 				>
 					{!!actions && <BoxActions>{actions}</BoxActions>}
 				</BoxHeader>
@@ -62,6 +67,10 @@ function Layout({
 						{hasModule ? (
 							<Row responsive={responsive} gutter={gutter}>
 								{Children.map(unmatched, (child) => {
+									if (!isValidElement(child)) {
+										return <Col>{child}</Col>;
+									}
+
 									return <Col size={child.props.size}>{child}</Col>;
 								})}
 							</Row>
@@ -78,42 +87,5 @@ function Layout({
 }
 
 Layout.displayName = "Layout";
-Layout.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * title of Layout component
-	 *
-	 * @type {string}
-	 */
-	title: PropTypes.string,
-
-	/**
-	 * description of Layout component
-	 *
-	 * @type {string}
-	 */
-	description: PropTypes.string,
-
-	/**
-	 * tip text of Layout component
-	 */
-	tip: PropTypes.string,
-
-	gutter: PropTypes.bool,
-
-	/**
-	 * @private
-	 */
-	responsive: PropTypes.bool,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-};
 
 export default Layout;

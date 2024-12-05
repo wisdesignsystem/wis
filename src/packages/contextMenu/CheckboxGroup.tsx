@@ -1,68 +1,69 @@
-import PropTypes from "prop-types";
-import { Children } from "react";
-import components from "./component";
-import useContextMenuValue from "./useContextMenuValue";
+import { Children, isValidElement } from "react";
+
+import Item from "./Item";
+import type { ContextMenuCheckboxGroupProps } from "./contextMenu";
+import useContextValue from "./useContextValue";
+
+interface CheckboxGroupProps extends ContextMenuCheckboxGroupProps {
+	mapper: (displayName: string) => string | undefined;
+}
 
 function CheckboxGroup({
 	mapper,
 	name,
 	value,
 	defaultValue,
-	onChange = () => {},
 	children,
-}) {
-	const [currentValue, onValueChange] = useContextMenuValue({
+	onChange = () => {},
+}: CheckboxGroupProps) {
+	const [currentValue, onValueChange] = useContextValue({
 		name,
 		value,
 		defaultValue,
 	});
 
-	return Children.map(children, (child) => {
-		const isChecked = currentValue?.includes(child.props.value);
+	return (
+		<>
+			{Children.map(children, (child) => {
+				if (!isValidElement(child)) {
+					return null;
+				}
 
-		const Component = components[mapper(child.type.displayName)];
-		if (!Component) {
-			return null;
-		}
+				const isChecked = currentValue?.includes(child.props.value);
+				// @ts-ignore
+				const displayName = mapper(child.type.displayName);
+				if (displayName === "Item") {
+					return null;
+				}
 
-		return (
-			<Component
-				{...child.props}
-				mapper={mapper}
-				role="menuitemcheckbox"
-				checked={isChecked}
-				onCheckedChange={(checked) => {
-					let nextValue = currentValue?.slice() || [];
-					if (checked) {
-						nextValue.push(child.props.value);
-					} else {
-						nextValue = nextValue.filter((v) => v !== child.props.value);
-					}
+				return (
+					<Item
+						{...child.props}
+						mapper={mapper}
+						role="menuitemcheckbox"
+						checked={isChecked}
+						onCheckedChange={(checked: boolean) => {
+							let nextValue: string[] = [];
+							if (Array.isArray(currentValue)) {
+								nextValue = currentValue.slice();
+							}
 
-					onValueChange(nextValue);
-					onChange(nextValue);
-				}}
-			/>
-		);
-	});
+							if (checked) {
+								nextValue.push(child.props.value);
+							} else {
+								nextValue = nextValue.filter(
+									(v: string) => v !== child.props.value,
+								);
+							}
+
+							onValueChange(nextValue);
+							onChange(nextValue);
+						}}
+					/>
+				);
+			})}
+		</>
+	);
 }
-
-CheckboxGroup.propTypes = {
-	mapper: PropTypes.func,
-
-	name: PropTypes.string.isRequired,
-
-	value: PropTypes.arrayOf(
-		PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	),
-
-	defaultValue: PropTypes.arrayOf(
-		PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	),
-
-	children: PropTypes.node,
-
-	onChange: PropTypes.func,
-};
 
 export default CheckboxGroup;

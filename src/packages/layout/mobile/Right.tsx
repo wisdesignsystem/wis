@@ -1,4 +1,6 @@
-function Right() {
+import type { RightProps } from "../layout";
+
+function Right(props: RightProps) {
 	return null;
 }
 

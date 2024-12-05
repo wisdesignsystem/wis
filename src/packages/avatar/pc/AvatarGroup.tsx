@@ -1,13 +1,13 @@
-import type { ReactElement } from "react";
-import { cloneElement } from "react";
 import { matchElement } from "remote:self/core";
 import attrs from "@/utils/attrs";
 import classNames from "classnames";
+import type { ReactElement } from "react";
+import { cloneElement } from "react";
 
+import type { AvatarGroupProps } from "../avatar";
 import { useGroupColor } from "../useColor";
 import useMaxCount from "../useMaxCount";
 import Avatar from "./Avatar";
-import type { AvatarGroupProps } from "../type";
 
 import styles from "./Avatar.module.scss";
 
@@ -19,9 +19,11 @@ function AvatarGroup({
 	shape = "circle",
 	children,
 }: AvatarGroupProps) {
-	const { types: { Avatar: avatar } } = matchElement(children, ["Avatar"]);
+	const {
+		elements: { Avatar: avatar },
+	} = matchElement(children, ["Avatar"]);
 
-	const { ref, max } = useMaxCount();
+	const { ref, max } = useMaxCount<HTMLDivElement>();
 	const getColor = useGroupColor(color);
 
 	function renderAvatar(element: ReactElement, index: number) {
@@ -69,7 +71,9 @@ function AvatarGroup({
 	return (
 		<div
 			ref={ref}
-			className={classNames(styles.group, { [className as string]: !!className })}
+			className={classNames(styles.group, {
+				[className as string]: !!className,
+			})}
 			{...attrs({ "data-hidden": max === -1 })}
 		>
 			{renderAvatars(avatar)}

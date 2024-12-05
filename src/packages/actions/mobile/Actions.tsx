@@ -1,4 +1,6 @@
-function Actions() {
+import type { ActionsProps } from "../actions";
+
+function Actions(props: ActionsProps) {
 	return null;
 }
 

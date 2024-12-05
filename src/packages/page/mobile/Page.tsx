@@ -1,4 +1,6 @@
-function Page() {
+import type { PageProps } from "../page";
+
+function Page(props: PageProps) {
 	return null;
 }
 

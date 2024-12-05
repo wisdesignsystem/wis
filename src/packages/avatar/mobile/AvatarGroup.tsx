@@ -1,4 +1,4 @@
-import type { AvatarGroupProps } from "../type";
+import type { AvatarGroupProps } from "../avatar";
 
 function AvatarGroup(props: AvatarGroupProps) {
 	return null;

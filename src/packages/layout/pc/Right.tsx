@@ -1,18 +1,17 @@
 import classNames from "classnames";
-import PropTypes from "prop-types";
 
+import type { RightProps } from "../layout";
 import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
-function Right({ className, title, description, tip, children, ...rest }) {
+function Right({ className, children, ...rest }: RightProps) {
 	return (
 		<Layout
 			{...rest}
-			className={classNames(styles.right, { [className]: !!className })}
-			title={title}
-			description={description}
-			tip={tip}
+			className={classNames(styles.right, {
+				[className as string]: !!className,
+			})}
 		>
 			{children}
 		</Layout>
@@ -20,35 +19,5 @@ function Right({ className, title, description, tip, children, ...rest }) {
 }
 
 Right.displayName = "Right";
-Right.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * title of Layout component
-	 *
-	 * @type {string}
-	 */
-	title: PropTypes.string,
-
-	/**
-	 * description of Layout component
-	 *
-	 * @type {string}
-	 */
-	description: PropTypes.string,
-
-	/**
-	 * tip text of Layout component
-	 */
-	tip: PropTypes.string,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-};
 
 export default Right;

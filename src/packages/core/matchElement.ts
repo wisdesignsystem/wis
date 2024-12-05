@@ -1,6 +1,6 @@
-import type { ReactNode, ReactElement } from "react";
-import { Children, isValidElement } from "react";
 import { isFunction, isNumber, isString } from "@/utils/is";
+import type { ReactElement, ReactNode } from "react";
+import { Children, isValidElement } from "react";
 
 interface TypeDefinition {
 	type: string;
@@ -109,11 +109,26 @@ export function isElement(node: ReactNode, type: string) {
 	return nodeType === type;
 }
 
+interface MathElementResult {
+	/**
+	 * Stores nodes that are not in the matching type list
+	 */
+	unmatched: ReactNode[];
+	/**
+	 * Stores nodes that match the matching type list
+	 */
+	matched: ReactElement[];
+	/**
+	 * Stores the list of matched nodes categorized by type
+	 */
+	elements: { [type: string]: ReactElement[] };
+}
+
 export function matchElement(
 	children: ReactNode,
 	typeDefinitions: UserTypeDefinition[] = [],
 	strict = true,
-) {
+): MathElementResult {
 	const typeDefinitionMap = typeDefinitions.reduce(
 		(result, item) => {
 			const typeDefinition = toTypeDefinition(item);
@@ -133,22 +148,18 @@ export function matchElement(
 				return result;
 			}
 
-			if (!result.types[nodeType]) {
-				result.types[nodeType] = [];
+			if (!result.elements[nodeType]) {
+				result.elements[nodeType] = [];
 			}
 
 			result.matched.push(node);
-			result.types[nodeType].push(node);
+			result.elements[nodeType].push(node);
 
-			checkNodeTypeDefinition(nodeTypeDefinition, result.types[nodeType]);
+			checkNodeTypeDefinition(nodeTypeDefinition, result.elements[nodeType]);
 
 			return result;
 		},
-		{ unmatched: [], matched: [], types: {} } as {
-			unmatched: ReactNode[];
-			matched: ReactElement[];
-			types: { [type: string]: ReactElement[] };
-		},
+		{ unmatched: [], matched: [], elements: {} } as MathElementResult,
 	);
 
 	// In strict mode, check if there are any unmatched nodes. If they exist, give a warning.

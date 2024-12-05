@@ -6,15 +6,15 @@ function Example() {
 	return (
 		<Page title="Page title" description="description">
 			<Left title="Left Title">
-				{/* <Module title="Module Title" description="description"></Module> */}
-				{/* <Module title="Module Title" description="description"></Module> */}
+				{/* <Module title="Module Title" description="description" /> */}
+				{/* <Module title="Module Title" description="description" /> */}
 				<p>xxxx</p>
 			</Left>
 			<Module
 				title="Module Title"
 				description="description"
 				size={{ base: 4, md: 8 }}
-			></Module>
+			/>
 			<Module
 				title="Module Title"
 				description="description"
@@ -49,7 +49,6 @@ function Example() {
 				size={8}
 				variant="ghost"
 				collapsible
-				tip="xxx"
 			>
 				<Module title="Module Title" description="description" size={6}>
 					<p>xxxxx</p>
@@ -76,7 +75,7 @@ function Example() {
 				<p>xxxxx</p>
 			</Module>
 			<Right title="Right Title" description="description">
-				<Module title="Module Title" description="description"></Module>
+				<Module title="Module Title" description="description" />
 			</Right>
 		</Page>
 	);

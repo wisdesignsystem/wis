@@ -1,8 +1,8 @@
+import debounce from "lodash.debounce";
 import type { RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
-import debounce from "lodash.debounce";
 
-export default function useObserverResize<T extends Element>(
+export default function useObserverResize<T extends HTMLElement>(
 	elementRef: RefObject<T>,
 	debounceTimeout = 100,
 ) {

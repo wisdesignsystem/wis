@@ -1,8 +1,8 @@
-export default function shortcutMapper(componentDisplayName) {
+export default function shortcutMapper(displayName: string) {
 	return {
-		DropdownItem: "ContextMenuItem",
-		DropdownGroup: "ContextMenuGroup",
-		DropdownCheckboxGroup: "ContextMenuCheckboxGroup",
-		DropdownRadioGroup: "ContextMenuRadioGroup",
-	}[componentDisplayName];
+		DropdownItem: "Item",
+		DropdownGroup: "Group",
+		DropdownCheckboxGroup: "CheckboxGroup",
+		DropdownRadioGroup: "RadioGroup",
+	}[displayName];
 }

@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-function random(min, max) {
+function random(min: number, max: number) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const colors = ["gray", "blue", "purple", "orange", "red", "green"];
 
-function createColor(color) {
+function createColor(color: string) {
 	if (color !== "auto") {
 		return color;
 	}
@@ -15,8 +15,8 @@ function createColor(color) {
 	return colors[index];
 }
 
-function createUniqueColor(excludeColor) {
-	let color;
+function createUniqueColor(excludeColor: string) {
+	let color: string;
 	while (true) {
 		const index = random(0, colors.length - 1);
 		color = colors[index];
@@ -29,7 +29,7 @@ function createUniqueColor(excludeColor) {
 	return color;
 }
 
-export function useColor(color) {
+export function useColor(color: string) {
 	const [currentColor, setCurrentColor] = useState(createColor(color));
 
 	useEffect(() => {
@@ -39,10 +39,10 @@ export function useColor(color) {
 	return currentColor;
 }
 
-export function useGroupColor(color) {
-	const groupColors = useRef([]);
+export function useGroupColor(color: string) {
+	const groupColors = useRef<string[]>([]);
 
-	function getColor(index) {
+	function getColor(index: number) {
 		if (color !== "auto") {
 			return color;
 		}

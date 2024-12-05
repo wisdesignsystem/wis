@@ -1,9 +1,9 @@
-import DropdownButton from "./Button";
-import DropdownCheckboxGroup from "./CheckboxGroup";
 import Dropdown from "./Dropdown";
-import DropdownGroup from "./Group";
-import DropdownItem from "./Item";
-import DropdownRadioGroup from "./RadioGroup";
+import DropdownButton from "./DropdownButton";
+import DropdownCheckboxGroup from "./DropdownCheckboxGroup";
+import DropdownGroup from "./DropdownGroup";
+import DropdownItem from "./DropdownItem";
+import DropdownRadioGroup from "./DropdownRadioGroup";
 
 export {
 	Dropdown,

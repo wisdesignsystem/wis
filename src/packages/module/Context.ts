@@ -1,3 +1,8 @@
 import { createContext } from "react";
 
-export default createContext({});
+interface ContextValue {
+	isNested?: boolean;
+	variant?: "basic" | "ghost";
+}
+
+export default createContext<ContextValue>({});

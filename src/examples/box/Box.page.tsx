@@ -11,11 +11,11 @@ import { Button } from "remote:self/button";
 function Example() {
 	return (
 		<Box>
-			<BoxHeader title="Title" description="description" tip="xxx">
+			<BoxHeader title="Title" description="description">
 				<BoxActions>
 					<Actions>
-						<Button text="Cancel" size="sm"></Button>
-						<Button text="Confirm" size="sm" variant="primary"></Button>
+						<Button text="Cancel" size="sm" />
+						<Button text="Confirm" size="sm" variant="primary" />
 					</Actions>
 				</BoxActions>
 			</BoxHeader>
@@ -23,8 +23,8 @@ function Example() {
 			<BoxFooter>
 				<BoxActions>
 					<Actions>
-						<Button text="Cancel" size="sm"></Button>
-						<Button text="Confirm" size="sm" variant="primary"></Button>
+						<Button text="Cancel" size="sm" />
+						<Button text="Confirm" size="sm" variant="primary" />
 					</Actions>
 				</BoxActions>
 			</BoxFooter>

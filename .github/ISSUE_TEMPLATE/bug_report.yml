@@ -1,0 +1,73 @@
+name: Bug Report
+description: Create a bug report to help us improve
+title: "[Bug]: "
+assignees: []
+labels: ["\U0001F41B bug"]
+projects: []
+body:
+
+  - type: markdown
+    attributes:
+      value: "## Bug Report"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      placeholder: input...
+    validations:
+      required: true
+
+  - type: textarea
+    id: currentBehavior
+    attributes:
+      label: Current Behavior
+      placeholder: input...
+      value: None
+
+  - type: textarea
+    id: expectedBehavior
+    attributes:
+      label: Expected Behavior
+      placeholder: input...
+      value: None
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To Reproduce
+      description: |
+        steps...
+        1. Go to...
+        2. Click on...
+        3. Scroll to...
+        4. See error
+      placeholder: input...
+      value: None
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code Examples
+      description: |
+        Please provide a CodeSandbox (https://codesandbox.io/s/new), a link to a
+        repository on GitHub, or provide a minimal code example that reproduces the
+        problem.
+      placeholder: input...
+      value: None
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        - Wis: [e.g. 0.0.1]
+        - Wis Cli: [e.g. 0.0.1]
+        - OS: [e.g. iOS]
+        - Browser [e.g. chrome 0.77.0, safari 0.11.0]
+        - Node [e.g 22.10.0]
+        - Npm [e.g. 10.9.0]
+      placeholder: input...
+      value: None
+

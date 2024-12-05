@@ -74,9 +74,7 @@ export default {
 		},
 	},
 
-	plugins: [
-		require.resolve("@wisdesign/plugin-typescript"),
-	],
+	plugins: [],
 
 	// register remote entry file
 	remoteEntry: "./core",

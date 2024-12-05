@@ -1,19 +1,19 @@
-import BoxActions from "./Actions";
 import Box from "./Box";
-import BoxCollapse from "./Collapse";
-import BoxCollapsible from "./Collapsible";
-import BoxContent from "./Content";
-import BoxFooter from "./Footer";
-import BoxHeader from "./Header";
-import BoxPanel from "./Panel";
+import BoxActions from "./BoxActions";
+import BoxCollapse from "./BoxCollapse";
+import BoxCollapsible from "./BoxCollapsible";
+import BoxContent from "./BoxContent";
+import BoxFooter from "./BoxFooter";
+import BoxHeader from "./BoxHeader";
+import BoxPanel from "./BoxPanel";
 
 export {
 	Box,
-	BoxCollapsible,
 	BoxHeader,
+	BoxActions,
 	BoxContent,
+	BoxCollapsible,
+	BoxCollapse,
 	BoxPanel,
 	BoxFooter,
-	BoxActions,
-	BoxCollapse,
 };

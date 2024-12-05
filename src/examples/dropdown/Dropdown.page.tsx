@@ -1,3 +1,4 @@
+import { Avatar } from "remote:self/avatar";
 import {
 	Dropdown,
 	DropdownButton,
@@ -18,85 +19,59 @@ import {
 	PadIcon,
 	ShareIcon,
 	StarIcon,
-	UserIcon,
 } from "@wisdesign/lsicon";
 
 import styles from "./Dropdown.module.scss";
-
-function Avatar() {
-	return (
-		<div className={styles.avatar}>
-			<UserIcon />
-		</div>
-	);
-}
-Avatar.displayName = "Avatar";
 
 function Example() {
 	function renderDropdownButton() {
 		return (
 			<>
-				<DropdownGroup label="Device">
+				<DropdownGroup title="Device">
 					<DropdownItem
 						label="Desktop"
 						value="desktop"
 						icon={<ComputerIcon />}
-					></DropdownItem>
-					<DropdownItem
-						label="Tablet"
-						value="tablet"
-						icon={<PadIcon />}
-					></DropdownItem>
-					<DropdownItem
-						label="Mobile"
-						value="mobile"
-						icon={<MobileIcon />}
-					></DropdownItem>
+					/>
+					<DropdownItem label="Tablet" value="tablet" icon={<PadIcon />} />
+					<DropdownItem label="Mobile" value="mobile" icon={<MobileIcon />} />
 				</DropdownGroup>
 			</>
 		);
 	}
 
-	function renderSingleDropdown(key) {
+	function renderSingleDropdown(key: string) {
 		return (
 			<>
-				<DropdownGroup label="Basics">
+				<DropdownGroup title="Basics">
 					<DropdownItem
 						label="Edit"
 						value="edit"
 						icon={<EditIcon />}
 						shortcutKey={`Meta+${key}`}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Preview"
 						value="preview"
 						icon={<ComputerIcon />}
 						shortcutKey={`Shift+${key}`}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Share"
 						value="share"
 						icon={<ShareIcon />}
 						shortcutKey={`Control+${key}`}
-					></DropdownItem>
+					/>
 				</DropdownGroup>
-				<DropdownGroup label="Files">
+				<DropdownGroup title="Files">
 					<DropdownItem
 						label="Duplicate"
 						value="duplicate"
 						icon={<CopyOneIcon />}
-					></DropdownItem>
+					/>
 					<DropdownItem label="Move To" value="move" icon={<FolderIcon />}>
-						<DropdownItem
-							label="Music"
-							value="music"
-							icon={<MusicIcon />}
-						></DropdownItem>
-						<DropdownItem
-							label="Camera"
-							value="camera"
-							icon={<CameraIcon />}
-						></DropdownItem>
+						<DropdownItem label="Music" value="music" icon={<MusicIcon />} />
+						<DropdownItem label="Camera" value="camera" icon={<CameraIcon />} />
 					</DropdownItem>
 				</DropdownGroup>
 				<DropdownItem
@@ -104,80 +79,80 @@ function Example() {
 					value="disabled"
 					disabled
 					icon={<DeleteIcon />}
-				></DropdownItem>
+				/>
 				<DropdownItem
 					label="Delete"
 					value="delete"
 					status="danger"
 					icon={<DeleteIcon />}
-				></DropdownItem>
+				/>
 			</>
 		);
 	}
 
-	function renderComplexDropdown(key) {
+	function renderComplexDropdown(key: string) {
 		return (
 			<>
-				<DropdownRadioGroup name="radioGroup" label="Radio Group">
+				<DropdownRadioGroup name="radioGroup" title="Radio Group">
 					<DropdownItem
 						label="Edit"
 						value="edit"
 						icon={<EditIcon />}
 						shortcutKey={`Meta+${key}`}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Preview"
 						value="preview"
 						icon={<ComputerIcon />}
 						shortcutKey={`Shift+${key}`}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Share"
 						value="share"
 						icon={<ShareIcon />}
 						shortcutKey={`Control+${key}`}
-					></DropdownItem>
+					/>
 				</DropdownRadioGroup>
 				<DropdownCheckboxGroup
 					name="checkboxGroup"
-					label="Checkbox Group"
+					title="Checkbox Group"
 					defaultValue={["duplicate3"]}
 				>
 					<DropdownItem
 						label="Duplicate"
 						value="duplicate"
 						icon={<CopyOneIcon />}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Duplicate2"
 						value="duplicate2"
 						icon={<CopyOneIcon />}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Duplicate3"
 						disabled
 						value="duplicate3"
 						icon={<CopyOneIcon />}
-					></DropdownItem>
+					/>
 					<DropdownItem
 						label="Duplicate4"
 						disabled
 						value="duplicate4"
 						icon={<CopyOneIcon />}
-					></DropdownItem>
+					/>
 				</DropdownCheckboxGroup>
 				<DropdownItem
 					label="Disabled"
 					value="disabled"
 					disabled
 					icon={<DeleteIcon />}
-				></DropdownItem>
+				/>
 				<DropdownItem
 					label="Delete"
 					value="delete"
 					status="danger"
 					icon={<DeleteIcon />}
-				></DropdownItem>
+				/>
 			</>
 		);
 	}
@@ -270,11 +245,11 @@ function Example() {
 				>
 					{renderSingleDropdown("U")}
 				</Dropdown>
-				<Dropdown avatar={<Avatar />} text="Dropdown">
+				<Dropdown avatar={<Avatar name="Wis Design" />} text="Dropdown">
 					{renderComplexDropdown("O")}
 				</Dropdown>
 				<Dropdown
-					avatar={<Avatar />}
+					avatar={<Avatar name="Wis Design" />}
 					text="Dropdown"
 					description="Dropdown description message"
 					arrowDirection="right"
@@ -282,7 +257,9 @@ function Example() {
 					{renderSingleDropdown("P")}
 				</Dropdown>
 				<Dropdown icon={<StarIcon />}>{renderComplexDropdown("J")}</Dropdown>
-				<Dropdown avatar={<Avatar />}>{renderSingleDropdown("T")}</Dropdown>
+				<Dropdown avatar={<Avatar name="Wis Design" />}>
+					{renderSingleDropdown("T")}
+				</Dropdown>
 			</div>
 		</div>
 	);

@@ -60,11 +60,6 @@
   flex-direction: row;
   align-items: center;
   gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-sm);
-
-  > svg {
-    flex: 0 0 auto;
-    font-size: var(--w-common-font-size-text-md);
-  }
 }
 
 .label {

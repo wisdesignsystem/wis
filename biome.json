@@ -13,6 +13,14 @@
 	"organizeImports": { "enabled": true },
 	"linter": {
 		"enabled": true,
-		"rules": { "recommended": true }
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noConsole": {
+					"level": "warn",
+					"options": { "allow": ["assert", "error", "info", "warn"] }
+				}
+			}
+		}
 	}
 }

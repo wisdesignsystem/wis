@@ -1,41 +1,46 @@
 import attrs from "@/utils/attrs";
-import { isNumber } from "@/utils/is";
-import PropTypes from "prop-types";
+
+import type { ColProps, ResponsiveSize, Size } from "./grid";
+import { isResponsiveSize, isSize } from "./grid";
 
 import styles from "./Row.module.scss";
 
-function resolveResponsiveSize(size = {}, defaultSize) {
-	if (isNumber(Number.parseInt(size))) {
-		return { base: size };
+function formatToResponsiveSize(
+	size?: Size | ResponsiveSize,
+	defaultBaseSize?: Size,
+): ResponsiveSize {
+	if (isResponsiveSize(size)) {
+		return {
+			base: size.base || defaultBaseSize,
+			...size,
+		};
 	}
 
-	return {
-		base: size.base || defaultSize,
-		sm: size.sm,
-		md: size.md,
-		lg: size.lg,
-		xl: size.xl,
-		xxl: size.xxl,
-	};
+	if (isSize(size)) {
+		return {
+			base: size,
+		};
+	}
+
+	return { base: defaultBaseSize };
 }
 
-function Col({ children, size, offset }) {
-	const responsiveSize = resolveResponsiveSize(size, 12);
-	const responsiveOffset = resolveResponsiveSize(offset);
+function Col({ size = 12, offset, children }: ColProps) {
+	const responsiveSize = formatToResponsiveSize(size, 12);
+	const responsiveOffset = formatToResponsiveSize(offset);
 
 	return (
 		<div
 			className={styles.col}
 			data-size={responsiveSize.base}
 			{...attrs({
-				"data-xs-size": responsiveSize.xs,
+				"data-size": responsiveSize.base,
 				"data-sm-size": responsiveSize.sm,
 				"data-md-size": responsiveSize.md,
 				"data-lg-size": responsiveSize.lg,
 				"data-xl-size": responsiveSize.xl,
 				"data-xxl-size": responsiveSize.xxl,
-				"data-offset": offset,
-				"data-xs-offset": responsiveOffset.xs,
+				"data-offset": responsiveOffset.base,
 				"data-sm-offset": responsiveOffset.sm,
 				"data-md-offset": responsiveOffset.md,
 				"data-lg-offset": responsiveOffset.lg,
@@ -49,61 +54,5 @@ function Col({ children, size, offset }) {
 }
 
 Col.displayName = "Col";
-
-const Size = PropTypes.oneOf([
-	1,
-	2,
-	3,
-	4,
-	5,
-	6,
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	"1",
-	"2",
-	"3",
-	"4",
-	"5",
-	"6",
-	"7",
-	"8",
-	"9",
-	"10",
-	"11",
-	"12",
-]);
-const ResponsiveSize = PropTypes.oneOfType([
-	Size,
-	PropTypes.shape({
-		base: Size,
-		sm: Size,
-		md: Size,
-		lg: Size,
-		xl: Size,
-		xxl: Size,
-	}),
-]);
-Col.propTypes = {
-	/**
-	 * Size for Col component, support responsive size
-	 *
-	 * @default 12
-	 */
-	size: ResponsiveSize,
-
-	/**
-	 * Offset for Col component, support responsive size
-	 */
-	offset: ResponsiveSize,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-};
 
 export default Col;

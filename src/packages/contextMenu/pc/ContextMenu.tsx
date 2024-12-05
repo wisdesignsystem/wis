@@ -1,20 +1,24 @@
 import { matchElement } from "remote:self/core";
 import * as RDXContextMenu from "@radix-ui/react-context-menu";
-import PropTypes from "prop-types";
+import type { ReactNode } from "react";
 import { Children, useState } from "react";
 
 import Context from "../Context";
 import Shortcut from "../Shortcut";
+import type { ContextMenuProps } from "../contextMenu";
+import mapper from "../mapper";
 
 import styles from "./ContextMenu.module.scss";
 
-function ContextMenu({ children, disabled, ...rest }) {
+function ContextMenu({ children, disabled }: ContextMenuProps) {
 	const [contextValue, setContextValue] = useState({});
 	const {
 		matched,
 		unmatched,
-		ContextMenuCheckboxGroup,
-		ContextMenuRadioGroup,
+		elements: {
+			ContextMenuCheckboxGroup: contextMenuCheckboxGroups,
+			ContextMenuRadioGroup: contextMenuRadioGroups,
+		},
 	} = matchElement(
 		children,
 		[
@@ -26,12 +30,12 @@ function ContextMenu({ children, disabled, ...rest }) {
 		false,
 	);
 	const hasCheckedItem =
-		!!ContextMenuCheckboxGroup?.length || !!ContextMenuRadioGroup?.length;
+		!!contextMenuCheckboxGroups?.length || !!contextMenuRadioGroups?.length;
 
 	return (
 		<Context.Provider value={{ contextValue, setContextValue }}>
 			<RDXContextMenu.Root>
-				<Shortcut>{matched}</Shortcut>
+				<Shortcut mapper={mapper}>{matched}</Shortcut>
 				<RDXContextMenu.Trigger disabled={disabled}>
 					{!!unmatched.length &&
 						(unmatched.length > 1 ? Children.only(unmatched) : unmatched[0])}
@@ -41,9 +45,6 @@ function ContextMenu({ children, disabled, ...rest }) {
 						className={styles.popper}
 						data-variant={hasCheckedItem ? "checkbox" : "normal"}
 						loop
-						align="start"
-						sideOffset={8}
-						{...rest}
 					>
 						{matched}
 					</RDXContextMenu.Content>
@@ -54,7 +55,7 @@ function ContextMenu({ children, disabled, ...rest }) {
 }
 
 ContextMenu.displayName = "ContextMenu";
-ContextMenu.getSymbiote = (children: React.ReactNode) => {
+ContextMenu.getSymbiote = (children: ReactNode) => {
 	const { unmatched } = matchElement(
 		children,
 		[
@@ -67,20 +68,6 @@ ContextMenu.getSymbiote = (children: React.ReactNode) => {
 	);
 
 	return unmatched[0];
-};
-ContextMenu.propTypes = {
-	/**
-	 * Indicates if the ContextMenu is disabled.
-	 *
-	 * @type {boolean}
-	 * @default false
-	 */
-	disabled: PropTypes.bool,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
 };
 
 export default ContextMenu;

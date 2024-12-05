@@ -2,9 +2,9 @@ import attrs from "@/utils/attrs";
 import * as RDXAvatar from "@radix-ui/react-avatar";
 import classNames from "classnames";
 
+import type { AvatarProps } from "../avatar";
 import getInitials from "../initials";
 import { useColor } from "../useColor";
-import type { AvatarProps } from "../type";
 
 import styles from "./Avatar.module.scss";
 
@@ -31,7 +31,9 @@ function Avatar({
 		<RDXAvatar.Root asChild>
 			<div
 				{...rest}
-				className={classNames(styles.avatar, { [className as string]: !!className })}
+				className={classNames(styles.avatar, {
+					[className as string]: !!className,
+				})}
 				data-size={size}
 				data-color={currentColor}
 				data-color-schema={colorSchema}

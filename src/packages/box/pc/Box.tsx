@@ -1,20 +1,18 @@
 import { matchElement } from "remote:self/core";
 import classNames from "classnames";
-import PropTypes from "prop-types";
+import type { BoxProps } from "../box";
 
 import styles from "./Box.module.scss";
 
-function Box({ className, children, ...rest }) {
+function Box({ className, children, ...rest }: BoxProps) {
 	const {
-		BoxHeader: header,
-		BoxContent: content,
-		BoxFooter: footer,
+		elements: { BoxHeader: header, BoxContent: content, BoxFooter: footer },
 	} = matchElement(children, ["BoxHeader", "BoxContent", "BoxFooter"]);
 
 	return (
 		<div
 			{...rest}
-			className={classNames(styles.box, { [className]: !!className })}
+			className={classNames(styles.box, { [className as string]: !!className })}
 		>
 			{header}
 			{content}
@@ -24,16 +22,5 @@ function Box({ className, children, ...rest }) {
 }
 
 Box.displayName = "Box";
-Box.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-};
 
 export default Box;

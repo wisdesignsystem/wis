@@ -1,4 +1,6 @@
-function Module() {
+import type { ModuleProps } from "../module";
+
+function Module(props: ModuleProps) {
 	return null;
 }
 

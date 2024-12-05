@@ -8,9 +8,9 @@ function Example() {
 			<div className={styles.col}>
 				<ContextMenu>
 					<div className={styles.content}>Right Click me</div>
-					<ContextMenuItem label="Desktop" value="desktop"></ContextMenuItem>
-					<ContextMenuItem label="Tablet" value="tablet"></ContextMenuItem>
-					<ContextMenuItem label="Mobile" value="mobile"></ContextMenuItem>
+					<ContextMenuItem label="Desktop" value="desktop" />
+					<ContextMenuItem label="Tablet" value="tablet" />
+					<ContextMenuItem label="Mobile" value="mobile" />
 				</ContextMenu>
 			</div>
 		</div>

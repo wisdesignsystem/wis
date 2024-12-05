@@ -1,12 +1,12 @@
 import { matchElement } from "remote:self/core";
 import classNames from "classnames";
-import PropTypes from "prop-types";
 
+import type { TopProps } from "../layout";
 import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
-function Top({ className, children, ...rest }) {
+function Top({ className, children, ...rest }: TopProps) {
 	const { unmatched } = matchElement(
 		children,
 		[{ type: "Actions", maxCount: 0 }],
@@ -16,7 +16,7 @@ function Top({ className, children, ...rest }) {
 	return (
 		<Layout
 			{...rest}
-			className={classNames(styles.top, { [className]: !!className })}
+			className={classNames(styles.top, { [className as string]: !!className })}
 		>
 			{unmatched}
 		</Layout>
@@ -24,16 +24,5 @@ function Top({ className, children, ...rest }) {
 }
 
 Top.displayName = "Top";
-Top.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-};
 
 export default Top;

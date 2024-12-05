@@ -1,4 +1,6 @@
-function Tooltip() {
+import type { TooltipProps } from "../tooltip";
+
+function Tooltip(props: TooltipProps) {
 	return null;
 }
 

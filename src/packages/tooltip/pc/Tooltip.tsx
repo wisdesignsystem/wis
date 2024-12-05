@@ -1,6 +1,9 @@
 import * as RDXTooltip from "@radix-ui/react-tooltip";
-import PropTypes from "prop-types";
+import classNames from "classnames";
+import type { ReactNode } from "react";
 import { Children } from "react";
+
+import type { TooltipProps } from "../tooltip";
 
 import styles from "./Tooltip.module.scss";
 
@@ -11,9 +14,10 @@ function Tooltip({
 	text,
 	open,
 	defaultOpen,
-	onOpen,
 	children,
-}) {
+	onOpen,
+	...rest
+}: TooltipProps) {
 	return (
 		<RDXTooltip.Provider skipDelayDuration={300}>
 			<RDXTooltip.Root
@@ -27,15 +31,15 @@ function Tooltip({
 				</RDXTooltip.Trigger>
 				<RDXTooltip.Portal>
 					<RDXTooltip.Content
-						className={styles.popper}
+						{...rest}
+						className={classNames(styles.popper, {
+							[className as string]: !!className,
+						})}
 						side={side}
 						align={align}
 					>
 						{text}
-						<RDXTooltip.Arrow
-							fill="currentColor"
-							className={styles.arrow}
-						></RDXTooltip.Arrow>
+						<RDXTooltip.Arrow fill="currentColor" className={styles.arrow} />
 					</RDXTooltip.Content>
 				</RDXTooltip.Portal>
 			</RDXTooltip.Root>
@@ -44,57 +48,6 @@ function Tooltip({
 }
 
 Tooltip.displayName = "Tooltip";
-Tooltip.getSymbiote = (children) => Children.toArray(children)[0];
-Tooltip.propTypes = {
-	/**
-	 * @hidden
-	 */
-	className: PropTypes.string,
-
-	/**
-	 * The preferred side of the trigger to render against when open. May change when collisions occur.
-	 */
-	side: PropTypes.oneOf(["top", "right", "bottom", "left"]),
-
-	/**
-	 *  The preferred alignment against the trigger. May change when collisions occur.
-	 */
-	align: PropTypes.oneOf(["start", "center", "end"]),
-
-	/**
-	 * The content to render in the tooltip.
-	 */
-	text: PropTypes.string.isRequired,
-
-	/**
-	 * The controlled open state of the tooltip.
-	 */
-	open: PropTypes.bool,
-
-	/**
-	 * The open state of the tooltip when it is initially rendered.
-	 */
-	defaultOpen: PropTypes.bool,
-
-	/**
-	 * @hidden
-	 */
-	children: PropTypes.node,
-
-	/**
-	 * Event handler called when the open state of the tooltip changes.
-	 *
-	 * @example
-	 *
-	 * function handleOpen(open) {
-	 *  if (open) {
-	 *    console.log('Tooltip is open')
-	 *  }
-	 * }
-	 *
-	 * <Tooltip onOpen={handleOpen}></Tooltip>
-	 */
-	onOpen: PropTypes.func,
-};
+Tooltip.getSymbiote = (children: ReactNode) => Children.toArray(children)[0];
 
 export default Tooltip;
