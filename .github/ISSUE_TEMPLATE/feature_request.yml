@@ -1,0 +1,36 @@
+name: Feature Request
+description: Create a feature request to help us improve
+title: "[Feature]: "
+assignees: []
+labels: []
+projects: []
+body:
+
+  - type: markdown
+    attributes:
+      value: "## Feature Request"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature you would like to see.
+      placeholder: input...
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Could you provide some related examples or reference links to help us better understand the request.
+      placeholder: input...
+      value: None
+
+  - type: textarea
+    id: solutions
+    attributes:
+      label: Solutions
+      description: Could you provide some suggestions on the solution to help us implement this feature
+      placeholder: input...
+      value: None
