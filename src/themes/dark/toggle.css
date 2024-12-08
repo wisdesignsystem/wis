@@ -1,50 +1,116 @@
-html[data-theme='dark'] {
-  --w-component-toggle-basic-border: var(--w-common-border-color-base);
-  --w-component-toggle-basic-font: var(--w-common-font-color-base);
-  --w-component-toggle-basic-background: var(--w-common-background-common-base);
-  --w-component-toggle-basic-hover-border: var(--w-common-border-color-03);
-  --w-component-toggle-basic-hover-font: var(--w-common-font-color-base);
-  --w-component-toggle-basic-hover-background: var(--w-common-background-common-base);
-  --w-component-toggle-basic-disabled-border: var(--w-common-border-color-base);
-  --w-component-toggle-basic-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-toggle-basic-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-toggle-basic-focus-font: var(--w-common-font-color-base);
-  --w-component-toggle-basic-focus-background: var(--w-common-background-common-base);
-  --w-component-toggle-basic-focus-border: var(--w-common-border-color-base);
-  --w-component-toggle-basic-selected-border: var(--w-common-border-color-03);
-  --w-component-toggle-basic-selected-font: var(--w-common-font-color-primary);
-  --w-component-toggle-basic-selected-background: var(--w-common-background-common-03);
-  --w-component-toggle-basic-selected-hover-border: var(--w-common-border-color-03);
-  --w-component-toggle-basic-selected-hover-font: var(--w-common-font-color-primary);
-  --w-component-toggle-basic-selected-hover-background: var(--w-common-background-state-hover);
-  --w-component-toggle-basic-selected-focus-border: var(--w-common-border-color-03);
-  --w-component-toggle-basic-selected-focus-font: var(--w-common-font-color-primary);
-  --w-component-toggle-basic-selected-focus-background: var(--w-common-background-common-03);
-  --w-component-toggle-basic-selected-disabled-border: var(--w-common-border-color-03);
-  --w-component-toggle-basic-selected-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-toggle-basic-selected-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-toggle-ghost-font: var(--w-common-font-color-base);
-  --w-component-toggle-ghost-background: var(--w-common-background-transparent-fully);
-  --w-component-toggle-ghost-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-hover-font: var(--w-common-font-color-secondary);
-  --w-component-toggle-ghost-hover-background: var(--w-common-background-state-hover);
-  --w-component-toggle-ghost-hover-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-toggle-ghost-disabled-background: var(--w-common-background-transparent-fully);
-  --w-component-toggle-ghost-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-focus-font: var(--w-common-font-color-secondary);
-  --w-component-toggle-ghost-focus-background: var(--w-common-background-common-base);
-  --w-component-toggle-ghost-focus-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-selected-font: var(--w-common-font-color-primary);
-  --w-component-toggle-ghost-selected-background: var(--w-common-background-common-03);
-  --w-component-toggle-ghost-selected-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-selected-hover-font: var(--w-common-font-color-primary);
-  --w-component-toggle-ghost-selected-hover-background: var(--w-common-background-state-hover);
-  --w-component-toggle-ghost-selected-hover-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-selected-focus-font: var(--w-common-font-color-primary);
-  --w-component-toggle-ghost-selected-focus-background: var(--w-common-background-common-03);
-  --w-component-toggle-ghost-selected-focus-border: var(--w-common-border-color-transparent);
-  --w-component-toggle-ghost-selected-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-toggle-ghost-selected-disabled-background: var(--w-common-background-common-02);
-  --w-component-toggle-ghost-selected-disabled-border: var(--w-common-border-color-transparent);
+html[data-theme="dark"] {
+	--w-component-toggle-basic-border: var(--w-common-border-color-base);
+	--w-component-toggle-basic-font: var(--w-common-font-color-base);
+	--w-component-toggle-basic-background: var(--w-common-background-common-base);
+	--w-component-toggle-basic-hover-border: var(--w-common-border-color-03);
+	--w-component-toggle-basic-hover-font: var(--w-common-font-color-base);
+	--w-component-toggle-basic-hover-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-toggle-basic-disabled-border: var(--w-common-border-color-base);
+	--w-component-toggle-basic-disabled-background: var(
+		--w-common-background-state-disabled
+	);
+	--w-component-toggle-basic-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-toggle-basic-focus-font: var(--w-common-font-color-base);
+	--w-component-toggle-basic-focus-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-toggle-basic-focus-border: var(--w-common-border-color-base);
+	--w-component-toggle-basic-selected-border: var(--w-common-border-color-03);
+	--w-component-toggle-basic-selected-font: var(--w-common-font-color-primary);
+	--w-component-toggle-basic-selected-background: var(
+		--w-common-background-common-03
+	);
+	--w-component-toggle-basic-selected-hover-border: var(
+		--w-common-border-color-03
+	);
+	--w-component-toggle-basic-selected-hover-font: var(
+		--w-common-font-color-primary
+	);
+	--w-component-toggle-basic-selected-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-toggle-basic-selected-focus-border: var(
+		--w-common-border-color-03
+	);
+	--w-component-toggle-basic-selected-focus-font: var(
+		--w-common-font-color-primary
+	);
+	--w-component-toggle-basic-selected-focus-background: var(
+		--w-common-background-common-03
+	);
+	--w-component-toggle-basic-selected-disabled-border: var(
+		--w-common-border-color-03
+	);
+	--w-component-toggle-basic-selected-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-toggle-basic-selected-disabled-background: var(
+		--w-common-background-state-disabled
+	);
+	--w-component-toggle-ghost-font: var(--w-common-font-color-base);
+	--w-component-toggle-ghost-background: var(
+		--w-common-background-transparent-fully
+	);
+	--w-component-toggle-ghost-border: var(--w-common-border-color-transparent);
+	--w-component-toggle-ghost-hover-font: var(--w-common-font-color-secondary);
+	--w-component-toggle-ghost-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-toggle-ghost-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-toggle-ghost-disabled-background: var(
+		--w-common-background-transparent-fully
+	);
+	--w-component-toggle-ghost-disabled-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-focus-font: var(--w-common-font-color-secondary);
+	--w-component-toggle-ghost-focus-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-toggle-ghost-focus-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-selected-font: var(--w-common-font-color-primary);
+	--w-component-toggle-ghost-selected-background: var(
+		--w-common-background-common-03
+	);
+	--w-component-toggle-ghost-selected-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-selected-hover-font: var(
+		--w-common-font-color-primary
+	);
+	--w-component-toggle-ghost-selected-hover-background: var(
+		--w-common-background-state-hover
+	);
+	--w-component-toggle-ghost-selected-hover-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-selected-focus-font: var(
+		--w-common-font-color-primary
+	);
+	--w-component-toggle-ghost-selected-focus-background: var(
+		--w-common-background-common-03
+	);
+	--w-component-toggle-ghost-selected-focus-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-toggle-ghost-selected-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-toggle-ghost-selected-disabled-background: var(
+		--w-common-background-common-02
+	);
+	--w-component-toggle-ghost-selected-disabled-border: var(
+		--w-common-border-color-transparent
+	);
 }

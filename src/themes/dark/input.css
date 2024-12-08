@@ -1,37 +1,63 @@
-html[data-theme='dark'] {
-  --w-component-input-default-font: var(--w-common-font-color-primary);
-  --w-component-input-default-icon: var(--w-common-font-color-primary);
-  --w-component-input-hover-icon: var(--w-common-font-color-primary);
-  --w-component-input-disabled-icon: var(--w-common-font-color-state-disabled);
-  --w-component-input-default-background: var(--w-common-background-common-02);
-  --w-component-input-default-border: var(--w-common-border-color-transparent);
-  --w-component-input-placeholder-font: var(--w-common-font-color-state-placeholder);
-  --w-component-input-hover-font: var(--w-common-font-color-tertiary);
-  --w-component-input-hover-background: var(--w-common-background-common-base);
-  --w-component-input-hover-border: var(--w-common-border-color-semantics-highlight);
-  --w-component-input-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-input-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-input-disabled-border: var(--w-common-border-color-transparent);
-  --w-component-input-error-background: var(--w-common-background-common-base);
-  --w-component-input-error-border: var(--w-common-border-color-semantics-error);
-  --w-component-input-error-font: var(--w-common-font-color-base);
-  --w-component-input-focus-font: var(--w-common-font-color-tertiary);
-  --w-component-input-focus-background: var(--w-common-background-common-base);
-  --w-component-input-focus-border: var(--w-common-border-color-state-focus);
-  --w-component-input-placeholder-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-input-pend-default-font: var(--w-common-font-color-helper);
-  --w-component-input-pend-default-background: var(--w-common-background-common-02);
-  --w-component-input-pend-default-border: var(--w-common-border-color-02);
-  --w-component-input-pend-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-input-pend-disabled-border: var(--w-common-border-color-state-disabled);
-  --w-component-input-pend-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-input-pend-hover-font: var(--w-common-font-color-helper);
-  --w-component-input-pend-hover-background: var(--w-common-background-common-03);
-  --w-component-input-pend-hover-border: var(--w-common-border-color-02);
-  --w-component-input-tag-default-font: var(--w-common-font-color-tertiary);
-  --w-component-input-tag-default-background: var(--w-common-background-common-base);
-  --w-component-input-tag-default-border: var(--w-common-border-color-transparent);
-  --w-component-input-tag-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-input-tag-disabled-background: var(--w-common-background-transparent-fully);
-  --w-component-input-tag-disabled-border: var(--w-common-border-color-02);
+html[data-theme="dark"] {
+	--w-component-input-default-font: var(--w-common-font-color-primary);
+	--w-component-input-default-icon: var(--w-common-font-color-primary);
+	--w-component-input-hover-icon: var(--w-common-font-color-primary);
+	--w-component-input-disabled-icon: var(--w-common-font-color-state-disabled);
+	--w-component-input-default-background: var(--w-common-background-common-02);
+	--w-component-input-default-border: var(--w-common-border-color-transparent);
+	--w-component-input-placeholder-font: var(
+		--w-common-font-color-state-placeholder
+	);
+	--w-component-input-hover-font: var(--w-common-font-color-tertiary);
+	--w-component-input-hover-background: var(--w-common-background-common-base);
+	--w-component-input-hover-border: var(
+		--w-common-border-color-semantics-highlight
+	);
+	--w-component-input-disabled-font: var(--w-common-font-color-state-disabled);
+	--w-component-input-disabled-background: var(
+		--w-common-background-state-disabled
+	);
+	--w-component-input-disabled-border: var(--w-common-border-color-transparent);
+	--w-component-input-error-background: var(--w-common-background-common-base);
+	--w-component-input-error-border: var(--w-common-border-color-semantics-error);
+	--w-component-input-error-font: var(--w-common-font-color-base);
+	--w-component-input-focus-font: var(--w-common-font-color-tertiary);
+	--w-component-input-focus-background: var(--w-common-background-common-base);
+	--w-component-input-focus-border: var(--w-common-border-color-state-focus);
+	--w-component-input-placeholder-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-input-pend-default-font: var(--w-common-font-color-helper);
+	--w-component-input-pend-default-background: var(
+		--w-common-background-common-02
+	);
+	--w-component-input-pend-default-border: var(--w-common-border-color-02);
+	--w-component-input-pend-disabled-background: var(
+		--w-common-background-state-disabled
+	);
+	--w-component-input-pend-disabled-border: var(
+		--w-common-border-color-state-disabled
+	);
+	--w-component-input-pend-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-input-pend-hover-font: var(--w-common-font-color-helper);
+	--w-component-input-pend-hover-background: var(
+		--w-common-background-common-03
+	);
+	--w-component-input-pend-hover-border: var(--w-common-border-color-02);
+	--w-component-input-tag-default-font: var(--w-common-font-color-tertiary);
+	--w-component-input-tag-default-background: var(
+		--w-common-background-common-base
+	);
+	--w-component-input-tag-default-border: var(
+		--w-common-border-color-transparent
+	);
+	--w-component-input-tag-disabled-font: var(
+		--w-common-font-color-state-disabled
+	);
+	--w-component-input-tag-disabled-background: var(
+		--w-common-background-transparent-fully
+	);
+	--w-component-input-tag-disabled-border: var(--w-common-border-color-02);
 }
