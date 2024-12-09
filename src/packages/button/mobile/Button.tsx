@@ -1,7 +1,7 @@
 import type { ButtonProps } from "../button";
 
 function Button(props: ButtonProps) {
-	return null;
+  return null;
 }
 
 Button.displayName = "Button";

@@ -1,7 +1,7 @@
 import type { DropdownCheckboxGroupProps } from "../dropdown";
 
 function DropdownCheckboxGroup(props: DropdownCheckboxGroupProps) {
-	return null;
+  return null;
 }
 
 DropdownCheckboxGroup.displayName = "DropdownCheckboxGroup";

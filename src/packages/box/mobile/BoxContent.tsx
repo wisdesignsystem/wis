@@ -1,7 +1,7 @@
 import type { BoxContentProps } from "../box";
 
 function BoxContent(props: BoxContentProps) {
-	return null;
+  return null;
 }
 
 BoxContent.displayName = "BoxContent";

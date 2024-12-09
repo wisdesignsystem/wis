@@ -8,43 +8,43 @@ import type { TooltipProps } from "../tooltip";
 import styles from "./Tooltip.module.scss";
 
 function Tooltip({
-	className,
-	side = "top",
-	align = "center",
-	text,
-	open,
-	defaultOpen,
-	children,
-	onOpen,
-	...rest
+  className,
+  side = "top",
+  align = "center",
+  text,
+  open,
+  defaultOpen,
+  children,
+  onOpen,
+  ...rest
 }: TooltipProps) {
-	return (
-		<RDXTooltip.Provider skipDelayDuration={300}>
-			<RDXTooltip.Root
-				open={open}
-				defaultOpen={defaultOpen}
-				delayDuration={500}
-				onOpenChange={onOpen}
-			>
-				<RDXTooltip.Trigger asChild>
-					<span>{children}</span>
-				</RDXTooltip.Trigger>
-				<RDXTooltip.Portal>
-					<RDXTooltip.Content
-						{...rest}
-						className={classNames(styles.popper, {
-							[className as string]: !!className,
-						})}
-						side={side}
-						align={align}
-					>
-						{text}
-						<RDXTooltip.Arrow fill="currentColor" className={styles.arrow} />
-					</RDXTooltip.Content>
-				</RDXTooltip.Portal>
-			</RDXTooltip.Root>
-		</RDXTooltip.Provider>
-	);
+  return (
+    <RDXTooltip.Provider skipDelayDuration={300}>
+      <RDXTooltip.Root
+        open={open}
+        defaultOpen={defaultOpen}
+        delayDuration={500}
+        onOpenChange={onOpen}
+      >
+        <RDXTooltip.Trigger asChild>
+          <span>{children}</span>
+        </RDXTooltip.Trigger>
+        <RDXTooltip.Portal>
+          <RDXTooltip.Content
+            {...rest}
+            className={classNames(styles.popper, {
+              [className as string]: !!className,
+            })}
+            side={side}
+            align={align}
+          >
+            {text}
+            <RDXTooltip.Arrow fill="currentColor" className={styles.arrow} />
+          </RDXTooltip.Content>
+        </RDXTooltip.Portal>
+      </RDXTooltip.Root>
+    </RDXTooltip.Provider>
+  );
 }
 
 Tooltip.displayName = "Tooltip";

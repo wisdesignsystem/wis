@@ -4,7 +4,7 @@
 import type { ShortcutProps } from "../shortcut";
 
 function Shortcut(props: ShortcutProps) {
-	return null;
+  return null;
 }
 
 Shortcut.displayName = "Shortcut";

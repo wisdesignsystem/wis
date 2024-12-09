@@ -1,7 +1,7 @@
 import type { TooltipProps } from "../tooltip";
 
 function Tooltip(props: TooltipProps) {
-	return null;
+  return null;
 }
 
 Tooltip.displayName = "Tooltip";

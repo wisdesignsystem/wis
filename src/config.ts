@@ -5,5 +5,5 @@
  * @return <Object> 应用的远程地址注册表
  */
 export function remotes() {
-	return {};
+  return {};
 }

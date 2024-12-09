@@ -10,41 +10,41 @@ import DropdownButtonTrigger from "./DropdownButtonTrigger";
 import styles from "./Dropdown.module.scss";
 
 function Button({
-	defaultOpen,
-	open,
-	onOpen,
-	children,
-	...rest
+  defaultOpen,
+  open,
+  onOpen,
+  children,
+  ...rest
 }: DropdownButtonProps) {
-	const [contextValue, setContextValue] = useState({});
-	const { matched } = matchElement(children, ["DropdownItem", "DropdownGroup"]);
+  const [contextValue, setContextValue] = useState({});
+  const { matched } = matchElement(children, ["DropdownItem", "DropdownGroup"]);
 
-	return (
-		<Context.Provider
-			value={{ contextValue, setContextValue, contextType: "DropdownButton" }}
-		>
-			<RDXDropdownMenu.Root
-				defaultOpen={defaultOpen}
-				open={open}
-				onOpenChange={onOpen}
-			>
-				<Shortcut mapper={mapper}>{matched}</Shortcut>
-				<RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
-					<DropdownButtonTrigger {...rest} />
-				</RDXDropdownMenu.Trigger>
-				<RDXDropdownMenu.Portal>
-					<RDXDropdownMenu.Content
-						className={styles.popper}
-						loop
-						align="end"
-						sideOffset={8}
-					>
-						{matched}
-					</RDXDropdownMenu.Content>
-				</RDXDropdownMenu.Portal>
-			</RDXDropdownMenu.Root>
-		</Context.Provider>
-	);
+  return (
+    <Context.Provider
+      value={{ contextValue, setContextValue, contextType: "DropdownButton" }}
+    >
+      <RDXDropdownMenu.Root
+        defaultOpen={defaultOpen}
+        open={open}
+        onOpenChange={onOpen}
+      >
+        <Shortcut mapper={mapper}>{matched}</Shortcut>
+        <RDXDropdownMenu.Trigger disabled={rest.disabled} asChild>
+          <DropdownButtonTrigger {...rest} />
+        </RDXDropdownMenu.Trigger>
+        <RDXDropdownMenu.Portal>
+          <RDXDropdownMenu.Content
+            className={styles.popper}
+            loop
+            align="end"
+            sideOffset={8}
+          >
+            {matched}
+          </RDXDropdownMenu.Content>
+        </RDXDropdownMenu.Portal>
+      </RDXDropdownMenu.Root>
+    </Context.Provider>
+  );
 }
 
 Button.displayName = "DropdownButton";

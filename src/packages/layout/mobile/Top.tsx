@@ -1,7 +1,7 @@
 import type { TopProps } from "../layout";
 
 function Top(props: TopProps) {
-	return null;
+  return null;
 }
 
 Top.displayName = "Top";

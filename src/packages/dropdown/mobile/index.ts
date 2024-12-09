@@ -6,10 +6,10 @@ import DropdownItem from "./DropdownItem";
 import DropdownRadioGroup from "./DropdownRadioGroup";
 
 export {
-	Dropdown,
-	DropdownButton,
-	DropdownGroup,
-	DropdownCheckboxGroup,
-	DropdownRadioGroup,
-	DropdownItem,
+  Dropdown,
+  DropdownButton,
+  DropdownGroup,
+  DropdownCheckboxGroup,
+  DropdownRadioGroup,
+  DropdownItem,
 };

@@ -1,17 +1,17 @@
 :root {
-	--w-component-breadcrumb-font: var(--w-common-font-color-helper);
-	--w-component-breadcrumb-background: var(--w-common-background-common-base);
-	--w-component-breadcrumb-border: var(--w-common-border-color-transparent);
-	--w-component-breadcrumb-item-font: var(--w-common-font-color-helper);
-	--w-component-breadcrumb-item-background: var(
-		--w-common-background-common-base
-	);
-	--w-component-breadcrumb-item-border: var(--w-common-border-color-transparent);
-	--w-component-breadcrumb-separator-font: var(--w-common-font-color-icon);
-	--w-component-breadcrumb-separator-background: var(
-		--w-common-background-transparent-fully
-	);
-	--w-component-breadcrumb-separator-border: var(
-		--w-common-border-color-transparent
-	);
+  --w-component-breadcrumb-font: var(--w-common-font-color-helper);
+  --w-component-breadcrumb-background: var(--w-common-background-common-base);
+  --w-component-breadcrumb-border: var(--w-common-border-color-transparent);
+  --w-component-breadcrumb-item-font: var(--w-common-font-color-helper);
+  --w-component-breadcrumb-item-background: var(
+    --w-common-background-common-base
+  );
+  --w-component-breadcrumb-item-border: var(--w-common-border-color-transparent);
+  --w-component-breadcrumb-separator-font: var(--w-common-font-color-icon);
+  --w-component-breadcrumb-separator-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-breadcrumb-separator-border: var(
+    --w-common-border-color-transparent
+  );
 }

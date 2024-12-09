@@ -1,7 +1,7 @@
 import type { AvatarProps } from "../avatar";
 
 function Avatar(props: AvatarProps) {
-	return null;
+  return null;
 }
 
 Avatar.displayName = "Avatar";

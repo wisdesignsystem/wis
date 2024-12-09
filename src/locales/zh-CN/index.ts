@@ -1,7 +1,7 @@
 import { wis } from "remote:self/core";
 
 export default wis.i18n.resource({
-	button: {
-		text: "按钮",
-	},
+  button: {
+    text: "按钮",
+  },
 });

@@ -1,107 +1,107 @@
 html[data-theme="orange"] {
-	--w-container-layout-font: var(--w-common-font-color-primary);
-	--w-container-layout-background: var(--w-common-background-common-base);
-	--w-container-layout-border: var(--w-common-border-color-base);
-	--w-container-layout-collapse-font: var(--w-common-font-color-primary);
-	--w-container-layout-collapse-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-layout-collapse-border: var(--w-common-border-color-base);
-	--w-container-layout-collapse-hover-font: var(--w-common-font-color-primary);
-	--w-container-layout-collapse-hover-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-layout-collapse-hover-border: var(--w-common-border-color-base);
-	--w-container-layout-collapse-active-font: var(--w-common-font-color-primary);
-	--w-container-layout-collapse-active-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-layout-collapse-active-border: var(--w-common-border-color-base);
-	--w-container-layout-collapse-focus-font: var(--w-common-font-color-primary);
-	--w-container-layout-collapse-focus-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-layout-collapse-focus-border: var(--w-common-border-color-base);
-	--w-container-layout-header-font: var(--w-common-font-color-primary);
-	--w-container-layout-header-background: var(--w-common-background-common-base);
-	--w-container-layout-header-border: var(--w-common-border-color-base);
-	--w-container-layout-footer-font: var(--w-common-font-color-primary);
-	--w-container-layout-footer-background: var(--w-common-background-common-base);
-	--w-container-layout-footer-border: var(--w-common-border-color-base);
-	--w-container-page-header-font: var(--w-common-font-color-primary);
-	--w-container-page-header-background: var(--w-common-background-common-base);
-	--w-container-page-header-border: var(--w-common-border-color-base);
-	--w-container-page-info-font: var(--w-common-font-color-base);
-	--w-container-page-info-label-font: var(--w-common-font-color-helper);
-	--w-container-page-info-icon-font: var(
-		--w-common-font-color-semantics-highlight
-	);
-	--w-container-module-basic-font: var(--w-common-font-color-primary);
-	--w-container-module-basic-background: var(--w-common-background-common-base);
-	--w-container-module-basic-border: var(--w-common-border-color-base);
-	--w-container-module-basic-header-font: var(--w-common-font-color-primary);
-	--w-container-module-basic-header-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-module-basic-header-border: var(--w-common-border-color-base);
-	--w-container-module-basic-nested-header-font: var(
-		--w-common-font-color-primary
-	);
-	--w-container-module-basic-nested-header-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-module-basic-nested-header-border: var(
-		--w-common-border-color-base
-	);
-	--w-container-module-basic-content-font: var(--w-common-font-color-primary);
-	--w-container-module-basic-content-background: var(
-		--w-common-background-transparent-fully
-	);
-	--w-container-module-basic-content-border: var(
-		--w-common-border-color-transparent
-	);
-	--w-container-module-ghost-font: var(--w-common-font-color-primary);
-	--w-container-module-ghost-background: var(
-		--w-common-background-transparent-fully
-	);
-	--w-container-module-ghost-border: var(--w-common-border-color-transparent);
-	--w-container-module-ghost-header-font: var(--w-common-font-color-primary);
-	--w-container-module-ghost-header-background: var(
-		--w-common-background-transparent-fully
-	);
-	--w-container-module-ghost-header-border: var(
-		--w-common-border-color-transparent
-	);
-	--w-container-module-ghost-nested-header-font: var(
-		--w-common-font-color-primary
-	);
-	--w-container-module-ghost-nested-header-background: var(
-		--w-common-background-transparent-fully
-	);
-	--w-container-module-ghost-nested-header-border: var(
-		--w-common-border-color-transparent
-	);
-	--w-container-module-ghost-content-font: var(--w-common-font-color-primary);
-	--w-container-module-ghost-content-background: var(
-		--w-common-background-common-base
-	);
-	--w-container-module-ghost-content-border: var(--w-common-border-color-base);
-	--w-container-modal-font: var(--w-common-font-color-primary);
-	--w-container-modal-background: var(--w-common-background-common-base);
-	--w-container-modal-border: var(--w-common-border-color-base);
-	--w-container-modal-footer-font: var(--w-common-font-color-primary);
-	--w-container-modal-footer-background: var(--w-common-background-common-base);
-	--w-container-modal-footer-border: var(--w-common-border-color-base);
-	--w-container-modal-header-font: var(--w-common-font-color-primary);
-	--w-container-modal-header-background: var(--w-common-background-common-base);
-	--w-container-modal-header-border: var(--w-common-border-color-base);
-	--w-container-drawer-font: var(--w-common-font-color-primary);
-	--w-container-drawer-background: var(--w-common-background-common-base);
-	--w-container-drawer-border: var(--w-common-border-color-base);
-	--w-container-drawer-footer-font: var(--w-common-font-color-primary);
-	--w-container-drawer-footer-background: var(--w-common-background-common-base);
-	--w-container-drawer-footer-border: var(--w-common-border-color-base);
-	--w-container-drawer-header-font: var(--w-common-font-color-primary);
-	--w-container-drawer-header-background: var(--w-common-background-common-base);
-	--w-container-drawer-header-border: var(--w-common-border-color-base);
+  --w-container-layout-font: var(--w-common-font-color-primary);
+  --w-container-layout-background: var(--w-common-background-common-base);
+  --w-container-layout-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-layout-collapse-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-hover-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-hover-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-layout-collapse-hover-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-active-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-active-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-layout-collapse-active-border: var(--w-common-border-color-base);
+  --w-container-layout-collapse-focus-font: var(--w-common-font-color-primary);
+  --w-container-layout-collapse-focus-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-layout-collapse-focus-border: var(--w-common-border-color-base);
+  --w-container-layout-header-font: var(--w-common-font-color-primary);
+  --w-container-layout-header-background: var(--w-common-background-common-base);
+  --w-container-layout-header-border: var(--w-common-border-color-base);
+  --w-container-layout-footer-font: var(--w-common-font-color-primary);
+  --w-container-layout-footer-background: var(--w-common-background-common-base);
+  --w-container-layout-footer-border: var(--w-common-border-color-base);
+  --w-container-page-header-font: var(--w-common-font-color-primary);
+  --w-container-page-header-background: var(--w-common-background-common-base);
+  --w-container-page-header-border: var(--w-common-border-color-base);
+  --w-container-page-info-font: var(--w-common-font-color-base);
+  --w-container-page-info-label-font: var(--w-common-font-color-helper);
+  --w-container-page-info-icon-font: var(
+    --w-common-font-color-semantics-highlight
+  );
+  --w-container-module-basic-font: var(--w-common-font-color-primary);
+  --w-container-module-basic-background: var(--w-common-background-common-base);
+  --w-container-module-basic-border: var(--w-common-border-color-base);
+  --w-container-module-basic-header-font: var(--w-common-font-color-primary);
+  --w-container-module-basic-header-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-module-basic-header-border: var(--w-common-border-color-base);
+  --w-container-module-basic-nested-header-font: var(
+    --w-common-font-color-primary
+  );
+  --w-container-module-basic-nested-header-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-module-basic-nested-header-border: var(
+    --w-common-border-color-base
+  );
+  --w-container-module-basic-content-font: var(--w-common-font-color-primary);
+  --w-container-module-basic-content-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-container-module-basic-content-border: var(
+    --w-common-border-color-transparent
+  );
+  --w-container-module-ghost-font: var(--w-common-font-color-primary);
+  --w-container-module-ghost-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-container-module-ghost-border: var(--w-common-border-color-transparent);
+  --w-container-module-ghost-header-font: var(--w-common-font-color-primary);
+  --w-container-module-ghost-header-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-container-module-ghost-header-border: var(
+    --w-common-border-color-transparent
+  );
+  --w-container-module-ghost-nested-header-font: var(
+    --w-common-font-color-primary
+  );
+  --w-container-module-ghost-nested-header-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-container-module-ghost-nested-header-border: var(
+    --w-common-border-color-transparent
+  );
+  --w-container-module-ghost-content-font: var(--w-common-font-color-primary);
+  --w-container-module-ghost-content-background: var(
+    --w-common-background-common-base
+  );
+  --w-container-module-ghost-content-border: var(--w-common-border-color-base);
+  --w-container-modal-font: var(--w-common-font-color-primary);
+  --w-container-modal-background: var(--w-common-background-common-base);
+  --w-container-modal-border: var(--w-common-border-color-base);
+  --w-container-modal-footer-font: var(--w-common-font-color-primary);
+  --w-container-modal-footer-background: var(--w-common-background-common-base);
+  --w-container-modal-footer-border: var(--w-common-border-color-base);
+  --w-container-modal-header-font: var(--w-common-font-color-primary);
+  --w-container-modal-header-background: var(--w-common-background-common-base);
+  --w-container-modal-header-border: var(--w-common-border-color-base);
+  --w-container-drawer-font: var(--w-common-font-color-primary);
+  --w-container-drawer-background: var(--w-common-background-common-base);
+  --w-container-drawer-border: var(--w-common-border-color-base);
+  --w-container-drawer-footer-font: var(--w-common-font-color-primary);
+  --w-container-drawer-footer-background: var(--w-common-background-common-base);
+  --w-container-drawer-footer-border: var(--w-common-border-color-base);
+  --w-container-drawer-header-font: var(--w-common-font-color-primary);
+  --w-container-drawer-header-background: var(--w-common-background-common-base);
+  --w-container-drawer-header-border: var(--w-common-border-color-base);
 }

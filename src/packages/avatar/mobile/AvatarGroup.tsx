@@ -1,7 +1,7 @@
 import type { AvatarGroupProps } from "../avatar";
 
 function AvatarGroup(props: AvatarGroupProps) {
-	return null;
+  return null;
 }
 
 AvatarGroup.displayName = "AvatarGroup";

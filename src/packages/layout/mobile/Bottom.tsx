@@ -1,7 +1,7 @@
 import type { BottomProps } from "../layout";
 
 function Bottom(props: BottomProps) {
-	return null;
+  return null;
 }
 
 Bottom.displayName = "Bottom";

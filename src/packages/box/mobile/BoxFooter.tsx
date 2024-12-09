@@ -1,7 +1,7 @@
 import type { BoxFooterProps } from "../box";
 
 function BoxFooter(props: BoxFooterProps) {
-	return null;
+  return null;
 }
 
 BoxFooter.displayName = "BoxFooter";

@@ -6,67 +6,67 @@ import Shortcut from "./Shortcut";
 import type { ContextMenuItemProps } from "./contextMenu";
 
 interface ItemProps extends ContextMenuItemProps {
-	mapper: (displayName: string) => string | undefined;
+  mapper: (displayName: string) => string | undefined;
 }
 
 function Item({
-	mapper,
-	disabled,
-	role,
-	checked,
-	shortcutKey,
-	children,
-	onClick = () => {},
-	onCheckedChange = () => {},
+  mapper,
+  disabled,
+  role,
+  checked,
+  shortcutKey,
+  children,
+  onClick = () => {},
+  onCheckedChange = () => {},
 }: ItemProps) {
-	const matched: ReactElement[] = [];
-	Children.toArray(children).some((element) => {
-		if (!isValidElement(element)) {
-			return;
-		}
+  const matched: ReactElement[] = [];
+  Children.toArray(children).some((element) => {
+    if (!isValidElement(element)) {
+      return;
+    }
 
-		// @ts-ignore
-		const displayName = mapper(element.type.displayName);
-		if (!displayName) {
-			return;
-		}
+    // @ts-ignore
+    const displayName = mapper(element.type.displayName);
+    if (!displayName) {
+      return;
+    }
 
-		const isMatched = ["Item", "Group", "CheckboxGroup", "RadioGroup"].includes(
-			displayName,
-		);
+    const isMatched = ["Item", "Group", "CheckboxGroup", "RadioGroup"].includes(
+      displayName,
+    );
 
-		if (isMatched) {
-			matched.push(element);
-		}
+    if (isMatched) {
+      matched.push(element);
+    }
 
-		return isMatched;
-	});
+    return isMatched;
+  });
 
-	const hasSubmenu = matched.length > 0;
-	const [_, onGlobalShortcut] = useGlobalShortcut(
-		hasSubmenu ? undefined : shortcutKey,
-	);
-	onGlobalShortcut(() => {
-		if (disabled) {
-			return;
-		}
+  const hasSubmenu = matched.length > 0;
+  const [_, onGlobalShortcut] = useGlobalShortcut(
+    hasSubmenu ? undefined : shortcutKey,
+  );
+  onGlobalShortcut(() => {
+    if (disabled) {
+      return;
+    }
 
-		if (role === "menuitemcheckbox") {
-			onCheckedChange(!checked);
-			return;
-		}
+    if (role === "menuitemcheckbox") {
+      onCheckedChange(!checked);
+      return;
+    }
 
-		if (role === "menuitemradio") {
-			onCheckedChange(!checked);
-			return;
-		}
-	});
+    if (role === "menuitemradio") {
+      onCheckedChange(!checked);
+      return;
+    }
+  });
 
-	if (hasSubmenu) {
-		return <Shortcut mapper={mapper}>{matched}</Shortcut>;
-	}
+  if (hasSubmenu) {
+    return <Shortcut mapper={mapper}>{matched}</Shortcut>;
+  }
 
-	return null;
+  return null;
 }
 
 export default Item;

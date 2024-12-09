@@ -1,5 +1,5 @@
+import type { Shape } from "../type";
 import Avatar from "./Avatar";
 import AvatarGroup from "./AvatarGroup";
-import type { Shape } from "../type"
 
-export { Avatar, AvatarGroup, Shape };
+export { Avatar, AvatarGroup, type Shape };

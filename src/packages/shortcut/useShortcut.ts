@@ -6,8 +6,8 @@ import type { ShortcutTask } from "./ShortcutMeta";
 import { ShortcutMeta } from "./ShortcutMeta";
 
 type ShortcutReturn = [
-	(event: KeyboardEvent) => void,
-	(shortcutKey?: string, task?: ShortcutTask) => ShortcutMeta | undefined,
+  (event: KeyboardEvent) => void,
+  (shortcutKey?: string, task?: ShortcutTask) => ShortcutMeta | undefined,
 ];
 
 /**
@@ -21,37 +21,37 @@ type ShortcutReturn = [
  * });
  */
 export default function useShortcut(): ShortcutReturn {
-	const shortcutMap = useRef<{ [key: string]: ShortcutMeta }>({});
+  const shortcutMap = useRef<{ [key: string]: ShortcutMeta }>({});
 
-	shortcutMap.current = {};
+  shortcutMap.current = {};
 
-	function onKeydown(event: KeyboardEvent) {
-		const shortcut = new ShortcutMeta(event);
-		const shortcutKey = shortcut.shortcutKey;
-		if (isUndefined(shortcutKey)) {
-			return;
-		}
+  function onKeydown(event: KeyboardEvent) {
+    const shortcut = new ShortcutMeta(event);
+    const shortcutKey = shortcut.shortcutKey;
+    if (isUndefined(shortcutKey)) {
+      return;
+    }
 
-		const currShortcut = shortcutMap.current[shortcutKey];
-		if (currShortcut && isFunction(currShortcut.task)) {
-			event.preventDefault();
-			currShortcut.task(event, currShortcut);
-		}
-	}
+    const currShortcut = shortcutMap.current[shortcutKey];
+    if (currShortcut && isFunction(currShortcut.task)) {
+      event.preventDefault();
+      currShortcut.task(event, currShortcut);
+    }
+  }
 
-	function onShortcut(shortcutKey?: string, task?: ShortcutTask) {
-		const shortcut = new ShortcutMeta(shortcutKey);
-		if (isUndefined(shortcut.shortcutKey)) {
-			return;
-		}
+  function onShortcut(shortcutKey?: string, task?: ShortcutTask) {
+    const shortcut = new ShortcutMeta(shortcutKey);
+    if (isUndefined(shortcut.shortcutKey)) {
+      return;
+    }
 
-		if (isFunction(task)) {
-			shortcut.bind(task);
-		}
+    if (isFunction(task)) {
+      shortcut.bind(task);
+    }
 
-		shortcutMap.current[shortcut.shortcutKey] = shortcut;
-		return shortcut;
-	}
+    shortcutMap.current[shortcut.shortcutKey] = shortcut;
+    return shortcut;
+  }
 
-	return [onKeydown, onShortcut];
+  return [onKeydown, onShortcut];
 }

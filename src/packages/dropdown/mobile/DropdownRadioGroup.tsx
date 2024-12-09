@@ -1,7 +1,7 @@
 import type { DropdownRadioGroupProps } from "../dropdown";
 
 function DropdownRadioGroup(props: DropdownRadioGroupProps) {
-	return null;
+  return null;
 }
 
 DropdownRadioGroup.displayName = "DropdownRadioGroup";

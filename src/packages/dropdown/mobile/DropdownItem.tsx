@@ -1,7 +1,7 @@
 import type { DropdownItemProps } from "../dropdown";
 
 function DropdownItem(props: DropdownItemProps) {
-	return null;
+  return null;
 }
 
 DropdownItem.displayName = "DropdownItem";

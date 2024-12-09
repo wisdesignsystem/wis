@@ -1,7 +1,7 @@
 import type { ContextMenuItemProps } from "../contextMenu";
 
 function ContextMenuItem(props: ContextMenuItemProps) {
-	return null;
+  return null;
 }
 
 ContextMenuItem.displayName = "ContextMenuItem";

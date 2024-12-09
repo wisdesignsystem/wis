@@ -1,7 +1,7 @@
 import type { ToggleProps } from "../toggle";
 
 function Toggle(props: ToggleProps) {
-	return null;
+  return null;
 }
 
 Toggle.displayName = "Toggle";

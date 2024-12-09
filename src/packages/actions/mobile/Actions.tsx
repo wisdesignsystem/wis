@@ -1,7 +1,7 @@
 import type { ActionsProps } from "../actions";
 
 function Actions(props: ActionsProps) {
-	return null;
+  return null;
 }
 
 Actions.displayName = "Actions";

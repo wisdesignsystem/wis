@@ -8,12 +8,12 @@ import "./app.css";
  * 应用进入时触发
  */
 export function enter() {
-	// no action
+  // no action
 }
 
 /**
  * 应用离开时触发
  */
 export function leave() {
-	// no action
+  // no action
 }

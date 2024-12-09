@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 export default function useValue<T>({
-	value,
-	defaultValue,
+  value,
+  defaultValue,
 }: { value?: T; defaultValue?: T }) {
-	const [currentValue, setCurrentValue] = useState(defaultValue);
+  const [currentValue, setCurrentValue] = useState(defaultValue);
 
-	function onValueChange(value: T) {
-		setCurrentValue(value);
-	}
+  function onValueChange(value: T) {
+    setCurrentValue(value);
+  }
 
-	return [value || currentValue, onValueChange];
+  return [value || currentValue, onValueChange];
 }

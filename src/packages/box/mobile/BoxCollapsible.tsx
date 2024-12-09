@@ -1,7 +1,7 @@
 import type { BoxCollapsibleProps } from "../box";
 
 function BoxCollapsible(props: BoxCollapsibleProps) {
-	return null;
+  return null;
 }
 
 BoxCollapsible.displayName = "BoxCollapsible";

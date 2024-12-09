@@ -8,12 +8,12 @@ import BoxHeader from "./BoxHeader";
 import BoxPanel from "./BoxPanel";
 
 export {
-	Box,
-	BoxHeader,
-	BoxActions,
-	BoxContent,
-	BoxCollapsible,
-	BoxCollapse,
-	BoxPanel,
-	BoxFooter,
+  Box,
+  BoxHeader,
+  BoxActions,
+  BoxContent,
+  BoxCollapsible,
+  BoxCollapse,
+  BoxPanel,
+  BoxFooter,
 };

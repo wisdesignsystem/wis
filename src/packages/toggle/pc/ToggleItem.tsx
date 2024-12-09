@@ -9,66 +9,66 @@ import type { ToggleItemProps } from "../toggle";
 import styles from "./ToggleGroup.module.scss";
 
 function ToggleItem({
-	className,
-	disabled,
-	text,
-	size,
-	icon,
-	iconControl = "prefix",
-	shortcutKey,
-	value,
-	variant,
-	...rest
+  className,
+  disabled,
+  text,
+  size,
+  icon,
+  iconControl = "prefix",
+  shortcutKey,
+  value,
+  variant,
+  ...rest
 }: ToggleItemProps) {
-	const item = useRef<HTMLButtonElement | null>(null);
+  const item = useRef<HTMLButtonElement | null>(null);
 
-	const isIconButton = !text && !shortcutKey;
-	const shortcut = createShortcutMeta(shortcutKey);
+  const isIconButton = !text && !shortcutKey;
+  const shortcut = createShortcutMeta(shortcutKey);
 
-	function renderShortcut() {
-		return (
-			<Shortcut
-				shortcutKey={shortcutKey}
-				disabled={disabled}
-				size={size}
-				variant="dark"
-				onKeyPressed={() => {
-					if (!item.current) {
-						return;
-					}
+  function renderShortcut() {
+    return (
+      <Shortcut
+        shortcutKey={shortcutKey}
+        disabled={disabled}
+        size={size}
+        variant="dark"
+        onKeyPressed={() => {
+          if (!item.current) {
+            return;
+          }
 
-					item.current.focus();
-					item.current.click();
-				}}
-			/>
-		);
-	}
+          item.current.focus();
+          item.current.click();
+        }}
+      />
+    );
+  }
 
-	return (
-		<RDXToggleGroup.Item
-			{...rest}
-			ref={item}
-			className={classNames(styles.item, {
-				[className as string]: !!className,
-			})}
-			value={value}
-			// biome-ignore lint/a11y/useSemanticElements: <explanation>
-			role="button"
-			aria-keyshortcuts={shortcut.shortcutKey}
-			disabled={disabled}
-			data-size={size}
-			data-variant={variant}
-			{...attrs({
-				"data-disabled": disabled,
-				"data-icon": isIconButton,
-			})}
-		>
-			{iconControl === "prefix" && icon}
-			{!isIconButton && <span>{text}</span>}
-			{iconControl === "suffix" && icon}
-			{renderShortcut()}
-		</RDXToggleGroup.Item>
-	);
+  return (
+    <RDXToggleGroup.Item
+      {...rest}
+      ref={item}
+      className={classNames(styles.item, {
+        [className as string]: !!className,
+      })}
+      value={value}
+      // biome-ignore lint/a11y/useSemanticElements: <explanation>
+      role="button"
+      aria-keyshortcuts={shortcut.shortcutKey}
+      disabled={disabled}
+      data-size={size}
+      data-variant={variant}
+      {...attrs({
+        "data-disabled": disabled,
+        "data-icon": isIconButton,
+      })}
+    >
+      {iconControl === "prefix" && icon}
+      {!isIconButton && <span>{text}</span>}
+      {iconControl === "suffix" && icon}
+      {renderShortcut()}
+    </RDXToggleGroup.Item>
+  );
 }
 
 ToggleItem.displayName = "ToggleItem";

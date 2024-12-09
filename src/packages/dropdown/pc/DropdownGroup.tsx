@@ -8,36 +8,36 @@ import type { DropdownGroupProps } from "../dropdown";
 import styles from "./Dropdown.module.scss";
 
 function DropdownGroup({
-	title,
-	onSelect = () => {},
-	children,
+  title,
+  onSelect = () => {},
+  children,
 }: DropdownGroupProps) {
-	const { matched } = matchElement(children, ["DropdownItem"]);
+  const { matched } = matchElement(children, ["DropdownItem"]);
 
-	return (
-		<>
-			<RDXDropdownMenu.Separator className={styles.separator} />
-			{title && (
-				<RDXDropdownMenu.Label className={styles.label}>
-					{title}
-				</RDXDropdownMenu.Label>
-			)}
-			<RDXDropdownMenu.Group>
-				{Children.map(matched, (child) => {
-					return cloneElement(child, {
-						role: "menuitem",
-						onSelect: () => {
-							if (isFunction(child.props.onSelect)) {
-								child.props.onSelect();
-							}
+  return (
+    <>
+      <RDXDropdownMenu.Separator className={styles.separator} />
+      {title && (
+        <RDXDropdownMenu.Label className={styles.label}>
+          {title}
+        </RDXDropdownMenu.Label>
+      )}
+      <RDXDropdownMenu.Group>
+        {Children.map(matched, (child) => {
+          return cloneElement(child, {
+            role: "menuitem",
+            onSelect: () => {
+              if (isFunction(child.props.onSelect)) {
+                child.props.onSelect();
+              }
 
-							onSelect(child.props.value);
-						},
-					});
-				})}
-			</RDXDropdownMenu.Group>
-		</>
-	);
+              onSelect(child.props.value);
+            },
+          });
+        })}
+      </RDXDropdownMenu.Group>
+    </>
+  );
 }
 
 DropdownGroup.displayName = "DropdownGroup";

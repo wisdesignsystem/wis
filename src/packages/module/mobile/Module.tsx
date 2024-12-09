@@ -1,7 +1,7 @@
 import type { ModuleProps } from "../module";
 
 function Module(props: ModuleProps) {
-	return null;
+  return null;
 }
 
 Module.displayName = "Module";

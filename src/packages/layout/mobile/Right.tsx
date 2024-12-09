@@ -1,7 +1,7 @@
 import type { RightProps } from "../layout";
 
 function Right(props: RightProps) {
-	return null;
+  return null;
 }
 
 Right.displayName = "Right";
