@@ -23,6 +23,7 @@
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnSave": false
   },
+  "editor.tabSize": 2,
   "cSpell.words": [
     "Backquote",
     "Checkstand",

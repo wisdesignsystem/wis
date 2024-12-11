@@ -42,6 +42,7 @@
     "@commitlint/config-conventional": "18.6.3",
     "@wisdesign/cli": "0.0.17",
     "@wisdesign/toolkit": "0.0.5",
+    "@wisdesign/plugin-typescript-component-docgen": "0.0.0",
     "@types/lodash.debounce": "4.0.9",
     "@types/node": "22.10.1",
     "@types/react": "18.2.39",

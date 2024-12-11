@@ -1,3 +1,6 @@
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+
 export default {
   // project type
   mode: "library",
@@ -13,12 +16,12 @@ export default {
     "./blank": "@/packages/blank/index",
     "./grid": "@/packages/grid/index",
     "./locales": {
-      "en-US": "@/locales/en-US/index",
-      "zh-CN": "@/locales/zh-CN/index",
+      "en-US": "@/packages/locales/en-US/index",
+      "zh-CN": "@/packages/locales/zh-CN/index",
     },
     "./themes": {
-      default: "@/themes/default/index.css",
-      blue: "@/themes/blue/index.css",
+      default: "@/packages/themes/default/index.css",
+      blue: "@/packages/themes/blue/index.css",
     },
     "./box": {
       pc: "@/packages/box/pc/index",
@@ -70,7 +73,12 @@ export default {
     },
   },
 
-  plugins: [],
+  plugins: [
+    [
+      require.resolve("@wisdesign/plugin-typescript-component-docgen"),
+      { rootPath: "@/packages" },
+    ],
+  ],
 
   // register remote entry file
   remoteEntry: "./core",

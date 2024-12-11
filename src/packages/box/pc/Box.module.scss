@@ -1,5 +1,5 @@
-@use '@/themes/tool.scss' as tool;
-@use '@/themes/style.scss' as style;
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
 
 @mixin layout-collapse-style() {
   @include style.container-style($component: 'layout', $widget: 'collapse');
