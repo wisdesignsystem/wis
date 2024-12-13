@@ -12,6 +12,7 @@ export default {
 
   // export remote modules
   exposes: {
+    "./definitions": "@/definitions",
     "./core": "@/packages/core/index",
     "./blank": "@/packages/blank/index",
     "./grid": "@/packages/grid/index",
@@ -73,12 +74,7 @@ export default {
     },
   },
 
-  plugins: [
-    [
-      require.resolve("@wisdesign/plugin-typescript-component-docgen"),
-      { rootPath: "@/packages" },
-    ],
-  ],
+  plugins: [],
 
   // register remote entry file
   remoteEntry: "./core",

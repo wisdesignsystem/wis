@@ -9,7 +9,7 @@
     "dev": "wis dev",
     "build": "wis build",
     "format": "biome check --write",
-    "doc": "node ./scripts/docgen.js",
+    "doc": "typescript-docgen -s ./src/packages -o ./src/definitions.ts && biome check --write",
     "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,orange:./src/assets/wis.orange.tokens.json -o ./src/themes"
   },
   "lint-staged": {
@@ -40,9 +40,8 @@
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
-    "@wisdesign/cli": "0.0.17",
-    "@wisdesign/toolkit": "0.0.5",
-    "@wisdesign/plugin-typescript-component-docgen": "0.0.0",
+    "@wisdesign/cli": "0.0.18",
+    "@wisdesign/toolkit": "0.0.6",
     "@types/lodash.debounce": "4.0.9",
     "@types/node": "22.10.1",
     "@types/react": "18.2.39",
