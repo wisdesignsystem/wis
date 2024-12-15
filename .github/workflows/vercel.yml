@@ -1,0 +1,28 @@
+name: Vercel 
+
+on:
+  pull_request:
+    types: [synchronize, opened]
+    branches:
+      - main
+      - alpha
+      - beta
+      - rc
+
+jobs:
+  enforce-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Vercel Indent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "wiscodesign"
+          git config user.email "dev@wis.design"
+          echo "Update by $(date)" > update.txt
+          git add update.txt
+          git commit -m "chore: update.txt"
+          git push
