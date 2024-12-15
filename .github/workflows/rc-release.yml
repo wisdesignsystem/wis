@@ -3,7 +3,7 @@ name: RC Release
 on:
   push:
     branches:
-      - main
+      - rc
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
