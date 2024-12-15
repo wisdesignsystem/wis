@@ -13,6 +13,8 @@ export default {
         "test", // test code change
         "chore", // build and deploy
         "release", // publish version
+        "prerelease", // pre-publish version
+        "changeset-release", // auto changeset publish version
       ],
     ],
   },
