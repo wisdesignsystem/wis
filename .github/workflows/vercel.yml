@@ -1,7 +1,8 @@
 name: Vercel 
 
 on:
-  push:
+  pull_request:
+    types: [synchronize, opened]
     branches:
       - main
       - alpha
