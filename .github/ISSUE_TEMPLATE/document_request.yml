@@ -1,0 +1,20 @@
+name: Document Request
+description: Create a document request to help us improve
+title: "[Doc]: "
+assignees: []
+labels: []
+projects: []
+body:
+
+  - type: markdown
+    attributes:
+      value: "## Document Request"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the document we need to create.
+      placeholder: input...
+    validations:
+      required: true
