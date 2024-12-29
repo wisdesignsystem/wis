@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
+    "strict": true,
     "noEmit": true,
     "isolatedModules": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "jsx": "preserve",
@@ -16,5 +17,5 @@
       "remote:wis/*": ["src/packages/*/index", "src/packages/*/pc/index"]
     } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
   },
-  "include": ["src", "wis.d.ts"]
+  "include": ["src", ".wisrc.ts", "wis.d.ts"]
 }

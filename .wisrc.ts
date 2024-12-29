@@ -1,16 +1,14 @@
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
+import type { Config } from "@wisdesign/cli";
 
-export default {
-  // project type
-  mode: "library",
+const config: Config = {
+  remoteEntry: "./core",
 
-  // set alias
+  packageRootPath: "@/packages",
+
   alias: {
     "@": "src",
   },
 
-  // export remote modules
   exposes: {
     "./definitions": "@/definitions",
     "./core": "@/packages/core/index",
@@ -73,9 +71,6 @@ export default {
       mobile: "@/packages/avatar/mobile/index",
     },
   },
-
-  plugins: [],
-
-  // register remote entry file
-  remoteEntry: "./core",
 };
+
+export default config;
