@@ -85,8 +85,8 @@ importers:
         specifier: 18.3.5
         version: 18.3.5(@types/react@18.3.16)
       '@wisdesign/cli':
-        specifier: 0.0.23
-        version: 0.0.23(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.2)
+        specifier: 0.0.24
+        version: 0.0.24(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.2)
       '@wisdesign/toolkit':
         specifier: 0.0.7
         version: 0.0.7(typescript@5.7.2)
@@ -2023,15 +2023,15 @@ packages:
       '@types/react': ^18.3.16
       react: ^18.3.1
 
-  '@wisdesign/cli@0.0.23':
-    resolution: {integrity: sha512-ZCYG+dhn8PILtDG+B4FwbLlXeg2X6s+ec2sDJqk7HV/tcj/nlWHDWfL14s75XR4AzkSPAMuNHPxNyw0GjfJO3Q==}
+  '@wisdesign/cli@0.0.24':
+    resolution: {integrity: sha512-NXN8xREsXjAtj/RE17T2V0OiFSGtudmV447JIrdNH700mnRY9FaVD6Txj0PKe4RKBp5jxnE6YpsjxsN4f4PbWQ==}
     hasBin: true
     peerDependencies:
-      '@types/react': ^18.3.16
-      '@types/react-dom': ^18.3.5
+      '@types/react': ~18.3.16
+      '@types/react-dom': ~18.3.5
       '@wiscore/router': 0.0.1
-      react: ^18.3.1
-      react-dom: ^18.3.1
+      react: ~18.3.1
+      react-dom: ~18.3.1
 
   '@wisdesign/configure@0.0.6':
     resolution: {integrity: sha512-l1dtWpnyKgUPR5XTIqWDLkb7Trk+1ZJa5k57P4EuH1RToqTpMn5Fhjcps2zDZlu9SOrnQaVkuQLD5BK32CrGUQ==}
@@ -8109,7 +8109,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@wisdesign/cli@0.0.23(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.2)':
+  '@wisdesign/cli@0.0.24(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
