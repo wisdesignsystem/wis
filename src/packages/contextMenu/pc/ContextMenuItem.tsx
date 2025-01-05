@@ -9,7 +9,7 @@ import type { ContextMenuItemProps } from "../contextMenu";
 
 import styles from "./ContextMenu.module.scss";
 
-function Item({
+function ContextMenuItem({
   role,
   disabled,
   label,
@@ -146,6 +146,6 @@ function Item({
   );
 }
 
-Item.displayName = "ContextMenuItem";
+ContextMenuItem.displayName = "ContextMenuItem";
 
-export default Item;
+export default ContextMenuItem;

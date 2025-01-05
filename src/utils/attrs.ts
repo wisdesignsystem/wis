@@ -8,6 +8,10 @@ export default function attrs(data: Attrs) {
   return Object.keys(data).reduce((result, key) => {
     const value = data[key];
 
+    if (value === "none") {
+      return result;
+    }
+
     if (!isBoolean(value)) {
       result[key] = value;
       return result;

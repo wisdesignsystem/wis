@@ -9,7 +9,7 @@ import DropdownButtonTrigger from "./DropdownButtonTrigger";
 
 import styles from "./Dropdown.module.scss";
 
-function Button({
+function DropdownButton({
   defaultOpen,
   open,
   onOpen,
@@ -47,6 +47,6 @@ function Button({
   );
 }
 
-Button.displayName = "DropdownButton";
+DropdownButton.displayName = "DropdownButton";
 
-export default Button;
+export default DropdownButton;

@@ -10,7 +10,7 @@ import styles from "./Button.module.scss";
 function Button({
   className,
   variant = "secondary",
-  status,
+  status = "none",
   disabled,
   text,
   icon,

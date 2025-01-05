@@ -459,70 +459,57 @@ export default {
   },
   Button: {
     tags: {},
-    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/button/pc/index.ts",
     description: "",
     displayName: "Button",
     methods: [],
     props: {
-      open: {
-        defaultValue: null,
-        description:
-          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`",
-        name: "open",
-        parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
-        },
-        declarations: [
-          {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
-          },
-        ],
-        required: false,
-        type: { name: "boolean" },
-      },
-      defaultOpen: {
-        defaultValue: null,
-        description:
-          "The open state of the dropdown menu when it is initially rendered.",
-        name: "defaultOpen",
-        parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
-        },
-        declarations: [
-          {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
-          },
-        ],
-        required: false,
-        type: { name: "boolean" },
-      },
       variant: {
-        defaultValue: null,
-        description: "The visual variant to apply to dropdown button.",
+        defaultValue: { value: "secondary" },
+        description: "The visual variant to apply to button.",
         name: "variant",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
         type: {
           name: "enum",
-          raw: '"primary" | "classic" | "secondary"',
+          raw: '"primary" | "classic" | "secondary" | "tertiary" | "ghost"',
           value: [
             { value: '"primary"' },
             { value: '"classic"' },
             { value: '"secondary"' },
+            { value: '"tertiary"' },
+            { value: '"ghost"' },
           ],
+        },
+      },
+      status: {
+        defaultValue: { value: "none" },
+        description: "Sets the special status of the button.",
+        name: "status",
+        parent: {
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"none" | "danger"',
+          value: [{ value: '"none"' }, { value: '"danger"' }],
         },
       },
       disabled: {
@@ -530,13 +517,13 @@ export default {
         description: "",
         name: "disabled",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
@@ -544,16 +531,16 @@ export default {
       },
       text: {
         defaultValue: null,
-        description: "The text information displayed on the dropdown menu.",
+        description: "The text information displayed on the button.",
         name: "text",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
@@ -562,34 +549,34 @@ export default {
       icon: {
         defaultValue: null,
         description:
-          "The icon element will be displayed next to the dropdown button text.",
+          "The icon element will be displayed next to the button text.",
         name: "icon",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
         type: { name: "ReactNode" },
       },
       iconControl: {
-        defaultValue: null,
+        defaultValue: { value: "prefix" },
         description:
           "Controls the display position of the icon relative to the text.",
         name: "iconControl",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
@@ -600,17 +587,17 @@ export default {
         },
       },
       size: {
-        defaultValue: null,
+        defaultValue: { value: "md" },
         description: "",
         name: "size",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
@@ -623,38 +610,39 @@ export default {
       shortcutKey: {
         defaultValue: null,
         description:
-          "Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the dropdown button click event will be triggered.",
+          "Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the button's click event will be triggered.",
         name: "shortcutKey",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
         type: { name: "string" },
       },
-      onOpen: {
-        defaultValue: null,
-        description:
-          "Event handler called when the dropdown menu is open state change.",
-        name: "onOpen",
+      onClick: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when the button is clicked.",
+        name: "onClick",
         parent: {
-          fileName: "wis/src/packages/dropdown/dropdown.ts",
-          name: "DropdownButtonProps",
+          fileName: "wis/src/packages/button/button.ts",
+          name: "ButtonProps",
         },
         declarations: [
           {
-            fileName: "wis/src/packages/dropdown/dropdown.ts",
-            name: "DropdownButtonProps",
+            fileName: "wis/src/packages/button/button.ts",
+            name: "ButtonProps",
           },
         ],
         required: false,
-        type: { name: "(open: boolean) => void" },
+        type: {
+          name: "(event: MouseEvent<HTMLButtonElement, MouseEvent>) => void",
+        },
       },
     },
   },
@@ -702,12 +690,12 @@ export default {
       },
     },
   },
-  Item: {
+  ContextMenuItem: {
     tags: {},
     filePath:
       "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
-    displayName: "Item",
+    displayName: "ContextMenuItem",
     methods: [],
     props: {
       status: {
@@ -1362,6 +1350,207 @@ export default {
           {
             fileName: "wis/src/packages/dropdown/dropdown.ts",
             name: "DropdownProps",
+          },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
+      },
+    },
+  },
+  DropdownButton: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
+    description: "",
+    displayName: "DropdownButton",
+    methods: [],
+    props: {
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the dropdown menu when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      variant: {
+        defaultValue: null,
+        description: "The visual variant to apply to dropdown button.",
+        name: "variant",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"primary" | "classic" | "secondary"',
+          value: [
+            { value: '"primary"' },
+            { value: '"classic"' },
+            { value: '"secondary"' },
+          ],
+        },
+      },
+      disabled: {
+        defaultValue: null,
+        description: "",
+        name: "disabled",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      text: {
+        defaultValue: null,
+        description: "The text information displayed on the dropdown menu.",
+        name: "text",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      icon: {
+        defaultValue: null,
+        description:
+          "The icon element will be displayed next to the dropdown button text.",
+        name: "icon",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      iconControl: {
+        defaultValue: null,
+        description:
+          "Controls the display position of the icon relative to the text.",
+        name: "iconControl",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"prefix" | "suffix"',
+          value: [{ value: '"prefix"' }, { value: '"suffix"' }],
+        },
+      },
+      size: {
+        defaultValue: null,
+        description: "",
+        name: "size",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"sm" | "xs" | "md"',
+          value: [{ value: '"sm"' }, { value: '"xs"' }, { value: '"md"' }],
+        },
+      },
+      shortcutKey: {
+        defaultValue: null,
+        description:
+          "Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the dropdown button click event will be triggered.",
+        name: "shortcutKey",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      onOpen: {
+        defaultValue: null,
+        description:
+          "Event handler called when the dropdown menu is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownButtonProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownButtonProps",
           },
         ],
         required: false,
