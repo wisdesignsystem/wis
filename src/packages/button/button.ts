@@ -15,6 +15,9 @@ export interface ButtonProps
    */
   status?: "none" | "danger";
 
+  /**
+   * Disables any interaction with the button
+   */
   disabled?: boolean;
 
   /**
@@ -32,6 +35,9 @@ export interface ButtonProps
    */
   iconControl?: "prefix" | "suffix";
 
+  /**
+   * The size of the button.
+   */
   size?: "sm" | "xs" | "md";
 
   /**

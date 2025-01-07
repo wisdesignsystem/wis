@@ -7,6 +7,9 @@ export interface ToggleProps
    */
   variant?: "basic" | "ghost";
 
+  /**
+   * Disables any interaction with the toggle.
+   */
   disabled?: boolean;
 
   /**
@@ -24,6 +27,9 @@ export interface ToggleProps
    */
   iconControl?: "prefix" | "suffix";
 
+  /**
+   * The size of the toggle toggle.
+   */
   size?: "sm" | "xs" | "md";
 
   /**
