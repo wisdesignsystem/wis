@@ -8,7 +8,7 @@ export interface ToggleProps
   variant?: "basic" | "ghost";
 
   /**
-   * Disables any interaction with the toggle.
+   * When `true`, prevents the user from interacting with the toggle.
    */
   disabled?: boolean;
 
@@ -28,7 +28,7 @@ export interface ToggleProps
   iconControl?: "prefix" | "suffix";
 
   /**
-   * The size of the toggle toggle.
+   * The size of the toggle.
    */
   size?: "sm" | "xs" | "md";
 
@@ -55,6 +55,9 @@ export interface ToggleProps
 
 export interface ToggleGroupProps
   extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+  /**
+   * The size of the toggle group.
+   */
   size?: "sm" | "md";
 
   /**
@@ -62,6 +65,9 @@ export interface ToggleGroupProps
    */
   variant?: "basic" | "compact";
 
+  /**
+   * When `true`, prevents the user from interacting with the toggle item in toggle group.
+   */
   disabled?: boolean;
 
   /**
@@ -74,6 +80,9 @@ export interface ToggleGroupProps
    */
   defaultValue?: string | string[];
 
+  /**
+   * When `true`, allows multiple items to be selected.
+   */
   multiple?: boolean;
 
   /**
@@ -84,6 +93,9 @@ export interface ToggleGroupProps
 
 export interface ToggleItemProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+  /**
+   * When `true`, prevents the user from interacting with the toggle item.
+   */
   disabled?: boolean;
 
   /**
@@ -111,10 +123,13 @@ export interface ToggleItemProps
    */
   value: string;
 
+  /**
+   * The size of the toggle item.
+   */
   size?: "sm" | "md";
 
   /**
-   * The visual variant to apply to toggle group item. When the variant is set on the group, each item within the group will inherit the group's variant.
+   * @private
    */
   variant?: "basic" | "compact";
 }

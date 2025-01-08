@@ -14,12 +14,18 @@ export interface ShortcutProps
    */
   variant?: "light" | "dark" | "ghost";
 
+  /**
+   * When `true`, prevents the user from interacting with the shortcut.
+   */
   disabled?: boolean;
 
+  /**
+   * The size of the shortcut.
+   */
   size?: "sm" | "xs" | "md";
 
   /**
-   * make the global shortcut key is only used to display, but when pressing the combination key will not trigger the onKeyPressed event.
+   * @private
    */
   readonly?: boolean;
 

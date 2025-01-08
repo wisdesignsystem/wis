@@ -514,7 +514,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the button.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/button/button.ts",
@@ -588,7 +589,7 @@ export default {
       },
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the button.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/button/button.ts",
@@ -2126,7 +2127,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the shortcut.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/shortcut/shortcut.ts",
@@ -2143,7 +2145,7 @@ export default {
       },
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the shortcut.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/shortcut/shortcut.ts",
@@ -2164,8 +2166,7 @@ export default {
       },
       readonly: {
         defaultValue: null,
-        description:
-          "make the global shortcut key is only used to display, but when pressing the combination key will not trigger the onKeyPressed event.",
+        description: "@private",
         name: "readonly",
         parent: {
           fileName: "wis/src/packages/shortcut/shortcut.ts",
@@ -2242,7 +2243,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the toggle.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2316,7 +2318,7 @@ export default {
       },
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the toggle.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2417,7 +2419,7 @@ export default {
     props: {
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the toggle group.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2459,7 +2461,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the toggle item in toggle group.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2511,7 +2514,7 @@ export default {
       },
       multiple: {
         defaultValue: null,
-        description: "",
+        description: "When `true`, allows multiple items to be selected.",
         name: "multiple",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2555,7 +2558,8 @@ export default {
     props: {
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the toggle item.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2664,7 +2668,7 @@ export default {
       },
       size: {
         defaultValue: null,
-        description: "",
+        description: "The size of the toggle item.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
@@ -2685,8 +2689,7 @@ export default {
       },
       variant: {
         defaultValue: null,
-        description:
-          "The visual variant to apply to toggle group item. When the variant is set on the group, each item within the group will inherit the group's variant.",
+        description: "@private",
         name: "variant",
         parent: {
           fileName: "wis/src/packages/toggle/toggle.ts",
