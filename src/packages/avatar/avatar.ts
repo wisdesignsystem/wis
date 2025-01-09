@@ -12,6 +12,9 @@ export interface AvatarProps
    */
   src?: string;
 
+  /**
+   * The size of the avatar.
+   */
   size?: "xs" | "sm" | "md" | "lg";
 
   /**
@@ -41,6 +44,9 @@ export interface AvatarProps
 }
 
 export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
+  /**
+   * The size of the avatars in avatar group.
+   */
   size?: "xs" | "sm" | "md" | "lg";
 
   /**

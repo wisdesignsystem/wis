@@ -51,7 +51,7 @@ export default {
       },
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the avatar.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/avatar/avatar.ts",
@@ -198,7 +198,7 @@ export default {
     props: {
       size: {
         defaultValue: { value: "md" },
-        description: "",
+        description: "The size of the avatars in avatar group.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/avatar/avatar.ts",
