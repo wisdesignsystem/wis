@@ -7,6 +7,10 @@ import type { ToggleGroupProps } from "../toggle";
 
 import styles from "./ToggleGroup.module.scss";
 
+/**
+ *
+ * @package toggle
+ */
 function ToggleGroup({
   className,
   variant = "basic",

@@ -8,6 +8,9 @@ import type { ToggleItemProps } from "../toggle";
 
 import styles from "./ToggleGroup.module.scss";
 
+/**
+ * @package toggle
+ */
 function ToggleItem({
   className,
   disabled,

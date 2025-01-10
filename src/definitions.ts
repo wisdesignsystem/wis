@@ -190,7 +190,7 @@ export default {
     },
   },
   AvatarGroup: {
-    tags: {},
+    tags: { package: "avatar" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/avatar/pc/index.ts",
     description: "",
     displayName: "AvatarGroup",
@@ -2411,7 +2411,7 @@ export default {
     },
   },
   ToggleGroup: {
-    tags: {},
+    tags: { package: "toggle" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggle/pc/index.ts",
     description: "",
     displayName: "ToggleGroup",
@@ -2550,7 +2550,7 @@ export default {
     },
   },
   ToggleItem: {
-    tags: {},
+    tags: { package: "toggle" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggle/pc/index.ts",
     description: "",
     displayName: "ToggleItem",

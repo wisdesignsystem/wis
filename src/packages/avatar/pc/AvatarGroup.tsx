@@ -11,6 +11,9 @@ import Avatar from "./Avatar";
 
 import styles from "./Avatar.module.scss";
 
+/**
+ * @package avatar
+ */
 function AvatarGroup({
   className,
   color = "auto",
