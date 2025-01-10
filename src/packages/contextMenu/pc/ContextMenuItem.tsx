@@ -16,7 +16,7 @@ function ContextMenuItem({
   icon,
   value,
   shortcutKey,
-  status,
+  status = "none",
   checked,
   onClick = () => {},
   onCheckedChange = () => {},

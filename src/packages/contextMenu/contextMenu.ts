@@ -95,7 +95,7 @@ export interface ContextMenuItemProps
   /**
    * Sets the special status of the item.
    */
-  status?: "danger";
+  status?: "none" | "danger";
 
   disabled?: boolean;
 

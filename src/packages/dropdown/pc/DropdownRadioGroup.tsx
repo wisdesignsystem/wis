@@ -8,6 +8,9 @@ import type { DropdownRadioGroupProps } from "../dropdown";
 
 import styles from "./Dropdown.module.scss";
 
+/**
+ * @package dropdown
+ */
 function DropdownRadioGroup({
   name,
   title,

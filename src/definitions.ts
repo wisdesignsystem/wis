@@ -700,7 +700,7 @@ export default {
     methods: [],
     props: {
       status: {
-        defaultValue: null,
+        defaultValue: { value: "none" },
         description: "Sets the special status of the item.",
         name: "status",
         parent: {
@@ -714,7 +714,11 @@ export default {
           },
         ],
         required: false,
-        type: { name: '"danger"' },
+        type: {
+          name: "enum",
+          raw: '"none" | "danger"',
+          value: [{ value: '"none"' }, { value: '"danger"' }],
+        },
       },
       disabled: {
         defaultValue: null,
@@ -1198,7 +1202,7 @@ export default {
       open: {
         defaultValue: null,
         description:
-          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`",
+          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`.",
         name: "open",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1233,7 +1237,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the dropdown.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1302,7 +1307,8 @@ export default {
       },
       avatar: {
         defaultValue: null,
-        description: "",
+        description:
+          "The avatar element will be displayed next to the dropdown menu text.",
         name: "avatar",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1359,7 +1365,7 @@ export default {
     },
   },
   DropdownButton: {
-    tags: {},
+    tags: { package: "dropdown" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownButton",
@@ -1368,7 +1374,7 @@ export default {
       open: {
         defaultValue: null,
         description:
-          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`",
+          "The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`.",
         name: "open",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1428,7 +1434,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the dropdown button.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1502,7 +1509,7 @@ export default {
       },
       size: {
         defaultValue: null,
-        description: "",
+        description: "The size of the dropdown button.",
         name: "size",
         parent: {
           fileName: "wis/src/packages/dropdown/dropdown.ts",
@@ -1560,36 +1567,486 @@ export default {
     },
   },
   DropdownGroup: {
-    tags: {},
+    tags: { package: "dropdown" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownGroup",
     methods: [],
-    props: {},
+    props: {
+      title: {
+        defaultValue: null,
+        description:
+          "The group title text will show at the beginning of the group.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+      onSelect: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when group item click.",
+        name: "onSelect",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "(value: string) => void" },
+      },
+    },
   },
   DropdownCheckboxGroup: {
-    tags: {},
+    tags: { package: "dropdown" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownCheckboxGroup",
     methods: [],
-    props: {},
+    props: {
+      name: {
+        defaultValue: null,
+        description: "The unique name of group.",
+        name: "name",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      title: {
+        defaultValue: null,
+        description:
+          "The group title text will show at the beginning of the group.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      value: {
+        defaultValue: null,
+        description:
+          "The value of selected item in the group. Must be used in conjunction with `onChange`.",
+        name: "value",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "string[]" },
+      },
+      defaultValue: {
+        defaultValue: null,
+        description: "The default value of selected item in the group.",
+        name: "defaultValue",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "string[]" },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+      onChange: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when group item click.",
+        name: "onChange",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownCheckboxGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownCheckboxGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "(values: string[]) => void" },
+      },
+    },
   },
   DropdownRadioGroup: {
-    tags: {},
+    tags: { package: "dropdown" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownRadioGroup",
     methods: [],
-    props: {},
+    props: {
+      name: {
+        defaultValue: null,
+        description: "The unique name of group.",
+        name: "name",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      title: {
+        defaultValue: null,
+        description:
+          "The group title text will show at the beginning of the group.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      value: {
+        defaultValue: null,
+        description:
+          "The value of selected item in the group. Must be used in conjunction with `onChecked`.",
+        name: "value",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      defaultValue: {
+        defaultValue: null,
+        description: "The default value of selected item in the group.",
+        name: "defaultValue",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+      onChange: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when group item click.",
+        name: "onChange",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownRadioGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownRadioGroupProps",
+          },
+        ],
+        required: false,
+        type: { name: "(value: string) => void" },
+      },
+    },
   },
   DropdownItem: {
-    tags: {},
+    tags: { package: "dropdown" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownItem",
     methods: [],
-    props: {},
+    props: {
+      status: {
+        defaultValue: null,
+        description: "Sets the special status of the item.",
+        name: "status",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"none" | "danger"',
+          value: [{ value: '"none"' }, { value: '"danger"' }],
+        },
+      },
+      disabled: {
+        defaultValue: null,
+        description:
+          "When `true`, prevents the user from interacting with the dropdown item.",
+        name: "disabled",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      label: {
+        defaultValue: null,
+        description: "The text information displayed on the item.",
+        name: "label",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      value: {
+        defaultValue: null,
+        description: "The unique value of the item.",
+        name: "value",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      icon: {
+        defaultValue: null,
+        description:
+          "The icon element will be displayed next to the dropdown item text.",
+        name: "icon",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      shortcutKey: {
+        defaultValue: null,
+        description:
+          "Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the dropdown item's click event will be triggered.",
+        name: "shortcutKey",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      role: {
+        defaultValue: null,
+        description: "@private",
+        name: "role",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"menuitem" | "menuitemcheckbox" | "menuitemradio"',
+          value: [
+            { value: '"menuitem"' },
+            { value: '"menuitemcheckbox"' },
+            { value: '"menuitemradio"' },
+          ],
+        },
+      },
+      checked: {
+        defaultValue: null,
+        description: "@private",
+        name: "checked",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      onClick: {
+        defaultValue: { value: "() => {}" },
+        description:
+          "Event handler called when the user select an item (via mouse or keyboard).",
+        name: "onClick",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "(event: Event) => void" },
+      },
+      onCheckedChange: {
+        defaultValue: { value: "() => {}" },
+        description: "@private",
+        name: "onCheckedChange",
+        parent: {
+          fileName: "wis/src/packages/dropdown/dropdown.ts",
+          name: "DropdownItemProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/dropdown/dropdown.ts",
+            name: "DropdownItemProps",
+          },
+        ],
+        required: false,
+        type: { name: "(checked: boolean) => void" },
+      },
+    },
   },
   Row: {
     tags: {},

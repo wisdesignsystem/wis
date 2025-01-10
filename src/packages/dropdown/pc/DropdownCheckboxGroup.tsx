@@ -7,6 +7,9 @@ import type { DropdownCheckboxGroupProps } from "../dropdown";
 
 import styles from "./Dropdown.module.scss";
 
+/**
+ * @package dropdown
+ */
 function DropdownCheckboxGroup({
   name,
   title,

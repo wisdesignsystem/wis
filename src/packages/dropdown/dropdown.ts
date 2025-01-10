@@ -1,14 +1,8 @@
-import type {
-  ContextMenuCheckboxGroupProps,
-  ContextMenuGroupProps,
-  ContextMenuItemProps,
-  ContextMenuRadioGroupProps,
-} from "@/packages/contextMenu/export";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
 export interface DropdownProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`
+   * The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`.
    */
   open?: boolean;
 
@@ -17,6 +11,9 @@ export interface DropdownProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    */
   defaultOpen?: boolean;
 
+  /**
+   * When `true`, prevents the user from interacting with the dropdown.
+   */
   disabled?: boolean;
 
   /**
@@ -34,6 +31,9 @@ export interface DropdownProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    */
   icon?: ReactNode;
 
+  /**
+   * The avatar element will be displayed next to the dropdown menu text.
+   */
   avatar?: ReactNode;
 
   /**
@@ -53,7 +53,7 @@ export interface DropdownTriggerProps
 export interface DropdownButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`
+   * The controlled open state of the dropdown menu. Must be used in conjunction with `onOpen`.
    */
   open?: boolean;
 
@@ -67,6 +67,9 @@ export interface DropdownButtonProps
    */
   variant?: "primary" | "classic" | "secondary";
 
+  /**
+   * When `true`, prevents the user from interacting with the dropdown button.
+   */
   disabled?: boolean;
 
   /**
@@ -84,6 +87,9 @@ export interface DropdownButtonProps
    */
   iconControl?: "prefix" | "suffix";
 
+  /**
+   * The size of the dropdown button.
+   */
   size?: "sm" | "xs" | "md";
 
   /**
@@ -103,11 +109,136 @@ export interface DropdownButtonTriggerProps
     "open" | "defaultOpen" | "onOpen" | "children"
   > {}
 
-export interface DropdownItemProps extends ContextMenuItemProps {}
+export interface DropdownCheckboxGroupProps {
+  /**
+   * The unique name of group.
+   */
+  name: string;
 
-export interface DropdownCheckboxGroupProps
-  extends ContextMenuCheckboxGroupProps {}
+  /**
+   * The group title text will show at the beginning of the group.
+   */
+  title: string;
 
-export interface DropdownRadioGroupProps extends ContextMenuRadioGroupProps {}
+  /**
+   * The value of selected item in the group. Must be used in conjunction with `onChange`.
+   */
+  value?: string[];
 
-export interface DropdownGroupProps extends ContextMenuGroupProps {}
+  /**
+   * The default value of selected item in the group.
+   */
+  defaultValue?: string[];
+
+  /**
+   * @ignore
+   */
+  children: ReactNode;
+
+  /**
+   * Event handler called when group item click.
+   */
+  onChange?: (values: string[]) => void;
+}
+
+export interface DropdownRadioGroupProps {
+  /**
+   * The unique name of group.
+   */
+  name: string;
+
+  /**
+   * The group title text will show at the beginning of the group.
+   */
+  title: string;
+
+  /**
+   * The value of selected item in the group. Must be used in conjunction with `onChecked`.
+   */
+  value?: string;
+
+  /**
+   * The default value of selected item in the group.
+   */
+  defaultValue?: string;
+
+  /**
+   * @ignore
+   */
+  children: ReactNode;
+
+  /**
+   * Event handler called when group item click.
+   */
+  onChange?: (value: string) => void;
+}
+
+export interface DropdownGroupProps {
+  /**
+   * The group title text will show at the beginning of the group.
+   */
+  title: string;
+
+  /**
+   * @ignore
+   */
+  children: ReactNode;
+
+  /**
+   * Event handler called when group item click.
+   */
+  onSelect?: (value: string) => void;
+}
+
+export interface DropdownItemProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "onClick"> {
+  /**
+   * Sets the special status of the item.
+   */
+  status?: "none" | "danger";
+
+  /**
+   * When `true`, prevents the user from interacting with the dropdown item.
+   */
+  disabled?: boolean;
+
+  /**
+   * The text information displayed on the item.
+   */
+  label: string;
+
+  /**
+   * The unique value of the item.
+   */
+  value: string;
+
+  /**
+   * The icon element will be displayed next to the dropdown item text.
+   */
+  icon?: ReactNode;
+
+  /**
+   * Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the dropdown item's click event will be triggered.
+   */
+  shortcutKey?: string;
+
+  /**
+   * @private
+   */
+  role?: "menuitem" | "menuitemcheckbox" | "menuitemradio";
+
+  /**
+   * @private
+   */
+  checked?: boolean;
+
+  /**
+   * Event handler called when the user select an item (via mouse or keyboard).
+   */
+  onClick?: (event: Event) => void;
+
+  /**
+   * @private
+   */
+  onCheckedChange?: (checked: boolean) => void;
+}

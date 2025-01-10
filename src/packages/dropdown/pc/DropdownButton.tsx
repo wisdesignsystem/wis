@@ -9,6 +9,9 @@ import DropdownButtonTrigger from "./DropdownButtonTrigger";
 
 import styles from "./Dropdown.module.scss";
 
+/**
+ * @package dropdown
+ */
 function DropdownButton({
   defaultOpen,
   open,

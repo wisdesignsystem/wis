@@ -11,6 +11,9 @@ import type { DropdownItemProps } from "../dropdown";
 
 import styles from "./Dropdown.module.scss";
 
+/**
+ * @package dropdown
+ */
 function DropdownItem({
   role,
   disabled,

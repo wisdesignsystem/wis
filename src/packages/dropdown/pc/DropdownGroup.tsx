@@ -7,6 +7,9 @@ import type { DropdownGroupProps } from "../dropdown";
 
 import styles from "./Dropdown.module.scss";
 
+/**
+ * @package dropdown
+ */
 function DropdownGroup({
   title,
   onSelect = () => {},
