@@ -657,7 +657,8 @@ export default {
     props: {
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the context menu.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/contextMenu/contextMenu.ts",
@@ -722,7 +723,8 @@ export default {
       },
       disabled: {
         defaultValue: null,
-        description: "",
+        description:
+          "When `true`, prevents the user from interacting with the context menu item.",
         name: "disabled",
         parent: {
           fileName: "wis/src/packages/contextMenu/contextMenu.ts",
@@ -773,7 +775,8 @@ export default {
       },
       icon: {
         defaultValue: null,
-        description: "",
+        description:
+          "The icon element will be displayed next to the context menu item text.",
         name: "icon",
         parent: {
           fileName: "wis/src/packages/contextMenu/contextMenu.ts",
@@ -791,7 +794,7 @@ export default {
       shortcutKey: {
         defaultValue: null,
         description:
-          "Sets the global shortcut key for the button, e.g., `Control+I`.",
+          "Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the context menu item's click event will be triggered.",
         name: "shortcutKey",
         parent: {
           fileName: "wis/src/packages/contextMenu/contextMenu.ts",

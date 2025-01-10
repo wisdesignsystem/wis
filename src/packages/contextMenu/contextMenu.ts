@@ -1,6 +1,9 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
 export interface ContextMenuProps {
+  /**
+   * When `true`, prevents the user from interacting with the context menu.
+   */
   disabled?: boolean;
 
   /**
@@ -97,6 +100,9 @@ export interface ContextMenuItemProps
    */
   status?: "none" | "danger";
 
+  /**
+   * When `true`, prevents the user from interacting with the context menu item.
+   */
   disabled?: boolean;
 
   /**
@@ -109,10 +115,13 @@ export interface ContextMenuItemProps
    */
   value: string;
 
+  /**
+   * The icon element will be displayed next to the context menu item text.
+   */
   icon?: ReactNode;
 
   /**
-   * Sets the global shortcut key for the button, e.g., `Control+I`.
+   * Sets a global shortcut key, such as `Control+I`. When the user presses the combination key, the context menu item's click event will be triggered.
    */
   shortcutKey?: string;
 
