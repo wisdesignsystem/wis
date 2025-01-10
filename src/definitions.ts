@@ -2507,7 +2507,7 @@ export default {
     props: {
       title: {
         defaultValue: null,
-        description: "The title text will show in the module header.",
+        description: "The title text will show in the page header.",
         name: "title",
         parent: {
           fileName: "wis/src/packages/page/page.ts",
@@ -2521,7 +2521,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the module.",
+        description: "The description text will show in the page header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/page/page.ts",

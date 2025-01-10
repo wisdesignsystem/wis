@@ -1,4 +1,4 @@
-import { isFunction, isNumber, isString } from "@/utils/is";
+import { isFunction, isNumber, isString, isUndefined } from "@/utils/is";
 import type { ReactElement, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 
@@ -63,6 +63,10 @@ function getNodeType(node: ReactNode) {
     return;
   }
 
+  if (isUndefined(node.type) || isString(node.type)) {
+    return;
+  }
+
   // @ts-ignore
   if (!isFunction(node.type.getSymbiote)) {
     // @ts-ignore
@@ -82,6 +86,10 @@ function getNodeType(node: ReactNode) {
 
 export function getSymbioteElement(node: ReactNode) {
   if (!isValidElement(node)) {
+    return node;
+  }
+
+  if (isUndefined(node.type) || isString(node.type)) {
     return node;
   }
 
