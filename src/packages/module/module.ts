@@ -8,7 +8,7 @@ export interface ModuleProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
 
   /**
-   * Describe the module.
+   * The description text will show in the module header.
    */
   description?: string;
 
@@ -23,7 +23,7 @@ export interface ModuleProps extends HTMLAttributes<HTMLDivElement> {
   size?: Size | ResponsiveSize;
 
   /**
-   * Whether the module is collapsible.
+   * When `true`, the module will be collapsible.
    */
   collapsible?: boolean;
 

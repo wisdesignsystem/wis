@@ -2371,7 +2371,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the module.",
+        description: "The description text will show in the module header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/module/module.ts",
@@ -2427,7 +2427,7 @@ export default {
       },
       collapsible: {
         defaultValue: null,
-        description: "Whether the module is collapsible.",
+        description: "When `true`, the module will be collapsible.",
         name: "collapsible",
         parent: {
           fileName: "wis/src/packages/module/module.ts",
