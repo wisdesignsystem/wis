@@ -5,6 +5,9 @@ import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
+/**
+ * @package layout
+ */
 function Bottom({ className, children, ...rest }: BottomProps) {
   return (
     <Layout

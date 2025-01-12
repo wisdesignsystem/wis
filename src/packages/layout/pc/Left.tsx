@@ -5,6 +5,9 @@ import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
+/**
+ * @package layout
+ */
 function Left({ className, children, ...rest }: LeftProps) {
   return (
     <Layout

@@ -5,6 +5,9 @@ import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
+/**
+ * @package layout
+ */
 function Right({ className, children, ...rest }: RightProps) {
   return (
     <Layout

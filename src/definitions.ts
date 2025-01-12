@@ -2130,7 +2130,7 @@ export default {
     props: {},
   },
   Main: {
-    tags: {},
+    tags: { package: "layout" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Main",
@@ -2155,7 +2155,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the layout.",
+        description: "The description text will show in the layout header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/layout/layout.ts",
@@ -2209,7 +2209,7 @@ export default {
     },
   },
   Left: {
-    tags: {},
+    tags: { package: "layout" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Left",
@@ -2234,7 +2234,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the layout.",
+        description: "The description text will show in the layout header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/layout/layout.ts",
@@ -2252,7 +2252,7 @@ export default {
     },
   },
   Right: {
-    tags: {},
+    tags: { package: "layout" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Right",
@@ -2277,7 +2277,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the layout.",
+        description: "The description text will show in the layout header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/layout/layout.ts",
@@ -2295,15 +2295,44 @@ export default {
     },
   },
   Top: {
-    tags: {},
+    tags: { package: "layout" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Top",
     methods: [],
-    props: {},
+    props: {
+      title: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "TopProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/layout/layout.ts", name: "TopProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      description: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "description",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "TopProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/layout/layout.ts", name: "TopProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+    },
   },
   Bottom: {
-    tags: {},
+    tags: { package: "layout" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Bottom",
@@ -2328,7 +2357,7 @@ export default {
       },
       description: {
         defaultValue: null,
-        description: "Describe the layout.",
+        description: "The description text will show in the layout header.",
         name: "description",
         parent: {
           fileName: "wis/src/packages/layout/layout.ts",

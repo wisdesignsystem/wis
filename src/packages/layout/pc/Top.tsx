@@ -6,7 +6,10 @@ import Layout from "./Layout";
 
 import styles from "./Layout.module.scss";
 
-function Top({ className, children, ...rest }: TopProps) {
+/**
+ * @package layout
+ */
+function Top({ className, title, description, children, ...rest }: TopProps) {
   const { unmatched } = matchElement(
     children,
     [{ type: "Actions", maxCount: 0 }],

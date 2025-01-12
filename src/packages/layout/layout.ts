@@ -7,7 +7,7 @@ export interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
 
   /**
-   * Describe the layout.
+   * The description text will show in the layout header.
    */
   description?: string;
 
@@ -32,10 +32,17 @@ export interface RightProps
   extends Omit<LayoutProps, "gutter" | "responsive"> {}
 
 export interface TopProps
-  extends Omit<
-    LayoutProps,
-    "title" | "description" | "gutter" | "responsive"
-  > {}
+  extends Omit<LayoutProps, "title" | "description" | "gutter" | "responsive"> {
+  /**
+   * @ignore
+   */
+  title?: string;
+
+  /**
+   * @ignore
+   */
+  description?: string;
+}
 
 export interface BottomProps
   extends Omit<LayoutProps, "gutter" | "responsive"> {}
