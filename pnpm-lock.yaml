@@ -85,8 +85,8 @@ importers:
         specifier: 18.3.5
         version: 18.3.5(@types/react@18.3.16)
       '@wisdesign/cli':
-        specifier: 0.0.24
-        version: 0.0.24(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.3)
+        specifier: 0.0.25
+        version: 0.0.25(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.3)
       '@wisdesign/toolkit':
         specifier: 0.0.7
         version: 0.0.7(typescript@5.7.3)
@@ -2125,8 +2125,8 @@ packages:
       '@types/react': ^18.3.16
       react: ^18.3.1
 
-  '@wisdesign/cli@0.0.24':
-    resolution: {integrity: sha512-NXN8xREsXjAtj/RE17T2V0OiFSGtudmV447JIrdNH700mnRY9FaVD6Txj0PKe4RKBp5jxnE6YpsjxsN4f4PbWQ==}
+  '@wisdesign/cli@0.0.25':
+    resolution: {integrity: sha512-oTSIa/8z7N0pe+Hy8I+GMWkWCjqFtTj2/xCc8i5Eaqz46qPW1EJ7eAhNWYaXP4ZBGPGwlFNXcwLJ+hAoUx601g==}
     hasBin: true
     peerDependencies:
       '@types/react': ~18.3.16
@@ -2166,8 +2166,8 @@ packages:
   '@wisdesign/plugin-remote-entry@0.0.6':
     resolution: {integrity: sha512-przSCPkJl+7EbCiN6cIXsLSUy5rYreM27WEs2cFoVaiJf2FzgyweVH1KvWYgYCflnTn0SgcMVd0qxCSc9L/C0A==}
 
-  '@wisdesign/plugin-router@0.0.10':
-    resolution: {integrity: sha512-mPXWCvQgFCOIerv2li5icAaQwPwaahgA5rjVO2wfagwHv28rA650YeBrbX6stLh2TiyCLjId3DzVbrtLTVx5Uw==}
+  '@wisdesign/plugin-router@0.0.11':
+    resolution: {integrity: sha512-3JjJ426rxSaxEXix9+NNt+2Cs6JbM4Gei9STYbtYCAnJ936a5/HHO53Uhl0R55OCUzB6kQ24sCrQRq6r8fBA7Q==}
 
   '@wisdesign/plugin-sass@0.0.2':
     resolution: {integrity: sha512-kWXc0aX0OqKXcSyCcRimezY8t3/opG/CWnd1OlxmGlEzD8Cr+8zCra3kGHnstqdWtOPNgQTwRpMYghpQyBZFxg==}
@@ -8313,7 +8313,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@wisdesign/cli@0.0.24(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.3)':
+  '@wisdesign/cli@0.0.25(@types/node@22.10.1)(@types/react-dom@18.3.5(@types/react@18.3.16))(@types/react@18.3.16)(@wiscore/router@0.0.1(@types/react@18.3.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(browserslist@4.24.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.7.3)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-runtime': 7.25.9(@babel/core@7.26.0)
@@ -8335,7 +8335,7 @@ snapshots:
       '@wisdesign/plugin-import-demand': 0.0.5(webpack@5.97.1)
       '@wisdesign/plugin-less': 0.0.2(webpack@5.97.1)
       '@wisdesign/plugin-remote-entry': 0.0.6(webpack@5.97.1)
-      '@wisdesign/plugin-router': 0.0.10
+      '@wisdesign/plugin-router': 0.0.11
       '@wisdesign/plugin-sass': 0.0.2(webpack@5.97.1)
       '@wisdesign/remote-webpack-plugin': 0.0.3(webpack@5.97.1)
       '@wisdesign/setup-html-webpack-plugin': 0.0.2
@@ -8468,7 +8468,7 @@ snapshots:
       - supports-color
       - webpack
 
-  '@wisdesign/plugin-router@0.0.10':
+  '@wisdesign/plugin-router@0.0.11':
     dependencies:
       '@babel/parser': 7.23.0
       '@wisdesign/utils': 0.0.6

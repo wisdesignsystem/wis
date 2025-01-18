@@ -47,7 +47,7 @@
     "@types/node": "22.10.1",
     "@types/react": "18.3.16",
     "@types/react-dom": "18.3.5",
-    "@wisdesign/cli": "0.0.24",
+    "@wisdesign/cli": "0.0.25",
     "@wisdesign/toolkit": "0.0.7",
     "husky": "9.0.11",
     "lint-staged": "15.2.7"
