@@ -1,13 +1,16 @@
 import { Button } from "remote:self/button";
+import { useNavigate } from "@wiscore/router";
 import { StarIcon } from "@wisdesign/lsicon";
 
 import styles from "./Button.module.scss";
 
 function Example() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.row}>
       <div className={styles.col}>
-        <Button text="Button" variant="primary" />
+        <Button text="Button" variant="primary" onClick={() => navigate("/")} />
         <Button text="Button" variant="primary" icon={<StarIcon />} />
         <Button
           text="Button"
