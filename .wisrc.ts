@@ -12,7 +12,6 @@ const config: Config = {
   exposes: {
     "./definitions": "@/definitions",
     "./core": "@/packages/core/index",
-    "./blank": "@/packages/blank/index",
     "./grid": "@/packages/grid/index",
     "./locales": {
       "en-US": "@/packages/locales/en-US/index",
