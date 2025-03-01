@@ -1,6 +1,6 @@
 import type { ContextMenuItemProps } from "../contextMenu";
 
-function ContextMenuItem(props: ContextMenuItemProps) {
+function ContextMenuItem(_props: ContextMenuItemProps) {
   return null;
 }
 

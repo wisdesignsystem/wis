@@ -1,4 +1,4 @@
-import type { ResponsiveSize, Size } from "remote:self/grid";
+import type { ResponsiveSize, Size } from "wis/grid";
 import type { HTMLAttributes } from "react";
 
 export interface ModuleProps extends HTMLAttributes<HTMLDivElement> {

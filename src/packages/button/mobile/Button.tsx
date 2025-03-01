@@ -1,6 +1,6 @@
 import type { ButtonProps } from "../button";
 
-function Button(props: ButtonProps) {
+function Button(_props: ButtonProps) {
   return null;
 }
 

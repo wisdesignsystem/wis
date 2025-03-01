@@ -1,6 +1,6 @@
-import "remote:self/themes";
+import "wis/themes";
 
+import "./wis.css";
 import { getSymbioteElement, isElement, matchElement } from "./matchElement";
-import wis from "./wis";
 
-export { wis, isElement, matchElement, getSymbioteElement };
+export { isElement, matchElement, getSymbioteElement };

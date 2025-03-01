@@ -1,6 +1,6 @@
 import type { BoxCollapsibleProps } from "../box";
 
-function BoxCollapsible(props: BoxCollapsibleProps) {
+function BoxCollapsible(_props: BoxCollapsibleProps) {
   return null;
 }
 

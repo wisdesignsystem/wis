@@ -1,4 +1,4 @@
-import { isElement } from "remote:self/core";
+import { isElement } from "wis/core";
 import attrs from "@/utils/attrs";
 import { DownIcon, RightIcon } from "@wisdesign/lsicon";
 import classNames from "classnames";

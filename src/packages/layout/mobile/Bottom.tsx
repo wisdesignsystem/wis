@@ -1,6 +1,6 @@
 import type { BottomProps } from "../layout";
 
-function Bottom(props: BottomProps) {
+function Bottom(_props: BottomProps) {
   return null;
 }
 

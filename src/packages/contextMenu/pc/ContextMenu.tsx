@@ -1,4 +1,4 @@
-import { matchElement } from "remote:self/core";
+import { matchElement } from "wis/core";
 import * as RDXContextMenu from "@radix-ui/react-context-menu";
 import type { ReactNode } from "react";
 import { Children, useState } from "react";

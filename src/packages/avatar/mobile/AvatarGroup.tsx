@@ -1,6 +1,6 @@
 import type { AvatarGroupProps } from "../avatar";
 
-function AvatarGroup(props: AvatarGroupProps) {
+function AvatarGroup(_props: AvatarGroupProps) {
   return null;
 }
 

@@ -1,4 +1,4 @@
-import { matchElement } from "remote:self/core";
+import { matchElement } from "wis/core";
 import * as RDXCollapsible from "@radix-ui/react-collapsible";
 import classNames from "classnames";
 

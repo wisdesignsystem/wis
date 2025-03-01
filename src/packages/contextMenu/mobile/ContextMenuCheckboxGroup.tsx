@@ -1,6 +1,6 @@
 import type { ContextMenuCheckboxGroupProps } from "../contextMenu";
 
-function ContextMenuCheckboxGroup(props: ContextMenuCheckboxGroupProps) {
+function ContextMenuCheckboxGroup(_props: ContextMenuCheckboxGroupProps) {
   return null;
 }
 

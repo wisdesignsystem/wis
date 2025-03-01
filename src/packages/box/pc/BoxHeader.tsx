@@ -1,4 +1,4 @@
-import { matchElement } from "remote:self/core";
+import { matchElement } from "wis/core";
 import classNames from "classnames";
 
 import type { BoxHeaderProps } from "../box";

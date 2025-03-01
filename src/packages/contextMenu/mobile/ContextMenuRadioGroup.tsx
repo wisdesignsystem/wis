@@ -1,6 +1,6 @@
 import type { ContextMenuRadioGroupProps } from "../contextMenu";
 
-function ContextMenuRadioGroup(props: ContextMenuRadioGroupProps) {
+function ContextMenuRadioGroup(_props: ContextMenuRadioGroupProps) {
   return null;
 }
 

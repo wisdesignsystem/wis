@@ -1,4 +1,4 @@
-import { Shortcut, createShortcutMeta } from "remote:self/shortcut";
+import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import attrs from "@/utils/attrs";
 import * as RDXToggleGroup from "@radix-ui/react-toggle-group";
 import classNames from "classnames";
