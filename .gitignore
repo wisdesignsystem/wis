@@ -8,3 +8,4 @@ node_modules
 # 应用编译时自动生成的目录
 dist
 .wis
+@mf-types
