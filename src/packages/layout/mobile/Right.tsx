@@ -1,6 +1,6 @@
 import type { RightProps } from "../layout";
 
-function Right(props: RightProps) {
+function Right(_props: RightProps) {
   return null;
 }
 

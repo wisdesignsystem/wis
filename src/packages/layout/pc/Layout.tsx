@@ -1,6 +1,6 @@
-import { Box, BoxActions, BoxContent, BoxHeader } from "remote:self/box";
-import { isElement, matchElement } from "remote:self/core";
-import { Col, Row } from "remote:self/grid";
+import { Box, BoxActions, BoxContent, BoxHeader } from "wis/box";
+import { isElement, matchElement } from "wis/core";
+import { Col, Row } from "wis/grid";
 import { isUndefined } from "@/utils/is";
 import classNames from "classnames";
 import { Children, isValidElement } from "react";

@@ -1,5 +1,5 @@
-import { Button } from "remote:self/button";
-import { useNavigate } from "@wiscore/router";
+import { Button } from "wis/button";
+import { useNavigate } from "wiscore/router";
 import { StarIcon } from "@wisdesign/lsicon";
 
 import styles from "./Button.module.scss";

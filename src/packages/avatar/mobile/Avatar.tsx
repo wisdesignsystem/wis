@@ -1,6 +1,6 @@
 import type { AvatarProps } from "../avatar";
 
-function Avatar(props: AvatarProps) {
+function Avatar(_props: AvatarProps) {
   return null;
 }
 

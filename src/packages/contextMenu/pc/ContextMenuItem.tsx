@@ -1,5 +1,5 @@
-import { matchElement } from "remote:self/core";
-import { Shortcut, createShortcutMeta } from "remote:self/shortcut";
+import { matchElement } from "wis/core";
+import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import attrs from "@/utils/attrs";
 import * as RDXContextMenu from "@radix-ui/react-context-menu";
 import { CheckIcon, RightIcon } from "@wisdesign/lsicon";

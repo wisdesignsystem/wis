@@ -1,9 +1,9 @@
-import { Actions } from "remote:self/actions";
-import { Button } from "remote:self/button";
-import { ContextMenu, ContextMenuItem } from "remote:self/contextMenu";
-import { Bottom, Left, Main, Right, Top } from "remote:self/layout";
-import { Page } from "remote:self/page";
-import { Tooltip } from "remote:self/tooltip";
+import { Actions } from "wis/actions";
+import { Button } from "wis/button";
+import { ContextMenu, ContextMenuItem } from "wis/contextMenu";
+import { Bottom, Left, Main, Right, Top } from "wis/layout";
+import { Page } from "wis/page";
+import { Tooltip } from "wis/tooltip";
 
 function Example() {
   return (

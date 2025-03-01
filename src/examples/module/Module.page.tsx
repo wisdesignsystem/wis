@@ -1,6 +1,6 @@
-import { Left, Right } from "remote:self/layout";
-import { Module } from "remote:self/module";
-import { Page } from "remote:self/page";
+import { Left, Right } from "wis/layout";
+import { Module } from "wis/module";
+import { Page } from "wis/page";
 
 function Example() {
   return (

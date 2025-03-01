@@ -1,6 +1,6 @@
 import type { ToggleGroupProps } from "../toggle";
 
-function ToggleGroup(props: ToggleGroupProps) {
+function ToggleGroup(_props: ToggleGroupProps) {
   return null;
 }
 

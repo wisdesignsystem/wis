@@ -1,4 +1,4 @@
-import { Button } from "remote:self/button";
+import { Button } from "wis/button";
 import { DownIcon } from "@wisdesign/lsicon";
 import classNames from "classnames";
 import { forwardRef } from "react";

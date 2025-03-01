@@ -1,4 +1,4 @@
-import { matchElement } from "remote:self/core";
+import { matchElement } from "wis/core";
 import { useContextValue } from "@/packages/contextMenu/export";
 import * as RDXDropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Children, cloneElement } from "react";

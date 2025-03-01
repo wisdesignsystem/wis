@@ -1,4 +1,4 @@
-import { ToggleGroup, ToggleItem } from "remote:self/toggle";
+import { ToggleGroup, ToggleItem } from "wis/toggle";
 import { StarIcon } from "@wisdesign/lsicon";
 
 import styles from "./ToggleGroup.module.scss";

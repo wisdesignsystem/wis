@@ -1,6 +1,6 @@
 import type { ContextMenuGroupProps } from "../contextMenu";
 
-function ContextMenuGroup(props: ContextMenuGroupProps) {
+function ContextMenuGroup(_props: ContextMenuGroupProps) {
   return null;
 }
 

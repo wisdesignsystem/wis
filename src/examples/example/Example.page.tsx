@@ -1,8 +1,8 @@
-import { Actions } from "remote:wis/actions";
-import { Button } from "remote:wis/button";
-import { Bottom, Left, Main, Top } from "remote:wis/layout";
-import { Module } from "remote:wis/module";
-import { Page } from "remote:wis/page";
+import { Actions } from "wis/actions";
+import { Button } from "wis/button";
+import { Bottom, Left, Main, Top } from "wis/layout";
+import { Module } from "wis/module";
+import { Page } from "wis/page";
 import { ArrowRightIcon, DownloadIcon, ExportIcon } from "@wisdesign/lsicon";
 
 import Chart from "./Chart";

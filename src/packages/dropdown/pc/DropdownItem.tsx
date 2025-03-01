@@ -1,5 +1,5 @@
-import { matchElement } from "remote:self/core";
-import { Shortcut, createShortcutMeta } from "remote:self/shortcut";
+import { matchElement } from "wis/core";
+import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import { Context } from "@/packages/contextMenu/export";
 import attrs from "@/utils/attrs";
 import * as RDXDropdownMenu from "@radix-ui/react-dropdown-menu";

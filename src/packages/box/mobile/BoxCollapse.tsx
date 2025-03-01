@@ -1,6 +1,6 @@
 import type { BoxCollapseProps } from "../box";
 
-function BoxCollapse(props: BoxCollapseProps) {
+function BoxCollapse(_props: BoxCollapseProps) {
   return null;
 }
 

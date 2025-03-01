@@ -1,6 +1,6 @@
 import type { ModuleProps } from "../module";
 
-function Module(props: ModuleProps) {
+function Module(_props: ModuleProps) {
   return null;
 }
 

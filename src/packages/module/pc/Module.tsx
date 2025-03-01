@@ -6,9 +6,9 @@ import {
   BoxContent,
   BoxHeader,
   BoxPanel,
-} from "remote:self/box";
-import { isElement, matchElement } from "remote:self/core";
-import { Main } from "remote:self/layout";
+} from "wis/box";
+import { isElement, matchElement } from "wis/core";
+import { Main } from "wis/layout";
 import attrs from "@/utils/attrs";
 import classNames from "classnames";
 import { useContext } from "react";

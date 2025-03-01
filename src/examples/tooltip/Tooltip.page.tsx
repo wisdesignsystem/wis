@@ -1,5 +1,5 @@
-import { Button } from "remote:self/button";
-import { Tooltip } from "remote:self/tooltip";
+import { Button } from "wis/button";
+import { Tooltip } from "wis/tooltip";
 
 import styles from "./Tooltip.module.scss";
 
