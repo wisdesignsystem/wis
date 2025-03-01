@@ -3,10 +3,6 @@ import type { WisConfig } from "@wisdesign/wis-plugin";
 const config: WisConfig = {
   libraryRegExp: /\/src\/packages/,
 
-  remotes: {
-    shell: "https://wis-shell.vercel.app",
-  },
-
   exposes: {
     "./definitions": "./src/definitions",
     "./core": "./src/packages/core/index",
