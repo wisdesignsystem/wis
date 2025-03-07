@@ -91,14 +91,14 @@ importers:
         specifier: 18.3.5
         version: 18.3.5(@types/react@18.3.16)
       '@wisdesign/cli':
-        specifier: 0.0.28
-        version: 0.0.28(@types/node@22.13.7)
+        specifier: 0.0.29
+        version: 0.0.29(@types/node@22.13.7)
       '@wisdesign/toolkit':
         specifier: 0.0.7
         version: 0.0.7(typescript@5.7.3)
       '@wisdesign/wis-plugin':
-        specifier: 0.0.2
-        version: 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+        specifier: 0.0.3
+        version: 0.0.3(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
       husky:
         specifier: 9.0.11
         version: 9.0.11
@@ -1771,8 +1771,8 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
-  '@wisdesign/cli@0.0.28':
-    resolution: {integrity: sha512-AJgkfWRORMyJaAZuiOFu9kf4HqBj7oMMHhJ3doyOCMkETcizMqJFvPW+ATkNhHKmuVJaI8OfFUUs0F6OaWKU4g==}
+  '@wisdesign/cli@0.0.29':
+    resolution: {integrity: sha512-BgTSVBHvdsMpVymKCbnafTotCqQ6He3MgfNgobZ1TOr3FctBfNScFv2+tmPl1LpXWTnRkec0UNb5uUfXXs3wgA==}
     hasBin: true
 
   '@wisdesign/context@0.0.1':
@@ -1808,8 +1808,8 @@ packages:
       '@rsbuild/core':
         optional: true
 
-  '@wisdesign/shell-plugin@0.0.2':
-    resolution: {integrity: sha512-MfaTontQwIvOO8NOgwvixlurn/KDSOM8rgH2aGM0OGkJKbGvKOimeOwF4CY8UBL1f2bdRqZqgYhy09U04I04QQ==}
+  '@wisdesign/shell-plugin@0.0.3':
+    resolution: {integrity: sha512-5Q4hKquRN853aBaTFX8Bl1sSpkEf5E6uQ8sflv2Uy7zW5pTXo9dIyPF0vBRY6ymtvuLZgPrqThHUi1TgSVXJ5Q==}
     peerDependencies:
       '@rsbuild/core': ~1
     peerDependenciesMeta:
@@ -1823,8 +1823,8 @@ packages:
   '@wisdesign/utils@0.0.6':
     resolution: {integrity: sha512-WzXGJWrV4DYZz/dWhfp9vDIo2OyI23DgqLXdf9fviVBaKHn+bby3fR/I5t/cGfS5jWRk+OJ2UuivS8C1HxdBYg==}
 
-  '@wisdesign/wis-plugin@0.0.2':
-    resolution: {integrity: sha512-5rskyeQrxpLXxOMJlu8zfYX9RZdUs2zeuRsz4lv+4tqJbsMH0hYZoiu9/g56DOUCUM4efRbUyRGkEAUb8X1omA==}
+  '@wisdesign/wis-plugin@0.0.3':
+    resolution: {integrity: sha512-yN74ckamQjrwbOUsZrFe+L8pxYTsw9jFEK9abOFCfJxBGstvVZpJNIeb1XnIlrQRFQmLyoE26Mdj3ehIP2HBRw==}
     peerDependencies:
       '@rsbuild/core': ~1
     peerDependenciesMeta:
@@ -2047,6 +2047,10 @@ packages:
 
   chalk@5.3.0:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+
+  chalk@5.4.1:
+    resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
   chardet@0.7.0:
@@ -2746,10 +2750,6 @@ packages:
     resolution: {integrity: sha512-uPpH7OKX4H25hBmU6G1jWNaqJGpTXxey+YOUizJUAgu0AjLUeC8D73hTrhvDS5D+GJN1DN1+hhc/eF/wpxtp0w==}
     engines: {node: '>= 0.8'}
 
-  http-errors@1.6.3:
-    resolution: {integrity: sha512-lks+lVC8dgGyh97jxvxeYTWQFvh4uw4yC12gVl63Cg30sjPX4wuGcdkICVXDAESr6OJGjqGA8Iz5mkeN6zlD7A==}
-    engines: {node: '>= 0.6'}
-
   http-errors@1.8.1:
     resolution: {integrity: sha512-Kpk9Sm7NmI+RHhnj6OIWDI1d6fIoFAtFt9RLaTMRlg/8w49juAStsrBgp0Dp4OdxdVbRIeKhtCUvoi/RuAhO4g==}
     engines: {node: '>= 0.6'}
@@ -2788,9 +2788,6 @@ packages:
   indent-string@4.0.0:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
     engines: {node: '>=8'}
-
-  inherits@2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3930,9 +3927,6 @@ packages:
   set-proto@1.0.0:
     resolution: {integrity: sha512-RJRdvCo6IAnPdsvP/7m6bsQqNnn1FCBX5ZNtFL98MmFF/4xAIJTIg1YbHW5DC2W5SKZanrC6i4HsJqlajw/dZw==}
     engines: {node: '>= 0.4'}
-
-  setprototypeof@1.1.0:
-    resolution: {integrity: sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==}
 
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
@@ -6497,9 +6491,10 @@ snapshots:
       '@xtuc/long': 4.2.2
     optional: true
 
-  '@wisdesign/cli@0.0.28(@types/node@22.13.7)':
+  '@wisdesign/cli@0.0.29(@types/node@22.13.7)':
     dependencies:
       '@inquirer/prompts': 7.2.1(@types/node@22.13.7)
+      chalk: 5.4.1
       commander: 12.1.0
       ora: 8.0.1
       zx: 8.2.4
@@ -6590,7 +6585,7 @@ snapshots:
       - vue-tsc
       - webpack
 
-  '@wisdesign/shell-plugin@0.0.2(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)':
+  '@wisdesign/shell-plugin@0.0.3(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)':
     dependencies:
       '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
       chokidar: 4.0.3
@@ -6616,13 +6611,13 @@ snapshots:
       prettier: 3.3.1
       signale: 1.4.0
 
-  '@wisdesign/wis-plugin@0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+  '@wisdesign/wis-plugin@0.0.3(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
     dependencies:
       '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
       '@wisdesign/cross-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
       '@wisdesign/kind-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
       '@wisdesign/remote-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
-      '@wisdesign/shell-plugin': 0.0.2(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+      '@wisdesign/shell-plugin': 0.0.3(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
     optionalDependencies:
       '@rsbuild/core': 1.2.13
     transitivePeerDependencies:
@@ -6856,6 +6851,8 @@ snapshots:
       supports-color: 7.2.0
 
   chalk@5.3.0: {}
+
+  chalk@5.4.1: {}
 
   chardet@0.7.0: {}
 
@@ -7636,13 +7633,6 @@ snapshots:
       deep-equal: 1.0.1
       http-errors: 1.8.1
 
-  http-errors@1.6.3:
-    dependencies:
-      depd: 1.1.2
-      inherits: 2.0.3
-      setprototypeof: 1.1.0
-      statuses: 1.5.0
-
   http-errors@1.8.1:
     dependencies:
       depd: 1.1.2
@@ -7673,8 +7663,6 @@ snapshots:
       resolve-from: 4.0.0
 
   indent-string@4.0.0: {}
-
-  inherits@2.0.3: {}
 
   inherits@2.0.4: {}
 
@@ -7920,7 +7908,7 @@ snapshots:
       escape-html: 1.0.3
       fresh: 0.5.2
       http-assert: 1.5.0
-      http-errors: 1.6.3
+      http-errors: 1.8.1
       is-generator-function: 1.1.0
       koa-compose: 4.1.0
       koa-convert: 2.0.0
@@ -8053,7 +8041,7 @@ snapshots:
 
   log-symbols@6.0.0:
     dependencies:
-      chalk: 5.3.0
+      chalk: 5.4.1
       is-unicode-supported: 1.3.0
 
   log-update@6.1.0:
@@ -8299,7 +8287,7 @@ snapshots:
 
   ora@8.0.1:
     dependencies:
-      chalk: 5.3.0
+      chalk: 5.4.1
       cli-cursor: 4.0.0
       cli-spinners: 2.9.2
       is-interactive: 2.0.0
@@ -8852,8 +8840,6 @@ snapshots:
       dunder-proto: 1.0.1
       es-errors: 1.3.0
       es-object-atoms: 1.1.1
-
-  setprototypeof@1.1.0: {}
 
   setprototypeof@1.2.0: {}
 
