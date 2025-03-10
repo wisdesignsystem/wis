@@ -2,7 +2,7 @@
   "mode": "exit",
   "tag": "alpha",
   "initialVersions": {
-    "wis": "0.0.2-alpha.0"
+    "wis": "0.0.2-alpha.1"
   },
   "changesets": ["hip-papayas-juggle", "tidy-insects-fetch"]
 }
