@@ -1,6 +1,8 @@
 import type { WisConfig } from "@wisdesign/wis-plugin";
 
 const config: WisConfig = {
+  name: "wis",
+
   libraryRegExp: /\/src\/packages/,
 
   exposes: {
