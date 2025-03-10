@@ -1,5 +1,5 @@
-import { Shortcut, useShortcut } from "remote:self/shortcut";
-import type { ShortcutMeta } from "remote:self/shortcut";
+import { Shortcut, useShortcut } from "wis/shortcut";
+import type { ShortcutMeta } from "wis/shortcut";
 import type { KeyboardEvent } from "react";
 import { useState } from "react";
 
@@ -16,7 +16,7 @@ function Example() {
     handleTrigger(event, shortcut);
   });
 
-  function handleTrigger(event: KeyboardEvent, shortcut: ShortcutMeta) {
+  function handleTrigger(_event: KeyboardEvent, shortcut: ShortcutMeta) {
     window.alert(
       `${shortcut.ctrl ? "Control+" : ""}${shortcut.shift ? "Shift+" : ""}${shortcut.alt ? "Alt+" : ""}${shortcut.meta ? "Meta+" : ""}${shortcut.key}`,
     );

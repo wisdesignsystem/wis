@@ -1,4 +1,6 @@
-function Dropdown() {
+import type { DropdownProps } from "../dropdown";
+
+function Dropdown(_props: DropdownProps) {
   return null;
 }
 

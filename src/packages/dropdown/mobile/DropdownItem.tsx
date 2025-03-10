@@ -1,6 +1,6 @@
 import type { DropdownItemProps } from "../dropdown";
 
-function DropdownItem(props: DropdownItemProps) {
+function DropdownItem(_props: DropdownItemProps) {
   return null;
 }
 

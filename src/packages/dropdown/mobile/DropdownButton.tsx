@@ -1,6 +1,6 @@
 import type { DropdownButtonProps } from "../dropdown";
 
-function DropdownButton(props: DropdownButtonProps) {
+function DropdownButton(_props: DropdownButtonProps) {
   return null;
 }
 

@@ -1,4 +1,4 @@
-import { ContextMenu, ContextMenuItem } from "remote:self/contextMenu";
+import { ContextMenu, ContextMenuItem } from "wis/contextMenu";
 
 import styles from "./ContextMenu.module.scss";
 

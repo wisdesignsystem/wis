@@ -1,6 +1,6 @@
 import type { LeftProps } from "../layout";
 
-function Left(props: LeftProps) {
+function Left(_props: LeftProps) {
   return null;
 }
 

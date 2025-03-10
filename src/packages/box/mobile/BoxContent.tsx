@@ -1,6 +1,6 @@
 import type { BoxContentProps } from "../box";
 
-function BoxContent(props: BoxContentProps) {
+function BoxContent(_props: BoxContentProps) {
   return null;
 }
 

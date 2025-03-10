@@ -1,12 +1,6 @@
-import { Actions } from "remote:self/actions";
-import {
-  Box,
-  BoxActions,
-  BoxContent,
-  BoxFooter,
-  BoxHeader,
-} from "remote:self/box";
-import { Button } from "remote:self/button";
+import { Actions } from "wis/actions";
+import { Box, BoxActions, BoxContent, BoxFooter, BoxHeader } from "wis/box";
+import { Button } from "wis/button";
 
 function Example() {
   return (

@@ -1,6 +1,6 @@
 import type { BoxActionsProps } from "../box";
 
-function BoxActions(props: BoxActionsProps) {
+function BoxActions(_props: BoxActionsProps) {
   return null;
 }
 

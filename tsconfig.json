@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "lib": ["esnext", "dom"],
-    "strict": true,
+    "lib": ["DOM", "ES2020"],
+    "jsx": "react-jsx",
+    "target": "ES2020",
     "noEmit": true,
-    "isolatedModules": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
-    "jsx": "preserve",
-    "baseUrl": "./",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "paths": {
-      "@/*": ["src/*"],
-      "remote:self/locales": ["src/packages/locales/en-US/index"],
-      "remote:wis/locales": ["src/packages/locales/en-US/index"],
-      "remote:self/*": ["src/packages/*/index", "src/packages/*/pc/index"],
-      "remote:wis/*": ["src/packages/*/index", "src/packages/*/pc/index"]
-    } /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+      "@/*": ["./src/*"],
+      "wis/themes": ["./src/packages/themes/default/index"],
+      "wis/*": ["./src/packages/*/index", "./src/packages/*/pc/index"],
+      "*": ["./@mf-types/*"]
+    }
   },
-  "include": ["src", ".wisrc.ts", "wis.d.ts"]
+  "include": ["./src"]
 }

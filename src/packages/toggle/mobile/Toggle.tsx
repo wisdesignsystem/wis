@@ -1,6 +1,6 @@
 import type { ToggleProps } from "../toggle";
 
-function Toggle(props: ToggleProps) {
+function Toggle(_props: ToggleProps) {
   return null;
 }
 

@@ -1,6 +1,6 @@
 import type { BoxHeaderProps } from "../box";
 
-function BoxHeader(props: BoxHeaderProps) {
+function BoxHeader(_props: BoxHeaderProps) {
   return null;
 }
 

@@ -1,6 +1,6 @@
 import type { DropdownCheckboxGroupProps } from "../dropdown";
 
-function DropdownCheckboxGroup(props: DropdownCheckboxGroupProps) {
+function DropdownCheckboxGroup(_props: DropdownCheckboxGroupProps) {
   return null;
 }
 

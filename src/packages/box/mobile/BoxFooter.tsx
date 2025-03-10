@@ -1,6 +1,6 @@
 import type { BoxFooterProps } from "../box";
 
-function BoxFooter(props: BoxFooterProps) {
+function BoxFooter(_props: BoxFooterProps) {
   return null;
 }
 

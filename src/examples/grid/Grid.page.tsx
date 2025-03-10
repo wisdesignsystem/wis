@@ -1,4 +1,4 @@
-import { Col, Row } from "remote:self/grid";
+import { Col, Row } from "wis/grid";
 
 import styles from "./Grid.module.scss";
 

@@ -1,6 +1,6 @@
-import { Box, BoxActions, BoxContent, BoxHeader } from "remote:self/box";
-import { matchElement } from "remote:self/core";
-import { Main } from "remote:self/layout";
+import { Box, BoxActions, BoxContent, BoxHeader } from "wis/box";
+import { matchElement } from "wis/core";
+import { Main } from "wis/layout";
 import classNames from "classnames";
 
 import type { PageProps } from "../page";

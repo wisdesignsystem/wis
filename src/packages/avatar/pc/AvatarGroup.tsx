@@ -1,4 +1,4 @@
-import { matchElement } from "remote:self/core";
+import { matchElement } from "wis/core";
 import attrs from "@/utils/attrs";
 import classNames from "classnames";
 import type { ReactElement } from "react";

@@ -1,6 +1,6 @@
 import type { BoxPanelProps } from "../box";
 
-function BoxPanel(props: BoxPanelProps) {
+function BoxPanel(_props: BoxPanelProps) {
   return null;
 }
 

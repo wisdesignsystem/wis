@@ -1,6 +1,6 @@
 import type { TopProps } from "../layout";
 
-function Top(props: TopProps) {
+function Top(_props: TopProps) {
   return null;
 }
 

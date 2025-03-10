@@ -3,7 +3,7 @@
  */
 import type { ShortcutProps } from "../shortcut";
 
-function Shortcut(props: ShortcutProps) {
+function Shortcut(_props: ShortcutProps) {
   return null;
 }
 

@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup } from "remote:self/avatar";
+import { Avatar, AvatarGroup } from "wis/avatar";
 import { UserIcon } from "@wisdesign/lsicon";
 
 import styles from "./Avatar.module.scss";

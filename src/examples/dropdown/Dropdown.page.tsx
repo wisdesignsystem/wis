@@ -1,4 +1,4 @@
-import { Avatar } from "remote:self/avatar";
+import { Avatar } from "wis/avatar";
 import {
   Dropdown,
   DropdownButton,
@@ -6,7 +6,7 @@ import {
   DropdownGroup,
   DropdownItem,
   DropdownRadioGroup,
-} from "remote:self/dropdown";
+} from "wis/dropdown";
 import {
   CameraIcon,
   ComputerIcon,

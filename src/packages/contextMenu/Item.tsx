@@ -1,4 +1,4 @@
-import { useGlobalShortcut } from "remote:self/shortcut";
+import { useGlobalShortcut } from "wis/shortcut";
 import { Children, isValidElement } from "react";
 import type { ReactElement } from "react";
 
@@ -16,7 +16,6 @@ function Item({
   checked,
   shortcutKey,
   children,
-  onClick = () => {},
   onCheckedChange = () => {},
 }: ItemProps) {
   const matched: ReactElement[] = [];

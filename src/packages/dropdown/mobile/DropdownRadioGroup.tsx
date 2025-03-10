@@ -1,6 +1,6 @@
 import type { DropdownRadioGroupProps } from "../dropdown";
 
-function DropdownRadioGroup(props: DropdownRadioGroupProps) {
+function DropdownRadioGroup(_props: DropdownRadioGroupProps) {
   return null;
 }
 

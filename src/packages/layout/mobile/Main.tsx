@@ -1,6 +1,6 @@
 import type { MainProps } from "../layout";
 
-function Main(props: MainProps) {
+function Main(_props: MainProps) {
   return null;
 }
 
