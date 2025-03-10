@@ -1,5 +1,11 @@
 # wis
 
+## 0.0.2-alpha.1
+
+### Patch Changes
+
+- [#78](https://github.com/wisdesignsystem/wis/pull/78) [`9af8c15`](https://github.com/wisdesignsystem/wis/commit/9af8c1504e77fe1be7ff58eacc993b596494a41d) Thanks [@FaureWu](https://github.com/FaureWu)! - [Chore] release test
+
 ## 0.0.2-alpha.0
 
 ### Patch Changes
