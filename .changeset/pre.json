@@ -1,0 +1,8 @@
+{
+  "mode": "exit",
+  "tag": "alpha",
+  "initialVersions": {
+    "wis": "0.0.1"
+  },
+  "changesets": ["tidy-insects-fetch"]
+}
