@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "wis",
-  "version": "0.0.1",
+  "name": "wis-ui",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -22,7 +22,7 @@
     "alpha": "pnpm changeset pre enter alpha && pnpm changeset version && pnpm changeset pre exit",
     "beta": "pnpm changeset pre enter beta && pnpm changeset version && pnpm changeset pre exit",
     "rc": "pnpm changeset pre enter rc && pnpm changeset version && pnpm changeset pre exit",
-    "release": "pnpm changeset tag && git push --follow-tags && pnpm publish -r --dry-run",
+    "release": "pnpm changeset tag && git push --follow-tags && pnpm publish",
     "docgen": "typescript-docgen -s ./src/packages -o ./src/definitions.ts && biome format --write",
     "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,orange:./src/assets/wis.orange.tokens.json -o ./src/themes"
   },
