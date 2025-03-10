@@ -18,7 +18,7 @@
     "check": "biome check --write",
     "format": "biome format --write",
     "changelog": "pnpm changeset",
-    "version": "pnpm run doc && pnpm changeset version",
+    "version": "pnpm run docgen && pnpm changeset version",
     "alpha": "pnpm changeset pre enter alpha && pnpm changeset version && pnpm changeset pre exit",
     "beta": "pnpm changeset pre enter beta && pnpm changeset version && pnpm changeset pre exit",
     "rc": "pnpm changeset pre enter rc && pnpm changeset version && pnpm changeset pre exit",
