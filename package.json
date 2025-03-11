@@ -26,6 +26,9 @@
     "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,orange:./src/assets/wis.orange.tokens.json -o ./src/themes"
   },
   "files": [],
+  "publishConfig": {
+    "access": "public"
+  },
   "lint-staged": {
     "**/*.{ts,tsx,json}": "biome format --write"
   },
