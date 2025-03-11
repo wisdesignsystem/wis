@@ -1,5 +1,5 @@
 ---
-"wis-ui": patch
+"@wisdesign/wis": patch
 ---
 
 [Feature] add many pc component
