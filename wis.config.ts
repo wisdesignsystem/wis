@@ -6,13 +6,17 @@ const config: WisConfig = {
   libraryRegExp: /\/src\/packages/,
 
   exposes: {
-    "./definitions": "./src/definitions",
     "./core": "./src/packages/core/index",
-    "./grid": "./src/packages/grid/index",
-    "./themes": {
-      default: "./src/packages/themes/default/index",
-      blue: "./src/packages/themes/blue/index",
+    "./definitions": "./src/definitions",
+    "./theme": {
+      default: "./src/packages/themes/tokens/theme/blue/index",
+      blue: "./src/packages/themes/tokens/theme/orange/index",
     },
+    "./gray": {
+      default: "./src/packages/themes/tokens/gray/black/index",
+      blue: "./src/packages/themes/tokens/gray/blue/index",
+    },
+    "./grid": "./src/packages/grid/index",
     "./box": {
       pc: "./src/packages/box/pc/index",
       mobile: "./src/packages/box/mobile/index",

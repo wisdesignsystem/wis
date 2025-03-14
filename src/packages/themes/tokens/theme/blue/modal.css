@@ -1,0 +1,11 @@
+:root {
+  --w-container-modal-font: var(undefined);
+  --w-container-modal-background: var(undefined);
+  --w-container-modal-border: var(undefined);
+  --w-container-modal-footer-font: var(undefined);
+  --w-container-modal-footer-background: var(undefined);
+  --w-container-modal-footer-border: var(undefined);
+  --w-container-modal-header-font: var(undefined);
+  --w-container-modal-header-background: var(undefined);
+  --w-container-modal-header-border: var(undefined);
+}

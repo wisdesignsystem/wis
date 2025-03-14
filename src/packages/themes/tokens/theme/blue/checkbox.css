@@ -1,0 +1,27 @@
+:root {
+  --w-component-checkbox-font: var(undefined);
+  --w-component-checkbox-item-font: var(undefined);
+  --w-component-checkbox-item-background: var(undefined);
+  --w-component-checkbox-item-hover-font: var(undefined);
+  --w-component-checkbox-item-hover-background: var(undefined);
+  --w-component-checkbox-item-disabled-font: var(undefined);
+  --w-component-checkbox-item-disabled-background: var(undefined);
+  --w-component-checkbox-item-focus-font: var(undefined);
+  --w-component-checkbox-item-focus-background: var(undefined);
+  --w-component-checkbox-checked-font: var(undefined);
+  --w-component-checkbox-checked-background: var(undefined);
+  --w-component-checkbox-checked-hover-font: var(undefined);
+  --w-component-checkbox-checked-hover-background: var(undefined);
+  --w-component-checkbox-checked-focus-font: var(undefined);
+  --w-component-checkbox-checked-focus-background: var(undefined);
+  --w-component-checkbox-checked-disabled-font: var(undefined);
+  --w-component-checkbox-checked-disabled-background: var(undefined);
+  --w-component-checkbox-Indeterminate-font: var(undefined);
+  --w-component-checkbox-Indeterminate-background: var(undefined);
+  --w-component-checkbox-Indeterminate-hover-font: var(undefined);
+  --w-component-checkbox-Indeterminate-hover-background: var(undefined);
+  --w-component-checkbox-Indeterminate-focus-font: var(undefined);
+  --w-component-checkbox-Indeterminate-focus-background: var(undefined);
+  --w-component-checkbox-Indeterminate-disabled-font: var(undefined);
+  --w-component-checkbox-Indeterminate-disabled-background: var(undefined);
+}

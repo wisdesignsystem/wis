@@ -1,6 +1,6 @@
 {
   "name": "@wisdesign/wis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -23,7 +23,7 @@
     "rc": "pnpm changeset pre enter rc && pnpm changeset version && pnpm changeset pre exit",
     "release": "pnpm changeset tag && git push --follow-tags && pnpm publish",
     "docgen": "typescript-docgen -s ./src/packages -o ./src/definitions.ts && biome format --write",
-    "token": "token -n w -s ./src/assets/wis.basic.tokens.json -t blue:./src/assets/wis.blue.tokens.json,dark:./src/assets/wis.dark.tokens.json,orange:./src/assets/wis.orange.tokens.json -o ./src/themes"
+    "token": "wis token -s w -o ./src/packages/themes/tokens --light ./src/assets/themes/theme.light.tokens.json --dark ./src/assets/themes/theme.dark.tokens.json --component ./src/assets/themes/component.basic.tokens.json --palette ./src/assets/themes/palette.tokens.json --gray black:./src/assets/themes/gray.black.tokens.json blue:./src/assets/themes/gray.blue.tokens.json -t blue:./src/assets/themes/brand.blue.tokens.json orange:./src/assets/themes/brand.orange.tokens.json"
   },
   "files": [],
   "publishConfig": {
@@ -55,9 +55,9 @@
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
     "@rsbuild/core": "1.2.13",
+    "@rsbuild/plugin-basic-ssl": "1.1.1",
     "@rsbuild/plugin-react": "1.1.0",
     "@rsbuild/plugin-sass": "1.2.2",
-    "@rsbuild/plugin-basic-ssl": "1.1.1",
     "@types/lodash.debounce": "4.0.9",
     "@types/node": "22.13.7",
     "@types/react": "18.3.16",
@@ -68,5 +68,10 @@
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@wisdesign/cli": "link:../wis-cli/packages/cli"
+    }
   }
 }

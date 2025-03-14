@@ -1,0 +1,29 @@
+:root {
+  --w-component-badge-background-gray: var(undefined);
+  --w-component-badge-background-blue: var(undefined);
+  --w-component-badge-background-indigo: var(undefined);
+  --w-component-badge-background-purple: var(undefined);
+  --w-component-badge-background-yellow: var(undefined);
+  --w-component-badge-background-orange: var(undefined);
+  --w-component-badge-background-green: var(undefined);
+  --w-component-badge-background-teal: var(undefined);
+  --w-component-badge-background-red: var(undefined);
+  --w-component-badge-font-color-gray: var(undefined);
+  --w-component-badge-font-color-blue: var(undefined);
+  --w-component-badge-font-color-indigo: var(undefined);
+  --w-component-badge-font-color-purple: var(undefined);
+  --w-component-badge-font-color-yellow: var(undefined);
+  --w-component-badge-font-color-orange: var(undefined);
+  --w-component-badge-font-color-green: var(undefined);
+  --w-component-badge-font-color-teal: var(undefined);
+  --w-component-badge-font-color-red: var(undefined);
+  --w-component-badge-border-gray: var(undefined);
+  --w-component-badge-border-blue: var(undefined);
+  --w-component-badge-border-indigo: var(undefined);
+  --w-component-badge-border-purple: var(undefined);
+  --w-component-badge-border-yellow: var(undefined);
+  --w-component-badge-border-orange: var(undefined);
+  --w-component-badge-border-green: var(undefined);
+  --w-component-badge-border-teal: var(undefined);
+  --w-component-badge-border-red: var(undefined);
+}

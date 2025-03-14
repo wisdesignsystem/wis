@@ -1,0 +1,23 @@
+:root {
+  --w-container-layout-font: var(undefined);
+  --w-container-layout-background: var(undefined);
+  --w-container-layout-border: var(undefined);
+  --w-container-layout-collapse-font: var(undefined);
+  --w-container-layout-collapse-background: var(undefined);
+  --w-container-layout-collapse-border: var(undefined);
+  --w-container-layout-collapse-hover-font: var(undefined);
+  --w-container-layout-collapse-hover-background: var(undefined);
+  --w-container-layout-collapse-hover-border: var(undefined);
+  --w-container-layout-collapse-active-font: var(undefined);
+  --w-container-layout-collapse-active-background: var(undefined);
+  --w-container-layout-collapse-active-border: var(undefined);
+  --w-container-layout-collapse-focus-font: var(undefined);
+  --w-container-layout-collapse-focus-background: var(undefined);
+  --w-container-layout-collapse-focus-border: var(undefined);
+  --w-container-layout-header-font: var(undefined);
+  --w-container-layout-header-background: var(undefined);
+  --w-container-layout-header-border: var(undefined);
+  --w-container-layout-footer-font: var(undefined);
+  --w-container-layout-footer-background: var(undefined);
+  --w-container-layout-footer-border: var(undefined);
+}

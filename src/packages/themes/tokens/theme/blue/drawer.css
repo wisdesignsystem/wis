@@ -1,0 +1,11 @@
+:root {
+  --w-container-drawer-font: var(undefined);
+  --w-container-drawer-background: var(undefined);
+  --w-container-drawer-border: var(undefined);
+  --w-container-drawer-footer-font: var(undefined);
+  --w-container-drawer-footer-background: var(undefined);
+  --w-container-drawer-footer-border: var(undefined);
+  --w-container-drawer-header-font: var(undefined);
+  --w-container-drawer-header-background: var(undefined);
+  --w-container-drawer-header-border: var(undefined);
+}

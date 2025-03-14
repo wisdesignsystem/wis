@@ -1,0 +1,17 @@
+:root {
+  --w-component-checkbox-card-font: var(undefined);
+  --w-component-checkbox-card-background: var(undefined);
+  --w-component-checkbox-card-border: var(undefined);
+  --w-component-checkbox-card-selected-font: var(undefined);
+  --w-component-checkbox-card-selected-background: var(undefined);
+  --w-component-checkbox-card-selected-border: var(undefined);
+  --w-component-checkbox-card-hover-font: var(undefined);
+  --w-component-checkbox-card-hover-background: var(undefined);
+  --w-component-checkbox-card-hover-border: var(undefined);
+  --w-component-checkbox-card-focus-font: var(undefined);
+  --w-component-checkbox-card-focus-background: var(undefined);
+  --w-component-checkbox-card-focus-border: var(undefined);
+  --w-component-checkbox-card-disabled-font: var(undefined);
+  --w-component-checkbox-card-disabled-background: var(undefined);
+  --w-component-checkbox-card-disabled-border: var(undefined);
+}

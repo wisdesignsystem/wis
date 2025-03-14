@@ -1,0 +1,9 @@
+:root {
+  --w-component-toggletip-font: var(undefined);
+  --w-component-toggletip-hover-font: var(undefined);
+  --w-component-toggletip-active-font: var(undefined);
+  --w-component-toggletip-focus-font: var(undefined);
+  --w-component-toggletip-item-font: var(undefined);
+  --w-component-toggletip-item-background: var(undefined);
+  --w-component-toggletip-item-border: var(undefined);
+}

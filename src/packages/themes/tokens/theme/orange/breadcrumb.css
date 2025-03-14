@@ -1,0 +1,11 @@
+:root {
+  --w-component-breadcrumb-font: var(undefined);
+  --w-component-breadcrumb-background: var(undefined);
+  --w-component-breadcrumb-border: var(undefined);
+  --w-component-breadcrumb-item-font: var(undefined);
+  --w-component-breadcrumb-item-background: var(undefined);
+  --w-component-breadcrumb-item-border: var(undefined);
+  --w-component-breadcrumb-separator-font: var(undefined);
+  --w-component-breadcrumb-separator-background: var(undefined);
+  --w-component-breadcrumb-separator-border: var(undefined);
+}

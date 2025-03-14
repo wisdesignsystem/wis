@@ -1,0 +1,20 @@
+:root {
+  --w-component-shortcut-light-background: var(undefined);
+  --w-component-shortcut-light-font: var(undefined);
+  --w-component-shortcut-light-border: var(undefined);
+  --w-component-shortcut-light-disabled-background: var(undefined);
+  --w-component-shortcut-light-disabled-font: var(undefined);
+  --w-component-shortcut-light-disabled-border: var(undefined);
+  --w-component-shortcut-dark-background: var(undefined);
+  --w-component-shortcut-dark-font: var(undefined);
+  --w-component-shortcut-dark-border: var(undefined);
+  --w-component-shortcut-dark-disabled-background: var(undefined);
+  --w-component-shortcut-dark-disabled-font: var(undefined);
+  --w-component-shortcut-dark-disabled-border: var(undefined);
+  --w-component-shortcut-gray-background: var(undefined);
+  --w-component-shortcut-gray-font: var(undefined);
+  --w-component-shortcut-gray-border: var(undefined);
+  --w-component-shortcut-gray-disabled-background: var(undefined);
+  --w-component-shortcut-gray-disabled-font: var(undefined);
+  --w-component-shortcut-gray-disabled-border: var(undefined);
+}
