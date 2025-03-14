@@ -1,0 +1,8 @@
+:root {
+  --w-container-page-header-font: var(undefined);
+  --w-container-page-header-background: var(undefined);
+  --w-container-page-header-border: var(undefined);
+  --w-container-page-info-font: var(undefined);
+  --w-container-page-info-label-font: var(undefined);
+  --w-container-page-info-icon-font: var(undefined);
+}

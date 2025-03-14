@@ -1,0 +1,26 @@
+:root {
+  --w-container-module-basic-font: var(undefined);
+  --w-container-module-basic-background: var(undefined);
+  --w-container-module-basic-border: var(undefined);
+  --w-container-module-basic-header-font: var(undefined);
+  --w-container-module-basic-header-background: var(undefined);
+  --w-container-module-basic-header-border: var(undefined);
+  --w-container-module-basic-nested-header-font: var(undefined);
+  --w-container-module-basic-nested-header-background: var(undefined);
+  --w-container-module-basic-nested-header-border: var(undefined);
+  --w-container-module-basic-content-font: var(undefined);
+  --w-container-module-basic-content-background: var(undefined);
+  --w-container-module-basic-content-border: var(undefined);
+  --w-container-module-ghost-font: var(undefined);
+  --w-container-module-ghost-background: var(undefined);
+  --w-container-module-ghost-border: var(undefined);
+  --w-container-module-ghost-header-font: var(undefined);
+  --w-container-module-ghost-header-background: var(undefined);
+  --w-container-module-ghost-header-border: var(undefined);
+  --w-container-module-ghost-nested-header-font: var(undefined);
+  --w-container-module-ghost-nested-header-background: var(undefined);
+  --w-container-module-ghost-nested-header-border: var(undefined);
+  --w-container-module-ghost-content-font: var(undefined);
+  --w-container-module-ghost-content-background: var(undefined);
+  --w-container-module-ghost-content-border: var(undefined);
+}
