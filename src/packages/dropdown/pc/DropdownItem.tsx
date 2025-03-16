@@ -2,7 +2,7 @@ import { matchElement } from "wis/core";
 import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import { Context } from "@/packages/contextMenu/export";
 import attrs from "@/utils/attrs";
-import * as RDXDropdownMenu from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu as RDXDropdownMenu } from "radix-ui";
 import { CheckIcon, RightIcon } from "@wisdesign/lsicon";
 import classNames from "classnames";
 import { useContext, useRef } from "react";

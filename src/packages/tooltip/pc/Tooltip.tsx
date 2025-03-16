@@ -1,4 +1,4 @@
-import * as RDXTooltip from "@radix-ui/react-tooltip";
+import { Tooltip as RDXTooltip } from "radix-ui";
 import classNames from "classnames";
 import type { ReactNode } from "react";
 import { Children } from "react";

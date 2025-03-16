@@ -1,7 +1,7 @@
 import { matchElement } from "wis/core";
 import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import attrs from "@/utils/attrs";
-import * as RDXContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu as RDXContextMenu } from "radix-ui";
 import { CheckIcon, RightIcon } from "@wisdesign/lsicon";
 import classNames from "classnames";
 

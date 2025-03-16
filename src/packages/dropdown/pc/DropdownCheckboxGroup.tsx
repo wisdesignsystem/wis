@@ -1,6 +1,6 @@
 import { matchElement } from "wis/core";
 import { useContextValue } from "@/packages/contextMenu/export";
-import * as RDXDropdownMenu from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu as RDXDropdownMenu } from "radix-ui";
 import { Children, cloneElement } from "react";
 
 import type { DropdownCheckboxGroupProps } from "../dropdown";
