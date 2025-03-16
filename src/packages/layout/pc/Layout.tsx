@@ -1,9 +1,11 @@
 import { Box, BoxActions, BoxContent, BoxHeader } from "wis/box";
 import { isElement, matchElement } from "wis/core";
 import { Col, Row } from "wis/grid";
+import type { ColProps } from "wis/grid";
 import { isUndefined } from "@/utils/is";
 import classNames from "classnames";
 import { Children, isValidElement } from "react";
+import type { ReactElement } from "react";
 
 import type { LayoutProps } from "../layout";
 
@@ -71,7 +73,8 @@ function Layout({
                     return <Col>{child}</Col>;
                   }
 
-                  return <Col size={child.props.size}>{child}</Col>;
+                  const childElement = child as ReactElement<ColProps>;
+                  return <Col size={childElement.props.size}>{child}</Col>;
                 })}
               </Row>
             ) : (

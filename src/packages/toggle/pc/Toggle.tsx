@@ -1,6 +1,6 @@
 import { Shortcut, createShortcutMeta } from "wis/shortcut";
 import attrs from "@/utils/attrs";
-import * as RDXToggle from "@radix-ui/react-toggle";
+import { Toggle as RDXToggle } from "radix-ui";
 import classNames from "classnames";
 import { useRef } from "react";
 

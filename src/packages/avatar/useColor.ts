@@ -4,9 +4,10 @@ function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const colors = ["gray", "blue", "purple", "orange", "red", "green"];
+type Color = "auto" | "gray" | "blue" | "purple" | "orange" | "red" | "green";
+const colors: Color[] = ["gray", "blue", "purple", "orange", "red", "green"];
 
-function createColor(color: string) {
+function createColor(color: Color): Color {
   if (color !== "auto") {
     return color;
   }
@@ -15,8 +16,8 @@ function createColor(color: string) {
   return colors[index];
 }
 
-function createUniqueColor(excludeColor: string) {
-  let color: string;
+function createUniqueColor(excludeColor: Color) {
+  let color: Color;
   while (true) {
     const index = random(0, colors.length - 1);
     color = colors[index];
@@ -29,7 +30,7 @@ function createUniqueColor(excludeColor: string) {
   return color;
 }
 
-export function useColor(color: string) {
+export function useColor(color: Color) {
   const [currentColor, setCurrentColor] = useState(createColor(color));
 
   useEffect(() => {
@@ -39,10 +40,10 @@ export function useColor(color: string) {
   return currentColor;
 }
 
-export function useGroupColor(color: string) {
-  const groupColors = useRef<string[]>([]);
+export function useGroupColor(color: Color) {
+  const groupColors = useRef<Color[]>([]);
 
-  function getColor(index: number) {
+  function getColor(index: number): Color {
     if (color !== "auto") {
       return color;
     }
