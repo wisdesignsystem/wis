@@ -1,5 +1,5 @@
 import { matchElement } from "wis/core";
-import * as RDXCollapsible from "@radix-ui/react-collapsible";
+import { Collapsible as RDXCollapsible } from "radix-ui";
 import classNames from "classnames";
 
 import type { BoxCollapsibleProps } from "../box";

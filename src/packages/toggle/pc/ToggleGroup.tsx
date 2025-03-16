@@ -1,5 +1,5 @@
 import { matchElement } from "wis/core";
-import * as RDXToggleGroup from "@radix-ui/react-toggle-group";
+import { ToggleGroup as RDXToggleGroup } from "radix-ui";
 import classNames from "classnames";
 import { Children, cloneElement } from "react";
 

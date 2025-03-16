@@ -1,10 +1,16 @@
-import type { ReactNode } from "react";
+import type { ReactNode, ReactElement } from "react";
 import { Children, isValidElement } from "react";
 
 import CheckboxGroup from "./CheckboxGroup";
 import Group from "./Group";
 import Item from "./Item";
 import RadioGroup from "./RadioGroup";
+import type {
+  ContextMenuItemProps,
+  ContextMenuRadioGroupProps,
+  ContextMenuGroupProps,
+  ContextMenuCheckboxGroupProps,
+} from "./contextMenu";
 
 interface ShortcutProps {
   mapper: (displayName: string) => string | undefined;
@@ -29,19 +35,29 @@ function Shortcut({
         }
 
         if (displayName === "Item") {
-          return <Item mapper={mapper} {...child.props} />;
+          const childElement = child as ReactElement<ContextMenuItemProps>;
+
+          return <Item mapper={mapper} {...childElement.props} />;
         }
 
         if (displayName === "RadioGroup") {
-          return <RadioGroup mapper={mapper} {...child.props} />;
+          const childElement =
+            child as ReactElement<ContextMenuRadioGroupProps>;
+
+          return <RadioGroup mapper={mapper} {...childElement.props} />;
         }
 
         if (displayName === "Group") {
-          return <Group mapper={mapper} {...child.props} />;
+          const childElement = child as ReactElement<ContextMenuGroupProps>;
+
+          return <Group mapper={mapper} {...childElement.props} />;
         }
 
         if (displayName === "CheckboxGroup") {
-          return <CheckboxGroup mapper={mapper} {...child.props} />;
+          const childElement =
+            child as ReactElement<ContextMenuCheckboxGroupProps>;
+
+          return <CheckboxGroup mapper={mapper} {...childElement.props} />;
         }
 
         return null;

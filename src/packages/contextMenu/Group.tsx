@@ -1,8 +1,12 @@
 import { isFunction } from "@/utils/is";
 import { Children, isValidElement } from "react";
+import type { ReactElement } from "react";
 
 import Item from "./Item";
-import type { ContextMenuGroupProps } from "./contextMenu";
+import type {
+  ContextMenuGroupProps,
+  ContextMenuItemProps,
+} from "./contextMenu";
 
 interface GroupProps extends ContextMenuGroupProps {
   mapper: (displayName: string) => string | undefined;
@@ -16,23 +20,25 @@ function Group({ mapper, onSelect = () => {}, children }: GroupProps) {
           return null;
         }
 
+        const childElement = child as ReactElement<ContextMenuItemProps>;
+
         // @ts-ignore
-        const displayName = mapper(child.type.displayName);
+        const displayName = mapper(childElement.type.displayName);
         if (displayName !== "Item") {
           return null;
         }
 
         return (
           <Item
-            {...child.props}
+            {...childElement.props}
             mapper={mapper}
             role="menuitem"
             onClick={(event: Event) => {
-              if (isFunction(child.props.onClick)) {
-                child.props.onClick(event);
+              if (isFunction(childElement.props.onClick)) {
+                childElement.props.onClick(event);
               }
 
-              onSelect(child.props.value);
+              onSelect(childElement.props.value);
             }}
           />
         );

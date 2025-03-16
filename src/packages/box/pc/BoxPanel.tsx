@@ -1,4 +1,4 @@
-import * as RDXCollapsible from "@radix-ui/react-collapsible";
+import { Collapsible as RDXCollapsible } from "radix-ui";
 import classNames from "classnames";
 
 import type { BoxPanelProps } from "../box";

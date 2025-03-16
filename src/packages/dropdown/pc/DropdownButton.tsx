@@ -1,6 +1,6 @@
 import { matchElement } from "wis/core";
 import { Context, Shortcut } from "@/packages/contextMenu/export";
-import * as RDXDropdownMenu from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu as RDXDropdownMenu } from "radix-ui";
 import { useState } from "react";
 
 import type { DropdownButtonProps } from "../dropdown";

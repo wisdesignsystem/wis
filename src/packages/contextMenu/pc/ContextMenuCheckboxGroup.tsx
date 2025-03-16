@@ -1,5 +1,5 @@
 import { matchElement } from "wis/core";
-import * as RDXContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu as RDXContextMenu } from "radix-ui";
 import { Children, cloneElement } from "react";
 
 import type { ContextMenuCheckboxGroupProps } from "../contextMenu";

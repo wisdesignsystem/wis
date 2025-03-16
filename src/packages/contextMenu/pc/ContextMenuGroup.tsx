@@ -1,6 +1,6 @@
 import { matchElement } from "wis/core";
 import { isFunction } from "@/utils/is";
-import * as RDXContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu as RDXContextMenu } from "radix-ui";
 import { Children, cloneElement } from "react";
 
 import type { ContextMenuGroupProps } from "../contextMenu";
