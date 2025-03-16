@@ -4,10 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@wisdesign/cli': link:../wis-cli/packages/cli
-  '@wisdesign/wis-plugin': link:../wis-cli/packages/wis-plugin
-
 importers:
 
   .:
@@ -95,14 +91,14 @@ importers:
         specifier: 18.3.5
         version: 18.3.5(@types/react@18.3.16)
       '@wisdesign/cli':
-        specifier: link:../wis-cli/packages/cli
-        version: link:../wis-cli/packages/cli
+        specifier: 0.0.29
+        version: 0.0.29(@types/node@22.13.7)
       '@wisdesign/toolkit':
         specifier: 0.0.7
         version: 0.0.7(typescript@5.7.3)
       '@wisdesign/wis-plugin':
-        specifier: link:../wis-cli/packages/wis-plugin
-        version: link:../wis-cli/packages/wis-plugin
+        specifier: 0.0.3
+        version: 0.0.3(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
       husky:
         specifier: 9.0.11
         version: 9.0.11
@@ -691,14 +687,32 @@ packages:
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
+  '@module-federation/bridge-react-webpack-plugin@0.8.11':
+    resolution: {integrity: sha512-Ywm7W4z/lvSqGxmCxnP8p9wBJXm6SSsg9/sV5nslMlkAGUiKFCvWf/uU06Wig+MdARVnnx7rMR/yxFe73qF7VA==}
+
   '@module-federation/bridge-react-webpack-plugin@0.9.1':
     resolution: {integrity: sha512-znN/Qm6M0U1t3iF10gu1hSxDkk18yz78yvk+AMB34UDzpXHiC1zbpIeV2CQNV5GCeafmCICmcn9y1qh7F54KTg==}
+
+  '@module-federation/data-prefetch@0.8.11':
+    resolution: {integrity: sha512-Jq6lz2qfWrqGZQXWSXuOnRqq38lYdnzghoRn0extaVxmqCQHipILW79QRccK03rT2DSjttG6DNT50DT0z8URWw==}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
 
   '@module-federation/data-prefetch@0.9.1':
     resolution: {integrity: sha512-rS1AsgRvIMAWK8oMprEBF0YQ3WvsqnumjinvAZU1Dqut5DICmpQMTPEO1OrAKyjO+PQgEhmq13HggzN6ebGLrQ==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
+
+  '@module-federation/dts-plugin@0.8.11':
+    resolution: {integrity: sha512-mNcIGO9vz0PuIc2E8Q5oEBim2c4O7lAIZBdfDMaEGsI/Q6CTGH5ITCLb4clpc53oQIsjAVIo/ZrtmmRg4/sF/g==}
+    peerDependencies:
+      typescript: ^4.9.0 || ^5.0.0
+      vue-tsc: '>=1.0.24'
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
 
   '@module-federation/dts-plugin@0.9.1':
     resolution: {integrity: sha512-DezBrFaIKfDcEY7UhqyO1WbYocERYsR/CDN8AV6OvMnRlQ8u0rgM8qBUJwx0s+K59f+CFQFKEN4C8p7naCiHrw==}
@@ -707,6 +721,20 @@ packages:
       vue-tsc: '>=1.0.24'
     peerDependenciesMeta:
       vue-tsc:
+        optional: true
+
+  '@module-federation/enhanced@0.8.11':
+    resolution: {integrity: sha512-fjnW0j2suGr2AvR6YxjL6CJKj0zghmHcgxbzCkQDG4DkxVnNr86JoPOyfoWwa/7juX5HudlXitalBfo7bupYgA==}
+    peerDependencies:
+      typescript: ^4.9.0 || ^5.0.0
+      vue-tsc: '>=1.0.24'
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      vue-tsc:
+        optional: true
+      webpack:
         optional: true
 
   '@module-federation/enhanced@0.9.1':
@@ -723,22 +751,48 @@ packages:
       webpack:
         optional: true
 
+  '@module-federation/error-codes@0.8.11':
+    resolution: {integrity: sha512-mqt8/BQq11Cc/zbuHtojTwbZ78LJiy4f/cm9UsQPWf65Pqxi4Ticn40wccVFq8O9gee/QEi2Mf3XiwSf2SHl0A==}
+
   '@module-federation/error-codes@0.8.4':
     resolution: {integrity: sha512-55LYmrDdKb4jt+qr8qE8U3al62ZANp3FhfVaNPOaAmdTh0jHdD8M3yf5HKFlr5xVkVO4eV/F/J2NCfpbh+pEXQ==}
 
   '@module-federation/error-codes@0.9.1':
     resolution: {integrity: sha512-q8spCvlwUzW42iX1irnlBTcwcZftRNHyGdlaoFO1z/fW4iphnBIfijzkigWQzOMhdPgzqN/up7XN+g5hjBGBtw==}
 
+  '@module-federation/inject-external-runtime-core-plugin@0.8.11':
+    resolution: {integrity: sha512-sezMsApV9Ccvwbe5wZlZ1iNTpbns68lLHHsATjDzUsnfbnY5wT/CrYcDi/vb61gELG02JnHiUiFR/8r/alKVxQ==}
+    peerDependencies:
+      '@module-federation/runtime-tools': 0.8.11
+
   '@module-federation/inject-external-runtime-core-plugin@0.9.1':
     resolution: {integrity: sha512-BPfzu1cqDU5BhM493enVF1VfxJWmruen0ktlHrWdJJlcddhZzyFBGaLAGoGc+83fS75aEllvJTEthw4kMViMQQ==}
     peerDependencies:
       '@module-federation/runtime-tools': 0.9.1
 
+  '@module-federation/managers@0.8.11':
+    resolution: {integrity: sha512-5fncfxzrb450W3jTWxnOFNiIx2ReT+jhDPMUmJCKoGFa1etpbVw+TVp2l+HgR3tG1sxOt3tdJNjm9Spko8IxLQ==}
+
   '@module-federation/managers@0.9.1':
     resolution: {integrity: sha512-8hpIrvGfiODxS1qelTd7eaLRVF7jrp17RWgeH1DWoprxELANxm5IVvqUryB+7j+BhoQzamog9DL5q4MuNfGgIA==}
 
+  '@module-federation/manifest@0.8.11':
+    resolution: {integrity: sha512-3yR+ViwltDI9gfHjRl+IdDGMms2/e/4TyOdQUaC10haZqzcbxNEY52U5wB9PpegtgF5YqjnMgzdZpUeJfxjsHA==}
+
   '@module-federation/manifest@0.9.1':
     resolution: {integrity: sha512-+GteKBXrAUkq49i2CSyWZXM4vYa+mEVXxR9Du71R55nXXxgbzAIoZj9gxjRunj9pcE8+YpAOyfHxLEdWngxWdg==}
+
+  '@module-federation/rspack@0.8.11':
+    resolution: {integrity: sha512-z5xHETXGNqYEGbRT4HWAA7zb6qZ7zd6sVDTCbvSiDJ6pST78Yrkz3B6vbMhgh37LrhXbULudIo/fe0z/v/EWdA==}
+    peerDependencies:
+      '@rspack/core': '>=0.7'
+      typescript: ^4.9.0 || ^5.0.0
+      vue-tsc: '>=1.0.24'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      vue-tsc:
+        optional: true
 
   '@module-federation/rspack@0.9.1':
     resolution: {integrity: sha512-ZJqG75dWHhyTMa9I0YPJEV2XRt0MFxnDiuMOpI92esdmwWY633CBKyNh1XxcLd629YVeTv03+whr+Fz/f91JEw==}
@@ -752,8 +806,14 @@ packages:
       vue-tsc:
         optional: true
 
+  '@module-federation/runtime-core@0.6.19':
+    resolution: {integrity: sha512-PDMQIkxEWlF9c1ezDl1f+DwzoNoWan/jfhtBoOjp0JiMtPNPe3ZUH0v2++Cbaxc/BRtHT+ILCSDEezC4zF98uw==}
+
   '@module-federation/runtime-core@0.9.1':
     resolution: {integrity: sha512-r61ufhKt5pjl81v7TkmhzeIoSPOaNtLynW6+aCy3KZMa3RfRevFxmygJqv4Nug1L0NhqUeWtdLejh4VIglNy5Q==}
+
+  '@module-federation/runtime-tools@0.8.11':
+    resolution: {integrity: sha512-whomac5Hd4+fuUhgT+f0eAino5OwhDSowkXmJocZkdEZfudYD1qWH1qc5DQeEZ69zsrsb7q8S8M0d8Q+7bsVzQ==}
 
   '@module-federation/runtime-tools@0.8.4':
     resolution: {integrity: sha512-fjVOsItJ1u5YY6E9FnS56UDwZgqEQUrWFnouRiPtK123LUuqUI9FH4redZoKWlE1PB0ir1Z3tnqy8eFYzPO38Q==}
@@ -761,11 +821,17 @@ packages:
   '@module-federation/runtime-tools@0.9.1':
     resolution: {integrity: sha512-JQZ//ab+lEXoU2DHAH+JtYASGzxEjXB0s4rU+6VJXc8c+oUPxH3kWIwzjdncg2mcWBmC1140DCk+K+kDfOZ5CQ==}
 
+  '@module-federation/runtime@0.8.11':
+    resolution: {integrity: sha512-07aBwU5AJltbspOot0gVYDA0PAMNkjBBaIRIUMsLNj9MGx01/YKl13z239UdC0Fk4hFlexpkef8ZvnMPgp4YFA==}
+
   '@module-federation/runtime@0.8.4':
     resolution: {integrity: sha512-yZeZ7z2Rx4gv/0E97oLTF3V6N25vglmwXGgoeju/W2YjsFvWzVtCDI7zRRb0mJhU6+jmSM8jP1DeQGbea/AiZQ==}
 
   '@module-federation/runtime@0.9.1':
     resolution: {integrity: sha512-jp7K06weabM5BF5sruHr/VLyalO+cilvRDy7vdEBqq88O9mjc0RserD8J+AP4WTl3ZzU7/GRqwRsiwjjN913dA==}
+
+  '@module-federation/sdk@0.8.11':
+    resolution: {integrity: sha512-h9oXuOABJ5O77TeWZoLO3KNq7HywdZkX2c2rmYEQRRrkuXHgHAQu0nEs7ZuL5YDWNQLUMxoOyTH+sK+JWgvnKQ==}
 
   '@module-federation/sdk@0.8.4':
     resolution: {integrity: sha512-waABomIjg/5m1rPDBWYG4KUhS5r7OUUY7S+avpaVIY/tkPWB3ibRDKy2dNLLAMaLKq0u+B1qIdEp4NIWkqhqpg==}
@@ -773,8 +839,14 @@ packages:
   '@module-federation/sdk@0.9.1':
     resolution: {integrity: sha512-YQonPTImgnCqZjE/A+3N2g3J5ypR6kx1tbBzc9toUANKr/dw/S63qlh/zHKzWQzxjjNNVMdXRtTMp07g3kgEWg==}
 
+  '@module-federation/third-party-dts-extractor@0.8.11':
+    resolution: {integrity: sha512-X1esz2m836hp/eKH230AerMKITVlNfeNeaSyNX3+YPqOK8EkdMSCKkf/K5zYuqdY0ypNJNYkWPIx8uYFOfYe5Q==}
+
   '@module-federation/third-party-dts-extractor@0.9.1':
     resolution: {integrity: sha512-KeIByP718hHyq+Mc53enZ419pZZ1fh9Ns6+/bYLkc3iCoJr/EDBeiLzkbMwh2AS4Qk57WW0yNC82xzf7r0Zrrw==}
+
+  '@module-federation/webpack-bundler-runtime@0.8.11':
+    resolution: {integrity: sha512-lbQyJjWZrg+90v9BJSMay5EIqnl/NrJGteR9eqeN1P0YLfXVq46gN1qqdaP6aHMnPbSU3PlFTNO/dgJzciLGTg==}
 
   '@module-federation/webpack-bundler-runtime@0.8.4':
     resolution: {integrity: sha512-HggROJhvHPUX7uqBD/XlajGygMNM1DG0+4OAkk8MBQe4a18QzrRNzZt6XQbRTSG4OaEoyRWhQHvYD3Yps405tQ==}
@@ -1699,8 +1771,28 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
+  '@wisdesign/cli@0.0.29':
+    resolution: {integrity: sha512-BgTSVBHvdsMpVymKCbnafTotCqQ6He3MgfNgobZ1TOr3FctBfNScFv2+tmPl1LpXWTnRkec0UNb5uUfXXs3wgA==}
+    hasBin: true
+
   '@wisdesign/context@0.0.1':
     resolution: {integrity: sha512-82d46UNjr4oU0l2t2p0JX+u0FkphjfccvyW+z1DhdcnRFTkBHfsmpbBWrELuSjca8kd3S/HTV7wA4FNwsv+THw==}
+
+  '@wisdesign/cross-plugin@0.0.2':
+    resolution: {integrity: sha512-NwNFYhfjfGynwuWszmwSVoaAhzY7w1hmE3U7LfS4hUln1r68VhVZZG/H+IUFyIIgId2b5S+Yxqb41kxO+d8ENg==}
+    peerDependencies:
+      '@rsbuild/core': ~1
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
+
+  '@wisdesign/kind-plugin@0.0.2':
+    resolution: {integrity: sha512-w06oyrmaJj0KuGvVNTFe1yrH2BMxvHGEr/2oQ/rOGivzWLETQ8XLANQtujpH0BhwteVqZuND0v8SDJx983d+AA==}
+    peerDependencies:
+      '@rsbuild/core': ~1
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
 
   '@wisdesign/lsicon@0.0.19':
     resolution: {integrity: sha512-z0qiVqNwsBNfObZznjXVPI8Ypp20zxkDVGPC27L3WTvqu135EbYWQEbHC/R3CqzRfnNFidnDqAM/KuATj3QVcQ==}
@@ -1708,12 +1800,36 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
+  '@wisdesign/remote-plugin@0.0.2':
+    resolution: {integrity: sha512-r7t6FqjUwLHlQyxG6jJpkEioJZATTyCrLHkhTP7T8X35097VjOGRvUjnCwElQJYo/dKJbfwBeJDPKOF15xle/Q==}
+    peerDependencies:
+      '@rsbuild/core': ~1
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
+
+  '@wisdesign/shell-plugin@0.0.3':
+    resolution: {integrity: sha512-5Q4hKquRN853aBaTFX8Bl1sSpkEf5E6uQ8sflv2Uy7zW5pTXo9dIyPF0vBRY6ymtvuLZgPrqThHUi1TgSVXJ5Q==}
+    peerDependencies:
+      '@rsbuild/core': ~1
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
+
   '@wisdesign/toolkit@0.0.7':
     resolution: {integrity: sha512-KTtb9IKBZDQf2SeQ7TkS9HyhHEqoEazujCeOoU6xlLEx4x5ZbLRUW+CkI1yGb7vbhck011e0UEPIxa4eNsRqFg==}
     hasBin: true
 
   '@wisdesign/utils@0.0.6':
     resolution: {integrity: sha512-WzXGJWrV4DYZz/dWhfp9vDIo2OyI23DgqLXdf9fviVBaKHn+bby3fR/I5t/cGfS5jWRk+OJ2UuivS8C1HxdBYg==}
+
+  '@wisdesign/wis-plugin@0.0.3':
+    resolution: {integrity: sha512-yN74ckamQjrwbOUsZrFe+L8pxYTsw9jFEK9abOFCfJxBGstvVZpJNIeb1XnIlrQRFQmLyoE26Mdj3ehIP2HBRw==}
+    peerDependencies:
+      '@rsbuild/core': ~1
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -2851,6 +2967,10 @@ packages:
     resolution: {integrity: sha512-HM0q6XqQ93psDlqvuViNs/Ea3hAyGDkIdVAHlrEocjjAwGrs1fZ+EdQjS9eUPacnYB7Y8SoDdSY3H8p3ce205A==}
     engines: {node: '>=14.17.6'}
 
+  isomorphic-rslog@0.0.7:
+    resolution: {integrity: sha512-n6/XnKnZ5eLEj6VllG4XmamXG7/F69nls8dcynHyhcTpsPUYgcgx4ifEaCo4lQJ2uzwfmIT+F0KBGwBcMKmt5g==}
+    engines: {node: '>=14.17.6'}
+
   isomorphic-ws@5.0.0:
     resolution: {integrity: sha512-muId7Zzn9ywDsyXgTIafTry2sV3nySZeUDe6YedVd1Hvuuep5AsIlqK+XefWpYTyJG5e503F2xIuT2lcU6rCSw==}
     peerDependencies:
@@ -2929,6 +3049,10 @@ packages:
   koa-convert@2.0.0:
     resolution: {integrity: sha512-asOvN6bFlSnxewce2e/DK3p4tltyfC4VM7ZwuTuepI7dEQVcvpyFuBcEARu1+Hxg8DIwytce2n7jrZtRlPrARA==}
     engines: {node: '>= 10'}
+
+  koa@2.15.3:
+    resolution: {integrity: sha512-j/8tY9j5t+GVMLeioLaxweJiKUayFhlGqNTzf2ZGwL0ZCQijd2RLHK0SLW5Tsko8YyyqCZC2cojIb0/s62qTAg==}
+    engines: {node: ^4.8.4 || ^6.10.1 || ^7.10.1 || >= 8.1.4}
 
   koa@2.15.4:
     resolution: {integrity: sha512-7fNBIdrU2PEgLljXoPWoyY4r1e+ToWCmzS/wwMPbUNs7X+5MMET1ObhJBlUkF5uZG9B6QhM2zS1TsH6adegkiQ==}
@@ -3380,6 +3504,12 @@ packages:
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
     engines: {node: '>= 0.4'}
+
+  postcss-px-conversion@0.1.4:
+    resolution: {integrity: sha512-nW9qYtcW9p1H6Hv3x3qeaRvvet+GBM1lUz/qKPf6k+09EMnCnSEFLunuJmUXGW+fOIypYKPbkBZxRcWrDxuXPg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      postcss: '>=8.0.0'
 
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
@@ -4917,12 +5047,29 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
+  '@inquirer/checkbox@4.1.2(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/figures': 1.0.10
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      ansi-escapes: 4.3.2
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
+
   '@inquirer/confirm@5.1.6(@types/node@22.10.7)':
     dependencies:
       '@inquirer/core': 10.1.7(@types/node@22.10.7)
       '@inquirer/type': 3.0.4(@types/node@22.10.7)
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/confirm@5.1.6(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/core@10.1.7(@types/node@22.10.7)':
     dependencies:
@@ -4937,6 +5084,19 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
+  '@inquirer/core@10.1.7(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/figures': 1.0.10
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      ansi-escapes: 4.3.2
+      cli-width: 4.1.0
+      mute-stream: 2.0.0
+      signal-exit: 4.1.0
+      wrap-ansi: 6.2.0
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
+
   '@inquirer/editor@4.2.7(@types/node@22.10.7)':
     dependencies:
       '@inquirer/core': 10.1.7(@types/node@22.10.7)
@@ -4945,6 +5105,14 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
+  '@inquirer/editor@4.2.7(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      external-editor: 3.1.0
+    optionalDependencies:
+      '@types/node': 22.13.7
+
   '@inquirer/expand@4.0.9(@types/node@22.10.7)':
     dependencies:
       '@inquirer/core': 10.1.7(@types/node@22.10.7)
@@ -4952,6 +5120,14 @@ snapshots:
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/expand@4.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/figures@1.0.10': {}
 
@@ -4962,12 +5138,26 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
+  '@inquirer/input@4.1.6(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+    optionalDependencies:
+      '@types/node': 22.13.7
+
   '@inquirer/number@3.0.9(@types/node@22.10.7)':
     dependencies:
       '@inquirer/core': 10.1.7(@types/node@22.10.7)
       '@inquirer/type': 3.0.4(@types/node@22.10.7)
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/number@3.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/password@4.0.9(@types/node@22.10.7)':
     dependencies:
@@ -4976,6 +5166,14 @@ snapshots:
       ansi-escapes: 4.3.2
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/password@4.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      ansi-escapes: 4.3.2
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/prompts@7.2.1(@types/node@22.10.7)':
     dependencies:
@@ -4991,6 +5189,20 @@ snapshots:
       '@inquirer/select': 4.0.9(@types/node@22.10.7)
       '@types/node': 22.10.7
 
+  '@inquirer/prompts@7.2.1(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/checkbox': 4.1.2(@types/node@22.13.7)
+      '@inquirer/confirm': 5.1.6(@types/node@22.13.7)
+      '@inquirer/editor': 4.2.7(@types/node@22.13.7)
+      '@inquirer/expand': 4.0.9(@types/node@22.13.7)
+      '@inquirer/input': 4.1.6(@types/node@22.13.7)
+      '@inquirer/number': 3.0.9(@types/node@22.13.7)
+      '@inquirer/password': 4.0.9(@types/node@22.13.7)
+      '@inquirer/rawlist': 4.0.9(@types/node@22.13.7)
+      '@inquirer/search': 3.0.9(@types/node@22.13.7)
+      '@inquirer/select': 4.0.9(@types/node@22.13.7)
+      '@types/node': 22.13.7
+
   '@inquirer/rawlist@4.0.9(@types/node@22.10.7)':
     dependencies:
       '@inquirer/core': 10.1.7(@types/node@22.10.7)
@@ -4998,6 +5210,14 @@ snapshots:
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/rawlist@4.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/search@3.0.9(@types/node@22.10.7)':
     dependencies:
@@ -5007,6 +5227,15 @@ snapshots:
       yoctocolors-cjs: 2.1.2
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/search@3.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/figures': 1.0.10
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@inquirer/select@4.0.9(@types/node@22.10.7)':
     dependencies:
@@ -5018,9 +5247,23 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.7
 
+  '@inquirer/select@4.0.9(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/core': 10.1.7(@types/node@22.13.7)
+      '@inquirer/figures': 1.0.10
+      '@inquirer/type': 3.0.4(@types/node@22.13.7)
+      ansi-escapes: 4.3.2
+      yoctocolors-cjs: 2.1.2
+    optionalDependencies:
+      '@types/node': 22.13.7
+
   '@inquirer/type@3.0.4(@types/node@22.10.7)':
     optionalDependencies:
       '@types/node': 22.10.7
+
+  '@inquirer/type@3.0.4(@types/node@22.13.7)':
+    optionalDependencies:
+      '@types/node': 22.13.7
 
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
@@ -5061,11 +5304,25 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
+  '@module-federation/bridge-react-webpack-plugin@0.8.11':
+    dependencies:
+      '@module-federation/sdk': 0.8.11
+      '@types/semver': 7.5.8
+      semver: 7.6.3
+
   '@module-federation/bridge-react-webpack-plugin@0.9.1':
     dependencies:
       '@module-federation/sdk': 0.9.1
       '@types/semver': 7.5.8
       semver: 7.6.3
+
+  '@module-federation/data-prefetch@0.8.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@module-federation/runtime': 0.8.11
+      '@module-federation/sdk': 0.8.11
+      fs-extra: 9.1.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@module-federation/data-prefetch@0.9.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -5074,6 +5331,31 @@ snapshots:
       fs-extra: 9.1.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+
+  '@module-federation/dts-plugin@0.8.11(typescript@5.7.3)':
+    dependencies:
+      '@module-federation/error-codes': 0.8.11
+      '@module-federation/managers': 0.8.11
+      '@module-federation/sdk': 0.8.11
+      '@module-federation/third-party-dts-extractor': 0.8.11
+      adm-zip: 0.5.16
+      ansi-colors: 4.1.3
+      axios: 1.8.1
+      chalk: 3.0.0
+      fs-extra: 9.1.0
+      isomorphic-ws: 5.0.0(ws@8.18.0)
+      koa: 2.15.3
+      lodash.clonedeepwith: 4.5.0
+      log4js: 6.9.1
+      node-schedule: 2.1.1
+      rambda: 9.4.2
+      typescript: 5.7.3
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
 
   '@module-federation/dts-plugin@0.9.1(typescript@5.7.3)':
     dependencies:
@@ -5097,6 +5379,32 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - debug
+      - supports-color
+      - utf-8-validate
+
+  '@module-federation/enhanced@0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+    dependencies:
+      '@module-federation/bridge-react-webpack-plugin': 0.8.11
+      '@module-federation/data-prefetch': 0.8.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@module-federation/dts-plugin': 0.8.11(typescript@5.7.3)
+      '@module-federation/error-codes': 0.8.11
+      '@module-federation/inject-external-runtime-core-plugin': 0.8.11(@module-federation/runtime-tools@0.8.11)
+      '@module-federation/managers': 0.8.11
+      '@module-federation/manifest': 0.8.11(typescript@5.7.3)
+      '@module-federation/rspack': 0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(typescript@5.7.3)
+      '@module-federation/runtime-tools': 0.8.11
+      '@module-federation/sdk': 0.8.11
+      btoa: 1.2.1
+      upath: 2.0.1
+    optionalDependencies:
+      typescript: 5.7.3
+      webpack: 5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0)
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - bufferutil
+      - debug
+      - react
+      - react-dom
       - supports-color
       - utf-8-validate
 
@@ -5126,19 +5434,46 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  '@module-federation/error-codes@0.8.11': {}
+
   '@module-federation/error-codes@0.8.4': {}
 
   '@module-federation/error-codes@0.9.1': {}
 
+  '@module-federation/inject-external-runtime-core-plugin@0.8.11(@module-federation/runtime-tools@0.8.11)':
+    dependencies:
+      '@module-federation/runtime-tools': 0.8.11
+
   '@module-federation/inject-external-runtime-core-plugin@0.9.1(@module-federation/runtime-tools@0.9.1)':
     dependencies:
       '@module-federation/runtime-tools': 0.9.1
+
+  '@module-federation/managers@0.8.11':
+    dependencies:
+      '@module-federation/sdk': 0.8.11
+      find-pkg: 2.0.0
+      fs-extra: 9.1.0
 
   '@module-federation/managers@0.9.1':
     dependencies:
       '@module-federation/sdk': 0.9.1
       find-pkg: 2.0.0
       fs-extra: 9.1.0
+
+  '@module-federation/manifest@0.8.11(typescript@5.7.3)':
+    dependencies:
+      '@module-federation/dts-plugin': 0.8.11(typescript@5.7.3)
+      '@module-federation/managers': 0.8.11
+      '@module-federation/sdk': 0.8.11
+      chalk: 3.0.0
+      find-pkg: 2.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
 
   '@module-federation/manifest@0.9.1(typescript@5.7.3)':
     dependencies:
@@ -5154,6 +5489,24 @@ snapshots:
       - typescript
       - utf-8-validate
       - vue-tsc
+
+  '@module-federation/rspack@0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(typescript@5.7.3)':
+    dependencies:
+      '@module-federation/bridge-react-webpack-plugin': 0.8.11
+      '@module-federation/dts-plugin': 0.8.11(typescript@5.7.3)
+      '@module-federation/inject-external-runtime-core-plugin': 0.8.11(@module-federation/runtime-tools@0.8.11)
+      '@module-federation/managers': 0.8.11
+      '@module-federation/manifest': 0.8.11(typescript@5.7.3)
+      '@module-federation/runtime-tools': 0.8.11
+      '@module-federation/sdk': 0.8.11
+      '@rspack/core': 1.2.6(@swc/helpers@0.5.15)
+    optionalDependencies:
+      typescript: 5.7.3
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
 
   '@module-federation/rspack@0.9.1(@rspack/core@1.2.6(@swc/helpers@0.5.15))(typescript@5.7.3)':
     dependencies:
@@ -5173,10 +5526,20 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  '@module-federation/runtime-core@0.6.19':
+    dependencies:
+      '@module-federation/error-codes': 0.8.11
+      '@module-federation/sdk': 0.8.11
+
   '@module-federation/runtime-core@0.9.1':
     dependencies:
       '@module-federation/error-codes': 0.9.1
       '@module-federation/sdk': 0.9.1
+
+  '@module-federation/runtime-tools@0.8.11':
+    dependencies:
+      '@module-federation/runtime': 0.8.11
+      '@module-federation/webpack-bundler-runtime': 0.8.11
 
   '@module-federation/runtime-tools@0.8.4':
     dependencies:
@@ -5187,6 +5550,12 @@ snapshots:
     dependencies:
       '@module-federation/runtime': 0.9.1
       '@module-federation/webpack-bundler-runtime': 0.9.1
+
+  '@module-federation/runtime@0.8.11':
+    dependencies:
+      '@module-federation/error-codes': 0.8.11
+      '@module-federation/runtime-core': 0.6.19
+      '@module-federation/sdk': 0.8.11
 
   '@module-federation/runtime@0.8.4':
     dependencies:
@@ -5199,17 +5568,32 @@ snapshots:
       '@module-federation/runtime-core': 0.9.1
       '@module-federation/sdk': 0.9.1
 
+  '@module-federation/sdk@0.8.11':
+    dependencies:
+      isomorphic-rslog: 0.0.7
+
   '@module-federation/sdk@0.8.4':
     dependencies:
       isomorphic-rslog: 0.0.6
 
   '@module-federation/sdk@0.9.1': {}
 
+  '@module-federation/third-party-dts-extractor@0.8.11':
+    dependencies:
+      find-pkg: 2.0.0
+      fs-extra: 9.1.0
+      resolve: 1.22.8
+
   '@module-federation/third-party-dts-extractor@0.9.1':
     dependencies:
       find-pkg: 2.0.0
       fs-extra: 9.1.0
       resolve: 1.22.8
+
+  '@module-federation/webpack-bundler-runtime@0.8.11':
+    dependencies:
+      '@module-federation/runtime': 0.8.11
+      '@module-federation/sdk': 0.8.11
 
   '@module-federation/webpack-bundler-runtime@0.8.4':
     dependencies:
@@ -6107,6 +6491,16 @@ snapshots:
       '@xtuc/long': 4.2.2
     optional: true
 
+  '@wisdesign/cli@0.0.29(@types/node@22.13.7)':
+    dependencies:
+      '@inquirer/prompts': 7.2.1(@types/node@22.13.7)
+      chalk: 5.4.1
+      commander: 12.1.0
+      ora: 8.0.1
+      zx: 8.2.4
+    transitivePeerDependencies:
+      - '@types/node'
+
   '@wisdesign/context@0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)':
     dependencies:
       '@swc-node/register': 1.10.9(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
@@ -6116,6 +6510,48 @@ snapshots:
       - '@swc/types'
       - supports-color
       - typescript
+
+  '@wisdesign/cross-plugin@0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+    dependencies:
+      '@module-federation/enhanced': 0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+      postcss-px-conversion: 0.1.4(postcss@8.5.3)
+    optionalDependencies:
+      '@rsbuild/core': 1.2.13
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/types'
+      - bufferutil
+      - debug
+      - postcss
+      - react
+      - react-dom
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
+      - webpack
+
+  '@wisdesign/kind-plugin@0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+    dependencies:
+      '@module-federation/enhanced': 0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+    optionalDependencies:
+      '@rsbuild/core': 1.2.13
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/types'
+      - bufferutil
+      - debug
+      - react
+      - react-dom
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
+      - webpack
 
   '@wisdesign/lsicon@0.0.19(@types/react@18.3.16)(esbuild@0.25.0)(react@18.3.1)':
     dependencies:
@@ -6128,6 +6564,38 @@ snapshots:
       - encoding
       - esbuild
       - supports-color
+
+  '@wisdesign/remote-plugin@0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+    dependencies:
+      '@module-federation/enhanced': 0.8.11(@rspack/core@1.2.6(@swc/helpers@0.5.15))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+    optionalDependencies:
+      '@rsbuild/core': 1.2.13
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/types'
+      - bufferutil
+      - debug
+      - react
+      - react-dom
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
+      - webpack
+
+  '@wisdesign/shell-plugin@0.0.3(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)':
+    dependencies:
+      '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+      chokidar: 4.0.3
+    optionalDependencies:
+      '@rsbuild/core': 1.2.13
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/types'
+      - supports-color
+      - typescript
 
   '@wisdesign/toolkit@0.0.7(typescript@5.7.3)':
     dependencies:
@@ -6142,6 +6610,30 @@ snapshots:
       '@prettier/sync': 0.5.2(prettier@3.3.1)
       prettier: 3.3.1
       signale: 1.4.0
+
+  '@wisdesign/wis-plugin@0.0.3(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))':
+    dependencies:
+      '@wisdesign/context': 0.0.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+      '@wisdesign/cross-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/kind-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/remote-plugin': 0.0.2(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.15))(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)(webpack@5.97.1(@swc/core@1.11.5(@swc/helpers@0.5.15))(esbuild@0.25.0))
+      '@wisdesign/shell-plugin': 0.0.3(@rsbuild/core@1.2.13)(@swc/core@1.11.5(@swc/helpers@0.5.15))(@swc/types@0.1.19)(typescript@5.7.3)
+    optionalDependencies:
+      '@rsbuild/core': 1.2.13
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - '@swc/core'
+      - '@swc/types'
+      - bufferutil
+      - debug
+      - postcss
+      - react
+      - react-dom
+      - supports-color
+      - typescript
+      - utf-8-validate
+      - vue-tsc
+      - webpack
 
   '@xtuc/ieee754@1.2.0':
     optional: true
@@ -7333,6 +7825,8 @@ snapshots:
 
   isomorphic-rslog@0.0.6: {}
 
+  isomorphic-rslog@0.0.7: {}
+
   isomorphic-ws@5.0.0(ws@8.18.0):
     dependencies:
       ws: 8.18.0
@@ -7398,6 +7892,34 @@ snapshots:
     dependencies:
       co: 4.6.0
       koa-compose: 4.1.0
+
+  koa@2.15.3:
+    dependencies:
+      accepts: 1.3.8
+      cache-content-type: 1.0.1
+      content-disposition: 0.5.4
+      content-type: 1.0.5
+      cookies: 0.9.1
+      debug: 4.3.7
+      delegates: 1.0.0
+      depd: 2.0.0
+      destroy: 1.2.0
+      encodeurl: 1.0.2
+      escape-html: 1.0.3
+      fresh: 0.5.2
+      http-assert: 1.5.0
+      http-errors: 1.8.1
+      is-generator-function: 1.1.0
+      koa-compose: 4.1.0
+      koa-convert: 2.0.0
+      on-finished: 2.4.1
+      only: 0.0.2
+      parseurl: 1.3.3
+      statuses: 1.5.0
+      type-is: 1.6.18
+      vary: 1.1.2
+    transitivePeerDependencies:
+      - supports-color
 
   koa@2.15.4:
     dependencies:
@@ -7889,6 +8411,10 @@ snapshots:
       find-up: 4.1.0
 
   possible-typed-array-names@1.0.0: {}
+
+  postcss-px-conversion@0.1.4(postcss@8.5.3):
+    dependencies:
+      postcss: 8.5.3
 
   postcss@8.5.3:
     dependencies:

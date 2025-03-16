@@ -68,11 +68,5 @@
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@wisdesign/cli": "link:../wis-cli/packages/cli",
-      "@wisdesign/wis-plugin": "link:../wis-cli/packages/wis-plugin"
-    }
   }
 }
