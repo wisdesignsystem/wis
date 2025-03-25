@@ -4,7 +4,7 @@ import classNames from "classnames";
 import type { ReactElement } from "react";
 import { cloneElement } from "react";
 
-import type { AvatarGroupProps } from "../avatar";
+import type { AvatarGroupProps, AvatarProps } from "../avatar";
 import { useGroupColor } from "../useColor";
 import useMaxCount from "../useMaxCount";
 import Avatar from "./Avatar";
@@ -29,7 +29,7 @@ function AvatarGroup({
   const { ref, max } = useMaxCount<HTMLDivElement>();
   const getColor = useGroupColor(color);
 
-  function renderAvatar(element: ReactElement, index: number) {
+  function renderAvatar(element: ReactElement<AvatarProps>, index: number) {
     const groupColor = getColor(index);
 
     const isElementAutoColor =
@@ -37,7 +37,7 @@ function AvatarGroup({
 
     return cloneElement(element, {
       className: classNames(styles.item, {
-        [element.props.className]: !!element.props.className,
+        [element.props.className as string]: !!element.props.className,
       }),
       colorSchema,
       shape,
@@ -48,7 +48,7 @@ function AvatarGroup({
     });
   }
 
-  function renderAvatars(elements: ReactElement[]) {
+  function renderAvatars(elements: ReactElement<AvatarProps>[]) {
     if (max === 0 || max >= elements.length || max === -1) {
       return elements.map(renderAvatar);
     }

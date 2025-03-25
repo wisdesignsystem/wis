@@ -1,5 +1,5 @@
 import { matchElement } from "wis/core";
-import * as RDXContextMenu from "@radix-ui/react-context-menu";
+import { ContextMenu as RDXContextMenu } from "radix-ui";
 import type { ReactNode } from "react";
 import { Children, useState } from "react";
 

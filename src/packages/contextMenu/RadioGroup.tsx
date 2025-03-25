@@ -1,7 +1,11 @@
 import { Children, isValidElement } from "react";
+import type { ReactElement } from "react";
 
 import Item from "./Item";
-import type { ContextMenuRadioGroupProps } from "./contextMenu";
+import type {
+  ContextMenuRadioGroupProps,
+  ContextMenuItemProps,
+} from "./contextMenu";
 import useContextValue from "./useContextValue";
 
 interface RadioGroupProps extends ContextMenuRadioGroupProps {
@@ -25,20 +29,22 @@ function RadioGroup({
           return null;
         }
 
+        const childElement = child as ReactElement<ContextMenuItemProps>;
+
         // @ts-ignore
-        const displayName = mapper(child.type.displayName);
+        const displayName = mapper(childElement.type.displayName);
         if (displayName !== "Item") {
           return null;
         }
 
         return (
           <Item
-            {...child.props}
+            {...childElement.props}
             mapper={mapper}
             role="menuitemradio"
-            onCheck={() => {
-              onChange(child.props.value);
-              onValueChange(child.props.value);
+            onCheckedChange={() => {
+              onChange(childElement.props.value);
+              onValueChange(childElement.props.value);
             }}
           />
         );

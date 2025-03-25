@@ -2,7 +2,7 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginSass } from "@rsbuild/plugin-sass";
 import { pluginBasicSsl } from "@rsbuild/plugin-basic-ssl";
-import { wisRsbuildPlugin } from "@wisdesign/wis-plugin/rsbuild";
+import { pluginWis } from "@wisdesign/wis-plugin/rsbuild";
 
 export default defineConfig({
   server: {
@@ -16,5 +16,5 @@ export default defineConfig({
     template: "./public/index.html",
   },
 
-  plugins: [pluginReact(), pluginSass(), pluginBasicSsl(), wisRsbuildPlugin()],
+  plugins: [pluginReact(), pluginSass(), pluginBasicSsl(), pluginWis()],
 });

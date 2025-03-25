@@ -1,5 +1,5 @@
 import attrs from "@/utils/attrs";
-import * as RDXAvatar from "@radix-ui/react-avatar";
+import { Avatar as RDXAvatar } from "radix-ui";
 import classNames from "classnames";
 
 import type { AvatarProps } from "../avatar";

@@ -52,7 +52,7 @@ function unwrapFragment(children: ReactNode) {
   }
 
   if (children.type.toString() === "Symbol(react.fragment)") {
-    return children.props.children;
+    return (children.props as { children?: ReactNode }).children;
   }
 
   return children;
@@ -125,11 +125,15 @@ interface MathElementResult {
   /**
    * Stores nodes that match the matching type list
    */
-  matched: ReactElement[];
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  matched: ReactElement<any>[];
   /**
    * Stores the list of matched nodes categorized by type
    */
-  elements: { [type: string]: ReactElement[] };
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  elements: { [type: string]: ReactElement<any>[] };
 }
 
 export function matchElement(

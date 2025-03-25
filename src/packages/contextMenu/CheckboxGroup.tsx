@@ -1,7 +1,11 @@
 import { Children, isValidElement } from "react";
+import type { ReactElement } from "react";
 
 import Item from "./Item";
-import type { ContextMenuCheckboxGroupProps } from "./contextMenu";
+import type {
+  ContextMenuCheckboxGroupProps,
+  ContextMenuItemProps,
+} from "./contextMenu";
 import useContextValue from "./useContextValue";
 
 interface CheckboxGroupProps extends ContextMenuCheckboxGroupProps {
@@ -29,7 +33,9 @@ function CheckboxGroup({
           return null;
         }
 
-        const isChecked = currentValue?.includes(child.props.value);
+        const childElement = child as ReactElement<ContextMenuItemProps>;
+
+        const isChecked = currentValue?.includes(childElement.props.value);
         // @ts-ignore
         const displayName = mapper(child.type.displayName);
         if (displayName === "Item") {
@@ -38,7 +44,7 @@ function CheckboxGroup({
 
         return (
           <Item
-            {...child.props}
+            {...childElement.props}
             mapper={mapper}
             role="menuitemcheckbox"
             checked={isChecked}
@@ -49,10 +55,10 @@ function CheckboxGroup({
               }
 
               if (checked) {
-                nextValue.push(child.props.value);
+                nextValue.push(childElement.props.value);
               } else {
                 nextValue = nextValue.filter(
-                  (v: string) => v !== child.props.value,
+                  (v: string) => v !== childElement.props.value,
                 );
               }
 

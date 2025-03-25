@@ -1,11 +1,12 @@
-import useObserverResize from "@/hooks/useObserverResize";
 import { useLayoutEffect, useRef, useState } from "react";
+import type { RefObject } from "react";
+import useObserverResize from "@/hooks/useObserverResize";
 
 export default function useMaxCount<T extends HTMLElement>() {
   const [max, setMax] = useState(-1);
-  const ref = useRef<T | null>(null);
+  const ref = useRef<T>(null);
 
-  const rect = useObserverResize<T>(ref);
+  const rect = useObserverResize(ref as RefObject<T>);
 
   useLayoutEffect(() => {
     if (!rect) {

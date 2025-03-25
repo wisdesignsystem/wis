@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.3
+
+### Patch Changes
+
+- [#95](https://github.com/wisdesignsystem/wis/pull/95) [`50b36cc`](https://github.com/wisdesignsystem/wis/commit/50b36ccae523f08e17463cd6b0a429c07d067b24) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] suit the react 19
+
 ## 0.0.1
 
 ### Patch Changes

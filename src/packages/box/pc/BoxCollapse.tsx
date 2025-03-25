@@ -1,4 +1,4 @@
-import * as Collapsible from "@radix-ui/react-collapsible";
+import { Collapsible as RDXCollapsible } from "radix-ui";
 import { DownIcon } from "@wisdesign/lsicon";
 import classNames from "classnames";
 
@@ -8,14 +8,14 @@ import styles from "./Box.module.scss";
 
 function BoxCollapse({ className, ...rest }: BoxCollapseProps) {
   return (
-    <Collapsible.Trigger
+    <RDXCollapsible.Trigger
       {...rest}
       className={classNames(styles.collapse, {
         [className as string]: !!className,
       })}
     >
       <DownIcon />
-    </Collapsible.Trigger>
+    </RDXCollapsible.Trigger>
   );
 }
 
