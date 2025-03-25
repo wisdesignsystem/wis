@@ -56,18 +56,11 @@
     "@types/node": "22.13.7",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
-    "@wisdesign/cli": "0.0.31",
+    "@wisdesign/cli": "0.0.32",
     "@wisdesign/toolkit": "0.0.7",
-    "@wisdesign/wis-plugin": "0.0.7",
+    "@wisdesign/wis-plugin": "0.0.8",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"
-  },
-  "pnpm": {
-    "overrides": {
-      "@wisdesign/wis-plugin": "link:../wis-cli/packages/wis-plugin",
-      "wiscore": "link:../wis-cli/packages/core",
-      "@wisdesign/cli": "link:../wis-cli/packages/cli"
-    }
   }
 }

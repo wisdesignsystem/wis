@@ -156,4 +156,15 @@
   --w-palette-alpha-black-alpha-10: #0e121b1a;
   --w-palette-alpha-black-alpha-05: #0e121b0d;
   --w-palette-alpha-black-alpha-00: #0e121b00;
+  --w-palette-indigo-50: #eef4ff;
+  --w-palette-indigo-100: #e0eaff;
+  --w-palette-indigo-200: #c6d7fe;
+  --w-palette-indigo-300: #a4bcfd;
+  --w-palette-indigo-400: #8098f9;
+  --w-palette-indigo-500: #6172f3;
+  --w-palette-indigo-600: #444ce7;
+  --w-palette-indigo-700: #3538cd;
+  --w-palette-indigo-800: #2d31a6;
+  --w-palette-indigo-900: #2d3282;
+  --w-palette-indigo-950: #030621;
 }

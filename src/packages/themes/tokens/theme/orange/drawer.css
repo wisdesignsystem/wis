@@ -1,11 +1,11 @@
 :root {
-  --w-container-drawer-font: var(undefined);
-  --w-container-drawer-background: var(undefined);
-  --w-container-drawer-border: var(undefined);
-  --w-container-drawer-footer-font: var(undefined);
-  --w-container-drawer-footer-background: var(undefined);
-  --w-container-drawer-footer-border: var(undefined);
-  --w-container-drawer-header-font: var(undefined);
-  --w-container-drawer-header-background: var(undefined);
-  --w-container-drawer-header-border: var(undefined);
+  --w-container-drawer-font: var(--w-common-font-color-primary);
+  --w-container-drawer-background: var(--w-common-background-common-base);
+  --w-container-drawer-border: var(--w-common-border-color-base);
+  --w-container-drawer-footer-font: var(--w-common-font-color-primary);
+  --w-container-drawer-footer-background: var(--w-common-background-common-base);
+  --w-container-drawer-footer-border: var(--w-common-border-color-base);
+  --w-container-drawer-header-font: var(--w-common-font-color-primary);
+  --w-container-drawer-header-background: var(--w-common-background-common-base);
+  --w-container-drawer-header-border: var(--w-common-border-color-base);
 }
