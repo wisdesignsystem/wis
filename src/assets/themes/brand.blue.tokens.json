@@ -1,0 +1,34 @@
+{
+  "brand": {
+    "$type": "color",
+    "$value": "#444ce7"
+  },
+  "brand-lighter": {
+    "$type": "color",
+    "$value": "#dde9ff"
+  },
+  "brand-light": {
+    "$type": "color",
+    "$value": "#c6d7fe"
+  },
+  "brand-dark": {
+    "$type": "color",
+    "$value": "#2f34ad"
+  },
+  "brand-darker": {
+    "$type": "color",
+    "$value": "#2e3487"
+  },
+  "transparent-10": {
+    "$type": "color",
+    "$value": "#444ce71a"
+  },
+  "transparent-20": {
+    "$type": "color",
+    "$value": "#444ce733"
+  },
+  "transparent-30": {
+    "$type": "color",
+    "$value": "#444ce74d"
+  }
+}

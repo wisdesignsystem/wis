@@ -1,0 +1,11 @@
+:root {
+  --w-container-modal-font: var(--w-common-font-color-primary);
+  --w-container-modal-background: var(--w-common-background-common-base);
+  --w-container-modal-border: var(--w-common-border-color-base);
+  --w-container-modal-footer-font: var(--w-common-font-color-primary);
+  --w-container-modal-footer-background: var(--w-common-background-common-base);
+  --w-container-modal-footer-border: var(--w-common-border-color-base);
+  --w-container-modal-header-font: var(--w-common-font-color-primary);
+  --w-container-modal-header-background: var(--w-common-background-common-base);
+  --w-container-modal-header-border: var(--w-common-border-color-base);
+}

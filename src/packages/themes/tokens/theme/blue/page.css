@@ -1,0 +1,8 @@
+:root {
+  --w-container-page-header-font: var(--w-common-font-color-primary);
+  --w-container-page-header-background: var(--w-common-background-common-base);
+  --w-container-page-header-border: var(--w-common-border-color-base);
+  --w-container-page-info-font: var(--w-common-font-color-base);
+  --w-container-page-info-label-font: var(--w-common-font-color-helper);
+  --w-container-page-info-icon-font: var(--w-common-font-color-helper);
+}

@@ -1,0 +1,5 @@
+:root {
+  --w-component-tooltip-font: var(--w-common-font-color-inverse);
+  --w-component-tooltip-background: var(--w-common-background-transparent-overlay-black-09);
+  --w-component-tooltip-border: var(--w-common-border-color-transparent);
+}
