@@ -1,13 +1,10 @@
 import { Shortcut, useShortcut } from "wis/shortcut";
 import type { ShortcutMeta } from "wis/shortcut";
 import type { KeyboardEvent } from "react";
-import { useState } from "react";
 
 import styles from "./Shortcut.module.scss";
 
 function Example() {
-  const [text, setText] = useState("Hello World");
-
   const [onKeyDown, onShortcut] = useShortcut();
   onShortcut("Control+;", (event, shortcut) => {
     handleTrigger(event, shortcut);
@@ -23,14 +20,7 @@ function Example() {
   }
 
   return (
-    <div
-      className={styles.row}
-      onClick={() => {
-        setText("hahah");
-      }}
-      onKeyDown={() => {}}
-    >
-      {text}
+    <div className={styles.row} onKeyDown={() => {}}>
       <div className={styles.col}>
         <Shortcut onKeyPressed={handleTrigger} shortcutKey="Control+Y" />
         <Shortcut onKeyPressed={handleTrigger} shortcutKey="Shift+Y" />

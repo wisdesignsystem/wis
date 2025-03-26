@@ -2420,7 +2420,7 @@
           },
           "hover-background": {
             "$type": "color",
-            "$value": "{font.color.semantics.error}"
+            "$value": "{font.color.semantics.error-light}"
           },
           "hover-border": {
             "$type": "color",
@@ -2444,7 +2444,7 @@
           },
           "disabled-background": {
             "$type": "color",
-            "$value": "{font.color.semantics.error-disabled}"
+            "$value": "{font.color.semantics.error-light}"
           },
           "disabled-border": {
             "$type": "color",
@@ -2552,7 +2552,7 @@
           },
           "active-font": {
             "$type": "color",
-            "$value": "{border.color.transparent}"
+            "$value": "{font.color.semantics.error}"
           },
           "active-background": {
             "$type": "color",
