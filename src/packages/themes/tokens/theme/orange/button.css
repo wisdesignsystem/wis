@@ -48,13 +48,13 @@
   --w-component-button-secondary-danger-background: var(--w-common-background-common-base);
   --w-component-button-secondary-danger-border: var(--w-common-border-color-base);
   --w-component-button-secondary-danger-hover-font: var(--w-common-font-color-semantics-error);
-  --w-component-button-secondary-danger-hover-background: var(--w-common-font-color-semantics-error);
+  --w-component-button-secondary-danger-hover-background: var(--w-common-font-color-semantics-error-light);
   --w-component-button-secondary-danger-hover-border: var(--w-common-border-color-03);
   --w-component-button-secondary-danger-active-font: var(--w-common-font-color-semantics-error);
   --w-component-button-secondary-danger-active-background: var(--w-common-background-semantics-error-light);
   --w-component-button-secondary-danger-active-border: var(--w-common-border-color-03);
   --w-component-button-secondary-danger-disabled-font: var(--w-common-font-color-semantics-error-disabled);
-  --w-component-button-secondary-danger-disabled-background: var(--w-common-font-color-semantics-error-disabled);
+  --w-component-button-secondary-danger-disabled-background: var(--w-common-font-color-semantics-error-light);
   --w-component-button-secondary-danger-disabled-border: var(--w-common-border-color-base);
   --w-component-button-secondary-danger-focus-font: var(--w-common-font-color-semantics-error);
   --w-component-button-secondary-danger-focus-background: var(--w-common-background-common-base);
@@ -80,7 +80,7 @@
   --w-component-button-tertiary-danger-hover-font: var(--w-common-font-color-semantics-error);
   --w-component-button-tertiary-danger-hover-background: var(--w-common-background-semantics-error-light-hover);
   --w-component-button-tertiary-danger-hover-border: var(--w-common-border-color-transparent);
-  --w-component-button-tertiary-danger-active-font: var(--w-common-border-color-transparent);
+  --w-component-button-tertiary-danger-active-font: var(--w-common-font-color-semantics-error);
   --w-component-button-tertiary-danger-active-background: var(--w-common-background-semantics-error-light-hover);
   --w-component-button-tertiary-danger-active-border: var(--w-common-border-color-transparent);
   --w-component-button-tertiary-danger-disabled-font: var(--w-common-font-color-semantics-error-disabled);
