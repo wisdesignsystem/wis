@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.4
+
+### Patch Changes
+
+- [#100](https://github.com/wisdesignsystem/wis/pull/100) [`47de0c3`](https://github.com/wisdesignsystem/wis/commit/47de0c3017f37d590640598c496bbb6cde67c1c3) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] apply the new token struct
+
 ## 0.0.3
 
 ### Patch Changes
