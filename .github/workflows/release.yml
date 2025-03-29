@@ -28,7 +28,13 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: pnpm run build
+        run: |
+          pnpm run build
+          git config user.name "wiscodesign"
+          git config user.email "dev@wis.design"
+          git add .
+          git commit -m "chore: build"
+          git push
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
