@@ -1,3 +1,4 @@
 import Actions from "./Actions";
+import ActionsGroup from "./ActionsGroup";
 
-export { Actions };
+export { Actions, ActionsGroup };

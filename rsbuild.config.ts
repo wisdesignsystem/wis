@@ -1,13 +1,13 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import { pluginSass } from "@rsbuild/plugin-sass";
-import { pluginBasicSsl } from "@rsbuild/plugin-basic-ssl";
+// import { pluginBasicSsl } from "@rsbuild/plugin-basic-ssl";
 import { pluginWis } from "@wisdesign/wis-plugin/rsbuild";
 
 export default defineConfig({
   server: {
     host: "localhost",
-    port: 3000,
+    port: 4000,
   },
 
   html: {
@@ -17,5 +17,5 @@ export default defineConfig({
     template: "./public/index.html",
   },
 
-  plugins: [pluginReact(), pluginSass(), pluginBasicSsl(), pluginWis()],
+  plugins: [pluginReact(), pluginSass(), pluginWis()],
 });
