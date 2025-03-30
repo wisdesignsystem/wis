@@ -1,3 +1,4 @@
+import { cloneElement } from "react";
 import { Box, BoxActions, BoxContent, BoxHeader } from "wis/box";
 import { isElement, matchElement } from "wis/core";
 import { Col, Row } from "wis/grid";
@@ -45,6 +46,14 @@ function Layout({
   const isShowHeader =
     !isUndefined(title) || !isUndefined(description) || !!actions;
 
+  function renderActions() {
+    if (actions === undefined) {
+      return null;
+    }
+
+    return <BoxActions>{cloneElement(actions[0], { size: "sm" })}</BoxActions>;
+  }
+
   return (
     <Box
       {...rest}
@@ -58,7 +67,7 @@ function Layout({
           title={title}
           description={description}
         >
-          {!!actions && <BoxActions>{actions}</BoxActions>}
+          {renderActions()}
         </BoxHeader>
       )}
       <BoxContent className={styles.vertical}>
