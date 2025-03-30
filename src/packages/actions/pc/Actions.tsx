@@ -13,7 +13,7 @@ function Actions({ size = "md", children }: ActionsProps) {
   ]);
 
   return (
-    <div className={styles.actions}>
+    <div className={styles.actions} data-size={size}>
       {Children.map(matched, (child) => {
         return cloneElement(child, {
           size,

@@ -1,3 +1,4 @@
+import { cloneElement } from "react";
 import {
   Box,
   BoxActions,
@@ -50,6 +51,14 @@ function Module({
     );
   }
 
+  function renderActions() {
+    if (actions === undefined) {
+      return null;
+    }
+
+    return <BoxActions>{cloneElement(actions[0], { size: "sm" })}</BoxActions>;
+  }
+
   if (collapsible) {
     return (
       <BoxCollapsible
@@ -71,7 +80,7 @@ function Module({
           description={description}
         >
           <BoxCollapse />
-          {!!actions && <BoxActions>{actions}</BoxActions>}
+          {renderActions()}
         </BoxHeader>
         <BoxPanel className={styles.content}>{renderContent()}</BoxPanel>
       </BoxCollapsible>
@@ -94,7 +103,7 @@ function Module({
         title={title}
         description={description}
       >
-        {!!actions && <BoxActions>{actions}</BoxActions>}
+        {renderActions()}
       </BoxHeader>
       <BoxContent className={styles.content}>{renderContent()}</BoxContent>
     </Box>

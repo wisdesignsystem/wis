@@ -22,3 +22,11 @@ export function isFunction(value: unknown): value is Function {
 export function isObject(value: unknown): value is object {
   return value !== null && typeof value === "object";
 }
+
+export function isComponent<T>(
+  component: unknown,
+  displayName: string,
+): component is T {
+  // @ts-ignore
+  return component?.displayName === displayName;
+}

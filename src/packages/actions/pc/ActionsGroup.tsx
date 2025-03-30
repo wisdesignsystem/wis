@@ -11,11 +11,14 @@ function ActionsGroup({ size = "md", children }: ActionsGroupProps) {
   return (
     <>
       <div className={styles.separator} />
-      {Children.map(matched, (child) => {
-        return cloneElement(child, {
-          size,
-        });
-      })}
+      <div className={styles.group}>
+        {Children.map(matched, (child) => {
+          return cloneElement(child, {
+            size,
+          });
+        })}
+      </div>
+      <div className={styles.separator} />
     </>
   );
 }

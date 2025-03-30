@@ -7,11 +7,6 @@ export interface ActionsProps extends HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md";
 
   /**
-   * Control for folding and collapsing.
-   */
-  collapseCount?: number;
-
-  /**
    * @ignore
    */
   children: ReactNode;
@@ -22,11 +17,6 @@ export interface ActionsGroupProps extends HTMLAttributes<HTMLDivElement> {
    * @private
    */
   size?: "sm" | "md";
-
-  /**
-   * Control for folding and collapsing.
-   */
-  collapseCount?: number;
 
   /**
    * @ignore

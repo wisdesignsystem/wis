@@ -1,3 +1,4 @@
+import { cloneElement } from "react";
 import { Box, BoxActions, BoxContent, BoxHeader } from "wis/box";
 import { matchElement } from "wis/core";
 import { Main } from "wis/layout";
@@ -13,6 +14,14 @@ function Page({ className, title, description, children, ...rest }: PageProps) {
     unmatched,
   } = matchElement(children, [{ type: "Actions", maxCount: 1 }], false);
 
+  function renderActions() {
+    if (actions === undefined) {
+      return null;
+    }
+
+    return <BoxActions>{cloneElement(actions[0], { size: "md" })}</BoxActions>;
+  }
+
   return (
     <Box
       {...rest}
@@ -25,7 +34,7 @@ function Page({ className, title, description, children, ...rest }: PageProps) {
         title={title}
         description={description}
       >
-        {!!actions && <BoxActions>{actions}</BoxActions>}
+        {renderActions()}
       </BoxHeader>
       <BoxContent>
         <Main responsive>{unmatched}</Main>
