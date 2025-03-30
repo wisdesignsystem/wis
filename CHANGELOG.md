@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.6
+
+### Patch Changes
+
+- [#106](https://github.com/wisdesignsystem/wis/pull/106) [`6ef46e7`](https://github.com/wisdesignsystem/wis/commit/6ef46e764d6ec2c8b54c2b55aecf0624eb7ae6b1) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add actions component
+
 ## 0.0.5
 
 ### Patch Changes
