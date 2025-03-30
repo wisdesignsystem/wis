@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.5
+
+### Patch Changes
+
+- [#104](https://github.com/wisdesignsystem/wis/pull/104) [`2cf1c3c`](https://github.com/wisdesignsystem/wis/commit/2cf1c3cb689b3660097d0c2e6fa1c5bd8d0cb510) Thanks [@FaureWu](https://github.com/FaureWu)! - [Chore] upgrade wis-plugin
+
 ## 0.0.4
 
 ### Patch Changes

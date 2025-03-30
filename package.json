@@ -1,6 +1,6 @@
 {
   "name": "@wisdesign/wis",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -58,7 +58,7 @@
     "@types/react-dom": "18.3.1",
     "@wisdesign/cli": "0.0.32",
     "@wisdesign/toolkit": "0.0.7",
-    "@wisdesign/wis-plugin": "0.0.8",
+    "@wisdesign/wis-plugin": "0.0.9",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"
