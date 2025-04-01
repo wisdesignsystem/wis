@@ -1,15 +1,102 @@
 export default {
   Actions: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/actions/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/actions/pc/index.ts",
     description: "",
     displayName: "Actions",
     methods: [],
-    props: {},
+    props: {
+      size: {
+        defaultValue: { value: "md" },
+        description:
+          "The size of the actions component will override the size definitions of the internal buttons.",
+        name: "size",
+        parent: {
+          fileName: "wis/src/packages/actions/actions.ts",
+          name: "ActionsProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/actions/actions.ts",
+            name: "ActionsProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"sm" | "md"',
+          value: [{ value: '"sm"' }, { value: '"md"' }],
+        },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/actions/actions.ts",
+          name: "ActionsProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/actions/actions.ts",
+            name: "ActionsProps",
+          },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+    },
+  },
+  ActionsGroup: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/actions/pc/index.ts",
+    description: "",
+    displayName: "ActionsGroup",
+    methods: [],
+    props: {
+      size: {
+        defaultValue: { value: "md" },
+        description: "@private",
+        name: "size",
+        parent: {
+          fileName: "wis/src/packages/actions/actions.ts",
+          name: "ActionsGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/actions/actions.ts",
+            name: "ActionsGroupProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"sm" | "md"',
+          value: [{ value: '"sm"' }, { value: '"md"' }],
+        },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/actions/actions.ts",
+          name: "ActionsGroupProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/actions/actions.ts",
+            name: "ActionsGroupProps",
+          },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+    },
   },
   Avatar: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/avatar/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/avatar/pc/index.ts",
     description: "",
     displayName: "Avatar",
     methods: [],
@@ -191,7 +278,7 @@ export default {
   },
   AvatarGroup: {
     tags: { package: "avatar" },
-    filePath: "/home/runner/work/wis/wis/src/packages/avatar/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/avatar/pc/index.ts",
     description: "",
     displayName: "AvatarGroup",
     methods: [],
@@ -302,7 +389,7 @@ export default {
   },
   Box: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "Box",
     methods: [],
@@ -310,7 +397,7 @@ export default {
   },
   BoxHeader: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxHeader",
     methods: [],
@@ -347,15 +434,30 @@ export default {
   },
   BoxActions: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxActions",
     methods: [],
-    props: {},
+    props: {
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/box/box.ts",
+          name: "BoxActionsProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/box/box.ts", name: "BoxActionsProps" },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+    },
   },
   BoxContent: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxContent",
     methods: [],
@@ -363,7 +465,7 @@ export default {
   },
   BoxCollapsible: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxCollapsible",
     methods: [],
@@ -426,7 +528,7 @@ export default {
   },
   BoxCollapse: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxCollapse",
     methods: [],
@@ -434,7 +536,7 @@ export default {
   },
   BoxPanel: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxPanel",
     methods: [],
@@ -442,7 +544,7 @@ export default {
   },
   BoxFooter: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/box/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
     description: "",
     displayName: "BoxFooter",
     methods: [],
@@ -450,7 +552,7 @@ export default {
   },
   Button: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/button/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/button/pc/index.ts",
     description: "",
     displayName: "Button",
     methods: [],
@@ -640,7 +742,8 @@ export default {
   },
   ContextMenu: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/contextMenu/pc/index.ts",
+    filePath:
+      "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
     displayName: "ContextMenu",
     methods: [],
@@ -684,7 +787,8 @@ export default {
   },
   ContextMenuItem: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/contextMenu/pc/index.ts",
+    filePath:
+      "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
     displayName: "ContextMenuItem",
     methods: [],
@@ -879,7 +983,8 @@ export default {
   },
   ContextMenuGroup: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/contextMenu/pc/index.ts",
+    filePath:
+      "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
     displayName: "ContextMenuGroup",
     methods: [],
@@ -940,7 +1045,8 @@ export default {
   },
   ContextMenuCheckboxGroup: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/contextMenu/pc/index.ts",
+    filePath:
+      "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
     displayName: "ContextMenuCheckboxGroup",
     methods: [],
@@ -1053,7 +1159,8 @@ export default {
   },
   ContextMenuRadioGroup: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/contextMenu/pc/index.ts",
+    filePath:
+      "/Volumes/Work/wisdesign/wis/src/packages/contextMenu/pc/index.ts",
     description: "",
     displayName: "ContextMenuRadioGroup",
     methods: [],
@@ -1166,7 +1273,7 @@ export default {
   },
   isElement: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/core/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/core/index.ts",
     description:
       "Checks if the component matches the specified type. If the component node is a symbiotic component,\nit continues to check if the symbiotic component matches the specified type.",
     displayName: "isElement",
@@ -1175,7 +1282,7 @@ export default {
   },
   getSymbioteElement: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/core/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/core/index.ts",
     description: "",
     displayName: "getSymbioteElement",
     methods: [],
@@ -1183,7 +1290,7 @@ export default {
   },
   Dropdown: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "Dropdown",
     methods: [],
@@ -1355,7 +1462,7 @@ export default {
   },
   DropdownButton: {
     tags: { package: "dropdown" },
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownButton",
     methods: [],
@@ -1557,7 +1664,7 @@ export default {
   },
   DropdownGroup: {
     tags: { package: "dropdown" },
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownGroup",
     methods: [],
@@ -1618,7 +1725,7 @@ export default {
   },
   DropdownCheckboxGroup: {
     tags: { package: "dropdown" },
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownCheckboxGroup",
     methods: [],
@@ -1731,7 +1838,7 @@ export default {
   },
   DropdownRadioGroup: {
     tags: { package: "dropdown" },
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownRadioGroup",
     methods: [],
@@ -1844,7 +1951,7 @@ export default {
   },
   DropdownItem: {
     tags: { package: "dropdown" },
-    filePath: "/home/runner/work/wis/wis/src/packages/dropdown/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
     description: "",
     displayName: "DropdownItem",
     methods: [],
@@ -2039,7 +2146,7 @@ export default {
   },
   Row: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/grid/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/grid/index.ts",
     description: "",
     displayName: "Row",
     methods: [],
@@ -2070,7 +2177,7 @@ export default {
   },
   Col: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/grid/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/grid/index.ts",
     description: "",
     displayName: "Col",
     methods: [],
@@ -2101,7 +2208,7 @@ export default {
   },
   isSize: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/grid/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/grid/index.ts",
     description: "",
     displayName: "isSize",
     methods: [],
@@ -2109,7 +2216,7 @@ export default {
   },
   isResponsiveSize: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/grid/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/grid/index.ts",
     description: "",
     displayName: "isResponsiveSize",
     methods: [],
@@ -2117,7 +2224,7 @@ export default {
   },
   Main: {
     tags: { package: "layout" },
-    filePath: "/home/runner/work/wis/wis/src/packages/layout/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Main",
     methods: [],
@@ -2196,7 +2303,7 @@ export default {
   },
   Left: {
     tags: { package: "layout" },
-    filePath: "/home/runner/work/wis/wis/src/packages/layout/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Left",
     methods: [],
@@ -2239,7 +2346,7 @@ export default {
   },
   Right: {
     tags: { package: "layout" },
-    filePath: "/home/runner/work/wis/wis/src/packages/layout/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Right",
     methods: [],
@@ -2282,7 +2389,7 @@ export default {
   },
   Top: {
     tags: { package: "layout" },
-    filePath: "/home/runner/work/wis/wis/src/packages/layout/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Top",
     methods: [],
@@ -2319,7 +2426,7 @@ export default {
   },
   Bottom: {
     tags: { package: "layout" },
-    filePath: "/home/runner/work/wis/wis/src/packages/layout/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/layout/pc/index.ts",
     description: "",
     displayName: "Bottom",
     methods: [],
@@ -2362,7 +2469,7 @@ export default {
   },
   Module: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/module/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/module/pc/index.ts",
     description: "",
     displayName: "Module",
     methods: [],
@@ -2515,7 +2622,7 @@ export default {
   },
   Page: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/page/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/page/pc/index.ts",
     description: "",
     displayName: "Page",
     methods: [],
@@ -2552,7 +2659,7 @@ export default {
   },
   Shortcut: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/shortcut/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/shortcut/pc/index.ts",
     description: "",
     displayName: "Shortcut",
     methods: [],
@@ -2682,7 +2789,7 @@ export default {
       example:
         "const [onKeydown, onShortcut] = useShortcut();\n\nonShortcut('Control+S', () => {\n  console.log('Shortcut Control+S triggered');\n});",
     },
-    filePath: "/home/runner/work/wis/wis/src/packages/shortcut/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/shortcut/pc/index.ts",
     description: "Custom hook to manage keyboard shortcuts.",
     displayName: "pc",
     methods: [],
@@ -2690,7 +2797,7 @@ export default {
   },
   Toggle: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/toggle/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggle/pc/index.ts",
     description: "",
     displayName: "Toggle",
     methods: [],
@@ -2887,7 +2994,7 @@ export default {
   },
   ToggleGroup: {
     tags: { package: "toggle" },
-    filePath: "/home/runner/work/wis/wis/src/packages/toggle/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggle/pc/index.ts",
     description: "",
     displayName: "ToggleGroup",
     methods: [],
@@ -3026,7 +3133,7 @@ export default {
   },
   ToggleItem: {
     tags: { package: "toggle" },
-    filePath: "/home/runner/work/wis/wis/src/packages/toggle/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggle/pc/index.ts",
     description: "",
     displayName: "ToggleItem",
     methods: [],
@@ -3187,7 +3294,7 @@ export default {
   },
   Tooltip: {
     tags: {},
-    filePath: "/home/runner/work/wis/wis/src/packages/tooltip/pc/index.ts",
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/tooltip/pc/index.ts",
     description: "",
     displayName: "Tooltip",
     methods: [],

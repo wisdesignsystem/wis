@@ -3,6 +3,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-md);
+  justify-content: flex-end;
 
   &[data-size="md"] {
     .separator {
@@ -22,6 +23,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-md);
+  flex: 0 0 auto;
 }
 
 .separator {
