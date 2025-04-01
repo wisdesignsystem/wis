@@ -49,6 +49,6 @@ html {
   font-style: normal;
 }
 
-body > div {
+body > div[data-root] {
   height: 100vh;
 }
