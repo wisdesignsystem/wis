@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.7
+
+### Patch Changes
+
+- [#108](https://github.com/wisdesignsystem/wis/pull/108) [`0addf25`](https://github.com/wisdesignsystem/wis/commit/0addf256722914c71d1ce062db8c3bf56f400d2f) Thanks [@FaureWu](https://github.com/FaureWu)! - [Chore] set the react and react-dom to 18
+
 ## 0.0.6
 
 ### Patch Changes
