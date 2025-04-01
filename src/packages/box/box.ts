@@ -1,8 +1,13 @@
-import type { ButtonHTMLAttributes, HTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
 export interface BoxProps extends HTMLAttributes<HTMLDivElement> {}
 
-export interface BoxActionsProps extends HTMLAttributes<HTMLDivElement> {}
+export interface BoxActionsProps {
+  /**
+   * @ignore
+   */
+  children: ReactNode;
+}
 
 export interface BoxCollapseProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {}

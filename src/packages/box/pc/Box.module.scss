@@ -53,10 +53,10 @@
 
 .actions {
   flex: 1 1 auto;
-  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  max-width: 100%;
 }
 
 .title {
