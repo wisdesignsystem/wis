@@ -92,7 +92,7 @@ export default function useGlobalShortcut(
   shortcutKey?: string,
   readonly?: boolean,
 ): useGlobalShortcutReturn {
-  const task = useRef<ShortcutTask>(undefined);
+  const task = useRef<ShortcutTask>();
   const [shortcut, setShortcut] = useState<ShortcutMeta>();
 
   useEffect(() => {
