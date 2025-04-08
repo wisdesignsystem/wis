@@ -1,0 +1,5 @@
+:root {
+  --w-component-meta-font: var(--w-common-font-color-base);
+  --w-component-meta-label-font: var(--w-common-font-color-helper);
+  --w-component-meta-icon-font: var(--w-common-font-color-helper);
+}

@@ -3503,6 +3503,20 @@
         }
       }
     },
+    "meta": {
+      "font": {
+        "$type": "color",
+        "$value": "{font.color.base}"
+      },
+      "label-font": {
+        "$type": "color",
+        "$value": "{font.color.helper}"
+      },
+      "icon-font": {
+        "$type": "color",
+        "$value": "{font.color.helper}"
+      }
+    },
     "_input": {
       "default-font": {
         "$type": "color",
@@ -3946,10 +3960,6 @@
       }
     },
     "_table": {
-      "td-height": {
-        "$type": "dimension",
-        "$value": "48px"
-      },
       "star": {
         "font": {
           "$type": "color",
@@ -3969,6 +3979,10 @@
           "$type": "color",
           "$value": "{_common.background.semantics.success}"
         }
+      },
+      "td-height": {
+        "$type": "dimension",
+        "$value": "48px"
       },
       "status": {
         "focus-default-background": {
@@ -4312,20 +4326,6 @@
         "border": {
           "$type": "color",
           "$value": "{border.color.base}"
-        }
-      },
-      "info": {
-        "font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "label-font": {
-          "$type": "color",
-          "$value": "{font.color.helper}"
-        },
-        "icon-font": {
-          "$type": "color",
-          "$value": "{font.color.helper}"
         }
       }
     },

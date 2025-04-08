@@ -2,13 +2,13 @@
 @use '@/packages/themes/style.scss' as style;
 
 @mixin meta-style() {
-  @include style.container-style($component: 'page-info', $enable-background: false, $enable-border: false);
+  @include style.component-style($component: 'meta', $enable-background: false, $enable-border: false);
 }
 @mixin meta-label-style() {
-  @include style.container-style($component: 'page-info', $widget: "label", $enable-background: false, $enable-border: false);
+  @include style.component-style($component: 'meta', $widget: "label", $enable-background: false, $enable-border: false);
 }
 @mixin meta-icon-style() {
-  @include style.container-style($component: 'page-info', $widget: "icon", $enable-background: false, $enable-border: false);
+  @include style.component-style($component: 'meta', $widget: "icon", $enable-background: false, $enable-border: false);
 }
 
 .meta {
@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-xl);
+  gap: var(--w-common-spacing-gap-sm) var(--w-common-spacing-gap-xl);
 }
 
 .item {
@@ -35,6 +35,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-sm);
+  font-weight: var(--w-common-font-weight-regular);
 
   @include meta-label-style();
 
