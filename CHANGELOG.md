@@ -1,5 +1,13 @@
 # @wisdesign/wis
 
+## 0.0.8
+
+### Patch Changes
+
+- [#110](https://github.com/wisdesignsystem/wis/pull/110) [`1a89241`](https://github.com/wisdesignsystem/wis/commit/1a89241814cbd8a1705e3d85a8979f0719be211a) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] fix actions component style
+
+- [#112](https://github.com/wisdesignsystem/wis/pull/112) [`feb54de`](https://github.com/wisdesignsystem/wis/commit/feb54de89047be3868fccacbb1a535f972fffe49) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the meta pc component.
+
 ## 0.0.7
 
 ### Patch Changes
