@@ -1,0 +1,48 @@
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
+
+@mixin meta-style() {
+  @include style.component-style($component: 'meta', $enable-background: false, $enable-border: false);
+}
+@mixin meta-label-style() {
+  @include style.component-style($component: 'meta', $widget: "label", $enable-background: false, $enable-border: false);
+}
+@mixin meta-icon-style() {
+  @include style.component-style($component: 'meta', $widget: "icon", $enable-background: false, $enable-border: false);
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--w-common-spacing-gap-sm) var(--w-common-spacing-gap-xl);
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: var(--w-common-font-weight-medium);
+  gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-md);
+  @include tool.font-size(var(--w-common-font-size-text-base));
+
+  @include meta-style();
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--w-common-spacing-gap-none) var(--w-common-spacing-gap-sm);
+  font-weight: var(--w-common-font-weight-regular);
+
+  @include meta-label-style();
+
+  > svg {
+    stroke-width: var(--w-common-border-width-icon-sm);
+    font-size: var(--w-common-font-size-text-md);
+
+    @include meta-icon-style();
+  }
+}

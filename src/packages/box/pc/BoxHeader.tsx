@@ -13,8 +13,8 @@ function BoxHeader({
   ...rest
 }: BoxHeaderProps) {
   const {
-    elements: { BoxCollapse: collapse, BoxActions: actions },
-  } = matchElement(children, ["BoxCollapse", "BoxActions"]);
+    elements: { BoxCollapse: collapse, BoxActions: actions, BoxMeta: meta },
+  } = matchElement(children, ["BoxCollapse", "BoxActions", "BoxMeta"]);
 
   return (
     <div
@@ -41,6 +41,7 @@ function BoxHeader({
         </div>
         <div className={styles.actions}>{actions}</div>
       </div>
+      {meta && <div className={styles.meta}>{meta}</div>}
     </div>
   );
 }

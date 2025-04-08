@@ -1,5 +1,6 @@
 import Box from "./Box";
 import BoxActions from "./BoxActions";
+import BoxMeta from "./BoxMeta";
 import BoxCollapse from "./BoxCollapse";
 import BoxCollapsible from "./BoxCollapsible";
 import BoxContent from "./BoxContent";
@@ -11,6 +12,7 @@ export {
   Box,
   BoxHeader,
   BoxActions,
+  BoxMeta,
   BoxContent,
   BoxCollapsible,
   BoxCollapse,

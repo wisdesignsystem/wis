@@ -9,6 +9,8 @@ export interface BoxActionsProps {
   children: ReactNode;
 }
 
+export interface BoxMetaProps extends HTMLAttributes<HTMLDivElement> {}
+
 export interface BoxCollapseProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {}
 

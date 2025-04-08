@@ -455,6 +455,14 @@ export default {
       },
     },
   },
+  BoxMeta: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
+    description: "",
+    displayName: "BoxMeta",
+    methods: [],
+    props: {},
+  },
   BoxContent: {
     tags: {},
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/box/pc/index.ts",
@@ -2461,6 +2469,65 @@ export default {
             fileName: "wis/src/packages/layout/layout.ts",
             name: "LayoutProps",
           },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+    },
+  },
+  Meta: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/meta/pc/index.ts",
+    description: "",
+    displayName: "Meta",
+    methods: [],
+    props: {},
+  },
+  MetaItem: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/meta/pc/index.ts",
+    description: "",
+    displayName: "MetaItem",
+    methods: [],
+    props: {
+      icon: {
+        defaultValue: null,
+        description: "The icon element will be displayed in meta item.",
+        name: "icon",
+        parent: {
+          fileName: "wis/src/packages/meta/meta.ts",
+          name: "MetaItemProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/meta/meta.ts", name: "MetaItemProps" },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      label: {
+        defaultValue: null,
+        description: "The label for the meta item.",
+        name: "label",
+        parent: {
+          fileName: "wis/src/packages/meta/meta.ts",
+          name: "MetaItemProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/meta/meta.ts", name: "MetaItemProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      text: {
+        defaultValue: null,
+        description: "The text for the meta item.",
+        name: "text",
+        parent: {
+          fileName: "wis/src/packages/meta/meta.ts",
+          name: "MetaItemProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/meta/meta.ts", name: "MetaItemProps" },
         ],
         required: false,
         type: { name: "string" },

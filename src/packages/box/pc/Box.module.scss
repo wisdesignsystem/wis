@@ -16,7 +16,7 @@
 
 .header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 0 0 auto;
 }
 
@@ -81,6 +81,10 @@
   font-weight: var(--w-common-font-weight-regular);
 
   @include tool.font-size(var(--w-common-font-size-text-sm));
+}
+
+.meta {
+  margin: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-none) var(--w-common-spacing-common-none);
 }
 
 .content {
