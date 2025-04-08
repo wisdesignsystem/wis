@@ -1,7 +1,15 @@
+import { matchElement } from "wis/core";
+
 import type { MetaProps } from "../meta";
 
-function Meta(_props: MetaProps) {
-  return null;
+import styles from "./Meta.module.scss";
+
+function Meta({ children }: MetaProps) {
+  const {
+    elements: { MetaItem: metaItem },
+  } = matchElement(children, ["MetaItem"]);
+
+  return <div className={styles.meta}>{metaItem}</div>;
 }
 
 Meta.displayName = "Meta";
