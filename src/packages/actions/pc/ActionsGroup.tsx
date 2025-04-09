@@ -5,6 +5,9 @@ import type { ActionsGroupProps } from "../actions";
 
 import styles from "./Actions.module.scss";
 
+/**
+ * @package actions
+ */
 function ActionsGroup({ size = "md", children }: ActionsGroupProps) {
   const { matched } = matchElement(children, ["Button", "DropdownButton"]);
 
