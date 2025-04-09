@@ -2,6 +2,9 @@ import type { MetaItemProps } from "../meta";
 
 import styles from "./Meta.module.scss";
 
+/**
+ * @package meta
+ */
 function MetaItem({ icon, label, text }: MetaItemProps) {
   return (
     <div className={styles.item}>
