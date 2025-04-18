@@ -1,3 +1,4 @@
+import { useState } from "react";
 import classNames from "classnames";
 import attrs from "@/utils/attrs";
 import { OpenNewIcon } from "@wisdesign/lsicon";
@@ -19,6 +20,8 @@ function Link({
   onClick = () => {},
   ...rest
 }: LinkProps) {
+  const [visited, setVisited] = useState(false);
+
   const navigateTo = useNavigate();
   const redirectTo = useRedirect();
 
@@ -33,6 +36,7 @@ function Link({
     onClick(event);
 
     if (isExternal) {
+      setVisited(true);
       return;
     }
 
@@ -52,6 +56,7 @@ function Link({
       data-variant={variant}
       aria-disabled={disabled}
       {...attrs({
+        "data-status": visited ? "visited" : "none",
         "data-disabled": disabled,
         "data-style": inverse ? "inverse" : "none",
       })}
