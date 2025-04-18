@@ -9,36 +9,6 @@ function Example() {
         <MetaItem icon={<StarIcon />} label="label" text="text" />
         <MetaItem icon={<StarIcon />} text="text" />
         <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
-        <MetaItem icon={<StarIcon />} label="label" text="text" />
-        <MetaItem icon={<StarIcon />} text="text" />
-        <MetaItem label="label" text="text" />
       </Meta>
     </Page>
   );

@@ -4,12 +4,15 @@ import { Actions, ActionsGroup } from "wis/actions";
 import { Button } from "wis/button";
 import { DropdownButton, DropdownItem } from "wis/dropdown";
 import { Main, Left } from "wis/layout";
+import { Link } from "wis/link";
 import { ExportIcon } from "@wisdesign/lsicon";
 
 function Example() {
   return (
     <Page title="Actions Example">
       <Actions>
+        <Link text="Link" href="https://wis.design" />
+
         <Button text="Button" variant="ghost" />
         <Button text="Button" variant="tertiary" />
         <Button text="Button" />

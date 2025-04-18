@@ -69,6 +69,10 @@ const config: WisConfig = {
       pc: "./src/packages/avatar/pc/index",
       mobile: "./src/packages/avatar/mobile/index",
     },
+    "./link": {
+      pc: "./src/packages/link/pc/index",
+      mobile: "./src/packages/link/mobile/index",
+    },
   },
 };
 

@@ -7,6 +7,7 @@ import styles from "./Actions.module.scss";
 
 function Actions({ size = "md", children }: ActionsProps) {
   const { matched } = matchElement(children, [
+    "Link",
     "Button",
     "DropdownButton",
     "ActionsGroup",
