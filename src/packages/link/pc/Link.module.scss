@@ -1,8 +1,8 @@
-@use '@/packages/themes/tool.scss' as tool;
+@use "@/packages/themes/tool.scss" as tool;
 
-@use '../style.scss' as style;
+@use "../style.scss" as style;
 
-@mixin link-style($style: '') {
+@mixin link-style($style: "") {
   @include style.link-style($style: $style);
   @include style.link-hover-style($style: $style);
   @include style.link-focus-style($style: $style);
@@ -31,7 +31,19 @@
     font-size: var(--w-common-font-size-text-md);
   }
 
+  &:not(:hover):not(:active):not(:focus) {
+    &[data-status="visited"] {
+      @include style.link-style();
+    }
+  }
+
   &[data-style="inverse"] {
-    @include link-style($style: 'inverse');
+    @include link-style($style: "inverse");
+
+    &:not(:hover):not(:active):not(:focus) {
+      &[data-status="visited"] {
+        @include style.link-style($style: "inverse");
+      }
+    }
   }
 }
