@@ -1,0 +1,37 @@
+@use '@/packages/themes/tool.scss' as tool;
+
+@use '../style.scss' as style;
+
+@mixin link-style($style: '') {
+  @include style.link-style($style: $style);
+  @include style.link-hover-style($style: $style);
+  @include style.link-focus-style($style: $style);
+  @include style.link-active-style($style: $style);
+  @include style.link-disabled-style($style: $style);
+}
+
+.link {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: var(--w-common-font-weight-medium);
+  @include tool.font-size(var(--w-common-font-size-text-base));
+
+  color: var(--w-component-link-font);
+  text-decoration-color: var(--w-component-link-border);
+
+  @include link-style();
+
+  > svg {
+    stroke-width: var(--w-common-border-width-icon-sm);
+    font-size: var(--w-common-font-size-text-md);
+  }
+
+  &[data-style="inverse"] {
+    @include link-style($style: 'inverse');
+  }
+}

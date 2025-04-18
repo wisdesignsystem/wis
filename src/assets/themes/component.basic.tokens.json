@@ -3090,7 +3090,7 @@
         "$type": "color",
         "$value": "{font.color.helper}"
       },
-      "item": {
+      "popver": {
         "font": {
           "$type": "color",
           "$value": "{font.color.inverse}"
@@ -3960,16 +3960,6 @@
       }
     },
     "_table": {
-      "star": {
-        "font": {
-          "$type": "color",
-          "$value": "{_common.font.color.icon}"
-        },
-        "yellow": {
-          "$type": "color",
-          "$value": "{_palette.yellow.40}"
-        }
-      },
       "trend": {
         "red": {
           "$type": "color",
@@ -3978,6 +3968,16 @@
         "green": {
           "$type": "color",
           "$value": "{_common.background.semantics.success}"
+        }
+      },
+      "star": {
+        "font": {
+          "$type": "color",
+          "$value": "{_common.font.color.icon}"
+        },
+        "yellow": {
+          "$type": "color",
+          "$value": "{_palette.yellow.40}"
         }
       },
       "td-height": {

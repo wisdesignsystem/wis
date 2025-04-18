@@ -3,59 +3,25 @@
   --w-component-checkbox-item-font: var(--w-common-font-color-inverse);
   --w-component-checkbox-item-background: var(--w-common-background-common-03);
   --w-component-checkbox-item-hover-font: var(--w-common-font-color-inverse);
-  --w-component-checkbox-item-hover-background: var(
-    --w-common-background-state-hover
-  );
-  --w-component-checkbox-item-disabled-font: var(
-    --w-common-background-common-01
-  );
-  --w-component-checkbox-item-disabled-background: var(
-    --w-common-background-state-disabled
-  );
-  --w-component-checkbox-item-focus-font: var(
-    --w-common-background-state-disabled
-  );
-  --w-component-checkbox-item-focus-background: var(
-    --w-common-background-common-03
-  );
+  --w-component-checkbox-item-hover-background: var(--w-common-background-state-hover);
+  --w-component-checkbox-item-disabled-font: var(--w-common-background-common-01);
+  --w-component-checkbox-item-disabled-background: var(--w-common-background-state-disabled);
+  --w-component-checkbox-item-focus-font: var(--w-common-background-state-disabled);
+  --w-component-checkbox-item-focus-background: var(--w-common-background-common-03);
   --w-component-checkbox-checked-font: var(--w-common-font-color-inverse);
-  --w-component-checkbox-checked-background: var(
-    --w-common-background-semantics-highlight
-  );
+  --w-component-checkbox-checked-background: var(--w-common-background-semantics-highlight);
   --w-component-checkbox-checked-hover-font: var(--w-common-font-color-inverse);
-  --w-component-checkbox-checked-hover-background: var(
-    --w-common-background-semantics-highlight-hover
-  );
+  --w-component-checkbox-checked-hover-background: var(--w-common-background-semantics-highlight-hover);
   --w-component-checkbox-checked-focus-font: var(--w-common-font-color-inverse);
-  --w-component-checkbox-checked-focus-background: var(
-    --w-common-background-semantics-highlight-hover
-  );
-  --w-component-checkbox-checked-disabled-font: var(
-    --w-common-font-color-state-disabled
-  );
-  --w-component-checkbox-checked-disabled-background: var(
-    --w-common-background-state-disabled
-  );
+  --w-component-checkbox-checked-focus-background: var(--w-common-background-semantics-highlight-hover);
+  --w-component-checkbox-checked-disabled-font: var(--w-common-font-color-state-disabled);
+  --w-component-checkbox-checked-disabled-background: var(--w-common-background-state-disabled);
   --w-component-checkbox-Indeterminate-font: var(--w-common-font-color-inverse);
-  --w-component-checkbox-Indeterminate-background: var(
-    --w-common-background-semantics-highlight
-  );
-  --w-component-checkbox-Indeterminate-hover-font: var(
-    --w-common-font-color-inverse
-  );
-  --w-component-checkbox-Indeterminate-hover-background: var(
-    --w-common-background-semantics-highlight-hover
-  );
-  --w-component-checkbox-Indeterminate-focus-font: var(
-    --w-common-font-color-inverse
-  );
-  --w-component-checkbox-Indeterminate-focus-background: var(
-    --w-common-background-semantics-highlight-hover
-  );
-  --w-component-checkbox-Indeterminate-disabled-font: var(
-    --w-common-font-color-state-disabled
-  );
-  --w-component-checkbox-Indeterminate-disabled-background: var(
-    --w-common-background-state-disabled
-  );
+  --w-component-checkbox-Indeterminate-background: var(--w-common-background-semantics-highlight);
+  --w-component-checkbox-Indeterminate-hover-font: var(--w-common-font-color-inverse);
+  --w-component-checkbox-Indeterminate-hover-background: var(--w-common-background-semantics-highlight-hover);
+  --w-component-checkbox-Indeterminate-focus-font: var(--w-common-font-color-inverse);
+  --w-component-checkbox-Indeterminate-focus-background: var(--w-common-background-semantics-highlight-hover);
+  --w-component-checkbox-Indeterminate-disabled-font: var(--w-common-font-color-state-disabled);
+  --w-component-checkbox-Indeterminate-disabled-background: var(--w-common-background-state-disabled);
 }
