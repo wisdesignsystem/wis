@@ -1,0 +1,63 @@
+@use "@/packages/themes/tool.scss" as tool;
+@use "@/packages/themes/style.scss" as style;
+
+@mixin toggletip-popper-style() {
+  @include style.component-style($component: "toggletip", $widget: "popper");
+}
+
+.popper {
+  display: flex;
+  flex-direction: column;
+  padding: var(--w-common-spacing-common-lg);
+  gap: var(--w-common-spacing-gap-lg);
+  box-shadow: 0px 1px 3px 0px var(--w-common-shadow-color-02),
+    0px 1px 2px 0px var(--w-common-shadow-color-01);
+  border-radius: var(--w-common-border-radius-md);
+  max-width: 240px;
+  min-width: 64px;
+  box-sizing: border-box;
+  outline: none;
+
+  @include toggletip-popper-style();
+
+  &[data-side="left"] {
+    &[data-align="start"] {
+      .arrow {
+        transform: translate(var(--w-common-border-radius-md));
+      }
+    }
+    &[data-align="end"] {
+      .arrow {
+        transform: translate(calc(var(--w-common-border-radius-md) * -1));
+      }
+    }
+  }
+  &[data-side="right"] {
+    &[data-align="start"] {
+      .arrow {
+        transform: translate(calc(var(--w-common-border-radius-md) * -1));
+      }
+    }
+    &[data-align="end"] {
+      .arrow {
+        transform: translate(var(--w-common-border-radius-md));
+      }
+    }
+  }
+}
+
+.arrow {
+  color: var(--w-component-toggletip-popper-background);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mark {
+  position: fixed;
+  z-index: -9999;
+}

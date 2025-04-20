@@ -10,7 +10,11 @@ function Example() {
   return (
     <div className={styles.row}>
       <div className={styles.col}>
-        <Button text="Button" variant="primary" onClick={() => navigate("/")} />
+        <Button
+          text="Button"
+          variant="primary"
+          onClick={() => navigate("/avatar")}
+        />
         <Button text="Button" variant="primary" icon={<StarIcon />} />
         <Button
           text="Button"

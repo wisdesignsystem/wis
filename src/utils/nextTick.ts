@@ -1,0 +1,3 @@
+export default function nextTick(fn: () => void) {
+  Promise.resolve().then(fn);
+}
