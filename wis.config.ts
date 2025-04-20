@@ -73,6 +73,10 @@ const config: WisConfig = {
       pc: "./src/packages/link/pc/index",
       mobile: "./src/packages/link/mobile/index",
     },
+    "./toggleTip": {
+      pc: "./src/packages/toggleTip/pc/index",
+      mobile: "./src/packages/toggleTip/mobile/index",
+    },
   },
 };
 
