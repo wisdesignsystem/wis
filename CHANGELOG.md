@@ -1,5 +1,15 @@
 # @wisdesign/wis
 
+## 0.0.9
+
+### Patch Changes
+
+- [#120](https://github.com/wisdesignsystem/wis/pull/120) [`a6288f3`](https://github.com/wisdesignsystem/wis/commit/a6288f3b684b171ac0bf5ee678831505249c9846) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Create the link component
+
+- [#123](https://github.com/wisdesignsystem/wis/pull/123) [`9d48701`](https://github.com/wisdesignsystem/wis/commit/9d487019770444ee8a378bc86758da81a1c3c302) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Create the ToggleTip component
+
+- [#122](https://github.com/wisdesignsystem/wis/pull/122) [`4bd5cf4`](https://github.com/wisdesignsystem/wis/commit/4bd5cf49395103cdc8993aa1413bd10725a3a38e) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] Add the link visited status for external link
+
 ## 0.0.8
 
 ### Patch Changes
