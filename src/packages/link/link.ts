@@ -36,6 +36,8 @@ export interface LinkProps
   onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
+export interface ExternalLinkProps extends LinkProps {}
+
 export function isFullLink(link: string) {
   return /^http(s)?:/.test(link);
 }

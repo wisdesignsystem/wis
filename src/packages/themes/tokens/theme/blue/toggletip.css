@@ -4,6 +4,10 @@
   --w-component-toggletip-active-font: var(--w-common-font-color-primary);
   --w-component-toggletip-focus-font: var(--w-common-font-color-helper);
   --w-component-toggletip-popper-font: var(--w-common-font-color-inverse);
-  --w-component-toggletip-popper-background: var(--w-common-background-transparent-overlay-black-09);
-  --w-component-toggletip-popper-border: var(--w-common-border-color-transparent);
+  --w-component-toggletip-popper-background: var(
+    --w-common-background-transparent-overlay-black-09
+  );
+  --w-component-toggletip-popper-border: var(
+    --w-common-border-color-transparent
+  );
 }

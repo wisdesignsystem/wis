@@ -16,6 +16,7 @@ function Layout({
   className,
   title,
   description,
+  toggleTip,
   responsive,
   gutter,
   children,
@@ -66,6 +67,7 @@ function Layout({
           className={styles.header}
           title={title}
           description={description}
+          toggleTip={toggleTip}
         >
           {renderActions()}
         </BoxHeader>

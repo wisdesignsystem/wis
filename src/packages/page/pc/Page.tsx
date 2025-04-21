@@ -8,7 +8,14 @@ import type { PageProps } from "../page";
 
 import styles from "./Page.module.scss";
 
-function Page({ className, title, description, children, ...rest }: PageProps) {
+function Page({
+  className,
+  title,
+  description,
+  toggleTip,
+  children,
+  ...rest
+}: PageProps) {
   const {
     elements: { Actions: actions, Meta: meta },
     unmatched,
@@ -48,6 +55,7 @@ function Page({ className, title, description, children, ...rest }: PageProps) {
         className={styles.header}
         title={title}
         description={description}
+        toggleTip={toggleTip}
       >
         {renderActions()}
         {renderMeta()}

@@ -9,6 +9,7 @@ function BoxHeader({
   className,
   title,
   description,
+  toggleTip,
   children,
   ...rest
 }: BoxHeaderProps) {
@@ -30,6 +31,7 @@ function BoxHeader({
             <div className={styles.container}>
               <div className={styles.title}>
                 <span className={styles.label}>{title}</span>
+                {toggleTip}
               </div>
               {description && (
                 <div className={styles.description} data-description>

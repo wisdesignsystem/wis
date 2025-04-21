@@ -3,15 +3,27 @@
   --w-component-checkbox-card-background: var(--w-common-background-common-base);
   --w-component-checkbox-card-border: var(--w-common-border-color-base);
   --w-component-checkbox-card-selected-font: var(--w-common-font-color-primary);
-  --w-component-checkbox-card-selected-background: var(--w-common-background-common-base);
+  --w-component-checkbox-card-selected-background: var(
+    --w-common-background-common-base
+  );
   --w-component-checkbox-card-selected-border: var(--w-common-border-color-base);
   --w-component-checkbox-card-hover-font: var(--w-common-font-color-primary);
-  --w-component-checkbox-card-hover-background: var(--w-common-background-state-hover);
+  --w-component-checkbox-card-hover-background: var(
+    --w-common-background-state-hover
+  );
   --w-component-checkbox-card-hover-border: var(--w-common-border-color-base);
   --w-component-checkbox-card-focus-font: var(--w-common-font-color-primary);
-  --w-component-checkbox-card-focus-background: var(--w-common-background-common-base);
+  --w-component-checkbox-card-focus-background: var(
+    --w-common-background-common-base
+  );
   --w-component-checkbox-card-focus-border: var(--w-common-border-color-base);
-  --w-component-checkbox-card-disabled-font: var(--w-common-font-color-state-disabled);
-  --w-component-checkbox-card-disabled-background: var(--w-common-background-state-disabled);
-  --w-component-checkbox-card-disabled-border: var(--w-common-border-color-state-disabled);
+  --w-component-checkbox-card-disabled-font: var(
+    --w-common-font-color-state-disabled
+  );
+  --w-component-checkbox-card-disabled-background: var(
+    --w-common-background-state-disabled
+  );
+  --w-component-checkbox-card-disabled-border: var(
+    --w-common-border-color-state-disabled
+  );
 }
