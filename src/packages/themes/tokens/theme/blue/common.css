@@ -28,20 +28,42 @@
   --w-common-background-semantics-warning-active: var(--w-palette-orange-100);
   --w-common-background-semantics-warning-hover: var(--w-palette-orange-700);
   --w-common-background-semantics-error-light-hover: var(--w-palette-red-100);
-  --w-common-background-semantics-warning-light-hover: var(--w-palette-orange-100);
-  --w-common-background-semantics-success-light-hover: var(--w-palette-green-100);
-  --w-common-background-semantics-highlight-light-hover: var(--w-common-brand-lighter);
+  --w-common-background-semantics-warning-light-hover: var(
+    --w-palette-orange-100
+  );
+  --w-common-background-semantics-success-light-hover: var(
+    --w-palette-green-100
+  );
+  --w-common-background-semantics-highlight-light-hover: var(
+    --w-common-brand-lighter
+  );
   --w-common-background-semantics-black: var(--w-palette-neutral-800);
   --w-common-background-semantics-light: var(--w-palette-neutral-200);
   --w-common-background-transparent-fully: var(--w-palette-alpha-black-alpha-00);
-  --w-common-background-transparent-overlay-black: var(--w-palette-alpha-black-alpha-50);
-  --w-common-background-transparent-overlay-white: var(--w-palette-alpha-white-alpha-50);
-  --w-common-background-transparent-overlay-white-10: var(--w-palette-alpha-white-alpha-10);
-  --w-common-background-transparent-overlay-black-10: var(--w-palette-alpha-black-alpha-10);
-  --w-common-background-transparent-overlay-black-05: var(--w-palette-alpha-black-alpha-05);
-  --w-common-background-transparent-overlay-white-05: var(--w-palette-alpha-white-alpha-05);
-  --w-common-background-transparent-overlay-white-09: var(--w-palette-alpha-white-alpha-90);
-  --w-common-background-transparent-overlay-black-09: var(--w-palette-alpha-black-alpha-90);
+  --w-common-background-transparent-overlay-black: var(
+    --w-palette-alpha-black-alpha-50
+  );
+  --w-common-background-transparent-overlay-white: var(
+    --w-palette-alpha-white-alpha-50
+  );
+  --w-common-background-transparent-overlay-white-10: var(
+    --w-palette-alpha-white-alpha-10
+  );
+  --w-common-background-transparent-overlay-black-10: var(
+    --w-palette-alpha-black-alpha-10
+  );
+  --w-common-background-transparent-overlay-black-05: var(
+    --w-palette-alpha-black-alpha-05
+  );
+  --w-common-background-transparent-overlay-white-05: var(
+    --w-palette-alpha-white-alpha-05
+  );
+  --w-common-background-transparent-overlay-white-09: var(
+    --w-palette-alpha-white-alpha-90
+  );
+  --w-common-background-transparent-overlay-black-09: var(
+    --w-palette-alpha-black-alpha-90
+  );
   --w-common-font-color-base: var(--w-palette-neutral-600);
   --w-common-font-color-primary: var(--w-palette-neutral-900);
   --w-common-font-color-secondary: var(--w-palette-neutral-800);
@@ -94,8 +116,12 @@
   --w-common-border-color-inverse-highlight: var(--w-common-brand-light);
   --w-common-border-color-inverse-highlight-hover: var(--w-common-brand-lighter);
   --w-common-border-color-transparent: var(--w-palette-alpha-white-alpha-00);
-  --w-common-border-color-white-transparent-10: var(--w-palette-alpha-white-alpha-10);
-  --w-common-border-color-black-transparent-10: var(--w-palette-alpha-black-alpha-10);
+  --w-common-border-color-white-transparent-10: var(
+    --w-palette-alpha-white-alpha-10
+  );
+  --w-common-border-color-black-transparent-10: var(
+    --w-palette-alpha-black-alpha-10
+  );
   --w-common-border-color-state-disabled: var(--w-palette-neutral-200);
   --w-common-border-color-state-focus: var(--w-common-brand-light);
   --w-common-border-color-semantics-highlight: var(--w-common-brand);
@@ -107,9 +133,13 @@
   --w-common-border-color-semantics-warning: var(--w-palette-orange-600);
   --w-common-border-color-semantics-warning-hover: var(--w-palette-orange-700);
   --w-common-border-color-semantics-error-disabled: var(--w-palette-neutral-300);
-  --w-common-border-color-semantics-highlight-light: var(--w-common-brand-lighter);
+  --w-common-border-color-semantics-highlight-light: var(
+    --w-common-brand-lighter
+  );
   --w-common-border-color-semantics-error-light: var(--w-palette-red-200);
-  --w-common-border-color-semantics-error-light-disabled: var(--w-palette-red-100);
+  --w-common-border-color-semantics-error-light-disabled: var(
+    --w-palette-red-100
+  );
   --w-common-border-width-none: 0px;
   --w-common-border-width-sm: 1px;
   --w-common-border-width-md: 2px;
@@ -151,7 +181,6 @@
   --w-common-shadow-color-04: #00000066;
 }
 
-
 :root {
   --w-common-background-common-base: var(--w-palette-core-white);
   --w-common-background-common-01: var(--w-palette-neutral-50);
@@ -182,20 +211,42 @@
   --w-common-background-semantics-warning-active: var(--w-palette-orange-100);
   --w-common-background-semantics-warning-hover: var(--w-palette-orange-700);
   --w-common-background-semantics-error-light-hover: var(--w-palette-red-100);
-  --w-common-background-semantics-warning-light-hover: var(--w-palette-orange-100);
-  --w-common-background-semantics-success-light-hover: var(--w-palette-green-100);
-  --w-common-background-semantics-highlight-light-hover: var(--w-common-brand-lighter);
+  --w-common-background-semantics-warning-light-hover: var(
+    --w-palette-orange-100
+  );
+  --w-common-background-semantics-success-light-hover: var(
+    --w-palette-green-100
+  );
+  --w-common-background-semantics-highlight-light-hover: var(
+    --w-common-brand-lighter
+  );
   --w-common-background-semantics-black: var(--w-palette-neutral-800);
   --w-common-background-semantics-light: var(--w-palette-neutral-200);
   --w-common-background-transparent-fully: var(--w-palette-alpha-black-alpha-00);
-  --w-common-background-transparent-overlay-black: var(--w-palette-alpha-black-alpha-50);
-  --w-common-background-transparent-overlay-white: var(--w-palette-alpha-white-alpha-50);
-  --w-common-background-transparent-overlay-white-10: var(--w-palette-alpha-white-alpha-10);
-  --w-common-background-transparent-overlay-black-10: var(--w-palette-alpha-black-alpha-10);
-  --w-common-background-transparent-overlay-black-05: var(--w-palette-alpha-black-alpha-05);
-  --w-common-background-transparent-overlay-white-05: var(--w-palette-alpha-white-alpha-05);
-  --w-common-background-transparent-overlay-white-09: var(--w-palette-alpha-white-alpha-90);
-  --w-common-background-transparent-overlay-black-09: var(--w-palette-alpha-black-alpha-90);
+  --w-common-background-transparent-overlay-black: var(
+    --w-palette-alpha-black-alpha-50
+  );
+  --w-common-background-transparent-overlay-white: var(
+    --w-palette-alpha-white-alpha-50
+  );
+  --w-common-background-transparent-overlay-white-10: var(
+    --w-palette-alpha-white-alpha-10
+  );
+  --w-common-background-transparent-overlay-black-10: var(
+    --w-palette-alpha-black-alpha-10
+  );
+  --w-common-background-transparent-overlay-black-05: var(
+    --w-palette-alpha-black-alpha-05
+  );
+  --w-common-background-transparent-overlay-white-05: var(
+    --w-palette-alpha-white-alpha-05
+  );
+  --w-common-background-transparent-overlay-white-09: var(
+    --w-palette-alpha-white-alpha-90
+  );
+  --w-common-background-transparent-overlay-black-09: var(
+    --w-palette-alpha-black-alpha-90
+  );
   --w-common-font-color-base: var(--w-palette-neutral-600);
   --w-common-font-color-primary: var(--w-palette-neutral-900);
   --w-common-font-color-secondary: var(--w-palette-neutral-800);
@@ -248,8 +299,12 @@
   --w-common-border-color-inverse-highlight: var(--w-common-brand-light);
   --w-common-border-color-inverse-highlight-hover: var(--w-common-brand-lighter);
   --w-common-border-color-transparent: var(--w-palette-alpha-white-alpha-00);
-  --w-common-border-color-white-transparent-10: var(--w-palette-alpha-white-alpha-10);
-  --w-common-border-color-black-transparent-10: var(--w-palette-alpha-black-alpha-10);
+  --w-common-border-color-white-transparent-10: var(
+    --w-palette-alpha-white-alpha-10
+  );
+  --w-common-border-color-black-transparent-10: var(
+    --w-palette-alpha-black-alpha-10
+  );
   --w-common-border-color-state-disabled: var(--w-palette-neutral-200);
   --w-common-border-color-state-focus: var(--w-common-brand-light);
   --w-common-border-color-semantics-highlight: var(--w-common-brand);
@@ -261,9 +316,13 @@
   --w-common-border-color-semantics-warning: var(--w-palette-orange-600);
   --w-common-border-color-semantics-warning-hover: var(--w-palette-orange-700);
   --w-common-border-color-semantics-error-disabled: var(--w-palette-neutral-300);
-  --w-common-border-color-semantics-highlight-light: var(--w-common-brand-lighter);
+  --w-common-border-color-semantics-highlight-light: var(
+    --w-common-brand-lighter
+  );
   --w-common-border-color-semantics-error-light: var(--w-palette-red-200);
-  --w-common-border-color-semantics-error-light-disabled: var(--w-palette-red-100);
+  --w-common-border-color-semantics-error-light-disabled: var(
+    --w-palette-red-100
+  );
   --w-common-border-width-none: 0px;
   --w-common-border-width-sm: 1px;
   --w-common-border-width-md: 2px;

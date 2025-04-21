@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export interface PageProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -10,4 +10,9 @@ export interface PageProps extends HTMLAttributes<HTMLDivElement> {
    * The description text will show in the page header.
    */
   description?: string;
+
+  /**
+   * The toggle tip
+   */
+  toggleTip?: ReactNode;
 }

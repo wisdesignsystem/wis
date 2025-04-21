@@ -23,6 +23,7 @@ function Module({
   className,
   title,
   description,
+  toggleTip,
   variant = "basic",
   collapsible,
   defaultCollapsed,
@@ -78,6 +79,7 @@ function Module({
           className={styles.header}
           title={title}
           description={description}
+          toggleTip={toggleTip}
         >
           <BoxCollapse />
           {renderActions()}
@@ -102,6 +104,7 @@ function Module({
         className={styles.header}
         title={title}
         description={description}
+        toggleTip={toggleTip}
       >
         {renderActions()}
       </BoxHeader>

@@ -9,7 +9,17 @@ import styles from "./Layout.module.scss";
 /**
  * @package layout
  */
-function Top({ className, title, description, children, ...rest }: TopProps) {
+function Top({
+  className,
+  // @ts-ignore
+  title,
+  // @ts-ignore
+  description,
+  // @ts-ignore
+  toggleTip,
+  children,
+  ...rest
+}: TopProps) {
   const { unmatched } = matchElement(
     children,
     [{ type: "Actions", maxCount: 0 }],
