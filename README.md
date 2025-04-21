@@ -35,5 +35,5 @@ Please refer to our [documentation website](https://wis.design/getting-started/q
 ## Contributing
 We are always looking for designers and engineers to help us fix bugs, build new components, and write project documentation. If you're interested, please check out our [Contribution Guide](https://wis.design/community/contribution).
 
-## 许可证
+## License
 This library is licensed under the MIT License.
