@@ -61,10 +61,9 @@ function ToggleTip(props: ToggleTipProps) {
             {text}
             {toggleTipActions}
             <RDXTooltip.Arrow fill="currentColor" className={styles.arrow} />
-            {/* biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation> */}
-            <span
+            <button
               className={styles.mark}
-              tabIndex={0}
+              type="button"
               onFocus={onPopperLeave}
             />
           </RDXTooltip.Content>
