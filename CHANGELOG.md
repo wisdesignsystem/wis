@@ -1,5 +1,11 @@
 # @wisdesign/wis
 
+## 0.0.10
+
+### Patch Changes
+
+- [#125](https://github.com/wisdesignsystem/wis/pull/125) [`b9ea59a`](https://github.com/wisdesignsystem/wis/commit/b9ea59ad4054c220f436d06dec11cd4c6c95fc36) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Enhance Link and container accessToggleTip
+
 ## 0.0.9
 
 ### Patch Changes
