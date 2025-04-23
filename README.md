@@ -7,9 +7,12 @@
   Wis Design System
 </h1>
 
-Wis is the open-source design system of Wis.design, aimed at providing excellent user experience for B-end products. This system provides runnable code, design tools, and product design guidelines based on an essence-based design language.
+Wis is an open-source design system launched by [Wis.design](https://wis.design), dedicated to delivering exceptional multi-device user experiences for B2B products.
 
-We are a group of designers and developers passionate about open source, and we aspire to build a vibrant contributor community.
+>All components support both **PC** and **Mobile** platforms, with consistent properties and functionalities, ensuring systematically designed and validated user experiences.
+
+The system is built upon an "Essence-Driven" design language, offering ready-to-use code components, design tools, and product design guidelines to help teams create unified, scalable interfaces more efficiently.
+
 
 <p align="center">
   <img alt="NPM Version" src="https://img.shields.io/npm/v/https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40wisdesign%2Fwis">
@@ -33,6 +36,8 @@ You can find a list of all our resource packs here.
 Please refer to our [documentation website](https://wis.design/getting-started/quick-start) for the complete operation guide.
 
 ## Contributing
+We are a group of designers and developers passionate about open source, and we aspire to build a vibrant contributor community.
+
 We are always looking for designers and engineers to help us fix bugs, build new components, and write project documentation. If you're interested, please check out our [Contribution Guide](https://wis.design/community/contribution).
 
 ## License
