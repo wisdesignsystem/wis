@@ -14,9 +14,8 @@ Wis 是 [Wis.design](https://wis.design) 推出的开源设计系统，致力于
 系统基于“本质驱动”的设计语言，提供可运行的代码组件、设计工具与产品设计指南，帮助团队更高效地构建统一、可扩展的界面
 
 <p align="center">
-  <img alt="NPM Version" src="https://img.shields.io/npm/v/https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40wisdesign%2Fwis">
-  <img alt="GitHub License" src="https://img.shields.io/github/license/wisdesignsystem/wis">
-  <img alt="NPM License" src="https://img.shields.io/npm/l/https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40wisdesign%2Fwis">
+  <img alt="NPM Version" src="https://img.shields.io/npm/v/@wisdesign/wis.svg">
+  <img alt="NPM License" src="https://img.shields.io/npm/l/@wisdesign/wis.svg">
 </p>
 
 🌐 [English](./README.md) | [中文](./README.zh-CN.md)
@@ -28,8 +27,11 @@ Wis 是 [Wis.design](https://wis.design) 推出的开源设计系统，致力于
 
 | 包名      | 描述 |
 | :------- | :----------- |
-| [@wisdesignsystem/wis-cli](https://github.com/wisdesignsystem/wis-cli)      | Manage the tools related to the wis design R&D process|
-| [@wisdesignsystem/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Wis核心包，包含路由及微前端运行时等资源 |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 用于将wis的工程化能力接入社区脚手架 |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | Manage the tools related to the wis design R&D process|
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | A Figma plugin to manage icon component |
 
 ## 文档
 请在我们的[文档网站](https://wis.design/getting-started/quick-start)查看完整的操作指南 
