@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function useValue<T>({
   value,
   defaultValue,
-}: { value?: T; defaultValue?: T }) {
+}: { value?: T; defaultValue?: T }): [undefined | T, (value: T) => void] {
   const [currentValue, setCurrentValue] = useState(defaultValue);
 
   function onValueChange(value: T) {

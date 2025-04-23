@@ -1,18 +1,24 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useShortcut } from "wis/shortcut";
 
 import type { ToggleTipProps } from "./toggleTip";
 import nextTick from "../../utils/nextTick";
+import useOpen from "./useOpen";
 
-export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
+export default function useToggleTip({
+  open,
+  defaultOpen,
+  onOpen = () => {},
+}: ToggleTipProps) {
   const clearDocumentClick = useRef<() => void>();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [currentOpen, setCurrentOpen] = useOpen({ open, defaultOpen });
+
   const [onTriggerKeyDown, onShortcut] = useShortcut();
 
   useEffect(() => {
-    if (visible) {
+    if (currentOpen) {
       nextTick(() => {
         popperRef.current?.focus();
       });
@@ -24,7 +30,7 @@ export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
           !triggerRef.current?.contains(target) &&
           !popperRef.current?.contains(target)
         ) {
-          change(false);
+          setOpen(false);
         }
       }
 
@@ -38,32 +44,32 @@ export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
         clearDocumentClick.current = undefined;
       }
     }
-  }, [visible]);
+  }, [currentOpen]);
 
   onShortcut("Escape", () => {
-    if (visible) {
-      change(false);
+    if (currentOpen) {
+      setOpen(false);
       triggerRef.current?.focus();
     }
   });
 
   function onTriggerClick() {
-    change(!visible);
+    setOpen(!currentOpen);
   }
 
   function onPopperLeave() {
-    change(false);
+    setOpen(false);
     triggerRef.current?.focus();
   }
 
-  function change(value: boolean) {
-    setVisible(value);
+  function setOpen(value: boolean) {
+    setCurrentOpen(value);
     onOpen(value);
   }
 
   return {
-    open: visible,
-    change,
+    open: currentOpen,
+    setOpen,
     triggerRef,
     popperRef,
     onTriggerKeyDown,
