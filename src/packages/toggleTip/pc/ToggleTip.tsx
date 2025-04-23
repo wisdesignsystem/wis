@@ -15,6 +15,7 @@ function ToggleTip(props: ToggleTipProps) {
     side = "top",
     align = "center",
     text,
+    open,
     defaultOpen,
     children,
     onOpen,
@@ -22,7 +23,7 @@ function ToggleTip(props: ToggleTipProps) {
   } = props;
 
   const {
-    open,
+    open: visible,
     triggerRef,
     popperRef,
     onTriggerKeyDown,
@@ -36,7 +37,7 @@ function ToggleTip(props: ToggleTipProps) {
 
   return (
     <RDXTooltip.Provider>
-      <RDXTooltip.Root open={open}>
+      <RDXTooltip.Root open={visible}>
         <RDXTooltip.Trigger asChild>
           <Button
             ref={triggerRef}
