@@ -1,0 +1,70 @@
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
+
+@mixin drawer-style() {
+  @include style.container-style($component: 'drawer');
+}
+
+@mixin drawer-header-style() {
+  @include style.container-style($component: 'drawer', $widget: 'header');
+}
+
+@mixin drawer-footer-style() {
+  @include style.container-style($component: 'drawer', $widget: 'footer');
+}
+
+
+.content {
+  position: absolute;
+  height: 0;
+  padding: var(--w-common-spacing-common-lg);
+  box-sizing: border-box;
+
+  &[data-side="bottom"] {
+    bottom: 0;
+    width: 100%;
+    min-height: 30%;
+    max-height: 70%; 
+  }
+
+  &[data-side="right"] {
+    right: 0;
+    height: 100%;
+    min-width: 30%;
+    max-width: 70%;
+  }
+}
+
+.drawer {
+  height: 100%;
+  border-radius: var(--w-common-border-radius-xlg);
+  box-shadow: 0px 10px 15px -3px var(--w-common-shadow-color-02), 0px 4px 6px -2px var(--w-common-shadow-color-01);
+  overflow: hidden;
+
+  @include drawer-style();
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
+  background: #00000030;
+}
+
+.header {
+  box-sizing: border-box;
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  font-weight: var(--w-common-font-weight-bold);
+  padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xl);
+
+  @include tool.font-size(var(--w-common-font-size-text-lg));
+  @include drawer-header-style();
+}
+
+.footer {
+  height: 72px;
+  box-sizing: border-box;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-xl);
+  border-top: var(--w-common-spacing-scale-1) solid transparent;
+
+  @include drawer-footer-style();
+}

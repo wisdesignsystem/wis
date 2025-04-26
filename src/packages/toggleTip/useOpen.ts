@@ -8,5 +8,5 @@ export default function useOpen({
   (open: boolean) => void,
 ] {
   const [currentOpen, setOpen] = useState(defaultOpen);
-  return [open || currentOpen, setOpen];
+  return [open === undefined ? currentOpen : open, setOpen];
 }

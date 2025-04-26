@@ -45,6 +45,9 @@ function ToggleTip(props: ToggleTipProps) {
             size="xs"
             variant="ghost"
             onClick={onTriggerClick}
+            onFocus={(event) => {
+              event.stopPropagation();
+            }}
           />
         </RDXTooltip.Trigger>
         <RDXTooltip.Portal>

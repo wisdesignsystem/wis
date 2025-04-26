@@ -11,6 +11,7 @@
 
 .page {
   height: 100%;
+  overflow: hidden;
 
   @include page-style();
 }
