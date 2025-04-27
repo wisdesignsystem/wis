@@ -73,14 +73,14 @@ importers:
         specifier: 18.2.25
         version: 18.2.25
       '@wisdesign/cli':
-        specifier: 0.0.33
-        version: 0.0.33(@types/node@22.13.7)
+        specifier: 0.0.34
+        version: 0.0.34(@types/node@22.13.7)
       '@wisdesign/toolkit':
         specifier: 0.0.7
         version: 0.0.7(typescript@5.7.3)
       '@wisdesign/wis-plugin':
-        specifier: 0.0.10
-        version: 0.0.10(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.17))(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(postcss@8.5.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.7.3)
+        specifier: 0.0.11
+        version: 0.0.11(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.17))(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(postcss@8.5.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.7.3)
       husky:
         specifier: 9.0.11
         version: 9.0.11
@@ -1984,8 +1984,8 @@ packages:
   '@types/semver@7.7.0':
     resolution: {integrity: sha512-k107IF4+Xr7UHjwDc7Cfd6PRQfbdkiRabXGRjo07b4WyPahFBZCZ1sE+BNxYIJPPg73UkfOsVOLwqVc/6ETrIA==}
 
-  '@wisdesign/cli@0.0.33':
-    resolution: {integrity: sha512-oRuVHdCQ9+MF4RkDAnXTqsQ8nQR4PqQQbXjyl4qwUOdhyU36RxNQZF1Rpz6iZWEenAr0NJAhEsgNEhsLzd7EGA==}
+  '@wisdesign/cli@0.0.34':
+    resolution: {integrity: sha512-z+ACeKGdGi1kiGwVNRXQWLWOgKXZgjEw0B9QlFxCB2SQb4z4nET2XYtTkL85M9Z0Jz//tVTEwTCQDx8WN2cOmQ==}
     hasBin: true
 
   '@wisdesign/context@0.0.1':
@@ -2036,8 +2036,8 @@ packages:
   '@wisdesign/utils@0.0.6':
     resolution: {integrity: sha512-WzXGJWrV4DYZz/dWhfp9vDIo2OyI23DgqLXdf9fviVBaKHn+bby3fR/I5t/cGfS5jWRk+OJ2UuivS8C1HxdBYg==}
 
-  '@wisdesign/wis-plugin@0.0.10':
-    resolution: {integrity: sha512-8TdFAkQ1DY0K49mmO50c2sL4qlAN1hE4XfGP/Tq8mLUB7aXW51fcFi3OJ8Pd63yRzFJhCLpmugXj6fTkkhpGCA==}
+  '@wisdesign/wis-plugin@0.0.11':
+    resolution: {integrity: sha512-7O2f1ax55Jgnz8yy14WubHPUQNAFKb4GefvPJfPs99WI/dE5aJEW2cGX+fPiNENMvjaa3kGXkaeRx8u5Zj7P0A==}
     peerDependencies:
       '@rsbuild/core': '>=1'
     peerDependenciesMeta:
@@ -6865,7 +6865,7 @@ snapshots:
 
   '@types/semver@7.7.0': {}
 
-  '@wisdesign/cli@0.0.33(@types/node@22.13.7)':
+  '@wisdesign/cli@0.0.34(@types/node@22.13.7)':
     dependencies:
       '@inquirer/prompts': 7.2.1(@types/node@22.13.7)
       chalk: 5.4.1
@@ -6985,7 +6985,7 @@ snapshots:
       prettier: 3.3.1
       signale: 1.4.0
 
-  '@wisdesign/wis-plugin@0.0.10(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.17))(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(postcss@8.5.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.7.3)':
+  '@wisdesign/wis-plugin@0.0.11(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.17))(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(postcss@8.5.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.7.3)':
     dependencies:
       '@wisdesign/context': 0.0.1(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(typescript@5.7.3)
       '@wisdesign/cross-plugin': 0.0.4(@rsbuild/core@1.2.13)(@rspack/core@1.2.6(@swc/helpers@0.5.17))(@swc/core@1.11.21(@swc/helpers@0.5.17))(@swc/types@0.1.21)(postcss@8.5.3)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.7.3)
