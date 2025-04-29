@@ -9,7 +9,8 @@ import { ToggleTip, ToggleTipActions } from "wis/toggleTip";
 import { Link } from "wis/link";
 
 export default function Example() {
-  const drawer = useRef<DrawerRef>(null);
+  const bottom = useRef<DrawerRef>(null);
+  const right = useRef<DrawerRef>(null);
 
   return (
     <Page
@@ -24,15 +25,39 @@ export default function Example() {
       }
     >
       <Actions>
+        <Button text="Right" onClick={() => right.current?.show()} />
         <Button
-          text="Show"
+          text="Bottom"
           variant="primary"
-          onClick={() => drawer.current?.show()}
+          onClick={() => bottom.current?.show()}
         />
       </Actions>
 
       <Drawer
-        ref={drawer}
+        ref={bottom}
+        title="Drawer Title"
+        description="Drawer Description"
+        toggleTip={
+          <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
+            <ToggleTipActions>
+              <Link text="link" href="https://wis.design" />
+              <Button text="Button" />
+            </ToggleTipActions>
+          </ToggleTip>
+        }
+        onOpen={(open) => console.log("changed", open)}
+      >
+        xxx
+        <Actions>
+          <Button text="Cancel" />
+          <Button text="Confirm" variant="primary" />
+        </Actions>
+      </Drawer>
+
+      <Drawer
+        ref={right}
+        side="right"
+        modal={false}
         title="Drawer Title"
         description="Drawer Description"
         toggleTip={

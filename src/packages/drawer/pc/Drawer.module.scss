@@ -21,6 +21,7 @@
   box-sizing: border-box;
 
   &[data-side="bottom"] {
+    left: 0;
     bottom: 0;
     width: 100%;
     min-height: 30%;
@@ -28,6 +29,7 @@
   }
 
   &[data-side="right"] {
+    top: 0;
     right: 0;
     height: 100%;
     min-width: 30%;
@@ -47,7 +49,7 @@
 .mask {
   position: absolute;
   inset: 0;
-  background: #00000030;
+  background: var(--w-common-background-transparent-overlay-black);
 }
 
 .header {

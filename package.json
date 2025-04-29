@@ -23,7 +23,7 @@
     "rc": "pnpm changeset pre enter rc && pnpm changeset version && pnpm changeset pre exit",
     "release": "pnpm changeset tag && git push --follow-tags && pnpm publish",
     "docgen": "typescript-docgen -s ./src/packages -o ./src/definitions.ts && biome format --write",
-    "token": "wis token -s w -o ./src/packages/themes/tokens --light ./src/assets/themes/theme.light.tokens.json --dark ./src/assets/themes/theme.dark.tokens.json --component ./src/assets/themes/component.basic.tokens.json --palette ./src/assets/themes/palette.tokens.json --gray black:./src/assets/themes/gray.black.tokens.json blue:./src/assets/themes/gray.blue.tokens.json -t blue:./src/assets/themes/brand.blue.tokens.json orange:./src/assets/themes/brand.orange.tokens.json"
+    "token": "wis token -s w -o ./src/packages/themes/tokens --light ./src/assets/themes/theme.light.tokens.json --dark ./src/assets/themes/theme.dark.tokens.json --component ./src/assets/themes/component.basic.tokens.json --palette ./src/assets/themes/palette.tokens.json --gray black:./src/assets/themes/gray.black.tokens.json blue:./src/assets/themes/gray.blue.tokens.json -t blue:./src/assets/themes/brand.blue.tokens.json orange:./src/assets/themes/brand.orange.tokens.json && pnpm run format"
   },
   "files": [],
   "publishConfig": {
