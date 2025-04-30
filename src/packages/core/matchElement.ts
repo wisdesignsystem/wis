@@ -113,6 +113,10 @@ export function getSymbioteElement(node: ReactNode) {
  * it continues to check if the symbiotic component matches the specified type.
  */
 export function isElement(node: ReactNode, type: string) {
+  if (!isValidElement(node)) {
+    return false;
+  }
+
   const nodeType = getNodeType(node);
   return nodeType === type;
 }

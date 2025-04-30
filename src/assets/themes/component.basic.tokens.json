@@ -3090,7 +3090,7 @@
         "$type": "color",
         "$value": "{font.color.helper}"
       },
-      "popver": {
+      "popper": {
         "font": {
           "$type": "color",
           "$value": "{font.color.inverse}"
