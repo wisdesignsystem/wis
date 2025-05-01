@@ -36,6 +36,7 @@ export default function Example() {
       <Drawer
         ref={bottom}
         title="Drawer Title"
+        maskCloseable={false}
         description="Drawer Description"
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
@@ -57,6 +58,7 @@ export default function Example() {
       <Drawer
         ref={right}
         side="right"
+        maskCloseable={false}
         modal={false}
         title="Drawer Title"
         description="Drawer Description"

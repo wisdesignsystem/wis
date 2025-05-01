@@ -37,6 +37,11 @@ export interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
   closeable?: boolean;
 
   /**
+   * Set the drawer close when click the mask.
+   */
+  maskCloseable?: boolean;
+
+  /**
    * Set the drawer to modal dialog.
    */
   modal?: boolean;

@@ -25,6 +25,7 @@ const Drawer = forwardRef(
       toggleTip,
       side = "bottom",
       closeable = true,
+      maskCloseable = true,
       modal = true,
       onOpen = () => {},
       children,
@@ -80,6 +81,11 @@ const Drawer = forwardRef(
             {...rest}
             className={styles.content}
             data-side={side}
+            onPointerDownOutside={(event) => {
+              if (modal && !maskCloseable) {
+                event.preventDefault();
+              }
+            }}
           >
             <RDXVisuallyHidden.Root>
               <RDXDialog.Title>{title}</RDXDialog.Title>
