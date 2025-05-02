@@ -1,9 +1,10 @@
-export default function nextTick(fn: () => void, macro: boolean) {
+export default function nextTick(fn: () => void, macro = false) {
   if (macro) {
     setTimeout(() => {
       fn();
     }, 0);
-  } else {
-    Promise.resolve().then(() => fn());
+    return;
   }
+
+  Promise.resolve().then(() => fn());
 }
