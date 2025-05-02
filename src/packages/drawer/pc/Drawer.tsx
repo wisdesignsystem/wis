@@ -10,7 +10,7 @@ import { Box, BoxActions, BoxContent, BoxHeader, BoxFooter } from "wis/box";
 import { Main } from "wis/layout";
 import { Button } from "wis/button";
 
-import useValue from "../../../hooks/useValue";
+import useBooleanValue from "../../../hooks/useBooleanValue";
 import type { DrawerProps, DrawerRef } from "../drawer";
 
 import styles from "./Drawer.module.scss";
@@ -33,9 +33,10 @@ const Drawer = forwardRef(
     }: DrawerProps,
     ref: Ref<DrawerRef>,
   ) => {
-    const [currentOpen, setCurrentOpen] = useValue<boolean>({
+    const [currentOpen, setCurrentOpen] = useBooleanValue({
       value: open,
       defaultValue: defaultOpen,
+      onChange: onOpen,
     });
 
     const {
@@ -46,10 +47,10 @@ const Drawer = forwardRef(
     useImperativeHandle(ref, () => {
       return {
         show() {
-          setCurrentOpen(true);
+          setCurrentOpen(true, true);
         },
         hide() {
-          setCurrentOpen(false);
+          setCurrentOpen(false, true);
         },
       };
     });

@@ -58,6 +58,7 @@ export default function Example() {
       <Drawer
         ref={right}
         side="right"
+        closeable={false}
         maskCloseable={false}
         modal={false}
         title="Drawer Title"
