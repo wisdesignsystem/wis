@@ -3,7 +3,7 @@ import { useShortcut } from "wis/shortcut";
 
 import type { ToggleTipProps } from "./toggleTip";
 import nextTick from "../../utils/nextTick";
-import useOpen from "./useOpen";
+import useBooleanValue from "../../hooks/useBooleanValue";
 
 export default function useToggleTip({
   open,
@@ -13,7 +13,11 @@ export default function useToggleTip({
   const clearDocumentClick = useRef<() => void>();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
-  const [currentOpen, setCurrentOpen] = useOpen({ open, defaultOpen });
+  const [currentOpen, setCurrentOpen] = useBooleanValue({
+    value: open,
+    defaultValue: defaultOpen,
+    onChange: onOpen,
+  });
 
   const [onTriggerKeyDown, onShortcut] = useShortcut();
 

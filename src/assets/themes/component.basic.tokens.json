@@ -3090,7 +3090,7 @@
         "$type": "color",
         "$value": "{font.color.helper}"
       },
-      "popver": {
+      "popper": {
         "font": {
           "$type": "color",
           "$value": "{font.color.inverse}"
@@ -3960,108 +3960,108 @@
       }
     },
     "_table": {
-      "trend": {
-        "red": {
-          "$type": "color",
-          "$value": "{_common.background.semantics.error}"
-        },
-        "green": {
-          "$type": "color",
-          "$value": "{_common.background.semantics.success}"
-        }
-      },
-      "star": {
-        "font": {
-          "$type": "color",
-          "$value": "{_common.font.color.icon}"
-        },
-        "yellow": {
-          "$type": "color",
-          "$value": "{_palette.yellow.40}"
-        }
-      },
       "td-height": {
         "$type": "dimension",
         "$value": "48px"
       },
+      "star": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.icon}"
+        },
+        "yellow": {
+          "$type": "color",
+          "$value": "{yellow.400}"
+        }
+      },
+      "trend": {
+        "red": {
+          "$type": "color",
+          "$value": "{background.semantics.error}"
+        },
+        "green": {
+          "$type": "color",
+          "$value": "{background.semantics.success}"
+        }
+      },
       "status": {
         "focus-default-background": {
           "$type": "color",
-          "$value": "{_common.background.state.active}"
+          "$value": "{background.state.active}"
         },
         "focus-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.state.selected-hover}"
+          "$value": "{background.state.selected-hover}"
         },
         "default-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.state.hover}"
+          "$value": "{background.state.hover}"
         },
         "zebra-background": {
           "$type": "color",
-          "$value": "{_common.background.common.01}"
+          "$value": "{background.common.01}"
         },
         "active-default-background": {
           "$type": "color",
-          "$value": "{_common.background.state.selected}"
+          "$value": "{background.state.selected}"
         },
         "active-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.state.selected-hover}"
+          "$value": "{background.state.selected-hover}"
         },
         "disabled-background": {
           "$type": "color",
-          "$value": "{_common.background.state.disabled}"
+          "$value": "{background.state.disabled}"
         },
         "disabled-font": {
           "$type": "color",
-          "$value": "{_common.font.color.state.disabled}"
+          "$value": "{font.color.state.disabled}"
         },
         "error-default-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.error-light}"
+          "$value": "{background.semantics.error-light}"
         },
         "error-default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         },
         "error-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.error-light-hover}"
+          "$value": "{background.semantics.error-light-hover}"
         },
         "warning-default-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.warning-light}"
+          "$value": "{background.semantics.warning-light}"
         },
         "warning-default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         },
         "warning-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.warning-light-hover}"
+          "$value": "{background.semantics.warning-light-hover}"
         },
         "success-default-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.success-light}"
+          "$value": "{background.semantics.success-light}"
         },
         "success-default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         },
         "success-hover-background": {
           "$type": "color",
-          "$value": "{_common.background.semantics.success-light-hover}"
+          "$value": "{background.semantics.success-light-hover}"
         }
       },
       "body": {
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.base}"
+          "$value": "{background.common.base}"
         },
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         }
       },
       "th-height": {
@@ -4071,35 +4071,35 @@
       "header": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.tertiary}"
+          "$value": "{font.color.tertiary}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.01}"
+          "$value": "{background.common.01}"
         },
         "default-border": {
           "$type": "color",
-          "$value": "{_common.border.color.base}"
+          "$value": "{border.color.base}"
         },
         "tips-default-color": {
           "$type": "color",
-          "$value": "{_common.font.color.icon}"
+          "$value": "{font.color.icon}"
         },
         "tips-default-color-hover": {
           "$type": "color",
-          "$value": "{_common.font.color.icon-hover}"
+          "$value": "{font.color.icon-hover}"
         },
         "sortable-default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.helper}"
+          "$value": "{font.color.helper}"
         },
         "sortable-hover-font": {
           "$type": "color",
-          "$value": "{_common.font.color.helper-hover}"
+          "$value": "{font.color.helper-hover}"
         },
         "sortable-active-font": {
           "$type": "color",
-          "$value": "{_common.font.color.semantics.highlight}"
+          "$value": "{font.color.semantics.highlight}"
         }
       },
       "header-height": {
@@ -4109,67 +4109,67 @@
       "footer": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.base}"
+          "$value": "{background.common.base}"
         },
         "default-border": {
           "$type": "color",
-          "$value": "{_common.border.color.base}"
+          "$value": "{border.color.base}"
         }
       },
       "summary": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.tertiary}"
+          "$value": "{font.color.tertiary}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.01}"
+          "$value": "{background.common.01}"
         },
         "default-border": {
           "$type": "color",
-          "$value": "{_common.border.color.base}"
+          "$value": "{border.color.base}"
         }
       },
       "toolbar": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.tertiary}"
+          "$value": "{font.color.tertiary}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.base}"
+          "$value": "{background.common.base}"
         },
         "default-border": {
           "$type": "color",
-          "$value": "{_common.border.color.base}"
+          "$value": "{border.color.base}"
         }
       },
       "multipool": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.tertiary}"
+          "$value": "{font.color.tertiary}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.01}"
+          "$value": "{background.common.01}"
         },
         "default-border": {
           "$type": "color",
-          "$value": "{_common.border.color.base}"
+          "$value": "{border.color.base}"
         }
       },
       "editor": {
         "default-font": {
           "$type": "color",
-          "$value": "{_common.font.color.base}"
+          "$value": "{font.color.base}"
         },
         "default-background": {
           "$type": "color",
-          "$value": "{_common.background.common.base}"
+          "$value": "{background.common.base}"
         }
       }
     },
