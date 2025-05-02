@@ -21,7 +21,7 @@ const DropdownButtonTrigger = forwardRef(
       shortcutKey,
       ...rest
     }: DropdownButtonTriggerProps,
-    ref: ForwardedRef<HTMLDivElement>,
+    ref: ForwardedRef<HTMLButtonElement>,
   ) => (
     <div
       className={classNames(styles["button-trigger"], {
@@ -38,16 +38,15 @@ const DropdownButtonTrigger = forwardRef(
         size={size}
         shortcutKey={shortcutKey}
       />
-      <div className={styles.wrapper} ref={ref}>
-        <Button
-          className={styles.arrow}
-          variant={variant}
-          disabled={disabled}
-          size={size}
-          icon={<DownIcon />}
-          {...rest}
-        />
-      </div>
+      <Button
+        ref={ref}
+        className={styles.arrow}
+        variant={variant}
+        disabled={disabled}
+        size={size}
+        icon={<DownIcon />}
+        {...rest}
+      />
     </div>
   ),
 );

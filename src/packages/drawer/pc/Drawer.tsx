@@ -12,6 +12,7 @@ import { Button } from "wis/button";
 
 import useBooleanValue from "../../../hooks/useBooleanValue";
 import type { DrawerProps, DrawerRef } from "../drawer";
+import DrawerTrigger from "./DrawerTrigger";
 
 import styles from "./Drawer.module.scss";
 
@@ -78,6 +79,9 @@ const Drawer = forwardRef(
         onOpenChange={handleOpenChange}
       >
         <RDXDialog.Portal container={mountElement}>
+          <RDXDialog.Trigger asChild>
+            <DrawerTrigger />
+          </RDXDialog.Trigger>
           <RDXDialog.Overlay className={styles.mask} />
           <RDXDialog.Content
             {...rest}

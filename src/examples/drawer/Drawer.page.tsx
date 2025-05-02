@@ -36,7 +36,6 @@ export default function Example() {
       <Drawer
         ref={bottom}
         title="Drawer Title"
-        maskCloseable={false}
         description="Drawer Description"
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
@@ -50,7 +49,12 @@ export default function Example() {
       >
         xxx
         <Actions>
-          <Button text="Cancel" />
+          <Button
+            text="Cancel"
+            onClick={() => {
+              bottom.current?.hide();
+            }}
+          />
           <Button text="Confirm" variant="primary" />
         </Actions>
       </Drawer>
@@ -71,11 +75,15 @@ export default function Example() {
             </ToggleTipActions>
           </ToggleTip>
         }
-        onOpen={(open) => console.log("changed", open)}
       >
         xxx
         <Actions>
-          <Button text="Cancel" />
+          <Button
+            text="Cancel"
+            onClick={() => {
+              right.current?.hide();
+            }}
+          />
           <Button text="Confirm" variant="primary" />
         </Actions>
       </Drawer>

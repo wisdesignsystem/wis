@@ -56,3 +56,5 @@ export interface DrawerRef {
   show(): void;
   hide(): void;
 }
+
+export interface DrawerTriggerProps extends HTMLAttributes<HTMLDivElement> {}
