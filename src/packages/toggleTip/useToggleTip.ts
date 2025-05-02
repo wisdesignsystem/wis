@@ -16,17 +16,25 @@ export default function useToggleTip({
   const [currentOpen, setCurrentOpen] = useBooleanValue({
     value: open,
     defaultValue: defaultOpen,
-    onChange: onOpen,
+    onChange: (value) => {
+      if (value) {
+        nextTick(() => {
+          popperRef.current?.focus();
+        }, true);
+      } else {
+        nextTick(() => {
+          triggerRef.current?.focus();
+        }, true);
+      }
+
+      onOpen(value);
+    },
   });
 
   const [onTriggerKeyDown, onShortcut] = useShortcut();
 
   useEffect(() => {
     if (currentOpen) {
-      nextTick(() => {
-        popperRef.current?.focus();
-      });
-
       function documentClick(event: Event) {
         const target = event.target as HTMLElement;
 
@@ -34,7 +42,7 @@ export default function useToggleTip({
           !triggerRef.current?.contains(target) &&
           !popperRef.current?.contains(target)
         ) {
-          setOpen(false);
+          setCurrentOpen(false, true);
         }
       }
 
@@ -52,32 +60,25 @@ export default function useToggleTip({
 
   onShortcut("Escape", () => {
     if (currentOpen) {
-      setOpen(false);
-      triggerRef.current?.focus();
+      setCurrentOpen(false, true);
     }
   });
 
   function onTriggerClick() {
-    setOpen(!currentOpen);
+    setCurrentOpen(!currentOpen, true);
   }
 
-  function onPopperLeave() {
-    setOpen(false);
-    triggerRef.current?.focus();
-  }
-
-  function setOpen(value: boolean) {
-    setCurrentOpen(value);
-    onOpen(value);
+  function onFocusEnded() {
+    setCurrentOpen(false, true);
   }
 
   return {
     open: currentOpen,
-    setOpen,
+    setOpen: setCurrentOpen,
     triggerRef,
     popperRef,
     onTriggerKeyDown,
     onTriggerClick,
-    onPopperLeave,
+    onFocusEnded,
   };
 }

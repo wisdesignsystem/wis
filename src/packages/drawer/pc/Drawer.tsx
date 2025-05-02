@@ -68,8 +68,7 @@ const Drawer = forwardRef(
     }
 
     function handleOpenChange(value: boolean) {
-      setCurrentOpen(value);
-      onOpen(value);
+      setCurrentOpen(value, true);
     }
 
     return (

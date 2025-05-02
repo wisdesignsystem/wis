@@ -1,15 +1,17 @@
+import { useImperativeHandle, forwardRef } from "react";
+import type { Ref } from "react";
 import { matchElement } from "wis/core";
 import { Tooltip as RDXTooltip } from "radix-ui";
 import classNames from "classnames";
 import { Button } from "wis/button";
 import { CircleInformationIcon } from "@wisdesign/lsicon";
 
-import type { ToggleTipProps } from "../toggleTip";
+import type { ToggleTipProps, ToggleRef } from "../toggleTip";
 import useToggleTip from "../useToggleTip";
 
 import styles from "./ToggleTip.module.scss";
 
-function ToggleTip(props: ToggleTipProps) {
+const ToggleTip = forwardRef((props: ToggleTipProps, ref: Ref<ToggleRef>) => {
   const {
     className,
     side = "top",
@@ -24,12 +26,24 @@ function ToggleTip(props: ToggleTipProps) {
 
   const {
     open: visible,
+    setOpen,
     triggerRef,
     popperRef,
     onTriggerKeyDown,
     onTriggerClick,
-    onPopperLeave,
+    onFocusEnded,
   } = useToggleTip(props);
+
+  useImperativeHandle(ref, () => {
+    return {
+      show() {
+        setOpen(true, true);
+      },
+      hide() {
+        setOpen(false, true);
+      },
+    };
+  });
 
   const {
     elements: { ToggleTipActions: toggleTipActions },
@@ -65,14 +79,14 @@ function ToggleTip(props: ToggleTipProps) {
             <button
               className={styles.mark}
               type="button"
-              onFocus={onPopperLeave}
+              onFocus={onFocusEnded}
             />
           </RDXTooltip.Content>
         </RDXTooltip.Portal>
       </RDXTooltip.Root>
     </RDXTooltip.Provider>
   );
-}
+});
 
 ToggleTip.displayName = "ToggleTip";
 
