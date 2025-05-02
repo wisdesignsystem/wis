@@ -1310,6 +1310,205 @@ export default {
     methods: [],
     props: {},
   },
+  Context: {
+    tags: {
+      see: "{@link https://react.dev/learn/passing-data-deeply-with-context React Docs}\n{@link https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/ React TypeScript Cheatsheet}",
+      example:
+        "```tsx\nimport { createContext } from 'react';\n\nconst ThemeContext = createContext('light');\n```",
+    },
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/core/index.ts",
+    description:
+      "Context lets components pass information deep down without explicitly\npassing props.\n\nCreated from {@link createContext}",
+    displayName: "Context",
+    methods: [],
+    props: {},
+  },
+  Drawer: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/drawer/pc/index.ts",
+    description: "",
+    displayName: "Drawer",
+    methods: [],
+    props: {
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the drawer. Must be used in conjunction with `onOpen`.",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the drawer when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      title: {
+        defaultValue: null,
+        description: "The title text will show in the drawer header.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      description: {
+        defaultValue: null,
+        description: "The description text will show in the drawer header.",
+        name: "description",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      side: {
+        defaultValue: { value: "bottom" },
+        description: "The pop-up direction of the drawer.",
+        name: "side",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"bottom" | "right"',
+          value: [{ value: '"bottom"' }, { value: '"right"' }],
+        },
+      },
+      closeable: {
+        defaultValue: { value: true },
+        description: "Set the drawer display the close icon.",
+        name: "closeable",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      maskCloseable: {
+        defaultValue: { value: true },
+        description: "Set the drawer close when click the mask.",
+        name: "maskCloseable",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      modal: {
+        defaultValue: { value: true },
+        description: "Set the drawer to modal dialog.",
+        name: "modal",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      onOpen: {
+        defaultValue: { value: "() => {}" },
+        description:
+          "Event handler called when the drawer is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
+      },
+    },
+  },
   Dropdown: {
     tags: {},
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/dropdown/pc/index.ts",
