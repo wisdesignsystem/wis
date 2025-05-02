@@ -1,5 +1,15 @@
 # @wisdesign/wis
 
+## 0.0.11
+
+### Patch Changes
+
+- [#130](https://github.com/wisdesignsystem/wis/pull/130) [`10f5334`](https://github.com/wisdesignsystem/wis/commit/10f53349f5d941512ef7d78646f19f4d7fa6bcc0) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the ToggleTip component api
+
+- [#127](https://github.com/wisdesignsystem/wis/pull/127) [`9280e9d`](https://github.com/wisdesignsystem/wis/commit/9280e9da5a823683fbe3ee963361a5eb3a111192) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] support the open and defaultOpen state
+
+- [#129](https://github.com/wisdesignsystem/wis/pull/129) [`c6272b1`](https://github.com/wisdesignsystem/wis/commit/c6272b178023a01f43af9faa5af7099d9635ceed) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the drawer component
+
 ## 0.0.10
 
 ### Patch Changes
