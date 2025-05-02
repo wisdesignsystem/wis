@@ -1,10 +1,6 @@
 @use '@/packages/themes/tool.scss' as tool;
 @use '@/packages/themes/style.scss' as style;
 
-@mixin page-style() {
-  @include style.container-style($component: 'page');
-}
-
 @mixin page-header-style() {
   @include style.container-style($component: 'page', $widget: 'header');
 }
@@ -12,8 +8,6 @@
 .page {
   height: 100%;
   overflow: hidden;
-
-  @include page-style();
 }
 
 .header {

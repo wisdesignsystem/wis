@@ -1,10 +1,16 @@
+import { forwardRef } from "react";
+import type { Ref } from "react";
 import { matchElement } from "wis/core";
 import classNames from "classnames";
+
 import type { BoxProps } from "../box";
 
 import styles from "./Box.module.scss";
 
-function Box({ className, children, ...rest }: BoxProps) {
+const Box = forwardRef(function Box(
+  { className, children, ...rest }: BoxProps,
+  ref: Ref<HTMLDivElement>,
+) {
   const {
     elements: { BoxHeader: header, BoxContent: content, BoxFooter: footer },
   } = matchElement(children, ["BoxHeader", "BoxContent", "BoxFooter"]);
@@ -12,6 +18,7 @@ function Box({ className, children, ...rest }: BoxProps) {
   return (
     <div
       {...rest}
+      ref={ref}
       className={classNames(styles.box, { [className as string]: !!className })}
     >
       {header}
@@ -19,7 +26,7 @@ function Box({ className, children, ...rest }: BoxProps) {
       {footer}
     </div>
   );
-}
+});
 
 Box.displayName = "Box";
 

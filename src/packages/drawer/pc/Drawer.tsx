@@ -5,7 +5,7 @@ import {
   VisuallyHidden as RDXVisuallyHidden,
 } from "radix-ui";
 import { CloseSmallIcon } from "@wisdesign/lsicon";
-import { matchElement } from "wis/core";
+import { matchElement, useGetMountElement } from "wis/core";
 import { Box, BoxActions, BoxContent, BoxHeader, BoxFooter } from "wis/box";
 import { Main } from "wis/layout";
 import { Button } from "wis/button";
@@ -38,6 +38,7 @@ const Drawer = forwardRef(
       defaultValue: defaultOpen,
       onChange: onOpen,
     });
+    const mountElement = useGetMountElement();
 
     const {
       elements: { Actions: actions },
@@ -76,7 +77,7 @@ const Drawer = forwardRef(
         modal={modal}
         onOpenChange={handleOpenChange}
       >
-        <RDXDialog.Portal>
+        <RDXDialog.Portal container={mountElement}>
           <RDXDialog.Overlay className={styles.mask} />
           <RDXDialog.Content
             {...rest}

@@ -1,6 +1,11 @@
 import { cloneElement } from "react";
+import type { RefObject } from "react";
 import { Box, BoxActions, BoxContent, BoxHeader, BoxMeta } from "wis/box";
-import { matchElement } from "wis/core";
+import {
+  matchElement,
+  MountElementContext,
+  useSetMountElement,
+} from "wis/core";
 import { Main } from "wis/layout";
 import classNames from "classnames";
 
@@ -16,6 +21,8 @@ function Page({
   children,
   ...rest
 }: PageProps) {
+  const { ref: mountPointRef, mountElement } = useSetMountElement();
+
   const {
     elements: { Actions: actions, Meta: meta },
     unmatched,
@@ -47,6 +54,7 @@ function Page({
   return (
     <Box
       {...rest}
+      ref={mountPointRef as RefObject<HTMLDivElement>}
       className={classNames(styles.page, {
         [className as string]: !!className,
       })}
@@ -61,7 +69,11 @@ function Page({
         {renderMeta()}
       </BoxHeader>
       <BoxContent>
-        <Main responsive>{unmatched}</Main>
+        <Main responsive>
+          <MountElementContext.Provider value={mountElement}>
+            {unmatched}
+          </MountElementContext.Provider>
+        </Main>
       </BoxContent>
     </Box>
   );
