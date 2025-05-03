@@ -37,6 +37,7 @@ export default function Example() {
         ref={bottom}
         title="Drawer Title"
         description="Drawer Description"
+        maskCloseable={false}
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
             <ToggleTipActions>
@@ -76,7 +77,6 @@ export default function Example() {
           </ToggleTip>
         }
       >
-        xxx
         <Actions>
           <Button
             text="Cancel"

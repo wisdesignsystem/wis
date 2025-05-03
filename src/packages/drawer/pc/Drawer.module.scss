@@ -13,7 +13,9 @@
   @include style.container-style($component: 'drawer', $widget: 'footer');
 }
 
-
+body > .content {
+  position: fixed;
+}
 .content {
   position: absolute;
   height: 0;
@@ -46,6 +48,9 @@
   @include drawer-style();
 }
 
+body > .mask {
+  position: fixed;
+}
 .mask {
   position: absolute;
   inset: 0;

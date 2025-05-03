@@ -69,11 +69,9 @@ function Page({
         {renderMeta()}
       </BoxHeader>
       <BoxContent>
-        <Main responsive>
-          <MountElementContext.Provider value={mountElement}>
-            {unmatched}
-          </MountElementContext.Provider>
-        </Main>
+        <MountElementContext.Provider value={mountElement}>
+          <Main responsive>{unmatched}</Main>
+        </MountElementContext.Provider>
       </BoxContent>
     </Box>
   );
