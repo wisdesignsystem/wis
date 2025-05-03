@@ -13,6 +13,7 @@ import { Button } from "wis/button";
 import useBooleanValue from "../../../hooks/useBooleanValue";
 import type { DrawerProps, DrawerRef } from "../drawer";
 import DrawerTrigger from "./DrawerTrigger";
+import useCorrectScrollLock from "../useCorrectScrollLock";
 
 import styles from "./Drawer.module.scss";
 
@@ -70,6 +71,8 @@ const Drawer = forwardRef(
     function handleOpenChange(value: boolean) {
       setCurrentOpen(value, true);
     }
+
+    useCorrectScrollLock(mountElement, currentOpen);
 
     return (
       <RDXDialog.Root
