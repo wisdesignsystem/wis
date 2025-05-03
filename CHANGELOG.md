@@ -1,5 +1,13 @@
 # @wisdesign/wis
 
+## 0.0.12
+
+### Patch Changes
+
+- [#131](https://github.com/wisdesignsystem/wis/pull/131) [`77a1639`](https://github.com/wisdesignsystem/wis/commit/77a1639ef093291f1be49ca08539898420216a3c) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] disabled the locked when mount element is not body
+
+- [#131](https://github.com/wisdesignsystem/wis/pull/131) [`45952bf`](https://github.com/wisdesignsystem/wis/commit/45952bfc1ab018aca04e67283ce9840008eee109) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the transition animation for drawer
+
 ## 0.0.11
 
 ### Patch Changes
