@@ -1,44 +1,38 @@
 import { useRef } from "react";
 
-import { Drawer } from "wis/drawer";
-import type { DrawerRef } from "wis/drawer";
 import { Page } from "wis/page";
-import { Actions } from "wis/actions";
 import { Button } from "wis/button";
-import { ToggleTip, ToggleTipActions } from "wis/toggleTip";
 import { Link } from "wis/link";
+import { Actions } from "wis/actions";
+import { Modal, type ModalRef } from "wis/modal";
+import { ToggleTip, ToggleTipActions } from "wis/toggleTip";
 
-export default function Example() {
-  const bottom = useRef<DrawerRef>(null);
-  const right = useRef<DrawerRef>(null);
+export default function () {
+  const modal = useRef<ModalRef>(null);
+  const centerModal = useRef<ModalRef>(null);
 
   return (
-    <Page
-      title="Drawer Demo"
-      toggleTip={
-        <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
-          <ToggleTipActions>
-            <Link text="link" href="https://wis.design" />
-            <Button text="Button" />
-          </ToggleTipActions>
-        </ToggleTip>
-      }
-    >
+    <Page title="Modal Example">
       <Actions>
-        <Button text="Right" onClick={() => right.current?.show()} />
         <Button
-          text="Bottom"
-          variant="primary"
-          onClick={() => bottom.current?.show()}
+          text="Open"
+          onClick={() => {
+            modal.current?.show();
+          }}
+        />
+        <Button
+          text="Open Center"
+          onClick={() => {
+            centerModal.current?.show();
+          }}
         />
       </Actions>
 
-      <Drawer
-        ref={bottom}
-        title="Drawer Title"
-        description="Drawer Description"
-        maskCloseable={false}
-        size={800}
+      <Modal
+        ref={modal}
+        title="Modal Title"
+        description="Modal Description"
+        maskCloseable
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
             <ToggleTipActions>
@@ -53,23 +47,24 @@ export default function Example() {
           <Button
             text="Cancel"
             onClick={() => {
-              bottom.current?.hide();
+              modal.current?.hide();
             }}
           />
           <Button text="Confirm" variant="primary" />
         </Actions>
 
         <div style={{ height: "1000px" }}>模拟很长的内容啊啊啊</div>
-      </Drawer>
+      </Modal>
 
-      <Drawer
-        ref={right}
-        side="right"
-        closeable={false}
-        maskCloseable={false}
+      <Modal
+        ref={centerModal}
+        title="Modal Title"
+        center
         modal={false}
-        title="Drawer Title"
-        description="Drawer Description"
+        width={800}
+        height={1000}
+        description="Modal Description"
+        maskCloseable
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
             <ToggleTipActions>
@@ -78,19 +73,20 @@ export default function Example() {
             </ToggleTipActions>
           </ToggleTip>
         }
+        onOpen={(open) => console.log("changed", open)}
       >
         <Actions>
           <Button
             text="Cancel"
             onClick={() => {
-              right.current?.hide();
+              centerModal.current?.hide();
             }}
           />
           <Button text="Confirm" variant="primary" />
         </Actions>
 
         <div style={{ height: "1000px" }}>模拟很长的内容啊啊啊</div>
-      </Drawer>
+      </Modal>
     </Page>
   );
 }

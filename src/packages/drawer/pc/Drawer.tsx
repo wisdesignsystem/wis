@@ -11,9 +11,9 @@ import { Main } from "wis/layout";
 import { Button } from "wis/button";
 
 import useBooleanValue from "../../../hooks/useBooleanValue";
+import useGlobalScrollLock from "../../../hooks/useGlobalScrollLock";
 import type { DrawerProps, DrawerRef } from "../drawer";
 import DrawerTrigger from "./DrawerTrigger";
-import useCorrectScrollLock from "../useCorrectScrollLock";
 
 import styles from "./Drawer.module.scss";
 
@@ -29,6 +29,7 @@ const Drawer = forwardRef(
       closeable = true,
       maskCloseable = true,
       modal = true,
+      size,
       onOpen = () => {},
       children,
       ...rest
@@ -72,7 +73,7 @@ const Drawer = forwardRef(
       setCurrentOpen(value, true);
     }
 
-    useCorrectScrollLock(mountElement, currentOpen);
+    useGlobalScrollLock(mountElement, currentOpen);
 
     return (
       <RDXDialog.Root
@@ -87,6 +88,11 @@ const Drawer = forwardRef(
           <RDXDialog.Overlay className={styles.mask} />
           <RDXDialog.Content
             {...rest}
+            style={{
+              ...rest.style,
+              width: side === "right" ? `${size}px` : undefined,
+              height: side === "bottom" ? `${size}px` : undefined,
+            }}
             className={styles.content}
             data-side={side}
             onPointerDownOutside={(event) => {
