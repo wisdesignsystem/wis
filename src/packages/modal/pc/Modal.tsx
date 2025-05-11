@@ -5,6 +5,7 @@ import {
   VisuallyHidden as RDXVisuallyHidden,
 } from "radix-ui";
 import { CloseSmallIcon } from "@wisdesign/lsicon";
+import attrs from "@/utils/attrs";
 import { matchElement, useGetMountElement } from "wis/core";
 import { Box, BoxActions, BoxContent, BoxHeader, BoxFooter } from "wis/box";
 import { Main } from "wis/layout";
@@ -12,12 +13,12 @@ import { Button } from "wis/button";
 
 import useBooleanValue from "../../../hooks/useBooleanValue";
 import useGlobalScrollLock from "../../../hooks/useGlobalScrollLock";
-import type { DrawerProps, DrawerRef } from "../drawer";
-import DrawerTrigger from "./DrawerTrigger";
+import type { ModalProps, ModalRef } from "../modal";
+import ModalTrigger from "./ModalTrigger";
 
-import styles from "./Drawer.module.scss";
+import styles from "./Modal.module.scss";
 
-const Drawer = forwardRef(
+const Modal = forwardRef(
   (
     {
       defaultOpen,
@@ -25,16 +26,17 @@ const Drawer = forwardRef(
       title,
       description,
       toggleTip,
-      side = "bottom",
       closeable = true,
       maskCloseable = true,
       modal = true,
-      size,
+      center = false,
+      width,
+      height,
       onOpen = () => {},
       children,
       ...rest
-    }: DrawerProps,
-    ref: Ref<DrawerRef>,
+    }: ModalProps,
+    ref: Ref<ModalRef>,
   ) => {
     const [currentOpen, setCurrentOpen] = useBooleanValue({
       value: open,
@@ -83,18 +85,20 @@ const Drawer = forwardRef(
       >
         <RDXDialog.Portal container={mountElement}>
           <RDXDialog.Trigger asChild>
-            <DrawerTrigger />
+            <ModalTrigger />
           </RDXDialog.Trigger>
           <RDXDialog.Overlay className={styles.mask} />
           <RDXDialog.Content
             {...rest}
+            {...attrs({
+              "data-center": center,
+            })}
             style={{
               ...rest.style,
-              width: side === "right" ? `${size}px` : undefined,
-              height: side === "bottom" ? `${size}px` : undefined,
+              width: `${width}px`,
+              height: `${height}px`,
             }}
             className={styles.content}
-            data-side={side}
             onPointerDownOutside={(event) => {
               if (modal && !maskCloseable) {
                 event.preventDefault();
@@ -105,7 +109,7 @@ const Drawer = forwardRef(
               <RDXDialog.Title>{title}</RDXDialog.Title>
               <RDXDialog.Description>{description}</RDXDialog.Description>
             </RDXVisuallyHidden.Root>
-            <Box className={styles.drawer}>
+            <Box className={styles.modal}>
               <BoxHeader
                 className={styles.header}
                 title={title}
@@ -136,6 +140,6 @@ const Drawer = forwardRef(
   },
 );
 
-Drawer.displayName = "Drawer";
+Modal.displayName = "Modal";
 
-export default Drawer;
+export default Modal;

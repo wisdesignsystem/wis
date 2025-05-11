@@ -47,6 +47,11 @@ export interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
   modal?: boolean;
 
   /**
+   * Configure drawer dimensions where the 'side' property determines measurement type: setting to 'bottom' specifies height, while 'right' defines width.
+   */
+  size?: number;
+
+  /**
    * Event handler called when the drawer is open state change.
    */
   onOpen?: (open: boolean) => void;

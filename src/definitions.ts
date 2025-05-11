@@ -1489,6 +1489,24 @@ export default {
         required: false,
         type: { name: "boolean" },
       },
+      size: {
+        defaultValue: null,
+        description:
+          "Configure drawer dimensions where the 'side' property determines measurement type: setting to 'bottom' specifies height, while 'right' defines width.",
+        name: "size",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
       onOpen: {
         defaultValue: { value: "() => {}" },
         description:
@@ -2977,6 +2995,186 @@ export default {
         ],
         required: false,
         type: { name: "string" },
+      },
+    },
+  },
+  Modal: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/modal/pc/index.ts",
+    description: "",
+    displayName: "Modal",
+    methods: [],
+    props: {
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the modal. Must be used in conjunction with `onOpen`.",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the modal when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      title: {
+        defaultValue: null,
+        description: "The title text will show in the modal header.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      description: {
+        defaultValue: null,
+        description: "The description text will show in the modal header.",
+        name: "description",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      closeable: {
+        defaultValue: { value: true },
+        description: "Set the modal display the close icon.",
+        name: "closeable",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      maskCloseable: {
+        defaultValue: { value: true },
+        description: "Set the modal close when click the mask.",
+        name: "maskCloseable",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      modal: {
+        defaultValue: { value: true },
+        description: "Set the modal to modal dialog.",
+        name: "modal",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      center: {
+        defaultValue: { value: false },
+        description: "Set the modal display in the screen center",
+        name: "center",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      width: {
+        defaultValue: null,
+        description: "Set the modal width",
+        name: "width",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      height: {
+        defaultValue: null,
+        description: "Set the modal height",
+        name: "height",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      onOpen: {
+        defaultValue: { value: "() => {}" },
+        description:
+          "Event handler called when the modal is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
       },
     },
   },

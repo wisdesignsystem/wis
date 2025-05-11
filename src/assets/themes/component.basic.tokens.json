@@ -3960,6 +3960,16 @@
       }
     },
     "_table": {
+      "trend": {
+        "red": {
+          "$type": "color",
+          "$value": "{background.semantics.error}"
+        },
+        "green": {
+          "$type": "color",
+          "$value": "{background.semantics.success}"
+        }
+      },
       "td-height": {
         "$type": "dimension",
         "$value": "48px"
@@ -3972,16 +3982,6 @@
         "yellow": {
           "$type": "color",
           "$value": "{yellow.400}"
-        }
-      },
-      "trend": {
-        "red": {
-          "$type": "color",
-          "$value": "{background.semantics.error}"
-        },
-        "green": {
-          "$type": "color",
-          "$value": "{background.semantics.success}"
         }
       },
       "status": {
