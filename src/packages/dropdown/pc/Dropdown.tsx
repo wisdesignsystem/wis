@@ -4,9 +4,7 @@ import { DropdownMenu as RDXDropdownMenu } from "radix-ui";
 import { useState } from "react";
 
 import type { DropdownProps } from "../dropdown";
-
 import DropdownTrigger from "./DropdownTrigger";
-
 import mapper from "../mapper";
 
 import styles from "./Dropdown.module.scss";

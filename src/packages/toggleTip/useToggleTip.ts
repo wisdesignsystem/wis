@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
 import { useShortcut } from "wis/shortcut";
+import nextTick from "@/utils/nextTick";
+import useBooleanValue from "@/hooks/useBooleanValue";
 
 import type { ToggleTipProps } from "./toggleTip";
-import nextTick from "../../utils/nextTick";
-import useBooleanValue from "../../hooks/useBooleanValue";
 
 export default function useToggleTip({
   open,

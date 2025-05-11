@@ -1,8 +1,8 @@
 import { forwardRef, useEffect, useRef } from "react";
 import type { Ref } from "react";
+import nextTick from "@/utils/nextTick";
 
 import type { ModalTriggerProps } from "../modal";
-import nextTick from "../../../utils/nextTick";
 
 const ModalTrigger = forwardRef(
   (props: ModalTriggerProps, ref: Ref<HTMLDivElement>) => {

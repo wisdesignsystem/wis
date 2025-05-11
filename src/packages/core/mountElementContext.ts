@@ -1,6 +1,5 @@
 import { createContext, useContext, useRef, useState } from "react";
-
-import useDidMount from "../../hooks/useDidMount";
+import useDidMount from "@/hooks/useDidMount";
 
 const MountElementContext = createContext<HTMLElement | null>(null);
 

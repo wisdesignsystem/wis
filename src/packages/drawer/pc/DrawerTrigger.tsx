@@ -1,8 +1,8 @@
 import { forwardRef, useEffect, useRef } from "react";
 import type { Ref } from "react";
+import nextTick from "@/utils/nextTick";
 
 import type { DrawerTriggerProps } from "../drawer";
-import nextTick from "../../../utils/nextTick";
 
 const DrawerTrigger = forwardRef(
   (props: DrawerTriggerProps, ref: Ref<HTMLDivElement>) => {
