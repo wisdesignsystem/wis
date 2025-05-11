@@ -1,5 +1,15 @@
 # @wisdesign/wis
 
+## 0.0.13
+
+### Patch Changes
+
+- [#136](https://github.com/wisdesignsystem/wis/pull/136) [`c1d9528`](https://github.com/wisdesignsystem/wis/commit/c1d9528ab692efbea0294a0c220beb2d6cd359f5) Thanks [@FaureWu](https://github.com/FaureWu)! - [Style] Change the layout component focus style
+
+- [#133](https://github.com/wisdesignsystem/wis/pull/133) [`32e8b3e`](https://github.com/wisdesignsystem/wis/commit/32e8b3e561170e9f3fdfdb4f6fbc5ad1df4b3649) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] export the ToggleTip api definition
+
+- [#135](https://github.com/wisdesignsystem/wis/pull/135) [`301e9d6`](https://github.com/wisdesignsystem/wis/commit/301e9d64e26540d1585f966762949cc0a3892085) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Create the modal pc component
+
 ## 0.0.12
 
 ### Patch Changes
