@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import nextTick from "../utils/nextTick";
+import nextTick from "@/utils/nextTick";
 
 export default function useGlobalScrollLock(
   mountElement: HTMLElement,

@@ -10,9 +10,9 @@ import { matchElement, useGetMountElement } from "wis/core";
 import { Box, BoxActions, BoxContent, BoxHeader, BoxFooter } from "wis/box";
 import { Main } from "wis/layout";
 import { Button } from "wis/button";
+import useBooleanValue from "@/hooks/useBooleanValue";
+import useGlobalScrollLock from "@/hooks/useGlobalScrollLock";
 
-import useBooleanValue from "../../../hooks/useBooleanValue";
-import useGlobalScrollLock from "../../../hooks/useGlobalScrollLock";
 import type { ModalProps, ModalRef } from "../modal";
 import ModalTrigger from "./ModalTrigger";
 
