@@ -1,8 +1,8 @@
 {
   "name": "@wisdesign/wis",
   "version": "0.0.13",
-  "license": "MIT",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky",
