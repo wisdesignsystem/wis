@@ -1,6 +1,6 @@
 {
   "name": "@wisdesign/wis",
-  "version": "0.0.9",
+  "version": "0.0.13",
   "type": "module",
   "license": "MIT",
   "scripts": {
@@ -24,7 +24,7 @@
     "rc": "pnpm changeset pre enter rc && pnpm changeset version && pnpm changeset pre exit",
     "release": "pnpm changeset tag && git push --follow-tags && pnpm publish",
     "docgen": "typescript-docgen -s ./src/packages -o ./src/definitions.ts && biome format --write",
-    "token": "wis token -s w -o ./src/packages/themes/tokens --light ./src/assets/themes/theme.light.tokens.json --dark ./src/assets/themes/theme.dark.tokens.json --component ./src/assets/themes/component.basic.tokens.json --palette ./src/assets/themes/palette.tokens.json --gray black:./src/assets/themes/gray.black.tokens.json blue:./src/assets/themes/gray.blue.tokens.json -t blue:./src/assets/themes/brand.blue.tokens.json orange:./src/assets/themes/brand.orange.tokens.json"
+    "token": "wis token -s w -o ./src/packages/themes/tokens --light ./src/assets/themes/theme.light.tokens.json --dark ./src/assets/themes/theme.dark.tokens.json --component ./src/assets/themes/component.basic.tokens.json --palette ./src/assets/themes/palette.tokens.json --gray black:./src/assets/themes/gray.black.tokens.json blue:./src/assets/themes/gray.blue.tokens.json -t blue:./src/assets/themes/brand.blue.tokens.json orange:./src/assets/themes/brand.orange.tokens.json && pnpm run format"
   },
   "files": [],
   "publishConfig": {
@@ -49,7 +49,7 @@
     "@changesets/cli": "2.27.5",
     "@commitlint/cli": "18.6.1",
     "@commitlint/config-conventional": "18.6.3",
-    "@rsbuild/core": "1.2.13",
+    "@rsbuild/core": "1.3.14",
     "@rsbuild/plugin-basic-ssl": "1.1.1",
     "@rsbuild/plugin-react": "1.1.0",
     "@rsbuild/plugin-sass": "1.2.2",
@@ -57,9 +57,9 @@
     "@types/node": "22.13.7",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
-    "@wisdesign/cli": "0.0.33",
+    "@wisdesign/cli": "0.0.34",
     "@wisdesign/toolkit": "0.0.7",
-    "@wisdesign/wis-plugin": "0.0.10",
+    "@wisdesign/wis-plugin": "0.0.11",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"

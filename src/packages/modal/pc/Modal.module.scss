@@ -1,0 +1,92 @@
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
+
+@mixin modal-style() {
+  @include style.container-style($component: 'modal');
+}
+
+@mixin modal-header-style() {
+  @include style.container-style($component: 'modal', $widget: 'header');
+}
+
+@mixin modal-footer-style() {
+  @include style.container-style($component: 'modal', $widget: 'footer');
+}
+
+@keyframes overlay-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-animate {
+  from {
+    opacity: 0;
+    scale: (0.9);
+  }
+  to {
+    opacity: 1;
+    scale: (1);
+  }
+}
+
+body > .content {
+  position: fixed;
+}
+.content {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, 0);
+  padding: var(--w-common-spacing-common-lg);
+  box-sizing: border-box;
+  min-width: 30%;
+  max-width: 70%;
+  min-height: 30%;
+  max-height: 70%;
+  height: 0;
+  flex: 1 1 auto;
+  animation: content-animate 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal {
+  height: 100%;
+  border-radius: var(--w-common-border-radius-xlg);
+  box-shadow: 0px 10px 15px -3px var(--w-common-shadow-color-02), 0px 4px 6px -2px var(--w-common-shadow-color-01);
+  overflow: hidden;
+
+  @include modal-style();
+}
+
+body > .mask {
+  position: fixed;
+}
+.mask {
+  position: absolute;
+  inset: 0;
+  background: var(--w-common-background-transparent-overlay-black);
+  animation: overlay-animate 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+
+.header {
+  box-sizing: border-box;
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  font-weight: var(--w-common-font-weight-bold);
+  padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xl);
+
+  @include tool.font-size(var(--w-common-font-size-text-lg));
+  @include modal-header-style();
+}
+
+.footer {
+  height: 72px;
+  box-sizing: border-box;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-xl);
+  border-top: var(--w-common-spacing-scale-1) solid transparent;
+
+  @include modal-footer-style();
+}

@@ -48,7 +48,7 @@ export default {
     },
   },
   ActionsGroup: {
-    tags: {},
+    tags: { package: "actions" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/actions/pc/index.ts",
     description: "",
     displayName: "ActionsGroup",
@@ -429,6 +429,20 @@ export default {
         ],
         required: false,
         type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/box/box.ts",
+          name: "BoxHeaderProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/box/box.ts", name: "BoxHeaderProps" },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
       },
     },
   },
@@ -1295,6 +1309,223 @@ export default {
     displayName: "getSymbioteElement",
     methods: [],
     props: {},
+  },
+  Context: {
+    tags: {
+      see: "{@link https://react.dev/learn/passing-data-deeply-with-context React Docs}\n{@link https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/ React TypeScript Cheatsheet}",
+      example:
+        "```tsx\nimport { createContext } from 'react';\n\nconst ThemeContext = createContext('light');\n```",
+    },
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/core/index.ts",
+    description:
+      "Context lets components pass information deep down without explicitly\npassing props.\n\nCreated from {@link createContext}",
+    displayName: "Context",
+    methods: [],
+    props: {},
+  },
+  Drawer: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/drawer/pc/index.ts",
+    description: "",
+    displayName: "Drawer",
+    methods: [],
+    props: {
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the drawer. Must be used in conjunction with `onOpen`.",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the drawer when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      title: {
+        defaultValue: null,
+        description: "The title text will show in the drawer header.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      description: {
+        defaultValue: null,
+        description: "The description text will show in the drawer header.",
+        name: "description",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      side: {
+        defaultValue: { value: "bottom" },
+        description: "The pop-up direction of the drawer.",
+        name: "side",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"bottom" | "right"',
+          value: [{ value: '"bottom"' }, { value: '"right"' }],
+        },
+      },
+      closeable: {
+        defaultValue: { value: true },
+        description: "Set the drawer display the close icon.",
+        name: "closeable",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      maskCloseable: {
+        defaultValue: { value: true },
+        description: "Set the drawer close when click the mask.",
+        name: "maskCloseable",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      modal: {
+        defaultValue: { value: true },
+        description: "Set the drawer to modal dialog.",
+        name: "modal",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      size: {
+        defaultValue: null,
+        description:
+          "Configure drawer dimensions where the 'side' property determines measurement type: setting to 'bottom' specifies height, while 'right' defines width.",
+        name: "size",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      onOpen: {
+        defaultValue: { value: "() => {}" },
+        description:
+          "Event handler called when the drawer is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/drawer/drawer.ts",
+          name: "DrawerProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/drawer/drawer.ts",
+            name: "DrawerProps",
+          },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
+      },
+    },
   },
   Dropdown: {
     tags: {},
@@ -2271,6 +2502,23 @@ export default {
         required: false,
         type: { name: "string" },
       },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "LayoutProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/layout/layout.ts",
+            name: "LayoutProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
       gutter: {
         defaultValue: null,
         description:
@@ -2350,6 +2598,23 @@ export default {
         required: false,
         type: { name: "string" },
       },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "LayoutProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/layout/layout.ts",
+            name: "LayoutProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
     },
   },
   Right: {
@@ -2393,6 +2658,23 @@ export default {
         required: false,
         type: { name: "string" },
       },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "LayoutProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/layout/layout.ts",
+            name: "LayoutProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
     },
   },
   Top: {
@@ -2401,36 +2683,7 @@ export default {
     description: "",
     displayName: "Top",
     methods: [],
-    props: {
-      title: {
-        defaultValue: null,
-        description: "@ignore",
-        name: "title",
-        parent: {
-          fileName: "wis/src/packages/layout/layout.ts",
-          name: "TopProps",
-        },
-        declarations: [
-          { fileName: "wis/src/packages/layout/layout.ts", name: "TopProps" },
-        ],
-        required: false,
-        type: { name: "string" },
-      },
-      description: {
-        defaultValue: null,
-        description: "@ignore",
-        name: "description",
-        parent: {
-          fileName: "wis/src/packages/layout/layout.ts",
-          name: "TopProps",
-        },
-        declarations: [
-          { fileName: "wis/src/packages/layout/layout.ts", name: "TopProps" },
-        ],
-        required: false,
-        type: { name: "string" },
-      },
-    },
+    props: {},
   },
   Bottom: {
     tags: { package: "layout" },
@@ -2473,6 +2726,217 @@ export default {
         required: false,
         type: { name: "string" },
       },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/layout/layout.ts",
+          name: "LayoutProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/layout/layout.ts",
+            name: "LayoutProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+    },
+  },
+  Link: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/link/pc/index.ts",
+    description: "",
+    displayName: "Link",
+    methods: [],
+    props: {
+      inverse: {
+        defaultValue: null,
+        description: "Invert the color scheme of the link",
+        name: "inverse",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      disabled: {
+        defaultValue: null,
+        description:
+          "When `true`, prevents the user from interacting with the link.",
+        name: "disabled",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      text: {
+        defaultValue: null,
+        description: "The text information displayed on the link.",
+        name: "text",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      href: {
+        defaultValue: null,
+        description:
+          "The address of the link, which can be a complete external address or an internal page address within the project.",
+        name: "href",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      redirect: {
+        defaultValue: null,
+        description: "Control the jump method to replace the current route.",
+        name: "redirect",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      onClick: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when the link is clicked.",
+        name: "onClick",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: {
+          name: "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+        },
+      },
+    },
+  },
+  ExternalLink: {
+    tags: { package: "link", name: "Link" },
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/link/pc/index.ts",
+    description: "",
+    displayName: "ExternalLink",
+    methods: [],
+    props: {
+      inverse: {
+        defaultValue: null,
+        description: "Invert the color scheme of the link",
+        name: "inverse",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      disabled: {
+        defaultValue: null,
+        description:
+          "When `true`, prevents the user from interacting with the link.",
+        name: "disabled",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      text: {
+        defaultValue: null,
+        description: "The text information displayed on the link.",
+        name: "text",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      href: {
+        defaultValue: null,
+        description:
+          "The address of the link, which can be a complete external address or an internal page address within the project.",
+        name: "href",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      redirect: {
+        defaultValue: null,
+        description: "Control the jump method to replace the current route.",
+        name: "redirect",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      onClick: {
+        defaultValue: { value: "() => {}" },
+        description: "Event handler called when the link is clicked.",
+        name: "onClick",
+        parent: {
+          fileName: "wis/src/packages/link/link.ts",
+          name: "LinkProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/link/link.ts", name: "LinkProps" },
+        ],
+        required: false,
+        type: {
+          name: "(event: MouseEvent<HTMLAnchorElement, MouseEvent>) => void",
+        },
+      },
     },
   },
   Meta: {
@@ -2484,7 +2948,7 @@ export default {
     props: {},
   },
   MetaItem: {
-    tags: {},
+    tags: { package: "meta" },
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/meta/pc/index.ts",
     description: "",
     displayName: "MetaItem",
@@ -2534,6 +2998,186 @@ export default {
       },
     },
   },
+  Modal: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/modal/pc/index.ts",
+    description: "",
+    displayName: "Modal",
+    methods: [],
+    props: {
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the modal. Must be used in conjunction with `onOpen`.",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the modal when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      title: {
+        defaultValue: null,
+        description: "The title text will show in the modal header.",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      description: {
+        defaultValue: null,
+        description: "The description text will show in the modal header.",
+        name: "description",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
+      },
+      closeable: {
+        defaultValue: { value: true },
+        description: "Set the modal display the close icon.",
+        name: "closeable",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      maskCloseable: {
+        defaultValue: { value: true },
+        description: "Set the modal close when click the mask.",
+        name: "maskCloseable",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      modal: {
+        defaultValue: { value: true },
+        description: "Set the modal to modal dialog.",
+        name: "modal",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      center: {
+        defaultValue: { value: false },
+        description: "Set the modal display in the screen center",
+        name: "center",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      width: {
+        defaultValue: null,
+        description: "Set the modal width",
+        name: "width",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      height: {
+        defaultValue: null,
+        description: "Set the modal height",
+        name: "height",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      onOpen: {
+        defaultValue: { value: "() => {}" },
+        description:
+          "Event handler called when the modal is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/modal/modal.ts",
+          name: "ModalProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/modal/modal.ts", name: "ModalProps" },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
+      },
+    },
+  },
   Module: {
     tags: {},
     filePath: "/Volumes/Work/wisdesign/wis/src/packages/module/pc/index.ts",
@@ -2574,6 +3218,23 @@ export default {
         ],
         required: false,
         type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/module/module.ts",
+          name: "ModuleProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/module/module.ts",
+            name: "ModuleProps",
+          },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
       },
       variant: {
         defaultValue: { value: "basic" },
@@ -2721,6 +3382,20 @@ export default {
         ],
         required: false,
         type: { name: "string" },
+      },
+      toggleTip: {
+        defaultValue: null,
+        description: "The toggle tip",
+        name: "toggleTip",
+        parent: {
+          fileName: "wis/src/packages/page/page.ts",
+          name: "PageProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/page/page.ts", name: "PageProps" },
+        ],
+        required: false,
+        type: { name: "ReactNode" },
       },
     },
   },
@@ -3358,6 +4033,147 @@ export default {
         },
       },
     },
+  },
+  ToggleTip: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggleTip/pc/index.ts",
+    description: "",
+    displayName: "ToggleTip",
+    methods: [],
+    props: {
+      side: {
+        defaultValue: null,
+        description:
+          "The preferred side of the trigger to render against when open. May change when collisions occur.",
+        name: "side",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"top" | "right" | "bottom" | "left"',
+          value: [
+            { value: '"top"' },
+            { value: '"right"' },
+            { value: '"bottom"' },
+            { value: '"left"' },
+          ],
+        },
+      },
+      align: {
+        defaultValue: null,
+        description:
+          "The preferred alignment against the trigger. May change when collisions occur.",
+        name: "align",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"start" | "center" | "end"',
+          value: [
+            { value: '"start"' },
+            { value: '"center"' },
+            { value: '"end"' },
+          ],
+        },
+      },
+      text: {
+        defaultValue: null,
+        description: "The content text to render in the tooltip.",
+        name: "text",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      open: {
+        defaultValue: null,
+        description:
+          "The controlled open state of the tooltip. Must be used in conjunction with `onOpen`",
+        name: "open",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultOpen: {
+        defaultValue: null,
+        description:
+          "The open state of the tooltip when it is initially rendered.",
+        name: "defaultOpen",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      onOpen: {
+        defaultValue: null,
+        description:
+          "Event handler called when the tooltip is open state change.",
+        name: "onOpen",
+        parent: {
+          fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+          name: "ToggleTipProps",
+        },
+        declarations: [
+          {
+            fileName: "wis/src/packages/toggleTip/toggleTip.ts",
+            name: "ToggleTipProps",
+          },
+        ],
+        required: false,
+        type: { name: "(open: boolean) => void" },
+      },
+    },
+  },
+  ToggleTipActions: {
+    tags: { package: "toggleTip" },
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/toggleTip/pc/index.ts",
+    description: "",
+    displayName: "ToggleTipActions",
+    methods: [],
+    props: {},
   },
   Tooltip: {
     tags: {},

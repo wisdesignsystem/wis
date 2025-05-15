@@ -1,6 +1,9 @@
 import { Left, Right } from "wis/layout";
+import { Button } from "wis/button";
+import { Link } from "wis/link";
 import { Module } from "wis/module";
 import { Page } from "wis/page";
+import { ToggleTip, ToggleTipActions } from "wis/toggleTip";
 
 function Example() {
   return (
@@ -13,6 +16,14 @@ function Example() {
       <Module
         title="Module Title"
         description="description"
+        toggleTip={
+          <ToggleTip text="The toggle tip content text">
+            <ToggleTipActions>
+              <Link text="Link" href="https://wis.design" />
+              <Button text="Button" />
+            </ToggleTipActions>
+          </ToggleTip>
+        }
         size={{ base: 4, md: 8 }}
       />
       <Module

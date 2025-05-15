@@ -1,0 +1,107 @@
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
+
+@mixin drawer-style() {
+  @include style.container-style($component: 'drawer');
+}
+
+@mixin drawer-header-style() {
+  @include style.container-style($component: 'drawer', $widget: 'header');
+}
+
+@mixin drawer-footer-style() {
+  @include style.container-style($component: 'drawer', $widget: 'footer');
+}
+
+@keyframes overlay-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-bottom-animate {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes content-right-animate {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+body > .content {
+  position: fixed;
+}
+.content {
+  position: absolute;
+  height: 0;
+  padding: var(--w-common-spacing-common-lg);
+  box-sizing: border-box;
+
+  &[data-side="bottom"] {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 30%;
+    max-height: 70%; 
+    animation: content-bottom-animate 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &[data-side="right"] {
+    top: 0;
+    right: 0;
+    height: 100%;
+    min-width: 30%;
+    max-width: 70%;
+    animation: content-right-animate 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.drawer {
+  height: 100%;
+  border-radius: var(--w-common-border-radius-xlg);
+  box-shadow: 0px 10px 15px -3px var(--w-common-shadow-color-02), 0px 4px 6px -2px var(--w-common-shadow-color-01);
+  overflow: hidden;
+
+  @include drawer-style();
+}
+
+body > .mask {
+  position: fixed;
+}
+.mask {
+  position: absolute;
+  inset: 0;
+  background: var(--w-common-background-transparent-overlay-black);
+  animation: overlay-animate 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header {
+  box-sizing: border-box;
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  font-weight: var(--w-common-font-weight-bold);
+  padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-xl);
+
+  @include tool.font-size(var(--w-common-font-size-text-lg));
+  @include drawer-header-style();
+}
+
+.footer {
+  height: 72px;
+  box-sizing: border-box;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-xl);
+  border-top: var(--w-common-spacing-scale-1) solid transparent;
+
+  @include drawer-footer-style();
+}

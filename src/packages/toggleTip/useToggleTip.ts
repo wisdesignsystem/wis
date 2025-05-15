@@ -1,22 +1,40 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useShortcut } from "wis/shortcut";
+import nextTick from "@/utils/nextTick";
+import useBooleanValue from "@/hooks/useBooleanValue";
 
 import type { ToggleTipProps } from "./toggleTip";
-import nextTick from "../../utils/nextTick";
 
-export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
+export default function useToggleTip({
+  open,
+  defaultOpen,
+  onOpen = () => {},
+}: ToggleTipProps) {
   const clearDocumentClick = useRef<() => void>();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [currentOpen, setCurrentOpen] = useBooleanValue({
+    value: open,
+    defaultValue: defaultOpen,
+    onChange: (value) => {
+      if (value) {
+        nextTick(() => {
+          popperRef.current?.focus();
+        }, true);
+      } else {
+        nextTick(() => {
+          triggerRef.current?.focus();
+        }, true);
+      }
+
+      onOpen(value);
+    },
+  });
+
   const [onTriggerKeyDown, onShortcut] = useShortcut();
 
   useEffect(() => {
-    if (visible) {
-      nextTick(() => {
-        popperRef.current?.focus();
-      });
-
+    if (currentOpen) {
       function documentClick(event: Event) {
         const target = event.target as HTMLElement;
 
@@ -24,7 +42,7 @@ export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
           !triggerRef.current?.contains(target) &&
           !popperRef.current?.contains(target)
         ) {
-          change(false);
+          setCurrentOpen(false, true);
         }
       }
 
@@ -38,36 +56,29 @@ export default function useToggleTip({ onOpen = () => {} }: ToggleTipProps) {
         clearDocumentClick.current = undefined;
       }
     }
-  }, [visible]);
+  }, [currentOpen]);
 
   onShortcut("Escape", () => {
-    if (visible) {
-      change(false);
-      triggerRef.current?.focus();
+    if (currentOpen) {
+      setCurrentOpen(false, true);
     }
   });
 
   function onTriggerClick() {
-    change(!visible);
+    setCurrentOpen(!currentOpen, true);
   }
 
-  function onPopperLeave() {
-    change(false);
-    triggerRef.current?.focus();
-  }
-
-  function change(value: boolean) {
-    setVisible(value);
-    onOpen(value);
+  function onFocusEnded() {
+    setCurrentOpen(false, true);
   }
 
   return {
-    open: visible,
-    change,
+    open: currentOpen,
+    setOpen: setCurrentOpen,
     triggerRef,
     popperRef,
     onTriggerKeyDown,
     onTriggerClick,
-    onPopperLeave,
+    onFocusEnded,
   };
 }

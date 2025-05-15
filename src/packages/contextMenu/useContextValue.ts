@@ -16,7 +16,6 @@ export default function useContextValue({
 }): [Value, (value: Value) => void] {
   const { contextValue, setContextValue } = useContext(Context);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isUndefined(name)) {
       return;

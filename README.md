@@ -27,8 +27,8 @@ You can find a list of all our resource packs here.
 
 | Package name	      | Description |
 | :------- | :----------- |
-| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Wis核心包，包含路由及微前端运行时等资源 |
-| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 用于将wis的工程化能力接入社区脚手架 |
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Provides core runtime utilities (e.g., routing, micro-frontends) |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Plugin for integrating community build tools with core engineering features |
 | [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | Manage the tools related to the wis design R&D process|
 | [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
 | [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | A Figma plugin to manage icon component |

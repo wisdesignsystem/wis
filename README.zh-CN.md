@@ -27,11 +27,11 @@ Wis 是 [Wis.design](https://wis.design) 推出的开源设计系统，致力于
 
 | 包名      | 描述 |
 | :------- | :----------- |
-| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Wis核心包，包含路由及微前端运行时等资源 |
-| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 用于将wis的工程化能力接入社区脚手架 |
-| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | Manage the tools related to the wis design R&D process|
-| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
-| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | A Figma plugin to manage icon component |
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 提供运行时核心工具能力，比如路由，微前端等 |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 该插主要职责是以插件的形式去对接社区的开源构建方案，提供基础工程化能力 |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | 统一管理设计和研发过程涉及的工具库 |
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | 优雅的开源图标库 |
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | 通过Figma插件管理你的图标库 |
 
 ## 文档
 请在我们的[文档网站](https://wis.design/getting-started/quick-start)查看完整的操作指南 

@@ -1,4 +1,4 @@
-import { matchElement } from "wis/core";
+import { matchElement, isElement } from "wis/core";
 import classNames from "classnames";
 
 import type { BoxHeaderProps } from "../box";
@@ -9,12 +9,14 @@ function BoxHeader({
   className,
   title,
   description,
+  toggleTip,
   children,
   ...rest
 }: BoxHeaderProps) {
   const {
     elements: { BoxCollapse: collapse, BoxActions: actions, BoxMeta: meta },
   } = matchElement(children, ["BoxCollapse", "BoxActions", "BoxMeta"]);
+  const isShowToggleTip = isElement(toggleTip, "ToggleTip");
 
   return (
     <div
@@ -30,6 +32,7 @@ function BoxHeader({
             <div className={styles.container}>
               <div className={styles.title}>
                 <span className={styles.label}>{title}</span>
+                {isShowToggleTip && toggleTip}
               </div>
               {description && (
                 <div className={styles.description} data-description>

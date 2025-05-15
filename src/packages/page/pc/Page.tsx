@@ -1,6 +1,11 @@
 import { cloneElement } from "react";
+import type { RefObject } from "react";
 import { Box, BoxActions, BoxContent, BoxHeader, BoxMeta } from "wis/box";
-import { matchElement } from "wis/core";
+import {
+  matchElement,
+  MountElementContext,
+  useSetMountElement,
+} from "wis/core";
 import { Main } from "wis/layout";
 import classNames from "classnames";
 
@@ -8,7 +13,16 @@ import type { PageProps } from "../page";
 
 import styles from "./Page.module.scss";
 
-function Page({ className, title, description, children, ...rest }: PageProps) {
+function Page({
+  className,
+  title,
+  description,
+  toggleTip,
+  children,
+  ...rest
+}: PageProps) {
+  const { ref: mountPointRef, mountElement } = useSetMountElement();
+
   const {
     elements: { Actions: actions, Meta: meta },
     unmatched,
@@ -40,6 +54,7 @@ function Page({ className, title, description, children, ...rest }: PageProps) {
   return (
     <Box
       {...rest}
+      ref={mountPointRef as RefObject<HTMLDivElement>}
       className={classNames(styles.page, {
         [className as string]: !!className,
       })}
@@ -48,12 +63,15 @@ function Page({ className, title, description, children, ...rest }: PageProps) {
         className={styles.header}
         title={title}
         description={description}
+        toggleTip={toggleTip}
       >
         {renderActions()}
         {renderMeta()}
       </BoxHeader>
       <BoxContent>
-        <Main responsive>{unmatched}</Main>
+        <MountElementContext.Provider value={mountElement}>
+          <Main responsive>{unmatched}</Main>
+        </MountElementContext.Provider>
       </BoxContent>
     </Box>
   );

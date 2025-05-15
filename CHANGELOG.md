@@ -1,5 +1,39 @@
 # @wisdesign/wis
 
+## 0.0.13
+
+### Patch Changes
+
+- [#136](https://github.com/wisdesignsystem/wis/pull/136) [`c1d9528`](https://github.com/wisdesignsystem/wis/commit/c1d9528ab692efbea0294a0c220beb2d6cd359f5) Thanks [@FaureWu](https://github.com/FaureWu)! - [Style] Change the layout component focus style
+
+- [#133](https://github.com/wisdesignsystem/wis/pull/133) [`32e8b3e`](https://github.com/wisdesignsystem/wis/commit/32e8b3e561170e9f3fdfdb4f6fbc5ad1df4b3649) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] export the ToggleTip api definition
+
+- [#135](https://github.com/wisdesignsystem/wis/pull/135) [`301e9d6`](https://github.com/wisdesignsystem/wis/commit/301e9d64e26540d1585f966762949cc0a3892085) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Create the modal pc component
+
+## 0.0.12
+
+### Patch Changes
+
+- [#131](https://github.com/wisdesignsystem/wis/pull/131) [`77a1639`](https://github.com/wisdesignsystem/wis/commit/77a1639ef093291f1be49ca08539898420216a3c) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] disabled the locked when mount element is not body
+
+- [#131](https://github.com/wisdesignsystem/wis/pull/131) [`45952bf`](https://github.com/wisdesignsystem/wis/commit/45952bfc1ab018aca04e67283ce9840008eee109) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the transition animation for drawer
+
+## 0.0.11
+
+### Patch Changes
+
+- [#130](https://github.com/wisdesignsystem/wis/pull/130) [`10f5334`](https://github.com/wisdesignsystem/wis/commit/10f53349f5d941512ef7d78646f19f4d7fa6bcc0) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the ToggleTip component api
+
+- [#127](https://github.com/wisdesignsystem/wis/pull/127) [`9280e9d`](https://github.com/wisdesignsystem/wis/commit/9280e9da5a823683fbe3ee963361a5eb3a111192) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] support the open and defaultOpen state
+
+- [#129](https://github.com/wisdesignsystem/wis/pull/129) [`c6272b1`](https://github.com/wisdesignsystem/wis/commit/c6272b178023a01f43af9faa5af7099d9635ceed) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the drawer component
+
+## 0.0.10
+
+### Patch Changes
+
+- [#125](https://github.com/wisdesignsystem/wis/pull/125) [`b9ea59a`](https://github.com/wisdesignsystem/wis/commit/b9ea59ad4054c220f436d06dec11cd4c6c95fc36) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Enhance Link and container accessToggleTip
+
 ## 0.0.9
 
 ### Patch Changes

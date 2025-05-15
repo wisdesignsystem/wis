@@ -1,3 +1,4 @@
+import ExternalLink from "./ExternalLink";
 import Link from "./Link";
 
-export { Link };
+export { Link, ExternalLink };
