@@ -14,7 +14,6 @@ Wis is an open-source design system launched by [Wis.design](https://wis.design)
 The system is built upon an "Essence-Driven" design language, offering ready-to-use code components, design tools, and product design guidelines to help teams create unified, scalable interfaces more efficiently.
 
 <p align="center">
-  <img alt="NPM Version" src="https://img.shields.io/npm/v/@wisdesign/wis.svg">
   <img alt="NPM License" src="https://img.shields.io/npm/l/@wisdesign/wis.svg">
 </p>
 
@@ -25,13 +24,14 @@ If you're just getting started, we highly recommend checking out our [Quick Star
 
 You can find a list of all our resource packs here.
 
-| Package name	      | Description |
-| :------- | :----------- |
-| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Provides core runtime utilities (e.g., routing, micro-frontends) |
-| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Plugin for integrating community build tools with core engineering features |
-| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | Manage the tools related to the wis design R&D process|
-| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
-| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | A Figma plugin to manage icon component |
+| Package name	      | Version | Description |
+| :------- | :------- | :----------- |
+| [wis](https://github.com/wisdesignsystem/wis) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis.svg"> | Provides an enterprise-ready cross-device UI component library for B2B products |
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | <img alt="wiscore" src="https://img.shields.io/npm/v/wiscore.svg"> | Provides core runtime utilities (e.g., routing, micro-frontends) |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/wis-plugin) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis-plugin.svg"> | Plugin for integrating community build tools with core engineering features |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/cli.svg"> | Manage the tools related to the wis design R&D process|
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/lsicon.svg"> | Elegant and Open-Source Icon Library|
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | none | A Figma plugin to manage icon component |
 
 ## Documentation
 Please refer to our [documentation website](https://wis.design/getting-started/quick-start) for the complete operation guide.
