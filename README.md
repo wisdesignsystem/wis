@@ -27,12 +27,12 @@ You can find a list of all our resource packs here.
 
 | Package name	      | Description |
 | :-------  | :----------- |
-| [wis](https://github.com/wisdesignsystem/wis) |  Provides an enterprise-ready cross-device UI component library for B2B products |
+| [wis](https://github.com/wisdesignsystem/wis) | Provides an enterprise-ready cross-device UI component library for B2B products |
 | [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | Provides core runtime utilities (e.g., routing, micro-frontends) |
 | [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/wis-plugin) | Plugin for integrating community build tools with core engineering features |
-| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)  | Manage the tools related to the wis design R&D process|
-| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | Elegant and Open-Source Icon Library|
-| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) |  A Figma plugin to manage icon component |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli) | Manage the tools related to the wis design R&D process|
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon) | Elegant and Open-Source Icon Library|
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | A Figma plugin to manage icon component |
 
 ## Documentation
 Please refer to our [documentation website](https://wis.design/getting-started/quick-start) for the complete operation guide.
