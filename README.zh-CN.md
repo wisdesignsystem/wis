@@ -15,6 +15,7 @@ Wis 是 [Wis.design](https://wis.design) 推出的开源设计系统，致力于
 
 <p align="center">
   <img alt="NPM License" src="https://img.shields.io/npm/l/@wisdesign/wis.svg">
+  <a href="https://deepwiki.com/wisdesignsystem/wis"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </p>
 
 🌐 [English](./README.md) | [中文](./README.zh-CN.md)
@@ -24,14 +25,14 @@ Wis 是 [Wis.design](https://wis.design) 推出的开源设计系统，致力于
 
 你可以在这里找到我们的所有资源包的列表
 
-| 包名      | 版本 | 描述 |
-| :------- | :------- | :----------- |
-| [wis](https://github.com/wisdesignsystem/wis) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis.svg"> | 提供一套针对B端产品的多设备UI组件库 |
-| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | <img alt="wiscore" src="https://img.shields.io/npm/v/wiscore.svg"> | 提供运行时核心工具能力，比如路由，微前端等 |
-| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis-plugin.svg"> | 该插主要职责是以插件的形式去对接社区的开源构建方案，提供基础工程化能力 |
-| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/cli.svg"> | 统一管理设计和研发过程涉及的工具库 |
-| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/lsicon.svg"> | 优雅的开源图标库 |
-| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | 无 | 通过Figma插件管理你的图标库 |
+| 包名 | 描述 |
+| :-------  | :----------- |
+| [wis](https://github.com/wisdesignsystem/wis) | 提供一套针对B端产品的多设备UI组件库 |
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | 提供运行时核心工具能力，比如路由，微前端等 |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core)  | 该插主要职责是以插件的形式去对接社区的开源构建方案，提供基础工程化能力 |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)     | 统一管理设计和研发过程涉及的工具库 |
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)     | 优雅的开源图标库 |
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) |  通过Figma插件管理你的图标库 |
 
 ## 文档
 请在我们的[文档网站](https://wis.design/getting-started/quick-start)查看完整的操作指南 
