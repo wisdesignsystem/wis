@@ -1,9 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-interface Record {
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  [key: string]: any;
-}
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export type PlainObject = Record<string, any>;
 
 interface Cell {
   /**
@@ -25,7 +23,7 @@ interface Cell {
   /**
    * The row data where the cell is located
    */
-  rowData: Record;
+  rowData: PlainObject;
 
   /**
    * The row index where the cell is located (resets when switching pages)
@@ -60,8 +58,8 @@ export interface Sort {
 }
 
 export interface TableRequest<
-  P extends object = object,
-  R extends object = object,
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
 > {
   /**
    * The parameters of the table request
@@ -79,7 +77,7 @@ export interface TableRequest<
   columns: ColumnType<R>[];
 }
 
-export interface TableResponse<R extends object = object> {
+export interface TableResponse<R extends PlainObject = PlainObject> {
   /**
    * The data of the table
    */
@@ -97,7 +95,7 @@ export enum OrderType {
   GREATER = 1,
 }
 
-export interface Sortable<R extends object = object> {
+export interface Sortable<R extends PlainObject = PlainObject> {
   type?: SortType;
   defaultType?: SortType;
   priority?: number;
@@ -105,8 +103,8 @@ export interface Sortable<R extends object = object> {
 }
 
 export interface TableProps<
-  R extends object = object,
-  P extends object = object,
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
 > extends Omit<HTMLAttributes<HTMLTableElement>, "onLoad"> {
   /**
    * The title of the table
@@ -123,7 +121,7 @@ export interface TableProps<
    */
   data?:
     | R[]
-    | ((requestOption: TableRequest<P, R>) => Promise<TableResponse<R>>);
+    | ((requestOption: TableRequest<R, P>) => Promise<TableResponse<R>>);
 
   /**
    * The toggle tip of the table
@@ -166,7 +164,7 @@ export interface TableProps<
   onLoad?: (response: TableResponse<R>) => void;
 }
 
-export interface ColumnProps<R extends object = object> {
+export interface ColumnProps<R extends PlainObject = PlainObject> {
   /**
    * The title of the column
    */
@@ -218,12 +216,12 @@ export interface ColumnProps<R extends object = object> {
   defaultFixed?: "left" | "right";
 
   /**
-   * @private
+   * @ignore
    */
   children: ReactNode;
 }
 
-export interface ColumnType<R extends object = object>
+export interface ColumnType<R extends PlainObject = PlainObject>
   extends Omit<ColumnProps<R>, "children"> {
   children?: ColumnType<R>[];
 }

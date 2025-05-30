@@ -1,6 +1,9 @@
-import type { TableProps } from "../table";
+import type { TableProps, PlainObject } from "../table";
 
-function Table(_props: TableProps) {
+function Table<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>(_props: TableProps<R, P>) {
   return null;
 }
 

@@ -1,6 +1,6 @@
-import type { ColumnProps } from "../table";
+import type { ColumnProps, PlainObject } from "../table";
 
-function Column(_props: ColumnProps) {
+function Column<R extends PlainObject = PlainObject>(_props: ColumnProps<R>) {
   return null;
 }
 
