@@ -8,7 +8,7 @@ import type {
   TableResponse,
   OrderType,
   Sortable,
-  ColumnType,
+  ColumnMeta,
 } from "../table";
 
 export { Table, Column };
@@ -19,5 +19,5 @@ export type {
   TableResponse,
   OrderType,
   Sortable,
-  ColumnType,
+  ColumnMeta,
 };

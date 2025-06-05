@@ -14,17 +14,7 @@ function Example() {
           return { data: [] };
         }}
       >
-        <Column
-          name="name"
-          sortable={{
-            sort: (record1, record2, sort) => {
-              record1.name;
-              return 0;
-            },
-          }}
-        >
-          {cell.rowData.name}
-        </Column>
+        <Column name="name">{cell.data}</Column>
       </Table>
     </Page>
   );

@@ -3,32 +3,32 @@ import type { HTMLAttributes, ReactNode } from "react";
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type PlainObject = Record<string, any>;
 
-interface Cell {
+interface Cell<R extends PlainObject = PlainObject> {
   /**
    * The value of the cell
    */
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  data: any;
+  data: R extends PlainObject ? R[keyof R] : any;
 
   /**
    * The name of the column where the cell is located
    */
-  name: string;
-
-  /**
-   * The row number where the cell is located (does not reset when switching pages)
-   */
-  rowNo: string;
-
-  /**
-   * The row data where the cell is located
-   */
-  rowData: PlainObject;
+  name: R extends PlainObject ? keyof R : string;
 
   /**
    * The row index where the cell is located (resets when switching pages)
    */
-  rowIndex: string;
+  rowIndex: number;
+
+  /**
+   * The row number where the cell is located (does not reset when switching pages)
+   */
+  rowNo: number;
+
+  /**
+   * The row data where the cell is located
+   */
+  rowData: R;
 }
 
 declare global {
@@ -74,7 +74,7 @@ export interface TableRequest<
   /**
    * The columns of the table
    */
-  columns: ColumnType<R>[];
+  columns: ColumnMeta<R>[];
 }
 
 export interface TableResponse<R extends PlainObject = PlainObject> {
@@ -96,9 +96,24 @@ export enum OrderType {
 }
 
 export interface Sortable<R extends PlainObject = PlainObject> {
+  /**
+   * Set the sort type of the column. Set this value will enable controlled mode.
+   */
   type?: SortType;
+
+  /**
+   * Set the default sort type of the column.
+   */
   defaultType?: SortType;
+
+  /**
+   * Set the column sort priority, it's useful when open multiple sort
+   */
   priority?: number;
+
+  /**
+   * Custom the sort way of the column.
+   */
   sort?: (record1: R, record2: R, sort: Sort) => OrderType;
 }
 
@@ -221,12 +236,19 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   children: ReactNode;
 }
 
-export interface ColumnType<R extends PlainObject = PlainObject>
+export interface ColumnMeta<R extends PlainObject = PlainObject>
   extends Omit<ColumnProps<R>, "children"> {
-  children?: ColumnType<R>[];
+  /**
+   * The column render function of the table.
+   */
+  render?: ColumnFn<R>;
+
+  children?: ColumnMeta<R>[];
 }
 
-type ColumnFn = (cell: Cell) => ReactNode;
+type ColumnFn<R extends PlainObject = PlainObject> = (
+  cell: Cell<R>,
+) => ReactNode;
 export function isColumnFn(data: unknown): data is ColumnFn {
   return typeof data === "function";
 }
