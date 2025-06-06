@@ -40,7 +40,7 @@ function Layout({
       { type: "Top", maxCount: 1 },
       { type: "Bottom", maxCount: 1 },
     ],
-    false,
+    { strict: false },
   );
 
   const hasModule = unmatched.some((child) => isElement(child, "Module"));

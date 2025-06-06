@@ -37,7 +37,9 @@ function Module({
   const {
     elements: { Actions: actions },
     unmatched,
-  } = matchElement(children, [{ type: "Actions", maxCount: 1 }], false);
+  } = matchElement(children, [{ type: "Actions", maxCount: 1 }], {
+    strict: false,
+  });
   const hasModule = unmatched.some((child) => isElement(child, "Module"));
 
   function renderContent() {

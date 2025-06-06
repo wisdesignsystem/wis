@@ -46,7 +46,9 @@ const Drawer = forwardRef(
     const {
       elements: { Actions: actions },
       unmatched,
-    } = matchElement(children, [{ type: "Actions", maxCount: 1 }], false);
+    } = matchElement(children, [{ type: "Actions", maxCount: 1 }], {
+      strict: false,
+    });
 
     useImperativeHandle(ref, () => {
       return {

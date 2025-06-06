@@ -140,10 +140,14 @@ interface MathElementResult {
   elements: { [type: string]: ReactElement<any>[] };
 }
 
+interface MatchElementOption {
+  strict?: boolean;
+  exclusiveMatch?: boolean;
+}
 export function matchElement(
   children: ReactNode,
   typeDefinitions: UserTypeDefinition[] = [],
-  strict = true,
+  option?: MatchElementOption,
 ): MathElementResult {
   const typeDefinitionMap = typeDefinitions.reduce(
     (result, item) => {
@@ -178,8 +182,22 @@ export function matchElement(
     { unmatched: [], matched: [], elements: {} } as MathElementResult,
   );
 
+  if (process.env.NODE_ENV === "production") {
+    return result;
+  }
+
+  const { strict = true, exclusiveMatch = false } = option ?? {};
+
+  // in exclusiveMatch mode, check if there are both matched and unmatched nodes
+  if (exclusiveMatch && !!result.matched.length && !!result.unmatched.length) {
+    for (const node of result.unmatched) {
+      warn("Ignored node will not be used. Please checked!", node);
+    }
+    return result;
+  }
+
   // In strict mode, check if there are any unmatched nodes. If they exist, give a warning.
-  if (strict && result.unmatched.length) {
+  if (strict && !!result.unmatched.length) {
     for (const node of result.unmatched) {
       warn("Ignored node will not be used. Please checked!", node);
     }

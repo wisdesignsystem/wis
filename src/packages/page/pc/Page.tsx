@@ -32,7 +32,7 @@ function Page({
       { type: "Actions", maxCount: 1 },
       { type: "Meta", maxCount: 1 },
     ],
-    false,
+    { strict: false },
   );
 
   function renderActions() {

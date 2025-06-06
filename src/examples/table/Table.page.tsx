@@ -1,20 +1,15 @@
 import { Page } from "wis/page";
 import { Table, Column } from "wis/table";
 
-interface User {
-  name: string;
-  age: number;
-}
-
 function Example() {
   return (
     <Page title="Table" description="Table">
-      <Table<User>
-        data={async () => {
-          return { data: [] };
-        }}
-      >
+      <Table>
         <Column name="name">{cell.data}</Column>
+        <Column name="group">
+          <Column name="age">{cell.data}</Column>
+          <Column name="year">{cell.data}</Column>
+        </Column>
       </Table>
     </Page>
   );
