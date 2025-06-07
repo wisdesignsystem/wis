@@ -231,17 +231,37 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   defaultFixed?: "left" | "right";
 
   /**
+   * Set the colSpan of the header cell.
+   */
+  colSpan?: number;
+
+  /**
    * @ignore
    */
   children: ReactNode;
 }
 
 export interface ColumnMeta<R extends PlainObject = PlainObject>
-  extends Omit<ColumnProps<R>, "children"> {
+  extends Omit<ColumnProps<R>, "children" | "Sortable"> {
   /**
    * The column render function of the table.
    */
   render?: ColumnFn<R>;
+
+  /**
+   * The colSpan of the column.
+   */
+  colSpan?: number;
+
+  /**
+   * The rowSpan of the column.
+   */
+  rowSpan?: number;
+
+  /**
+   * Config the column is sortable and sort way.
+   */
+  sortable?: Sortable<R>;
 
   children?: ColumnMeta<R>[];
 }
@@ -249,6 +269,8 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
 type ColumnFn<R extends PlainObject = PlainObject> = (
   cell: Cell<R>,
 ) => ReactNode;
-export function isColumnFn(data: unknown): data is ColumnFn {
+export function isColumnFn<R extends PlainObject = PlainObject>(
+  data: unknown,
+): data is ColumnFn<R> {
   return typeof data === "function";
 }

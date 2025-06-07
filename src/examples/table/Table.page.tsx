@@ -5,10 +5,16 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <Table>
-        <Column name="name">{cell.data}</Column>
+        <Column name="name" colSpan={2}>
+          {cell.data}
+        </Column>
         <Column name="group">
           <Column name="age">{cell.data}</Column>
           <Column name="year">{cell.data}</Column>
+          <Column colSpan={2} name="date">
+            {cell.data}
+          </Column>
+          <Column name="date2">{cell.data}</Column>
         </Column>
       </Table>
     </Page>
