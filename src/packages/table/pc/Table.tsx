@@ -16,20 +16,18 @@ function Table<
     elements: { Column: columnElements },
   } = matchElement(props.children, ["Column"]);
 
-  useTable<R, P>(props, {
+  const { getRowKey, data, leafColumns, layerColumns } = useTable<R, P>(props, {
     columnElements,
   });
 
   return (
     <div className={styles.container}>
-      <div className={styles.table}>
-        <div className={styles.scroll}>
-          <table>
-            <Colgroup />
-            <Head />
-            <Body />
-          </table>
-        </div>
+      <div className={styles.scroll}>
+        <table className={styles.table}>
+          <Colgroup<R> leafColumns={leafColumns} />
+          <Head<R> layerColumns={layerColumns} />
+          <Body<R> rowKey={getRowKey} leafColumns={leafColumns} data={data} />
+        </table>
       </div>
     </div>
   );

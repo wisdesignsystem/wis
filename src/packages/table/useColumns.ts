@@ -139,11 +139,15 @@ function formatColumns<R extends PlainObject = PlainObject>(
 
   if (layerColumns[depth] === undefined) {
     layerColumns[depth] = [];
+    // @ts-ignore
+    layerColumns[depth].key = "layer";
   }
 
   let currentBreadth = 0;
   for (const column of columns) {
     layerColumns[depth].push(column);
+    // @ts-ignore
+    layerColumns[depth].key = `${layerColumns[depth].key}_${column.name}`;
 
     if (isLeafColumn<R>(column)) {
       leafColumns.push(column);

@@ -6,26 +6,39 @@ import useColumns from "./useColumns";
 interface UseTableOption<R extends PlainObject = PlainObject> {
   columnElements: ReactElement<ColumnProps<R>>[];
 }
+interface UseTableResult<R extends PlainObject = PlainObject> {
+  getRowKey: (record: R) => string;
+  data: R[];
+  columns: ColumnMeta<R>[];
+  leafColumns: ColumnMeta<R>[];
+  layerColumns: ColumnMeta<R>[][];
+}
 function useTable<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 >(
-  props: TableProps<R, P>,
+  { rowKey = (row: R) => row.key, data }: TableProps<R, P>,
   option: UseTableOption<R>,
-): {
-  columns: ColumnMeta<R>[];
-  leafColumns: ColumnMeta<R>[];
-  layerColumns: ColumnMeta<R>[][];
-} {
+): UseTableResult<R> {
   const { columns, leafColumns, layerColumns } = useColumns(
     option.columnElements,
   );
 
-  console.log(columns);
-  console.log(leafColumns);
-  console.log(layerColumns);
+  function getRowKey(record: R) {
+    if (typeof rowKey === "string") {
+      return record[rowKey];
+    }
 
-  return { columns, leafColumns, layerColumns };
+    return rowKey(record);
+  }
+
+  return {
+    getRowKey,
+    columns,
+    leafColumns,
+    layerColumns,
+    data: Array.isArray(data) ? data : [],
+  };
 }
 
 export default useTable;

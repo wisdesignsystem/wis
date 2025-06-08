@@ -117,6 +117,40 @@ export interface Sortable<R extends PlainObject = PlainObject> {
   sort?: (record1: R, record2: R, sort: Sort) => OrderType;
 }
 
+export interface ColumnMeta<R extends PlainObject = PlainObject>
+  extends Omit<ColumnProps<R>, "children" | "Sortable"> {
+  /**
+   * The column render function of the table.
+   */
+  render?: ColumnFn<R>;
+
+  /**
+   * The colSpan of the column.
+   */
+  colSpan?: number;
+
+  /**
+   * The rowSpan of the column.
+   */
+  rowSpan?: number;
+
+  /**
+   * Config the column is sortable and sort way.
+   */
+  sortable?: Sortable<R>;
+
+  children?: ColumnMeta<R>[];
+}
+
+type ColumnFn<R extends PlainObject = PlainObject> = (
+  cell: Cell<R>,
+) => ReactNode;
+export function isColumnFn<R extends PlainObject = PlainObject>(
+  data: unknown,
+): data is ColumnFn<R> {
+  return typeof data === "function";
+}
+
 export interface TableProps<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
@@ -241,36 +275,32 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   children: ReactNode;
 }
 
-export interface ColumnMeta<R extends PlainObject = PlainObject>
-  extends Omit<ColumnProps<R>, "children" | "Sortable"> {
-  /**
-   * The column render function of the table.
-   */
-  render?: ColumnFn<R>;
-
-  /**
-   * The colSpan of the column.
-   */
-  colSpan?: number;
-
-  /**
-   * The rowSpan of the column.
-   */
-  rowSpan?: number;
-
-  /**
-   * Config the column is sortable and sort way.
-   */
-  sortable?: Sortable<R>;
-
-  children?: ColumnMeta<R>[];
+export interface ColgroupProps<R extends PlainObject = PlainObject> {
+  leafColumns: ColumnMeta<R>[];
 }
 
-type ColumnFn<R extends PlainObject = PlainObject> = (
-  cell: Cell<R>,
-) => ReactNode;
-export function isColumnFn<R extends PlainObject = PlainObject>(
-  data: unknown,
-): data is ColumnFn<R> {
-  return typeof data === "function";
+export interface HeadProps<R extends PlainObject = PlainObject> {
+  layerColumns: ColumnMeta<R>[][];
+}
+
+export interface HeadCellProps<R extends PlainObject = PlainObject> {
+  column: ColumnMeta<R>;
+}
+
+export interface BodyProps<R extends PlainObject = PlainObject> {
+  rowKey: (record: R) => string;
+  data: R[];
+  leafColumns: ColumnMeta<R>[];
+}
+
+export interface RowProps<R extends PlainObject = PlainObject> {
+  record: R;
+  children: ReactNode;
+}
+
+export interface CellProps<R extends PlainObject = PlainObject> {
+  rowIndex: number;
+  rowNo: number;
+  record: R;
+  column: ColumnMeta<R>;
 }
