@@ -40,6 +40,11 @@ export enum SortType {
   Desc = "desc",
 }
 
+type Compare<R extends PlainObject = PlainObject> = (
+  record1: R,
+  record2: R,
+) => OrderType;
+
 export interface Sort {
   /**
    * The name of the column to sort
@@ -49,12 +54,46 @@ export interface Sort {
   /**
    * The type of the sort
    */
+  type: SortType;
+
+  /**
+   * Set the column sort priority, it's useful when open multiple sort
+   */
+  priority?: number;
+}
+
+export enum OrderType {
+  LESS = -1,
+  EQUAL = 0,
+  GREATER = 1,
+}
+
+export interface Sorter<R extends PlainObject = PlainObject> {
+  /**
+   * Set the sort type of the column. Set this value will enable controlled mode.
+   */
   type?: SortType;
 
   /**
-   * The priority of the sort
+   * Set the default sort type of the column.
+   */
+  defaultType?: SortType;
+
+  /**
+   * Set the column sort priority, it's useful when open multiple sort
    */
   priority?: number;
+
+  /**
+   * Custom the sort way of the column.
+   */
+  compare?: Compare<R>;
+}
+
+export interface SorterStore<R extends PlainObject = PlainObject>
+  extends Sorter<R> {
+  name: string;
+  currentType: SortType;
 }
 
 export interface TableRequest<
@@ -89,36 +128,13 @@ export interface TableResponse<R extends PlainObject = PlainObject> {
   sort?: Sort | Sort[];
 }
 
-export enum OrderType {
-  LESS = -1,
-  EQUAL = 0,
-  GREATER = 1,
-}
-
-export interface Sortable<R extends PlainObject = PlainObject> {
-  /**
-   * Set the sort type of the column. Set this value will enable controlled mode.
-   */
-  type?: SortType;
-
-  /**
-   * Set the default sort type of the column.
-   */
-  defaultType?: SortType;
-
-  /**
-   * Set the column sort priority, it's useful when open multiple sort
-   */
-  priority?: number;
-
-  /**
-   * Custom the sort way of the column.
-   */
-  sort?: (record1: R, record2: R, sort: Sort) => OrderType;
-}
+export type TableAjax<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> = (requestOption: TableRequest<R, P>) => Promise<TableResponse<R>>;
 
 export interface ColumnMeta<R extends PlainObject = PlainObject>
-  extends Omit<ColumnProps<R>, "children" | "Sortable"> {
+  extends Omit<ColumnProps<R>, "sorter" | "children"> {
   /**
    * The column render function of the table.
    */
@@ -135,9 +151,9 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
   rowSpan?: number;
 
   /**
-   * Config the column is sortable and sort way.
+   * Config the column is sorter and sort way.
    */
-  sortable?: Sortable<R>;
+  sorter?: Sorter<R>;
 
   children?: ColumnMeta<R>[];
 }
@@ -145,10 +161,35 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
 type ColumnFn<R extends PlainObject = PlainObject> = (
   cell: Cell<R>,
 ) => ReactNode;
-export function isColumnFn<R extends PlainObject = PlainObject>(
-  data: unknown,
-): data is ColumnFn<R> {
-  return typeof data === "function";
+
+export interface ColgroupProps<R extends PlainObject = PlainObject> {
+  leafColumns: ColumnMeta<R>[];
+}
+
+export interface HeadProps<R extends PlainObject = PlainObject> {
+  layerColumns: ColumnMeta<R>[][];
+}
+
+export interface HeadCellProps<R extends PlainObject = PlainObject> {
+  column: ColumnMeta<R>;
+}
+
+export interface BodyProps<R extends PlainObject = PlainObject> {
+  rowKey: (record: R) => string;
+  data: R[];
+  leafColumns: ColumnMeta<R>[];
+}
+
+export interface RowProps<R extends PlainObject = PlainObject> {
+  record: R;
+  children: ReactNode;
+}
+
+export interface CellProps<R extends PlainObject = PlainObject> {
+  rowIndex: number;
+  rowNo: number;
+  record: R;
+  column: ColumnMeta<R>;
 }
 
 export interface TableProps<
@@ -168,9 +209,7 @@ export interface TableProps<
   /**
    * The datasource of the table
    */
-  data?:
-    | R[]
-    | ((requestOption: TableRequest<R, P>) => Promise<TableResponse<R>>);
+  data?: R[] | TableAjax<R, P>;
 
   /**
    * The toggle tip of the table
@@ -225,9 +264,9 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   name: string;
 
   /**
-   * Config the column is sortable and sort way.
+   * Config the column is sorter and sort way.
    */
-  sortable?: boolean | Sortable<R>;
+  sorter?: boolean | Compare<R> | Sorter<R>;
 
   /**
    * Set the cell text ellipsis when the cell text is too long. Need to set the width property.
@@ -273,34 +312,4 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
    * @ignore
    */
   children: ReactNode;
-}
-
-export interface ColgroupProps<R extends PlainObject = PlainObject> {
-  leafColumns: ColumnMeta<R>[];
-}
-
-export interface HeadProps<R extends PlainObject = PlainObject> {
-  layerColumns: ColumnMeta<R>[][];
-}
-
-export interface HeadCellProps<R extends PlainObject = PlainObject> {
-  column: ColumnMeta<R>;
-}
-
-export interface BodyProps<R extends PlainObject = PlainObject> {
-  rowKey: (record: R) => string;
-  data: R[];
-  leafColumns: ColumnMeta<R>[];
-}
-
-export interface RowProps<R extends PlainObject = PlainObject> {
-  record: R;
-  children: ReactNode;
-}
-
-export interface CellProps<R extends PlainObject = PlainObject> {
-  rowIndex: number;
-  rowNo: number;
-  record: R;
-  column: ColumnMeta<R>;
 }

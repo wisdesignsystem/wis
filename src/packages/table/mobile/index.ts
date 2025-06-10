@@ -7,8 +7,8 @@ import type {
   TableRequest,
   TableResponse,
   OrderType,
-  Sortable,
-  ColumnType,
+  Sorter,
+  ColumnMeta,
 } from "../table";
 
 export { Table, Column };
@@ -18,6 +18,6 @@ export type {
   TableRequest,
   TableResponse,
   OrderType,
-  Sortable,
-  ColumnType,
+  Sorter,
+  ColumnMeta,
 };

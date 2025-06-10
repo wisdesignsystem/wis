@@ -7,7 +7,7 @@ import type {
   TableRequest,
   TableResponse,
   OrderType,
-  Sortable,
+  Sorter,
   ColumnMeta,
 } from "../table";
 
@@ -18,6 +18,6 @@ export type {
   TableRequest,
   TableResponse,
   OrderType,
-  Sortable,
+  Sorter,
   ColumnMeta,
 };

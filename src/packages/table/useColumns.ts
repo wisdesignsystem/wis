@@ -1,20 +1,13 @@
-/**
- * This module provides utilities for parsing and formatting table columns in a React application.
- * It handles both simple columns and grouped columns with nested structure.
- */
-
 import { matchElement } from "wis/core";
 import type { ReactElement } from "react";
 
-import type { ColumnProps, PlainObject, ColumnMeta } from "./table";
-import { isColumnFn } from "./table";
+import type {
+  ColumnProps,
+  PlainObject,
+  ColumnMeta,
+  SorterStore,
+} from "./table";
 
-/**
- * Parses a single column element and its children recursively
- * @param columnElement - The React element representing a column
- * @param depth - Current depth in the column hierarchy
- * @returns Object containing the parsed column metadata and maximum depth
- */
 function parseColumnElement<R extends PlainObject = PlainObject>(
   columnElement: ReactElement<ColumnProps<R>>,
   depth = 0,
@@ -22,7 +15,7 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   const {
     title,
     name,
-    sortable,
+    sorter,
     ellipsis,
     width,
     align = "left",
@@ -49,7 +42,7 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     defaultFixed,
   };
 
-  if (!isGroupColumn && isColumnFn<R>(children)) {
+  if (!isGroupColumn && typeof children === "function") {
     column.render = children;
   }
 
@@ -65,19 +58,19 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     column.ellipsis = ellipsis;
     column.width = width;
     column.colSpan = colSpan !== undefined && colSpan > 1 ? colSpan : undefined;
-    column.sortable =
-      typeof sortable === "boolean" ? (sortable ? {} : undefined) : sortable;
+
+    if (typeof sorter === "boolean") {
+      column.sorter = sorter ? {} : undefined;
+    } else if (typeof sorter === "function") {
+      column.sorter = { compare: sorter };
+    } else {
+      column.sorter = sorter;
+    }
   }
 
   return { maxDepth, column };
 }
 
-/**
- * Parses multiple column elements and their children
- * @param columnElements - Array of React elements representing columns
- * @param depth - Current depth in the column hierarchy
- * @returns Object containing parsed columns and maximum depth
- */
 function parseColumnElements<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
   depth = 0,
@@ -95,11 +88,6 @@ function parseColumnElements<R extends PlainObject = PlainObject>(
   return { columns, maxDepth };
 }
 
-/**
- * Checks if a column is a leaf column (has no children)
- * @param column - The column metadata to check
- * @returns True if the column has no children or empty children array
- */
 function isLeafColumn<R extends PlainObject = PlainObject>(
   column: ColumnMeta<R>,
 ) {
@@ -109,23 +97,15 @@ function isLeafColumn<R extends PlainObject = PlainObject>(
   );
 }
 
-/**
- * Options for formatting columns
- */
 interface FormatColumnsOption<R extends PlainObject = PlainObject> {
   depth?: number;
   maxDepth: number;
   leafColumns?: ColumnMeta<R>[];
   layerColumns?: ColumnMeta<R>[][];
   lastRowSpanCount?: number;
+  sorters?: SorterStore<R>[];
 }
 
-/**
- * Formats columns into a hierarchical structure with proper row and column spans
- * @param columns - Array of column metadata to format
- * @param option - Formatting options
- * @returns Formatted columns with leaf columns and layer information
- */
 function formatColumns<R extends PlainObject = PlainObject>(
   columns: ColumnMeta<R>[],
   option: FormatColumnsOption<R>,
@@ -133,9 +113,16 @@ function formatColumns<R extends PlainObject = PlainObject>(
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
+  sorters: SorterStore<R>[];
   breadth: number;
 } {
-  const { maxDepth, depth = 0, leafColumns = [], layerColumns = [] } = option;
+  const {
+    maxDepth,
+    depth = 0,
+    leafColumns = [],
+    layerColumns = [],
+    sorters = [],
+  } = option;
 
   if (layerColumns[depth] === undefined) {
     layerColumns[depth] = [];
@@ -151,6 +138,17 @@ function formatColumns<R extends PlainObject = PlainObject>(
 
     if (isLeafColumn<R>(column)) {
       leafColumns.push(column);
+
+      if (column.sorter !== undefined) {
+        const sortType = column.sorter.type ?? column.sorter.defaultType;
+        if (sortType !== undefined) {
+          sorters.push({
+            ...column.sorter,
+            name: column.name,
+            currentType: sortType,
+          });
+        }
+      }
 
       if (
         option.lastRowSpanCount !== undefined &&
@@ -177,6 +175,7 @@ function formatColumns<R extends PlainObject = PlainObject>(
       leafColumns,
       layerColumns,
       lastRowSpanCount: option.lastRowSpanCount,
+      sorters,
     });
 
     if (breadth !== 1) {
@@ -186,31 +185,32 @@ function formatColumns<R extends PlainObject = PlainObject>(
     currentBreadth += breadth;
   }
 
-  return { columns, leafColumns, layerColumns, breadth: currentBreadth };
+  return {
+    columns,
+    leafColumns,
+    layerColumns,
+    sorters,
+    breadth: currentBreadth,
+  };
 }
 
-/**
- * Main hook for processing table columns
- * Parses column elements and formats them into a structure suitable for rendering
- * @param columnElements - Array of React elements representing table columns
- * @returns Object containing:
- *   - columns: The processed column hierarchy
- *   - leafColumns: Array of leaf columns (columns without children)
- *   - layerColumns: Array of column arrays for each depth level
- */
 function useColumns<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
 ): {
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
+  sorters: SorterStore<R>[];
 } {
   const { columns: rawColumns, maxDepth } = parseColumnElements(columnElements);
-  const { columns, leafColumns, layerColumns } = formatColumns(rawColumns, {
-    maxDepth,
-  });
+  const { columns, leafColumns, layerColumns, sorters } = formatColumns(
+    rawColumns,
+    {
+      maxDepth,
+    },
+  );
 
-  return { columns, leafColumns, layerColumns };
+  return { columns, leafColumns, layerColumns, sorters };
 }
 
 export default useColumns;
