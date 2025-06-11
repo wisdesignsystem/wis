@@ -68,7 +68,7 @@ export enum OrderType {
   GREATER = 1,
 }
 
-export interface Sorter<R extends PlainObject = PlainObject> {
+export interface Sortable<R extends PlainObject = PlainObject> {
   /**
    * Set the sort type of the column. Set this value will enable controlled mode.
    */
@@ -90,11 +90,9 @@ export interface Sorter<R extends PlainObject = PlainObject> {
   compare?: Compare<R>;
 }
 
-export interface SorterStore<R extends PlainObject = PlainObject>
-  extends Sorter<R> {
-  name: string;
-  currentType: SortType;
-}
+export type SortController = Pick<Sortable, "type" | "defaultType"> &
+  Pick<Sort, "name">;
+export type SortState = Pick<Sort, "name" | "type">;
 
 export interface TableRequest<
   R extends PlainObject = PlainObject,
@@ -125,7 +123,7 @@ export interface TableResponse<R extends PlainObject = PlainObject> {
   /**
    * The sort of the table, if the data is sorted, the sort should be returned
    */
-  sort?: Sort | Sort[];
+  sort?: SortState | SortState[];
 }
 
 export type TableAjax<
@@ -134,7 +132,7 @@ export type TableAjax<
 > = (requestOption: TableRequest<R, P>) => Promise<TableResponse<R>>;
 
 export interface ColumnMeta<R extends PlainObject = PlainObject>
-  extends Omit<ColumnProps<R>, "sorter" | "children"> {
+  extends Omit<ColumnProps<R>, "sortable" | "children"> {
   /**
    * The column render function of the table.
    */
@@ -151,9 +149,9 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
   rowSpan?: number;
 
   /**
-   * Config the column is sorter and sort way.
+   * Config the column is sortable and sort way.
    */
-  sorter?: Sorter<R>;
+  sortable?: Sortable<R>;
 
   children?: ColumnMeta<R>[];
 }
@@ -264,9 +262,9 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   name: string;
 
   /**
-   * Config the column is sorter and sort way.
+   * Config the column is sortable and sort way.
    */
-  sorter?: boolean | Compare<R> | Sorter<R>;
+  sortable?: boolean | Compare<R> | Sortable<R>;
 
   /**
    * Set the cell text ellipsis when the cell text is too long. Need to set the width property.

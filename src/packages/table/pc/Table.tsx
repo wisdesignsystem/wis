@@ -16,9 +16,12 @@ function Table<
     elements: { Column: columnElements },
   } = matchElement(props.children, ["Column"]);
 
-  const { getRowKey, data, leafColumns, layerColumns } = useTable<R, P>(props, {
-    columnElements,
-  });
+  const { getRowKey, datasource, leafColumns, layerColumns } = useTable<R, P>(
+    props,
+    {
+      columnElements,
+    },
+  );
 
   return (
     <div className={styles.container}>
@@ -26,7 +29,11 @@ function Table<
         <table className={styles.table}>
           <Colgroup<R> leafColumns={leafColumns} />
           <Head<R> layerColumns={layerColumns} />
-          <Body<R> rowKey={getRowKey} leafColumns={leafColumns} data={data} />
+          <Body<R>
+            rowKey={getRowKey}
+            leafColumns={leafColumns}
+            data={datasource}
+          />
         </table>
       </div>
     </div>

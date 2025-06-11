@@ -5,7 +5,7 @@ import type {
   ColumnProps,
   PlainObject,
   ColumnMeta,
-  SorterStore,
+  SortController,
 } from "./table";
 
 function parseColumnElement<R extends PlainObject = PlainObject>(
@@ -15,7 +15,7 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   const {
     title,
     name,
-    sorter,
+    sortable,
     ellipsis,
     width,
     align = "left",
@@ -59,12 +59,12 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     column.width = width;
     column.colSpan = colSpan !== undefined && colSpan > 1 ? colSpan : undefined;
 
-    if (typeof sorter === "boolean") {
-      column.sorter = sorter ? {} : undefined;
-    } else if (typeof sorter === "function") {
-      column.sorter = { compare: sorter };
+    if (typeof sortable === "boolean") {
+      column.sortable = sortable ? {} : undefined;
+    } else if (typeof sortable === "function") {
+      column.sortable = { compare: sortable };
     } else {
-      column.sorter = sorter;
+      column.sortable = sortable;
     }
   }
 
@@ -103,7 +103,7 @@ interface FormatColumnsOption<R extends PlainObject = PlainObject> {
   leafColumns?: ColumnMeta<R>[];
   layerColumns?: ColumnMeta<R>[][];
   lastRowSpanCount?: number;
-  sorters?: SorterStore<R>[];
+  sortsController?: SortController[];
 }
 
 function formatColumns<R extends PlainObject = PlainObject>(
@@ -113,7 +113,7 @@ function formatColumns<R extends PlainObject = PlainObject>(
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
-  sorters: SorterStore<R>[];
+  sortsController: SortController[];
   breadth: number;
 } {
   const {
@@ -121,7 +121,7 @@ function formatColumns<R extends PlainObject = PlainObject>(
     depth = 0,
     leafColumns = [],
     layerColumns = [],
-    sorters = [],
+    sortsController = [],
   } = option;
 
   if (layerColumns[depth] === undefined) {
@@ -139,15 +139,12 @@ function formatColumns<R extends PlainObject = PlainObject>(
     if (isLeafColumn<R>(column)) {
       leafColumns.push(column);
 
-      if (column.sorter !== undefined) {
-        const sortType = column.sorter.type ?? column.sorter.defaultType;
-        if (sortType !== undefined) {
-          sorters.push({
-            ...column.sorter,
-            name: column.name,
-            currentType: sortType,
-          });
-        }
+      if (column.sortable !== undefined) {
+        sortsController.push({
+          name: column.name,
+          type: column.sortable.type,
+          defaultType: column.sortable.defaultType,
+        });
       }
 
       if (
@@ -175,7 +172,7 @@ function formatColumns<R extends PlainObject = PlainObject>(
       leafColumns,
       layerColumns,
       lastRowSpanCount: option.lastRowSpanCount,
-      sorters,
+      sortsController,
     });
 
     if (breadth !== 1) {
@@ -189,28 +186,26 @@ function formatColumns<R extends PlainObject = PlainObject>(
     columns,
     leafColumns,
     layerColumns,
-    sorters,
+    sortsController,
     breadth: currentBreadth,
   };
 }
 
-function useColumns<R extends PlainObject = PlainObject>(
+export function useColumns<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
 ): {
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
-  sorters: SorterStore<R>[];
+  sortsController: SortController[];
 } {
   const { columns: rawColumns, maxDepth } = parseColumnElements(columnElements);
-  const { columns, leafColumns, layerColumns, sorters } = formatColumns(
+  const { columns, leafColumns, layerColumns, sortsController } = formatColumns(
     rawColumns,
     {
       maxDepth,
     },
   );
 
-  return { columns, leafColumns, layerColumns, sorters };
+  return { columns, leafColumns, layerColumns, sortsController };
 }
-
-export default useColumns;
