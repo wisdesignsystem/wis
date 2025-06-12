@@ -16,7 +16,7 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 1000 }).map((_, index) => {
+  const data: User[] = Array.from({ length: 100 }).map((_, index) => {
     return {
       key: `key_${index}`,
       name: "Wis Design",
@@ -34,11 +34,11 @@ function Example() {
 
   return (
     <Page title="Table" description="Table">
-      <Table<User> data={queryData} params={{ a: 1 }}>
+      <Table<User> data={queryData}>
         <Column title="Name" name="name" width={300}>
           {cell.data}
         </Column>
-        <Column title="Age" name="age" sortable>
+        <Column<User> title="Age" name="age" sortable={(a, b) => a.age - b.age}>
           {cell.data}
         </Column>
         <Column title="Gender" name="gender">

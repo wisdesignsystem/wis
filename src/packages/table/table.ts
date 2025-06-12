@@ -1,5 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
+import type { Sorter } from "./useSorter";
+
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type PlainObject = Record<string, any>;
 
@@ -165,10 +167,12 @@ export interface ColgroupProps<R extends PlainObject = PlainObject> {
 }
 
 export interface HeadProps<R extends PlainObject = PlainObject> {
+  sorter: Sorter<R>;
   layerColumns: ColumnMeta<R>[][];
 }
 
 export interface HeadCellProps<R extends PlainObject = PlainObject> {
+  sorter: Sorter<R>;
   column: ColumnMeta<R>;
 }
 
@@ -328,3 +332,5 @@ export interface TableRef<
   getData: () => R[];
   query: (option: QueryOption<P>) => Promise<TableResponse<R>>;
 }
+
+export type { Sorter };

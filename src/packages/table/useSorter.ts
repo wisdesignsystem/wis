@@ -21,12 +21,11 @@ type Option<R extends PlainObject = PlainObject> = Pick<
 interface Operator<R extends PlainObject = PlainObject> {
   get: () => undefined | Sort | Sort[];
   set: (sort: SortState | SortState[]) => void;
-  update: (name: string, type: SortType) => void;
+  next: (name: string, type?: SortType) => void;
   remove: (name: string) => void;
   reset: () => void;
   clear: () => void;
   sort: (data: R[]) => R[];
-  next: (type: SortType) => SortType | undefined;
 }
 export interface Sorter<R extends PlainObject = PlainObject> {
   sort?: Sort | Sort[];
@@ -69,12 +68,16 @@ export function useSorter<R extends PlainObject = PlainObject>({
     getDefaultSortsState(),
   );
 
-  function next(type: SortType) {
+  function nextSortType(type?: SortType) {
+    if (type === undefined) {
+      return SortType.Asc;
+    }
+
     if (type === SortType.Asc) {
       return SortType.Desc;
     }
 
-    if (sortMode === "reset") {
+    if (sortMode === "toggle") {
       return SortType.Asc;
     }
   }
@@ -147,7 +150,8 @@ export function useSorter<R extends PlainObject = PlainObject>({
     }
   }
 
-  function update(name: string, type: SortType) {
+  function next(name: string, type?: SortType) {
+    const nextType = nextSortType(type);
     const column = columnMap[name];
     if (column === undefined) {
       return;
@@ -171,11 +175,18 @@ export function useSorter<R extends PlainObject = PlainObject>({
     });
 
     if (sortIndex === -1) {
-      nextSortsState.push({ name, type });
-    } else {
-      nextSortsState[sortIndex] = { name, type };
+      if (nextType !== undefined) {
+        nextSortsState.push({ name, type: nextType });
+      }
+      setSortsState(nextSortsState);
+      return;
     }
 
+    if (nextType === undefined) {
+      nextSortsState.splice(sortIndex, 1);
+    } else {
+      nextSortsState[sortIndex] = { name, type: nextType };
+    }
     setSortsState(nextSortsState);
   }
 
@@ -219,7 +230,7 @@ export function useSorter<R extends PlainObject = PlainObject>({
       return data;
     }
 
-    return data.slice().sort((a, b) => {
+    const result = data.slice().sort((a, b) => {
       for (const sort of sorts) {
         const column = columnMap[sort.name];
 
@@ -236,6 +247,8 @@ export function useSorter<R extends PlainObject = PlainObject>({
 
       return OrderType.EQUAL;
     });
+
+    return result;
   }
 
   const currentSort = get();
@@ -264,6 +277,6 @@ export function useSorter<R extends PlainObject = PlainObject>({
   return {
     sort: currentSort,
     sortMap: getSortMap(currentSort),
-    operator: { next, get, set, update, remove, reset, clear, sort },
+    operator: { get, set, next, remove, reset, clear, sort },
   };
 }

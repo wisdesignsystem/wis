@@ -2,6 +2,7 @@ import type { HeadProps, PlainObject } from "../table";
 import HeadCell from "./HeadCell";
 
 function Head<R extends PlainObject = PlainObject>({
+  sorter,
   layerColumns,
 }: HeadProps<R>) {
   return (
@@ -11,7 +12,9 @@ function Head<R extends PlainObject = PlainObject>({
           // @ts-ignore
           <tr key={columns.key}>
             {columns.map((column) => {
-              return <HeadCell key={column.name} column={column} />;
+              return (
+                <HeadCell key={column.name} column={column} sorter={sorter} />
+              );
             })}
           </tr>
         );
