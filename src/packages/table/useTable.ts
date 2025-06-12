@@ -1,6 +1,13 @@
 import type { ReactElement } from "react";
 
-import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
+import type {
+  TableProps,
+  ColumnProps,
+  PlainObject,
+  ColumnMeta,
+  QueryOption,
+  TableResponse,
+} from "./table";
 import { useColumns } from "./useColumns";
 import { useSorter } from "./useSorter";
 import type { Sorter } from "./useSorter";
@@ -9,8 +16,13 @@ import { useDatasource } from "./useDatasource";
 interface Option<R extends PlainObject = PlainObject> {
   columnElements: ReactElement<ColumnProps<R>>[];
 }
-interface Result<R extends PlainObject = PlainObject> {
+interface Result<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
   getRowKey: (record: R) => string;
+  getData: () => R[];
+  query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
   datasource: R[];
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
@@ -23,8 +35,8 @@ function useTable<
 >(
   { rowKey = (row: R) => row.key, data, sortMode }: TableProps<R, P>,
   option: Option<R>,
-): Result<R> {
-  function getRowKey(record: R) {
+): Result<R, P> {
+  function getRowKey(record: R): string {
     if (typeof rowKey === "string") {
       return record[rowKey];
     }
@@ -47,7 +59,7 @@ function useTable<
     columnMap,
     sortsController,
   });
-  const { datasource } = useDatasource<R, P>({
+  const { datasource, getData, query } = useDatasource<R, P>({
     data,
     leafColumns,
     sort: sorter.sort,
@@ -58,6 +70,8 @@ function useTable<
 
   return {
     getRowKey,
+    getData,
+    query,
     columns,
     leafColumns,
     layerColumns,

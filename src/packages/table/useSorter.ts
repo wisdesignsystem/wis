@@ -39,7 +39,6 @@ export function useSorter<R extends PlainObject = PlainObject>({
   sortMode = "reset",
   columnMap,
 }: Option<R>): Sorter<R> {
-  //
   function getDefaultSortsState() {
     let sortsState: SortState[] = [];
     for (const sortController of sortsController) {

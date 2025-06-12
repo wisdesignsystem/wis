@@ -210,6 +210,11 @@ export interface TableProps<
   data?: R[] | TableAjax<R, P>;
 
   /**
+   * The table request params, it's useful when get data by remote.
+   */
+  params?: P;
+
+  /**
    * The toggle tip of the table
    */
   toggleTip?: ReactNode;
@@ -310,4 +315,16 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
    * @ignore
    */
   children: ReactNode;
+}
+
+export interface QueryOption<P extends PlainObject = PlainObject> {
+  params?: P;
+}
+
+export interface TableRef<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  getData: () => R[];
+  query: (option: QueryOption<P>) => Promise<TableResponse<R>>;
 }

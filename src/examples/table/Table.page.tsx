@@ -28,9 +28,13 @@ function Example() {
     };
   });
 
+  async function queryData() {
+    return { data };
+  }
+
   return (
     <Page title="Table" description="Table">
-      <Table<User> data={data}>
+      <Table<User> data={queryData} params={{ a: 1 }}>
         <Column title="Name" name="name" width={300}>
           {cell.data}
         </Column>
