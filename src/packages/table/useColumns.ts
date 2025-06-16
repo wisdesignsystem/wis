@@ -1,17 +1,48 @@
-import { matchElement } from "wis/core";
+import { useEffect, useState } from "react";
 import type { ReactElement } from "react";
+import { matchElement } from "wis/core";
 
 import type {
   ColumnProps,
   PlainObject,
   ColumnMeta,
   SortController,
+  VisibleController,
+  PinnedController,
 } from "./table";
 
+interface parseColumnElementOption {
+  depth?: number;
+  visibleControllerMap?: Record<string, VisibleController>;
+  defaultVisibleStateMap?: Record<string, boolean>;
+  visibleStateMap: Record<string, boolean>;
+  parentVisible?: boolean;
+  pinnedControllerMap?: Record<string, PinnedController>;
+  defaultPinnedStateMap?: Record<string, ColumnProps["pinned"]>;
+  pinnedStateMap: Record<string, ColumnProps["pinned"]>;
+  parentPinned?: ColumnProps["pinned"];
+}
 function parseColumnElement<R extends PlainObject = PlainObject>(
   columnElement: ReactElement<ColumnProps<R>>,
-  depth = 0,
-): { column: ColumnMeta<R>; maxDepth: number } {
+  option: parseColumnElementOption,
+): {
+  column: ColumnMeta<R>;
+  maxDepth: number;
+  visibleControllerMap: Record<string, VisibleController>;
+  pinnedControllerMap: Record<string, PinnedController>;
+  defaultVisibleStateMap: Record<string, boolean>;
+  defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
+} {
+  const {
+    depth = 0,
+    visibleControllerMap = {},
+    defaultVisibleStateMap = {},
+    visibleStateMap,
+    pinnedControllerMap = {},
+    defaultPinnedStateMap = {},
+    pinnedStateMap,
+  } = option ?? {};
+
   const {
     title,
     name,
@@ -21,11 +52,19 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     align = "left",
     visible,
     defaultVisible = true,
-    fixed,
-    defaultFixed,
+    pinned,
+    defaultPinned,
     colSpan,
     children,
   } = columnElement.props ?? {};
+
+  visibleControllerMap[name] = { name, defaultVisible, visible };
+  pinnedControllerMap[name] = { name, defaultPinned, pinned };
+
+  defaultVisibleStateMap[name] = defaultVisible;
+  if (defaultPinned !== undefined) {
+    defaultPinnedStateMap[name] = defaultPinned;
+  }
 
   const {
     elements: { Column: childColumnElements },
@@ -36,10 +75,8 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   const column: ColumnMeta<R> = {
     title,
     name,
-    visible,
-    defaultVisible,
-    fixed,
-    defaultFixed,
+    visible: visible !== undefined ? visible : defaultVisible,
+    pinned: pinned !== undefined ? pinned : defaultPinned,
   };
 
   if (!isGroupColumn && typeof children === "function") {
@@ -49,7 +86,13 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   let maxDepth = depth;
   if (isGroupColumn) {
     const { columns: childColumns, maxDepth: currentMaxDepth } =
-      parseColumnElements<R>(childColumnElements, depth + 1);
+      parseColumnElements<R>(childColumnElements, {
+        depth: depth + 1,
+        visibleControllerMap,
+        pinnedControllerMap,
+        visibleStateMap,
+        pinnedStateMap,
+      });
     maxDepth = currentMaxDepth;
     column.children = childColumns;
     column.align = "center";
@@ -68,24 +111,63 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     }
   }
 
-  return { maxDepth, column };
+  return {
+    maxDepth,
+    column,
+    visibleControllerMap,
+    pinnedControllerMap,
+    defaultVisibleStateMap,
+    defaultPinnedStateMap,
+  };
 }
 
 function parseColumnElements<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
-  depth = 0,
-): { columns: ColumnMeta<R>[]; maxDepth: number } {
+  option: parseColumnElementOption,
+): {
+  columns: ColumnMeta<R>[];
+  maxDepth: number;
+  visibleControllerMap: Record<string, VisibleController>;
+  pinnedControllerMap: Record<string, PinnedController>;
+  defaultVisibleStateMap: Record<string, boolean>;
+  defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
+} {
+  const {
+    depth = 0,
+    visibleControllerMap = {},
+    defaultVisibleStateMap = {},
+    pinnedControllerMap = {},
+    defaultPinnedStateMap = {},
+    visibleStateMap,
+    pinnedStateMap,
+  } = option ?? {};
+
   const columns = [];
   let maxDepth = depth;
   for (const columnElement of columnElements) {
     const { column, maxDepth: currentMaxDepth } = parseColumnElement(
       columnElement,
-      depth,
+      {
+        depth,
+        visibleControllerMap,
+        defaultVisibleStateMap,
+        pinnedControllerMap,
+        defaultPinnedStateMap,
+        visibleStateMap,
+        pinnedStateMap,
+      },
     );
     maxDepth = Math.max(maxDepth, currentMaxDepth);
     columns.push(column);
   }
-  return { columns, maxDepth };
+  return {
+    columns,
+    maxDepth,
+    visibleControllerMap,
+    pinnedControllerMap,
+    defaultVisibleStateMap,
+    defaultPinnedStateMap,
+  };
 }
 
 function isLeafColumn<R extends PlainObject = PlainObject>(
@@ -98,8 +180,8 @@ function isLeafColumn<R extends PlainObject = PlainObject>(
 }
 
 interface FormatColumnsOption<R extends PlainObject = PlainObject> {
-  depth?: number;
   maxDepth: number;
+  depth?: number;
   leafColumns?: ColumnMeta<R>[];
   layerColumns?: ColumnMeta<R>[][];
   lastRowSpanCount?: number;
@@ -191,6 +273,11 @@ function formatColumns<R extends PlainObject = PlainObject>(
   };
 }
 
+interface Operator {
+  setVisible: (name: string, visible: boolean) => void;
+  setPinned: (name: string, pinned?: ColumnProps["pinned"]) => void;
+}
+
 export function useColumns<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
 ): {
@@ -198,8 +285,28 @@ export function useColumns<R extends PlainObject = PlainObject>(
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
   sortsController: SortController[];
+  visibleStateMap: Record<string, boolean>;
+  pinnedStateMap: Record<string, ColumnProps["pinned"]>;
+  operator: Operator;
 } {
-  const { columns: rawColumns, maxDepth } = parseColumnElements(columnElements);
+  const [visibleStateMap, setVisibleStateMap] = useState<
+    Record<string, boolean>
+  >({});
+
+  const [pinnedStateMap, setPinnedStateMap] = useState<
+    Record<string, ColumnProps["pinned"]>
+  >({});
+
+  const {
+    columns: rawColumns,
+    maxDepth,
+    defaultVisibleStateMap,
+    defaultPinnedStateMap,
+  } = parseColumnElements(columnElements, {
+    visibleStateMap,
+    pinnedStateMap,
+  });
+
   const { columns, leafColumns, layerColumns, sortsController } = formatColumns(
     rawColumns,
     {
@@ -207,5 +314,34 @@ export function useColumns<R extends PlainObject = PlainObject>(
     },
   );
 
-  return { columns, leafColumns, layerColumns, sortsController };
+  function setVisible(name: string, visible: boolean) {
+    setVisibleStateMap({
+      [name]: visible,
+      ...visibleStateMap,
+    });
+  }
+
+  function setPinned(name: string, pinned?: ColumnProps["pinned"]) {
+    setPinnedStateMap({
+      [name]: pinned,
+      ...pinnedStateMap,
+    });
+  }
+
+  useEffect(() => {
+    // TODO how to set defaultValue without new render?
+    // resolve visible and pinned.
+    setVisibleStateMap(defaultVisibleStateMap);
+    setPinnedStateMap(defaultPinnedStateMap);
+  }, []);
+
+  return {
+    columns,
+    leafColumns,
+    layerColumns,
+    sortsController,
+    visibleStateMap,
+    pinnedStateMap,
+    operator: { setVisible, setPinned },
+  };
 }

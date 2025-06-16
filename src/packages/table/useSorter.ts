@@ -38,6 +38,10 @@ export function useSorter<R extends PlainObject = PlainObject>({
   sortMode = "reset",
   columnMap,
 }: Option<R>): Sorter<R> {
+  const [sortsState, setSortsState] = useState<SortState[]>(
+    getDefaultSortsState(),
+  );
+
   function getDefaultSortsState() {
     let sortsState: SortState[] = [];
     for (const sortController of sortsController) {
@@ -63,10 +67,6 @@ export function useSorter<R extends PlainObject = PlainObject>({
 
     return sortsState;
   }
-
-  const [sortsState, setSortsState] = useState<SortState[]>(
-    getDefaultSortsState(),
-  );
 
   function nextSortType(type?: SortType) {
     if (type === undefined) {
@@ -143,11 +143,17 @@ export function useSorter<R extends PlainObject = PlainObject>({
   }
 
   function set(sort: SortState | SortState[]) {
-    if (Array.isArray(sort)) {
-      setSortsState(sort);
-    } else {
-      setSortsState([sort]);
+    let nextSort: SortState[] = [];
+    if (!Array.isArray(sort)) {
+      nextSort = [sort];
     }
+
+    const sortableMap = sortsController.reduce((result, controller) => {
+      result.set(controller.name, true);
+      return result;
+    }, new Map());
+
+    setSortsState(nextSort.filter((sort) => sortableMap.get(sort.name)));
   }
 
   function next(name: string, type?: SortType) {

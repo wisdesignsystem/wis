@@ -4,6 +4,8 @@ import Column from "./Column";
 import type {
   SortType,
   Sort,
+  Compare,
+  TableAjax,
   TableRequest,
   TableResponse,
   OrderType,
@@ -15,6 +17,8 @@ export { Table, Column };
 export type {
   SortType,
   Sort,
+  Compare,
+  TableAjax,
   TableRequest,
   TableResponse,
   OrderType,

@@ -42,7 +42,7 @@ export enum SortType {
   Desc = "desc",
 }
 
-type Compare<R extends PlainObject = PlainObject> = (
+export type Compare<R extends PlainObject = PlainObject> = (
   record1: R,
   record2: R,
 ) => OrderType;
@@ -94,7 +94,14 @@ export interface Sortable<R extends PlainObject = PlainObject> {
 
 export type SortController = Pick<Sortable, "type" | "defaultType"> &
   Pick<Sort, "name">;
+
 export type SortState = Pick<Sort, "name" | "type">;
+
+export interface VisibleController
+  extends Pick<ColumnProps, "name" | "visible" | "defaultVisible"> {}
+
+export interface PinnedController
+  extends Pick<ColumnProps, "name" | "pinned" | "defaultPinned"> {}
 
 export interface TableRequest<
   R extends PlainObject = PlainObject,
@@ -134,7 +141,10 @@ export type TableAjax<
 > = (requestOption: TableRequest<R, P>) => Promise<TableResponse<R>>;
 
 export interface ColumnMeta<R extends PlainObject = PlainObject>
-  extends Omit<ColumnProps<R>, "sortable" | "children"> {
+  extends Omit<
+    ColumnProps<R>,
+    "sortable" | "defaultVisible" | "defaultPinned" | "children"
+  > {
   /**
    * The column render function of the table.
    */
@@ -301,14 +311,14 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   defaultVisible?: boolean;
 
   /**
-   * Set the fixed of the column. Set this value will enable controlled mode, and the display state cannot be adjusted manually.
+   * Set the pinned of the column. Set this value will enable controlled mode, and the display state cannot be adjusted manually.
    */
-  fixed?: "left" | "right";
+  pinned?: "left" | "right";
 
   /**
-   * Set the default fixed of the column.
+   * Set the default pinned of the column.
    */
-  defaultFixed?: "left" | "right";
+  defaultPinned?: "left" | "right";
 
   /**
    * Set the colSpan of the header cell.
