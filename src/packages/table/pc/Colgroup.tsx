@@ -6,6 +6,10 @@ function Colgroup<R extends PlainObject = PlainObject>({
   return (
     <colgroup>
       {leafColumns.map((column) => {
+        if (!column.visible) {
+          return null;
+        }
+
         return (
           <col
             key={column.name}

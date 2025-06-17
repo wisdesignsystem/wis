@@ -3,7 +3,6 @@ import {
   TriangleUpFilledIcon,
   TriangleDownFilledIcon,
 } from "@wisdesign/lsicon";
-import useBooleanValue from "@/hooks/useBooleanValue";
 import attrs from "@/utils/attrs";
 
 import type { HeadCellProps, PlainObject } from "../table";
@@ -15,13 +14,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
   sorter,
   column,
 }: HeadCellProps<R>) {
-  const [visible] = useBooleanValue({
-    defaultValue: column.defaultVisible,
-    value: column.visible,
-    onChange: () => {},
-  });
-
-  if (column.colSpan === 0 || !visible) {
+  if (column.colSpan === 0 || !column.visible) {
     return null;
   }
 

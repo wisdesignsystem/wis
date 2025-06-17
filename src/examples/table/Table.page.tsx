@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Page } from "wis/page";
 import { Table, Column } from "wis/table";
 
@@ -49,12 +48,7 @@ function Example() {
           <Column title="Biology" name="biology" align="center" colSpan={2}>
             {cell.data}
           </Column>
-          <Column
-            title="Math"
-            name="math"
-            align="center"
-            defaultVisible={false}
-          >
+          <Column title="Math" name="math" align="center">
             {cell.data}
           </Column>
           <Column title="Physics" name="physics" align="center">

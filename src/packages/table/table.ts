@@ -97,12 +97,6 @@ export type SortController = Pick<Sortable, "type" | "defaultType"> &
 
 export type SortState = Pick<Sort, "name" | "type">;
 
-export interface VisibleController
-  extends Pick<ColumnProps, "name" | "visible" | "defaultVisible"> {}
-
-export interface PinnedController
-  extends Pick<ColumnProps, "name" | "pinned" | "defaultPinned"> {}
-
 export interface TableRequest<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
@@ -164,6 +158,11 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
    * Config the column is sortable and sort way.
    */
   sortable?: Sortable<R>;
+
+  /**
+   * When true, mean is all children column is hidden.
+   */
+  hideByChildren?: boolean;
 
   children?: ColumnMeta<R>[];
 }

@@ -8,6 +8,10 @@ function Cell<R extends PlainObject = PlainObject>({
   record,
   column,
 }: CellProps<R>) {
+  if (!column.visible) {
+    return null;
+  }
+
   return (
     <td className={styles.cell} data-align={column.align}>
       {column.render?.({
