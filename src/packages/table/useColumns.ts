@@ -51,7 +51,9 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     name,
     sortable,
     ellipsis,
+    minWidth,
     width,
+    maxWidth,
     align = "left",
     visible,
     defaultVisible = true,
@@ -113,6 +115,8 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     column.align = align;
     column.ellipsis = ellipsis;
     column.width = width;
+    column.minWidth = minWidth;
+    column.maxWidth = maxWidth;
     column.colSpan = colSpan !== undefined && colSpan > 1 ? colSpan : undefined;
 
     if (typeof sortable === "boolean") {
@@ -304,6 +308,7 @@ export function useColumns<R extends PlainObject = PlainObject>(
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
+  columnMap: Record<string, ColumnMeta<R>>;
   sortsController: SortController[];
   visibleStateMap: Record<string, boolean>;
   pinnedStateMap: Record<string, ColumnProps["pinned"]>;
@@ -357,10 +362,19 @@ export function useColumns<R extends PlainObject = PlainObject>(
     });
   }
 
+  const columnMap = leafColumns.reduce(
+    (result, column) => {
+      result[column.name] = column;
+      return result;
+    },
+    {} as Record<string, ColumnMeta<R>>,
+  );
+
   return {
     columns,
     leafColumns,
     layerColumns,
+    columnMap,
     sortsController,
     visibleStateMap,
     pinnedStateMap,

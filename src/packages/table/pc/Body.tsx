@@ -1,14 +1,19 @@
 import type { BodyProps, PlainObject } from "../table";
 import Row from "./Row";
+import MeasureRow from "./MeasureRow";
 import Cell from "./Cell";
 
 function Body<R extends PlainObject = PlainObject>({
   rowKey,
   data,
   leafColumns,
+  measure,
 }: BodyProps<R>) {
   return (
     <tbody>
+      {data.length > 0 && (
+        <MeasureRow measure={measure} leafColumns={leafColumns} />
+      )}
       {data.map((record, rowIndex) => {
         return (
           <Row<R> key={rowKey(record)} record={record}>

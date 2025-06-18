@@ -19,7 +19,6 @@ type Option<R extends PlainObject = PlainObject> = Pick<
 };
 
 interface Operator<R extends PlainObject = PlainObject> {
-  get: () => undefined | Sort | Sort[];
   set: (sort: SortState | SortState[]) => void;
   next: (name: string, type?: SortType) => void;
   remove: (name: string) => void;
@@ -283,6 +282,6 @@ export function useSorter<R extends PlainObject = PlainObject>({
   return {
     sort: currentSort,
     sortMap: getSortMap(currentSort),
-    operator: { get, set, next, remove, reset, clear, sort },
+    operator: { set, next, remove, reset, clear, sort },
   };
 }

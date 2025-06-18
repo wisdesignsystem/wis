@@ -1,6 +1,8 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
 import type { Sorter } from "./useSorter";
+import type { Datasource } from "./useDatasource";
+import type { Measure } from "./useMeasure";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type PlainObject = Record<string, any>;
@@ -172,6 +174,7 @@ type ColumnFn<R extends PlainObject = PlainObject> = (
 ) => ReactNode;
 
 export interface ColgroupProps<R extends PlainObject = PlainObject> {
+  measure: Measure;
   leafColumns: ColumnMeta<R>[];
 }
 
@@ -187,6 +190,7 @@ export interface HeadCellProps<R extends PlainObject = PlainObject> {
 
 export interface BodyProps<R extends PlainObject = PlainObject> {
   rowKey: (record: R) => string;
+  measure: Measure;
   data: R[];
   leafColumns: ColumnMeta<R>[];
 }
@@ -194,6 +198,16 @@ export interface BodyProps<R extends PlainObject = PlainObject> {
 export interface RowProps<R extends PlainObject = PlainObject> {
   record: R;
   children: ReactNode;
+}
+
+export interface MeasureRowProps<R extends PlainObject = PlainObject> {
+  measure: Measure;
+  leafColumns: ColumnMeta<R>[];
+}
+
+export interface MeasureCellProps<R extends PlainObject = PlainObject> {
+  measure: Measure;
+  column: ColumnMeta<R>;
 }
 
 export interface CellProps<R extends PlainObject = PlainObject> {
@@ -253,9 +267,9 @@ export interface TableProps<
   sortMode?: "reset" | "toggle";
 
   /**
-   * Whether to automatically query the data when the table is mounted
+   * When true, the table will not automatically query the data when it is mounted.
    */
-  autoQuery?: boolean;
+  manual?: boolean;
 
   /**
    * The callback function when the sort changes
@@ -290,9 +304,19 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   ellipsis?: boolean;
 
   /**
+   * Set the min width of the column.
+   */
+  minWidth?: number;
+
+  /**
    * Set the width of the column.
    */
   width?: number;
+
+  /**
+   * Set the max width of the column.
+   */
+  maxWidth?: number;
 
   /**
    * Set the text alignment of the column.
@@ -330,7 +354,7 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
   children: ReactNode;
 }
 
-export interface QueryOption<P extends PlainObject = PlainObject> {
+interface QueryOption<P extends PlainObject = PlainObject> {
   params?: P;
 }
 
@@ -339,7 +363,7 @@ export interface TableRef<
   P extends PlainObject = PlainObject,
 > {
   getData: () => R[];
-  query: (option: QueryOption<P>) => Promise<TableResponse<R>>;
+  query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
 }
 
-export type { Sorter };
+export type { Sorter, Datasource, Measure };

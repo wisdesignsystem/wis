@@ -4,37 +4,49 @@ import type {
   TableProps,
   TableRequest,
   PlainObject,
-  SortState,
-  Sort,
+  Sorter,
   ColumnMeta,
-  QueryOption,
+  TableRef,
 } from "./table";
 
 type Option<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
-> = Pick<TableProps<R, P>, "data" | "params" | "autoQuery" | "onLoad"> & {
+> = Pick<TableProps<R, P>, "data" | "params" | "manual" | "onLoad"> & {
   leafColumns: ColumnMeta<R>[];
-  sort?: Sort | Sort[];
-  onSortChange?: (sort: SortState | SortState[]) => void;
+  sorter: Sorter<R>;
 };
 
+interface Operator<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  getData: TableRef<R, P>["getData"];
+  query: TableRef<R, P>["query"];
+}
+
+export interface Datasource<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  data: R[];
+  operator: Operator<R, P>;
+}
 export function useDatasource<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 >({
   data = [],
   leafColumns,
-  sort,
+  sorter,
   params,
-  autoQuery = true,
-  onSortChange = () => {},
-}: Option<R, P>) {
+  manual = false,
+}: Option<R, P>): Datasource<R, P> {
   const [datasource, setDatasource] = useState<R[]>([]);
 
   const isRemote = typeof data === "function";
 
-  async function query(option?: QueryOption<P>) {
+  const query: Operator<R, P>["query"] = async (option) => {
     if (!isRemote) {
       return { data };
     }
@@ -43,8 +55,8 @@ export function useDatasource<
       columns: leafColumns,
     };
 
-    if (sort !== undefined) {
-      requestOption.sort = sort;
+    if (sorter.sort !== undefined) {
+      requestOption.sort = sorter.sort;
     }
 
     if (params !== undefined) {
@@ -63,21 +75,21 @@ export function useDatasource<
     setDatasource(res.data);
 
     if (res.sort !== undefined && res.sort !== null) {
-      onSortChange(res.sort);
+      sorter.operator.set(res.sort);
     }
 
     return res;
-  }
+  };
 
-  function getData() {
-    return isRemote ? datasource : data;
-  }
+  const getData: Operator<R, P>["getData"] = () => {
+    return sorter.operator.sort(isRemote ? datasource : data);
+  };
 
   useEffect(() => {
-    if (autoQuery) {
+    if (!manual) {
       query();
     }
   }, []);
 
-  return { datasource: isRemote ? datasource : data, query, getData };
+  return { data: getData(), operator: { query, getData } };
 }

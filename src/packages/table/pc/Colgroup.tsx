@@ -2,6 +2,7 @@ import type { ColgroupProps, PlainObject } from "../table";
 
 function Colgroup<R extends PlainObject = PlainObject>({
   leafColumns,
+  measure,
 }: ColgroupProps<R>) {
   return (
     <colgroup>
@@ -10,10 +11,13 @@ function Colgroup<R extends PlainObject = PlainObject>({
           return null;
         }
 
+        const width = column.width
+          ? undefined
+          : measure.measureMap[column.name];
         return (
           <col
             key={column.name}
-            style={column.width ? { width: `${column.width}px` } : undefined}
+            style={width ? { width: `${width}px` } : undefined}
           />
         );
       })}

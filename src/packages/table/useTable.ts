@@ -1,17 +1,13 @@
 import type { ReactElement } from "react";
 
-import type {
-  TableProps,
-  ColumnProps,
-  PlainObject,
-  ColumnMeta,
-  QueryOption,
-  TableResponse,
-} from "./table";
+import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
 import { useColumns } from "./useColumns";
 import { useSorter } from "./useSorter";
 import type { Sorter } from "./useSorter";
 import { useDatasource } from "./useDatasource";
+import type { Datasource } from "./useDatasource";
+import { useMeasure } from "./useMeasure";
+import type { Measure } from "./useMeasure";
 
 interface Option<R extends PlainObject = PlainObject> {
   columnElements: ReactElement<ColumnProps<R>>[];
@@ -21,13 +17,12 @@ interface Result<
   P extends PlainObject = PlainObject,
 > {
   getRowKey: (record: R) => string;
-  getData: () => R[];
-  query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
-  datasource: R[];
+  datasource: Datasource<R, P>;
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
+  measure: Measure;
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -44,39 +39,33 @@ function useTable<
     return rowKey(record);
   }
 
-  const { columns, leafColumns, layerColumns, sortsController } = useColumns<R>(
-    option.columnElements,
-  );
-  const columnMap = leafColumns.reduce(
-    (result, column) => {
-      result[column.name] = column;
-      return result;
-    },
-    {} as Record<string, ColumnMeta<R>>,
-  );
+  const { columns, columnMap, leafColumns, layerColumns, sortsController } =
+    useColumns<R>(option.columnElements);
+
   const sorter = useSorter<R>({
     sortMode,
     columnMap,
     sortsController,
   });
-  const { datasource, getData, query } = useDatasource<R, P>({
+
+  const datasource = useDatasource<R, P>({
     data,
     leafColumns,
-    sort: sorter.sort,
-    onSortChange: (sort) => {
-      sorter.operator.set(sort);
-    },
+    sorter,
   });
+
+  const measure = useMeasure();
+
+  console.log(measure.measureMap, "+++");
 
   return {
     getRowKey,
-    getData,
-    query,
     columns,
     leafColumns,
     layerColumns,
-    datasource: sorter.operator.sort(datasource),
+    datasource,
     sorter,
+    measure,
   };
 }
 

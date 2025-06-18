@@ -16,23 +16,22 @@ function Table<
     elements: { Column: columnElements },
   } = matchElement(props.children, ["Column"]);
 
-  const { getRowKey, datasource, leafColumns, layerColumns, sorter } = useTable<
-    R,
-    P
-  >(props, {
-    columnElements,
-  });
+  const { getRowKey, datasource, leafColumns, layerColumns, sorter, measure } =
+    useTable<R, P>(props, {
+      columnElements,
+    });
 
   return (
     <div className={styles.container}>
       <div className={styles.scroll}>
         <table className={styles.table}>
-          <Colgroup<R> leafColumns={leafColumns} />
+          <Colgroup<R> measure={measure} leafColumns={leafColumns} />
           <Head<R> layerColumns={layerColumns} sorter={sorter} />
           <Body<R>
             rowKey={getRowKey}
             leafColumns={leafColumns}
-            data={datasource}
+            data={datasource.data}
+            measure={measure}
           />
         </table>
       </div>
