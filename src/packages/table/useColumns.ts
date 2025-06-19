@@ -26,6 +26,8 @@ interface parseColumnElementOption {
   defaultPinnedStateMap?: Record<string, ColumnProps["pinned"]>;
   pinnedStateMap: Record<string, ColumnProps["pinned"]>;
   parentPinned?: ColumnProps["pinned"];
+  lastedUnPinnedColumnName?: string;
+  wholeColumnWithWidth?: boolean;
 }
 function parseColumnElement<R extends PlainObject = PlainObject>(
   columnElement: ReactElement<ColumnProps<R>>,
@@ -35,6 +37,8 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   maxDepth: number;
   defaultVisibleStateMap: Record<string, boolean>;
   defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
+  lastedUnPinnedColumnName: string;
+  wholeColumnWithWidth: boolean;
 } {
   const {
     depth = 0,
@@ -44,7 +48,12 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     defaultPinnedStateMap = {},
     pinnedStateMap,
     parentPinned,
+    lastedUnPinnedColumnName = "",
+    wholeColumnWithWidth = true,
   } = option ?? {};
+
+  let nextLastedUnPinnedColumnName = lastedUnPinnedColumnName;
+  let nextWholeColumnWithWidth = wholeColumnWithWidth;
 
   const {
     title,
@@ -94,6 +103,8 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
       columns: childColumns,
       maxDepth: currentMaxDepth,
       hideByChildren,
+      lastedUnPinnedColumnName: currentLastedUnPinnedColumnName,
+      wholeColumnWithWidth: currentWholeColumnWithWidth,
     } = parseColumnElements<R>(childColumnElements, {
       depth: depth + 1,
       defaultVisibleStateMap,
@@ -102,10 +113,15 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
       defaultPinnedStateMap,
       pinnedStateMap,
       parentPinned: column.pinned,
+      lastedUnPinnedColumnName: nextLastedUnPinnedColumnName,
+      wholeColumnWithWidth: nextWholeColumnWithWidth,
     });
     maxDepth = currentMaxDepth;
     column.children = childColumns;
     column.align = "center";
+
+    nextLastedUnPinnedColumnName = currentLastedUnPinnedColumnName;
+    nextWholeColumnWithWidth = currentWholeColumnWithWidth;
 
     if (hideByChildren) {
       column.visible = false;
@@ -126,6 +142,19 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     } else {
       column.sortable = sortable;
     }
+
+    if (column.pinned === undefined) {
+      nextLastedUnPinnedColumnName = column.name;
+    }
+
+    // column without width
+    if (
+      column.width === undefined &&
+      column.minWidth === undefined &&
+      column.maxWidth === undefined
+    ) {
+      nextWholeColumnWithWidth = false;
+    }
   }
 
   return {
@@ -133,6 +162,8 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     column,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
+    lastedUnPinnedColumnName: nextLastedUnPinnedColumnName,
+    wholeColumnWithWidth: nextWholeColumnWithWidth,
   };
 }
 
@@ -145,6 +176,8 @@ function parseColumnElements<R extends PlainObject = PlainObject>(
   hideByChildren: boolean;
   defaultVisibleStateMap: Record<string, boolean>;
   defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
+  lastedUnPinnedColumnName: string;
+  wholeColumnWithWidth: boolean;
 } {
   const {
     depth = 0,
@@ -154,28 +187,40 @@ function parseColumnElements<R extends PlainObject = PlainObject>(
     defaultPinnedStateMap = {},
     pinnedStateMap,
     parentPinned,
+    lastedUnPinnedColumnName = "",
+    wholeColumnWithWidth = true,
   } = option ?? {};
 
   const columns = [];
   let maxDepth = depth;
 
+  let nextLastedUnPinnedColumnName = lastedUnPinnedColumnName;
+  let nextWholeColumnWithWidth = wholeColumnWithWidth;
+
   // when all the children column is hidden, the parent column will hidden.
   let hideByChildren = true;
   for (const columnElement of columnElements) {
-    const { column, maxDepth: currentMaxDepth } = parseColumnElement(
-      columnElement,
-      {
-        depth,
-        defaultVisibleStateMap,
-        visibleStateMap,
-        parentVisible,
-        defaultPinnedStateMap,
-        pinnedStateMap,
-        parentPinned,
-      },
-    );
+    const {
+      column,
+      maxDepth: currentMaxDepth,
+      lastedUnPinnedColumnName: currentLastedUnPinnedColumnName,
+      wholeColumnWithWidth: currentWholeColumnWithWidth,
+    } = parseColumnElement(columnElement, {
+      depth,
+      defaultVisibleStateMap,
+      visibleStateMap,
+      parentVisible,
+      defaultPinnedStateMap,
+      pinnedStateMap,
+      parentPinned,
+      lastedUnPinnedColumnName: nextLastedUnPinnedColumnName,
+      wholeColumnWithWidth: nextWholeColumnWithWidth,
+    });
     maxDepth = Math.max(maxDepth, currentMaxDepth);
     columns.push(column);
+
+    nextLastedUnPinnedColumnName = currentLastedUnPinnedColumnName;
+    nextWholeColumnWithWidth = currentWholeColumnWithWidth;
 
     if (column.visible) {
       hideByChildren = false;
@@ -188,6 +233,8 @@ function parseColumnElements<R extends PlainObject = PlainObject>(
     maxDepth: hideByChildren ? depth - 1 : maxDepth,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
+    lastedUnPinnedColumnName: nextLastedUnPinnedColumnName,
+    wholeColumnWithWidth: nextWholeColumnWithWidth,
   };
 }
 
@@ -202,6 +249,8 @@ function isLeafColumn<R extends PlainObject = PlainObject>(
 
 interface FormatColumnsOption<R extends PlainObject = PlainObject> {
   maxDepth: number;
+  lastedUnPinnedColumnName: string;
+  wholeColumnWithWidth: boolean;
   depth?: number;
   leafColumns?: ColumnMeta<R>[];
   layerColumns?: ColumnMeta<R>[][];
@@ -225,6 +274,8 @@ function formatColumns<R extends PlainObject = PlainObject>(
     leafColumns = [],
     layerColumns = [],
     sortsController = [],
+    lastedUnPinnedColumnName,
+    wholeColumnWithWidth,
   } = option;
 
   if (layerColumns[depth] === undefined) {
@@ -269,11 +320,17 @@ function formatColumns<R extends PlainObject = PlainObject>(
         currentBreadth += 1;
       }
 
+      if (wholeColumnWithWidth && lastedUnPinnedColumnName === column.name) {
+        column.ignoreWidth = true;
+      }
+
       continue;
     }
 
     const { breadth } = formatColumns<R>(column.children as ColumnMeta<R>[], {
       maxDepth,
+      lastedUnPinnedColumnName,
+      wholeColumnWithWidth,
       depth: depth + 1,
       leafColumns,
       layerColumns,
@@ -329,6 +386,8 @@ export function useColumns<R extends PlainObject = PlainObject>(
     maxDepth,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
+    lastedUnPinnedColumnName,
+    wholeColumnWithWidth,
   } = parseColumnElements(columnElements, {
     visibleStateMap,
     pinnedStateMap,
@@ -345,6 +404,8 @@ export function useColumns<R extends PlainObject = PlainObject>(
     rawColumns,
     {
       maxDepth,
+      wholeColumnWithWidth,
+      lastedUnPinnedColumnName,
     },
   );
 

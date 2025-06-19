@@ -166,6 +166,11 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
    */
   hideByChildren?: boolean;
 
+  /**
+   * When whole column with width, ignore the width/minWidth/maxWidth.
+   */
+  ignoreWidth?: boolean;
+
   children?: ColumnMeta<R>[];
 }
 
@@ -174,6 +179,7 @@ type ColumnFn<R extends PlainObject = PlainObject> = (
 ) => ReactNode;
 
 export interface ColgroupProps<R extends PlainObject = PlainObject> {
+  standard?: boolean;
   measure: Measure;
   leafColumns: ColumnMeta<R>[];
 }

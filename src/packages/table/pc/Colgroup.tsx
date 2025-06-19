@@ -1,9 +1,26 @@
-import type { ColgroupProps, PlainObject } from "../table";
+import type { ColgroupProps, PlainObject, ColumnMeta } from "../table";
 
 function Colgroup<R extends PlainObject = PlainObject>({
+  standard = true,
   leafColumns,
   measure,
 }: ColgroupProps<R>) {
+  function getWidth(column: ColumnMeta<R>) {
+    if (!standard) {
+      return measure.measureMap[column.name];
+    }
+
+    if (column.ignoreWidth) {
+      return;
+    }
+
+    if (column.minWidth !== undefined || column.maxWidth !== undefined) {
+      return measure.measureMap[column.name];
+    }
+
+    return column.width;
+  }
+
   return (
     <colgroup>
       {leafColumns.map((column) => {
@@ -11,9 +28,8 @@ function Colgroup<R extends PlainObject = PlainObject>({
           return null;
         }
 
-        const width = column.width
-          ? undefined
-          : measure.measureMap[column.name];
+        const width = getWidth(column);
+
         return (
           <col
             key={column.name}
