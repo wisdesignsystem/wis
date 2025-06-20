@@ -179,14 +179,17 @@ type ColumnFn<R extends PlainObject = PlainObject> = (
 ) => ReactNode;
 
 export interface ColgroupProps<R extends PlainObject = PlainObject> {
-  standard?: boolean;
-  measure: Measure;
   leafColumns: ColumnMeta<R>[];
 }
 
 export interface HeadProps<R extends PlainObject = PlainObject> {
   sorter: Sorter<R>;
   layerColumns: ColumnMeta<R>[][];
+}
+
+export interface PinnedHeadProps<R extends PlainObject = PlainObject>
+  extends HeadProps<R> {
+  leafColumns: ColumnMeta<R>[];
 }
 
 export interface HeadCellProps<R extends PlainObject = PlainObject> {
@@ -196,7 +199,7 @@ export interface HeadCellProps<R extends PlainObject = PlainObject> {
 
 export interface BodyProps<R extends PlainObject = PlainObject> {
   rowKey: (record: R) => string;
-  measure: Measure;
+  measure: Measure<R>;
   data: R[];
   leafColumns: ColumnMeta<R>[];
 }
@@ -207,12 +210,12 @@ export interface RowProps<R extends PlainObject = PlainObject> {
 }
 
 export interface MeasureRowProps<R extends PlainObject = PlainObject> {
-  measure: Measure;
+  measure: Measure<R>;
   leafColumns: ColumnMeta<R>[];
 }
 
 export interface MeasureCellProps<R extends PlainObject = PlainObject> {
-  measure: Measure;
+  measure: Measure<R>;
   column: ColumnMeta<R>;
 }
 
@@ -278,6 +281,11 @@ export interface TableProps<
   manual?: boolean;
 
   /**
+   * Specify the height of the table. 'auto' will calculate based on the container, invalid when container has no height, not setting will follow the content
+   */
+  height?: number | "auto";
+
+  /**
    * The callback function when the sort changes
    */
   onSortChange?: (sort: Sort | Sort[]) => void;
@@ -323,6 +331,11 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
    * Set the max width of the column.
    */
   maxWidth?: number;
+
+  /**
+   * Default true, enable strict mode. When the table is in containers of different sizes and there is no scrollbar, one column needs to be adaptive in size. In this case, a non-strict mode column will be selected as the flexible column. If all columns are in strict mode, the last column will be used as the flexible column.
+   */
+  strict?: boolean;
 
   /**
    * Set the text alignment of the column.

@@ -1,26 +1,10 @@
-import type { ColgroupProps, PlainObject, ColumnMeta } from "../table";
+import type { CSSProperties } from "react";
+
+import type { ColgroupProps, PlainObject } from "../table";
 
 function Colgroup<R extends PlainObject = PlainObject>({
-  standard = true,
   leafColumns,
-  measure,
 }: ColgroupProps<R>) {
-  function getWidth(column: ColumnMeta<R>) {
-    if (!standard) {
-      return measure.measureMap[column.name];
-    }
-
-    if (column.ignoreWidth) {
-      return;
-    }
-
-    if (column.minWidth !== undefined || column.maxWidth !== undefined) {
-      return measure.measureMap[column.name];
-    }
-
-    return column.width;
-  }
-
   return (
     <colgroup>
       {leafColumns.map((column) => {
@@ -28,14 +12,12 @@ function Colgroup<R extends PlainObject = PlainObject>({
           return null;
         }
 
-        const width = getWidth(column);
+        let style: undefined | CSSProperties = { width: `${column.width}px` };
+        if (column.ignoreWidth) {
+          style = undefined;
+        }
 
-        return (
-          <col
-            key={column.name}
-            style={width ? { width: `${width}px` } : undefined}
-          />
-        );
+        return <col key={column.name} style={style} data-name={column.name} />;
       })}
     </colgroup>
   );

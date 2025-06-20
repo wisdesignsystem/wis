@@ -1,4 +1,5 @@
-import type { ReactElement } from "react";
+import type { ReactElement, RefObject } from "react";
+import { useRef } from "react";
 
 import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
 import { useColumns } from "./useColumns";
@@ -16,13 +17,14 @@ interface Result<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > {
+  tableRef: RefObject<HTMLDivElement>;
   getRowKey: (record: R) => string;
   datasource: Datasource<R, P>;
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
-  measure: Measure;
+  measure: Measure<R>;
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -31,6 +33,8 @@ function useTable<
   { rowKey = (row: R) => row.key, data, sortMode }: TableProps<R, P>,
   option: Option<R>,
 ): Result<R, P> {
+  const tableRef = useRef<HTMLDivElement>(null);
+
   function getRowKey(record: R): string {
     if (typeof rowKey === "string") {
       return record[rowKey];
@@ -54,11 +58,10 @@ function useTable<
     sorter,
   });
 
-  const measure = useMeasure();
-
-  console.log(measure.measureMap, "+++");
+  const measure = useMeasure<R>(tableRef);
 
   return {
+    tableRef,
     getRowKey,
     columns,
     leafColumns,

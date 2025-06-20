@@ -35,18 +35,18 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <Table<User> data={queryData}>
-        <Column title="Name" name="name">
+        <Column title="Name" name="name" width={100}>
           {cell.data}
         </Column>
         <Column<User>
           title="Age"
           name="age"
-          width={200}
           sortable={(a, b) => a.age - b.age}
+          width={100}
         >
           {cell.data}
         </Column>
-        <Column title="Gender" name="gender" maxWidth={150}>
+        <Column title="Gender" name="gender" minWidth={100} maxWidth={150}>
           {cell.data}
         </Column>
         <Column title="Fraction" name="fraction" sortable>
@@ -62,7 +62,7 @@ function Example() {
           <Column title="Math" name="math" align="center" width={120}>
             {cell.data}
           </Column>
-          <Column title="Physics" name="physics" align="center" width={120}>
+          <Column title="Physics" name="physics" align="center" width={1200}>
             {cell.data}
           </Column>
         </Column>

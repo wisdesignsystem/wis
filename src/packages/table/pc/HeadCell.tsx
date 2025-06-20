@@ -62,6 +62,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
       colSpan={column.colSpan}
       rowSpan={column.rowSpan}
       data-align={column.align}
+      scope="col"
       {...attrs({
         "data-sort": ariaSortLabel,
       })}
