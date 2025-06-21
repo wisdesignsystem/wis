@@ -3,12 +3,10 @@ import { useRef } from "react";
 
 import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
 import { useColumns } from "./useColumns";
-import { useSorter } from "./useSorter";
-import type { Sorter } from "./useSorter";
-import { useDatasource } from "./useDatasource";
-import type { Datasource } from "./useDatasource";
-import { useMeasure } from "./useMeasure";
-import type { Measure } from "./useMeasure";
+import { useSorter, type Sorter } from "./useSorter";
+import { useDatasource, type Datasource } from "./useDatasource";
+import { useMeasure, type Measure } from "./useMeasure";
+import { useSizeObserver, type SizeObserver } from "./useSizeObserver";
 
 interface Option<R extends PlainObject = PlainObject> {
   columnElements: ReactElement<ColumnProps<R>>[];
@@ -25,6 +23,7 @@ interface Result<
   layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
   measure: Measure<R>;
+  sizeObserver: SizeObserver;
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -59,6 +58,7 @@ function useTable<
   });
 
   const measure = useMeasure<R>(tableRef);
+  const sizeObserver = useSizeObserver(tableRef);
 
   return {
     tableRef,
@@ -69,6 +69,7 @@ function useTable<
     datasource,
     sorter,
     measure,
+    sizeObserver,
   };
 }
 

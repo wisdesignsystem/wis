@@ -34,8 +34,8 @@ function Example() {
 
   return (
     <Page title="Table" description="Table">
-      <Table<User> data={queryData}>
-        <Column title="Name" name="name" width={100}>
+      <Table<User> data={queryData} height="auto">
+        <Column title="Name" name="name">
           {cell.data}
         </Column>
         <Column<User>
@@ -62,7 +62,7 @@ function Example() {
           <Column title="Math" name="math" align="center" width={120}>
             {cell.data}
           </Column>
-          <Column title="Physics" name="physics" align="center" width={1200}>
+          <Column title="Physics" name="physics" align="center" width={120}>
             {cell.data}
           </Column>
         </Column>

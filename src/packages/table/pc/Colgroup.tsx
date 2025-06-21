@@ -12,9 +12,9 @@ function Colgroup<R extends PlainObject = PlainObject>({
           return null;
         }
 
-        let style: undefined | CSSProperties = { width: `${column.width}px` };
-        if (column.ignoreWidth) {
-          style = undefined;
+        const style: undefined | CSSProperties = { minWidth: "80px" };
+        if (!column.ignoreWidth && column.width !== undefined) {
+          style.width = `${column.width}px`;
         }
 
         return <col key={column.name} style={style} data-name={column.name} />;

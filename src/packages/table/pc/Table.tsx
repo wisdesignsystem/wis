@@ -27,6 +27,7 @@ function Table<
     layerColumns,
     sorter,
     measure,
+    sizeObserver,
   } = useTable<R, P>(props, {
     columnElements,
   });
@@ -63,6 +64,7 @@ function Table<
             leafColumns={leafColumns}
             data={datasource.data}
             measure={measure}
+            sizeObserver={sizeObserver}
           />
         </table>
       </div>

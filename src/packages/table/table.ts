@@ -3,6 +3,7 @@ import type { HTMLAttributes, ReactNode } from "react";
 import type { Sorter } from "./useSorter";
 import type { Datasource } from "./useDatasource";
 import type { Measure } from "./useMeasure";
+import type { SizeObserver } from "./useSizeObserver";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type PlainObject = Record<string, any>;
@@ -202,6 +203,7 @@ export interface BodyProps<R extends PlainObject = PlainObject> {
   measure: Measure<R>;
   data: R[];
   leafColumns: ColumnMeta<R>[];
+  sizeObserver: SizeObserver;
 }
 
 export interface RowProps<R extends PlainObject = PlainObject> {
@@ -212,11 +214,13 @@ export interface RowProps<R extends PlainObject = PlainObject> {
 export interface MeasureRowProps<R extends PlainObject = PlainObject> {
   measure: Measure<R>;
   leafColumns: ColumnMeta<R>[];
+  sizeObserver: SizeObserver;
 }
 
 export interface MeasureCellProps<R extends PlainObject = PlainObject> {
   measure: Measure<R>;
   column: ColumnMeta<R>;
+  sizeObserver: SizeObserver;
 }
 
 export interface CellProps<R extends PlainObject = PlainObject> {

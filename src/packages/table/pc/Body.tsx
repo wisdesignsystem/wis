@@ -8,11 +8,16 @@ function Body<R extends PlainObject = PlainObject>({
   data,
   leafColumns,
   measure,
+  sizeObserver,
 }: BodyProps<R>) {
   return (
     <tbody>
       {data.length > 0 && (
-        <MeasureRow measure={measure} leafColumns={leafColumns} />
+        <MeasureRow
+          measure={measure}
+          leafColumns={leafColumns}
+          sizeObserver={sizeObserver}
+        />
       )}
       {data.map((record, rowIndex) => {
         return (
