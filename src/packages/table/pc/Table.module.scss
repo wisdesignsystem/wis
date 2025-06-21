@@ -8,9 +8,10 @@
 
 .header {
   flex: 0 0 auto;
+  overflow: hidden;
 }
 
-.scroll {
+.main {
   position: relative;
   width: 100%;
   height: 100%;

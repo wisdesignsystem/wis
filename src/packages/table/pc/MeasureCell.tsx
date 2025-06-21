@@ -24,8 +24,6 @@ function MeasureCell<R extends PlainObject = PlainObject>({
   }
 
   useEffect(() => {
-    resize();
-
     // only auto width column maybe to resize.
     const shouldObserver =
       column.ignoreWidth ||
@@ -35,6 +33,8 @@ function MeasureCell<R extends PlainObject = PlainObject>({
 
     if (shouldObserver) {
       sizeObserver.on("resize", resize);
+    } else {
+      resize();
     }
 
     return () => {

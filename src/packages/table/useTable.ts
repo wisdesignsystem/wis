@@ -7,6 +7,7 @@ import { useSorter, type Sorter } from "./useSorter";
 import { useDatasource, type Datasource } from "./useDatasource";
 import { useMeasure, type Measure } from "./useMeasure";
 import { useSizeObserver, type SizeObserver } from "./useSizeObserver";
+import { useScroller, type Scroller } from "./useScroller";
 
 interface Option<R extends PlainObject = PlainObject> {
   columnElements: ReactElement<ColumnProps<R>>[];
@@ -16,6 +17,8 @@ interface Result<
   P extends PlainObject = PlainObject,
 > {
   tableRef: RefObject<HTMLDivElement>;
+  tableHeaderRef: RefObject<HTMLDivElement>;
+  tableMainRef: RefObject<HTMLDivElement>;
   getRowKey: (record: R) => string;
   datasource: Datasource<R, P>;
   columns: ColumnMeta<R>[];
@@ -24,6 +27,7 @@ interface Result<
   sorter: Sorter<R>;
   measure: Measure<R>;
   sizeObserver: SizeObserver;
+  scroller: Scroller;
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -33,6 +37,8 @@ function useTable<
   option: Option<R>,
 ): Result<R, P> {
   const tableRef = useRef<HTMLDivElement>(null);
+  const tableHeaderRef = useRef<HTMLDivElement>(null);
+  const tableMainRef = useRef<HTMLDivElement>(null);
 
   function getRowKey(record: R): string {
     if (typeof rowKey === "string") {
@@ -57,11 +63,16 @@ function useTable<
     sorter,
   });
 
-  const measure = useMeasure<R>(tableRef);
+  const scroller = useScroller({ tableHeaderRef, tableMainRef });
+
+  const measure = useMeasure<R>({ tableRef, tableHeaderRef, tableMainRef });
+
   const sizeObserver = useSizeObserver(tableRef);
 
   return {
     tableRef,
+    tableHeaderRef,
+    tableMainRef,
     getRowKey,
     columns,
     leafColumns,
@@ -70,6 +81,7 @@ function useTable<
     sorter,
     measure,
     sizeObserver,
+    scroller,
   };
 }
 

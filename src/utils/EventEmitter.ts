@@ -2,9 +2,11 @@ type DefaultEventHandler = (...params: unknown[]) => void;
 
 type DefaultEventMap = Record<string, DefaultEventHandler>;
 
-type EventHandler<T extends DefaultEventHandler> = T;
+type EventHandler<T> = T extends (...args: infer P) => void
+  ? (...args: P) => void
+  : DefaultEventHandler;
 
-export default class EventEmitter<E extends DefaultEventMap> {
+export default class EventEmitter<E = DefaultEventMap> {
   private listeners: Partial<{
     [K in keyof E]: EventHandler<E[K]>[];
   }> = {};
@@ -29,7 +31,7 @@ export default class EventEmitter<E extends DefaultEventMap> {
     );
   }
 
-  emit<K extends keyof E>(event: K, ...params: Parameters<E[K]>): void {
+  emit<K extends keyof E>(event: K, ...params: unknown[]): void {
     if (!this.listeners[event]) {
       return;
     }

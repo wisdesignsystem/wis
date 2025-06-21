@@ -12,13 +12,11 @@ function Body<R extends PlainObject = PlainObject>({
 }: BodyProps<R>) {
   return (
     <tbody>
-      {data.length > 0 && (
-        <MeasureRow
-          measure={measure}
-          leafColumns={leafColumns}
-          sizeObserver={sizeObserver}
-        />
-      )}
+      <MeasureRow
+        measure={measure}
+        leafColumns={leafColumns}
+        sizeObserver={sizeObserver}
+      />
       {data.map((record, rowIndex) => {
         return (
           <Row<R> key={rowKey(record)} record={record}>

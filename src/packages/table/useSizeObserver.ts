@@ -11,7 +11,9 @@ type SizeObserverEvents = {
 export function useSizeObserver(
   tableRef: RefObject<HTMLDivElement>,
 ): SizeObserver {
-  const sizeObserver = useRef<SizeObserver>(new EventEmitter());
+  const sizeObserver = useRef<SizeObserver>(
+    new EventEmitter<SizeObserverEvents>(),
+  );
 
   useEffect(() => {
     if (tableRef.current === null) {

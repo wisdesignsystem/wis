@@ -11,20 +11,26 @@ export interface Measure<R extends PlainObject = PlainObject> {
   measureMap: Record<string, number>;
   operator: Operator<R>;
 }
-export function useMeasure<R extends PlainObject = PlainObject>(
-  tableRef: RefObject<HTMLDivElement>,
-): Measure<R> {
+
+interface Option {
+  tableRef: RefObject<HTMLDivElement>;
+  tableHeaderRef: RefObject<HTMLDivElement>;
+  tableMainRef: RefObject<HTMLDivElement>;
+}
+export function useMeasure<R extends PlainObject = PlainObject>({
+  tableHeaderRef,
+  tableMainRef,
+}: Option): Measure<R> {
   const measureTotalWidth = useRef<number>(0);
   const measureMap = useRef<Record<string, number>>({});
 
   function setHeaderColumn(column: ColumnMeta<R>, width: number) {
-    if (tableRef.current === null) {
+    if (tableHeaderRef.current === null) {
       return;
     }
 
-    const headerTableElement = tableRef.current.querySelector<HTMLTableElement>(
-      'table[data-type="header-table"]',
-    );
+    const headerTableElement =
+      tableHeaderRef.current.querySelector<HTMLTableElement>("table");
     if (headerTableElement === null) {
       return;
     }
@@ -39,7 +45,7 @@ export function useMeasure<R extends PlainObject = PlainObject>(
   }
 
   function setMainColumn(column: ColumnMeta<R>, width: number) {
-    if (tableRef.current === null) {
+    if (tableMainRef.current === null) {
       return;
     }
 
@@ -51,9 +57,8 @@ export function useMeasure<R extends PlainObject = PlainObject>(
       return;
     }
 
-    const mainTableElement = tableRef.current.querySelector<HTMLTableElement>(
-      'table[data-type="main-table"]',
-    );
+    const mainTableElement =
+      tableMainRef.current.querySelector<HTMLTableElement>("table");
     if (mainTableElement === null) {
       return;
     }

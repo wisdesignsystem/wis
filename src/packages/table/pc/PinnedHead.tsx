@@ -11,7 +11,7 @@ function PinnedHead<R extends PlainObject = PlainObject>({
   leafColumns,
 }: PinnedHeadProps<R>) {
   return (
-    <table data-type="header-table" className={styles.table}>
+    <table className={styles.table}>
       <Colgroup<R> leafColumns={leafColumns} />
       <thead>
         {layerColumns.map((columns) => {

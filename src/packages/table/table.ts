@@ -4,6 +4,7 @@ import type { Sorter } from "./useSorter";
 import type { Datasource } from "./useDatasource";
 import type { Measure } from "./useMeasure";
 import type { SizeObserver } from "./useSizeObserver";
+import type { Scroller } from "./useScroller";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export type PlainObject = Record<string, any>;
@@ -389,4 +390,4 @@ export interface TableRef<
   query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
 }
 
-export type { Sorter, Datasource, Measure };
+export type { Sorter, Datasource, Measure, Scroller };

@@ -21,6 +21,8 @@ function Table<
 
   const {
     tableRef,
+    tableHeaderRef,
+    tableMainRef,
     getRowKey,
     datasource,
     leafColumns,
@@ -28,6 +30,7 @@ function Table<
     sorter,
     measure,
     sizeObserver,
+    scroller,
   } = useTable<R, P>(props, {
     columnElements,
   });
@@ -45,7 +48,11 @@ function Table<
       }
     >
       {height !== "auto" && (
-        <div className={styles.header}>
+        <div
+          ref={tableHeaderRef}
+          className={styles.header}
+          onScroll={scroller.onScroll}
+        >
           <PinnedHead<R>
             leafColumns={leafColumns}
             layerColumns={layerColumns}
@@ -53,8 +60,12 @@ function Table<
           />
         </div>
       )}
-      <div className={styles.scroll}>
-        <table data-type="main-table" className={styles.table}>
+      <div
+        ref={tableMainRef}
+        className={styles.main}
+        onScroll={scroller.onScroll}
+      >
+        <table className={styles.table}>
           <Colgroup<R> leafColumns={leafColumns} />
           {height === "auto" && (
             <Head<R> layerColumns={layerColumns} sorter={sorter} />

@@ -16,7 +16,7 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 100 }).map((_, index) => {
+  const data: User[] = Array.from({ length: 1000 }).map((_, index) => {
     return {
       key: `key_${index}`,
       name: "Wis Design",
@@ -62,7 +62,7 @@ function Example() {
           <Column title="Math" name="math" align="center" width={120}>
             {cell.data}
           </Column>
-          <Column title="Physics" name="physics" align="center" width={120}>
+          <Column title="Physics" name="physics" align="center" width={1200}>
             {cell.data}
           </Column>
         </Column>
