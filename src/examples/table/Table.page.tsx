@@ -16,7 +16,7 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 1000 }).map((_, index) => {
+  const data: User[] = Array.from({ length: 100 }).map((_, index) => {
     return {
       key: `key_${index}`,
       name: "Wis Design",
@@ -35,34 +35,42 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <Table<User> data={queryData} height="auto">
-        <Column title="Name" name="name">
-          {cell.data}
-        </Column>
-        <Column<User>
-          title="Age"
-          name="age"
-          sortable={(a, b) => a.age - b.age}
-          width={100}
+        <Column
+          title="Name"
+          colSpan={2}
+          name="name"
+          pinned="left"
+          maxWidth={200}
         >
           {cell.data}
         </Column>
-        <Column title="Gender" name="gender" minWidth={100} maxWidth={150}>
+        <Column<User> title="Age" name="age" sortable={(a, b) => a.age - b.age}>
           {cell.data}
         </Column>
-        <Column title="Fraction" name="fraction" sortable>
+        <Column title="Gender" name="gender" width={150}>
+          {cell.data}
+        </Column>
+        <Column title="Fraction" name="fraction" sortable pinned="left">
           <Column
             title="Biology"
             name="biology"
             align="center"
             colSpan={2}
             width={120}
+            pinned="right"
           >
             {cell.data}
           </Column>
-          <Column title="Math" name="math" align="center" width={120}>
+          <Column
+            title="Math"
+            name="math"
+            align="center"
+            width={120}
+            visible={false}
+          >
             {cell.data}
           </Column>
-          <Column title="Physics" name="physics" align="center" width={1200}>
+          <Column title="Physics" name="physics" align="center" width={240}>
             {cell.data}
           </Column>
         </Column>

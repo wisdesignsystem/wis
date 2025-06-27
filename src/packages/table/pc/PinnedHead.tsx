@@ -7,12 +7,16 @@ import styles from "./Table.module.scss";
 
 function PinnedHead<R extends PlainObject = PlainObject>({
   sorter,
+  measure,
   layerColumns,
   leafColumns,
 }: PinnedHeadProps<R>) {
   return (
-    <table className={styles.table}>
-      <Colgroup<R> leafColumns={leafColumns} />
+    <table
+      className={styles.table}
+      style={{ width: `${measure.totalColumnWidth}px` }}
+    >
+      <Colgroup<R> measure={measure} leafColumns={leafColumns} />
       <thead>
         {layerColumns.map((columns) => {
           return (

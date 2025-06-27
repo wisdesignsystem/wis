@@ -168,10 +168,7 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
    */
   hideByChildren?: boolean;
 
-  /**
-   * When whole column with width, ignore the width/minWidth/maxWidth.
-   */
-  ignoreWidth?: boolean;
+  parent?: ColumnMeta<R>;
 
   children?: ColumnMeta<R>[];
 }
@@ -181,6 +178,8 @@ type ColumnFn<R extends PlainObject = PlainObject> = (
 ) => ReactNode;
 
 export interface ColgroupProps<R extends PlainObject = PlainObject> {
+  primary?: boolean;
+  measure: Measure;
   leafColumns: ColumnMeta<R>[];
 }
 
@@ -191,6 +190,7 @@ export interface HeadProps<R extends PlainObject = PlainObject> {
 
 export interface PinnedHeadProps<R extends PlainObject = PlainObject>
   extends HeadProps<R> {
+  measure: Measure;
   leafColumns: ColumnMeta<R>[];
 }
 
@@ -201,10 +201,9 @@ export interface HeadCellProps<R extends PlainObject = PlainObject> {
 
 export interface BodyProps<R extends PlainObject = PlainObject> {
   rowKey: (record: R) => string;
-  measure: Measure<R>;
+  measure: Measure;
   data: R[];
   leafColumns: ColumnMeta<R>[];
-  sizeObserver: SizeObserver;
 }
 
 export interface RowProps<R extends PlainObject = PlainObject> {
@@ -213,15 +212,12 @@ export interface RowProps<R extends PlainObject = PlainObject> {
 }
 
 export interface MeasureRowProps<R extends PlainObject = PlainObject> {
-  measure: Measure<R>;
+  measure: Measure;
   leafColumns: ColumnMeta<R>[];
-  sizeObserver: SizeObserver;
 }
 
 export interface MeasureCellProps<R extends PlainObject = PlainObject> {
-  measure: Measure<R>;
   column: ColumnMeta<R>;
-  sizeObserver: SizeObserver;
 }
 
 export interface CellProps<R extends PlainObject = PlainObject> {
@@ -293,7 +289,7 @@ export interface TableProps<
   /**
    * The callback function when the sort changes
    */
-  onSortChange?: (sort: Sort | Sort[]) => void;
+  onSortChange?: (sort?: Sort | Sort[]) => void;
 
   /**
    * The callback function when the data is loaded
@@ -336,11 +332,6 @@ export interface ColumnProps<R extends PlainObject = PlainObject> {
    * Set the max width of the column.
    */
   maxWidth?: number;
-
-  /**
-   * Default true, enable strict mode. When the table is in containers of different sizes and there is no scrollbar, one column needs to be adaptive in size. In this case, a non-strict mode column will be selected as the flexible column. If all columns are in strict mode, the last column will be used as the flexible column.
-   */
-  strict?: boolean;
 
   /**
    * Set the text alignment of the column.
@@ -390,4 +381,4 @@ export interface TableRef<
   query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
 }
 
-export type { Sorter, Datasource, Measure, Scroller };
+export type { Sorter, Datasource, Measure, Scroller, SizeObserver };

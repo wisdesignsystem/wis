@@ -1,103 +1,86 @@
+import { useEffect, useState, useRef } from "react";
 import type { RefObject } from "react";
-import { useRef } from "react";
 
 import type { ColumnMeta, PlainObject } from "./table";
 
-interface Operator<R extends PlainObject = PlainObject> {
-  set: (column: ColumnMeta<R>, width: number) => void;
+export interface Measure {
+  measureRef: RefObject<HTMLTableRowElement>;
+  columnWidthMap: Record<string, number>;
+  totalColumnWidth: number;
 }
 
-export interface Measure<R extends PlainObject = PlainObject> {
-  measureMap: Record<string, number>;
-  operator: Operator<R>;
-}
-
-interface Option {
-  tableRef: RefObject<HTMLDivElement>;
-  tableHeaderRef: RefObject<HTMLDivElement>;
-  tableMainRef: RefObject<HTMLDivElement>;
+interface Option<R extends PlainObject = PlainObject> {
+  leafColumnMap: Record<string, ColumnMeta<R>>;
+  leftPinnedColumns: ColumnMeta<R>[];
+  rightPinnedColumns: ColumnMeta<R>[];
 }
 export function useMeasure<R extends PlainObject = PlainObject>({
-  tableHeaderRef,
-  tableMainRef,
-}: Option): Measure<R> {
-  const measureTotalWidth = useRef<number>(0);
-  const measureMap = useRef<Record<string, number>>({});
+  leafColumnMap,
+  leftPinnedColumns,
+  rightPinnedColumns,
+}: Option<R>) {
+  const isMounted = useRef<boolean>(false);
+  const measureRef = useRef<HTMLTableRowElement>(null);
+  const [columnWidthMap, setColumnWidthMap] = useState<Record<string, number>>(
+    {},
+  );
+  const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
 
-  function setHeaderColumn(column: ColumnMeta<R>, width: number) {
-    if (tableHeaderRef.current === null) {
+  function collectColumnWidth() {
+    if (!measureRef.current) {
       return;
     }
 
-    const headerTableElement =
-      tableHeaderRef.current.querySelector<HTMLTableElement>("table");
-    if (headerTableElement === null) {
-      return;
-    }
-
-    headerTableElement.style.width = `${measureTotalWidth.current}px`;
-    const colElement = headerTableElement.querySelector<HTMLTableColElement>(
-      `colgroup > col[data-name="${column.name}"]`,
+    let totalColumnWidth = 0;
+    const widthMap: Record<string, number> = {};
+    const cells = Array.prototype.slice.call(
+      measureRef.current.querySelectorAll("td"),
     );
-    if (colElement !== null) {
-      colElement.style.width = `${width}px`;
+    for (const cell of cells) {
+      let width = cell.offsetWidth;
+      const name = cell.getAttribute("data-name");
+      const column = leafColumnMap[name];
+
+      if (column.minWidth !== undefined) {
+        width = Math.max(column.minWidth, width);
+      }
+
+      if (column.maxWidth !== undefined) {
+        width = Math.min(column.maxWidth);
+      }
+
+      widthMap[name] = width;
+
+      totalColumnWidth += width;
     }
+
+    setColumnWidthMap(widthMap);
+    setTotalColumnWidth(totalColumnWidth);
   }
 
-  function setMainColumn(column: ColumnMeta<R>, width: number) {
-    if (tableMainRef.current === null) {
+  useEffect(() => {
+    if (!measureRef.current) {
       return;
     }
 
-    if (column.ignoreWidth) {
+    function resize() {
+      collectColumnWidth();
+    }
+
+    const observer = new window.ResizeObserver(resize);
+    observer.observe(measureRef.current);
+
+    if (isMounted.current) {
       return;
     }
+    isMounted.current = true;
 
-    if (column.minWidth === undefined && column.maxWidth === undefined) {
-      return;
-    }
+    collectColumnWidth();
 
-    const mainTableElement =
-      tableMainRef.current.querySelector<HTMLTableElement>("table");
-    if (mainTableElement === null) {
-      return;
-    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
-    const colElement = mainTableElement.querySelector<HTMLTableColElement>(
-      `colgroup > col[data-name="${column.name}"]`,
-    );
-    if (colElement === null) {
-      return;
-    }
-
-    colElement.style.width = `${width}px`;
-  }
-
-  const set: Operator<R>["set"] = (column: ColumnMeta<R>, width: number) => {
-    let columnWidth = width;
-    if (column.width === undefined) {
-      columnWidth = Math.min(
-        columnWidth,
-        column.maxWidth ?? Number.MAX_SAFE_INTEGER,
-      );
-      columnWidth = Math.max(
-        columnWidth,
-        column.minWidth ?? Number.MIN_SAFE_INTEGER,
-      );
-    }
-
-    const oldWidth = measureMap.current[column.name];
-    measureMap.current[column.name] = columnWidth;
-    if (oldWidth === undefined) {
-      measureTotalWidth.current = measureTotalWidth.current + columnWidth;
-    } else {
-      const diffWidth = columnWidth - oldWidth;
-      measureTotalWidth.current = measureTotalWidth.current + diffWidth;
-    }
-
-    setHeaderColumn(column, columnWidth);
-    setMainColumn(column, columnWidth);
-  };
-
-  return { measureMap: measureMap.current, operator: { set } };
+  return { measureRef, columnWidthMap, totalColumnWidth };
 }

@@ -12,7 +12,7 @@ import { SortType, OrderType } from "./table";
 
 type Option<R extends PlainObject = PlainObject> = Pick<
   TableProps<R>,
-  "sortMode"
+  "sortMode" | "onSortChange"
 > & {
   sortsController: SortController[];
   columnMap: Record<string, ColumnMeta<R>>;
@@ -25,6 +25,7 @@ interface Operator<R extends PlainObject = PlainObject> {
   reset: () => void;
   clear: () => void;
   sort: (data: R[]) => R[];
+  emit: () => void;
 }
 export interface Sorter<R extends PlainObject = PlainObject> {
   sort?: Sort | Sort[];
@@ -36,10 +37,32 @@ export function useSorter<R extends PlainObject = PlainObject>({
   sortsController,
   sortMode = "reset",
   columnMap,
+  onSortChange = () => {},
 }: Option<R>): Sorter<R> {
   const [sortsState, setSortsState] = useState<SortState[]>(
     getDefaultSortsState(),
   );
+
+  function getSortMap(sort?: Sort | Sort[]): Record<string, Sort> {
+    if (sort === undefined) {
+      return {};
+    }
+
+    let sorts: Sort[] = [];
+    if (!Array.isArray(sort)) {
+      sorts = [sort];
+    } else {
+      sorts = sort;
+    }
+
+    return sorts.reduce(
+      (result, sort) => {
+        result[sort.name] = sort;
+        return result;
+      },
+      {} as Record<string, Sort>,
+    );
+  }
 
   function getDefaultSortsState() {
     let sortsState: SortState[] = [];
@@ -256,32 +279,15 @@ export function useSorter<R extends PlainObject = PlainObject>({
     return result;
   }
 
-  const currentSort = get();
-
-  function getSortMap(sort?: Sort | Sort[]): Record<string, Sort> {
-    if (sort === undefined) {
-      return {};
-    }
-
-    let sorts: Sort[] = [];
-    if (!Array.isArray(sort)) {
-      sorts = [sort];
-    } else {
-      sorts = sort;
-    }
-
-    return sorts.reduce(
-      (result, sort) => {
-        result[sort.name] = sort;
-        return result;
-      },
-      {} as Record<string, Sort>,
-    );
+  function emit() {
+    onSortChange(get());
   }
+
+  const currentSort = get();
 
   return {
     sort: currentSort,
     sortMap: getSortMap(currentSort),
-    operator: { set, next, remove, reset, clear, sort },
+    operator: { set, next, remove, reset, clear, sort, emit },
   };
 }

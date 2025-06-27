@@ -18,42 +18,31 @@ function syncObjectValue(
   }
 }
 
-interface parseColumnElementOption {
+interface parseColumnElementOption<R extends PlainObject = PlainObject> {
   depth?: number;
   defaultVisibleStateMap?: Record<string, boolean>;
   visibleStateMap: Record<string, boolean>;
-  parentVisible?: boolean;
   defaultPinnedStateMap?: Record<string, ColumnProps["pinned"]>;
   pinnedStateMap: Record<string, ColumnProps["pinned"]>;
-  parentPinned?: ColumnProps["pinned"];
-  unStrictOrFirstUnPinnedColumnName?: string;
-  wholeColumnWithWidth?: boolean;
+  parent?: ColumnMeta<R>;
 }
 function parseColumnElement<R extends PlainObject = PlainObject>(
   columnElement: ReactElement<ColumnProps<R>>,
-  option: parseColumnElementOption,
+  option: parseColumnElementOption<R>,
 ): {
   column: ColumnMeta<R>;
   maxDepth: number;
   defaultVisibleStateMap: Record<string, boolean>;
   defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
-  unStrictOrFirstUnPinnedColumnName: string;
-  wholeColumnWithWidth: boolean;
 } {
   const {
     depth = 0,
+    parent,
     defaultVisibleStateMap = {},
     visibleStateMap,
-    parentVisible,
     defaultPinnedStateMap = {},
     pinnedStateMap,
-    parentPinned,
-    unStrictOrFirstUnPinnedColumnName = "",
-    wholeColumnWithWidth = true,
   } = option ?? {};
-
-  let nextUnStrictOrFirstUnPinnedColumnName = unStrictOrFirstUnPinnedColumnName;
-  let nextWholeColumnWithWidth = wholeColumnWithWidth;
 
   const {
     title,
@@ -63,7 +52,6 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     minWidth,
     width,
     maxWidth,
-    strict = true,
     align = "left",
     visible,
     defaultVisible = true,
@@ -87,11 +75,12 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
   const column: ColumnMeta<R> = {
     title,
     name,
+    parent,
     visible:
-      parentVisible === false
+      parent?.visible === false
         ? false
         : (visible ?? visibleStateMap[name] ?? defaultVisible),
-    pinned: parentPinned ?? pinned ?? pinnedStateMap[name] ?? defaultPinned,
+    pinned: parent?.pinned ?? pinned ?? pinnedStateMap[name] ?? defaultPinned,
   };
 
   if (!isGroupColumn && typeof children === "function") {
@@ -104,27 +93,17 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
       columns: childColumns,
       maxDepth: currentMaxDepth,
       hideByChildren,
-      unStrictOrFirstUnPinnedColumnName:
-        currentUnStrictOrFirstUnPinnedColumnName,
-      wholeColumnWithWidth: currentWholeColumnWithWidth,
     } = parseColumnElements<R>(childColumnElements, {
       depth: depth + 1,
       defaultVisibleStateMap,
       visibleStateMap,
-      parentVisible: column.visible,
       defaultPinnedStateMap,
       pinnedStateMap,
-      parentPinned: column.pinned,
-      unStrictOrFirstUnPinnedColumnName: nextUnStrictOrFirstUnPinnedColumnName,
-      wholeColumnWithWidth: nextWholeColumnWithWidth,
+      parent: column,
     });
     maxDepth = currentMaxDepth;
     column.children = childColumns;
     column.align = "center";
-
-    nextUnStrictOrFirstUnPinnedColumnName =
-      currentUnStrictOrFirstUnPinnedColumnName;
-    nextWholeColumnWithWidth = currentWholeColumnWithWidth;
 
     if (hideByChildren) {
       column.visible = false;
@@ -145,24 +124,6 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     } else {
       column.sortable = sortable;
     }
-
-    if (!strict) {
-      nextUnStrictOrFirstUnPinnedColumnName = column.name;
-    } else if (
-      nextUnStrictOrFirstUnPinnedColumnName === "" &&
-      column.pinned === undefined
-    ) {
-      nextUnStrictOrFirstUnPinnedColumnName = column.name;
-    }
-
-    // column without width
-    if (
-      column.width === undefined &&
-      column.minWidth === undefined &&
-      column.maxWidth === undefined
-    ) {
-      nextWholeColumnWithWidth = false;
-    }
   }
 
   return {
@@ -170,67 +131,47 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     column,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
-    unStrictOrFirstUnPinnedColumnName: nextUnStrictOrFirstUnPinnedColumnName,
-    wholeColumnWithWidth: nextWholeColumnWithWidth,
   };
 }
 
 function parseColumnElements<R extends PlainObject = PlainObject>(
   columnElements: ReactElement<ColumnProps<R>>[],
-  option: parseColumnElementOption,
+  option: parseColumnElementOption<R>,
 ): {
   columns: ColumnMeta<R>[];
   maxDepth: number;
   hideByChildren: boolean;
   defaultVisibleStateMap: Record<string, boolean>;
   defaultPinnedStateMap: Record<string, ColumnProps["pinned"]>;
-  unStrictOrFirstUnPinnedColumnName: string;
-  wholeColumnWithWidth: boolean;
 } {
   const {
     depth = 0,
+    parent,
     defaultVisibleStateMap = {},
     visibleStateMap,
-    parentVisible,
     defaultPinnedStateMap = {},
     pinnedStateMap,
-    parentPinned,
-    unStrictOrFirstUnPinnedColumnName = "",
-    wholeColumnWithWidth = true,
   } = option ?? {};
 
   const columns = [];
   let maxDepth = depth;
 
-  let nextUnStrictOrFirstUnPinnedColumnName = unStrictOrFirstUnPinnedColumnName;
-  let nextWholeColumnWithWidth = wholeColumnWithWidth;
-
   // when all the children column is hidden, the parent column will hidden.
   let hideByChildren = true;
   for (const columnElement of columnElements) {
-    const {
-      column,
-      maxDepth: currentMaxDepth,
-      unStrictOrFirstUnPinnedColumnName:
-        currentUnStrictOrFirstUnPinnedColumnName,
-      wholeColumnWithWidth: currentWholeColumnWithWidth,
-    } = parseColumnElement(columnElement, {
-      depth,
-      defaultVisibleStateMap,
-      visibleStateMap,
-      parentVisible,
-      defaultPinnedStateMap,
-      pinnedStateMap,
-      parentPinned,
-      unStrictOrFirstUnPinnedColumnName: nextUnStrictOrFirstUnPinnedColumnName,
-      wholeColumnWithWidth: nextWholeColumnWithWidth,
-    });
+    const { column, maxDepth: currentMaxDepth } = parseColumnElement(
+      columnElement,
+      {
+        depth,
+        defaultVisibleStateMap,
+        visibleStateMap,
+        parent,
+        defaultPinnedStateMap,
+        pinnedStateMap,
+      },
+    );
     maxDepth = Math.max(maxDepth, currentMaxDepth);
     columns.push(column);
-
-    nextUnStrictOrFirstUnPinnedColumnName =
-      currentUnStrictOrFirstUnPinnedColumnName;
-    nextWholeColumnWithWidth = currentWholeColumnWithWidth;
 
     if (column.visible) {
       hideByChildren = false;
@@ -243,8 +184,6 @@ function parseColumnElements<R extends PlainObject = PlainObject>(
     maxDepth: hideByChildren ? depth - 1 : maxDepth,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
-    unStrictOrFirstUnPinnedColumnName: nextUnStrictOrFirstUnPinnedColumnName,
-    wholeColumnWithWidth: nextWholeColumnWithWidth,
   };
 }
 
@@ -259,12 +198,14 @@ function isLeafColumn<R extends PlainObject = PlainObject>(
 
 interface FormatColumnsOption<R extends PlainObject = PlainObject> {
   maxDepth: number;
-  unStrictOrFirstUnPinnedColumnName: string;
-  wholeColumnWithWidth: boolean;
   depth?: number;
   leafColumns?: ColumnMeta<R>[];
+  leafColumnMap?: Record<string, ColumnMeta<R>>;
   layerColumns?: ColumnMeta<R>[][];
-  lastRowSpanCount?: number;
+  leftPinnedColumns?: ColumnMeta<R>[];
+  rightPinnedColumns?: ColumnMeta<R>[];
+  prevColSpanCount?: number;
+  prevColSpanColumn?: ColumnMeta<R>;
   sortsController?: SortController[];
 }
 
@@ -274,7 +215,10 @@ function formatColumns<R extends PlainObject = PlainObject>(
 ): {
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
+  leafColumnMap: Record<string, ColumnMeta<R>>;
   layerColumns: ColumnMeta<R>[][];
+  leftPinnedColumns: ColumnMeta<R>[];
+  rightPinnedColumns: ColumnMeta<R>[];
   sortsController: SortController[];
   breadth: number;
 } {
@@ -282,10 +226,11 @@ function formatColumns<R extends PlainObject = PlainObject>(
     maxDepth,
     depth = 0,
     leafColumns = [],
+    leafColumnMap = {},
     layerColumns = [],
+    leftPinnedColumns = [],
+    rightPinnedColumns = [],
     sortsController = [],
-    unStrictOrFirstUnPinnedColumnName,
-    wholeColumnWithWidth,
   } = option;
 
   if (layerColumns[depth] === undefined) {
@@ -302,6 +247,16 @@ function formatColumns<R extends PlainObject = PlainObject>(
 
     if (isLeafColumn<R>(column)) {
       leafColumns.push(column);
+      leafColumnMap[column.name] = column;
+
+      switch (column.pinned) {
+        case "left":
+          leftPinnedColumns.push(column);
+          break;
+        case "right":
+          rightPinnedColumns.push(column);
+          break;
+      }
 
       if (column.sortable !== undefined) {
         sortsController.push({
@@ -312,13 +267,29 @@ function formatColumns<R extends PlainObject = PlainObject>(
       }
 
       if (
-        option.lastRowSpanCount !== undefined &&
-        option.lastRowSpanCount > 0
+        option.prevColSpanCount !== undefined &&
+        option.prevColSpanCount > 0
       ) {
         column.colSpan = 0;
-        option.lastRowSpanCount--;
+        option.prevColSpanCount--;
+
+        if (
+          !column.visible &&
+          option.prevColSpanColumn !== undefined &&
+          option.prevColSpanColumn.colSpan !== undefined
+        ) {
+          const columnColSpan = option.prevColSpanColumn.colSpan - 1;
+          option.prevColSpanColumn.colSpan =
+            columnColSpan === 1 ? undefined : columnColSpan;
+        }
+
+        if (option.prevColSpanCount <= 0) {
+          option.prevColSpanColumn = undefined;
+          option.prevColSpanCount = undefined;
+        }
       } else if (column.colSpan) {
-        option.lastRowSpanCount = column.colSpan - 1;
+        option.prevColSpanCount = column.colSpan - 1;
+        option.prevColSpanColumn = column;
       }
 
       const rowSpan = maxDepth - depth + 1;
@@ -330,24 +301,19 @@ function formatColumns<R extends PlainObject = PlainObject>(
         currentBreadth += 1;
       }
 
-      if (
-        wholeColumnWithWidth &&
-        unStrictOrFirstUnPinnedColumnName === column.name
-      ) {
-        column.ignoreWidth = true;
-      }
-
       continue;
     }
 
     const { breadth } = formatColumns<R>(column.children as ColumnMeta<R>[], {
       maxDepth,
-      unStrictOrFirstUnPinnedColumnName,
-      wholeColumnWithWidth,
       depth: depth + 1,
       leafColumns,
+      leafColumnMap,
       layerColumns,
-      lastRowSpanCount: option.lastRowSpanCount,
+      leftPinnedColumns,
+      rightPinnedColumns,
+      prevColSpanCount: option.prevColSpanCount,
+      prevColSpanColumn: option.prevColSpanColumn,
       sortsController,
     });
 
@@ -361,7 +327,10 @@ function formatColumns<R extends PlainObject = PlainObject>(
   return {
     columns,
     leafColumns,
+    leafColumnMap,
     layerColumns,
+    leftPinnedColumns,
+    rightPinnedColumns,
     sortsController,
     breadth: currentBreadth,
   };
@@ -377,7 +346,10 @@ export function useColumns<R extends PlainObject = PlainObject>(
 ): {
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
+  leafColumnMap: Record<string, ColumnMeta<R>>;
   layerColumns: ColumnMeta<R>[][];
+  leftPinnedColumns: ColumnMeta<R>[];
+  rightPinnedColumns: ColumnMeta<R>[];
   columnMap: Record<string, ColumnMeta<R>>;
   sortsController: SortController[];
   visibleStateMap: Record<string, boolean>;
@@ -399,8 +371,6 @@ export function useColumns<R extends PlainObject = PlainObject>(
     maxDepth,
     defaultVisibleStateMap,
     defaultPinnedStateMap,
-    unStrictOrFirstUnPinnedColumnName,
-    wholeColumnWithWidth,
   } = parseColumnElements(columnElements, {
     visibleStateMap,
     pinnedStateMap,
@@ -413,14 +383,17 @@ export function useColumns<R extends PlainObject = PlainObject>(
     syncObjectValue(pinnedStateMap, defaultPinnedStateMap);
   }
 
-  const { columns, leafColumns, layerColumns, sortsController } = formatColumns(
-    rawColumns,
-    {
-      maxDepth,
-      wholeColumnWithWidth,
-      unStrictOrFirstUnPinnedColumnName,
-    },
-  );
+  const {
+    columns,
+    leafColumns,
+    leafColumnMap,
+    layerColumns,
+    sortsController,
+    leftPinnedColumns,
+    rightPinnedColumns,
+  } = formatColumns(rawColumns, {
+    maxDepth,
+  });
 
   function setVisible(name: string, visible: boolean) {
     setVisibleStateMap({
@@ -447,7 +420,10 @@ export function useColumns<R extends PlainObject = PlainObject>(
   return {
     columns,
     leafColumns,
+    leafColumnMap,
     layerColumns,
+    leftPinnedColumns,
+    rightPinnedColumns,
     columnMap,
     sortsController,
     visibleStateMap,

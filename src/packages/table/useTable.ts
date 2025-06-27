@@ -19,13 +19,14 @@ interface Result<
   tableRef: RefObject<HTMLDivElement>;
   tableHeaderRef: RefObject<HTMLDivElement>;
   tableMainRef: RefObject<HTMLDivElement>;
+  height: string;
   getRowKey: (record: R) => string;
   datasource: Datasource<R, P>;
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
-  measure: Measure<R>;
+  measure: Measure;
   sizeObserver: SizeObserver;
   scroller: Scroller;
 }
@@ -33,7 +34,13 @@ function useTable<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 >(
-  { rowKey = (row: R) => row.key, data, sortMode }: TableProps<R, P>,
+  {
+    rowKey = (row: R) => row.key,
+    height,
+    data,
+    sortMode,
+    onSortChange,
+  }: TableProps<R, P>,
   option: Option<R>,
 ): Result<R, P> {
   const tableRef = useRef<HTMLDivElement>(null);
@@ -48,32 +55,53 @@ function useTable<
     return rowKey(record);
   }
 
-  const { columns, columnMap, leafColumns, layerColumns, sortsController } =
-    useColumns<R>(option.columnElements);
+  function getHeight() {
+    if (height === "auto") {
+      return "100%";
+    }
 
+    if (typeof height === "number") {
+      return `${height}px`;
+    }
+
+    return "auto";
+  }
+
+  const sizeObserver = useSizeObserver(tableRef);
+  const {
+    columns,
+    columnMap,
+    leafColumns,
+    leafColumnMap,
+    layerColumns,
+    sortsController,
+    leftPinnedColumns,
+    rightPinnedColumns,
+  } = useColumns<R>(option.columnElements);
   const sorter = useSorter<R>({
     sortMode,
     columnMap,
     sortsController,
+    onSortChange,
   });
-
   const datasource = useDatasource<R, P>({
     data,
     leafColumns,
     sorter,
   });
-
   const scroller = useScroller({ tableHeaderRef, tableMainRef });
-
-  const measure = useMeasure<R>({ tableRef, tableHeaderRef, tableMainRef });
-
-  const sizeObserver = useSizeObserver(tableRef);
+  const measure = useMeasure({
+    leafColumnMap,
+    leftPinnedColumns,
+    rightPinnedColumns,
+  });
 
   return {
     tableRef,
     tableHeaderRef,
     tableMainRef,
     getRowKey,
+    height: getHeight(),
     columns,
     leafColumns,
     layerColumns,

@@ -24,7 +24,10 @@ function HeadCell<R extends PlainObject = PlainObject>({
       return (
         <button
           type="button"
-          onClick={() => sorter.operator.next(column.name, sort?.type)}
+          onClick={() => {
+            sorter.operator.next(column.name, sort?.type);
+            sorter.operator.emit();
+          }}
         >
           {children}
           <div aria-hidden="true">
@@ -62,7 +65,6 @@ function HeadCell<R extends PlainObject = PlainObject>({
       colSpan={column.colSpan}
       rowSpan={column.rowSpan}
       data-align={column.align}
-      scope="col"
       {...attrs({
         "data-sort": ariaSortLabel,
       })}

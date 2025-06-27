@@ -6,7 +6,6 @@ import Head from "./Head";
 import PinnedHead from "./PinnedHead";
 import Body from "./Body";
 import useTable from "../useTable";
-import calcHeight from "../calcHeight";
 import type { TableProps, PlainObject } from "../table";
 
 import styles from "./Table.module.scss";
@@ -24,18 +23,18 @@ function Table<
     tableHeaderRef,
     tableMainRef,
     getRowKey,
+    height,
     datasource,
     leafColumns,
     layerColumns,
     sorter,
     measure,
-    sizeObserver,
     scroller,
   } = useTable<R, P>(props, {
     columnElements,
   });
 
-  const height = calcHeight(props.height);
+  console.log("render");
 
   return (
     <div
@@ -54,6 +53,7 @@ function Table<
           onScroll={scroller.onScroll}
         >
           <PinnedHead<R>
+            measure={measure}
             leafColumns={leafColumns}
             layerColumns={layerColumns}
             sorter={sorter}
@@ -66,7 +66,7 @@ function Table<
         onScroll={scroller.onScroll}
       >
         <table className={styles.table}>
-          <Colgroup<R> leafColumns={leafColumns} />
+          <Colgroup<R> primary measure={measure} leafColumns={leafColumns} />
           {height === "auto" && (
             <Head<R> layerColumns={layerColumns} sorter={sorter} />
           )}
@@ -75,7 +75,6 @@ function Table<
             leafColumns={leafColumns}
             data={datasource.data}
             measure={measure}
-            sizeObserver={sizeObserver}
           />
         </table>
       </div>
