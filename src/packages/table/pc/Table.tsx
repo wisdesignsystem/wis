@@ -41,6 +41,8 @@ function Table<
       style={
         {
           "--wis-table-variable-height": height,
+          "--wis-table-variable-scroll-x": `${scroller.x}px`,
+          "--wis-table-variable-scroll-y": `${scroller.y}px`,
           visibility: measure.ready ? "visible" : "hidden",
         } as CSSProperties
       }

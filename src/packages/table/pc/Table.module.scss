@@ -4,6 +4,12 @@
   height: var(--wis-table-variable-height);
   display: flex;
   flex-direction: column;
+
+  &[data-scroll-y] {
+    .header {
+      width: calc(100% - var(--wis-table-variable-scroll-y));
+    }
+  }
 }
 
 .header {

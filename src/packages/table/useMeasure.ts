@@ -181,6 +181,10 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     collectColumnWidth();
 
     return () => {
+      if (!measureRef.current) {
+        return;
+      }
+
       resizeObserver.disconnect();
       mutationObserver.disconnect();
     };

@@ -89,7 +89,7 @@ function useTable<
     leafColumns,
     sorter,
   });
-  const scroller = useScroller({ tableHeaderRef, tableMainRef });
+  const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
   const measure = useMeasure({
     leafColumns,
     leafColumnMap,

@@ -53,7 +53,7 @@ function Example() {
         >
           {cell.data}
         </Column>
-        <Column title="Gender" name="gender" width={1500}>
+        <Column title="Gender" name="gender" width={2000}>
           {cell.data}
         </Column>
         <Column title="Fraction" name="fraction" sortable>
