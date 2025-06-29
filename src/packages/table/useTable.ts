@@ -6,7 +6,6 @@ import { useColumns } from "./useColumns";
 import { useSorter, type Sorter } from "./useSorter";
 import { useDatasource, type Datasource } from "./useDatasource";
 import { useMeasure, type Measure } from "./useMeasure";
-import { useSizeObserver, type SizeObserver } from "./useSizeObserver";
 import { useScroller, type Scroller } from "./useScroller";
 
 interface Option<R extends PlainObject = PlainObject> {
@@ -26,8 +25,7 @@ interface Result<
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
-  measure: Measure;
-  sizeObserver: SizeObserver;
+  measure: Measure<R>;
   scroller: Scroller;
 }
 function useTable<
@@ -67,7 +65,6 @@ function useTable<
     return "auto";
   }
 
-  const sizeObserver = useSizeObserver(tableRef);
   const {
     columns,
     columnMap,
@@ -90,7 +87,7 @@ function useTable<
     sorter,
   });
   const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
-  const measure = useMeasure({
+  const measure = useMeasure<R>({
     leafColumns,
     leafColumnMap,
     leftPinnedColumns,
@@ -109,7 +106,6 @@ function useTable<
     datasource,
     sorter,
     measure,
-    sizeObserver,
     scroller,
   };
 }

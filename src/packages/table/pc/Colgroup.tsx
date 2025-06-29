@@ -13,26 +13,11 @@ function Colgroup<R extends PlainObject = PlainObject>({
         if (!column.visible) {
           return null;
         }
-
-        function getPrimaryWidth() {
-          if (column.width !== undefined) {
-            return `${column.width}px`;
-          }
-
-          if (column.minWidth !== undefined || column.maxWidth !== undefined) {
-            return `${measure.columnWidthMap[column.name]}px`;
-          }
-        }
-
-        function getSecondaryWidth() {
-          return `${column.width ?? measure.columnWidthMap[column.name]}px`;
-        }
-
         const style: undefined | CSSProperties = { minWidth: "80px" };
         if (!primary) {
-          style.width = getSecondaryWidth();
+          style.width = `${measure.getSecondaryColumnWidth(column)}px`;
         } else {
-          style.width = getPrimaryWidth();
+          style.width = `${measure.getPrimaryColumnWidth(column)}px`;
         }
 
         return <col key={column.name} style={style} />;

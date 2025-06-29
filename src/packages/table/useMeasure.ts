@@ -9,12 +9,14 @@ interface PinnedWidth {
   body: number;
 }
 
-export interface Measure {
+export interface Measure<R extends PlainObject = PlainObject> {
   ready: boolean;
   measureRef: RefObject<HTMLTableRowElement>;
   columnWidthMap: Record<string, number>;
   totalColumnWidth: number;
   columnPinnedWidthMap: Record<string, PinnedWidth>;
+  getPrimaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
+  getSecondaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
 }
 
 interface Option<R extends PlainObject = PlainObject> {
@@ -28,7 +30,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   leafColumnMap,
   leftPinnedColumns,
   rightPinnedColumns,
-}: Option<R>): Measure {
+}: Option<R>): Measure<R> {
   const isMounted = useRef(false);
   const isReady = useRef(false);
   const measureRef = useRef<HTMLTableRowElement>(null);
@@ -190,11 +192,31 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     };
   }, []);
 
+  const getPrimaryColumnWidth: Measure<R>["getPrimaryColumnWidth"] = (
+    column,
+  ) => {
+    if (column.width !== undefined) {
+      return column.width;
+    }
+
+    if (column.minWidth !== undefined || column.maxWidth !== undefined) {
+      return columnWidthMap[column.name];
+    }
+  };
+
+  const getSecondaryColumnWidth: Measure<R>["getSecondaryColumnWidth"] = (
+    column,
+  ) => {
+    return column.width ?? columnWidthMap[column.name];
+  };
+
   return {
     ready: isReady.current,
     measureRef,
     columnWidthMap,
     columnPinnedWidthMap,
     totalColumnWidth,
+    getSecondaryColumnWidth,
+    getPrimaryColumnWidth,
   };
 }

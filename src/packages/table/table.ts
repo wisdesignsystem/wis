@@ -3,7 +3,6 @@ import type { HTMLAttributes, ReactNode } from "react";
 import type { Sorter } from "./useSorter";
 import type { Datasource } from "./useDatasource";
 import type { Measure } from "./useMeasure";
-import type { SizeObserver } from "./useSizeObserver";
 import type { Scroller } from "./useScroller";
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -181,31 +180,31 @@ type ColumnFn<R extends PlainObject = PlainObject> = (
 
 export interface ColgroupProps<R extends PlainObject = PlainObject> {
   primary?: boolean;
-  measure: Measure;
+  measure: Measure<R>;
   leafColumns: ColumnMeta<R>[];
 }
 
 export interface HeadProps<R extends PlainObject = PlainObject> {
   sorter: Sorter<R>;
-  measure: Measure;
+  measure: Measure<R>;
   layerColumns: ColumnMeta<R>[][];
 }
 
 export interface PinnedHeadProps<R extends PlainObject = PlainObject>
   extends HeadProps<R> {
-  measure: Measure;
+  measure: Measure<R>;
   leafColumns: ColumnMeta<R>[];
 }
 
 export interface HeadCellProps<R extends PlainObject = PlainObject> {
   sorter: Sorter<R>;
-  measure: Measure;
+  measure: Measure<R>;
   column: ColumnMeta<R>;
 }
 
 export interface BodyProps<R extends PlainObject = PlainObject> {
   rowKey: (record: R) => string;
-  measure: Measure;
+  measure: Measure<R>;
   data: R[];
   leafColumns: ColumnMeta<R>[];
 }
@@ -216,7 +215,7 @@ export interface RowProps<R extends PlainObject = PlainObject> {
 }
 
 export interface MeasureRowProps<R extends PlainObject = PlainObject> {
-  measure: Measure;
+  measure: Measure<R>;
   leafColumns: ColumnMeta<R>[];
 }
 
@@ -229,7 +228,7 @@ export interface CellProps<R extends PlainObject = PlainObject> {
   rowNo: number;
   record: R;
   column: ColumnMeta<R>;
-  measure: Measure;
+  measure: Measure<R>;
 }
 
 export interface TableProps<
@@ -386,4 +385,4 @@ export interface TableRef<
   query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
 }
 
-export type { Sorter, Datasource, Measure, Scroller, SizeObserver };
+export type { Sorter, Datasource, Measure, Scroller };
