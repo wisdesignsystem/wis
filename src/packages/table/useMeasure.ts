@@ -1,30 +1,44 @@
-import { useEffect, useState, useRef } from "react";
+import { useLayoutEffect, useState, useRef } from "react";
 import type { RefObject } from "react";
+import debounce from "lodash.debounce";
 
 import type { ColumnMeta, PlainObject } from "./table";
 
+interface PinnedWidth {
+  head: number;
+  body: number;
+}
+
 export interface Measure {
+  ready: boolean;
   measureRef: RefObject<HTMLTableRowElement>;
   columnWidthMap: Record<string, number>;
   totalColumnWidth: number;
+  columnPinnedWidthMap: Record<string, PinnedWidth>;
 }
 
 interface Option<R extends PlainObject = PlainObject> {
+  leafColumns: ColumnMeta<R>[];
   leafColumnMap: Record<string, ColumnMeta<R>>;
   leftPinnedColumns: ColumnMeta<R>[];
   rightPinnedColumns: ColumnMeta<R>[];
 }
 export function useMeasure<R extends PlainObject = PlainObject>({
+  leafColumns,
   leafColumnMap,
   leftPinnedColumns,
   rightPinnedColumns,
-}: Option<R>) {
-  const isMounted = useRef<boolean>(false);
+}: Option<R>): Measure {
+  const isMounted = useRef(false);
+  const isReady = useRef(false);
   const measureRef = useRef<HTMLTableRowElement>(null);
+  const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
   const [columnWidthMap, setColumnWidthMap] = useState<Record<string, number>>(
     {},
   );
-  const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
+  const [columnPinnedWidthMap, setColumnPinnedWidthMap] = useState<
+    Record<string, PinnedWidth>
+  >({});
 
   function collectColumnWidth() {
     if (!measureRef.current) {
@@ -56,19 +70,108 @@ export function useMeasure<R extends PlainObject = PlainObject>({
 
     setColumnWidthMap(widthMap);
     setTotalColumnWidth(totalColumnWidth);
+    collectColumnPinnedWidth(widthMap);
   }
 
-  useEffect(() => {
+  function collectColumnPinnedWidth(widthMap: Record<string, number>) {
+    const nextColumnPinnedWidthMap: Record<string, PinnedWidth> = {};
+
+    function getColumnWidth(column: ColumnMeta<R>) {
+      return column.width ?? widthMap[column.name];
+    }
+
+    function getColumnShowWidth(column: ColumnMeta<R>) {
+      let width = getColumnWidth(column);
+      if (column.colSpan === undefined || column.colSpan <= 1) {
+        return width;
+      }
+
+      let count = column.colSpan - 1;
+      let index = (column.index as number) + 1;
+      while (count > 0) {
+        const currentColumn = leafColumns[index];
+
+        if (currentColumn.pinned !== undefined) {
+          width += getColumnWidth(currentColumn);
+        }
+
+        index++;
+        count--;
+      }
+
+      return width;
+    }
+
+    function collectParentColumnPinnedWidth(
+      column: ColumnMeta<R>,
+      pinnedWidth: number,
+    ) {
+      if (column.parent === undefined) {
+        return;
+      }
+
+      nextColumnPinnedWidthMap[column.parent.name] = {
+        head: pinnedWidth,
+        body: pinnedWidth,
+      };
+      collectParentColumnPinnedWidth(column.parent, pinnedWidth);
+    }
+
+    let nextHeadPinnedWidth = 0;
+    let nextBodyPinnedWidth = 0;
+    for (const column of leftPinnedColumns) {
+      if (!column.visible) {
+        continue;
+      }
+
+      nextColumnPinnedWidthMap[column.name] = {
+        head: nextHeadPinnedWidth,
+        body: nextBodyPinnedWidth,
+      };
+      collectParentColumnPinnedWidth(column, nextHeadPinnedWidth);
+      if (column.colSpan !== 0) {
+        nextHeadPinnedWidth += getColumnShowWidth(column);
+      }
+      nextBodyPinnedWidth += getColumnWidth(column);
+    }
+
+    nextHeadPinnedWidth = 0;
+    nextBodyPinnedWidth = 0;
+    for (let i = rightPinnedColumns.length - 1; i >= 0; i--) {
+      const column = rightPinnedColumns[i];
+      if (!column.visible) {
+        continue;
+      }
+
+      nextColumnPinnedWidthMap[column.name] = {
+        head: nextHeadPinnedWidth,
+        body: nextBodyPinnedWidth,
+      };
+      collectParentColumnPinnedWidth(column, nextHeadPinnedWidth);
+      if (column.colSpan !== 0) {
+        nextHeadPinnedWidth += getColumnShowWidth(column);
+      }
+      nextBodyPinnedWidth += getColumnWidth(column);
+    }
+
+    setColumnPinnedWidthMap(nextColumnPinnedWidthMap);
+  }
+
+  useLayoutEffect(() => {
     if (!measureRef.current) {
       return;
     }
-
-    function resize() {
+    const resize = debounce(() => {
       collectColumnWidth();
-    }
+      if (!isReady.current) {
+        isReady.current = true;
+      }
+    }, 50);
 
-    const observer = new window.ResizeObserver(resize);
-    observer.observe(measureRef.current);
+    const resizeObserver = new window.ResizeObserver(resize);
+    resizeObserver.observe(measureRef.current);
+    const mutationObserver = new window.MutationObserver(resize);
+    mutationObserver.observe(measureRef.current, { childList: true });
 
     if (isMounted.current) {
       return;
@@ -78,9 +181,16 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     collectColumnWidth();
 
     return () => {
-      observer.disconnect();
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
     };
   }, []);
 
-  return { measureRef, columnWidthMap, totalColumnWidth };
+  return {
+    ready: isReady.current,
+    measureRef,
+    columnWidthMap,
+    columnPinnedWidthMap,
+    totalColumnWidth,
+  };
 }

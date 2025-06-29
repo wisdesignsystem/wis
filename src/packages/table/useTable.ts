@@ -91,6 +91,7 @@ function useTable<
   });
   const scroller = useScroller({ tableHeaderRef, tableMainRef });
   const measure = useMeasure({
+    leafColumns,
     leafColumnMap,
     leftPinnedColumns,
     rightPinnedColumns,

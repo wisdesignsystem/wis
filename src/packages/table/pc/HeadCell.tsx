@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 import {
   TriangleUpFilledIcon,
   TriangleDownFilledIcon,
@@ -13,6 +13,7 @@ import styles from "./Table.module.scss";
 function HeadCell<R extends PlainObject = PlainObject>({
   sorter,
   column,
+  measure,
 }: HeadCellProps<R>) {
   if (column.colSpan === 0 || !column.visible) {
     return null;
@@ -59,12 +60,22 @@ function HeadCell<R extends PlainObject = PlainObject>({
 
   const ariaSortLabel = ariaSort();
 
+  const style: CSSProperties = {};
+  if (column.pinned === "left") {
+    style.position = "sticky";
+    style.left = `${measure.columnPinnedWidthMap[column.name]?.head}px`;
+  } else if (column.pinned === "right") {
+    style.position = "sticky";
+    style.right = `${measure.columnPinnedWidthMap[column.name]?.head}px`;
+  }
+
   return (
     <th
       className={styles["head-cell"]}
       colSpan={column.colSpan}
       rowSpan={column.rowSpan}
       data-align={column.align}
+      style={style}
       {...attrs({
         "data-sort": ariaSortLabel,
       })}

@@ -34,8 +34,6 @@ function Table<
     columnElements,
   });
 
-  console.log("render");
-
   return (
     <div
       ref={tableRef}
@@ -43,6 +41,7 @@ function Table<
       style={
         {
           "--wis-table-variable-height": height,
+          visibility: measure.ready ? "visible" : "hidden",
         } as CSSProperties
       }
     >
@@ -68,7 +67,11 @@ function Table<
         <table className={styles.table}>
           <Colgroup<R> primary measure={measure} leafColumns={leafColumns} />
           {height === "auto" && (
-            <Head<R> layerColumns={layerColumns} sorter={sorter} />
+            <Head<R>
+              measure={measure}
+              layerColumns={layerColumns}
+              sorter={sorter}
+            />
           )}
           <Body<R>
             rowKey={getRowKey}

@@ -168,6 +168,8 @@ export interface ColumnMeta<R extends PlainObject = PlainObject>
    */
   hideByChildren?: boolean;
 
+  index?: number;
+
   parent?: ColumnMeta<R>;
 
   children?: ColumnMeta<R>[];
@@ -185,6 +187,7 @@ export interface ColgroupProps<R extends PlainObject = PlainObject> {
 
 export interface HeadProps<R extends PlainObject = PlainObject> {
   sorter: Sorter<R>;
+  measure: Measure;
   layerColumns: ColumnMeta<R>[][];
 }
 
@@ -196,6 +199,7 @@ export interface PinnedHeadProps<R extends PlainObject = PlainObject>
 
 export interface HeadCellProps<R extends PlainObject = PlainObject> {
   sorter: Sorter<R>;
+  measure: Measure;
   column: ColumnMeta<R>;
 }
 
@@ -225,6 +229,7 @@ export interface CellProps<R extends PlainObject = PlainObject> {
   rowNo: number;
   record: R;
   column: ColumnMeta<R>;
+  measure: Measure;
 }
 
 export interface TableProps<

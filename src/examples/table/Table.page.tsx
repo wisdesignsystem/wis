@@ -25,6 +25,7 @@ function Example() {
       biology: random(0, 100),
       math: random(0, 100),
       physics: random(0, 100),
+      test: "xxx",
     };
   });
 
@@ -44,13 +45,27 @@ function Example() {
         >
           {cell.data}
         </Column>
-        <Column<User> title="Age" name="age" sortable={(a, b) => a.age - b.age}>
+        <Column<User>
+          title="Age"
+          name="age"
+          pinned="left"
+          sortable={(a, b) => a.age - b.age}
+        >
           {cell.data}
         </Column>
-        <Column title="Gender" name="gender" width={150}>
+        <Column title="Gender" name="gender" width={1500}>
           {cell.data}
         </Column>
-        <Column title="Fraction" name="fraction" sortable pinned="left">
+        <Column title="Fraction" name="fraction" sortable>
+          <Column
+            title="Physics"
+            name="physics"
+            align="center"
+            width={240}
+            pinned="right"
+          >
+            {cell.data}
+          </Column>
           <Column
             title="Biology"
             name="biology"
@@ -66,13 +81,13 @@ function Example() {
             name="math"
             align="center"
             width={120}
-            visible={false}
+            // pinned="right"
           >
             {cell.data}
           </Column>
-          <Column title="Physics" name="physics" align="center" width={240}>
-            {cell.data}
-          </Column>
+        </Column>
+        <Column title="Test" name="test" width={100}>
+          {cell.data}
         </Column>
       </Table>
     </Page>

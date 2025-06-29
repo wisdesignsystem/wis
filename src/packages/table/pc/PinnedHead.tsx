@@ -14,7 +14,9 @@ function PinnedHead<R extends PlainObject = PlainObject>({
   return (
     <table
       className={styles.table}
-      style={{ width: `${measure.totalColumnWidth}px` }}
+      style={{
+        width: `${measure.totalColumnWidth - 10}px`,
+      }}
     >
       <Colgroup<R> measure={measure} leafColumns={leafColumns} />
       <thead>
@@ -24,7 +26,12 @@ function PinnedHead<R extends PlainObject = PlainObject>({
             <tr key={columns.key}>
               {columns.map((column) => {
                 return (
-                  <HeadCell key={column.name} column={column} sorter={sorter} />
+                  <HeadCell
+                    key={column.name}
+                    measure={measure}
+                    column={column}
+                    sorter={sorter}
+                  />
                 );
               })}
             </tr>

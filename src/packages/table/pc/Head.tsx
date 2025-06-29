@@ -3,6 +3,7 @@ import HeadCell from "./HeadCell";
 
 function Head<R extends PlainObject = PlainObject>({
   sorter,
+  measure,
   layerColumns,
 }: HeadProps<R>) {
   return (
@@ -13,7 +14,12 @@ function Head<R extends PlainObject = PlainObject>({
           <tr key={columns.key}>
             {columns.map((column) => {
               return (
-                <HeadCell key={column.name} column={column} sorter={sorter} />
+                <HeadCell
+                  key={column.name}
+                  measure={measure}
+                  column={column}
+                  sorter={sorter}
+                />
               );
             })}
           </tr>

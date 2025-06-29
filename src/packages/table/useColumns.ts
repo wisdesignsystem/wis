@@ -246,6 +246,7 @@ function formatColumns<R extends PlainObject = PlainObject>(
     layerColumns[depth].key = `${layerColumns[depth].key}_${column.name}`;
 
     if (isLeafColumn<R>(column)) {
+      column.index = leafColumns.length;
       leafColumns.push(column);
       leafColumnMap[column.name] = column;
 

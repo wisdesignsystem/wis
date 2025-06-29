@@ -19,6 +19,7 @@ function Body<R extends PlainObject = PlainObject>({
               return (
                 <Cell<R>
                   key={column.name}
+                  measure={measure}
                   rowIndex={rowIndex}
                   rowNo={rowIndex}
                   record={record}
