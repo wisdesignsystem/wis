@@ -36,13 +36,7 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <Table<User> data={queryData} height="auto">
-        <Column
-          title="Name"
-          colSpan={2}
-          name="name"
-          pinned="left"
-          maxWidth={200}
-        >
+        <Column title="Name" name="name" pinned="left" maxWidth={200}>
           {cell.data}
         </Column>
         <Column<User>

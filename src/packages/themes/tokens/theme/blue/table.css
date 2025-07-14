@@ -1,0 +1,76 @@
+:root {
+  --w-component-table-font: var(--w-common-font-color-primary);
+  --w-component-table-background: var(--w-common-background-transparent-fully);
+  --w-component-table-border: var(--w-common-border-color-base);
+  --w-component-table-header-font: var(--w-common-font-color-tertiary);
+  --w-component-table-header-background: var(--w-common-background-common-base);
+  --w-component-table-header-border: var(--w-common-border-color-base);
+  --w-component-table-row-background-even: var(--w-common-background-common-01);
+  --w-component-table-row-background-odd: var(--w-common-background-common-base);
+  --w-component-table-row-hover-background: var(
+    --w-common-background-state-hover
+  );
+  --w-component-table-row-focus-background: var(
+    --w-common-background-state-active
+  );
+  --w-component-table-row-focus-hover-background: var(
+    --w-common-background-state-selected-hover
+  );
+  --w-component-table-row-disabled-font: var(
+    --w-common-font-color-state-disabled
+  );
+  --w-component-table-row-disabled-background: var(
+    --w-common-background-state-disabled
+  );
+  --w-component-table-row-error-background: var(
+    --w-common-background-semantics-error-light
+  );
+  --w-component-table-row-error-font: var(--w-common-font-color-base);
+  --w-component-table-row-error-hover-background: var(
+    --w-common-background-semantics-error-light-hover
+  );
+  --w-component-table-row-warning-font: var(--w-common-font-color-base);
+  --w-component-table-row-warning-background: var(
+    --w-common-background-semantics-warning-light
+  );
+  --w-component-table-row-warning-hover-background: var(
+    --w-common-background-semantics-warning-light-hover
+  );
+  --w-component-table-row-success-font: var(--w-common-font-color-base);
+  --w-component-table-row-success-background: var(
+    --w-common-background-semantics-success-light
+  );
+  --w-component-table-row-success-hover-background: var(
+    --w-common-background-semantics-success-light-hover
+  );
+  --w-component-table-row-active-background: var(
+    --w-common-background-state-selected
+  );
+  --w-component-table-row-active-hover-background: var(
+    --w-common-background-state-selected-hover
+  );
+  --w-component-table-head-row-font: var(--w-common-font-color-tertiary);
+  --w-component-table-head-row-background: var(
+    --w-common-background-common-base
+  );
+  --w-component-table-head-row-border: var(--w-common-border-color-base);
+  --w-component-table-head-cell-font: var(--w-common-font-color-tertiary);
+  --w-component-table-head-cell-background: var(--w-common-background-common-01);
+  --w-component-table-head-cell-border: var(--w-common-border-color-base);
+  --w-component-table-cell-font: var(--w-common-font-color-base);
+  --w-component-table-cell-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-table-cell-border: var(--w-common-border-color-transparent);
+  --w-component-table-cell-trend-up: var(--w-common-background-semantics-error);
+  --w-component-table-cell-trend-down: var(
+    --w-common-background-semantics-success
+  );
+  --w-component-table-cell-rating-font: var(--w-common-font-color-icon);
+  --w-component-table-cell-rating-checked-font: var(--w-palette-yellow-400);
+  --w-component-table-footer-default-font: var(--w-common-font-color-base);
+  --w-component-table-footer-default-background: var(
+    --w-common-background-common-base
+  );
+  --w-component-table-footer-default-border: var(--w-common-border-color-base);
+}
