@@ -10,10 +10,10 @@
   --w-component-table-row-hover-background: var(
     --w-common-background-state-hover
   );
-  --w-component-table-row-focus-background: var(
-    --w-common-background-state-active
+  --w-component-table-row-selected-background: var(
+    --w-common-background-state-selected
   );
-  --w-component-table-row-focus-hover-background: var(
+  --w-component-table-row-selected-hover-background: var(
     --w-common-background-state-selected-hover
   );
   --w-component-table-row-disabled-font: var(
@@ -42,12 +42,6 @@
   );
   --w-component-table-row-success-hover-background: var(
     --w-common-background-semantics-success-light-hover
-  );
-  --w-component-table-row-active-background: var(
-    --w-common-background-state-selected
-  );
-  --w-component-table-row-active-hover-background: var(
-    --w-common-background-state-selected-hover
   );
   --w-component-table-head-row-font: var(--w-common-font-color-tertiary);
   --w-component-table-head-row-background: var(

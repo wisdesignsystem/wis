@@ -3819,10 +3819,10 @@
           "$type": "color",
           "$value": "{background.state.hover}"
         },
-        "focus": {
+        "selected": {
           "background": {
             "$type": "color",
-            "$value": "{background.state.active}"
+            "$value": "{background.state.selected}"
           },
           "hover-background": {
             "$type": "color",
@@ -3879,16 +3879,6 @@
           "hover-background": {
             "$type": "color",
             "$value": "{background.semantics.success-light-hover}"
-          }
-        },
-        "active": {
-          "background": {
-            "$type": "color",
-            "$value": "{background.state.selected}"
-          },
-          "hover-background": {
-            "$type": "color",
-            "$value": "{background.state.selected-hover}"
           }
         }
       },

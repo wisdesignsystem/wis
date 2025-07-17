@@ -1,6 +1,8 @@
 import type { HeadProps, PlainObject } from "../table";
 import HeadCell from "./HeadCell";
 
+import styles from "./Table.module.scss";
+
 function Head<R extends PlainObject = PlainObject>({
   sorter,
   measure,
@@ -11,7 +13,7 @@ function Head<R extends PlainObject = PlainObject>({
       {layerColumns.map((columns) => {
         return (
           // @ts-ignore
-          <tr key={columns.key}>
+          <tr key={columns.key} className={styles["head-row"]}>
             {columns.map((column) => {
               return (
                 <HeadCell

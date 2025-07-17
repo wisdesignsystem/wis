@@ -13,7 +13,7 @@ function PinnedHead<R extends PlainObject = PlainObject>({
 }: PinnedHeadProps<R>) {
   return (
     <table
-      className={styles.table}
+      className={styles.content}
       style={{
         width: `${measure.totalColumnWidth - 10}px`,
       }}
@@ -23,7 +23,7 @@ function PinnedHead<R extends PlainObject = PlainObject>({
         {layerColumns.map((columns) => {
           return (
             // @ts-ignore
-            <tr key={columns.key}>
+            <tr key={columns.key} className={styles["head-row"]}>
               {columns.map((column) => {
                 return (
                   <HeadCell

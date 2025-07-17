@@ -16,7 +16,7 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 100 }).map((_, index) => {
+  const data: User[] = Array.from({ length: 10 }).map((_, index) => {
     return {
       key: `key_${index}`,
       name: "Wis Design",
@@ -35,55 +35,44 @@ function Example() {
 
   return (
     <Page title="Table" description="Table">
-      <Table<User> data={queryData} height="auto">
-        <Column title="Name" name="name" pinned="left" maxWidth={200}>
-          {cell.data}
-        </Column>
-        <Column<User>
-          title="Age"
-          name="age"
-          pinned="left"
-          sortable={(a, b) => a.age - b.age}
-        >
-          {cell.data}
-        </Column>
-        <Column title="Gender" name="gender" width={2000}>
-          {cell.data}
-        </Column>
-        <Column title="Fraction" name="fraction" sortable>
-          <Column
-            title="Physics"
-            name="physics"
-            align="center"
-            width={240}
-            pinned="right"
+      <div style={{ padding: "24px", height: "100%", boxSizing: "border-box" }}>
+        <Table<User> data={queryData} height="auto">
+          <Column title="Name" name="name" pinned="left" maxWidth={200}>
+            {cell.data}
+          </Column>
+          <Column<User>
+            title="Age"
+            name="age"
+            pinned="left"
+            sortable={(a, b) => a.age - b.age}
           >
             {cell.data}
           </Column>
-          <Column
-            title="Biology"
-            name="biology"
-            align="center"
-            colSpan={2}
-            width={120}
-            pinned="right"
-          >
+          <Column title="Gender" name="gender" width={2000}>
             {cell.data}
           </Column>
-          <Column
-            title="Math"
-            name="math"
-            align="center"
-            width={120}
-            // pinned="right"
-          >
+          <Column title="Fraction" name="fraction" sortable pinned="right">
+            <Column title="Physics" name="physics" width={240} pinned="right">
+              {cell.data}
+            </Column>
+            <Column
+              title="Biology"
+              name="biology"
+              colSpan={2}
+              width={120}
+              pinned="right"
+            >
+              {cell.data}
+            </Column>
+            <Column title="Math" name="math" width={120} pinned="right">
+              {cell.data}
+            </Column>
+          </Column>
+          <Column title="Test" name="test" width={100}>
             {cell.data}
           </Column>
-        </Column>
-        <Column title="Test" name="test" width={100}>
-          {cell.data}
-        </Column>
-      </Table>
+        </Table>
+      </div>
     </Page>
   );
 }

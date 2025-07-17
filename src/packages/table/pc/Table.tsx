@@ -37,7 +37,7 @@ function Table<
   return (
     <div
       ref={tableRef}
-      className={styles.container}
+      className={styles.table}
       style={
         {
           "--wis-table-variable-height": height,
@@ -66,7 +66,7 @@ function Table<
         className={styles.main}
         onScroll={scroller.onScroll}
       >
-        <table className={styles.table}>
+        <table className={styles.content}>
           <Colgroup<R> primary measure={measure} leafColumns={leafColumns} />
           {height === "auto" && (
             <Head<R>

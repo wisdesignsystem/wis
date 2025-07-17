@@ -112,6 +112,10 @@ export function useMeasure<R extends PlainObject = PlainObject>({
         return;
       }
 
+      if (nextColumnPinnedWidthMap[column.parent.name] !== undefined) {
+        return;
+      }
+
       nextColumnPinnedWidthMap[column.parent.name] = {
         head: pinnedWidth,
         body: pinnedWidth,

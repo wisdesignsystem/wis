@@ -24,7 +24,8 @@
   $state2: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   $widget-pattern: if($widget != '', '#{$widget}-', '');
   $variant-pattern: if($variant != '', '#{$variant}-', '');
@@ -32,6 +33,7 @@
   $status-pattern: if($status != '', '#{$status}-', '');
   $state-pattern: if($state != '', '#{$state}-', '');
   $state2-pattern: if($state2 != '', '#{$state2}-', '');
+  $background-property-pattern: if($background-property != '', '#{$background-property}', 'background');
 
   @if $enable-font == true {
     color: var(
@@ -41,7 +43,7 @@
 
   @if $enable-background == true {
     background-color: var(
-      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}background
+      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}#{$background-property-pattern}
     );
   }
 
@@ -62,7 +64,8 @@
   $state2: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   @include style(
     $type: 'component',
@@ -75,7 +78,8 @@
     $state2: $state2,
     $enable-font: $enable-font,
     $enable-background: $enable-background,
-    $enable-border: $enable-border
+    $enable-border: $enable-border,
+    $background-property: $background-property,
   );
 }
 
@@ -88,7 +92,8 @@
   $state: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   &:hover {
     @include component-style(
@@ -101,7 +106,8 @@
       $state2: 'hover',
       $enable-font: $enable-font,
       $enable-background: $enable-background,
-      $enable-border: $enable-border
+      $enable-border: $enable-border,
+      $background-property: $background-property,
     );
   }
 
@@ -118,7 +124,8 @@
         $state2: 'disabled',
         $enable-font: $enable-font,
         $enable-background: $enable-background,
-        $enable-border: $enable-border
+        $enable-border: $enable-border,
+        $background-property: $background-property,
       );
     }
   }
@@ -133,7 +140,8 @@
   $state: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   $focus-status-pattern: if($status != '', $status, 'default');
 
@@ -148,7 +156,8 @@
       $state2: 'focus',
       $enable-font: $enable-font,
       $enable-background: $enable-background,
-      $enable-border: $enable-border
+      $enable-border: $enable-border,
+      $background-property: $background-property,
     );
     box-shadow:
       0 0 0 2px var(--w-common-shadow-state-focus-inner),
@@ -168,7 +177,8 @@
         $state2: 'disabled',
         $enable-font: $enable-font,
         $enable-background: $enable-background,
-        $enable-border: $enable-border
+        $enable-border: $enable-border,
+        $background-property: $background-property,
       );
       box-shadow: none;
     }
@@ -184,7 +194,8 @@
   $state: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   &:active {
     @include component-style(
@@ -197,7 +208,8 @@
       $state2: 'active',
       $enable-font: $enable-font,
       $enable-background: $enable-background,
-      $enable-border: $enable-border
+      $enable-border: $enable-border,
+      $background-property: $background-property,
     );
   }
 
@@ -214,7 +226,8 @@
         $state2: 'disabled',
         $enable-font: $enable-font,
         $enable-background: $enable-background,
-        $enable-border: $enable-border
+        $enable-border: $enable-border,
+        $background-property: $background-property,
       );
     }
   }
@@ -229,7 +242,8 @@
   $state: '',
   $enable-font: true,
   $enable-background: true,
-  $enable-border: true
+  $enable-border: true,
+  $background-property: '',
 ) {
   &[disabled],
   &[data-disabled] {
@@ -243,7 +257,8 @@
       $state2: 'disabled',
       $enable-font: $enable-font,
       $enable-background: $enable-background,
-      $enable-border: $enable-border
+      $enable-border: $enable-border,
+      $background-property: $background-property,
     );
     cursor: not-allowed;
   }

@@ -1,9 +1,50 @@
-.container {
+@use '@/packages/themes/tool.scss' as tool;
+@use '@/packages/themes/style.scss' as style;
+
+@mixin table-style() {
+  @include style.component-style($component: table);
+}
+
+@mixin table-header-style() {}
+
+@mixin table-head-row-style() {
+  @include style.component-style($component: table, $widget: head-row);
+}
+
+@mixin table-head-cell-style() {
+  @include style.component-style($component: table, $widget: head-cell);
+}
+
+@mixin table-row-style() {
+  @include style.component-style($component: table, $widget: row, $enable-background: false, $enable-font: false);
+}
+
+@mixin table-row-odd-style() {
+  @include style.component-style($component: table, $widget: row, $enable-font: false, $enable-border: false, $background-property: 'background-odd');
+}
+
+@mixin table-row-even-style() {
+  @include style.component-style($component: table, $widget: row, $enable-font: false, $enable-border: false, $background-property: 'background-even');
+}
+
+@mixin table-cell-style() {
+  @include style.component-style($component: table, $widget: cell);
+}
+
+.table {
   position: relative;
   width: 100%;
   height: var(--wis-table-variable-height);
   display: flex;
   flex-direction: column;
+  border-top: var(--w-common-spacing-scale-1) solid transparent;
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  border-inline-start: var(--w-common-spacing-scale-1) solid transparent;
+  border-inline-end: var(--w-common-spacing-scale-1) solid transparent;
+  border-radius: var(--w-common-border-radius-lg);
+  overflow: hidden;
+
+  @include table-style();
 
   &[data-scroll-y] {
     .header {
@@ -25,18 +66,27 @@
   flex: 1 1 auto;
 }
 
-.table {
+.content {
   table-layout: fixed;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
 }
 
+.head-row {
+  @include table-head-row-style();
+}
+
 .head-cell {
   text-align: start;
   overflow: hidden;
   min-width: 80px;
-  padding: 0;
+  height: 32px;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
+  border-inline-end: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+
+  @include table-head-cell-style();
 
   &[data-align="center"] {
     text-align: center;
@@ -48,6 +98,26 @@
 }
 
 .row {
+  border-bottom: 1px solid transparent;
+
+  @include table-row-style();
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:nth-child(even) {
+    > .cell {
+      @include table-row-even-style();
+    }
+  }
+
+  &:nth-child(odd) {
+    > .cell {
+      @include table-row-odd-style();
+    }
+  }
+
   &[data-hidden] {
     height: 0;
     font-size: 0;
@@ -64,7 +134,10 @@
 .cell {
   text-align: start;
   overflow: hidden;
-  padding: 0;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
+  height: 48px;
+
+  @include table-cell-style();
 
   &[data-align="center"] {
     text-align: center;

@@ -41,11 +41,11 @@
       },
       "selected": {
         "$type": "color",
-        "$value": "{neutral.100}"
+        "$value": "{brand-lighter}"
       },
       "selected-hover": {
         "$type": "color",
-        "$value": "{neutral.200}"
+        "$value": "{brand-light}"
       }
     },
     "semantics": {
