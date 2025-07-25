@@ -1,7 +1,10 @@
-import type { ReactNode, CSSProperties } from "react";
+import type { CSSProperties } from "react";
+import { useRef } from "react";
 import {
-  TriangleUpFilledIcon,
-  TriangleDownFilledIcon,
+  ToggleIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+  FilterIcon,
 } from "@wisdesign/lsicon";
 import attrs from "@/utils/attrs";
 
@@ -15,35 +18,79 @@ function HeadCell<R extends PlainObject = PlainObject>({
   column,
   measure,
 }: HeadCellProps<R>) {
+  const sortRef = useRef<HTMLButtonElement>(null);
+
   if (column.colSpan === 0 || !column.visible) {
     return null;
   }
 
-  function renderSortContainer(children: ReactNode) {
-    if (column.sortable !== undefined) {
+  const isSortable = column.sortable !== undefined;
+  const isFilter = false;
+
+  function renderSort() {
+    if (isSortable) {
       const sort = sorter.sortMap[column.name];
+
       return (
         <button
+          className={styles.sort}
+          ref={sortRef}
           type="button"
           onClick={() => {
             sorter.operator.next(column.name, sort?.type);
             sorter.operator.emit();
           }}
         >
-          {children}
           <div aria-hidden="true">
-            <TriangleUpFilledIcon />
-            <TriangleDownFilledIcon />
+            {sort === undefined && <ToggleIcon />}
+            {sort?.type === SortType.Asc && <ArrowUpIcon />}
+            {sort?.type === SortType.Desc && <ArrowDownIcon />}
           </div>
         </button>
       );
     }
 
-    return children;
+    return null;
+  }
+
+  function renderCellTitle() {
+    return (
+      <div className={styles["head-cell-meta"]}>
+        <div className={styles["head-cell-title"]}>
+          <span className={styles["head-cell-label"]}>{column.title}</span>
+          {renderSort()}
+        </div>
+      </div>
+    );
+  }
+
+  function renderCellActions() {
+    if (!isFilter) {
+      return null;
+    }
+
+    return (
+      <div className={styles["head-cell-actions"]}>
+        <FilterIcon />
+      </div>
+    );
+  }
+
+  function renderCell() {
+    if (!isSortable && !isFilter) {
+      return column.title;
+    }
+
+    return (
+      <div className={styles["head-cell-container"]}>
+        {renderCellTitle()}
+        {renderCellActions()}
+      </div>
+    );
   }
 
   function ariaSort() {
-    if (column.sortable === undefined) {
+    if (!isSortable) {
       return;
     }
 
@@ -77,7 +124,9 @@ function HeadCell<R extends PlainObject = PlainObject>({
       data-align={column.align}
       style={style}
       {...attrs({
+        "data-sortable": isSortable,
         "data-sort": ariaSortLabel,
+        "data-ellipse": column.ellipsis,
       })}
       {...attrs(
         {
@@ -85,8 +134,11 @@ function HeadCell<R extends PlainObject = PlainObject>({
         },
         { ignoreNone: false },
       )}
+      onClick={() => {
+        sortRef.current?.click();
+      }}
     >
-      {renderSortContainer(column.title)}
+      {renderCell()}
     </th>
   );
 }

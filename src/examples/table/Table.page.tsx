@@ -36,14 +36,23 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <div style={{ padding: "24px", height: "100%", boxSizing: "border-box" }}>
-        <Table<User> data={queryData} height="auto">
-          <Column title="Name" name="name" pinned="left" maxWidth={200}>
+        <Table<User> data={queryData}>
+          <Column
+            title="Name"
+            name="name"
+            pinned="left"
+            maxWidth={200}
+            ellipsis
+            align="center"
+          >
             {cell.data}
           </Column>
           <Column<User>
-            title="Age"
+            title="AgeAgeAgeAgeAgeAgeAgeAgeAgeAgeAgeAgeAgeAgeAge"
             name="age"
             pinned="left"
+            width={160}
+            align="center"
             sortable={(a, b) => a.age - b.age}
           >
             {cell.data}

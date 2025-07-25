@@ -5,6 +5,11 @@
   --w-component-table-header-font: var(--w-common-font-color-tertiary);
   --w-component-table-header-background: var(--w-common-background-common-base);
   --w-component-table-header-border: var(--w-common-border-color-base);
+  --w-component-table-head-row-font: var(--w-common-font-color-tertiary);
+  --w-component-table-head-row-background: var(
+    --w-common-background-common-base
+  );
+  --w-component-table-head-row-border: var(--w-common-border-color-base);
   --w-component-table-row-background-even: var(--w-common-background-common-01);
   --w-component-table-row-background-odd: var(--w-common-background-common-base);
   --w-component-table-row-hover-background: var(
@@ -43,11 +48,6 @@
   --w-component-table-row-success-hover-background: var(
     --w-common-background-semantics-success-light-hover
   );
-  --w-component-table-head-row-font: var(--w-common-font-color-tertiary);
-  --w-component-table-head-row-background: var(
-    --w-common-background-common-base
-  );
-  --w-component-table-head-row-border: var(--w-common-border-color-base);
   --w-component-table-head-cell-font: var(--w-common-font-color-tertiary);
   --w-component-table-head-cell-background: var(--w-common-background-common-01);
   --w-component-table-head-cell-border: var(--w-common-border-color-base);
@@ -62,6 +62,36 @@
   );
   --w-component-table-cell-rating-font: var(--w-common-font-color-icon);
   --w-component-table-cell-rating-checked-font: var(--w-palette-yellow-400);
+  --w-component-table-sort-font: var(--w-common-font-color-helper);
+  --w-component-table-sort-border: var(--w-common-border-color-transparent);
+  --w-component-table-sort-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-table-sort-hover-font: var(--w-common-font-color-helper-hover);
+  --w-component-table-sort-hover-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-table-sort-hover-border: var(
+    --w-common-border-color-transparent
+  );
+  --w-component-table-sort-selected-font: var(
+    --w-common-font-color-semantics-highlight
+  );
+  --w-component-table-sort-selected-border: var(
+    --w-common-border-color-transparent
+  );
+  --w-component-table-sort-selected-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-table-sort-selected-hover-font: var(
+    --w-common-font-color-semantics-highlight-hover
+  );
+  --w-component-table-sort-selected-hover-background: var(
+    --w-common-background-transparent-fully
+  );
+  --w-component-table-sort-selected-hover-border: var(
+    --w-common-border-color-transparent
+  );
   --w-component-table-footer-default-font: var(--w-common-font-color-base);
   --w-component-table-footer-default-background: var(
     --w-common-background-common-base

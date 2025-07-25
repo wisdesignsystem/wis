@@ -3806,6 +3806,20 @@
           "$value": "{border.color.base}"
         }
       },
+      "head-row": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
       "row": {
         "background-even": {
           "$type": "color",
@@ -3882,20 +3896,6 @@
           }
         }
       },
-      "head-row": {
-        "font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
       "head-cell": {
         "font": {
           "$type": "color",
@@ -3944,6 +3944,60 @@
           }
         }
       },
+      "sort": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.helper}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.transparent}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.transparent.fully}"
+        },
+        "hover": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.helper-hover}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          }
+        },
+        "selected": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.semantics.highlight}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "hover-font": {
+            "$type": "color",
+            "$value": "{font.color.semantics.highlight-hover}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "hover-border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          }
+        }
+      },
       "footer": {
         "default-font": {
           "$type": "color",
@@ -3980,20 +4034,6 @@
         "tips-default-color-hover": {
           "$type": "color",
           "$value": "{font.color.icon-hover}"
-        }
-      },
-      "_sort": {
-        "sortable-default-font": {
-          "$type": "color",
-          "$value": "{font.color.helper}"
-        },
-        "sortable-hover-font": {
-          "$type": "color",
-          "$value": "{font.color.helper-hover}"
-        },
-        "sortable-active-font": {
-          "$type": "color",
-          "$value": "{font.color.semantics.highlight}"
         }
       },
       "_summary": {

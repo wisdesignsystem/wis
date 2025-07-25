@@ -15,10 +15,6 @@
   @include style.component-style($component: table, $widget: head-cell);
 }
 
-@mixin table-row-style() {
-  @include style.component-style($component: table, $widget: row, $enable-background: false, $enable-font: false);
-}
-
 @mixin table-row-odd-style() {
   @include style.component-style($component: table, $widget: row, $enable-font: false, $enable-border: false, $background-property: 'background-odd');
 }
@@ -82,28 +78,109 @@
   overflow: hidden;
   min-width: 80px;
   height: 32px;
-  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
-  border-inline-end: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  padding: var(--w-common-spacing-common-lg);
+  border-inline-end: var(--w-common-spacing-scale-1) solid transparent;
+  border-bottom: var(--w-common-spacing-scale-1) solid transparent;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
 
   @include table-head-cell-style();
 
   &[data-align="center"] {
     text-align: center;
+
+    .head-cell-meta {
+      justify-content: center;
+    }
   }
 
   &[data-align="right"] {
     text-align: end;
+
+    .head-cell-meta {
+      justify-content: end;
+    }
+  }
+
+  &[data-sortable] {
+    cursor: pointer;
+  }
+
+  &[data-ellipse] {
+    .head-cell-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.head-cell-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.head-cell-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.head-cell-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.head-cell-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 100%;
+}
+
+.head-cell-label {
+  flex: 0 1 auto;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  color: inherit;
+  font-weight: inherit;
+  flex: 0 0 auto;
+
+  > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
 
 .row {
-  border-bottom: 1px solid transparent;
-
-  @include table-row-style();
-
   &:last-child {
-    border-bottom: none;
+    > .cell {
+      border-bottom: none;
+    }
+  }
+
+  > .cell {
+    border-bottom: var(--w-common-spacing-scale-1) solid transparent;
   }
 
   &:nth-child(even) {
@@ -134,8 +211,9 @@
 .cell {
   text-align: start;
   overflow: hidden;
-  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
+  padding: var(--w-common-spacing-common-lg);
   height: 48px;
+  box-sizing: border-box;
 
   @include table-cell-style();
 
