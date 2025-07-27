@@ -57,7 +57,7 @@ function Example() {
           >
             {cell.data}
           </Column>
-          <Column title="Gender" name="gender" width={1400} align="right">
+          <Column title="Gender" name="gender" width={200} align="right">
             {cell.data}
           </Column>
           <Column width={200} title="Gender1" name="gender1">
@@ -72,41 +72,11 @@ function Example() {
           <Column width={200} title="Gender4" name="gender4">
             {cell.data}
           </Column>
-          <Column width={200} title="Gender5" name="gender5" pinned="right">
+          <Column width={200} title="Gender5" name="gender5">
             {cell.data}
           </Column>
           <Column width={200} title="Gender6" name="gender6">
             {cell.data}
-          </Column>
-          <Column title="Fraction" name="fraction" sortable pinned="right">
-            <Column
-              title="Physics"
-              name="physics"
-              width={240}
-              pinned="right"
-              align="right"
-            >
-              {cell.data}
-            </Column>
-            <Column
-              title="Biology"
-              name="biology"
-              colSpan={2}
-              width={120}
-              pinned="right"
-              align="right"
-            >
-              {cell.data}
-            </Column>
-            <Column
-              title="Math"
-              name="math"
-              width={120}
-              pinned="right"
-              align="right"
-            >
-              {cell.data}
-            </Column>
           </Column>
           <Column title="Test" name="test" align="right" pinned="right">
             {cell.data}

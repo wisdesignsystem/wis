@@ -5,20 +5,24 @@
   @include style.component-style($component: table);
 }
 
-@mixin table-header-style() {
-  @include style.component-style($component: table, $widget: head-cell);
+@mixin table-head-style() {
+  @include style.component-style($component: table, $widget: head-row);
 }
 
-@mixin table-head-cell-style() {
-  @include style.component-style($component: table, $widget: head-cell, $enable-border: false, $enable-shadow-border: true);
+@mixin table-head-row-style() {
+  @include style.component-style($component: table, $widget: head-row);
+}
+
+@mixin table-row-style() {
+  @include style.component-style($component: table, $widget: row);
 }
 
 @mixin table-row-hover-style() {
-  @include style.component-style($component: table, $widget: row, $state2: hover, $enable-shadow-border: true);
+  @include style.component-style($component: table, $widget: row, $state2: hover, $enable-border: false);
 }
 
 @mixin table-row-stripe-hover-style() {
-  @include style.component-style($component: table, $widget: row, $state2: hover, $enable-border: false, $enable-shadow-border: false);
+  @include style.component-style($component: table, $widget: row, $state2: hover, $enable-border: false);
 }
 
 @mixin table-row-odd-style() {
@@ -27,10 +31,6 @@
 
 @mixin table-row-even-style() {
   @include style.component-style($component: table, $widget: row, $enable-font: false, $enable-border: false, $background-property: 'background-even');
-}
-
-@mixin table-cell-style() {
-  @include style.component-style($component: table, $widget: cell, $enable-border: false, $enable-shadow-border: true);
 }
 
 @mixin table-sort-style() {
@@ -56,12 +56,33 @@
   @include table-style();
 
   &[data-scroll-y] {
-    .header {
-      padding: 0 var(--wis-table-variable-scroll-y) 0 0;
+    .head {
+      position: relative;
+      width: calc(100% - var(--wis-table-variable-scroll-y));
+    }
+
+    .head-container {
+      &::after {
+        display: inline-block;
+        content: '';
+        width: var(--wis-table-variable-scroll-y);
+        height: 100%;
+        flex: 0 0 auto;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        z-index: 1;
+        box-sizing: border-box;
+        @include table-head-style();
+      }
     }
   }
 
-  &[data-stripe] {
+  &[data-separator="stripe"] {
+    .head {
+      border-bottom-width: var(--w-common-spacing-scale-1);
+      border-bottom-style: solid;
+    }
+
     .row {
       &:hover {
         &:nth-child(even) {
@@ -89,78 +110,94 @@
         }
       }
     }
-
-    .head-cell {
-      border-inline-end-width: 0;
-    }
-
-    .cell {
-      border-inline-end-width: 0;
-      border-bottom-width: 0;
-    }
   }
 
-  &:not([data-stripe]) {
+  &[data-separator="grid"],
+  &[data-separator="border"] {
+    .head-cell {
+      border-block-end-width: var(--w-common-spacing-scale-1);
+      border-block-end-style: solid;
+    }
+
     .row {
-      &:hover {
-        z-index: 1;
-  
+      &:not([data-hidden]) {
         .cell {
-          @include table-row-hover-style();
+          border-block-end-width: var(--w-common-spacing-scale-1);
+          border-block-end-style: solid;
+        }
+
+        &:hover {
+          .cell {
+            @include table-row-hover-style();
+          }
         }
       }
     }
   }
 
-  &[data-scroll-x] {
-    &:not([data-scroll-x-start]) {
-      .head-cell[data-pinned="left"],
-      .cell[data-pinned="left"] {
+  &[data-separator="grid"] {
+    .head-cell {
+      border-inline-end-width: var(--w-common-spacing-scale-1);
+      border-inline-end-style: solid;
+
+      &[data-pinned="right"] {
         &::after {
-          position: absolute;
-          top: -1px;
-          right: 0;
-          bottom: 0;
-          width: 30px;
-          transform: translateX(100%);
-          transition: box-shadow 0.3s;
-          content: "";
-          pointer-events: none;
-          box-shadow: inset 8px 0 10px -2px var(--w-common-shadow-color-01);
-          border-left: 1px solid white;
+          border-inline-end-width: var(--w-common-spacing-scale-1);
+          border-inline-end-style: solid;
+        }
+      }
+    }
+
+    .row {
+      &:not([data-hidden]) {
+        .cell {
+          border-inline-end-width: var(--w-common-spacing-scale-1);
+          border-inline-end-style: solid;
+
+          &[data-pinned="right"] {
+            &::after {
+              border-inline-end-width: var(--w-common-spacing-scale-1);
+              border-inline-end-style: solid;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &[data-pinned-separator][data-scroll-x] {
+    &:not([data-scroll-x-start]) {
+      .head-cell[data-pinned="left"][data-pinned-latest],
+      .cell[data-pinned="left"][data-pinned-latest] {
+        &::after {
+          box-shadow: inset 10px 0 8px -8px var(--w-common-shadow-color-01);
         }
       }
     }
 
     &:not([data-scroll-x-end]) {
-      .head-cell[data-pinned="right"],
-      .cell[data-pinned="right"] {
+      .head-cell[data-pinned="right"][data-pinned-latest],
+      .cell[data-pinned="right"][data-pinned-latest] {
         &::after {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          width: 30px;
-          transform: translateX(-100%);
-          transition: box-shadow 0.3s;
-          content: "";
-          pointer-events: none;
-          box-shadow: inset -8px 0 10px -2px var(--w-common-shadow-color-01);
-          border-right: 1px solid white;
+          box-shadow: inset -10px 0 8px -8px var(--w-common-shadow-color-01);
         }
       }
     }
   }
 }
 
-.header {
+.head-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.head {
   flex: 0 0 auto;
   overflow: hidden;
   box-sizing: border-box;
-  border-bottom-width: var(--w-common-spacing-scale-1);
-  border-bottom-style: solid;
+  width: 100%;
 
-  @include table-header-style();
+  @include table-head-style();
 }
 
 .main {
@@ -182,13 +219,12 @@
   text-align: start;
   min-width: 80px;
   height: 32px;
-  padding: var(--w-common-spacing-common-lg);
+  padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-lg);
   text-overflow: ellipsis;
   box-sizing: border-box;
   font-weight: var(--w-common-font-weight-medium);
   @include tool.font-size(var(--w-common-font-size-text-base));
-
-  @include table-head-cell-style();
+  @include table-head-row-style();
 
   &[data-align="center"] {
     text-align: center;
@@ -221,6 +257,38 @@
   &:hover {
     .sort {
       @include table-sort-hover-style();
+    }
+  }
+}
+
+.head-cell,
+.cell {
+  &[data-pinned="left"] {
+    &::after {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      transform: translateX(100%);
+      transition: box-shadow 0.3s;
+      content: "";
+      pointer-events: none;
+    }
+  }
+
+  &[data-pinned="right"] {
+    &::after {
+      position: absolute;
+      top: -1px;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      transform: translateX(-100%);
+      transition: box-shadow 0.3s;
+      content: "";
+      pointer-events: none;
+      border-color: inherit;
     }
   }
 }
@@ -293,24 +361,7 @@
 }
 
 .row {
-  position: relative;
-
-  &:nth-child(2) {
-    .cell {
-      border-top: var(--w-common-spacing-scale-1) solid transparent;
-    }
-  }
-
-  &:last-child {
-    .cell {
-      border-bottom: var(--w-common-spacing-scale-1) solid transparent;
-    }
-  }
-
   &[data-hidden] {
-    height: 0;
-    font-size: 0;
-
     >.cell {
       height: 0;
       padding: 0;
@@ -323,23 +374,12 @@
 
 .cell {
   text-align: start;
-  padding: var(--w-common-spacing-common-lg);
+  padding: var(--w-common-spacing-common-md) var(--w-common-spacing-common-lg);
   height: 48px;
   box-sizing: border-box;
   font-weight: var(--w-common-font-weight-regular);
-  box-shadow: 0 0 0 var(--w-common-spacing-scale-1) transparent;
-
-  &:first-child {
-    border-inline-start: var(--w-common-spacing-scale-1) solid transparent;
-  }
-
-  &:last-child {
-    border-inline-end: var(--w-common-spacing-scale-1) solid transparent;
-  }
-
   @include tool.font-size(var(--w-common-font-size-text-base));
-
-  @include table-cell-style();
+  @include table-row-style();
 
   &[data-align="center"] {
     text-align: center;

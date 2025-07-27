@@ -27,7 +27,7 @@ interface Result<
   sorter: Sorter<R>;
   measure: Measure<R>;
   scroller: Scroller;
-  separator: TableProps["separator"];
+  separator: "border" | "stripe" | "grid";
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -88,13 +88,13 @@ function useTable<
     leafColumns,
     sorter,
   });
-  const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
   const measure = useMeasure<R>({
     leafColumns,
     leafColumnMap,
     leftPinnedColumns,
     rightPinnedColumns,
   });
+  const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
 
   return {
     tableRef,
@@ -109,7 +109,7 @@ function useTable<
     sorter,
     measure,
     scroller,
-    separator: layerColumns.length > 1 ? "border" : separator,
+    separator: layerColumns.length > 1 ? "grid" : separator,
   };
 }
 

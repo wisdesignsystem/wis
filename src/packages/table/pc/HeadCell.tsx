@@ -125,6 +125,8 @@ function HeadCell<R extends PlainObject = PlainObject>({
       {...attrs({
         "data-align": column.align,
         "data-pinned": column.pinned,
+        "data-pinned-latest":
+          measure.columnPinnedWidthMap[column.name]?.isLatest,
         "data-sortable": isSortable,
         "data-sort": ariaSortLabel,
         "data-ellipse": column.ellipsis,

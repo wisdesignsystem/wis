@@ -29,7 +29,12 @@ function Cell<R extends PlainObject = PlainObject>({
     <td
       className={styles.cell}
       style={style}
-      {...attrs({ "data-align": column.align, "data-pinned": column.pinned })}
+      {...attrs({
+        "data-align": column.align,
+        "data-pinned": column.pinned,
+        "data-pinned-latest":
+          measure.columnPinnedWidthMap[column.name]?.isLatest,
+      })}
     >
       {column.render?.({
         name: column.name as R extends PlainObject ? keyof R : string,

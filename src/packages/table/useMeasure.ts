@@ -7,6 +7,7 @@ import type { ColumnMeta, PlainObject } from "./table";
 interface PinnedWidth {
   head: number;
   body: number;
+  isLatest?: boolean;
 }
 
 export interface Measure<R extends PlainObject = PlainObject> {
@@ -15,6 +16,7 @@ export interface Measure<R extends PlainObject = PlainObject> {
   columnWidthMap: Record<string, number>;
   totalColumnWidth: number;
   columnPinnedWidthMap: Record<string, PinnedWidth>;
+  pinnedSeparator: boolean;
   getPrimaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
   getSecondaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
 }
@@ -41,6 +43,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   const [columnPinnedWidthMap, setColumnPinnedWidthMap] = useState<
     Record<string, PinnedWidth>
   >({});
+  const [pinnedSeparator, setPinnedSeparator] = useState(true);
 
   function collectColumnWidth() {
     if (!measureRef.current) {
@@ -112,27 +115,41 @@ export function useMeasure<R extends PlainObject = PlainObject>({
         return;
       }
 
-      if (nextColumnPinnedWidthMap[column.parent.name] !== undefined) {
-        return;
+      if (nextColumnPinnedWidthMap[column.parent.name] === undefined) {
+        nextColumnPinnedWidthMap[column.parent.name] = {
+          head: pinnedWidth,
+          body: pinnedWidth,
+          isLatest: nextColumnPinnedWidthMap[column.name].isLatest,
+        };
+      } else {
+        nextColumnPinnedWidthMap[column.parent.name].isLatest =
+          nextColumnPinnedWidthMap[column.name].isLatest ||
+          nextColumnPinnedWidthMap[column.parent.name].isLatest;
       }
 
-      nextColumnPinnedWidthMap[column.parent.name] = {
-        head: pinnedWidth,
-        body: pinnedWidth,
-      };
       collectParentColumnPinnedWidth(column.parent, pinnedWidth);
     }
 
     let nextHeadPinnedWidth = 0;
     let nextBodyPinnedWidth = 0;
-    for (const column of leftPinnedColumns) {
+
+    let preColumnIndex: number | undefined;
+    let showPinnedSeparator = true;
+    for (let i = 0; i < leftPinnedColumns.length; i++) {
+      const column = leftPinnedColumns[i];
       if (!column.visible) {
         continue;
       }
 
+      if (preColumnIndex !== undefined && column.index !== preColumnIndex + 1) {
+        showPinnedSeparator = false;
+      }
+      preColumnIndex = column.index;
+
       nextColumnPinnedWidthMap[column.name] = {
         head: nextHeadPinnedWidth,
         body: nextBodyPinnedWidth,
+        isLatest: i === leftPinnedColumns.length - 1,
       };
       collectParentColumnPinnedWidth(column, nextHeadPinnedWidth);
       if (column.colSpan !== 0) {
@@ -143,15 +160,22 @@ export function useMeasure<R extends PlainObject = PlainObject>({
 
     nextHeadPinnedWidth = 0;
     nextBodyPinnedWidth = 0;
+    preColumnIndex = undefined;
     for (let i = rightPinnedColumns.length - 1; i >= 0; i--) {
       const column = rightPinnedColumns[i];
       if (!column.visible) {
         continue;
       }
 
+      if (preColumnIndex !== undefined && column.index !== preColumnIndex - 1) {
+        showPinnedSeparator = false;
+      }
+      preColumnIndex = column.index;
+
       nextColumnPinnedWidthMap[column.name] = {
         head: nextHeadPinnedWidth,
         body: nextBodyPinnedWidth,
+        isLatest: i === 0,
       };
       collectParentColumnPinnedWidth(column, nextHeadPinnedWidth);
       if (column.colSpan !== 0) {
@@ -161,6 +185,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     }
 
     setColumnPinnedWidthMap(nextColumnPinnedWidthMap);
+    setPinnedSeparator(showPinnedSeparator);
   }
 
   useLayoutEffect(() => {
@@ -220,6 +245,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     columnWidthMap,
     columnPinnedWidthMap,
     totalColumnWidth,
+    pinnedSeparator,
     getSecondaryColumnWidth,
     getPrimaryColumnWidth,
   };

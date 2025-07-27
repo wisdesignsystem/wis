@@ -41,7 +41,8 @@ function Table<
       ref={tableRef}
       className={styles.table}
       {...attrs({
-        "data-stripe": separator === "stripe",
+        "data-separator": separator,
+        "data-pinned-separator": measure.pinnedSeparator,
       })}
       style={
         {
@@ -53,17 +54,19 @@ function Table<
       }
     >
       {height !== "auto" && (
-        <div
-          ref={tableHeaderRef}
-          className={styles.header}
-          onScroll={scroller.onScroll}
-        >
-          <PinnedHead<R>
-            measure={measure}
-            leafColumns={leafColumns}
-            layerColumns={layerColumns}
-            sorter={sorter}
-          />
+        <div className={styles["head-container"]}>
+          <div
+            ref={tableHeaderRef}
+            className={styles.head}
+            onScroll={scroller.onScroll}
+          >
+            <PinnedHead<R>
+              measure={measure}
+              leafColumns={leafColumns}
+              layerColumns={layerColumns}
+              sorter={sorter}
+            />
+          </div>
         </div>
       )}
       <div
