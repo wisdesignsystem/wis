@@ -27,7 +27,7 @@ function ContextMenu({ children, disabled }: ContextMenuProps) {
       "ContextMenuCheckboxGroup",
       "ContextMenuRadioGroup",
     ],
-    false,
+    { strict: false },
   );
   const hasCheckedItem =
     !!contextMenuCheckboxGroups?.length || !!contextMenuRadioGroups?.length;
@@ -64,7 +64,7 @@ ContextMenu.getSymbiote = (children: ReactNode) => {
       "ContextMenuCheckboxGroup",
       "ContextMenuRadioGroup",
     ],
-    false,
+    { strict: false },
   );
 
   return unmatched[0];

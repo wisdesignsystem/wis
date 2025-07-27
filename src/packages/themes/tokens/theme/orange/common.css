@@ -8,8 +8,8 @@
   --w-common-background-state-hover: var(--w-palette-neutral-100);
   --w-common-background-state-disabled: var(--w-palette-neutral-200);
   --w-common-background-state-active: var(--w-common-brand-lighter);
-  --w-common-background-state-selected: var(--w-palette-neutral-100);
-  --w-common-background-state-selected-hover: var(--w-palette-neutral-200);
+  --w-common-background-state-selected: var(--w-common-brand-lighter);
+  --w-common-background-state-selected-hover: var(--w-common-brand-light);
   --w-common-background-semantics-highlight: var(--w-common-brand);
   --w-common-background-semantics-highlight-light: var(--w-common-brand-lighter);
   --w-common-background-semantics-success: var(--w-palette-green-600);
@@ -191,8 +191,8 @@
   --w-common-background-state-hover: var(--w-palette-neutral-100);
   --w-common-background-state-disabled: var(--w-palette-neutral-200);
   --w-common-background-state-active: var(--w-common-brand-lighter);
-  --w-common-background-state-selected: var(--w-palette-neutral-100);
-  --w-common-background-state-selected-hover: var(--w-palette-neutral-200);
+  --w-common-background-state-selected: var(--w-common-brand-lighter);
+  --w-common-background-state-selected-hover: var(--w-common-brand-light);
   --w-common-background-semantics-highlight: var(--w-common-brand);
   --w-common-background-semantics-highlight-light: var(--w-common-brand-lighter);
   --w-common-background-semantics-success: var(--w-palette-green-600);

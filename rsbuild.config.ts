@@ -9,12 +9,5 @@ export default defineConfig({
     port: 4000,
   },
 
-  html: {
-    templateParameters: {
-      BASE_URL: process.env.BASE_URL,
-    },
-    template: "./public/index.html",
-  },
-
   plugins: [pluginBasicSsl(), pluginReact(), pluginSass(), pluginWis()],
 });

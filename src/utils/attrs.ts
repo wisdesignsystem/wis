@@ -3,12 +3,16 @@ import { isBoolean } from "./is";
 interface Attrs {
   [key: string]: string | number | boolean | undefined | null;
 }
+interface Option {
+  ignoreNone?: boolean;
+}
+export default function attrs(data: Attrs, option?: Option) {
+  const { ignoreNone = true } = option ?? {};
 
-export default function attrs(data: Attrs) {
   return Object.keys(data).reduce((result, key) => {
     const value = data[key];
 
-    if (value === "none") {
+    if (ignoreNone && value === "none") {
       return result;
     }
 

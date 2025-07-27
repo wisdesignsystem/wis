@@ -760,6 +760,10 @@
         "helper-hover": {
           "$type": "color",
           "$value": "{_palette.gray.60}"
+        },
+        "primary_2": {
+          "$type": "color",
+          "$value": "{_palette.gray.90}"
         }
       },
       "size": {
@@ -3775,6 +3779,302 @@
         "$value": "{_palette.gray.80}"
       }
     },
+    "table": {
+      "font": {
+        "$type": "color",
+        "$value": "{font.color.primary}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{background.transparent.fully}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{border.color.base}"
+      },
+      "header": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "head-row": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "row": {
+        "background-even": {
+          "$type": "color",
+          "$value": "{background.common.01}"
+        },
+        "background-odd": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "hover-background": {
+          "$type": "color",
+          "$value": "{background.state.hover}"
+        },
+        "selected": {
+          "background": {
+            "$type": "color",
+            "$value": "{background.state.selected}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.state.selected-hover}"
+          }
+        },
+        "disabled": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.state.disabled}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.state.disabled}"
+          }
+        },
+        "error": {
+          "background": {
+            "$type": "color",
+            "$value": "{background.semantics.error-light}"
+          },
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.base}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.semantics.error-light-hover}"
+          }
+        },
+        "warning": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.base}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.semantics.warning-light}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.semantics.warning-light-hover}"
+          }
+        },
+        "success": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.base}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.semantics.success-light}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.semantics.success-light-hover}"
+          }
+        }
+      },
+      "head-cell": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.common.01}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "cell": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.base}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.transparent.fully}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.transparent}"
+        },
+        "trend": {
+          "up": {
+            "$type": "color",
+            "$value": "{background.semantics.error}"
+          },
+          "down": {
+            "$type": "color",
+            "$value": "{background.semantics.success}"
+          }
+        },
+        "rating": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.icon}"
+          },
+          "checked-font": {
+            "$type": "color",
+            "$value": "{yellow.400}"
+          }
+        }
+      },
+      "sort": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.helper}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.transparent}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.transparent.fully}"
+        },
+        "hover": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.helper-hover}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          }
+        },
+        "selected": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.semantics.highlight}"
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "hover-font": {
+            "$type": "color",
+            "$value": "{font.color.semantics.highlight-hover}"
+          },
+          "hover-background": {
+            "$type": "color",
+            "$value": "{background.transparent.fully}"
+          },
+          "hover-border": {
+            "$type": "color",
+            "$value": "{border.color.transparent}"
+          }
+        }
+      },
+      "footer": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{font.color.base}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "default-border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "_multipool": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{background.common.01}"
+        },
+        "default-border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "_tips": {
+        "tips-default-color": {
+          "$type": "color",
+          "$value": "{font.color.icon}"
+        },
+        "tips-default-color-hover": {
+          "$type": "color",
+          "$value": "{font.color.icon-hover}"
+        }
+      },
+      "_summary": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{background.common.01}"
+        },
+        "default-border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        }
+      },
+      "_config": {
+        "td-height": {
+          "$type": "dimension",
+          "$value": "48px"
+        },
+        "th-height": {
+          "$type": "dimension",
+          "$value": "32px"
+        },
+        "header-height": {
+          "$type": "dimension",
+          "$value": "56px"
+        }
+      },
+      "_editor": {
+        "default-font": {
+          "$type": "color",
+          "$value": "{font.color.base}"
+        },
+        "default-background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        }
+      }
+    },
     "_upload": {
       "background": {
         "$type": "color",
@@ -3957,220 +4257,6 @@
       "focus-border": {
         "$type": "color",
         "$value": "{_common.border.color.state.focus}"
-      }
-    },
-    "_table": {
-      "trend": {
-        "red": {
-          "$type": "color",
-          "$value": "{background.semantics.error}"
-        },
-        "green": {
-          "$type": "color",
-          "$value": "{background.semantics.success}"
-        }
-      },
-      "td-height": {
-        "$type": "dimension",
-        "$value": "48px"
-      },
-      "star": {
-        "font": {
-          "$type": "color",
-          "$value": "{font.color.icon}"
-        },
-        "yellow": {
-          "$type": "color",
-          "$value": "{yellow.400}"
-        }
-      },
-      "status": {
-        "focus-default-background": {
-          "$type": "color",
-          "$value": "{background.state.active}"
-        },
-        "focus-hover-background": {
-          "$type": "color",
-          "$value": "{background.state.selected-hover}"
-        },
-        "default-hover-background": {
-          "$type": "color",
-          "$value": "{background.state.hover}"
-        },
-        "zebra-background": {
-          "$type": "color",
-          "$value": "{background.common.01}"
-        },
-        "active-default-background": {
-          "$type": "color",
-          "$value": "{background.state.selected}"
-        },
-        "active-hover-background": {
-          "$type": "color",
-          "$value": "{background.state.selected-hover}"
-        },
-        "disabled-background": {
-          "$type": "color",
-          "$value": "{background.state.disabled}"
-        },
-        "disabled-font": {
-          "$type": "color",
-          "$value": "{font.color.state.disabled}"
-        },
-        "error-default-background": {
-          "$type": "color",
-          "$value": "{background.semantics.error-light}"
-        },
-        "error-default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "error-hover-background": {
-          "$type": "color",
-          "$value": "{background.semantics.error-light-hover}"
-        },
-        "warning-default-background": {
-          "$type": "color",
-          "$value": "{background.semantics.warning-light}"
-        },
-        "warning-default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "warning-hover-background": {
-          "$type": "color",
-          "$value": "{background.semantics.warning-light-hover}"
-        },
-        "success-default-background": {
-          "$type": "color",
-          "$value": "{background.semantics.success-light}"
-        },
-        "success-default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "success-hover-background": {
-          "$type": "color",
-          "$value": "{background.semantics.success-light-hover}"
-        }
-      },
-      "body": {
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        },
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        }
-      },
-      "th-height": {
-        "$type": "dimension",
-        "$value": "32px"
-      },
-      "header": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.01}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        },
-        "tips-default-color": {
-          "$type": "color",
-          "$value": "{font.color.icon}"
-        },
-        "tips-default-color-hover": {
-          "$type": "color",
-          "$value": "{font.color.icon-hover}"
-        },
-        "sortable-default-font": {
-          "$type": "color",
-          "$value": "{font.color.helper}"
-        },
-        "sortable-hover-font": {
-          "$type": "color",
-          "$value": "{font.color.helper-hover}"
-        },
-        "sortable-active-font": {
-          "$type": "color",
-          "$value": "{font.color.semantics.highlight}"
-        }
-      },
-      "header-height": {
-        "$type": "dimension",
-        "$value": "56px"
-      },
-      "footer": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "summary": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.01}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "toolbar": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "multipool": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.01}"
-        },
-        "default-border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "editor": {
-        "default-font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
-        "default-background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        }
       }
     },
     "_popper": {

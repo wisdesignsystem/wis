@@ -37,11 +37,12 @@
     "@wisdesign/lsicon": "0.0.21",
     "classnames": "2.5.1",
     "lodash.debounce": "4.0.8",
+    "lodash.throttle": "4.1.1",
     "nanoid": "5.0.7",
     "radix-ui": "1.1.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "wiscore": "0.0.5"
+    "wiscore": "0.0.6"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -54,12 +55,13 @@
     "@rsbuild/plugin-react": "1.1.0",
     "@rsbuild/plugin-sass": "1.2.2",
     "@types/lodash.debounce": "4.0.9",
+    "@types/lodash.throttle": "4.1.9",
     "@types/node": "22.13.7",
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "@wisdesign/cli": "0.0.34",
     "@wisdesign/toolkit": "0.0.7",
-    "@wisdesign/wis-plugin": "0.0.11",
+    "@wisdesign/wis-plugin": "0.0.12",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "typescript": "5.7.3"

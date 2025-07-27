@@ -23,7 +23,7 @@ function Top({
   const { unmatched } = matchElement(
     children,
     [{ type: "Actions", maxCount: 0 }],
-    false,
+    { strict: false },
   );
 
   return (
