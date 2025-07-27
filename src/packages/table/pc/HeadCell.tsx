@@ -121,9 +121,10 @@ function HeadCell<R extends PlainObject = PlainObject>({
       className={styles["head-cell"]}
       colSpan={column.colSpan}
       rowSpan={column.rowSpan}
-      data-align={column.align}
       style={style}
       {...attrs({
+        "data-align": column.align,
+        "data-pinned": column.pinned,
         "data-sortable": isSortable,
         "data-sort": ariaSortLabel,
         "data-ellipse": column.ellipsis,

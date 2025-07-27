@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { matchElement } from "wis/core";
+import attrs from "@/utils/attrs";
 
 import Colgroup from "./Colgroup";
 import Head from "./Head";
@@ -30,6 +31,7 @@ function Table<
     sorter,
     measure,
     scroller,
+    separator,
   } = useTable<R, P>(props, {
     columnElements,
   });
@@ -38,6 +40,9 @@ function Table<
     <div
       ref={tableRef}
       className={styles.table}
+      {...attrs({
+        "data-stripe": separator === "stripe",
+      })}
       style={
         {
           "--wis-table-variable-height": height,
@@ -66,7 +71,10 @@ function Table<
         className={styles.main}
         onScroll={scroller.onScroll}
       >
-        <table className={styles.content}>
+        <table
+          className={styles.content}
+          style={{ width: `${measure.totalColumnWidth - 10}px` }}
+        >
           <Colgroup<R> primary measure={measure} leafColumns={leafColumns} />
           {height === "auto" && (
             <Head<R>

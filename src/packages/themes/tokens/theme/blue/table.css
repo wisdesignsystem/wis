@@ -12,6 +12,7 @@
   --w-component-table-head-row-border: var(--w-common-border-color-base);
   --w-component-table-row-background-even: var(--w-common-background-common-01);
   --w-component-table-row-background-odd: var(--w-common-background-common-base);
+  --w-component-table-row-hover-border: var(--w-common-border-color-base);
   --w-component-table-row-hover-background: var(
     --w-common-background-state-hover
   );
@@ -53,9 +54,9 @@
   --w-component-table-head-cell-border: var(--w-common-border-color-base);
   --w-component-table-cell-font: var(--w-common-font-color-base);
   --w-component-table-cell-background: var(
-    --w-common-background-transparent-fully
+    --w-common-background-common-base
   );
-  --w-component-table-cell-border: var(--w-common-border-color-transparent);
+  --w-component-table-cell-border: var(--w-common-border-color-base);
   --w-component-table-cell-trend-up: var(--w-common-background-semantics-error);
   --w-component-table-cell-trend-down: var(
     --w-common-background-semantics-success

@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import attrs from "@/utils/attrs";
 
 import type { CellProps, PlainObject } from "../table";
 
@@ -25,7 +26,11 @@ function Cell<R extends PlainObject = PlainObject>({
   }
 
   return (
-    <td className={styles.cell} data-align={column.align} style={style}>
+    <td
+      className={styles.cell}
+      style={style}
+      {...attrs({ "data-align": column.align, "data-pinned": column.pinned })}
+    >
       {column.render?.({
         name: column.name as R extends PlainObject ? keyof R : string,
         rowIndex,

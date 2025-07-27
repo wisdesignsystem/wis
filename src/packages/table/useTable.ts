@@ -27,6 +27,7 @@ interface Result<
   sorter: Sorter<R>;
   measure: Measure<R>;
   scroller: Scroller;
+  separator: TableProps["separator"];
 }
 function useTable<
   R extends PlainObject = PlainObject,
@@ -34,6 +35,7 @@ function useTable<
 >(
   {
     rowKey = (row: R) => row.key,
+    separator = "stripe",
     height,
     data,
     sortMode,
@@ -107,6 +109,7 @@ function useTable<
     sorter,
     measure,
     scroller,
+    separator: layerColumns.length > 1 ? "border" : separator,
   };
 }
 

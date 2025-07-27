@@ -241,11 +241,6 @@ export interface TableProps<
   title?: string;
 
   /**
-   * The description of the table
-   */
-  description?: string;
-
-  /**
    * The datasource of the table
    */
   data?: R[] | TableAjax<R, P>;
@@ -254,11 +249,6 @@ export interface TableProps<
    * The table request params, it's useful when get data by remote.
    */
   params?: P;
-
-  /**
-   * The toggle tip of the table
-   */
-  toggleTip?: ReactNode;
 
   /**
    * The separator mode of the table

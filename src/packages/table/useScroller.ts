@@ -31,17 +31,41 @@ export function useScroller({
     new EventEmitter<ScrollerEvents>(),
   );
 
+  function checkScrollXPosition(target: HTMLDivElement) {
+    if (!tableRef.current) {
+      return;
+    }
+
+    const isScrollStartX = target.scrollLeft <= 0;
+    const isScrollEndX =
+      target.scrollLeft >= target.scrollWidth - target.clientWidth;
+
+    if (isScrollStartX) {
+      tableRef.current.setAttribute("data-scroll-x-start", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-x-start");
+    }
+
+    if (isScrollEndX) {
+      tableRef.current.setAttribute("data-scroll-x-end", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-x-end");
+    }
+  }
+
   const handleScroll: Scroller["onScroll"] = (event) => {
     const target = event.target as HTMLDivElement;
     eventEmitter.current.emit("scroll", target.scrollLeft, target.scrollTop);
 
-    if (tableHeaderRef.current !== null && tableHeaderRef.current !== target) {
+    if (tableHeaderRef.current && tableHeaderRef.current !== target) {
       tableHeaderRef.current.scrollLeft = target.scrollLeft;
     }
 
-    if (tableMainRef.current !== null && tableMainRef.current !== target) {
+    if (tableMainRef.current && tableMainRef.current !== target) {
       tableMainRef.current.scrollLeft = target.scrollLeft;
     }
+
+    checkScrollXPosition(target);
   };
 
   useLayoutEffect(() => {
@@ -67,11 +91,17 @@ export function useScroller({
 
       if (isScrollX) {
         tableRef.current.setAttribute("data-scroll-x", "");
+      } else {
+        tableRef.current.removeAttribute("data-scroll-x");
       }
 
       if (isScrollY) {
         tableRef.current.setAttribute("data-scroll-y", "");
+      } else {
+        tableRef.current.removeAttribute("data-scroll-y");
       }
+
+      checkScrollXPosition(tableMainRef.current);
     }, 50);
 
     resize();

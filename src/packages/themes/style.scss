@@ -5,10 +5,10 @@
  * @param {String} component - The name of the component (e.g., 'button', 'card').
  * @param {String} variant - Optional variant modifier.
  * @param {String} widget - Optional widget modifier.
- * @param {String} style - Optional style modifier.
- * @param {String} status - Optional status modifier.
- * @param {String} state - Optional state modifier.
- * @param {String} state2 - Optional secondary state modifier.
+ * @param {String} style - Optional style modifier. dark light inverse outline
+ * @param {String} status - Optional status modifier. line danger error
+ * @param {String} state - Optional state modifier. like selected disabled
+ * @param {String} state2 - Optional secondary state modifier. focus hover active
  *
  * The function constructs CSS variable names dynamically based on the provided parameters
  * and applies the corresponding color, background-color, and border-color styles.
@@ -25,6 +25,7 @@
   $enable-font: true,
   $enable-background: true,
   $enable-border: true,
+  $enable-shadow-border: false,
   $background-property: '',
 ) {
   $widget-pattern: if($widget != '', '#{$widget}-', '');
@@ -52,6 +53,12 @@
       --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}border
     );
   }
+
+  @if $enable-shadow-border == true {
+    box-shadow: 0 0 0 1px var(
+      --w-#{$type}-#{$component}-#{$variant-pattern}#{$widget-pattern}#{$style-pattern}#{$status-pattern}#{$state-pattern}#{$state2-pattern}border
+    );
+  }
 }
 
 @mixin component-style(
@@ -65,6 +72,7 @@
   $enable-font: true,
   $enable-background: true,
   $enable-border: true,
+  $enable-shadow-border: false,
   $background-property: '',
 ) {
   @include style(
@@ -79,6 +87,7 @@
     $enable-font: $enable-font,
     $enable-background: $enable-background,
     $enable-border: $enable-border,
+    $enable-shadow-border: $enable-shadow-border,
     $background-property: $background-property,
   );
 }
@@ -93,6 +102,7 @@
   $enable-font: true,
   $enable-background: true,
   $enable-border: true,
+  $enable-shadow-border: false,
   $background-property: '',
 ) {
   &:hover {
@@ -107,6 +117,7 @@
       $enable-font: $enable-font,
       $enable-background: $enable-background,
       $enable-border: $enable-border,
+      $enable-shadow-border: $enable-shadow-border,
       $background-property: $background-property,
     );
   }
@@ -125,6 +136,7 @@
         $enable-font: $enable-font,
         $enable-background: $enable-background,
         $enable-border: $enable-border,
+        $enable-shadow-border: $enable-shadow-border,
         $background-property: $background-property,
       );
     }
@@ -195,6 +207,7 @@
   $enable-font: true,
   $enable-background: true,
   $enable-border: true,
+  $enable-shadow-border: false,
   $background-property: '',
 ) {
   &:active {
@@ -209,6 +222,7 @@
       $enable-font: $enable-font,
       $enable-background: $enable-background,
       $enable-border: $enable-border,
+      $enable-shadow-border: $enable-shadow-border,
       $background-property: $background-property,
     );
   }
@@ -243,6 +257,7 @@
   $enable-font: true,
   $enable-background: true,
   $enable-border: true,
+  $enable-shadow-border: false,
   $background-property: '',
 ) {
   &[disabled],
@@ -258,6 +273,7 @@
       $enable-font: $enable-font,
       $enable-background: $enable-background,
       $enable-border: $enable-border,
+      $enable-shadow-border: $enable-shadow-border,
       $background-property: $background-property,
     );
     cursor: not-allowed;
