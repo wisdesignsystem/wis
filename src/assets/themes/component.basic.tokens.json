@@ -3806,34 +3806,34 @@
           "$value": "{border.color.base}"
         }
       },
-      "head-row": {
+      "row": {
         "font": {
           "$type": "color",
-          "$value": "{font.color.tertiary}"
+          "$value": "{font.color.base}"
         },
-        "background": {
-          "$type": "color",
-          "$value": "{background.common.base}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "row": {
         "background-even": {
           "$type": "color",
           "$value": "{background.common.01}"
+        },
+        "hover": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.tertiary}"
+          },
+          "background": {
+            "$type": "color",
+            "$value": "{background.state.hover}"
+          }
         },
         "background-odd": {
           "$type": "color",
           "$value": "{background.common.base}"
         },
-        "hover-background": {
-          "$type": "color",
-          "$value": "{background.state.hover}"
-        },
         "selected": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.semantics.highlight}"
+          },
           "background": {
             "$type": "color",
             "$value": "{background.state.selected}"
@@ -3860,7 +3860,7 @@
           },
           "font": {
             "$type": "color",
-            "$value": "{font.color.base}"
+            "$value": "{font.color.semantics.error}"
           },
           "hover-background": {
             "$type": "color",
@@ -3870,7 +3870,7 @@
         "warning": {
           "font": {
             "$type": "color",
-            "$value": "{font.color.base}"
+            "$value": "{font.color.semantics.warning}"
           },
           "background": {
             "$type": "color",
@@ -3884,7 +3884,7 @@
         "success": {
           "font": {
             "$type": "color",
-            "$value": "{font.color.base}"
+            "$value": "{font.color.semantics.success}"
           },
           "background": {
             "$type": "color",
@@ -3894,6 +3894,20 @@
             "$type": "color",
             "$value": "{background.semantics.success-light-hover}"
           }
+        }
+      },
+      "head-row": {
+        "font": {
+          "$type": "color",
+          "$value": "{font.color.tertiary}"
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{background.common.base}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
         }
       },
       "head-cell": {
@@ -3911,10 +3925,6 @@
         }
       },
       "cell": {
-        "font": {
-          "$type": "color",
-          "$value": "{font.color.base}"
-        },
         "background": {
           "$type": "color",
           "$value": "{background.transparent.fully}"
