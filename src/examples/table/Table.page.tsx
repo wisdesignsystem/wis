@@ -1,5 +1,7 @@
 import { Page } from "wis/page";
 import { Table, Column } from "wis/table";
+import { Actions } from "wis/actions";
+import { Button } from "wis/button";
 
 interface User {
   key: string;
@@ -36,7 +38,12 @@ function Example() {
   return (
     <Page title="Table" description="Table">
       <div style={{ padding: "24px", height: "100%", boxSizing: "border-box" }}>
-        <Table<User> data={queryData} height="auto">
+        <Table<User> data={queryData} height="auto" title="Table title">
+          <Actions>
+            <Button text="Upload" />
+            <Button text="Submit" variant="primary" />
+          </Actions>
+
           <Column
             title="Name"
             name="name"

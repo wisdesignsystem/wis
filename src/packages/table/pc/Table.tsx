@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { cloneElement } from "react";
 import { matchElement } from "wis/core";
 import attrs from "@/utils/attrs";
 
@@ -16,8 +17,11 @@ function Table<
   P extends PlainObject = PlainObject,
 >(props: TableProps<R, P>) {
   const {
-    elements: { Column: columnElements },
-  } = matchElement(props.children, ["Column"]);
+    elements: { Column: columnElements, Actions: actions },
+  } = matchElement(props.children, [
+    "Column",
+    { type: "Actions", maxCount: 1 },
+  ]);
 
   const {
     tableRef,
@@ -36,6 +40,16 @@ function Table<
     columnElements,
   });
 
+  function renderActions() {
+    if (actions === undefined) {
+      return null;
+    }
+
+    return cloneElement(actions[0], { size: "sm" });
+  }
+
+  const isShowHeader = props.title !== undefined || !!actions;
+
   return (
     <div
       ref={tableRef}
@@ -53,6 +67,12 @@ function Table<
         } as CSSProperties
       }
     >
+      {isShowHeader && (
+        <div className={styles.header}>
+          <span>{props.title}</span>
+          <div className={styles.actions}>{renderActions()}</div>
+        </div>
+      )}
       {height !== "auto" && (
         <div className={styles["head-container"]}>
           <div
