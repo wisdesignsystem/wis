@@ -107,7 +107,7 @@ const Drawer = forwardRef(
               <RDXDialog.Title>{title}</RDXDialog.Title>
               <RDXDialog.Description>{description}</RDXDialog.Description>
             </RDXVisuallyHidden.Root>
-            <Box className={styles.drawer}>
+            <Box className={styles.drawer} type="drawer">
               <BoxHeader
                 className={styles.header}
                 title={title}

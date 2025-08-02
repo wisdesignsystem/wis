@@ -97,6 +97,7 @@ function Module({
       className={classNames(styles.module, {
         [className as string]: !!className,
       })}
+      type="module"
       data-variant={isNested ? `${parentVariant}-nested` : variant}
       {...attrs({
         "data-with-nested": hasModule,

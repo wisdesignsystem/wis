@@ -5,6 +5,10 @@
   @include style.component-style($component: table);
 }
 
+@mixin table-header-style() {
+  @include style.component-style($component: table, $widget: header);
+}
+
 @mixin table-head-style() {
   @include style.component-style($component: table, $widget: head-row);
 }
@@ -42,16 +46,24 @@
   @include style.component-style($component: table, $widget: sort, $state2: 'hover');
 }
 
+@mixin table-sort-selected-style() {
+  @include style.component-style($component: table, $widget: sort, $state: 'selected');
+}
+
 .table {
   position: relative;
   width: 100%;
   height: var(--wis-table-variable-height);
   display: flex;
   flex-direction: column;
-  border-style: solid;
-  border-width: var(--w-common-spacing-scale-1);
-  border-radius: var(--w-common-border-radius-lg);
+  box-sizing: border-box;
   overflow: hidden;
+
+  &[data-border] {
+    border-style: solid;
+    border-width: var(--w-common-spacing-scale-1);
+    border-radius: var(--w-common-border-radius-lg);
+  }
 
   @include table-style();
 
@@ -167,6 +179,7 @@
 
   &[data-pinned-separator][data-scroll-x] {
     &:not([data-scroll-x-start]) {
+
       .head-cell[data-pinned="left"][data-pinned-latest],
       .cell[data-pinned="left"][data-pinned-latest] {
         &::after {
@@ -176,6 +189,7 @@
     }
 
     &:not([data-scroll-x-end]) {
+
       .head-cell[data-pinned="right"][data-pinned-latest],
       .cell[data-pinned="right"][data-pinned-latest] {
         &::after {
@@ -184,6 +198,22 @@
       }
     }
   }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
+  border-bottom-width: var(--w-common-spacing-scale-1);
+  border-bottom-style: solid;
+  font-weight: var(--w-common-font-weight-bold);
+  flex: 0 0 auto;
+  @include tool.font-size(var(--w-common-font-size-text-lg));
+
+  @include table-header-style();
 }
 
 .head-container {
@@ -257,6 +287,12 @@
   &:hover {
     .sort {
       @include table-sort-hover-style();
+    }
+  }
+
+  &[data-sort] {
+    .sort {
+      @include table-sort-selected-style();
     }
   }
 }

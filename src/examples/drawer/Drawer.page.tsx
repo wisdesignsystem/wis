@@ -38,7 +38,6 @@ export default function Example() {
         title="Drawer Title"
         description="Drawer Description"
         maskCloseable={false}
-        size={800}
         toggleTip={
           <ToggleTip text="Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world, Hello world">
             <ToggleTipActions>

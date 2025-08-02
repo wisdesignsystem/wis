@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-import { matchElement } from "wis/core";
+import { cloneElement, useContext } from "react";
+import { matchElement, ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
 import Colgroup from "./Colgroup";
@@ -15,9 +16,13 @@ function Table<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 >(props: TableProps<R, P>) {
+  const inComponentType = useContext(ComponentTypeContext);
   const {
-    elements: { Column: columnElements },
-  } = matchElement(props.children, ["Column"]);
+    elements: { Column: columnElements, Actions: actions },
+  } = matchElement(props.children, [
+    "Column",
+    { type: "Actions", maxCount: 1 },
+  ]);
 
   const {
     tableRef,
@@ -36,11 +41,22 @@ function Table<
     columnElements,
   });
 
+  function renderActions() {
+    if (actions === undefined) {
+      return null;
+    }
+
+    return cloneElement(actions[0], { size: "sm" });
+  }
+
+  const isShowHeader = props.title !== undefined || !!actions;
+
   return (
     <div
       ref={tableRef}
       className={styles.table}
       {...attrs({
+        "data-border": inComponentType === "grid",
         "data-separator": separator,
         "data-pinned-separator": measure.pinnedSeparator,
       })}
@@ -53,6 +69,12 @@ function Table<
         } as CSSProperties
       }
     >
+      {isShowHeader && (
+        <div className={styles.header}>
+          <span>{props.title}</span>
+          <div className={styles.actions}>{renderActions()}</div>
+        </div>
+      )}
       {height !== "auto" && (
         <div className={styles["head-container"]}>
           <div

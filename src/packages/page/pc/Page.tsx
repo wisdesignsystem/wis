@@ -58,6 +58,7 @@ function Page({
       className={classNames(styles.page, {
         [className as string]: !!className,
       })}
+      type="page"
     >
       <BoxHeader
         className={styles.header}

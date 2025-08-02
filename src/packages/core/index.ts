@@ -7,6 +7,7 @@ import MountElementContext, {
   useGetMountElement,
   useSetMountElement,
 } from "./mountElementContext";
+import ComponentTypeContext from "./componentTypeContext";
 
 export {
   isElement,
@@ -15,4 +16,5 @@ export {
   MountElementContext,
   useGetMountElement,
   useSetMountElement,
+  ComponentTypeContext,
 };
