@@ -1,6 +1,8 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-export interface BoxProps extends HTMLAttributes<HTMLDivElement> {}
+export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
+  type?: string;
+}
 
 export interface BoxActionsProps {
   /**

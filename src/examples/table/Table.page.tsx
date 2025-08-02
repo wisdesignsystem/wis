@@ -1,7 +1,11 @@
+import { useRef } from "react";
 import { Page } from "wis/page";
 import { Table, Column } from "wis/table";
 import { Actions } from "wis/actions";
 import { Button } from "wis/button";
+import { Drawer, type DrawerRef } from "wis/drawer";
+import { Modal, type ModalRef } from "wis/modal";
+import { Module } from "wis/module";
 
 interface User {
   key: string;
@@ -30,66 +34,97 @@ function Example() {
       test: "xxx",
     };
   });
+  const drawerRef = useRef<DrawerRef>(null);
+  const modalRef = useRef<ModalRef>(null);
 
   async function queryData() {
     return { data };
   }
 
+  function renderTable() {
+    return (
+      <Table<User> data={queryData} height="auto" title="Table title">
+        <Actions>
+          <Button text="Upload" />
+          <Button text="Submit" variant="primary" />
+        </Actions>
+
+        <Column
+          title="Name"
+          name="name"
+          pinned="left"
+          maxWidth={200}
+          ellipsis
+          align="left"
+        >
+          {cell.data}
+        </Column>
+        <Column<User>
+          title="Age"
+          name="age"
+          pinned="left"
+          width={160}
+          align="right"
+          sortable={(a, b) => a.age - b.age}
+        >
+          {cell.data}
+        </Column>
+        <Column title="Gender" name="gender" width={200} align="right">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender1" name="gender1">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender2" name="gender2">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender3" name="gender3">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender4" name="gender4">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender5" name="gender5">
+          {cell.data}
+        </Column>
+        <Column width={200} title="Gender6" name="gender6">
+          {cell.data}
+        </Column>
+        <Column title="Test" name="test" align="right" pinned="right">
+          {cell.data}
+        </Column>
+      </Table>
+    );
+  }
+
   return (
     <Page title="Table" description="Table">
-      <div style={{ padding: "24px", height: "100%", boxSizing: "border-box" }}>
-        <Table<User> data={queryData} height="auto" title="Table title">
-          <Actions>
-            <Button text="Upload" />
-            <Button text="Submit" variant="primary" />
-          </Actions>
+      <Actions>
+        <Button
+          text="Open Drawer Table"
+          onClick={() => drawerRef.current?.show()}
+        />
+        <Button
+          text="Open Modal Table"
+          onClick={() => modalRef.current?.show()}
+        />
+      </Actions>
 
-          <Column
-            title="Name"
-            name="name"
-            pinned="left"
-            maxWidth={200}
-            ellipsis
-            align="left"
-          >
-            {cell.data}
-          </Column>
-          <Column<User>
-            title="Age"
-            name="age"
-            pinned="left"
-            width={160}
-            align="right"
-            sortable={(a, b) => a.age - b.age}
-          >
-            {cell.data}
-          </Column>
-          <Column title="Gender" name="gender" width={200} align="right">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender1" name="gender1">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender2" name="gender2">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender3" name="gender3">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender4" name="gender4">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender5" name="gender5">
-            {cell.data}
-          </Column>
-          <Column width={200} title="Gender6" name="gender6">
-            {cell.data}
-          </Column>
-          <Column title="Test" name="test" align="right" pinned="right">
-            {cell.data}
-          </Column>
-        </Table>
-      </div>
+      {renderTable()}
+
+      <Module title="Module Table">{renderTable()}</Module>
+
+      <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
+        {renderTable()}
+
+        <Module title="Module Table">{renderTable()}</Module>
+      </Drawer>
+
+      <Modal ref={modalRef} title="Modal Table" width={600} height={400}>
+        {renderTable()}
+
+        <Module title="Module Table">{renderTable()}</Module>
+      </Modal>
     </Page>
   );
 }

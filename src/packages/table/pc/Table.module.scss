@@ -56,10 +56,14 @@
   height: var(--wis-table-variable-height);
   display: flex;
   flex-direction: column;
-  border-style: solid;
-  border-width: var(--w-common-spacing-scale-1);
-  border-radius: var(--w-common-border-radius-lg);
+  box-sizing: border-box;
   overflow: hidden;
+
+  &[data-border] {
+    border-style: solid;
+    border-width: var(--w-common-spacing-scale-1);
+    border-radius: var(--w-common-border-radius-lg);
+  }
 
   @include table-style();
 
@@ -175,6 +179,7 @@
 
   &[data-pinned-separator][data-scroll-x] {
     &:not([data-scroll-x-start]) {
+
       .head-cell[data-pinned="left"][data-pinned-latest],
       .cell[data-pinned="left"][data-pinned-latest] {
         &::after {
@@ -184,6 +189,7 @@
     }
 
     &:not([data-scroll-x-end]) {
+
       .head-cell[data-pinned="right"][data-pinned-latest],
       .cell[data-pinned="right"][data-pinned-latest] {
         &::after {
@@ -204,6 +210,7 @@
   border-bottom-width: var(--w-common-spacing-scale-1);
   border-bottom-style: solid;
   font-weight: var(--w-common-font-weight-bold);
+  flex: 0 0 auto;
   @include tool.font-size(var(--w-common-font-size-text-lg));
 
   @include table-header-style();

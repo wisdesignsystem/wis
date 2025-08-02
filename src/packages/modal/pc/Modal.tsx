@@ -111,7 +111,7 @@ const Modal = forwardRef(
               <RDXDialog.Title>{title}</RDXDialog.Title>
               <RDXDialog.Description>{description}</RDXDialog.Description>
             </RDXVisuallyHidden.Root>
-            <Box className={styles.modal}>
+            <Box className={styles.modal} type="modal">
               <BoxHeader
                 className={styles.header}
                 title={title}

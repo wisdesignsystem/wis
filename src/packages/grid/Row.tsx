@@ -1,3 +1,4 @@
+import { ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
 import type { RowProps } from "./grid";
@@ -10,7 +11,9 @@ function Row({ gutter = true, responsive, children }: RowProps) {
       className={styles.row}
       {...attrs({ "data-gutter": gutter, "data-responsive": responsive })}
     >
-      {children}
+      <ComponentTypeContext.Provider value="grid">
+        {children}
+      </ComponentTypeContext.Provider>
     </div>
   );
 }

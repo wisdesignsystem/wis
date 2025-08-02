@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import { cloneElement } from "react";
-import { matchElement } from "wis/core";
+import { cloneElement, useContext } from "react";
+import { matchElement, ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
 import Colgroup from "./Colgroup";
@@ -16,6 +16,7 @@ function Table<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 >(props: TableProps<R, P>) {
+  const inComponentType = useContext(ComponentTypeContext);
   const {
     elements: { Column: columnElements, Actions: actions },
   } = matchElement(props.children, [
@@ -55,6 +56,7 @@ function Table<
       ref={tableRef}
       className={styles.table}
       {...attrs({
+        "data-border": inComponentType === "grid",
         "data-separator": separator,
         "data-pinned-separator": measure.pinnedSeparator,
       })}
