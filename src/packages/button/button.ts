@@ -13,7 +13,7 @@ export interface ButtonProps
   /**
    * Sets the special status of the button.
    */
-  status?: "none" | "danger";
+  status?: "danger";
 
   /**
    * When `true`, prevents the user from interacting with the button.

@@ -13,7 +13,7 @@ function Colgroup<R extends PlainObject = PlainObject>({
         if (!column.visible) {
           return null;
         }
-        const style: undefined | CSSProperties = { minWidth: "80px" };
+        const style: undefined | CSSProperties = { minWidth: "60px" };
         if (!primary) {
           style.width = `${measure.getSecondaryColumnWidth(column)}px`;
         } else {

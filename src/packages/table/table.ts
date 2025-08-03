@@ -261,11 +261,6 @@ export interface TableProps<
   rowKey?: string | ((record: R) => string);
 
   /**
-   * The size of the table
-   */
-  size?: "md" | "sm";
-
-  /**
    * The sort mode of the table
    */
   sortMode?: "reset" | "toggle";

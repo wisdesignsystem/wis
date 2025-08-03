@@ -41,6 +41,7 @@ export function useDatasource<
   sorter,
   params,
   manual = false,
+  onLoad = () => {},
 }: Option<R, P>): Datasource<R, P> {
   const [datasource, setDatasource] = useState<R[]>([]);
 
@@ -77,6 +78,8 @@ export function useDatasource<
     if (res.sort !== undefined && res.sort !== null) {
       sorter.operator.set(res.sort);
     }
+
+    onLoad(res);
 
     return res;
   };

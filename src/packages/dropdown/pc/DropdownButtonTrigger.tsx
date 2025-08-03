@@ -8,21 +8,21 @@ import type { DropdownButtonTriggerProps } from "../dropdown";
 
 import styles from "./Dropdown.module.scss";
 
-const DropdownButtonTrigger = forwardRef(
-  (
-    {
-      className,
-      variant,
-      disabled,
-      text,
-      icon,
-      iconControl,
-      size,
-      shortcutKey,
-      ...rest
-    }: DropdownButtonTriggerProps,
-    ref: ForwardedRef<HTMLButtonElement>,
-  ) => (
+const DropdownButtonTrigger = forwardRef(function DropdownButtonTrigger(
+  {
+    className,
+    variant,
+    disabled,
+    text,
+    icon,
+    iconControl,
+    size,
+    shortcutKey,
+    ...rest
+  }: DropdownButtonTriggerProps,
+  ref: ForwardedRef<HTMLButtonElement>,
+) {
+  return (
     <div
       className={classNames(styles["button-trigger"], {
         [className as string]: !!className,
@@ -48,8 +48,8 @@ const DropdownButtonTrigger = forwardRef(
         {...rest}
       />
     </div>
-  ),
-);
+  );
+});
 
 DropdownButtonTrigger.displayName = "DropdownButtonTrigger";
 

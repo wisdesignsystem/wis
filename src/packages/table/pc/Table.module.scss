@@ -80,8 +80,10 @@
         width: var(--wis-table-variable-scroll-y);
         height: 100%;
         flex: 0 0 auto;
-        border-bottom-width: 1px;
+        border-bottom-width: var(--w-common-spacing-scale-1);
         border-bottom-style: solid;
+        border-inline-start-width: var(--w-common-spacing-scale-1);
+        border-inline-start-style: solid;
         z-index: 1;
         box-sizing: border-box;
         @include table-head-style();
@@ -90,11 +92,6 @@
   }
 
   &[data-separator="stripe"] {
-    .head {
-      border-bottom-width: var(--w-common-spacing-scale-1);
-      border-bottom-style: solid;
-    }
-
     .row {
       &:hover {
         &:nth-child(even) {
@@ -126,11 +123,6 @@
 
   &[data-separator="grid"],
   &[data-separator="border"] {
-    .head-cell {
-      border-block-end-width: var(--w-common-spacing-scale-1);
-      border-block-end-style: solid;
-    }
-
     .row {
       &:not([data-hidden]) {
         .cell {
@@ -247,12 +239,14 @@
 
 .head-cell {
   text-align: start;
-  min-width: 80px;
+  min-width: 60px;
   height: 32px;
   padding: var(--w-common-spacing-common-sm) var(--w-common-spacing-common-lg);
   text-overflow: ellipsis;
   box-sizing: border-box;
   font-weight: var(--w-common-font-weight-medium);
+  border-block-end-width: var(--w-common-spacing-scale-1);
+  border-block-end-style: solid;
   @include tool.font-size(var(--w-common-font-size-text-base));
   @include table-head-row-style();
 
@@ -276,7 +270,7 @@
     cursor: pointer;
   }
 
-  &[data-ellipse] {
+  &[data-ellipsis] {
     .head-cell-label {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -423,5 +417,11 @@
 
   &[data-align="right"] {
     text-align: end;
+  }
+
+  &[data-ellipsis] {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

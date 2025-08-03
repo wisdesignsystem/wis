@@ -34,6 +34,7 @@ function Cell<R extends PlainObject = PlainObject>({
         "data-pinned": column.pinned,
         "data-pinned-latest":
           measure.columnPinnedWidthMap[column.name]?.isLatest,
+        "data-ellipsis": column.ellipsis,
       })}
     >
       {column.render?.({

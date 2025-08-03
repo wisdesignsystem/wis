@@ -6,6 +6,8 @@
   --w-component-table-header-background: var(--w-common-background-common-base);
   --w-component-table-header-border: var(--w-common-border-color-base);
   --w-component-table-row-font: var(--w-common-font-color-base);
+  --w-component-table-row-background: var(--w-common-background-common-base);
+  --w-component-table-row-border: var(--w-common-border-color-base);
   --w-component-table-row-background-even: var(--w-common-background-common-01);
   --w-component-table-row-hover-font: var(--w-common-font-color-tertiary);
   --w-component-table-row-hover-background: var(

@@ -8,83 +8,81 @@ import type { ButtonProps } from "../button";
 
 import styles from "./Button.module.scss";
 
-const Button = forwardRef(
-  (
-    {
-      className,
-      variant = "secondary",
-      status = "none",
-      disabled,
-      text,
-      icon,
-      iconControl = "prefix",
-      size = "md",
-      shortcutKey,
-      onClick = () => {},
-      ...rest
-    }: ButtonProps,
-    ref: ForwardedRef<HTMLButtonElement>,
-  ) => {
-    const button = useRef<HTMLButtonElement | null>(null);
+const Button = forwardRef(function Button(
+  {
+    className,
+    variant = "secondary",
+    status,
+    disabled,
+    text,
+    icon,
+    iconControl = "prefix",
+    size = "md",
+    shortcutKey,
+    onClick = () => {},
+    ...rest
+  }: ButtonProps,
+  ref: ForwardedRef<HTMLButtonElement>,
+) {
+  const button = useRef<HTMLButtonElement | null>(null);
 
-    const isIconButton = !text && !shortcutKey;
-    const shortcut = createShortcutMeta(shortcutKey);
+  const isIconButton = !text && !shortcutKey;
+  const shortcut = createShortcutMeta(shortcutKey);
 
-    function renderShortcut() {
-      return (
-        <Shortcut
-          shortcutKey={shortcutKey}
-          disabled={disabled}
-          size={size}
-          variant={["primary", "classic"].includes(variant) ? "light" : "dark"}
-          onKeyPressed={() => {
-            if (button.current === null) {
-              return;
-            }
-
-            button.current.focus();
-            button.current.click();
-          }}
-        />
-      );
-    }
-
+  function renderShortcut() {
     return (
-      <button
-        {...rest}
-        ref={(node: HTMLButtonElement) => {
-          button.current = node;
-
-          if (ref === null) {
+      <Shortcut
+        shortcutKey={shortcutKey}
+        disabled={disabled}
+        size={size}
+        variant={["primary", "classic"].includes(variant) ? "light" : "dark"}
+        onKeyPressed={() => {
+          if (button.current === null) {
             return;
           }
 
-          // @ts-ignore
-          ref(node);
+          button.current.focus();
+          button.current.click();
         }}
-        className={classNames(styles.button, {
-          [className as string]: !!className,
-        })}
-        data-size={size}
-        data-variant={variant}
-        aria-disabled={disabled}
-        aria-keyshortcuts={shortcut.shortcutKey}
-        disabled={disabled}
-        {...attrs({
-          "data-status": status,
-          "data-disabled": disabled,
-          "data-icon": isIconButton,
-        })}
-        onClick={onClick}
-      >
-        {iconControl === "prefix" && icon}
-        {!isIconButton && <span>{text}</span>}
-        {iconControl === "suffix" && icon}
-        {renderShortcut()}
-      </button>
+      />
     );
-  },
-);
+  }
+
+  return (
+    <button
+      {...rest}
+      ref={(node: HTMLButtonElement) => {
+        button.current = node;
+
+        if (ref === null) {
+          return;
+        }
+
+        // @ts-ignore
+        ref(node);
+      }}
+      className={classNames(styles.button, {
+        [className as string]: !!className,
+      })}
+      data-size={size}
+      data-variant={variant}
+      aria-disabled={disabled}
+      aria-keyshortcuts={shortcut.shortcutKey}
+      disabled={disabled}
+      {...attrs({
+        "data-status": status,
+        "data-disabled": disabled,
+        "data-icon": isIconButton,
+      })}
+      onClick={onClick}
+    >
+      {iconControl === "prefix" && icon}
+      {!isIconButton && <span>{text}</span>}
+      {iconControl === "suffix" && icon}
+      {renderShortcut()}
+    </button>
+  );
+});
 
 Button.displayName = "Button";
 

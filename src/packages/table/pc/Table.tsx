@@ -1,5 +1,10 @@
-import type { CSSProperties } from "react";
-import { cloneElement, useContext } from "react";
+import type { CSSProperties, Ref, ReactNode } from "react";
+import {
+  cloneElement,
+  useContext,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { matchElement, ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
@@ -8,14 +13,14 @@ import Head from "./Head";
 import PinnedHead from "./PinnedHead";
 import Body from "./Body";
 import useTable from "../useTable";
-import type { TableProps, PlainObject } from "../table";
+import type { TableProps, PlainObject, TableRef } from "../table";
 
 import styles from "./Table.module.scss";
 
-function Table<
+const Table = forwardRef(function Table<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
->(props: TableProps<R, P>) {
+>(props: TableProps<R, P>, ref: Ref<TableRef<R, P>>) {
   const inComponentType = useContext(ComponentTypeContext);
   const {
     elements: { Column: columnElements, Actions: actions },
@@ -48,6 +53,13 @@ function Table<
 
     return cloneElement(actions[0], { size: "sm" });
   }
+
+  useImperativeHandle(ref, () => {
+    return {
+      query: datasource.operator.query,
+      getData: datasource.operator.getData,
+    };
+  });
 
   const isShowHeader = props.title !== undefined || !!actions;
 
@@ -118,7 +130,13 @@ function Table<
       </div>
     </div>
   );
-}
+}) as (<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>(
+  props: TableProps<R, P>,
+  ref: Ref<TableRef<R, P>>,
+) => ReactNode) & { displayName: string };
 
 Table.displayName = "Table";
 

@@ -129,7 +129,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
           measure.columnPinnedWidthMap[column.name]?.isLatest,
         "data-sortable": isSortable,
         "data-sort": ariaSortLabel,
-        "data-ellipse": column.ellipsis,
+        "data-ellipsis": column.ellipsis,
       })}
       {...attrs(
         {
