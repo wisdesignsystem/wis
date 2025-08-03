@@ -195,7 +195,7 @@ export interface DropdownItemProps
   /**
    * Sets the special status of the item.
    */
-  status?: "none" | "danger";
+  status?: "danger";
 
   /**
    * When `true`, prevents the user from interacting with the dropdown item.

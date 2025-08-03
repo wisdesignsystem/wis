@@ -34,12 +34,15 @@ function useTable<
   P extends PlainObject = PlainObject,
 >(
   {
-    rowKey = (row: R) => row.key,
+    rowKey = (record: R) => record.key,
     separator = "stripe",
     height,
+    params,
     data,
     sortMode,
+    manual,
     onSortChange,
+    onLoad,
   }: TableProps<R, P>,
   option: Option<R>,
 ): Result<R, P> {
@@ -85,8 +88,11 @@ function useTable<
   });
   const datasource = useDatasource<R, P>({
     data,
+    params,
+    manual,
     leafColumns,
     sorter,
+    onLoad,
   });
   const measure = useMeasure<R>({
     leafColumns,

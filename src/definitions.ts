@@ -393,7 +393,19 @@ export default {
     description: "",
     displayName: "Box",
     methods: [],
-    props: {},
+    props: {
+      type: {
+        defaultValue: null,
+        description: "",
+        name: "type",
+        parent: { fileName: "wis/src/packages/box/box.ts", name: "BoxProps" },
+        declarations: [
+          { fileName: "wis/src/packages/box/box.ts", name: "BoxProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+    },
   },
   BoxHeader: {
     tags: {},
@@ -607,7 +619,7 @@ export default {
         },
       },
       status: {
-        defaultValue: { value: "none" },
+        defaultValue: null,
         description: "Sets the special status of the button.",
         name: "status",
         parent: {
@@ -621,11 +633,7 @@ export default {
           },
         ],
         required: false,
-        type: {
-          name: "enum",
-          raw: '"none" | "danger"',
-          value: [{ value: '"none"' }, { value: '"danger"' }],
-        },
+        type: { name: '"danger"' },
       },
       disabled: {
         defaultValue: null,
@@ -816,7 +824,7 @@ export default {
     methods: [],
     props: {
       status: {
-        defaultValue: { value: "none" },
+        defaultValue: null,
         description: "Sets the special status of the item.",
         name: "status",
         parent: {
@@ -830,11 +838,7 @@ export default {
           },
         ],
         required: false,
-        type: {
-          name: "enum",
-          raw: '"none" | "danger"',
-          value: [{ value: '"none"' }, { value: '"danger"' }],
-        },
+        type: { name: '"danger"' },
       },
       disabled: {
         defaultValue: null,
@@ -2210,11 +2214,7 @@ export default {
           },
         ],
         required: false,
-        type: {
-          name: "enum",
-          raw: '"none" | "danger"',
-          value: [{ value: '"none"' }, { value: '"danger"' }],
-        },
+        type: { name: '"danger"' },
       },
       disabled: {
         defaultValue: null,
@@ -3536,6 +3536,390 @@ export default {
     displayName: "pc",
     methods: [],
     props: {},
+  },
+  Table: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/table/pc/index.ts",
+    description: "",
+    displayName: "Table",
+    methods: [],
+    props: {
+      title: {
+        defaultValue: null,
+        description: "The title of the table",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      data: {
+        defaultValue: null,
+        description: "The datasource of the table",
+        name: "data",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "R[] | TableAjax<R, P>" },
+      },
+      params: {
+        defaultValue: null,
+        description:
+          "The table request params, it's useful when get data by remote.",
+        name: "params",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "PlainObject" },
+      },
+      separator: {
+        defaultValue: null,
+        description: "The separator mode of the table",
+        name: "separator",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"stripe" | "border"',
+          value: [{ value: '"stripe"' }, { value: '"border"' }],
+        },
+      },
+      rowKey: {
+        defaultValue: null,
+        description: "The primary key of the table row",
+        name: "rowKey",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "string | ((record: R) => string)" },
+      },
+      sortMode: {
+        defaultValue: null,
+        description: "The sort mode of the table",
+        name: "sortMode",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"reset" | "toggle"',
+          value: [{ value: '"reset"' }, { value: '"toggle"' }],
+        },
+      },
+      manual: {
+        defaultValue: null,
+        description:
+          "When true, the table will not automatically query the data when it is mounted.",
+        name: "manual",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      height: {
+        defaultValue: null,
+        description:
+          "Specify the height of the table. 'auto' will calculate based on the container, invalid when container has no height, not setting will follow the content",
+        name: "height",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: 'number | "auto"' },
+      },
+      onSortChange: {
+        defaultValue: null,
+        description: "The callback function when the sort changes",
+        name: "onSortChange",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "(sort?: Sort | Sort[]) => void" },
+      },
+      onLoad: {
+        defaultValue: null,
+        description: "The callback function when the data is loaded",
+        name: "onLoad",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "TableProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "TableProps" },
+        ],
+        required: false,
+        type: { name: "(response: TableResponse<R>) => void" },
+      },
+    },
+  },
+  Column: {
+    tags: {},
+    filePath: "/Volumes/Work/wisdesign/wis/src/packages/table/pc/index.ts",
+    description: "",
+    displayName: "Column",
+    methods: [],
+    props: {
+      title: {
+        defaultValue: null,
+        description: "The title of the column",
+        name: "title",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "string" },
+      },
+      name: {
+        defaultValue: null,
+        description: "The name of the column",
+        name: "name",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: true,
+        type: { name: "string" },
+      },
+      sortable: {
+        defaultValue: null,
+        description: "Config the column is sortable and sort way.",
+        name: "sortable",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "boolean | Compare<R> | Sortable<R>" },
+      },
+      ellipsis: {
+        defaultValue: null,
+        description:
+          "Set the cell text ellipsis when the cell text is too long. Need to set the width property.",
+        name: "ellipsis",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      minWidth: {
+        defaultValue: null,
+        description: "Set the min width of the column.",
+        name: "minWidth",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      width: {
+        defaultValue: null,
+        description: "Set the width of the column.",
+        name: "width",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      maxWidth: {
+        defaultValue: null,
+        description: "Set the max width of the column.",
+        name: "maxWidth",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      align: {
+        defaultValue: null,
+        description: "Set the text alignment of the column.",
+        name: "align",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"left" | "center" | "right"',
+          value: [
+            { value: '"left"' },
+            { value: '"center"' },
+            { value: '"right"' },
+          ],
+        },
+      },
+      visible: {
+        defaultValue: null,
+        description:
+          "Set the visible of the column. Set this value will enable controlled mode, and the display state cannot be adjusted manually.",
+        name: "visible",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      defaultVisible: {
+        defaultValue: null,
+        description: "Set the default visible of the column.",
+        name: "defaultVisible",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "boolean" },
+      },
+      pinned: {
+        defaultValue: null,
+        description:
+          "Set the pinned of the column. Set this value will enable controlled mode, and the display state cannot be adjusted manually.",
+        name: "pinned",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"left" | "right"',
+          value: [{ value: '"left"' }, { value: '"right"' }],
+        },
+      },
+      defaultPinned: {
+        defaultValue: null,
+        description: "Set the default pinned of the column.",
+        name: "defaultPinned",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: {
+          name: "enum",
+          raw: '"left" | "right"',
+          value: [{ value: '"left"' }, { value: '"right"' }],
+        },
+      },
+      colSpan: {
+        defaultValue: null,
+        description: "Set the colSpan of the header cell.",
+        name: "colSpan",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: false,
+        type: { name: "number" },
+      },
+      children: {
+        defaultValue: null,
+        description: "@ignore",
+        name: "children",
+        parent: {
+          fileName: "wis/src/packages/table/table.ts",
+          name: "ColumnProps",
+        },
+        declarations: [
+          { fileName: "wis/src/packages/table/table.ts", name: "ColumnProps" },
+        ],
+        required: true,
+        type: { name: "ReactNode" },
+      },
+    },
   },
   Toggle: {
     tags: {},
