@@ -353,6 +353,7 @@
 }
 
 .head-cell-label {
+  display: block;
   flex: 0 1 auto;
   min-width: 0;
   word-break: break-word;
@@ -420,8 +421,14 @@
   }
 
   &[data-ellipsis] {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    .cell-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
+}
+
+.cell-label {
+  display: block;
 }

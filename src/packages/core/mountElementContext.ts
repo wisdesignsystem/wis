@@ -1,5 +1,5 @@
 import { createContext, useContext, useRef, useState } from "react";
-import useDidMount from "@/hooks/useDidMount";
+import useMount from "@/hooks/useMount";
 
 const MountElementContext = createContext<HTMLElement | null>(null);
 
@@ -7,7 +7,7 @@ export function useSetMountElement() {
   const mountElementRef = useRef<HTMLElement>(null);
   const [ready, setReady] = useState(false);
 
-  useDidMount(() => {
+  useMount(() => {
     setReady(true);
   });
 

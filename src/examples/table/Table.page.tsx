@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Page } from "wis/page";
 import { Table, Column } from "wis/table";
 import { Actions } from "wis/actions";
@@ -22,18 +22,39 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 10 }).map((_, index) => {
-    return {
-      key: `key_${index}`,
-      name: "Wis Design",
-      age: random(0, 100),
-      gender: "Men",
-      biology: random(0, 100),
-      math: random(0, 100),
-      physics: random(0, 100),
-      test: "xxx",
-    };
-  });
+  // const data: User[] = Array.from({ length: 10 }).map((_, index) => {
+  //   return {
+  //     key: `key_${index}`,
+  //     name: "Wis Design",
+  //     age: random(0, 100),
+  //     gender: "Men",
+  //     biology: random(0, 100),
+  //     math: random(0, 100),
+  //     physics: random(0, 100),
+  //     test: "sflkjdaslkfjdaslkfjdslakfjlewkjrlkdfjldkasfjladksjflkdsajfldksajflksa",
+  //   };
+  // });
+  const [show, setShow] = useState(false);
+  const data = [
+    {
+      name: "Chengdu",
+      age: "1",
+      address: "Chengdu, Sichuan, China",
+      desc: "Chengdu, the capital of China's Sichuan Province, is a vibrant 'new first-tier' city where modernity blends with ancient charm. Known as the 'Land of Abundance,' it's famous for its laid-back lifestyle, spicy cuisine, and adorable giant pandas.",
+    },
+    {
+      name: "Chengdu",
+      age: "1",
+      address: "Chengdu, Sichuan, China",
+      desc: "Chengdu, the capital of China's Sichuan Province, is a vibrant 'new first-tier' city where modernity blends with ancient charm. Known as the 'Land of Abundance,' it's famous for its laid-back lifestyle, spicy cuisine, and adorable giant pandas.",
+    },
+    {
+      name: "Chengdu",
+      age: "1",
+      address: "Chengdu, Sichuan, China",
+      desc: "Chengdu, the capital of China's Sichuan Province, is a vibrant 'new first-tier' city where modernity blends with ancient charm. Known as the 'Land of Abundance,' it's famous for its laid-back lifestyle, spicy cuisine, and adorable giant pandas.",
+    },
+  ];
   const drawerRef = useRef<DrawerRef>(null);
   const modalRef = useRef<ModalRef>(null);
 
@@ -41,56 +62,28 @@ function Example() {
     return { data };
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true);
+    }, 2000);
+  }, []);
+
   function renderTable() {
     return (
-      <Table<User> data={queryData} height="auto" title="Table title">
-        <Actions>
-          <Button text="Upload" />
-          <Button text="Submit" variant="primary" />
-        </Actions>
-
-        <Column
-          title="Name"
-          name="name"
-          pinned="left"
-          maxWidth={200}
-          ellipsis
-          align="left"
-        >
+      <Table data={queryData} title="Table" height={200}>
+        <Column title="No." name="no" width={60} pinned="left">
+          {cell.rowNo}
+        </Column>
+        <Column title="Name" name="name" width={120}>
           {cell.data}
         </Column>
-        <Column<User>
-          title="Age"
-          name="age"
-          pinned="left"
-          width={160}
-          align="right"
-          sortable={(a, b) => a.age - b.age}
-        >
+        <Column title="Age" name="age" align="right" width={80}>
           {cell.data}
         </Column>
-        <Column title="Gender" name="gender" width={200} align="right">
+        <Column title="Address" name="address" width={show ? 300 : 240}>
           {cell.data}
         </Column>
-        <Column width={200} title="Gender1" name="gender1">
-          {cell.data}
-        </Column>
-        <Column width={200} title="Gender2" name="gender2">
-          {cell.data}
-        </Column>
-        <Column width={200} title="Gender3" name="gender3">
-          {cell.data}
-        </Column>
-        <Column width={200} title="Gender4" name="gender4">
-          {cell.data}
-        </Column>
-        <Column width={200} title="Gender5" name="gender5">
-          {cell.data}
-        </Column>
-        <Column width={200} title="Gender6" name="gender6">
-          {cell.data}
-        </Column>
-        <Column title="Test" name="test" align="right" pinned="right">
+        <Column title="Description" name="desc" ellipsis maxWidth={200}>
           {cell.data}
         </Column>
       </Table>
@@ -112,9 +105,9 @@ function Example() {
 
       {renderTable()}
 
-      <Module title="Module Table">{renderTable()}</Module>
+      {/* <Module title="Module Table">{renderTable()}</Module> */}
 
-      <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
+      {/* <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
         {renderTable()}
 
         <Module title="Module Table">{renderTable()}</Module>
@@ -124,7 +117,7 @@ function Example() {
         {renderTable()}
 
         <Module title="Module Table">{renderTable()}</Module>
-      </Modal>
+      </Modal> */}
     </Page>
   );
 }

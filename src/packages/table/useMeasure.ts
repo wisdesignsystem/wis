@@ -65,7 +65,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       }
 
       if (column.maxWidth !== undefined) {
-        width = Math.min(column.maxWidth);
+        width = Math.min(column.maxWidth, width);
       }
 
       widthMap[name] = width;
@@ -193,6 +193,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       return;
     }
     const resize = debounce(() => {
+      console.log("resize...");
       collectColumnWidth();
       if (!isReady.current) {
         isReady.current = true;
