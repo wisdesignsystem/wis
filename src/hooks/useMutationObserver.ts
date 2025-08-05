@@ -19,38 +19,30 @@ const useMutationObserver = <E extends HTMLElement>(
   const mutationHandle = useRef<MutationCallback>();
   mutationHandle.current = callback;
 
-  useEffect(() => {
-    const debounceMutation = debounce((entries, observer) => {
-      mutationHandle.current?.(entries, observer);
-    }, delayTime);
-
-    mutationObserver.current = new MutationObserver(debounceMutation);
-
-    return () => {
-      debounceMutation.cancel();
-      mutationObserver.current?.disconnect?.();
-    };
-  }, [delayTime]);
-
   useEffect(
     () => {
-      if (!element) {
-        return;
-      }
+      const debounceMutation = debounce((entries, observer) => {
+        mutationHandle.current?.(entries, observer);
+      }, delayTime);
+
+      mutationObserver.current = new MutationObserver(debounceMutation);
 
       if (Array.isArray(element)) {
         for (const el of element) {
           mutationObserver.current?.observe?.(el, options);
         }
-      } else {
+      } else if (element) {
         mutationObserver.current?.observe?.(element, options);
       }
 
       return () => {
+        debounceMutation.cancel();
         mutationObserver.current?.disconnect?.();
       };
     },
-    Array.isArray(element) ? [...element, options] : [element, options],
+    Array.isArray(element)
+      ? [...element, options, delayTime]
+      : [element, options, delayTime],
   );
 };
 
