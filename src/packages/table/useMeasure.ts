@@ -1,7 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { RefObject } from "react";
 import useMutationObserver from "@/hooks/useMutationObserver";
 import useResizeObserver from "@/hooks/useResizeObserver";
+import useDidMount from "@/hooks/useMount";
+import nextTick from "@/utils/nextTick";
 
 import type { ColumnMeta, PlainObject } from "./table";
 
@@ -34,7 +36,8 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   rightPinnedColumns,
 }: Option<R>): Measure<R> {
   const mutationOption = useRef<MutationObserverInit>({ childList: true });
-  const isReady = useRef(false);
+  const [ready, setReady] = useState(false);
+  const resizing = useRef(false);
   const measureRef = useRef<HTMLTableRowElement>(null);
   const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
   const [columnWidthMap, setColumnWidthMap] = useState<Record<string, number>>(
@@ -50,7 +53,9 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       return;
     }
 
-    let totalColumnWidth = 0;
+    resizing.current = true;
+
+    let currentTotalColumnWidth = 0;
     const widthMap: Record<string, number> = {};
     const cells = Array.prototype.slice.call(
       measureRef.current.querySelectorAll("td"),
@@ -70,11 +75,16 @@ export function useMeasure<R extends PlainObject = PlainObject>({
 
       widthMap[name] = width;
 
-      totalColumnWidth += width;
+      currentTotalColumnWidth += width;
+    }
+
+    // none size changed, resizing end.
+    if (totalColumnWidth === currentTotalColumnWidth) {
+      resizing.current = false;
     }
 
     setColumnWidthMap(widthMap);
-    setTotalColumnWidth(totalColumnWidth);
+    setTotalColumnWidth(currentTotalColumnWidth);
     collectColumnPinnedWidth(widthMap);
   }
 
@@ -189,13 +199,35 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   }
 
   function resize() {
-    collectColumnWidth();
-    if (!isReady.current) {
-      isReady.current = true;
+    if (resizing.current) {
+      return;
     }
+
+    collectColumnWidth();
   }
 
-  useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50);
+  useDidMount(() => {
+    collectColumnWidth();
+    if (!ready) {
+      setReady(true);
+    }
+  });
+
+  useEffect(() => {
+    nextTick(() => {
+      resizing.current = false;
+    }, true);
+  }, [totalColumnWidth]);
+
+  useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50, {
+    before: () => {
+      if (resizing.current) {
+        return false;
+      }
+
+      return true;
+    },
+  });
   useMutationObserver<HTMLTableRowElement>(
     measureRef.current,
     resize,
@@ -214,7 +246,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   };
 
   return {
-    ready: isReady.current,
+    ready,
     measureRef,
     columnWidthMap,
     columnPinnedWidthMap,

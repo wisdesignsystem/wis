@@ -57,7 +57,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
     return (
       <div className={styles["head-cell-meta"]}>
         <div className={styles["head-cell-title"]}>
-          <span className={styles["head-cell-label"]}>{column.title}</span>
+          <div className={styles["head-cell-label"]}>{column.title}</div>
           {renderSort()}
         </div>
       </div>
@@ -78,7 +78,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
 
   function renderCell() {
     if (!isSortable && !isFilter) {
-      return <span className={styles["head-cell-label"]}>{column.title}</span>;
+      return <div className={styles["head-cell-label"]}>{column.title}</div>;
     }
 
     return (

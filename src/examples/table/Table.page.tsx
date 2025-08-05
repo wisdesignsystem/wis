@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Page } from "wis/page";
-import { Table, Column } from "wis/table";
+import { Table, Column, type TableResponse } from "wis/table";
 import { Actions } from "wis/actions";
 import { Button } from "wis/button";
 import { Drawer, type DrawerRef } from "wis/drawer";
@@ -31,14 +31,18 @@ function Example() {
       biology: random(0, 100),
       math: random(0, 100),
       physics: random(0, 100),
-      test: "sflkjdaslkfjdaslkfjdslakfjlewkjrlkdfjldkasfjladksjflkdsajfldksajflksa",
+      test: "Test Data",
     };
   });
   const drawerRef = useRef<DrawerRef>(null);
   const modalRef = useRef<ModalRef>(null);
 
-  async function queryData() {
-    return { data };
+  function queryData(): Promise<TableResponse<User>> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ data });
+      }, 200);
+    });
   }
 
   function renderTable() {
@@ -150,9 +154,9 @@ function Example() {
 
       {renderTable()}
 
-      <Module title="Module Table">{renderTable2()}</Module>
+      {/* <Module title="Module Table">{renderTable2()}</Module> */}
 
-      <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
+      {/* <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
@@ -162,7 +166,7 @@ function Example() {
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
-      </Modal>
+      </Modal> */}
     </Page>
   );
 }
