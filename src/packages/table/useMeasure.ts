@@ -1,6 +1,7 @@
-import { useLayoutEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import type { RefObject } from "react";
-import debounce from "lodash.debounce";
+import useMutationObserver from "@/hooks/useMutationObserver";
+import useResizeObserver from "@/hooks/useResizeObserver";
 
 import type { ColumnMeta, PlainObject } from "./table";
 
@@ -17,8 +18,7 @@ export interface Measure<R extends PlainObject = PlainObject> {
   totalColumnWidth: number;
   columnPinnedWidthMap: Record<string, PinnedWidth>;
   pinnedSeparator: boolean;
-  getPrimaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
-  getSecondaryColumnWidth: (column: ColumnMeta<R>) => number | undefined;
+  getColumnWidth: (column: ColumnMeta<R>) => number | undefined;
 }
 
 interface Option<R extends PlainObject = PlainObject> {
@@ -33,7 +33,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   leftPinnedColumns,
   rightPinnedColumns,
 }: Option<R>): Measure<R> {
-  const isMounted = useRef(false);
+  const mutationOption = useRef<MutationObserverInit>({ childList: true });
   const isReady = useRef(false);
   const measureRef = useRef<HTMLTableRowElement>(null);
   const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
@@ -65,7 +65,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       }
 
       if (column.maxWidth !== undefined) {
-        width = Math.min(column.maxWidth);
+        width = Math.min(column.maxWidth, width);
       }
 
       widthMap[name] = width;
@@ -188,42 +188,22 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     setPinnedSeparator(showPinnedSeparator);
   }
 
-  useLayoutEffect(() => {
-    if (!measureRef.current) {
-      return;
-    }
-    const resize = debounce(() => {
-      collectColumnWidth();
-      if (!isReady.current) {
-        isReady.current = true;
-      }
-    }, 50);
-
-    const resizeObserver = new window.ResizeObserver(resize);
-    resizeObserver.observe(measureRef.current);
-    const mutationObserver = new window.MutationObserver(resize);
-    mutationObserver.observe(measureRef.current, { childList: true });
-
-    if (isMounted.current) {
-      return;
-    }
-    isMounted.current = true;
-
+  function resize() {
     collectColumnWidth();
+    if (!isReady.current) {
+      isReady.current = true;
+    }
+  }
 
-    return () => {
-      if (!measureRef.current) {
-        return;
-      }
+  useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50);
+  useMutationObserver<HTMLTableRowElement>(
+    measureRef.current,
+    resize,
+    50,
+    mutationOption.current,
+  );
 
-      resizeObserver.disconnect();
-      mutationObserver.disconnect();
-    };
-  }, []);
-
-  const getPrimaryColumnWidth: Measure<R>["getPrimaryColumnWidth"] = (
-    column,
-  ) => {
+  const getColumnWidth: Measure<R>["getColumnWidth"] = (column) => {
     if (column.width !== undefined) {
       return column.width;
     }
@@ -233,12 +213,6 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     }
   };
 
-  const getSecondaryColumnWidth: Measure<R>["getSecondaryColumnWidth"] = (
-    column,
-  ) => {
-    return column.width ?? columnWidthMap[column.name];
-  };
-
   return {
     ready: isReady.current,
     measureRef,
@@ -246,7 +220,6 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     columnPinnedWidthMap,
     totalColumnWidth,
     pinnedSeparator,
-    getSecondaryColumnWidth,
-    getPrimaryColumnWidth,
+    getColumnWidth,
   };
 }

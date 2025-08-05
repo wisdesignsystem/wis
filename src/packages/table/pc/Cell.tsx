@@ -37,13 +37,15 @@ function Cell<R extends PlainObject = PlainObject>({
         "data-ellipsis": column.ellipsis,
       })}
     >
-      {column.render?.({
-        name: column.name as R extends PlainObject ? keyof R : string,
-        rowIndex,
-        rowNo,
-        data: record[column.name],
-        rowData: record,
-      })}
+      <span className={styles["cell-label"]}>
+        {column.render?.({
+          name: column.name as R extends PlainObject ? keyof R : string,
+          rowIndex,
+          rowNo,
+          data: record[column.name],
+          rowData: record,
+        })}
+      </span>
     </td>
   );
 }

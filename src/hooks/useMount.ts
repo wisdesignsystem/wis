@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 
-export default function useDidMount(fn: () => void) {
+export default function useDidMount(callback: () => void) {
   const isMounted = useRef(false);
 
   useEffect(() => {
     if (!isMounted.current) {
-      fn();
+      callback();
       isMounted.current = true;
     }
   }, []);

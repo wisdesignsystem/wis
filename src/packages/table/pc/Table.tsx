@@ -74,10 +74,11 @@ const Table = forwardRef(function Table<
       })}
       style={
         {
+          "--wis-table-variable-width": `${measure.totalColumnWidth}px`,
           "--wis-table-variable-height": height,
           "--wis-table-variable-scroll-x": `${scroller.x}px`,
           "--wis-table-variable-scroll-y": `${scroller.y}px`,
-          visibility: measure.ready ? "visible" : "hidden",
+          visibility: measure.ready ? undefined : "hidden",
         } as CSSProperties
       }
     >
@@ -108,11 +109,8 @@ const Table = forwardRef(function Table<
         className={styles.main}
         onScroll={scroller.onScroll}
       >
-        <table
-          className={styles.content}
-          style={{ width: `${measure.totalColumnWidth - 10}px` }}
-        >
-          <Colgroup<R> primary measure={measure} leafColumns={leafColumns} />
+        <table className={styles.content}>
+          <Colgroup<R> measure={measure} leafColumns={leafColumns} />
           {height === "auto" && (
             <Head<R>
               measure={measure}

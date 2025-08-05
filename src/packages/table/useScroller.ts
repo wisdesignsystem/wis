@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import type { RefObject, UIEventHandler } from "react";
-import debounce from "lodash.debounce";
 import EventEmitter from "@/utils/EventEmitter";
 import useScrollbar from "@/hooks/useScrollbar";
+
+import useTableResizeObserver from "./useTableResizeObserver";
 
 type ScrollerEvents = {
   scroll: (x: number, y: number) => void;
@@ -68,52 +69,39 @@ export function useScroller({
     checkScrollXPosition(target);
   };
 
-  useLayoutEffect(() => {
-    if (!tableMainRef.current) {
+  function resize() {
+    if (!tableRef.current || !tableMainRef.current) {
       return;
     }
 
     const table = tableMainRef.current.querySelector("table");
-    if (table === null) {
+
+    if (!table) {
       return;
     }
 
-    const resize = debounce(() => {
-      if (!tableRef.current || !tableMainRef.current || table === null) {
-        return;
-      }
+    const tableMainRect = tableMainRef.current.getBoundingClientRect();
+    const tableRect = table.getBoundingClientRect();
 
-      const tableMainRect = tableMainRef.current.getBoundingClientRect();
-      const tableRect = table.getBoundingClientRect();
+    const isScrollX = tableMainRect.width < tableRect.width;
+    const isScrollY = tableMainRect.height < tableRect.height;
 
-      const isScrollX = tableMainRect.width < tableRect.width;
-      const isScrollY = tableMainRect.height < tableRect.height;
+    if (isScrollX) {
+      tableRef.current.setAttribute("data-scroll-x", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-x");
+    }
 
-      if (isScrollX) {
-        tableRef.current.setAttribute("data-scroll-x", "");
-      } else {
-        tableRef.current.removeAttribute("data-scroll-x");
-      }
+    if (isScrollY) {
+      tableRef.current.setAttribute("data-scroll-y", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-y");
+    }
 
-      if (isScrollY) {
-        tableRef.current.setAttribute("data-scroll-y", "");
-      } else {
-        tableRef.current.removeAttribute("data-scroll-y");
-      }
+    checkScrollXPosition(tableMainRef.current);
+  }
 
-      checkScrollXPosition(tableMainRef.current);
-    }, 50);
-
-    resize();
-
-    const resizeObserver = new window.ResizeObserver(resize);
-    resizeObserver.observe(tableMainRef.current);
-    resizeObserver.observe(table);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, []);
+  useTableResizeObserver<HTMLDivElement>(tableMainRef.current, resize, 50);
 
   return {
     x: scrollbar.x,

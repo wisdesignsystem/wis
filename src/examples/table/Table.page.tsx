@@ -31,7 +31,7 @@ function Example() {
       biology: random(0, 100),
       math: random(0, 100),
       physics: random(0, 100),
-      test: "xxx",
+      test: "sflkjdaslkfjdaslkfjdslakfjlewkjrlkdfjldkasfjladksjflkdsajfldksajflksa",
     };
   });
   const drawerRef = useRef<DrawerRef>(null);
@@ -53,7 +53,7 @@ function Example() {
           title="Name"
           name="name"
           pinned="left"
-          maxWidth={200}
+          maxWidth={120}
           ellipsis
           align="left"
         >
@@ -90,7 +90,45 @@ function Example() {
         <Column width={200} title="Gender6" name="gender6">
           {cell.data}
         </Column>
-        <Column title="Test" name="test" align="right" pinned="right">
+        <Column title="Test" name="test" align="right" pinned="right" ellipsis>
+          {cell.data}
+        </Column>
+      </Table>
+    );
+  }
+
+  function renderTable2() {
+    return (
+      <Table<User> data={queryData} height="auto" title="Table title">
+        <Actions>
+          <Button text="Upload" />
+          <Button text="Submit" variant="primary" />
+        </Actions>
+
+        <Column
+          title="Name"
+          name="name"
+          pinned="left"
+          maxWidth={120}
+          ellipsis
+          align="left"
+        >
+          {cell.data}
+        </Column>
+        <Column<User>
+          title="Age"
+          name="age"
+          pinned="left"
+          width={160}
+          align="right"
+          sortable={(a, b) => a.age - b.age}
+        >
+          {cell.data}
+        </Column>
+        <Column title="Gender" name="gender" width={200} align="right">
+          {cell.data}
+        </Column>
+        <Column title="Test" name="test" pinned="right" ellipsis>
           {cell.data}
         </Column>
       </Table>
@@ -112,18 +150,18 @@ function Example() {
 
       {renderTable()}
 
-      <Module title="Module Table">{renderTable()}</Module>
+      <Module title="Module Table">{renderTable2()}</Module>
 
       <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
-        {renderTable()}
+        {renderTable2()}
 
-        <Module title="Module Table">{renderTable()}</Module>
+        <Module title="Module Table">{renderTable2()}</Module>
       </Drawer>
 
       <Modal ref={modalRef} title="Modal Table" width={600} height={400}>
-        {renderTable()}
+        {renderTable2()}
 
-        <Module title="Module Table">{renderTable()}</Module>
+        <Module title="Module Table">{renderTable2()}</Module>
       </Modal>
     </Page>
   );
