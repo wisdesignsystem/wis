@@ -12,12 +12,7 @@ function PinnedHead<R extends PlainObject = PlainObject>({
   leafColumns,
 }: PinnedHeadProps<R>) {
   return (
-    <table
-      className={styles.content}
-      style={{
-        width: `${measure.totalColumnWidth - 10}px`,
-      }}
-    >
+    <table className={styles.content}>
       <Colgroup<R> measure={measure} leafColumns={leafColumns} />
       <thead>
         {layerColumns.map((columns) => {

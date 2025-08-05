@@ -89,6 +89,10 @@
         @include table-head-style();
       }
     }
+
+    .content {
+      width: calc(var(--wis-table-variable-width) - var(--wis-table-variable-scroll-y));
+    }
   }
 
   &[data-separator="stripe"] {
@@ -235,6 +239,7 @@
   min-width: 100%;
   border-collapse: separate;
   border-spacing: 0;
+  width: var(--wis-table-variable-width);
 }
 
 .head-cell {

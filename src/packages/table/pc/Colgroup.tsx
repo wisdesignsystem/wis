@@ -1,9 +1,6 @@
-import type { CSSProperties } from "react";
-
 import type { ColgroupProps, PlainObject } from "../table";
 
 function Colgroup<R extends PlainObject = PlainObject>({
-  primary,
   measure,
   leafColumns,
 }: ColgroupProps<R>) {
@@ -13,14 +10,15 @@ function Colgroup<R extends PlainObject = PlainObject>({
         if (!column.visible) {
           return null;
         }
-        const style: undefined | CSSProperties = { minWidth: "60px" };
-        if (!primary) {
-          style.width = `${measure.getSecondaryColumnWidth(column)}px`;
-        } else {
-          style.width = `${measure.getPrimaryColumnWidth(column)}px`;
-        }
-
-        return <col key={column.name} style={style} />;
+        return (
+          <col
+            key={column.name}
+            style={{
+              minWidth: "60px",
+              width: `${measure.getColumnWidth(column)}px`,
+            }}
+          />
+        );
       })}
     </colgroup>
   );
