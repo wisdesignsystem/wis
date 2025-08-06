@@ -8,24 +8,23 @@ import type {
   PlainObject,
   TableProps,
 } from "./table";
-import { SortType, OrderType } from "./table";
+import { OrderType } from "./table";
 
 type Option<R extends PlainObject = PlainObject> = Pick<
   TableProps<R>,
   "sortMode" | "onSortChange"
 > & {
   sortsController: SortController[];
-  columnMap: Record<string, ColumnMeta<R>>;
+  leafColumnMap: Record<string, ColumnMeta<R>>;
 };
 
 interface Operator<R extends PlainObject = PlainObject> {
   set: (sort: SortState | SortState[]) => void;
-  next: (name: string, type?: SortType) => void;
+  next: (name: string, type?: "asc" | "desc") => void;
   remove: (name: string) => void;
   reset: () => void;
   clear: () => void;
   sort: (data: R[]) => R[];
-  emit: () => void;
 }
 export interface Sorter<R extends PlainObject = PlainObject> {
   sort?: Sort | Sort[];
@@ -36,7 +35,7 @@ export interface Sorter<R extends PlainObject = PlainObject> {
 export function useSorter<R extends PlainObject = PlainObject>({
   sortsController,
   sortMode = "reset",
-  columnMap,
+  leafColumnMap,
   onSortChange = () => {},
 }: Option<R>): Sorter<R> {
   const [sortsState, setSortsState] = useState<SortState[]>(
@@ -67,7 +66,7 @@ export function useSorter<R extends PlainObject = PlainObject>({
   function getDefaultSortsState() {
     let sortsState: SortState[] = [];
     for (const sortController of sortsController) {
-      const column = columnMap[sortController.name];
+      const column = leafColumnMap[sortController.name];
       if (sortController.defaultType === undefined) {
         continue;
       }
@@ -90,17 +89,17 @@ export function useSorter<R extends PlainObject = PlainObject>({
     return sortsState;
   }
 
-  function nextSortType(type?: SortType) {
+  function nextSortType(type?: "asc" | "desc") {
     if (type === undefined) {
-      return SortType.Asc;
+      return "asc";
     }
 
-    if (type === SortType.Asc) {
-      return SortType.Desc;
+    if (type === "asc") {
+      return "desc";
     }
 
     if (sortMode === "toggle") {
-      return SortType.Asc;
+      return "asc";
     }
   }
 
@@ -114,7 +113,7 @@ export function useSorter<R extends PlainObject = PlainObject>({
     let isBreak = false;
     let sorts: Sort[] = [];
     for (const sortController of sortsController) {
-      const column = columnMap[sortController.name];
+      const column = leafColumnMap[sortController.name];
 
       isMultiple = isMultiple || column.sortable?.priority !== undefined;
 
@@ -145,7 +144,7 @@ export function useSorter<R extends PlainObject = PlainObject>({
     }
 
     for (const sortState of sortsState) {
-      const column = columnMap[sortState.name];
+      const column = leafColumnMap[sortState.name];
       if (column === undefined) {
         continue;
       }
@@ -178,10 +177,16 @@ export function useSorter<R extends PlainObject = PlainObject>({
     setSortsState(nextSort.filter((sort) => sortableMap.get(sort.name)));
   }
 
-  function next(name: string, type?: SortType) {
-    const nextType = nextSortType(type);
-    const column = columnMap[name];
+  function next(name: string, type?: "asc" | "desc") {
+    const column = leafColumnMap[name];
     if (column === undefined) {
+      return;
+    }
+
+    const nextType = nextSortType(type);
+    const isControlSort = sortsController.some((item) => item.name === name);
+    if (isControlSort) {
+      onSortChange(name, nextType, get());
       return;
     }
 
@@ -190,7 +195,7 @@ export function useSorter<R extends PlainObject = PlainObject>({
       // multiple sort
       // remove the single sort column.
       nextSortsState = sortsState.filter((sortState) => {
-        const currentColumn = columnMap[sortState.name];
+        const currentColumn = leafColumnMap[sortState.name];
         return currentColumn.sortable?.priority !== undefined;
       });
     } else {
@@ -243,29 +248,34 @@ export function useSorter<R extends PlainObject = PlainObject>({
       sorts = [sorts];
     }
 
+    // only all sort config the compare function
+    let isFrontEndSort = true;
     sorts = sorts
       .filter((sort) => {
-        const column = columnMap[sort.name];
-        return (
-          column !== undefined && typeof column.sortable?.compare === "function"
-        );
+        const column = leafColumnMap[sort.name];
+        const isExist = column !== undefined;
+        if (isExist && typeof column.sortable?.compare !== "function") {
+          isFrontEndSort = false;
+        }
+
+        return isExist;
       })
       .sort((a, b) => {
         return (a.priority ?? 0) - (b.priority ?? 0);
       });
 
-    if (sorts.length <= 0) {
+    if (!isFrontEndSort && sorts.length <= 0) {
       return data;
     }
 
     const result = data.slice().sort((a, b) => {
       for (const sort of sorts) {
-        const column = columnMap[sort.name];
+        const column = leafColumnMap[sort.name];
 
         const compare = column.sortable?.compare ?? (() => OrderType.EQUAL);
 
         const compareResult =
-          sort.type === SortType.Asc ? compare(a, b) : compare(b, a);
+          sort.type === "asc" ? compare(a, b) : compare(b, a);
         if (compareResult === OrderType.EQUAL) {
           continue;
         }
@@ -279,15 +289,11 @@ export function useSorter<R extends PlainObject = PlainObject>({
     return result;
   }
 
-  function emit() {
-    onSortChange(get());
-  }
-
   const currentSort = get();
 
   return {
     sort: currentSort,
     sortMap: getSortMap(currentSort),
-    operator: { set, next, remove, reset, clear, sort, emit },
+    operator: { set, next, remove, reset, clear, sort },
   };
 }

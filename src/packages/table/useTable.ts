@@ -72,7 +72,6 @@ function useTable<
 
   const {
     columns,
-    columnMap,
     leafColumns,
     leafColumnMap,
     layerColumns,
@@ -80,12 +79,14 @@ function useTable<
     leftPinnedColumns,
     rightPinnedColumns,
   } = useColumns<R>(option.columnElements);
+
   const sorter = useSorter<R>({
     sortMode,
-    columnMap,
+    leafColumnMap,
     sortsController,
     onSortChange,
   });
+
   const datasource = useDatasource<R, P>({
     data,
     params,

@@ -1,9 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import type { RefObject } from "react";
 import useMutationObserver from "@/hooks/useMutationObserver";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import useDidMount from "@/hooks/useMount";
-import nextTick from "@/utils/nextTick";
 
 import type { ColumnMeta, PlainObject } from "./table";
 
@@ -53,8 +52,6 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       return;
     }
 
-    resizing.current = true;
-
     let currentTotalColumnWidth = 0;
     const widthMap: Record<string, number> = {};
     const cells = Array.prototype.slice.call(
@@ -76,11 +73,6 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       widthMap[name] = width;
 
       currentTotalColumnWidth += width;
-    }
-
-    // none size changed, resizing end.
-    if (totalColumnWidth === currentTotalColumnWidth) {
-      resizing.current = false;
     }
 
     setColumnWidthMap(widthMap);
@@ -199,29 +191,21 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   }
 
   function resize() {
-    if (resizing.current) {
-      return;
-    }
-
     collectColumnWidth();
   }
 
   useDidMount(() => {
+    resizing.current = true;
     collectColumnWidth();
     if (!ready) {
       setReady(true);
     }
   });
 
-  useEffect(() => {
-    nextTick(() => {
-      resizing.current = false;
-    }, true);
-  }, [totalColumnWidth]);
-
   useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50, {
     before: () => {
       if (resizing.current) {
+        resizing.current = false;
         return false;
       }
 

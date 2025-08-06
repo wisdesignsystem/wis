@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Page } from "wis/page";
 import { Table, Column, type TableResponse } from "wis/table";
 import { Actions } from "wis/actions";
@@ -22,20 +22,32 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 10 }).map((_, index) => {
-    return {
-      key: `key_${index}`,
-      name: "Wis Design",
-      age: random(0, 100),
-      gender: "Men",
-      biology: random(0, 100),
-      math: random(0, 100),
-      physics: random(0, 100),
-      test: "Test Data",
-    };
-  });
+  const [changedSort, setChangedSort] = useState(false);
+  const [data] = useState<User[]>(
+    Array.from({ length: 10 }).map((_, index) => {
+      return {
+        key: `key_${index}`,
+        name: "Wis Design",
+        age: random(0, 100),
+        gender1:
+          "sdfkljdsafkljdsaklfjasdklfjasdlkjfklsdajfkldjsaflkjasdklfjadsklfjdsakljfdaskljfkdsalfhadskjfhdsajkfhdskafjhasdkjfhsdkjfhdskjfhsdakjfhdksjfhkjsadhfkjsdahfkjsdhfkjsahdfkjsdah",
+        gender: "Men",
+        biology: random(0, 100),
+        math: random(0, 100),
+        physics: random(0, 100),
+        test: "Test Data",
+      };
+    }),
+  );
+
   const drawerRef = useRef<DrawerRef>(null);
   const modalRef = useRef<ModalRef>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setChangedSort(true);
+    }, 5000);
+  }, []);
 
   function queryData(): Promise<TableResponse<User>> {
     return new Promise((resolve) => {
@@ -47,20 +59,18 @@ function Example() {
 
   function renderTable() {
     return (
-      <Table<User> data={queryData} height="auto" title="Table title">
+      <Table<User>
+        data={queryData}
+        height="auto"
+        title="Table title"
+        onSortChange={(name, sort) => console.log(name, sort)}
+      >
         <Actions>
           <Button text="Upload" />
           <Button text="Submit" variant="primary" />
         </Actions>
 
-        <Column
-          title="Name"
-          name="name"
-          pinned="left"
-          maxWidth={120}
-          ellipsis
-          align="left"
-        >
+        <Column title="Name" name="name" maxWidth={120} ellipsis align="left">
           {cell.data}
         </Column>
         <Column<User>
@@ -69,14 +79,14 @@ function Example() {
           pinned="left"
           width={160}
           align="right"
-          sortable={(a, b) => a.age - b.age}
+          sortable={{ type: changedSort ? "asc" : "desc" }}
         >
           {cell.data}
         </Column>
         <Column title="Gender" name="gender" width={200} align="right">
-          {cell.data}
+          <div>aaa</div>
         </Column>
-        <Column width={200} title="Gender1" name="gender1">
+        <Column title="Gender1" name="gender1">
           {cell.data}
         </Column>
         <Column width={200} title="Gender2" name="gender2">

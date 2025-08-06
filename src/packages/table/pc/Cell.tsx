@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { isValidElement } from "react";
 import attrs from "@/utils/attrs";
 
 import type { CellProps, PlainObject } from "../table";
@@ -25,6 +26,21 @@ function Cell<R extends PlainObject = PlainObject>({
     style.right = `${measure.columnPinnedWidthMap[column.name]?.body}px`;
   }
 
+  const node = column.render?.({
+    name: column.name as R extends PlainObject ? keyof R : string,
+    rowIndex,
+    rowNo,
+    data: record[column.name],
+    rowData: record,
+  });
+
+  let title: string | undefined;
+  if (typeof node === "string") {
+    title = node;
+  } else if (isValidElement(node) && typeof node.props.children === "string") {
+    title = node.props.children;
+  }
+
   return (
     <td
       className={styles.cell}
@@ -36,16 +52,9 @@ function Cell<R extends PlainObject = PlainObject>({
           measure.columnPinnedWidthMap[column.name]?.isLatest,
         "data-ellipsis": column.ellipsis,
       })}
+      title={title}
     >
-      <div className={styles["cell-label"]}>
-        {column.render?.({
-          name: column.name as R extends PlainObject ? keyof R : string,
-          rowIndex,
-          rowNo,
-          data: record[column.name],
-          rowData: record,
-        })}
-      </div>
+      <div className={styles["cell-label"]}>{node}</div>
     </td>
   );
 }

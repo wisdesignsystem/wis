@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useMount from "@/hooks/useMount";
 
 import type {
   TableProps,
@@ -88,11 +89,12 @@ export function useDatasource<
     return sorter.operator.sort(isRemote ? datasource : data);
   };
 
-  useEffect(() => {
-    if (!manual) {
-      query();
+  useMount(() => {
+    if (manual) {
+      return;
     }
-  }, []);
+    query();
+  });
 
   return { data: getData(), operator: { query, getData } };
 }

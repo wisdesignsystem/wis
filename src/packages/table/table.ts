@@ -40,11 +40,6 @@ declare global {
   const cell: Cell;
 }
 
-export enum SortType {
-  Asc = "asc",
-  Desc = "desc",
-}
-
 export type Compare<R extends PlainObject = PlainObject> = (
   record1: R,
   record2: R,
@@ -59,7 +54,7 @@ export interface Sort {
   /**
    * The type of the sort
    */
-  type: SortType;
+  type: "asc" | "desc";
 
   /**
    * Set the column sort priority, it's useful when open multiple sort
@@ -77,12 +72,12 @@ export interface Sortable<R extends PlainObject = PlainObject> {
   /**
    * Set the sort type of the column. Set this value will enable controlled mode.
    */
-  type?: SortType;
+  type?: "asc" | "desc";
 
   /**
    * Set the default sort type of the column.
    */
-  defaultType?: SortType;
+  defaultType?: "asc" | "desc";
 
   /**
    * Set the column sort priority, it's useful when open multiple sort
@@ -278,7 +273,11 @@ export interface TableProps<
   /**
    * The callback function when the sort changes
    */
-  onSortChange?: (sort?: Sort | Sort[]) => void;
+  onSortChange?: (
+    name: string,
+    type?: "asc" | "desc",
+    sort?: Sort | Sort[],
+  ) => void;
 
   /**
    * The callback function when the data is loaded

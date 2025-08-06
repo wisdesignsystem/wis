@@ -9,7 +9,6 @@ import {
 import attrs from "@/utils/attrs";
 
 import type { HeadCellProps, PlainObject } from "../table";
-import { SortType } from "../table";
 
 import styles from "./Table.module.scss";
 
@@ -38,13 +37,12 @@ function HeadCell<R extends PlainObject = PlainObject>({
           type="button"
           onClick={() => {
             sorter.operator.next(column.name, sort?.type);
-            sorter.operator.emit();
           }}
         >
           <div aria-hidden="true">
             {sort === undefined && <ToggleIcon />}
-            {sort?.type === SortType.Asc && <ArrowUpIcon />}
-            {sort?.type === SortType.Desc && <ArrowDownIcon />}
+            {sort?.type === "asc" && <ArrowUpIcon />}
+            {sort?.type === "desc" && <ArrowDownIcon />}
           </div>
         </button>
       );
@@ -96,9 +94,9 @@ function HeadCell<R extends PlainObject = PlainObject>({
 
     const sort = sorter.sortMap[column.name];
     switch (sort?.type) {
-      case SortType.Asc:
+      case "asc":
         return "ascending";
-      case SortType.Desc:
+      case "desc":
         return "descending";
       default:
         return "none";
@@ -122,6 +120,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
       colSpan={column.colSpan}
       rowSpan={column.rowSpan}
       style={style}
+      title={column.title}
       {...attrs({
         "data-align": column.align,
         "data-pinned": column.pinned,

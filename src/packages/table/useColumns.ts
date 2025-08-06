@@ -351,10 +351,7 @@ export function useColumns<R extends PlainObject = PlainObject>(
   layerColumns: ColumnMeta<R>[][];
   leftPinnedColumns: ColumnMeta<R>[];
   rightPinnedColumns: ColumnMeta<R>[];
-  columnMap: Record<string, ColumnMeta<R>>;
   sortsController: SortController[];
-  visibleStateMap: Record<string, boolean>;
-  pinnedStateMap: Record<string, ColumnProps["pinned"]>;
   operator: Operator;
 } {
   const sync = useRef<boolean>(false);
@@ -410,14 +407,6 @@ export function useColumns<R extends PlainObject = PlainObject>(
     });
   }
 
-  const columnMap = leafColumns.reduce(
-    (result, column) => {
-      result[column.name] = column;
-      return result;
-    },
-    {} as Record<string, ColumnMeta<R>>,
-  );
-
   return {
     columns,
     leafColumns,
@@ -425,10 +414,7 @@ export function useColumns<R extends PlainObject = PlainObject>(
     layerColumns,
     leftPinnedColumns,
     rightPinnedColumns,
-    columnMap,
     sortsController,
-    visibleStateMap,
-    pinnedStateMap,
     operator: { setVisible, setPinned },
   };
 }
