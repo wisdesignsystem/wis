@@ -70,13 +70,19 @@ function Example() {
           <Button text="Submit" variant="primary" />
         </Actions>
 
-        <Column title="Name" name="name" maxWidth={120} ellipsis align="left">
+        <Column
+          title="Name"
+          name="name"
+          minWidth={120}
+          ellipsis
+          align="left"
+          pinned="left"
+        >
           {cell.data}
         </Column>
         <Column<User>
           title="Age"
           name="age"
-          pinned="left"
           width={160}
           align="right"
           sortable={{ type: changedSort ? "asc" : "desc" }}
@@ -86,7 +92,7 @@ function Example() {
         <Column title="Gender" name="gender" width={200} align="right">
           <div>aaa</div>
         </Column>
-        <Column title="Gender1" name="gender1">
+        <Column title="Gender1" name="gender1" minWidth={320}>
           {cell.data}
         </Column>
         <Column width={200} title="Gender2" name="gender2">

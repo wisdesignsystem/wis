@@ -202,6 +202,7 @@
   align-items: center;
   justify-content: space-between;
   height: 56px;
+  box-sizing: border-box;
   padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
   border-bottom-width: var(--w-common-spacing-scale-1);
   border-bottom-style: solid;

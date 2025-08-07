@@ -47,6 +47,22 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   >({});
   const [pinnedSeparator, setPinnedSeparator] = useState(true);
 
+  function getFirstVisibleColumn() {
+    return leafColumns.find((column) => column.visible);
+  }
+
+  function getLatestVisibleColumn() {
+    let column: ColumnMeta<R> | undefined;
+    for (let i = leafColumns.length - 1; i >= 0; i--) {
+      if (leafColumns[i].visible) {
+        column = leafColumns[i];
+        break;
+      }
+    }
+
+    return column;
+  }
+
   function collectColumnWidth() {
     if (!measureRef.current) {
       return;
@@ -135,6 +151,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     let nextHeadPinnedWidth = 0;
     let nextBodyPinnedWidth = 0;
 
+    const firstVisibleColumn = getFirstVisibleColumn();
     let preColumnIndex: number | undefined;
     let showPinnedSeparator = true;
     for (let i = 0; i < leftPinnedColumns.length; i++) {
@@ -143,7 +160,10 @@ export function useMeasure<R extends PlainObject = PlainObject>({
         continue;
       }
 
-      if (preColumnIndex !== undefined && column.index !== preColumnIndex + 1) {
+      if (preColumnIndex === undefined) {
+        showPinnedSeparator =
+          showPinnedSeparator && column.name === firstVisibleColumn?.name;
+      } else if (column.index !== preColumnIndex + 1) {
         showPinnedSeparator = false;
       }
       preColumnIndex = column.index;
@@ -160,6 +180,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       nextBodyPinnedWidth += getColumnWidth(column);
     }
 
+    const latestVisibleColumn = getLatestVisibleColumn();
     nextHeadPinnedWidth = 0;
     nextBodyPinnedWidth = 0;
     preColumnIndex = undefined;
@@ -169,7 +190,10 @@ export function useMeasure<R extends PlainObject = PlainObject>({
         continue;
       }
 
-      if (preColumnIndex !== undefined && column.index !== preColumnIndex - 1) {
+      if (preColumnIndex === undefined) {
+        showPinnedSeparator =
+          showPinnedSeparator && column.name === latestVisibleColumn?.name;
+      } else if (column.index !== preColumnIndex - 1) {
         showPinnedSeparator = false;
       }
       preColumnIndex = column.index;
