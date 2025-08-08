@@ -92,7 +92,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     }
 
     setColumnWidthMap(widthMap);
-    setTotalColumnWidth(currentTotalColumnWidth);
+    setTotalColumnWidth(Math.max(currentTotalColumnWidth, totalColumnWidth));
     collectColumnPinnedWidth(widthMap);
   }
 
@@ -226,7 +226,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     }
   });
 
-  useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50, {
+  useResizeObserver<HTMLTableRowElement>(measureRef, resize, 50, {
     before: () => {
       if (resizing.current) {
         resizing.current = false;
@@ -237,7 +237,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     },
   });
   useMutationObserver<HTMLTableRowElement>(
-    measureRef.current,
+    measureRef,
     resize,
     50,
     mutationOption.current,

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import debounce from "lodash.debounce";
 
 const defaultOptions: MutationObserverInit = {
@@ -9,9 +10,9 @@ const defaultOptions: MutationObserverInit = {
 };
 
 const useMutationObserver = <E extends HTMLElement>(
-  element: E | E[] | null,
+  ref: RefObject<E | null | (E | null)[]>,
   callback: MutationCallback,
-  delayTime = 0,
+  debounceTime = 0,
   options: MutationObserverInit = defaultOptions,
 ) => {
   const mutationObserver = useRef<MutationObserver>();
@@ -19,31 +20,29 @@ const useMutationObserver = <E extends HTMLElement>(
   const mutationHandle = useRef<MutationCallback>();
   mutationHandle.current = callback;
 
-  useEffect(
-    () => {
-      const debounceMutation = debounce((entries, observer) => {
-        mutationHandle.current?.(entries, observer);
-      }, delayTime);
+  useEffect(() => {
+    const debounceMutation = debounce((entries, observer) => {
+      mutationHandle.current?.(entries, observer);
+    }, debounceTime);
 
-      mutationObserver.current = new MutationObserver(debounceMutation);
+    mutationObserver.current = new MutationObserver(debounceMutation);
 
-      if (Array.isArray(element)) {
-        for (const el of element) {
-          mutationObserver.current?.observe?.(el, options);
+    if (Array.isArray(ref.current)) {
+      for (const el of ref.current) {
+        if (el === null) {
+          continue;
         }
-      } else if (element) {
-        mutationObserver.current?.observe?.(element, options);
+        mutationObserver.current?.observe?.(el, options);
       }
+    } else if (ref.current) {
+      mutationObserver.current?.observe?.(ref.current, options);
+    }
 
-      return () => {
-        debounceMutation.cancel();
-        mutationObserver.current?.disconnect?.();
-      };
-    },
-    Array.isArray(element)
-      ? [...element, options, delayTime]
-      : [element, options, delayTime],
-  );
+    return () => {
+      debounceMutation.cancel();
+      mutationObserver.current?.disconnect?.();
+    };
+  }, [options, debounceTime]);
 };
 
 export default useMutationObserver;

@@ -79,8 +79,12 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     visible:
       parent?.visible === false
         ? false
-        : (visible ?? visibleStateMap[name] ?? defaultVisible),
-    pinned: parent?.pinned ?? pinned ?? pinnedStateMap[name] ?? defaultPinned,
+        : (visible ??
+          (name in visibleStateMap ? visibleStateMap[name] : defaultVisible)),
+    pinned:
+      parent?.pinned ??
+      pinned ??
+      (name in pinnedStateMap ? pinnedStateMap[name] : defaultPinned),
   };
 
   if (!isGroupColumn && typeof children === "function") {
@@ -339,7 +343,11 @@ function formatColumns<R extends PlainObject = PlainObject>(
 
 interface Operator {
   setVisible: (name: string, visible: boolean) => void;
+  batchSetVisible: (data: Record<string, boolean>) => void;
   setPinned: (name: string, pinned?: ColumnProps["pinned"]) => void;
+  batchSetPinned: (
+    data: Record<string, undefined | ColumnProps["pinned"]>,
+  ) => void;
 }
 
 export function useColumns<R extends PlainObject = PlainObject>(
@@ -393,19 +401,33 @@ export function useColumns<R extends PlainObject = PlainObject>(
     maxDepth,
   });
 
-  function setVisible(name: string, visible: boolean) {
+  const setVisible: Operator["setVisible"] = (name, visible) => {
     setVisibleStateMap({
-      [name]: visible,
       ...visibleStateMap,
+      [name]: visible,
     });
-  }
+  };
 
-  function setPinned(name: string, pinned?: ColumnProps["pinned"]) {
-    setPinnedStateMap({
-      [name]: pinned,
-      ...pinnedStateMap,
+  const batchSetVisible: Operator["batchSetVisible"] = (data) => {
+    setVisibleStateMap({
+      ...visibleStateMap,
+      ...data,
     });
-  }
+  };
+
+  const setPinned: Operator["setPinned"] = (name, pinned) => {
+    setPinnedStateMap({
+      ...pinnedStateMap,
+      [name]: pinned,
+    });
+  };
+
+  const batchSetPinned: Operator["batchSetPinned"] = (data) => {
+    setPinnedStateMap({
+      ...pinnedStateMap,
+      ...data,
+    });
+  };
 
   return {
     columns,
@@ -415,6 +437,6 @@ export function useColumns<R extends PlainObject = PlainObject>(
     leftPinnedColumns,
     rightPinnedColumns,
     sortsController,
-    operator: { setVisible, setPinned },
+    operator: { setVisible, batchSetVisible, setPinned, batchSetPinned },
   };
 }

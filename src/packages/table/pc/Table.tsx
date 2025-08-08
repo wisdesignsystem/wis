@@ -1,10 +1,11 @@
-import type { CSSProperties, Ref, ReactNode } from "react";
-import {
-  cloneElement,
-  useContext,
-  useImperativeHandle,
-  forwardRef,
+import type {
+  CSSProperties,
+  Ref,
+  ReactElement,
+  RefAttributes,
+  PropsWithChildren,
 } from "react";
+import { cloneElement, useContext, forwardRef } from "react";
 import { matchElement, ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
@@ -16,6 +17,13 @@ import useTable from "../useTable";
 import type { TableProps, PlainObject, TableRef } from "../table";
 
 import styles from "./Table.module.scss";
+
+type RefTable = <
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>(
+  props: PropsWithChildren<TableProps<R, P>> & RefAttributes<TableRef<R, P>>,
+) => ReactElement;
 
 const Table = forwardRef(function Table<
   R extends PlainObject = PlainObject,
@@ -35,7 +43,7 @@ const Table = forwardRef(function Table<
     tableMainRef,
     getRowKey,
     height,
-    datasource,
+    data,
     leafColumns,
     layerColumns,
     sorter,
@@ -43,6 +51,7 @@ const Table = forwardRef(function Table<
     scroller,
     separator,
   } = useTable<R, P>(props, {
+    ref,
     columnElements,
   });
 
@@ -53,13 +62,6 @@ const Table = forwardRef(function Table<
 
     return cloneElement(actions[0], { size: "sm" });
   }
-
-  useImperativeHandle(ref, () => {
-    return {
-      query: datasource.operator.query,
-      getData: datasource.operator.getData,
-    };
-  });
 
   const isShowHeader = props.title !== undefined || !!actions;
 
@@ -121,20 +123,14 @@ const Table = forwardRef(function Table<
           <Body<R>
             rowKey={getRowKey}
             leafColumns={leafColumns}
-            data={datasource.data}
+            data={data}
             measure={measure}
           />
         </table>
       </div>
     </div>
   );
-}) as (<
-  R extends PlainObject = PlainObject,
-  P extends PlainObject = PlainObject,
->(
-  props: TableProps<R, P>,
-  ref: Ref<TableRef<R, P>>,
-) => ReactNode) & { displayName: string };
+}) as unknown as RefTable & { displayName: string };
 
 Table.displayName = "Table";
 

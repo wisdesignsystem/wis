@@ -93,8 +93,6 @@ export interface Sortable<R extends PlainObject = PlainObject> {
 export type SortController = Pick<Sortable, "type" | "defaultType"> &
   Pick<Sort, "name">;
 
-export type SortState = Pick<Sort, "name" | "type">;
-
 export interface TableRequest<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
@@ -120,11 +118,6 @@ export interface TableResponse<R extends PlainObject = PlainObject> {
    * The data of the table
    */
   data: R[];
-
-  /**
-   * The sort of the table, if the data is sorted, the sort should be returned
-   */
-  sort?: SortState | SortState[];
 }
 
 export type TableAjax<
@@ -367,6 +360,13 @@ export interface TableRef<
 > {
   getData: () => R[];
   query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
+  setColumnVisible: (name: string, visible: boolean) => void;
+  setColumnsVisible: (data: Record<string, boolean>) => void;
+  setColumnPinned: (name: string, pinned?: "left" | "right") => void;
+  setColumnsPinned: (
+    data: Record<string, undefined | "left" | "right">,
+  ) => void;
+  setColumnSort: (name: string, type?: "asc" | "desc") => void;
 }
 
 export type { Sorter, Datasource, Measure, Scroller };

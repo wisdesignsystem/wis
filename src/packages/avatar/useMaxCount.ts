@@ -1,14 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import type { RefObject } from "react";
+import { useEffect, useRef, useState } from "react";
 import useRectObserver from "@/hooks/useRectObserver";
 
 export default function useMaxCount<T extends HTMLElement>() {
   const [max, setMax] = useState(-1);
   const ref = useRef<T>(null);
 
-  const rect = useRectObserver(ref as RefObject<T>);
+  const rect = useRectObserver(ref, 50);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!rect) {
       return;
     }

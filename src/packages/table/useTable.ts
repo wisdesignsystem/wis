@@ -1,14 +1,25 @@
-import type { ReactElement, RefObject } from "react";
-import { useRef } from "react";
+import type { ReactElement, RefObject, Ref } from "react";
+import { useRef, useImperativeHandle, useMemo } from "react";
+import useMount from "@/hooks/useMount";
 
-import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
+import type {
+  TableProps,
+  TableRef,
+  ColumnProps,
+  PlainObject,
+  ColumnMeta,
+} from "./table";
 import { useColumns } from "./useColumns";
 import { useSorter, type Sorter } from "./useSorter";
 import { useDatasource, type Datasource } from "./useDatasource";
 import { useMeasure, type Measure } from "./useMeasure";
 import { useScroller, type Scroller } from "./useScroller";
 
-interface Option<R extends PlainObject = PlainObject> {
+interface Option<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  ref: Ref<TableRef<R, P>>;
   columnElements: ReactElement<ColumnProps<R>>[];
 }
 interface Result<
@@ -20,10 +31,11 @@ interface Result<
   tableMainRef: RefObject<HTMLDivElement>;
   height: string;
   getRowKey: (record: R) => string;
-  datasource: Datasource<R, P>;
+  data: R[];
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   layerColumns: ColumnMeta<R>[][];
+  datasource: Datasource<R, P>;
   sorter: Sorter<R>;
   measure: Measure<R>;
   scroller: Scroller;
@@ -44,7 +56,7 @@ function useTable<
     onSortChange,
     onLoad,
   }: TableProps<R, P>,
-  option: Option<R>,
+  option: Option<R, P>,
 ): Result<R, P> {
   const tableRef = useRef<HTMLDivElement>(null);
   const tableHeaderRef = useRef<HTMLDivElement>(null);
@@ -70,53 +82,70 @@ function useTable<
     return "auto";
   }
 
-  const {
-    columns,
-    leafColumns,
-    leafColumnMap,
-    layerColumns,
-    sortsController,
-    leftPinnedColumns,
-    rightPinnedColumns,
-  } = useColumns<R>(option.columnElements);
-
-  const sorter = useSorter<R>({
-    sortMode,
-    leafColumnMap,
-    sortsController,
-    onSortChange,
-  });
-
+  const column = useColumns<R>(option.columnElements);
   const datasource = useDatasource<R, P>({
     data,
     params,
-    manual,
-    leafColumns,
-    sorter,
+    leafColumns: column.leafColumns,
     onLoad,
   });
+  const sorter = useSorter<R, P>({
+    datasource,
+    sortMode,
+    leafColumnMap: column.leafColumnMap,
+    sortsController: column.sortsController,
+    onSortChange,
+  });
+  const sortedTableData = useMemo(() => {
+    if (datasource.data.length <= 0) {
+      return datasource.data;
+    }
+    return sorter.operator.sort(datasource.data);
+  }, [datasource.data, sorter.key]);
   const measure = useMeasure<R>({
-    leafColumns,
-    leafColumnMap,
-    leftPinnedColumns,
-    rightPinnedColumns,
+    leafColumns: column.leafColumns,
+    leafColumnMap: column.leafColumnMap,
+    leftPinnedColumns: column.leftPinnedColumns,
+    rightPinnedColumns: column.rightPinnedColumns,
   });
   const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
+
+  useImperativeHandle(option.ref, () => {
+    return {
+      query: (option) => {
+        return datasource.operator.query({ ...option, sort: sorter.sort });
+      },
+      getData: () => sortedTableData,
+      setColumnVisible: column.operator.setVisible,
+      setColumnsVisible: column.operator.batchSetVisible,
+      setColumnPinned: column.operator.setPinned,
+      setColumnsPinned: column.operator.batchSetPinned,
+      setColumnSort: sorter.operator.set,
+    };
+  });
+
+  useMount(() => {
+    if (manual) {
+      return;
+    }
+    datasource.operator.query({ sort: sorter.sort });
+  });
 
   return {
     tableRef,
     tableHeaderRef,
     tableMainRef,
     getRowKey,
+    data: sortedTableData,
     height: getHeight(),
-    columns,
-    leafColumns,
-    layerColumns,
+    columns: column.columns,
+    leafColumns: column.leafColumns,
+    layerColumns: column.layerColumns,
     datasource,
     sorter,
     measure,
     scroller,
-    separator: layerColumns.length > 1 ? "grid" : separator,
+    separator: column.layerColumns.length > 1 ? "grid" : separator,
   };
 }
 

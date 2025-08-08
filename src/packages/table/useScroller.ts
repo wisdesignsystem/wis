@@ -101,7 +101,7 @@ export function useScroller({
     checkScrollXPosition(tableMainRef.current);
   }
 
-  useTableResizeObserver<HTMLDivElement>(tableMainRef.current, resize, 50);
+  useTableResizeObserver<HTMLDivElement>(tableMainRef, resize, 50);
 
   return {
     x: scrollbar.x,

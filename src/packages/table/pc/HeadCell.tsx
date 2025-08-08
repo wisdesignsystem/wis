@@ -36,7 +36,7 @@ function HeadCell<R extends PlainObject = PlainObject>({
           ref={sortRef}
           type="button"
           onClick={() => {
-            sorter.operator.next(column.name, sort?.type);
+            sorter.operator.next(column.name);
           }}
         >
           <div aria-hidden="true">

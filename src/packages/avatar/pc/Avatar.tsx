@@ -1,6 +1,6 @@
-import attrs from "@/utils/attrs";
 import { Avatar as RDXAvatar } from "radix-ui";
 import classNames from "classnames";
+import attrs from "@/utils/attrs";
 
 import type { AvatarProps } from "../avatar";
 import getInitials from "../initials";

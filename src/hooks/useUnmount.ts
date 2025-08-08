@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export default function useWillUnmount(callback: () => void) {
+export default function useUnmount(callback: () => void) {
   const mount = useRef(false);
 
   useEffect(() => {

@@ -10,6 +10,7 @@ import type {
   OrderType,
   Sortable,
   ColumnMeta,
+  TableRef,
 } from "../table";
 
 export { Table, Column };
@@ -22,4 +23,5 @@ export type {
   OrderType,
   Sortable,
   ColumnMeta,
+  TableRef,
 };

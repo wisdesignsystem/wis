@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Page } from "wis/page";
-import { Table, Column, type TableResponse } from "wis/table";
+import { Table, Column, type TableResponse, type TableRef } from "wis/table";
 import { Actions } from "wis/actions";
 import { Button } from "wis/button";
 import { Drawer, type DrawerRef } from "wis/drawer";
@@ -22,7 +22,7 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const [changedSort, setChangedSort] = useState(false);
+  const [changed, setChanged] = useState(false);
   const [data] = useState<User[]>(
     Array.from({ length: 10 }).map((_, index) => {
       return {
@@ -42,10 +42,11 @@ function Example() {
 
   const drawerRef = useRef<DrawerRef>(null);
   const modalRef = useRef<ModalRef>(null);
+  const tableRef = useRef<TableRef<User>>(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setChangedSort(true);
+      tableRef.current?.setColumnSort("age", "asc");
     }, 5000);
   }, []);
 
@@ -60,10 +61,11 @@ function Example() {
   function renderTable() {
     return (
       <Table<User>
+        ref={tableRef}
         data={queryData}
         height="auto"
         title="Table title"
-        onSortChange={(name, sort) => console.log(name, sort)}
+        onSortChange={(name, type, sort) => console.log(name, type, sort)}
       >
         <Actions>
           <Button text="Upload" />
@@ -80,13 +82,7 @@ function Example() {
         >
           {cell.data}
         </Column>
-        <Column<User>
-          title="Age"
-          name="age"
-          width={160}
-          align="right"
-          sortable={{ type: changedSort ? "asc" : "desc" }}
-        >
+        <Column<User> title="Age" name="age" width={160} align="right" sortable>
           {cell.data}
         </Column>
         <Column title="Gender" name="gender" width={200} align="right">
@@ -107,10 +103,17 @@ function Example() {
         <Column width={200} title="Gender5" name="gender5">
           {cell.data}
         </Column>
-        <Column width={200} title="Gender6" name="gender6">
+        <Column title="Gender6" name="gender6" minWidth={100}>
           {cell.data}
         </Column>
-        <Column title="Test" name="test" align="right" pinned="right" ellipsis>
+        <Column
+          title="Test"
+          name="test"
+          align="right"
+          pinned="right"
+          ellipsis
+          width={80}
+        >
           {cell.data}
         </Column>
       </Table>

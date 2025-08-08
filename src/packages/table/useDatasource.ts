@@ -1,29 +1,28 @@
-import { useState } from "react";
-import useMount from "@/hooks/useMount";
+import { useState, useRef } from "react";
 
 import type {
   TableProps,
   TableRequest,
   PlainObject,
-  Sorter,
   ColumnMeta,
-  TableRef,
+  TableResponse,
+  Sort,
 } from "./table";
 
 type Option<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
-> = Pick<TableProps<R, P>, "data" | "params" | "manual" | "onLoad"> & {
+> = Pick<TableProps<R, P>, "data" | "params" | "onLoad"> & {
   leafColumns: ColumnMeta<R>[];
-  sorter: Sorter<R>;
 };
 
 interface Operator<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > {
-  getData: TableRef<R, P>["getData"];
-  query: TableRef<R, P>["query"];
+  query: (option?: { params?: P; sort?: Sort | Sort[] }) => Promise<
+    TableResponse<R>
+  >;
 }
 
 export interface Datasource<
@@ -39,14 +38,13 @@ export function useDatasource<
 >({
   data = [],
   leafColumns,
-  sorter,
   params,
-  manual = false,
   onLoad = () => {},
 }: Option<R, P>): Datasource<R, P> {
   const [datasource, setDatasource] = useState<R[]>([]);
-
+  const storeParams = useRef<P>();
   const isRemote = typeof data === "function";
+  const tableData = isRemote ? datasource : data;
 
   const query: Operator<R, P>["query"] = async (option) => {
     if (!isRemote) {
@@ -57,12 +55,19 @@ export function useDatasource<
       columns: leafColumns,
     };
 
-    if (sorter.sort !== undefined) {
-      requestOption.sort = sorter.sort;
+    if (option?.sort !== undefined) {
+      requestOption.sort = option.sort;
     }
 
     if (params !== undefined) {
       requestOption.params = params;
+    }
+
+    if (storeParams.current) {
+      requestOption.params = {
+        ...requestOption.params,
+        ...storeParams.current,
+      };
     }
 
     if (option?.params !== undefined) {
@@ -74,27 +79,15 @@ export function useDatasource<
 
     const res = await data(requestOption);
 
-    setDatasource(res.data);
-
-    if (res.sort !== undefined && res.sort !== null) {
-      sorter.operator.set(res.sort);
+    if (option?.params !== undefined) {
+      storeParams.current = option.params;
     }
 
+    setDatasource(res.data);
     onLoad(res);
 
     return res;
   };
 
-  const getData: Operator<R, P>["getData"] = () => {
-    return sorter.operator.sort(isRemote ? datasource : data);
-  };
-
-  useMount(() => {
-    if (manual) {
-      return;
-    }
-    query();
-  });
-
-  return { data: getData(), operator: { query, getData } };
+  return { data: tableData, operator: { query } };
 }

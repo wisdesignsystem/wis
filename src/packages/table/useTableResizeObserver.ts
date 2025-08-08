@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import debounce from "lodash.debounce";
 
 const useResizeObserver = <E extends HTMLElement>(
-  element: E | null,
+  ref: RefObject<E | null>,
   callback: ResizeObserverCallback,
   delayTime = 0,
 ) => {
@@ -18,27 +19,19 @@ const useResizeObserver = <E extends HTMLElement>(
 
     resizeObserver.current = new ResizeObserver(debounceResize);
 
+    if (ref.current) {
+      resizeObserver.current?.observe?.(ref.current);
+      const table = ref.current.querySelector("table");
+      if (table) {
+        resizeObserver.current?.observe?.(table);
+      }
+    }
+
     return () => {
       debounceResize.cancel();
       resizeObserver.current?.disconnect?.();
     };
   }, [delayTime]);
-
-  useEffect(() => {
-    if (!element) {
-      return;
-    }
-
-    resizeObserver.current?.observe?.(element);
-    const table = element.querySelector("table");
-    if (table) {
-      resizeObserver.current?.observe?.(table);
-    }
-
-    return () => {
-      resizeObserver.current?.disconnect?.();
-    };
-  }, [element]);
 };
 
 export default useResizeObserver;
