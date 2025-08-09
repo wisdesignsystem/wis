@@ -18,7 +18,8 @@
 }
 
 @mixin table-row-style() {
-  @include style.component-style($component: table, $widget: row);
+  @include style.component-style($component: table, $widget: row, $enable-background: false);
+  @include style.component-style($component: table, $enable-border: false, $enable-font: false);
 }
 
 @mixin table-row-hover-style() {
