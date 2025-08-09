@@ -1,34 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import type {
   TableProps,
   TableRequest,
   PlainObject,
-  Sorter,
-  ColumnMeta,
-  TableRef,
+  TableResponse,
+  Sort,
 } from "./table";
+import type { Columns } from "./useColumns";
 
 type Option<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
-> = Pick<TableProps<R, P>, "data" | "params" | "manual" | "onLoad"> & {
-  leafColumns: ColumnMeta<R>[];
-  sorter: Sorter<R>;
+> = Pick<TableProps<R, P>, "data" | "params" | "onLoad"> & {
+  columns: Columns<R>;
 };
 
 interface Operator<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > {
-  getData: TableRef<R, P>["getData"];
-  query: TableRef<R, P>["query"];
+  query: (option?: { params?: P; sort?: Sort | Sort[] }) => Promise<
+    TableResponse<R>
+  >;
 }
 
 export interface Datasource<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > {
+  ready: boolean;
+  isRemote: boolean;
   data: R[];
   operator: Operator<R, P>;
 }
@@ -37,15 +39,16 @@ export function useDatasource<
   P extends PlainObject = PlainObject,
 >({
   data = [],
-  leafColumns,
-  sorter,
+  columns,
   params,
-  manual = false,
   onLoad = () => {},
 }: Option<R, P>): Datasource<R, P> {
   const [datasource, setDatasource] = useState<R[]>([]);
-
+  const storeParams = useRef<P>();
   const isRemote = typeof data === "function";
+  const [ready, setReady] = useState(!isRemote);
+
+  const tableData = isRemote ? datasource : data;
 
   const query: Operator<R, P>["query"] = async (option) => {
     if (!isRemote) {
@@ -53,15 +56,22 @@ export function useDatasource<
     }
 
     const requestOption: TableRequest<R, P> = {
-      columns: leafColumns,
+      columns: columns.leafColumns,
     };
 
-    if (sorter.sort !== undefined) {
-      requestOption.sort = sorter.sort;
+    if (option?.sort !== undefined) {
+      requestOption.sort = option.sort;
     }
 
     if (params !== undefined) {
       requestOption.params = params;
+    }
+
+    if (storeParams.current) {
+      requestOption.params = {
+        ...requestOption.params,
+        ...storeParams.current,
+      };
     }
 
     if (option?.params !== undefined) {
@@ -71,28 +81,21 @@ export function useDatasource<
       };
     }
 
-    const res = await data(requestOption);
+    const res = await data(requestOption).catch((e) => {
+      setReady(true);
+      throw e;
+    });
 
-    setDatasource(res.data);
-
-    if (res.sort !== undefined && res.sort !== null) {
-      sorter.operator.set(res.sort);
+    if (option?.params !== undefined) {
+      storeParams.current = option.params;
     }
 
+    setDatasource(res.data);
+    setReady(true);
     onLoad(res);
 
     return res;
   };
 
-  const getData: Operator<R, P>["getData"] = () => {
-    return sorter.operator.sort(isRemote ? datasource : data);
-  };
-
-  useEffect(() => {
-    if (!manual) {
-      query();
-    }
-  }, []);
-
-  return { data: getData(), operator: { query, getData } };
+  return { ready, isRemote, data: tableData, operator: { query } };
 }

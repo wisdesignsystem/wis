@@ -2,7 +2,6 @@ import Table from "./Table";
 import Column from "./Column";
 
 import type {
-  SortType,
   Sort,
   Compare,
   TableAjax,
@@ -11,11 +10,11 @@ import type {
   OrderType,
   Sortable,
   ColumnMeta,
+  TableRef,
 } from "../table";
 
 export { Table, Column };
 export type {
-  SortType,
   Sort,
   Compare,
   TableAjax,
@@ -24,4 +23,5 @@ export type {
   OrderType,
   Sortable,
   ColumnMeta,
+  TableRef,
 };

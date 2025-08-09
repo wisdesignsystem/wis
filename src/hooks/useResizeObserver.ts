@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import debounce from "lodash.debounce";
 
 interface ResizeObserverOption {
@@ -6,9 +7,9 @@ interface ResizeObserverOption {
 }
 
 const useResizeObserver = <E extends HTMLElement>(
-  element: E | E[] | null,
+  ref: RefObject<E | null | (E | null)[]>,
   callback: ResizeObserverCallback,
-  delayTime = 0,
+  debounceTime = 0,
   options?: ResizeObserverOption,
 ) => {
   const resizeObserver = useRef<ResizeObserver>();
@@ -19,37 +20,36 @@ const useResizeObserver = <E extends HTMLElement>(
   const beforeHandle = useRef<ResizeObserverOption["before"]>();
   beforeHandle.current = options?.before;
 
-  useEffect(
-    () => {
-      const debounceResize = debounce((entries, observer) => {
-        resizeHandle.current?.(entries, observer);
-      }, delayTime);
+  useEffect(() => {
+    const debounceResize = debounce((entries, observer) => {
+      resizeHandle.current?.(entries, observer);
+    }, debounceTime);
 
-      resizeObserver.current = new ResizeObserver((entries, observer) => {
-        if (beforeHandle.current) {
-          if (beforeHandle.current() === false) {
-            return;
-          }
+    resizeObserver.current = new ResizeObserver((entries, observer) => {
+      if (beforeHandle.current) {
+        if (beforeHandle.current() === false) {
+          return;
         }
-
-        return debounceResize(entries, observer);
-      });
-
-      if (Array.isArray(element)) {
-        for (const el of element) {
-          resizeObserver.current?.observe?.(el);
-        }
-      } else if (element) {
-        resizeObserver.current?.observe?.(element);
       }
 
-      return () => {
-        debounceResize.cancel();
-        resizeObserver.current?.disconnect?.();
-      };
-    },
-    Array.isArray(element) ? [...element, delayTime] : [element, delayTime],
-  );
+      return debounceResize(entries, observer);
+    });
+    if (Array.isArray(ref.current)) {
+      for (const el of ref.current) {
+        if (el === null) {
+          continue;
+        }
+        resizeObserver.current?.observe?.(el);
+      }
+    } else if (ref.current) {
+      resizeObserver.current?.observe?.(ref.current);
+    }
+
+    return () => {
+      debounceResize.cancel();
+      resizeObserver.current?.disconnect?.();
+    };
+  }, [debounceTime]);
 };
 
 export default useResizeObserver;

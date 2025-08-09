@@ -1,44 +1,51 @@
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import debounce from "lodash.debounce";
 
+interface ResizeObserverOption {
+  before?: () => boolean;
+}
+
 const useResizeObserver = <E extends HTMLElement>(
-  element: E | null,
+  ref: RefObject<E | null>,
   callback: ResizeObserverCallback,
-  delayTime = 0,
+  debounceTime = 0,
+  options?: ResizeObserverOption,
 ) => {
   const resizeObserver = useRef<ResizeObserver>();
 
   const resizeHandle = useRef<ResizeObserverCallback>();
   resizeHandle.current = callback;
 
+  const beforeHandle = useRef<ResizeObserverOption["before"]>();
+  beforeHandle.current = options?.before;
+
   useEffect(() => {
     const debounceResize = debounce((entries, observer) => {
+      if (beforeHandle.current) {
+        if (beforeHandle.current() === false) {
+          return;
+        }
+      }
+
       resizeHandle.current?.(entries, observer);
-    }, delayTime);
+    }, debounceTime);
 
     resizeObserver.current = new ResizeObserver(debounceResize);
+
+    if (ref.current) {
+      resizeObserver.current?.observe?.(ref.current);
+      const table = ref.current.querySelector("table");
+      if (table) {
+        resizeObserver.current?.observe?.(table);
+      }
+    }
 
     return () => {
       debounceResize.cancel();
       resizeObserver.current?.disconnect?.();
     };
-  }, [delayTime]);
-
-  useEffect(() => {
-    if (!element) {
-      return;
-    }
-
-    resizeObserver.current?.observe?.(element);
-    const table = element.querySelector("table");
-    if (table) {
-      resizeObserver.current?.observe?.(table);
-    }
-
-    return () => {
-      resizeObserver.current?.disconnect?.();
-    };
-  }, [element]);
+  }, [debounceTime]);
 };
 
 export default useResizeObserver;

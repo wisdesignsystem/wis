@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useMemo } from "react";
 
 function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -31,10 +31,8 @@ function createUniqueColor(excludeColor: Color) {
 }
 
 export function useColor(color: Color) {
-  const [currentColor, setCurrentColor] = useState(createColor(color));
-
-  useEffect(() => {
-    setCurrentColor(createColor(color));
+  const currentColor = useMemo(() => {
+    return createColor(color);
   }, [color]);
 
   return currentColor;

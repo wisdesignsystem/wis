@@ -89,10 +89,6 @@
         @include table-head-style();
       }
     }
-
-    .content {
-      width: calc(var(--wis-table-variable-width) - var(--wis-table-variable-scroll-y));
-    }
   }
 
   &[data-separator="stripe"] {
@@ -202,6 +198,7 @@
   align-items: center;
   justify-content: space-between;
   height: 56px;
+  box-sizing: border-box;
   padding: var(--w-common-spacing-common-none) var(--w-common-spacing-common-lg);
   border-bottom-width: var(--w-common-spacing-scale-1);
   border-bottom-style: solid;

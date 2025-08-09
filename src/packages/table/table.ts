@@ -40,11 +40,6 @@ declare global {
   const cell: Cell;
 }
 
-export enum SortType {
-  Asc = "asc",
-  Desc = "desc",
-}
-
 export type Compare<R extends PlainObject = PlainObject> = (
   record1: R,
   record2: R,
@@ -59,7 +54,7 @@ export interface Sort {
   /**
    * The type of the sort
    */
-  type: SortType;
+  type: "asc" | "desc";
 
   /**
    * Set the column sort priority, it's useful when open multiple sort
@@ -77,12 +72,12 @@ export interface Sortable<R extends PlainObject = PlainObject> {
   /**
    * Set the sort type of the column. Set this value will enable controlled mode.
    */
-  type?: SortType;
+  type?: "asc" | "desc";
 
   /**
    * Set the default sort type of the column.
    */
-  defaultType?: SortType;
+  defaultType?: "asc" | "desc";
 
   /**
    * Set the column sort priority, it's useful when open multiple sort
@@ -97,8 +92,6 @@ export interface Sortable<R extends PlainObject = PlainObject> {
 
 export type SortController = Pick<Sortable, "type" | "defaultType"> &
   Pick<Sort, "name">;
-
-export type SortState = Pick<Sort, "name" | "type">;
 
 export interface TableRequest<
   R extends PlainObject = PlainObject,
@@ -125,11 +118,6 @@ export interface TableResponse<R extends PlainObject = PlainObject> {
    * The data of the table
    */
   data: R[];
-
-  /**
-   * The sort of the table, if the data is sorted, the sort should be returned
-   */
-  sort?: SortState | SortState[];
 }
 
 export type TableAjax<
@@ -278,7 +266,11 @@ export interface TableProps<
   /**
    * The callback function when the sort changes
    */
-  onSortChange?: (sort?: Sort | Sort[]) => void;
+  onSortChange?: (
+    name: string,
+    type?: "asc" | "desc",
+    sort?: Sort | Sort[],
+  ) => void;
 
   /**
    * The callback function when the data is loaded
@@ -368,6 +360,13 @@ export interface TableRef<
 > {
   getData: () => R[];
   query: (option?: QueryOption<P>) => Promise<TableResponse<R>>;
+  setColumnVisible: (name: string, visible: boolean) => void;
+  setColumnsVisible: (data: Record<string, boolean>) => void;
+  setColumnPinned: (name: string, pinned?: "left" | "right") => void;
+  setColumnsPinned: (
+    data: Record<string, undefined | "left" | "right">,
+  ) => void;
+  setColumnSort: (name: string, type?: "asc" | "desc") => void;
 }
 
 export type { Sorter, Datasource, Measure, Scroller };

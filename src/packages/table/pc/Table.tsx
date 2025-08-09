@@ -1,10 +1,11 @@
-import type { CSSProperties, Ref, ReactNode } from "react";
-import {
-  cloneElement,
-  useContext,
-  useImperativeHandle,
-  forwardRef,
+import type {
+  CSSProperties,
+  Ref,
+  ReactElement,
+  RefAttributes,
+  PropsWithChildren,
 } from "react";
+import { cloneElement, useContext, forwardRef } from "react";
 import { matchElement, ComponentTypeContext } from "wis/core";
 import attrs from "@/utils/attrs";
 
@@ -16,6 +17,13 @@ import useTable from "../useTable";
 import type { TableProps, PlainObject, TableRef } from "../table";
 
 import styles from "./Table.module.scss";
+
+type RefTable = <
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>(
+  props: PropsWithChildren<TableProps<R, P>> & RefAttributes<TableRef<R, P>>,
+) => ReactElement;
 
 const Table = forwardRef(function Table<
   R extends PlainObject = PlainObject,
@@ -35,14 +43,14 @@ const Table = forwardRef(function Table<
     tableMainRef,
     getRowKey,
     height,
-    datasource,
-    leafColumns,
-    layerColumns,
+    data,
+    columns,
     sorter,
     measure,
     scroller,
     separator,
   } = useTable<R, P>(props, {
+    ref,
     columnElements,
   });
 
@@ -53,13 +61,6 @@ const Table = forwardRef(function Table<
 
     return cloneElement(actions[0], { size: "sm" });
   }
-
-  useImperativeHandle(ref, () => {
-    return {
-      query: datasource.operator.query,
-      getData: datasource.operator.getData,
-    };
-  });
 
   const isShowHeader = props.title !== undefined || !!actions;
 
@@ -78,7 +79,6 @@ const Table = forwardRef(function Table<
           "--wis-table-variable-height": height,
           "--wis-table-variable-scroll-x": `${scroller.x}px`,
           "--wis-table-variable-scroll-y": `${scroller.y}px`,
-          visibility: measure.ready ? "visible" : "hidden",
         } as CSSProperties
       }
     >
@@ -97,8 +97,8 @@ const Table = forwardRef(function Table<
           >
             <PinnedHead<R>
               measure={measure}
-              leafColumns={leafColumns}
-              layerColumns={layerColumns}
+              leafColumns={columns.leafColumns}
+              layerColumns={columns.layerColumns}
               sorter={sorter}
             />
           </div>
@@ -110,31 +110,25 @@ const Table = forwardRef(function Table<
         onScroll={scroller.onScroll}
       >
         <table className={styles.content}>
-          <Colgroup<R> measure={measure} leafColumns={leafColumns} />
+          <Colgroup<R> measure={measure} leafColumns={columns.leafColumns} />
           {height === "auto" && (
             <Head<R>
               measure={measure}
-              layerColumns={layerColumns}
+              layerColumns={columns.layerColumns}
               sorter={sorter}
             />
           )}
           <Body<R>
             rowKey={getRowKey}
-            leafColumns={leafColumns}
-            data={datasource.data}
+            leafColumns={columns.leafColumns}
+            data={data}
             measure={measure}
           />
         </table>
       </div>
     </div>
   );
-}) as (<
-  R extends PlainObject = PlainObject,
-  P extends PlainObject = PlainObject,
->(
-  props: TableProps<R, P>,
-  ref: Ref<TableRef<R, P>>,
-) => ReactNode) & { displayName: string };
+}) as unknown as RefTable & { displayName: string };
 
 Table.displayName = "Table";
 

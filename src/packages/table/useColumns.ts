@@ -8,6 +8,7 @@ import type {
   ColumnMeta,
   SortController,
 } from "./table";
+import { OrderType } from "./table";
 
 function syncObjectValue(
   source: Record<string, unknown>,
@@ -79,8 +80,12 @@ function parseColumnElement<R extends PlainObject = PlainObject>(
     visible:
       parent?.visible === false
         ? false
-        : (visible ?? visibleStateMap[name] ?? defaultVisible),
-    pinned: parent?.pinned ?? pinned ?? pinnedStateMap[name] ?? defaultPinned,
+        : (visible ??
+          (name in visibleStateMap ? visibleStateMap[name] : defaultVisible)),
+    pinned:
+      parent?.pinned ??
+      pinned ??
+      (name in pinnedStateMap ? pinnedStateMap[name] : defaultPinned),
   };
 
   if (!isGroupColumn && typeof children === "function") {
@@ -339,24 +344,28 @@ function formatColumns<R extends PlainObject = PlainObject>(
 
 interface Operator {
   setVisible: (name: string, visible: boolean) => void;
+  batchSetVisible: (data: Record<string, boolean>) => void;
   setPinned: (name: string, pinned?: ColumnProps["pinned"]) => void;
+  batchSetPinned: (
+    data: Record<string, undefined | ColumnProps["pinned"]>,
+  ) => void;
 }
 
-export function useColumns<R extends PlainObject = PlainObject>(
-  columnElements: ReactElement<ColumnProps<R>>[],
-): {
+export interface Columns<R extends PlainObject = PlainObject> {
+  pinnedKey: string;
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   leafColumnMap: Record<string, ColumnMeta<R>>;
   layerColumns: ColumnMeta<R>[][];
   leftPinnedColumns: ColumnMeta<R>[];
   rightPinnedColumns: ColumnMeta<R>[];
-  columnMap: Record<string, ColumnMeta<R>>;
   sortsController: SortController[];
-  visibleStateMap: Record<string, boolean>;
-  pinnedStateMap: Record<string, ColumnProps["pinned"]>;
   operator: Operator;
-} {
+}
+
+export function useColumns<R extends PlainObject = PlainObject>(
+  columnElements: ReactElement<ColumnProps<R>>[],
+): Columns<R> {
   const sync = useRef<boolean>(false);
 
   const [visibleStateMap, setVisibleStateMap] = useState<
@@ -396,39 +405,65 @@ export function useColumns<R extends PlainObject = PlainObject>(
     maxDepth,
   });
 
-  function setVisible(name: string, visible: boolean) {
+  const setVisible: Operator["setVisible"] = (name, visible) => {
     setVisibleStateMap({
-      [name]: visible,
       ...visibleStateMap,
+      [name]: visible,
     });
-  }
+  };
 
-  function setPinned(name: string, pinned?: ColumnProps["pinned"]) {
+  const batchSetVisible: Operator["batchSetVisible"] = (data) => {
+    setVisibleStateMap({
+      ...visibleStateMap,
+      ...data,
+    });
+  };
+
+  const setPinned: Operator["setPinned"] = (name, pinned) => {
     setPinnedStateMap({
-      [name]: pinned,
       ...pinnedStateMap,
+      [name]: pinned,
     });
-  }
+  };
 
-  const columnMap = leafColumns.reduce(
-    (result, column) => {
-      result[column.name] = column;
-      return result;
-    },
-    {} as Record<string, ColumnMeta<R>>,
-  );
+  const batchSetPinned: Operator["batchSetPinned"] = (data) => {
+    setPinnedStateMap({
+      ...pinnedStateMap,
+      ...data,
+    });
+  };
+
+  function getPinnedKey() {
+    const pinnedColumns = leftPinnedColumns
+      .concat(rightPinnedColumns)
+      .filter((column) => column.visible)
+      .map((column) => {
+        return { name: column.name, pinned: column.pinned };
+      });
+    pinnedColumns.sort((a, b) => {
+      if (a.name > b.name) {
+        return OrderType.GREATER;
+      }
+
+      if (a.name < b.name) {
+        return OrderType.LESS;
+      }
+
+      return OrderType.EQUAL;
+    });
+
+    return JSON.stringify(pinnedColumns);
+  }
 
   return {
+    pinnedKey: getPinnedKey(),
     columns,
     leafColumns,
     leafColumnMap,
     layerColumns,
     leftPinnedColumns,
     rightPinnedColumns,
-    columnMap,
     sortsController,
-    visibleStateMap,
-    pinnedStateMap,
-    operator: { setVisible, setPinned },
+    operator: { setVisible, batchSetVisible, setPinned, batchSetPinned },
   };
 }

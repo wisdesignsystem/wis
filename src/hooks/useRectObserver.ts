@@ -1,11 +1,11 @@
-import type { RefObject } from "react";
 import { useState } from "react";
+import type { RefObject } from "react";
 
 import useResizeObserver from "./useResizeObserver";
 
-function useRectObserver<T extends HTMLElement>(
-  ref: RefObject<T>,
-  debounceTime = 100,
+function useRectObserver<E extends HTMLElement>(
+  ref: RefObject<E | null | (E | null)[]>,
+  debounceTime = 0,
 ) {
   const [rect, setRect] = useState<DOMRectReadOnly>();
 

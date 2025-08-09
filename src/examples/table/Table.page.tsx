@@ -1,6 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Page } from "wis/page";
-import { Table, Column, type TableResponse } from "wis/table";
+import { Table, Column, type TableResponse, type TableRef } from "wis/table";
 import { Actions } from "wis/actions";
 import { Button } from "wis/button";
 import { Drawer, type DrawerRef } from "wis/drawer";
@@ -22,20 +22,26 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const data: User[] = Array.from({ length: 10 }).map((_, index) => {
-    return {
-      key: `key_${index}`,
-      name: "Wis Design",
-      age: random(0, 100),
-      gender: "Men",
-      biology: random(0, 100),
-      math: random(0, 100),
-      physics: random(0, 100),
-      test: "Test Data",
-    };
-  });
+  const [data] = useState<User[]>(
+    Array.from({ length: 10 }).map((_, index) => {
+      return {
+        key: `key_${index}`,
+        name: "Wis Design",
+        age: random(0, 100),
+        gender1:
+          "sdfkljdsafkljdsaklfjasdklfjasdlkjfklsdajfkldjsaflkjasdklfjadsklfjdsakljfdaskljfkdsalfhadskjfhdsajkfhdskafjhasdkjfhsdkjfhdskjfhsdakjfhdksjfhkjsadhfkjsdahfkjsdhfkjsahdfkjsdah",
+        gender: "Men",
+        biology: random(0, 100),
+        math: random(0, 100),
+        physics: random(0, 100),
+        test: "Test Data",
+      };
+    }),
+  );
+
   const drawerRef = useRef<DrawerRef>(null);
   const modalRef = useRef<ModalRef>(null);
+  const tableRef = useRef<TableRef<User>>(null);
 
   function queryData(): Promise<TableResponse<User>> {
     return new Promise((resolve) => {
@@ -47,7 +53,13 @@ function Example() {
 
   function renderTable() {
     return (
-      <Table<User> data={queryData} height="auto" title="Table title">
+      <Table<User>
+        ref={tableRef}
+        data={data}
+        height="auto"
+        title="Table title"
+        onSortChange={(name, type, sort) => console.log(name, type, sort)}
+      >
         <Actions>
           <Button text="Upload" />
           <Button text="Submit" variant="primary" />
@@ -56,27 +68,20 @@ function Example() {
         <Column
           title="Name"
           name="name"
-          pinned="left"
-          maxWidth={120}
+          minWidth={120}
           ellipsis
           align="left"
+          pinned="left"
         >
           {cell.data}
         </Column>
-        <Column<User>
-          title="Age"
-          name="age"
-          pinned="left"
-          width={160}
-          align="right"
-          sortable={(a, b) => a.age - b.age}
-        >
+        <Column<User> title="Age" name="age" width={160} align="right" sortable>
           {cell.data}
         </Column>
         <Column title="Gender" name="gender" width={200} align="right">
-          {cell.data}
+          <div>aaa</div>
         </Column>
-        <Column width={200} title="Gender1" name="gender1">
+        <Column title="Gender1" name="gender1" minWidth={320}>
           {cell.data}
         </Column>
         <Column width={200} title="Gender2" name="gender2">
@@ -91,10 +96,17 @@ function Example() {
         <Column width={200} title="Gender5" name="gender5">
           {cell.data}
         </Column>
-        <Column width={200} title="Gender6" name="gender6">
+        <Column title="Gender6" name="gender6" minWidth={100}>
           {cell.data}
         </Column>
-        <Column title="Test" name="test" align="right" pinned="right" ellipsis>
+        <Column
+          title="Test"
+          name="test"
+          align="right"
+          pinned="right"
+          ellipsis
+          width={80}
+        >
           {cell.data}
         </Column>
       </Table>
@@ -154,9 +166,9 @@ function Example() {
 
       {renderTable()}
 
-      {/* <Module title="Module Table">{renderTable2()}</Module> */}
+      <Module title="Module Table">{renderTable2()}</Module>
 
-      {/* <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
+      <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
@@ -166,7 +178,7 @@ function Example() {
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
-      </Modal> */}
+      </Modal>
     </Page>
   );
 }

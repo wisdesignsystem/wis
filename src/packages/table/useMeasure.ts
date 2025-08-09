@@ -1,11 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import type { RefObject } from "react";
 import useMutationObserver from "@/hooks/useMutationObserver";
 import useResizeObserver from "@/hooks/useResizeObserver";
-import useDidMount from "@/hooks/useMount";
-import nextTick from "@/utils/nextTick";
+import useUpdateEffect from "@/hooks/useUpdateEffect";
 
 import type { ColumnMeta, PlainObject } from "./table";
+import type { Columns } from "./useColumns";
+import type { Datasource } from "./useDatasource";
+import { useReady } from "./useReady";
 
 interface PinnedWidth {
   head: number;
@@ -14,7 +16,6 @@ interface PinnedWidth {
 }
 
 export interface Measure<R extends PlainObject = PlainObject> {
-  ready: boolean;
   measureRef: RefObject<HTMLTableRowElement>;
   columnWidthMap: Record<string, number>;
   totalColumnWidth: number;
@@ -23,23 +24,22 @@ export interface Measure<R extends PlainObject = PlainObject> {
   getColumnWidth: (column: ColumnMeta<R>) => number | undefined;
 }
 
-interface Option<R extends PlainObject = PlainObject> {
-  leafColumns: ColumnMeta<R>[];
-  leafColumnMap: Record<string, ColumnMeta<R>>;
-  leftPinnedColumns: ColumnMeta<R>[];
-  rightPinnedColumns: ColumnMeta<R>[];
+interface Option<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  tableRef: RefObject<HTMLDivElement>;
+  datasource: Datasource<R, P>;
+  columns: Columns<R>;
 }
-export function useMeasure<R extends PlainObject = PlainObject>({
-  leafColumns,
-  leafColumnMap,
-  leftPinnedColumns,
-  rightPinnedColumns,
-}: Option<R>): Measure<R> {
+export function useMeasure<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>({ tableRef, datasource, columns }: Option<R, P>): Measure<R> {
   const mutationOption = useRef<MutationObserverInit>({ childList: true });
-  const [ready, setReady] = useState(false);
-  const resizing = useRef(false);
   const measureRef = useRef<HTMLTableRowElement>(null);
   const [totalColumnWidth, setTotalColumnWidth] = useState<number>(0);
+  const [columnWidthKey, setColumnWidthKey] = useState("");
   const [columnWidthMap, setColumnWidthMap] = useState<Record<string, number>>(
     {},
   );
@@ -48,22 +48,37 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   >({});
   const [pinnedSeparator, setPinnedSeparator] = useState(true);
 
-  function collectColumnWidth() {
-    if (!measureRef.current) {
-      return;
+  function getFirstVisibleColumn() {
+    return columns.leafColumns.find((column) => column.visible);
+  }
+
+  function getLatestVisibleColumn() {
+    let column: ColumnMeta<R> | undefined;
+    for (let i = columns.leafColumns.length - 1; i >= 0; i--) {
+      if (columns.leafColumns[i].visible) {
+        column = columns.leafColumns[i];
+        break;
+      }
     }
 
-    resizing.current = true;
+    return column;
+  }
+
+  function collectColumnWidth() {
+    if (!tableRef.current || !measureRef.current) {
+      return;
+    }
 
     let currentTotalColumnWidth = 0;
     const widthMap: Record<string, number> = {};
     const cells = Array.prototype.slice.call(
       measureRef.current.querySelectorAll("td"),
     );
+
     for (const cell of cells) {
       let width = cell.offsetWidth;
       const name = cell.getAttribute("data-name");
-      const column = leafColumnMap[name];
+      const column = columns.leafColumnMap[name];
 
       if (column.minWidth !== undefined) {
         width = Math.max(column.minWidth, width);
@@ -78,11 +93,12 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       currentTotalColumnWidth += width;
     }
 
-    // none size changed, resizing end.
-    if (totalColumnWidth === currentTotalColumnWidth) {
-      resizing.current = false;
+    const key = JSON.stringify(widthMap);
+    if (key === columnWidthKey) {
+      return;
     }
 
+    setColumnWidthKey(key);
     setColumnWidthMap(widthMap);
     setTotalColumnWidth(currentTotalColumnWidth);
     collectColumnPinnedWidth(widthMap);
@@ -104,7 +120,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       let count = column.colSpan - 1;
       let index = (column.index as number) + 1;
       while (count > 0) {
-        const currentColumn = leafColumns[index];
+        const currentColumn = columns.leafColumns[index];
 
         if (currentColumn.pinned !== undefined) {
           width += getColumnWidth(currentColumn);
@@ -143,15 +159,19 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     let nextHeadPinnedWidth = 0;
     let nextBodyPinnedWidth = 0;
 
+    const firstVisibleColumn = getFirstVisibleColumn();
     let preColumnIndex: number | undefined;
     let showPinnedSeparator = true;
-    for (let i = 0; i < leftPinnedColumns.length; i++) {
-      const column = leftPinnedColumns[i];
+    for (let i = 0; i < columns.leftPinnedColumns.length; i++) {
+      const column = columns.leftPinnedColumns[i];
       if (!column.visible) {
         continue;
       }
 
-      if (preColumnIndex !== undefined && column.index !== preColumnIndex + 1) {
+      if (preColumnIndex === undefined) {
+        showPinnedSeparator =
+          showPinnedSeparator && column.name === firstVisibleColumn?.name;
+      } else if (column.index !== preColumnIndex + 1) {
         showPinnedSeparator = false;
       }
       preColumnIndex = column.index;
@@ -159,7 +179,7 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       nextColumnPinnedWidthMap[column.name] = {
         head: nextHeadPinnedWidth,
         body: nextBodyPinnedWidth,
-        isLatest: i === leftPinnedColumns.length - 1,
+        isLatest: i === columns.leftPinnedColumns.length - 1,
       };
       collectParentColumnPinnedWidth(column, nextHeadPinnedWidth);
       if (column.colSpan !== 0) {
@@ -168,16 +188,20 @@ export function useMeasure<R extends PlainObject = PlainObject>({
       nextBodyPinnedWidth += getColumnWidth(column);
     }
 
+    const latestVisibleColumn = getLatestVisibleColumn();
     nextHeadPinnedWidth = 0;
     nextBodyPinnedWidth = 0;
     preColumnIndex = undefined;
-    for (let i = rightPinnedColumns.length - 1; i >= 0; i--) {
-      const column = rightPinnedColumns[i];
+    for (let i = columns.rightPinnedColumns.length - 1; i >= 0; i--) {
+      const column = columns.rightPinnedColumns[i];
       if (!column.visible) {
         continue;
       }
 
-      if (preColumnIndex !== undefined && column.index !== preColumnIndex - 1) {
+      if (preColumnIndex === undefined) {
+        showPinnedSeparator =
+          showPinnedSeparator && column.name === latestVisibleColumn?.name;
+      } else if (column.index !== preColumnIndex - 1) {
         showPinnedSeparator = false;
       }
       preColumnIndex = column.index;
@@ -199,37 +223,23 @@ export function useMeasure<R extends PlainObject = PlainObject>({
   }
 
   function resize() {
-    if (resizing.current) {
-      return;
-    }
-
     collectColumnWidth();
   }
 
-  useDidMount(() => {
+  const ready = useReady<R, P>(() => {
     collectColumnWidth();
-    if (!ready) {
-      setReady(true);
-    }
-  });
+  }, datasource);
 
-  useEffect(() => {
-    nextTick(() => {
-      resizing.current = false;
-    }, true);
-  }, [totalColumnWidth]);
-
-  useResizeObserver<HTMLTableRowElement>(measureRef.current, resize, 50, {
-    before: () => {
-      if (resizing.current) {
+  useResizeObserver<HTMLTableRowElement>(measureRef, resize, 50, {
+    before() {
+      if (!ready) {
         return false;
       }
-
       return true;
     },
   });
   useMutationObserver<HTMLTableRowElement>(
-    measureRef.current,
+    measureRef,
     resize,
     50,
     mutationOption.current,
@@ -245,8 +255,14 @@ export function useMeasure<R extends PlainObject = PlainObject>({
     }
   };
 
+  useUpdateEffect(() => {
+    if (!ready) {
+      return;
+    }
+    collectColumnPinnedWidth(columnWidthMap);
+  }, [columns.pinnedKey]);
+
   return {
-    ready,
     measureRef,
     columnWidthMap,
     columnPinnedWidthMap,

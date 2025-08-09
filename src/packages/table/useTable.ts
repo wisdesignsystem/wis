@@ -1,14 +1,19 @@
-import type { ReactElement, RefObject } from "react";
-import { useRef } from "react";
+import type { ReactElement, RefObject, Ref } from "react";
+import { useRef, useImperativeHandle, useMemo } from "react";
+import useMount from "@/hooks/useMount";
 
-import type { TableProps, ColumnProps, PlainObject, ColumnMeta } from "./table";
-import { useColumns } from "./useColumns";
+import type { TableProps, TableRef, ColumnProps, PlainObject } from "./table";
+import { useColumns, type Columns } from "./useColumns";
 import { useSorter, type Sorter } from "./useSorter";
 import { useDatasource, type Datasource } from "./useDatasource";
 import { useMeasure, type Measure } from "./useMeasure";
 import { useScroller, type Scroller } from "./useScroller";
 
-interface Option<R extends PlainObject = PlainObject> {
+interface Option<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
+  ref: Ref<TableRef<R, P>>;
   columnElements: ReactElement<ColumnProps<R>>[];
 }
 interface Result<
@@ -20,10 +25,9 @@ interface Result<
   tableMainRef: RefObject<HTMLDivElement>;
   height: string;
   getRowKey: (record: R) => string;
+  data: R[];
+  columns: Columns<R>;
   datasource: Datasource<R, P>;
-  columns: ColumnMeta<R>[];
-  leafColumns: ColumnMeta<R>[];
-  layerColumns: ColumnMeta<R>[][];
   sorter: Sorter<R>;
   measure: Measure<R>;
   scroller: Scroller;
@@ -44,7 +48,7 @@ function useTable<
     onSortChange,
     onLoad,
   }: TableProps<R, P>,
-  option: Option<R>,
+  option: Option<R, P>,
 ): Result<R, P> {
   const tableRef = useRef<HTMLDivElement>(null);
   const tableHeaderRef = useRef<HTMLDivElement>(null);
@@ -70,52 +74,71 @@ function useTable<
     return "auto";
   }
 
-  const {
-    columns,
-    columnMap,
-    leafColumns,
-    leafColumnMap,
-    layerColumns,
-    sortsController,
-    leftPinnedColumns,
-    rightPinnedColumns,
-  } = useColumns<R>(option.columnElements);
-  const sorter = useSorter<R>({
-    sortMode,
-    columnMap,
-    sortsController,
-    onSortChange,
-  });
+  const columns = useColumns<R>(option.columnElements);
   const datasource = useDatasource<R, P>({
     data,
     params,
-    manual,
-    leafColumns,
-    sorter,
+    columns,
     onLoad,
   });
-  const measure = useMeasure<R>({
-    leafColumns,
-    leafColumnMap,
-    leftPinnedColumns,
-    rightPinnedColumns,
+  const scroller = useScroller<R, P>({
+    tableRef,
+    tableHeaderRef,
+    tableMainRef,
+    datasource,
   });
-  const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
+  const sorter = useSorter<R, P>({
+    datasource,
+    sortMode,
+    columns,
+    onSortChange,
+  });
+  const sortedTableData = useMemo(() => {
+    if (datasource.data.length <= 0) {
+      return datasource.data;
+    }
+    return sorter.operator.sort(datasource.data);
+  }, [datasource.data, sorter.key]);
+  const measure = useMeasure<R, P>({
+    tableRef,
+    datasource,
+    columns,
+  });
+
+  useImperativeHandle(option.ref, () => {
+    return {
+      query: (option) => {
+        return datasource.operator.query({ ...option, sort: sorter.sort });
+      },
+      getData: () => sortedTableData,
+      setColumnVisible: columns.operator.setVisible,
+      setColumnsVisible: columns.operator.batchSetVisible,
+      setColumnPinned: columns.operator.setPinned,
+      setColumnsPinned: columns.operator.batchSetPinned,
+      setColumnSort: sorter.operator.set,
+    };
+  });
+
+  useMount(() => {
+    if (manual) {
+      return;
+    }
+    datasource.operator.query({ sort: sorter.sort });
+  });
 
   return {
     tableRef,
     tableHeaderRef,
     tableMainRef,
     getRowKey,
+    data: sortedTableData,
     height: getHeight(),
+    separator: columns.layerColumns.length > 1 ? "grid" : separator,
     columns,
-    leafColumns,
-    layerColumns,
     datasource,
     sorter,
     measure,
     scroller,
-    separator: layerColumns.length > 1 ? "grid" : separator,
   };
 }
 
