@@ -3,36 +3,74 @@ import type { RefObject, UIEventHandler } from "react";
 import EventEmitter from "@/utils/EventEmitter";
 import useScrollbar from "@/hooks/useScrollbar";
 
+import type { PlainObject } from "./table";
 import useTableResizeObserver from "./useTableResizeObserver";
+import type { Datasource } from "./useDatasource";
+import { useReady } from "./useReady";
 
 type ScrollerEvents = {
   scroll: (x: number, y: number) => void;
 };
 
 export interface Scroller {
-  x?: number;
-  y?: number;
+  x: number;
+  y: number;
   onScroll: UIEventHandler<HTMLDivElement>;
   eventEmitter: EventEmitter<ScrollerEvents>;
 }
 
-interface Option {
+interface Option<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+> {
   tableRef: RefObject<HTMLDivElement>;
   tableMainRef: RefObject<HTMLDivElement>;
   tableHeaderRef: RefObject<HTMLDivElement>;
+  datasource: Datasource<R, P>;
 }
 
-export function useScroller({
+export function useScroller<
+  R extends PlainObject = PlainObject,
+  P extends PlainObject = PlainObject,
+>({
   tableRef,
   tableMainRef,
   tableHeaderRef,
-}: Option): Scroller {
+  datasource,
+}: Option<R, P>): Scroller {
   const scrollbar = useScrollbar();
   const eventEmitter = useRef<EventEmitter<ScrollerEvents>>(
     new EventEmitter<ScrollerEvents>(),
   );
 
-  function checkScrollXPosition(target: HTMLDivElement) {
+  function flagScrollable() {
+    if (!tableRef.current || !tableMainRef.current) {
+      return;
+    }
+
+    const table = tableMainRef.current.querySelector("table");
+
+    if (!table) {
+      return;
+    }
+
+    const isScrollX = tableMainRef.current.offsetWidth < table.offsetWidth;
+    const isScrollY = tableMainRef.current.offsetHeight < table.offsetHeight;
+
+    if (isScrollX) {
+      tableRef.current.setAttribute("data-scroll-x", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-x");
+    }
+
+    if (isScrollY) {
+      tableRef.current.setAttribute("data-scroll-y", "");
+    } else {
+      tableRef.current.removeAttribute("data-scroll-y");
+    }
+  }
+
+  function flagScrollXPosition(target: HTMLDivElement) {
     if (!tableRef.current) {
       return;
     }
@@ -66,42 +104,35 @@ export function useScroller({
       tableMainRef.current.scrollLeft = target.scrollLeft;
     }
 
-    checkScrollXPosition(target);
+    flagScrollXPosition(target);
   };
 
   function resize() {
-    if (!tableRef.current || !tableMainRef.current) {
+    if (!tableMainRef.current) {
       return;
     }
 
-    const table = tableMainRef.current.querySelector("table");
-
-    if (!table) {
-      return;
-    }
-
-    const tableMainRect = tableMainRef.current.getBoundingClientRect();
-    const tableRect = table.getBoundingClientRect();
-
-    const isScrollX = tableMainRect.width < tableRect.width;
-    const isScrollY = tableMainRect.height < tableRect.height;
-
-    if (isScrollX) {
-      tableRef.current.setAttribute("data-scroll-x", "");
-    } else {
-      tableRef.current.removeAttribute("data-scroll-x");
-    }
-
-    if (isScrollY) {
-      tableRef.current.setAttribute("data-scroll-y", "");
-    } else {
-      tableRef.current.removeAttribute("data-scroll-y");
-    }
-
-    checkScrollXPosition(tableMainRef.current);
+    flagScrollable();
+    flagScrollXPosition(tableMainRef.current);
   }
 
-  useTableResizeObserver<HTMLDivElement>(tableMainRef, resize, 50);
+  useReady<R, P>(() => {
+    if (!tableMainRef.current) {
+      return;
+    }
+    flagScrollable();
+    flagScrollXPosition(tableMainRef.current);
+  }, datasource);
+
+  useTableResizeObserver<HTMLDivElement>(tableMainRef, resize, 50, {
+    before() {
+      if (!datasource.ready) {
+        return false;
+      }
+
+      return true;
+    },
+  });
 
   return {
     x: scrollbar.x,

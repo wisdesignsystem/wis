@@ -89,10 +89,6 @@
         @include table-head-style();
       }
     }
-
-    .content {
-      width: calc(var(--wis-table-variable-width) - var(--wis-table-variable-scroll-y));
-    }
   }
 
   &[data-separator="stripe"] {

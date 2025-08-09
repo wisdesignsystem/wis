@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { Page } from "wis/page";
 import { Table, Column, type TableResponse, type TableRef } from "wis/table";
 import { Actions } from "wis/actions";
@@ -22,7 +22,6 @@ function random(min: number, max: number) {
 }
 
 function Example() {
-  const [changed, setChanged] = useState(false);
   const [data] = useState<User[]>(
     Array.from({ length: 10 }).map((_, index) => {
       return {
@@ -44,12 +43,6 @@ function Example() {
   const modalRef = useRef<ModalRef>(null);
   const tableRef = useRef<TableRef<User>>(null);
 
-  useEffect(() => {
-    setTimeout(() => {
-      tableRef.current?.setColumnSort("age", "asc");
-    }, 5000);
-  }, []);
-
   function queryData(): Promise<TableResponse<User>> {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -62,7 +55,7 @@ function Example() {
     return (
       <Table<User>
         ref={tableRef}
-        data={queryData}
+        data={data}
         height="auto"
         title="Table title"
         onSortChange={(name, type, sort) => console.log(name, type, sort)}
@@ -173,9 +166,9 @@ function Example() {
 
       {renderTable()}
 
-      {/* <Module title="Module Table">{renderTable2()}</Module> */}
+      <Module title="Module Table">{renderTable2()}</Module>
 
-      {/* <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
+      <Drawer ref={drawerRef} title="Drawer Table" side="bottom">
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
@@ -185,7 +178,7 @@ function Example() {
         {renderTable2()}
 
         <Module title="Module Table">{renderTable2()}</Module>
-      </Modal> */}
+      </Modal>
     </Page>
   );
 }

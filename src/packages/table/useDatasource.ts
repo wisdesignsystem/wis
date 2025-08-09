@@ -4,16 +4,16 @@ import type {
   TableProps,
   TableRequest,
   PlainObject,
-  ColumnMeta,
   TableResponse,
   Sort,
 } from "./table";
+import type { Columns } from "./useColumns";
 
 type Option<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > = Pick<TableProps<R, P>, "data" | "params" | "onLoad"> & {
-  leafColumns: ColumnMeta<R>[];
+  columns: Columns<R>;
 };
 
 interface Operator<
@@ -29,6 +29,8 @@ export interface Datasource<
   R extends PlainObject = PlainObject,
   P extends PlainObject = PlainObject,
 > {
+  ready: boolean;
+  isRemote: boolean;
   data: R[];
   operator: Operator<R, P>;
 }
@@ -37,13 +39,15 @@ export function useDatasource<
   P extends PlainObject = PlainObject,
 >({
   data = [],
-  leafColumns,
+  columns,
   params,
   onLoad = () => {},
 }: Option<R, P>): Datasource<R, P> {
   const [datasource, setDatasource] = useState<R[]>([]);
   const storeParams = useRef<P>();
   const isRemote = typeof data === "function";
+  const [ready, setReady] = useState(!isRemote);
+
   const tableData = isRemote ? datasource : data;
 
   const query: Operator<R, P>["query"] = async (option) => {
@@ -52,7 +56,7 @@ export function useDatasource<
     }
 
     const requestOption: TableRequest<R, P> = {
-      columns: leafColumns,
+      columns: columns.leafColumns,
     };
 
     if (option?.sort !== undefined) {
@@ -77,17 +81,21 @@ export function useDatasource<
       };
     }
 
-    const res = await data(requestOption);
+    const res = await data(requestOption).catch((e) => {
+      setReady(true);
+      throw e;
+    });
 
     if (option?.params !== undefined) {
       storeParams.current = option.params;
     }
 
     setDatasource(res.data);
+    setReady(true);
     onLoad(res);
 
     return res;
   };
 
-  return { data: tableData, operator: { query } };
+  return { ready, isRemote, data: tableData, operator: { query } };
 }

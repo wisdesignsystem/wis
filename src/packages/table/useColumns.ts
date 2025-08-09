@@ -8,6 +8,7 @@ import type {
   ColumnMeta,
   SortController,
 } from "./table";
+import { OrderType } from "./table";
 
 function syncObjectValue(
   source: Record<string, unknown>,
@@ -350,9 +351,8 @@ interface Operator {
   ) => void;
 }
 
-export function useColumns<R extends PlainObject = PlainObject>(
-  columnElements: ReactElement<ColumnProps<R>>[],
-): {
+export interface Columns<R extends PlainObject = PlainObject> {
+  pinnedKey: string;
   columns: ColumnMeta<R>[];
   leafColumns: ColumnMeta<R>[];
   leafColumnMap: Record<string, ColumnMeta<R>>;
@@ -361,7 +361,11 @@ export function useColumns<R extends PlainObject = PlainObject>(
   rightPinnedColumns: ColumnMeta<R>[];
   sortsController: SortController[];
   operator: Operator;
-} {
+}
+
+export function useColumns<R extends PlainObject = PlainObject>(
+  columnElements: ReactElement<ColumnProps<R>>[],
+): Columns<R> {
   const sync = useRef<boolean>(false);
 
   const [visibleStateMap, setVisibleStateMap] = useState<
@@ -429,7 +433,30 @@ export function useColumns<R extends PlainObject = PlainObject>(
     });
   };
 
+  function getPinnedKey() {
+    const pinnedColumns = leftPinnedColumns
+      .concat(rightPinnedColumns)
+      .filter((column) => column.visible)
+      .map((column) => {
+        return { name: column.name, pinned: column.pinned };
+      });
+    pinnedColumns.sort((a, b) => {
+      if (a.name > b.name) {
+        return OrderType.GREATER;
+      }
+
+      if (a.name < b.name) {
+        return OrderType.LESS;
+      }
+
+      return OrderType.EQUAL;
+    });
+
+    return JSON.stringify(pinnedColumns);
+  }
+
   return {
+    pinnedKey: getPinnedKey(),
     columns,
     leafColumns,
     leafColumnMap,

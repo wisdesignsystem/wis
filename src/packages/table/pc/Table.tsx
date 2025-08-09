@@ -44,8 +44,7 @@ const Table = forwardRef(function Table<
     getRowKey,
     height,
     data,
-    leafColumns,
-    layerColumns,
+    columns,
     sorter,
     measure,
     scroller,
@@ -80,7 +79,6 @@ const Table = forwardRef(function Table<
           "--wis-table-variable-height": height,
           "--wis-table-variable-scroll-x": `${scroller.x}px`,
           "--wis-table-variable-scroll-y": `${scroller.y}px`,
-          visibility: measure.ready ? "visible" : "hidden",
         } as CSSProperties
       }
     >
@@ -99,8 +97,8 @@ const Table = forwardRef(function Table<
           >
             <PinnedHead<R>
               measure={measure}
-              leafColumns={leafColumns}
-              layerColumns={layerColumns}
+              leafColumns={columns.leafColumns}
+              layerColumns={columns.layerColumns}
               sorter={sorter}
             />
           </div>
@@ -112,17 +110,17 @@ const Table = forwardRef(function Table<
         onScroll={scroller.onScroll}
       >
         <table className={styles.content}>
-          <Colgroup<R> measure={measure} leafColumns={leafColumns} />
+          <Colgroup<R> measure={measure} leafColumns={columns.leafColumns} />
           {height === "auto" && (
             <Head<R>
               measure={measure}
-              layerColumns={layerColumns}
+              layerColumns={columns.layerColumns}
               sorter={sorter}
             />
           )}
           <Body<R>
             rowKey={getRowKey}
-            leafColumns={leafColumns}
+            leafColumns={columns.leafColumns}
             data={data}
             measure={measure}
           />

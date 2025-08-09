@@ -2,14 +2,8 @@ import type { ReactElement, RefObject, Ref } from "react";
 import { useRef, useImperativeHandle, useMemo } from "react";
 import useMount from "@/hooks/useMount";
 
-import type {
-  TableProps,
-  TableRef,
-  ColumnProps,
-  PlainObject,
-  ColumnMeta,
-} from "./table";
-import { useColumns } from "./useColumns";
+import type { TableProps, TableRef, ColumnProps, PlainObject } from "./table";
+import { useColumns, type Columns } from "./useColumns";
 import { useSorter, type Sorter } from "./useSorter";
 import { useDatasource, type Datasource } from "./useDatasource";
 import { useMeasure, type Measure } from "./useMeasure";
@@ -32,9 +26,7 @@ interface Result<
   height: string;
   getRowKey: (record: R) => string;
   data: R[];
-  columns: ColumnMeta<R>[];
-  leafColumns: ColumnMeta<R>[];
-  layerColumns: ColumnMeta<R>[][];
+  columns: Columns<R>;
   datasource: Datasource<R, P>;
   sorter: Sorter<R>;
   measure: Measure<R>;
@@ -82,18 +74,23 @@ function useTable<
     return "auto";
   }
 
-  const column = useColumns<R>(option.columnElements);
+  const columns = useColumns<R>(option.columnElements);
   const datasource = useDatasource<R, P>({
     data,
     params,
-    leafColumns: column.leafColumns,
+    columns,
     onLoad,
+  });
+  const scroller = useScroller<R, P>({
+    tableRef,
+    tableHeaderRef,
+    tableMainRef,
+    datasource,
   });
   const sorter = useSorter<R, P>({
     datasource,
     sortMode,
-    leafColumnMap: column.leafColumnMap,
-    sortsController: column.sortsController,
+    columns,
     onSortChange,
   });
   const sortedTableData = useMemo(() => {
@@ -102,13 +99,11 @@ function useTable<
     }
     return sorter.operator.sort(datasource.data);
   }, [datasource.data, sorter.key]);
-  const measure = useMeasure<R>({
-    leafColumns: column.leafColumns,
-    leafColumnMap: column.leafColumnMap,
-    leftPinnedColumns: column.leftPinnedColumns,
-    rightPinnedColumns: column.rightPinnedColumns,
+  const measure = useMeasure<R, P>({
+    tableRef,
+    datasource,
+    columns,
   });
-  const scroller = useScroller({ tableRef, tableHeaderRef, tableMainRef });
 
   useImperativeHandle(option.ref, () => {
     return {
@@ -116,10 +111,10 @@ function useTable<
         return datasource.operator.query({ ...option, sort: sorter.sort });
       },
       getData: () => sortedTableData,
-      setColumnVisible: column.operator.setVisible,
-      setColumnsVisible: column.operator.batchSetVisible,
-      setColumnPinned: column.operator.setPinned,
-      setColumnsPinned: column.operator.batchSetPinned,
+      setColumnVisible: columns.operator.setVisible,
+      setColumnsVisible: columns.operator.batchSetVisible,
+      setColumnPinned: columns.operator.setPinned,
+      setColumnsPinned: columns.operator.batchSetPinned,
       setColumnSort: sorter.operator.set,
     };
   });
@@ -138,14 +133,12 @@ function useTable<
     getRowKey,
     data: sortedTableData,
     height: getHeight(),
-    columns: column.columns,
-    leafColumns: column.leafColumns,
-    layerColumns: column.layerColumns,
+    separator: columns.layerColumns.length > 1 ? "grid" : separator,
+    columns,
     datasource,
     sorter,
     measure,
     scroller,
-    separator: column.layerColumns.length > 1 ? "grid" : separator,
   };
 }
 
