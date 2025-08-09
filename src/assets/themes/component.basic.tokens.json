@@ -3786,7 +3786,7 @@
       },
       "background": {
         "$type": "color",
-        "$value": "{background.transparent.fully}"
+        "$value": "{background.common.base}"
       },
       "border": {
         "$type": "color",
@@ -3853,6 +3853,10 @@
             "$value": "{background.state.disabled}"
           }
         },
+        "border": {
+          "$type": "color",
+          "$value": "{border.color.base}"
+        },
         "error": {
           "background": {
             "$type": "color",
@@ -3908,50 +3912,6 @@
         "border": {
           "$type": "color",
           "$value": "{border.color.base}"
-        }
-      },
-      "head-cell": {
-        "font": {
-          "$type": "color",
-          "$value": "{font.color.tertiary}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{background.common.01}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{border.color.base}"
-        }
-      },
-      "cell": {
-        "background": {
-          "$type": "color",
-          "$value": "{background.transparent.fully}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{border.color.transparent}"
-        },
-        "trend": {
-          "up": {
-            "$type": "color",
-            "$value": "{background.semantics.error}"
-          },
-          "down": {
-            "$type": "color",
-            "$value": "{background.semantics.success}"
-          }
-        },
-        "rating": {
-          "font": {
-            "$type": "color",
-            "$value": "{font.color.icon}"
-          },
-          "checked-font": {
-            "$type": "color",
-            "$value": "{yellow.400}"
-          }
         }
       },
       "sort": {
@@ -4072,6 +4032,28 @@
         "header-height": {
           "$type": "dimension",
           "$value": "56px"
+        }
+      },
+      "cell": {
+        "trend": {
+          "up": {
+            "$type": "color",
+            "$value": "{background.semantics.error}"
+          },
+          "down": {
+            "$type": "color",
+            "$value": "{background.semantics.success}"
+          }
+        },
+        "rating": {
+          "font": {
+            "$type": "color",
+            "$value": "{font.color.icon}"
+          },
+          "checked-font": {
+            "$type": "color",
+            "$value": "{yellow.400}"
+          }
         }
       },
       "_editor": {

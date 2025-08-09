@@ -10,11 +10,11 @@ const config: WisConfig = {
     "./definitions": "./src/definitions",
     "./theme": {
       default: "./src/packages/themes/tokens/theme/blue/index",
-      blue: "./src/packages/themes/tokens/theme/orange/index",
+      orange: "./src/packages/themes/tokens/theme/orange/index",
     },
     "./gray": {
-      default: "./src/packages/themes/tokens/gray/black/index",
-      blue: "./src/packages/themes/tokens/gray/blue/index",
+      default: "./src/packages/themes/tokens/gray/blue/index",
+      black: "./src/packages/themes/tokens/gray/black/index",
     },
     "./grid": "./src/packages/grid/index",
     "./box": {
